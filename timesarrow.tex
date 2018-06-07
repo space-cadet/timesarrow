@@ -10,6 +10,8 @@
 % - you should run LaTeX twice in order for the line numbers to appear
 % =========================================================================
 
+% Use \PassOptionsToPackage command to pass options to hyperref before SciPost.cls is processed to avoid hyperref options clash warning
+\PassOptionsToPackage{colorlinks=true,citecolor=blue,linkcolor=blue,urlcolor=scipostdeepblue}{hyperref}
 
 % TODO: uncomment ONE of the class declarations below
 % If you are submitting a paper to SciPost Physics: uncomment next line
@@ -19,17 +21,34 @@
 % If you are submitting a paper to SciPost Physics Proceedings: uncomment next line
 %\documentclass[submission, Proceedings]{SciPost}
 
-% % % % %
-%SCIPOST RECOMMENDED
-\usepackage{doi}
-\usepackage{lineno}
+%BEGIN hyperref setup
 %Following definition of 'lightblue' obtained from http://latexcolor.com/
 \definecolor{lightblue}{rgb}{0.68, 0.85, 0.9}
 \definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
 
-%\usepackage[colorlinks=true,citecolor=blue,linkcolor=blue,urlcolor=airforceblue,breaklinks]{hyperref}
-%END SCIPOST RECOMMENDED
-% % % % %
+\usepackage{hyperref}
+%\usepackage{hyperref}
+%END hyperref setup
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+% Biblatex setup
+% The default is the 'numerical' style.
+% \usepackage[backend=biber,url=false,eprint=true,doi=true,sorting=none,backref=true]{biblatex}
+\usepackage[backend=biber,url=false,eprint=true,doi=true,sorting=none,backref=true]{biblatex}
+% We use the following bibliography databases:
+\addbibresource{timesarrow.bib}
+% End biblatex
+
+%\usepackage[backend=bibtex,style=authoryear,natbib=true]{biblatex} % Use the bibtex backend with the authoryear citation style (which resembles APA)
+
+%\addbibresource{qhe_bhe.bib} % The filename of the bibliography
+
+%\usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes in the bibliography
+
+\usepackage{todonotes}
 
 \usepackage{comment}
 
@@ -37,7 +56,7 @@
 \usepackage{enumerate}
 \usepackage{enumitem}
 \usepackage{latexsym}
-\usepackage{xcolor}
+%\usepackage{xcolor}
 
 %\usepackage{url}
 %\usepackage{breakurl} 
@@ -92,6 +111,9 @@
 
 %\keywords{quantum gravity, time reversal symmetry, gauge field, symmetry breaking, tensor networks, arrow of time}
 
+
+\usepackage{parskip}
+\setlength{\parindent}{1cm}
 
 \begin{document}
 
@@ -148,30 +170,38 @@ The question of the origin time's arrow is a major outstanding problem in physic
 \vspace{10pt}
 
 
-The question of ``time'' has perplexed humanity since the dawn of the civilization. Modern physics provides two conflicting roles for time. In quantum mechanics, time is simply an external parameter representing external clocks \wrt which the evolution of a quantum system takes places. In general relativity, on the other hand, time is a dimension on par with the three spatial dimensions and taken together, the four dimensions constitute a dynamical entity known as ``spacetime'' which serves as the arena on which all physics processes take place. However, unified though it may be in a certain geometrical sense with the spatial dimensions, time retains a character distinct from them. The Universe we live in appears to have a distinct \textit{arrow of time}, a sense in which time \emph{flows} from the ``past'' and towards the ``future''. Spatial dimensions do not appear to display such behavior, with all directions being ``equally likely'' - in the sense that the matter distribution in the Universe does not appear to have a preferred spatial orientation on the largest observable scales\footnote{Whether or not the Universe is spatially isotropic on the largest scales is a matter of some debate \cite{Land2005Examination}.}.
+\section{Introduction: Time's Arrow and Quantum Gravity}\label{sec:intro}
 
-\section{Time Reversal Symmetry}
+The question of ``time'' has perplexed humanity since the dawn of the civilization. Modern physics provides two conflicting roles for time. In quantum mechanics, time is simply an external parameter representing external clocks \wrt which the evolution of a quantum system takes places. In general relativity, on the other hand, time is a dimension on par with the three spatial dimensions and taken together, the four dimensions constitute a dynamical entity known as ``spacetime'' which serves as the arena on which all physics processes take place. However, unified though it may be in a certain geometrical sense with the spatial dimensions, time retains a character distinct from them. The Universe we live in appears to have a distinct \textit{arrow of time}\footnote{see \cite{Zeh1989The-Physical} for a comprehensive review of the arrow of time in classical, quantum and gravitational contexts.}, a sense in which time \emph{flows} from the ``past'' and towards the ``future''. Spatial dimensions do not appear to display such behavior, with all directions being ``equally likely'' - in the sense that the matter distribution in the Universe does not appear to have a preferred spatial orientation on the largest observable scales\footnote{Whether or not the Universe is spatially isotropic on the largest scales is a matter of some debate \cite{Land2005Examination}.}.
 
+The equations of motion of physical systems, in classical and quantum mechanics and in general relativity are manifestly time-symmetric \cite{Ardakani2018Time,Roberts2012Time}. Yet, we know very well that macroscopic systems \emph{appear} to be endowed with a preferred direction for time evolution. In classical physics this is commonly understood as a consequence of the thermodynamic second law for systems with large number of degrees of freedom. According to the second law, \emph{isolated systems} always evolve from a state with low entropy to a state with high entropy. Thus the direction of increasing entropy can be identified with the direction of the flow of time. In quantum mechanics the situation was unclear until recently when advances in the field of many body localization and the eigenstate thermalization hypothesis \cite{Linden2009Quantum,Nandkishore2015Many-Body,Goold2016The-role} have clarified that isolated many body quantum systems, regardless of their initial state, will also evolve such that their final state is the equilibrium or highest entropy state.
 
+The above considerations, however, apply only to closed systems. The universe, as such, is not to the best of our knowledge a closed system. However, even so, our universe appears to have a well-defined arrow of time on the largest cosmological scales. In particular, the initial state of the universe - at the so-called ``Big-Bang'' - appears to have been a low entropy state and time evolved - so to speak - the overall entropy of the Universe has increased and more and more complex structures have formed leading eventually to the present day epoch where systems have become complex enough to allow for the emergence of life\footnote{One should, in general, be careful not to confuse the two separate issue of ``complexity'' and ``entropy'', though they clearly are intertwined in many cases. Entropy is commonly associated with ``disorder'' and complex systems are typically thought of as being ``ordered'', low entropy configurations. However, as Jeremy England has shown \cite{England2012Statistical}, in open systems which are exposed to a constant energy flux, the formation of complex self-replicating structures which dissipate energy efficiently is inevitable. From this perspective complexity and entropy are mutually competing aspects of any system far from equilibrium.}. There are, however, several proposals for how an arrow of time can spontaneously arise even in closed systems \cite{Maccone2009Quantum,Barbour2013The-Solution,Barbour2013A-Gravitational,Barbour2014Identification}\footnote{see, however, \cite{Jennings2010Entanglement,Jennings2009Comment,Maccone2009A-quantum} for comments on and alternatives to the proposed resolution of the arrow of time given in \cite{Maccone2009Quantum}}.
 
-\section{Spin Networks: Microscopic Structure of Spacetime}
+Ultimately, any question about the arrow of time must find their resolution in a theory of quantum gravity - the long sought after unification of quantum mechanics and general relativity which would permit us to understand the structure of spacetime at the Planck scale ($ l_p \sim 10^{-34}m $) and in regions of high matter density and strong gravitational fields such as in and around black holes and near the Big Bang. One proposed route to quantum gravity is known as Loop Quantum Gravity (\cite{Vaid2014LQG-for-the-Bewildered}) in which states of quantum geometry are modeled by graphs whose edges are labeled by representations of $ SU(2) $. For obvious reasons, such graphs are also known as ``spin networks''. In the framework of LQG several authors have discussed the role of time-reversal symmetry \cite{Christodoulou2012How-to-detect,Rovelli2012Discrete} and how one could possibly detect an ``anti-spacetime'' - a region of spacetime where the local arrow of time points in the opposite direction to that of the overall global arrow in that spacetime.
 
-\section{Tensor Networks}
+Several authors \cite{Qi2013Exact,Han2016Loop,Chirco2017Group} have shown that there exists a mapping between spin-networks and ``tensor networks'' which are a tool used to study the properties of quantum spacetime in approaches to quantum gravity inspired by the AdS/CFT correspondence. In \cite{Chen2015Gauging} Chen and Vishwanath have shown how time-reversal symmetry can be made from a global to a local symmetry and described its action on tensor networks states. In this work we build upon these developments to present a possible resolution of the question of the origin of time's arrow by introducing a time-reversal gauge field coupled to spin-networks. We argue that spontaneous symmetry breaking of this gauge field will lead to the emergence of an arrow of time in semiclassical states of geometry.
 
-\section{Time Reversal Symmetry in Tensor Networks}
+The layout of this paper is as follows. In \autoref{sec:time-reversal} we give a brief outline of how time-reversal symmetry (TRS) is implemented in quantum mechanical systems. In \autoref{sec:tensor-networks} we explain the concept of matrix product state and tensor network states and show local gauge symmetry is implemented in tensor network states (TNS). In \autoref{sec:spin-nets-tensors} the correspondence between spin-network states of LQG and tensor networks is elaborated. In \autoref{sec:lqg-time} this correspondence is used to argue for the emergence of an arrow of time from spontaneous symmetry breaking in LQG. Finally we end with a discussion of our results and problems for future research.
+
+\section{Time Reversal Symmetry}\label{sec:time-reversal}
+
+\section{Tensor Networks}\label{sec:tensor-networks}
+
+\section{Spin Networks as Tensor Networks}\label{sec:spin-nets-tensors}
+
+\section{Arrow of Time from LQG}\label{sec:lqg-time}
 
 \section{Discussion}
 
 \section*{Acknowledgments}
 
-The author would like to thank ...
+The author wishes to acknowledge the support of the Visiting Associates program of the Inter-University Centre for Astronomy and Astrophysics (IUCAA), Pune, India, where a portion of this work was completed.
 
 % TODO: include funding information
-\paragraph{Funding information}
+%\bibliography{timesarrow.bib}
 
-The author wishes to acknowledge the support of ...
-
-\bibliography{timesarrow.bib}
+\printbibliography[title={Bibliography}]
 
 \nolinenumbers
 
