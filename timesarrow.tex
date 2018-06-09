@@ -56,6 +56,9 @@
 \usepackage{enumerate}
 \usepackage{enumitem}
 \usepackage{latexsym}
+
+\usepackage{longtable,booktabs}
+
 %\usepackage{xcolor}
 
 %\usepackage{url}
@@ -107,6 +110,9 @@
 \newcommand{\supersc}[1]{$^{\textrm{#1}}$}
 \newcommand{\subsc}[1]{$_{\textrm{#1}}$}
 \newcommand{\sltwoc}{\mathfrak{sl}(2,\mathbb{C})}
+
+\newcommand{\Tr}{\mathrm{Tr}}
+
 % % %
 
 %\keywords{quantum gravity, time reversal symmetry, gauge field, symmetry breaking, tensor networks, arrow of time}
@@ -114,6 +120,8 @@
 
 \usepackage{parskip}
 \setlength{\parindent}{1cm}
+
+\graphicspath{{figures/}}
 
 \begin{document}
 
@@ -182,11 +190,135 @@ Ultimately, any question about the arrow of time must find their resolution in a
 
 Several authors \cite{Qi2013Exact,Han2016Loop,Chirco2017Group} have shown that there exists a mapping between spin-networks and ``tensor networks'' which are a tool used to study the properties of quantum spacetime in approaches to quantum gravity inspired by the AdS/CFT correspondence. In \cite{Chen2015Gauging} Chen and Vishwanath have shown how time-reversal symmetry can be made from a global to a local symmetry and described its action on tensor networks states. In this work we build upon these developments to present a possible resolution of the question of the origin of time's arrow by introducing a time-reversal gauge field coupled to spin-networks. We argue that spontaneous symmetry breaking of this gauge field will lead to the emergence of an arrow of time in semiclassical states of geometry.
 
-The layout of this paper is as follows. In \autoref{sec:time-reversal} we give a brief outline of how time-reversal symmetry (TRS) is implemented in quantum mechanical systems. In \autoref{sec:tensor-networks} we explain the concept of matrix product state and tensor network states and show local gauge symmetry is implemented in tensor network states (TNS). In \autoref{sec:spin-nets-tensors} the correspondence between spin-network states of LQG and tensor networks is elaborated. In \autoref{sec:lqg-time} this correspondence is used to argue for the emergence of an arrow of time from spontaneous symmetry breaking in LQG. Finally we end with a discussion of our results and problems for future research.
+The layout of this paper is as follows. In \autoref{sec:time-reversal} we give a brief outline of how time-reversal symmetry is implemented in quantum mechanical systems. In \autoref{sec:tensor-networks} we explain the concept of matrix product state and tensor network states and show local gauge symmetry is implemented in tensor network states (TNS). In \autoref{sec:spin-nets-tensors} the correspondence between spin-network states of LQG and tensor networks is elaborated. In \autoref{sec:lqg-time} this correspondence is used to argue for the emergence of an arrow of time from spontaneous symmetry breaking in LQG. Finally we end with a discussion of our results and problems for future research.
 
-\section{Time Reversal Symmetry}\label{sec:time-reversal}
+\section{Time Reversal of Quantum Systems}\label{sec:time-reversal}
+
+In classical mechanics the action of time-reversal symmetry on physical observables can be defined as follows:
+
+\begin{longtable}[]{@{}l|l@{}}
+\toprule
+Physical Observable & Under time reversal\tabularnewline
+\midrule
+\endhead
+Position & \( \vect{x} \rightarrow \vect{x}\)\tabularnewline
+Time & \( t \rightarrow -t\)\tabularnewline
+Linear Momentum & \(\vect{p} \rightarrow -\vect{p} = d\vect{x}/d(-t) = - d\vect{x}/dt\)\tabularnewline
+Angular Momentum & \( \vect{l} = \vect{x} \times \vect{p} \rightarrow -\vect{l} \) \tabularnewline
+Energy/Hamiltonian & \( H(\vect{x},\vect{p}) \rightarrow H(\vect{x}, -\vect{p}) \) \tabularnewline
+Electric Field & \( E^i \rightarrow -E^i\)\tabularnewline
+Magnetic Field & \( B^i \rightarrow - B^i \)\tabularnewline
+\bottomrule
+\caption{Action of time-reversal symmetry on classical observables}
+\label{tbl:trs-classical}
+\end{longtable}
+
+%\begin{equation}\label{eqn:trs-classical}
+%	\vect{x} \rightarrow \vect{x}; \quad t \rightarrow -t; \quad \vect{p} \rightarrow -\vect{p}; \quad \vect{l} \rightarrow -\vect{l}
+%\end{equation}
+%where $ \vect{x}, t, \vect{p}, \vect{l} $ are the position, time, linear momentum and angular momentum of a particle, respectively.
+
+Under time-reversal the Poisson brackets change sign:
+\begin{equation}\label{eqn:classical-poisson}
+	\left\{ x_i, p_j \right\} = \delta_{ij} \rightarrow \left\{ x'_i, p'_j \right\} = -\delta_{ij}
+\end{equation}
+where $ \vect{x'} = \mc{T} \vect{x} = \vect{x} $, $ \vect{p'} = \mc{T} \vect{p} = - \vect{p} $ and $ \mc{T} $ is the generator of time-reversal. However, the classical equations of motion remain invariant:
+\begin{equation}\label{eqn:classical-eom}
+	\vect{\dot{x}'} = \frac{\partial H}{\partial \vect{p'}}; \quad \vect{\dot{p}'} = - \frac{\partial H}{\partial \vect{x'}}
+\end{equation}
+In quantum mechanics the situation is quite different and this difference can ultimately be traced back to the appearance of the imaginary $ i = \sqrt{-1} $ in the canonical commutation relations and the Schrodinger equation. If, proceeding by analogy with the classical case, we implement time reversal for quantum operators in the expected way:
+\begin{equation}\label{eqn:trs-quantum}
+	\vect{\hat{x}} \rightarrow \vect{\hat{x}}; \quad \vect{\hat{p}} \rightarrow -\vect{\hat{p}}
+\end{equation}
+the quantum commutators pick up a negative sign, similar to what happens in the classical case \eqref{eqn:classical-poisson}:
+\begin{equation}\label{eqn:quantum-poisson}
+	\left[ \hat{x}_i, \hat{p}_j \right] = i \hbar \delta_{ij} \rightarrow \left[\hat{x}'_i, \hat{p}'_j \right] = - i \hbar \delta_{ij}
+\end{equation}
+However, the equation of motion is no longer invariant:
+\begin{equation}\label{eqn:trs-schrodinger}
+	i \hbar \frac{\partial \psi}{\partial t} =  \hat{H} \psi \rightarrow i \hbar \frac{\partial \psi}{\partial t'} =  - \hat{H} \psi
+\end{equation}
+where $ t' = -t $. This can be resolved, however, if following Wigner we define the quantum time reversal operator $ \mc{T} $ to act as follows on any quantum state as follows:
+\begin{equation}\label{eqn:wigner-time-reversal}
+	\mc{T} ( c_1 \psi_1 + c_2 \psi_2 ) = c_1^* \mc{T} \psi_1 + c_2^* \mc{T} \psi_2
+\end{equation}
+Such an operator is called \emph{anti-linear} or \emph{anti-unitary}. Acting with this operator on both sides of the Schrodinger equation we obtain:
+\begin{equation}\label{eqn:trs-schrodinger-2}
+	\mc{T} \left( i \hbar \frac{\partial \psi}{\partial t} \right) = i \hbar \frac{\partial (\mc{T} \psi)}{\partial t'} = H (\mc{T} \psi)
+\end{equation}
+where in the second step we have used the fact that $ i \rightarrow -i $ under the action of $ \mc{T} $ and that $ t' = -t $. Consequently, if $ \psi $ satisfies the Schrodinger equation, then $ \mc{T} \psi $ satisfies the time-reversed Schrodinger equation. A second benefit of this definition is that under $ \mc{T} $, the quantum commutators no longer change sign:
+\begin{equation}\label{eqn:quantum-poisson-2}
+	\mc{T} \left(\left[ \hat{x}_i, \hat{p}_j \right]\right) \mc{T}^{-1} = \mc{T} i \mc{T}^{-1} \hbar \delta_{ij} \rightarrow \left[\hat{x}'_i, \hat{p}'_j \right]= i \hbar \delta_{ij}
+\end{equation}
+where we have used the fact that an operator $ \mc{O} $ transforms as $ U \mc{O} U^{-1} $ under the action of any symmetry $ U $. As a sidenote let us mention that while the Wigner definition of time-reversal leads to an invariant equation of motion \emph{and} invariant commutators in the quantum case, the definition of time-reversal in the classical case leaves the equation of motion invariant, but not the Poisson brackets. This dichotomy between the classical and quantum cases deserves further study.
 
 \section{Tensor Networks}\label{sec:tensor-networks}
+
+Consider a many body system consisting of $ N $ quantum degrees of freedom. The most general many body state of such as system can be written as:
+\begin{equation}\label{eqn:many-body-state}
+	\fullket{\psi} = \sum_{i_1, i_2, \ldots, i_N} C_{i_1, i_2, \ldots, i_N} \fullket{i_1, i_2, \ldots, i_N}
+\end{equation}
+where $ \fullket{i_k} $ is the state of the $ k^\text{th} $ degree of freedom. For instance, in a spin-chain, the single body Hilbert space would be $ \mc{H}^2 = \{ \fullket{\uparrow}, \fullket{\downarrow} \} $ and the sum in the above equation would be over all the possible spin configurations of the sites in the chain. It is easy to see that the total Hilbert space of the spin-chain is:
+\begin{equation}\label{eqn:n-body-hilbert-space}
+	\mc{H}^{2^N} = \underset{i = 1 \ldots N}{\bigotimes} \mc{H}^2_i
+\end{equation}
+and the dimensionality of this Hilbert space is $ 2^N $. As $ N $ increases, the amount of information required to specify a given many-body state increases exponentially. Moreover in the representation \eqref{eqn:many-body-state}, there is no way to distinguish short-range correlations from long-range ones. The co-efficients $  C_{i_1, i_2, \ldots, i_N} $ are defined over the entire Hilbert space and cannot be decomposed into local contributions in any simple manner.
+
+Most importantly for our purposes, it is not clear what the local action of the time-reversal symmetry would be on a state of the form \eqref{eqn:many-body-state}. One can define the global action:
+\begin{equation}\label{key}
+	\mc{T} \fullket{\psi} = \sum_{i_1, i_2, \ldots, i_N} C^*_{i_1, i_2, \ldots, i_N} U_1 \otimes \ldots \otimes U_N \fullket{i_1, i_2, \ldots, i_N}
+\end{equation}
+Here 
+
+\begin{equation}\label{eqn:mps-ansatz}
+	\fullket{\psi} = \sum_{i_1, i_2, \ldots, i_N} \Tr\left[ A^{(1)}_{i_1} A^{(2)}_{i_2} \ldots A^{(N)}_{i_N} \right] \fullket{i_1, i_2, \ldots, i_N}
+\end{equation}
+where 
+
+\begin{figure}[tbph]
+\centering
+\includegraphics[width=0.2\linewidth]{mps-vertex}
+\caption{Single vertex of a matrix product state. Internal indices are denoted by $ \alpha, \beta $. Physical indices by $ i,j,\ldots $}
+\label{fig:mps-vertex}
+\end{figure}
+
+\begin{figure}[tbph]
+\centering
+\includegraphics[width=0.5\linewidth]{matrix-product-state-v2}
+\caption{Diagrammatic representation of a matrix product state (MPS). The matrix $ A^{(i)} $ lives at the $ i^\text{th} $ lattice site}
+\label{fig:mps-state}
+\end{figure}
+
+\begin{figure}[tbph]
+\centering
+\includegraphics[width=0.3\linewidth]{toric-code}
+\caption{Tensor network state (TNS) representation of the toric code wavefunction. Each edge (green) has a physical index $ i $ and two internal indices $ \alpha, \beta $. The corresponding tensor is $ g(l)^i_{\alpha\beta} $ where $ l $ labels the edge. The vertices have only internal indices and the corresponding tensor is written as $ T(v)_{\alpha\beta\gamma\delta} $ where $ v $ labels the given vertex.}
+\label{fig:toric-code}
+\end{figure}
+
+
+\section{Spin Networks: Microscopic Structure of Spacetime}
+
+\begin{figure}[tbph]
+\centering
+\includegraphics[width=0.4\linewidth]{network-labelled-j}
+\caption{}
+\label{fig:spin-network}
+\end{figure}
+
+\begin{figure}[tbph]
+\centering
+\includegraphics[width=0.3\linewidth]{area_puncture}
+\caption{}
+\label{fig:area-operator}
+\end{figure}
+
+\begin{figure}[tbph]
+\centering
+\includegraphics[width=0.4\linewidth]{area_punctures}
+\caption{}
+\label{fig:many-punctures}
+\end{figure}
 
 \section{Spin Networks as Tensor Networks}\label{sec:spin-nets-tensors}
 
