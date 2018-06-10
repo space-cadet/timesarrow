@@ -250,7 +250,7 @@ where in the second step we have used the fact that $ i \rightarrow -i $ under t
 \begin{equation}\label{eqn:quantum-poisson-2}
 	\mc{T} \left(\left[ \hat{x}_i, \hat{p}_j \right]\right) \mc{T}^{-1} = \mc{T} i \mc{T}^{-1} \hbar \delta_{ij} \rightarrow \left[\hat{x}'_i, \hat{p}'_j \right]= i \hbar \delta_{ij}
 \end{equation}
-where we have used the fact that an operator $ \mc{O} $ transforms as $ U \mc{O} U^{-1} $ under the action of any symmetry $ U $. As a sidenote let us mention that while the Wigner definition of time-reversal leads to an invariant equation of motion \emph{and} invariant commutators in the quantum case, the definition of time-reversal in the classical case leaves the equation of motion invariant, but not the Poisson brackets. This dichotomy between the classical and quantum cases deserves further study.
+where we have used the fact that an operator $ \mc{O} $ transforms as $ U \mc{O} U^{-1} $ under the action of any symmetry $ U $. As a sidenote let us mention that while the Wigner definition of time-reversal leads to an invariant equation of motion \emph{and} invariant commutators in the quantum case, the definition of time-reversal in the classical case leaves the equation of motion invariant, but not the Poisson brackets. This dichotomy between the classical and quantum cases deserves further study, but we postpone that for a later occasion.
 
 \section{Tensor Networks}\label{sec:tensor-networks}
 
@@ -265,15 +265,32 @@ where $ \fullket{i_k} $ is the state of the $ k^\text{th} $ degree of freedom. F
 and the dimensionality of this Hilbert space is $ 2^N $. As $ N $ increases, the amount of information required to specify a given many-body state increases exponentially. Moreover in the representation \eqref{eqn:many-body-state}, there is no way to distinguish short-range correlations from long-range ones. The co-efficients $  C_{i_1, i_2, \ldots, i_N} $ are defined over the entire Hilbert space and cannot be decomposed into local contributions in any simple manner.
 
 Most importantly for our purposes, it is not clear what the local action of the time-reversal symmetry would be on a state of the form \eqref{eqn:many-body-state}. One can define the global action:
-\begin{equation}\label{key}
+\begin{equation}\label{eqn:trs-many-body-state}
 	\mc{T} \fullket{\psi} = \sum_{i_1, i_2, \ldots, i_N} C^*_{i_1, i_2, \ldots, i_N} U_1 \otimes \ldots \otimes U_N \fullket{i_1, i_2, \ldots, i_N}
 \end{equation}
-Here 
+Here the action of $ \mc{T} $ on a state is expressed as a product of a unitary transformation $ U $ followed by complex conjugation $ K $: $ \mc{T} = KU $. Each factor of $ U_i $ acts on the $ i^\text{th} $ site, while complex conjugation acts on the coefficients $ C^*_{i_1, i_2, \ldots, i_N} $. It is precisely this complex conjugation which makes it difficult to understand how to apply time reversal \emph{locally}, \ie to a subset of the system $ \{i_m, \ldots, i_{m+n}\} $, rather than to the whole sysem. What is needed is a way to express \eqref{eqn:trs-many-body-state} in a way that allows us to act with the complex conjugation \emph{locally}, and only on select parts of the system, rather than on the global state. It turns out it is possible to express \eqref{eqn:trs-many-body-state} in such a way using the technique of matrix product states (MPS) or their generalization to dimensions greater than one, tensor network states (TNS).
 
+A typical MPS is written as \cite[Sec 3]{Bridgeman2016Hand-waving}:
 \begin{equation}\label{eqn:mps-ansatz}
 	\fullket{\psi} = \sum_{i_1, i_2, \ldots, i_N} \Tr\left[ A^{(1)}_{i_1} A^{(2)}_{i_2} \ldots A^{(N)}_{i_N} \right] \fullket{i_1, i_2, \ldots, i_N}
 \end{equation}
-where 
+where $ A^{(k)}_{i_k;\alpha\beta} $ is a set of matrices associated with the $ k^\text{th} $ lattice site; with $ i_k \in \{1,2,\ldots,D\} $, where $ D $ is the dimension of the single site Hilbert space and $ \alpha, \beta \in \{ 1, 2, \ldots, d\} $, where $ d $ is known as the ``bond dimension''. As an example, for a chain of spin $ 1/2 $ particles, each site can be one of two states $ \{\fullket{\uparrow}, \fullket{\downarrow} \} $ and thus with each site we associate two matrices: $ A^{(k)}_{\uparrow;\alpha\beta}  $ and $ A^{(k)}_{\downarrow; \alpha\beta} $. From now on for ease of notation, instead of using the up/down notation $ \{\fullket{\uparrow}, \fullket{\downarrow} \} $ we will use $ \{ \fullket{1}, \fullket{0} \} $ to represent the two states of a spin $ 1/2 $ system. Typically, we will consider systems invariant under translations, which allows us to use a single set of matrices $ A_{i_k;\alpha\beta} $ for each site. We will do so in the following examples.
+
+Working with the spin half chain, consider, for instance the matrices:
+\begin{equation}\label{eqn:mps-state-1}
+	A_0 = (1); \quad A_1 = (0)
+\end{equation}
+Inserting these into the MPS expression \eqref{eqn:mps-ansatz}, we can see that whenever the state at a given site is $ \fullket{1} $, the coefficient of that term will vanish. Thus we are left with the result that \eqref{eqn:mps-state-1} represents the simple state: $ \fullket{00\ldots0} $. A less trivial example is that of the GHZ (Greenberger-Horne-Zeilinger) \cite{Greenberger1990Bells} state:
+\begin{equation}\label{eqn:ghz-state}
+	\fullket{\psi_{GHZ}} = \fullket{00\ldots0} + \fullket{11\ldots1}
+\end{equation}
+for which the associated MPS matrices are:
+\begin{equation}\label{eqn:ghz-matrices}
+	A_0 = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}; \quad A_1 = \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}
+\end{equation}
+One can explicitly evaluate the expression \eqref{eqn:mps-ansatz} with the choice of above matrices for, say, a two-site system to find that it does indeed correspond to \eqref{eqn:ghz-state}. It is important at this point to mention that it has been proven in \cite{Vidal2003Efficient} that \emph{any} many-body state can be written in the form \eqref{eqn:mps-ansatz} as long as the bond dimension $ d $ is large enough. Therefore the MPS ansatz can be used to study local application of time-reversal, among other, symmetries to an arbitrary many-body system.
+
+There is an illuminating diagrammatic notation \cite{Bridgeman2016Hand-waving} for MPS. The key component of this notation is the vertex diagram shown in \autoref{fig:mps-vertex}. The node labelled $ i $ represents the physical degree of freedom corresponding to the state $ \fullket{i} $ in the single site Hilbert space. The site index itself is not shown, because as such that becomes irrelevant in this notation.
 
 \begin{figure}[tbph]
 \centering
@@ -282,12 +299,32 @@ where
 \label{fig:mps-vertex}
 \end{figure}
 
+\autoref{fig:mps-vertex-product} shows how two connect two such vertices. In terms of matrices, such a connection corresponds to multiplying two site matrices: $ A_{i_1;\alpha\gamma} A_{i_2;\gamma\beta} $ (where the sum over the repeated index $ \gamma $ is implied). In order to obtain the numerical value of the wavefunction coefficient in \eqref{eqn:mps-ansatz}, the trace has to be taken after connecting all the vertices together. This operation is illustrated in \autoref{fig:mps-vertex-product-trace}, by the line connecting $ A_1 $ and $ A_2 $ from the outside.
+
 \begin{figure}[tbph]
 \centering
-\includegraphics[width=0.5\linewidth]{matrix-product-state-v2}
-\caption{Diagrammatic representation of a matrix product state (MPS). The matrix $ A^{(i)} $ lives at the $ i^\text{th} $ lattice site}
+\includegraphics[width=0.3\linewidth]{mps-vertex-product}
+\caption{A connection between two adjacent vertices corresponds to multiplying the associated matrices.}
+\label{fig:mps-vertex-product}
+\end{figure}
+
+\begin{figure}[tbph]
+\centering
+\includegraphics[width=0.3\linewidth]{mps-vertex-product-trace}
+\caption{To take the trace we complete the loop by connecting the first and last vertices}
+\label{fig:mps-vertex-product-trace}
+\end{figure}
+
+An illustration of use of this notation to represent a MPS is shown in \autoref{fig:mps-state} for a system with five spins.
+
+\begin{figure}[tbph]
+\centering
+\includegraphics[width=0.5\linewidth]{mps-state}
+\caption{Diagrammatic representation of a matrix product state (MPS). The matrix $ A_{i} $ lives at the $ i^\text{th} $ lattice site. Indices $ i_1, \ldots, i_5 $ represent the \emph{physical} degrees of freedom at each site. The trace operation is represented by the line connecting by the first and last sites (figure courtesy of \cite{Bridgeman2016Hand-waving})}
 \label{fig:mps-state}
 \end{figure}
+
+One can easily extend this notation to arbitrary lattices in arbitrary number of dimensions. When dealing with graphs with degree greater than two, the term ``tensor network states'' or ``tensor product states'' is used instead of ``matrix product states'', because each matrix now has more than two internal indices. An example is shown in \autoref{fig:toric-code} which shows the diagrammatic representation for the state for a system defined on a two-dimensional square lattice, where the physical degrees of freedom live on the edges. This state is defined by two sets of tensors: a four index object $ T_{\alpha\beta\gamma\eta} $ for the vertices and a two index object $ g^{e_k}_{\alpha\beta} $ for the edges. Since the physical degrees of freedom only live on the edges, only the edge tensor has the corresponding index $ e_k $, where $ e $ represents the given edge and $ k \in \{1,\ldots,D\} $, with $ D $, as before, being the dimension of the Hilbert space of the physical degree of freedom.
 
 \begin{figure}[tbph]
 \centering
