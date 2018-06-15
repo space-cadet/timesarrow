@@ -1,0 +1,54 @@
+%\documentclass[10pt]{article}
+\documentclass[tikz,border=3pt]{standalone}
+%\usepackage[usenames]{color} %used for font color
+\usepackage{amssymb} %maths
+\usepackage{amsmath} %maths
+\usepackage[utf8]{inputenc} %useful to type directly diacritic characters
+%\usepackage[svgnames]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings}
+\pagestyle{empty}
+
+\usepackage{amsmath, amssymb, amsfonts,amsthm} % Math packages for equations
+\input{/Users/deepak/ownCloud/root/research/articles/timesarrow/bridgeman-chubbs/testing/macros}
+
+
+\pgfdeclarelayer{edgelayer}
+\pgfdeclarelayer{nodelayer}
+\pgfsetlayers{edgelayer,nodelayer,main}
+
+\tikzstyle{none}=[inner sep=2pt]
+
+\usepackage[graphics,tight page,active]{preview}
+\PreviewEnvironment{tikzpicture}
+\newlength{\imagewidth}
+\newlength{\imagescale}
+
+\tikzstyle{tensor}=[rectangle,draw=blue!50,fill=blue!20,thick]
+
+\tikzset{node distance=2cm}
+
+
+\begin{document}
+\[\begin{tikzpicture}
+%    \foreach \i in {1,...,2} {
+%        \node[tensor] (\i) at ($(\i*1.5, 0)$) {$A_\i$};
+%        \node (\i spin) at ($(\i*1.5, -0.7)$) {$i_\i$};
+%        \draw[-] (\i) -- (\i spin);
+%    };
+    \node[tensor] (1) {$A^1_{i_1}$};
+    \node[tensor,right of=1] (2) {$A^2_{i_2}$};
+    \node (1 spin) [below of=1, yshift=1cm] {$i_1$};
+    \node (2 spin) [below of=2, yshift=1cm] {$i_2$};
+    \draw (1) -- (1 spin);
+    \draw (2) -- (2 spin);
+
+    \draw[-] (1.east) -- node[right,below, xshift=-0.3cm] {$\gamma$} node[left, below, xshift=0.3cm] {$\gamma$} (2);
+
+%    \draw[-] (1.west) -- ++(-1,0) -- ++(0,1) -- (2.east);
+    \draw[-] (1.west) -- node[left,below] {$\alpha$} ($(1.west) + (-0.5,0)$);
+    \draw[-] (2.east) -- node[right,below] {$\beta$} ($(2.east) + (0.5,0)$);
+\end{tikzpicture}
+%%%%%
+\]
+\end{document}

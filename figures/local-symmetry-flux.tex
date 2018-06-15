@@ -1,0 +1,95 @@
+%\documentclass[10pt]{article}
+\documentclass[tikz,border=3pt]{standalone}
+%\usepackage[usenames]{color} %used for font color
+\usepackage{amssymb} %maths
+\usepackage{amsmath} %maths
+\usepackage[utf8]{inputenc} %useful to type directly diacritic characters
+%\usepackage[svgnames]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings}
+\pagestyle{empty}
+
+\usepackage{amsmath, amssymb, amsfonts,amsthm} % Math packages for equations
+\input{/Users/deepak/ownCloud/root/research/articles/timesarrow/bridgeman-chubbs/testing/macros}
+
+
+\pgfdeclarelayer{edgelayer}
+\pgfdeclarelayer{nodelayer}
+\pgfsetlayers{edgelayer,nodelayer,main}
+
+\tikzstyle{none}=[inner sep=2pt]
+
+\usepackage[graphics,tight page,active]{preview}
+\PreviewEnvironment{tikzpicture}
+\newlength{\imagewidth}
+\newlength{\imagescale}
+
+\tikzstyle{tensor}=[rectangle,draw=blue!50,fill=blue!20,thick]
+
+\tikzset{node distance=2cm}
+
+
+\begin{document}
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+\draw    (288.6,64) -- (314.4,64) ;
+
+
+\draw    (339.6,64) -- (366,64) ;
+
+
+\draw    (391.2,64) -- (417.6,64) ;
+
+
+\draw    (327,74.8) -- (327,91.6) ;
+
+
+\draw    (129.09,63.91) -- (156.45,63.91) ;
+
+
+\draw    (183.18,63.91) -- (211.18,63.91) ;
+
+
+\draw    (75,63.91) -- (102.36,63.91) ;
+
+
+\draw    (115.98,77.5) -- (115.98,95.32) ;
+
+
+\draw    (237.91,63.91) -- (263.4,64) ;
+
+
+\draw  [fill={rgb, 255:red, 36; green, 175; blue, 233 }  ,fill opacity=0.61 ]  (102.62, 53.32) rectangle (129.35, 77.5)   ;
+
+\draw  [fill={rgb, 255:red, 239; green, 158; blue, 10 }  ,fill opacity=0.61 ]  (155.03, 52.48) rectangle (181.76, 76.67)   ;
+
+\draw  [fill={rgb, 255:red, 36; green, 175; blue, 233 }  ,fill opacity=0.61 ]  (210.62, 51.82) rectangle (237.35, 76)   ;
+\draw  [fill={rgb, 255:red, 36; green, 175; blue, 233 }  ,fill opacity=0.61 ]  (263.9, 53.1) rectangle (289.1, 75.9)   ;
+\draw  [fill={rgb, 255:red, 36; green, 175; blue, 233 }  ,fill opacity=0.61 ]  (313.9, 52.6) rectangle (339.1, 75.4)   ;
+\draw  [fill={rgb, 255:red, 36; green, 175; blue, 233 }  ,fill opacity=0.61 ]  (364.9, 52.6) rectangle (390.1, 75.4)   ;
+\draw    (223.98,76) -- (223.98,93.82) ;
+
+
+\draw    (276.5,75.9) -- (276.5,93.72) ;
+
+
+\draw    (377.5,75.4) -- (377.5,93.22) ;
+
+
+
+\draw (276.5,63.9) node [scale=0.8]  {$A^{3}$};
+\draw (223.98,63.27) node [scale=0.8]  {$A^{2}$};
+\draw (326.5,63.4) node [scale=0.8]  {$A^{4}$};
+\draw (377.5,63.4) node [scale=0.8]  {$A^{5}$};
+\draw (169.67,64.58) node [scale=0.8]  {$M$};
+\draw (115.98,64.77) node [scale=0.8]  {$A^{1}$};
+
+
+\end{tikzpicture}
+
+\end{document}
