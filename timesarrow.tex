@@ -352,9 +352,65 @@ Here $ n_v, n_e $ are the total number of vertices and edges in the graph respec
 
 In the next section we will see that \eqref{eqn:general-tensor-net-state} is the precise form of the expression for the wavefunction of a spin-network state in LQG.
 
+\subsection{Dangling Indices: Bulk vs Boundary Degrees of Freedom}
+
+We will also need to consider states with \emph{\textbf{dangling indices}}, \ie ``internal'' or bonding degrees of freedom which are not traced over. As we will see in the next section, such states correspond to boundary states of quantum geometry of a bulk region. Consider the MPS for a two-site system as shown in \ref{fig:mps-vertex-product}. Such as state, before would be written as:
+\begin{equation}\label{eqn:two-index-mps}
+\ket{\Psi_{\alpha\beta}}= \sum_{\{i_1, i_2\}} A^1_{i_1;\alpha\gamma} A^2_{i_2;\gamma\beta} \ket{i_1, i_2}
+\end{equation}
+Now the state is a two-index object. Likewise if the graph has $ n $ dangling edges, then the resulting state will also have $ n $ indices of size equal to the bond dimension. Consider a graph $ \Gamma $, which has a subset of $ n $ vertices which are connected to only a single edge, each. These vertices and their accompanying edges $ \{ v_1,\ldots,v_n; e_1, \ldots, e_n \} $ form a subset $ \partial \Gamma \subset \Gamma $. Let $ \bar{\Gamma} = \Gamma/\partial \Gamma$, be the ``bulk'' of the graph which does not have any dangling edges. Resulting state is $ n $ index object.
+\begin{equation}\label{eqn:n-index-mps}
+\ket{\Psi_{\alpha_1,\ldots,\alpha_n}} = \ket{\Psi_\text{bulk}}\ket{\alpha_1,\ldots,\alpha_n}
+\end{equation}
+where:
+\begin{equation}\label{eqn:bulk-mps}
+\ket{\Psi_\text{bulk}} = \underset{\{i_v,j_e\} \in \bar{\Gamma}}{\sum} \left[ \underset{v \in \bar\Gamma}\prod T^v_{i_v} \underset{e \in \bar\Gamma}\prod g^e_{j_e} \right] \ket{ \{ i_v \}, \{ j_e \} }
+\end{equation}
+
 \subsection{Gauge Freedom of MPS}\label{subsec:mps-gauge}
 
+The central thrust of this work is the idea that gauge symmetry breaking in spin-network states can lead to the emergence of an arrow of time. For this to work, we have to understand how gauge symmetry can act on MPS - and thereby on spin-network states. Now any MPS is given by the following data:
 
+\begin{table}[h]\label{tbl:mps-data}
+\centering
+\begin{tabular}{|p{6cm}|c|}
+\hline
+\multicolumn{2}{|c|}{MPS Data}                                    \\ \hline
+Number of degrees of freeom & $ N $                               \\ \hline
+Site Hilbert space          & $ \mc{H} $                          \\ \hline
+Bond dimension				& $ D $								  \\ \hline
+\par Set of matrices, where $ k $ is the site index, $ i_k $ is the state and $ \alpha, \beta $ are matrix indices           & $ \left\{ A^{(k)}_{i_k;\alpha\beta} \right\} $ \\ \hline
+\end{tabular}
+\end{table}
+
+Any such state has a global gauge symmetry under which all the matrices are transformed by a constant matrix, as in:
+\begin{equation}\label{key}
+	A^{(k)}_{i_k} \rightarrow M A^{(k)}_{i_k} M^{-1}
+\end{equation}
+where $ M $ is a constant matrix. Then it is easy to see that the resulting state will be the same as before, because all factors of $ M, M^{-1} $ will cancel when taking the trace:
+\begin{equation}\label{eqn:mps-ansatz-gauge}
+	\ket{\psi} \rightarrow \sum_{i_1, i_2, \ldots, i_N} \Tr\left[ M A^{(1)}_{i_1} M^{-1} M A^{(2)}_{i_2} M^{-1} \ldots M A^{(N)}_{i_N} M^{-1 }\right] \ket{i_1, i_2, \ldots, i_N} = \ket{\psi}
+\end{equation}
+Diagrammatically the effect of a such a gauge symmetry can be illustrated as follows:
+
+%\begin{minipage}[m]{0.9\linewidth}
+%	\centering
+\begin{equation*}\label{key}
+	\includegraphics[width=0.40\linewidth]{mps-gauge-action-v2}
+\Rightarrow
+	\includegraphics[width=0.3\linewidth]{mps-gauge-action-v3}
+\Rightarrow
+	\includegraphics[width=0.2\linewidth]{mps-gauge-action-v4}
+\end{equation*}
+%\end{minipage}
+
+%\vfill
+\vspace*{2cm}
+\begin{minipage}[m]{0.45\columnwidth}
+	\centering
+	\includegraphics[width=1\linewidth]{local-symmetry-flux}
+	\captionof*{figure}{Insertion of a single symmetry flux: $ A^2 \rightarrow M (A^2) $}
+\end{minipage}
 
 \section{Spin Networks: Microscopic Structure of Spacetime}\label{sec:spin-networks}
 
