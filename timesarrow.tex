@@ -73,8 +73,6 @@
 \newcommand{\beq}{\begin{equation}}
 \newcommand{\eeq}{\end{equation}}
 \newcommand{\rarrow}{\rightarrow}
-%\newcommand{\bra}{\langle}
-%\newcommand{\ket}{\rangle}
 \newcommand{\beqa}{\begin{align}}
 \newcommand{\eeqa}{\end{align}}
 \newcommand{\barr}{\begin{array}}
@@ -105,11 +103,12 @@
 \newcommand{\mbb}[1]{\mathbb{#1}}
 \newcommand{\mf}[1]{\mathfrak{#1}}
 
+\newcommand{\unit}[1]{\mathbf{\hat{#1}}}
+
 \newcommand{\vect}[1]{\boldsymbol{#1}}
 \newcommand{\expect}[1]{\langle #1\rangle}
 \newcommand{\innerp}[2]{\langle #1 \vert #2 \rangle}
-%\newcommand{\fullbra}[1]{\langle #1 \vert}
-%\newcommand{\ket}[1]{\vert #1 \rangle}
+\newcommand{\expectop}[3]{\langle #1 \vert #2 \vert #3 \rangle}
 \newcommand{\bra}[1]{\langle #1 \vert}
 \newcommand{\ket}[1]{\vert #1 \rangle}
 \newcommand{\supersc}[1]{$^{\textrm{#1}}$}
@@ -187,15 +186,29 @@ The question of the origin time's arrow is a major outstanding problem in physic
 
 The question of ``time'' has perplexed humanity since the dawn of the civilization. Modern physics provides two conflicting roles for time. In quantum mechanics, time is simply an external parameter representing external clocks \wrt which the evolution of a quantum system takes places. In general relativity, on the other hand, time is a dimension on par with the three spatial dimensions and taken together, the four dimensions constitute a dynamical entity known as ``spacetime'' which serves as the arena on which all physics processes take place. However, unified though it may be in a certain geometrical sense with the spatial dimensions, time retains a character distinct from them. The Universe we live in appears to have a distinct \textit{arrow of time}\footnote{see \cite{Zeh1989The-Physical} for a comprehensive review of the arrow of time in classical, quantum and gravitational contexts.}, a sense in which time \emph{flows} from the ``past'' and towards the ``future''. Spatial dimensions do not appear to display such behavior, with all directions being ``equally likely'' - in the sense that the matter distribution in the Universe does not appear to have a preferred spatial orientation on the largest observable scales\footnote{Whether or not the Universe is spatially isotropic on the largest scales is a matter of some debate \cite{Land2005Examination}.}.
 
-The equations of motion of physical systems, in classical and quantum mechanics and in general relativity are manifestly time-symmetric \cite{Ardakani2018Time,Roberts2012Time}. Yet, we know very well that macroscopic systems \emph{appear} to be endowed with a preferred direction for time evolution. In classical physics this is commonly understood as a consequence of the thermodynamic second law for systems with large number of degrees of freedom. According to the second law, \emph{isolated systems} always evolve from a state with low entropy to a state with high entropy. Thus the direction of increasing entropy can be identified with the direction of the flow of time. In quantum mechanics the situation was unclear until recently when advances in the field of many body localization and the eigenstate thermalization hypothesis \cite{Linden2009Quantum,Nandkishore2015Many-Body,Goold2016The-role} have clarified that isolated many body quantum systems, regardless of their initial state, will also evolve such that their final state is the equilibrium or highest entropy state.
+The equations of motion of physical systems, in classical and quantum mechanics and in general relativity are manifestly time-symmetric \cite{Ardakani2018Time,Roberts2012Time}. Yet, we know very well that macroscopic systems \emph{appear} to be endowed with a preferred direction for time evolution. In classical physics this is commonly understood as a consequence of the thermodynamic second law for systems with large number of degrees of freedom. According to the second law, \emph{isolated systems} always evolve from a state with low entropy to a state with high entropy. Thus the direction of increasing entropy can be identified with the direction of the flow of time. In quantum mechanics the situation was unclear until recently when advances in the field of many body localization and the eigenstate thermalization hypothesis \cite{Popescu2006Entanglement, Linden2009Quantum,Nandkishore2015Many-Body,Goold2016The-role} have clarified that many body quantum systems coupled to an environment with a sufficiently large Hilbert space will evolve such that their final state is the equilibrium or highest entropy state, regardless of the initial starting state of the combined system. In other words even if the Universe started in a pure state, individual subsystems within the Universe would \emph{almost} always evolve from states of low entropy to states of high entropy. There are also several proposals for how an arrow of time can spontaneously arise even in closed systems \cite{Maccone2009Quantum,Barbour2013The-Solution,Barbour2013A-Gravitational,Barbour2014Identification}\footnote{see, however, \cite{Jennings2010Entanglement,Jennings2009Comment,Maccone2009A-quantum} for comments on and alternatives to the proposed resolution of the arrow of time given in \cite{Maccone2009Quantum}}.
 
-The above considerations, however, apply only to closed systems. The universe, as such, is not to the best of our knowledge a closed system. However, even so, our universe appears to have a well-defined arrow of time on the largest cosmological scales. In particular, the initial state of the universe - at the so-called ``Big-Bang'' - appears to have been a low entropy state and time evolved - so to speak - the overall entropy of the Universe has increased and more and more complex structures have formed leading eventually to the present day epoch where systems have become complex enough to allow for the emergence of life\footnote{One should, in general, be careful not to confuse the two separate issue of ``complexity'' and ``entropy'', though they clearly are intertwined in many cases. Entropy is commonly associated with ``disorder'' and complex systems are typically thought of as being ``ordered'', low entropy configurations. However, as Jeremy England has shown \cite{England2012Statistical}, in open systems which are exposed to a constant energy flux, the formation of complex self-replicating structures which dissipate energy efficiently is inevitable. From this perspective complexity and entropy are mutually competing aspects of any system far from equilibrium.}. There are, however, several proposals for how an arrow of time can spontaneously arise even in closed systems \cite{Maccone2009Quantum,Barbour2013The-Solution,Barbour2013A-Gravitational,Barbour2014Identification}\footnote{see, however, \cite{Jennings2010Entanglement,Jennings2009Comment,Maccone2009A-quantum} for comments on and alternatives to the proposed resolution of the arrow of time given in \cite{Maccone2009Quantum}}.
+Our universe appears to have a well-defined arrow of time on the largest cosmological scales. In particular, the initial state of the universe - at the so-called ``Big-Bang'' - appears to have been a low entropy state and over ``time'' the overall entropy of the Universe has increased and more and more complex structures have formed leading eventually to the present day epoch where systems have become complex enough to allow for the emergence of life\footnote{One should, in general, be careful not to confuse the two separate issue of ``complexity'' and ``entropy'', though they clearly are intertwined in many cases. Entropy is commonly associated with ``disorder'' and complex systems are typically thought of as being ``ordered'', low entropy configurations. However, as Jeremy England has shown \cite{England2012Statistical}, in open systems which are exposed to a constant energy flux, the formation of complex self-replicating structures which dissipate energy efficiently is inevitable. From this perspective complexity and entropy are mutually competing aspects of any system far from equilibrium.}. One could argue that from the perspective of Popescu, Short and Winter \cite{Popescu2006Entanglement} that the emergence of an arrow of time is inevitable in any subsystem of the Universe and that any such system coupled to a sufficiently large environment will always evolve towards a thermal state even if the combined system - \ie the Universe - starts in a pure state. The question is, to what extent does this apply to the Universe as a whole? Our Universe, on the largest observable scales, appears to exhibit a uniform sense of the flow of time. Individual isolated subsystems of the Universe might evolve towards a thermal state, but there is no reason, \emph{a priori}, for why the sense of time-evolution in these different subsystems should be the same. This raises the question why does the observable Universe not consist of regions where time runs in opposite directions? 
+
+%The equations of motion of physical systems, in classical and quantum mechanics and in general relativity are manifestly time-symmetric \cite{Ardakani2018Time,Roberts2012Time}. Yet, we know very well that macroscopic systems \emph{appear} to be endowed with a preferred direction for time evolution. In classical physics this is commonly understood as a consequence of the thermodynamic second law for systems with large number of degrees of freedom. According to the second law, \emph{isolated systems} always evolve from a state with low entropy to a state with high entropy. Thus the direction of increasing entropy can be identified with the direction of the flow of time. In quantum mechanics the situation was unclear until recently when advances in the field of many body localization and the eigenstate thermalization hypothesis \cite{Linden2009Quantum,Nandkishore2015Many-Body,Goold2016The-role} have clarified that isolated many body quantum systems, regardless of their initial state, will also evolve such that their final state is the equilibrium or highest entropy state.
+%
+%The above considerations, however, apply only to closed systems. The universe, as such, is not to the best of our knowledge a closed system. However, even so, our universe appears to have a well-defined arrow of time on the largest cosmological scales. In particular, the initial state of the universe - at the so-called ``Big-Bang'' - appears to have been a low entropy state and time evolved - so to speak - the overall entropy of the Universe has increased and more and more complex structures have formed leading eventually to the present day epoch where systems have become complex enough to allow for the emergence of life\footnote{One should, in general, be careful not to confuse the two separate issue of ``complexity'' and ``entropy'', though they clearly are intertwined in many cases. Entropy is commonly associated with ``disorder'' and complex systems are typically thought of as being ``ordered'', low entropy configurations. However, as Jeremy England has shown \cite{England2012Statistical}, in open systems which are exposed to a constant energy flux, the formation of complex self-replicating structures which dissipate energy efficiently is inevitable. From this perspective complexity and entropy are mutually competing aspects of any system far from equilibrium.}. There are, however, several proposals for how an arrow of time can spontaneously arise even in closed systems \cite{Maccone2009Quantum,Barbour2013The-Solution,Barbour2013A-Gravitational,Barbour2014Identification}\footnote{see, however, \cite{Jennings2010Entanglement,Jennings2009Comment,Maccone2009A-quantum} for comments on and alternatives to the proposed resolution of the arrow of time given in \cite{Maccone2009Quantum}}.
 
 Ultimately, any question about the arrow of time must find their resolution in a theory of quantum gravity - the long sought after unification of quantum mechanics and general relativity which would permit us to understand the structure of spacetime at the Planck scale ($ l_p \sim 10^{-34}m $) and in regions of high matter density and strong gravitational fields such as in and around black holes and near the Big Bang. One proposed route to quantum gravity is known as Loop Quantum Gravity (\cite{Vaid2014LQG-for-the-Bewildered}) in which states of quantum geometry are modeled by graphs whose edges are labeled by representations of $ SU(2) $. For obvious reasons, such graphs are also known as ``spin networks''. In the framework of LQG several authors have discussed the role of time-reversal symmetry \cite{Christodoulou2012How-to-detect,Rovelli2012Discrete} and how one could possibly detect an ``anti-spacetime'' - a region of spacetime where the local arrow of time points in the opposite direction to that of the overall global arrow in that spacetime.
 
-Several authors \cite{Qi2013Exact,Han2016Loop,Chirco2017Group} have shown that there exists a mapping between spin-networks and ``tensor networks'' which are a tool used to study the properties of quantum spacetime in approaches to quantum gravity inspired by the AdS/CFT correspondence. In \cite{Chen2015Gauging} Chen and Vishwanath have shown how time-reversal symmetry can be made from a global to a local symmetry and described its action on tensor networks states. In this work we build upon these developments to present a possible resolution of the question of the origin of time's arrow by introducing a time-reversal gauge field coupled to spin-networks. We argue that spontaneous symmetry breaking of this gauge field will lead to the emergence of an arrow of time in semiclassical states of geometry.
+Several authors \cite{Qi2013Exact,Han2016Loop,Chirco2017Group} have shown that there exists a mapping between spin-networks and ``tensor networks'' which are a tool used to study the properties of quantum spacetime in approaches to quantum gravity inspired by the AdS/CFT correspondence. In \cite{Chen2015Gauging} Chen and Vishwanath have shown how time-reversal symmetry can be made from a global to a local symmetry and described its action on tensor networks states.
 
-The layout of this paper is as follows. In \autoref{sec:time-reversal} we give a brief outline of how time-reversal symmetry is implemented in quantum mechanical systems. In \autoref{sec:mps-all} we explain the concept of matrix product state and tensor network states and show local gauge symmetry is implemented in tensor network states (TNS). In \autoref{sec:spin-nets-tensors} the correspondence between spin-network states of LQG and tensor networks is elaborated. In \autoref{sec:lqg-time} this correspondence is used to argue for the emergence of an arrow of time from spontaneous symmetry breaking in LQG. Finally we end with a discussion of our results and problems for future research.
+In this work we build upon these developments to present a possible resolution of the question of the origin of a cosmological arrow of time by introducing a time-reversal gauge field coupled to spin-networks. We argue that symmetry breaking of this gauge field will lead to the emergence of an arrow of time in semiclassical states of geometry and will also lead to the emergence of gapless excitations - Dirac fermions - which could be interpreted as matter degrees of freedom.
+
+The layout of this paper is as follows. We explain the crucial differences between Symmetry Protected Topological (SPT) order, Topological Order (TO) and Symmetry Enriched Topological (SET) order and explain why we expect our classical spacetime to arise as a SPT phase of some underlying fundamental theory. In \autoref{sec:time-reversal} we give a brief outline of how time-reversal symmetry is implemented in quantum mechanical systems. In \autoref{sec:mps-all} we explain the concept of matrix product state and tensor network states and show local gauge symmetry is implemented in tensor network states (TNS). In \autoref{sec:spin-nets-tensors} the correspondence between spin-network states of LQG and tensor networks is elaborated. In \autoref{sec:lqg-time} this correspondence is used to argue for the emergence of an arrow of time from spontaneous symmetry breaking in LQG. Finally we end with a discussion of our results and problems for future research.
+
+\section{Topological Order and Spacetime Geometry}\label{sec:topo-order}
+
+There exist many materials in nature which display transitions between phases which cannot be identified by measuring the change in the expectation value of some \emph{local} order parameter field. These systems fall outside the Landau-Ginzburg paradigm for classifying the phase space of many body systems. The order (or disorder) in these systems is characterized by the expectation values of \emph{non-local} operators such as the Wilson loop operator:
+\begin{equation}\label{eqn:wilson-loop-expectation}
+	\expect{\mc{O}_\gamma} = \expectop{\Psi}{\exp -i\int_{\gamma} dx^\mu \mb{A}_\mu}{\Psi}
+\end{equation}
+Such phases are characterized by invariants of fun
 
 \section{Time Reversal of Quantum Systems}\label{sec:time-reversal}
 
@@ -402,21 +415,25 @@ Diagrammatically the effect of a such a gauge symmetry can be illustrated as fol
 \Rightarrow
 	\includegraphics[width=0.2\linewidth]{mps-gauge-action-v4}
 \end{equation*}
-%\end{minipage}
 
-%\vfill
-\vspace*{2cm}
 \begin{minipage}[m]{0.45\columnwidth}
 	\centering
 	\includegraphics[width=1\linewidth]{local-symmetry-flux}
 	\captionof*{figure}{Insertion of a single symmetry flux: $ A^2 \rightarrow M (A^2) $}
 \end{minipage}
 
-\section{Spin Networks: Microscopic Structure of Spacetime}\label{sec:spin-networks}
+\section{Spin Networks}\label{sec:spin-networks}
 
 Spin networks are very simple to describe physically. Consider an arbitrary graph $ \Gamma $, as shown in \autoref{fig:spin-network}, whose edges are labelled by representations $ j_e \in \mbb{Z}/2 $ of $ SU(2) $. This is very similar to the tensor networks defined in the previous section, with the only difference being that now the edge Hilbert spaces can all be of different dimensionality $ D_e = \text{dim}[\mc{H}_e] = j_e (j_e + 1)  $ depending on the representation $ j_e $ living on the respective edges. The tensor associated with each edge will then be a matrix $ g^{e}_{i_e;\alpha\beta} $ of rank $ 2 $ and dimension $ D_e $, with $ i_e \in \{ \ket{-j_e}, \ket{-j_e + 1}, \ldots, \ket{j_e - 1}, \ket{j_e} \} $ being the state living on the edge\footnote{Recall that given a particle of spin $ j$, the Hilbert space is spanned by a set of vectors $ \{ \ket{j;m}  \} $, where $ m \in \{ -j, -j+1,\ldots,j-1,j \} $. Here $ m $ is referred to as the ``magnetic'' quantum number. In the main text we have used just $ \ket{m} $ for these states, rather than the full $ \ket{j;m} $, for notational symplicity.} taking values in $ \mc{H}_e $.
 
-Of course, to obtain a value for the wavefunction living on $ \Gamma $, we need to assign tensors $ T^v_{j_v} $ to the vertices also. Now, as opposed to the edge tensors, the rank of the vertex tensors will vary, being given by the degree $ k_v $ of each vertex\footnote{In graph theoretical language, the ``degree'' a vertex is the number of edges which meet at that vertex.} Given a vertex $ v $, let $ \{ e^v_m; m \in \{ 1, \ldots, k_v \} \} $ be the set of edges which meet at $ v $. Then the tensor $ T^v_{j_v} $ will be an element of:
+\begin{figure}[tbph]
+\centering
+\includegraphics[width=0.4\linewidth]{network-labelled-j}
+\caption{A graph with edges labelled by representations of $ SU(2) $. Each $ j_k $ is an $ SU(2) $ spin taking values in the set $ \{1/2,1,3/2,2,\ldots \} $}
+\label{fig:spin-network}
+\end{figure}
+
+To complete the definition of a spin-network we need to assign tensors $ T^v_{j_v} $ to the vertices also. Now, as opposed to the edge tensors, the rank of the vertex tensors will vary, being given by the degree $ k_v $ of each vertex\footnote{In graph theoretical language, the ``degree'' a vertex is the number of edges which meet at that vertex.} Given a vertex $ v $, let $ \{ e^v_m; m \in \{ 1, \ldots, k_v \} \} $ be the set of edges which meet at $ v $. Then the tensor $ T^v_{j_v} $ will be an element of:
 \begin{equation}\label{eqn:tensor-hilbert-space}
 \mc{H}_v  = \left[ \underset{m = 1 .. k_v}{\bigotimes} \mc{H}_{e^v_m} \right]
 \end{equation}
@@ -424,40 +441,56 @@ which is the tensor product space of the edge Hilbert spaces $ \mc{H}_{e^v_m} $.
 
 \begin{figure}[tbph]
 \centering
-\includegraphics[width=0.4\linewidth]{network-labelled-j}
-\caption{}
-\label{fig:spin-network}
+\includegraphics[width=0.3\linewidth]{spin-net-vertex.png}
+\caption{A single vertex connected to four edges, with each edge labeled by a representation $ j_i $ of $ SU(2) $. The vertex is represented schematically by a tetrahedron. The spin on each edge can then be thought of as representing the normal to the correspond face of the tetrahedron.}
+\label{fig:spin-net-vertex}
 \end{figure}
 
-As a simple illustration of this consider the case of single vertex with four edges \todo{Figure}. For simplicity, we set $ j = 1/2 $ for all edges. Now the state space $ \mc{H}^2 $ of a single edge is spanned by the states $ \{\ket{\uparrow}, \ket{\downarrow} \} $, or equivalently $ \{ \ket{1}, \ket{0} \} $. The state space of all edges taken together is then: $ \mc{H}^v = \{\mc{H}^2\}^{\otimes 4} $ and is spanned by states of the form $ \ket{i_1, i_2, i_3, i_4} $ where the coefficients $ i_k $ take values in $\{0,1 \}$. Consider a gauge transformation acting locally on each edge as shown in \todo{Figure}. The state of the spin on the $ k^\text{th} $ edge undergoes a $ SU(2) $ rotation, given by:
+As a simple illustration of this consider the case of single vertex with four edges \autoref{fig:spin-net-vertex} . For simplicity, we set $ j = 1/2 $ for all edges. Now the state space $ \mc{H}^2 $ of a single edge is spanned by the states $ \{\ket{\uparrow}, \ket{\downarrow} \} $, or equivalently $ \{ \ket{1}, \ket{0} \} $. The state space of all edges taken together is then: $ \mc{H}^v = \{\mc{H}^2\}^{\otimes 4} $ and is spanned by states of the form $ \ket{j_1, j_2, j_3, j_4} $ where the coefficients $ j_k $ take values in $\{0,1 \}$. An arbitrary state of the edge system can then be written as:
+\begin{equation}\label{eqn:tetra-edge-wf}
+\ket{\Psi_e} = \sum_{\{j_k\}} C_{j_1, j_2, j_3, j_4} \left(\mc{U} \ket{j_1, j_2, j_3, j_4}\right)
+\end{equation}
+where the sum is over all spin states of the edges and $ C_{j_1, j_2, j_3, j_4} $ is the weight for the corresponding state vector. Now consider a gauge transformation acting locally on each edge. The state of the spin on the $ k^\text{th} $ edge undergoes a $ SU(2) $ rotation, given by:
 \begin{equation}\label{eqn:su2-rotation}
-	\ket{i_k} \rightarrow \ket{i'_k} = e^{-i\hat{\alpha_k}\cdot\vec{\sigma}} \ket{i_k}
+	\ket{j_k} \rightarrow \ket{j'_k} = e^{-i\hat{\alpha_k}\cdot\vec{\sigma}} \ket{j_k}
 \end{equation}
 where $ \hat\alpha_k $ is a unit vector in $ \mbb{R}^3 $, and $ \vec{\sigma} $ are the Pauli matrices. The state of the edge system becomes:
 \begin{equation}\label{eqn:rotated-state}
-	\ket{\Psi'} = \sum_{\{i_k\}} C_{i_1, i_2, i_3, i_4} \left(\mc{U} \ket{i_1, i_2, i_3, i_4}\right)
+	\ket{\Psi'} = \sum_{\{j_k\}} C_{j_1, j_2, j_3, j_4} \left(\mc{U} \ket{j_1, j_2, j_3, j_4}\right)
 \end{equation}
 where $ \mc{U} = e^{-i \hat\alpha_1 \cdot \vec{\sigma}} \otimes e^{-i \hat\alpha_2 \cdot \vec{\sigma}} \otimes e^{-i \hat\alpha_3 \cdot \vec{\sigma}} \otimes e^{-i \hat\alpha_4 \cdot \vec{\sigma}} $. In order to construct a tensor invariant under the action of local gauge transformations on each edge, we can use the group averaging procedure \cite{Bojowald2004Coordinate}:
 \begin{equation}\label{eqn:group-average}
-	\ket{i_1, i_2, i_3, i_4}{}_{Inv} = \int \left\{\prod_{k = 1..4} d\alpha_k\right\} ~ \mc{U}(g) ~ \ket{i_1, i_2, i_3, i_4}
+	\ket{j_1, j_2, j_3, j_4}{}_{Inv} = \int \left\{\prod_{k = 1..4} d\alpha_k\right\} ~ \mc{U}(g) ~ \ket{j_1, j_2, j_3, j_4}
 \end{equation}
 where $ d\alpha_k $ is the measure on the $ k^\text{th} $ copy of the $ SU(2) $ group manifold; $ \mc{U}(g) $ is the group element which is some function of the $ \{\alpha_k\} $. For $ SU(2) $, the measure is simply given by the usual solid angle in three dimensions: $ d\alpha_k = \sin\theta_k d\phi_k d\theta_k $\footnote{Because remember that any state in the spin-1/2 space can be written as: $ \ket{\psi} = e^{i\phi} \left( \cos\frac{\theta}{2} \ket{0} + i\sin\frac{\theta}{2} \ket{1} \right) $ and consequently an arbitrary gauge transformation of such as state can be written as: $ \ket{\psi'} = e^{i(\phi + \delta \phi)} \left( \cos\frac{\theta + \delta \theta}{2} \ket{0} + i\sin\frac{\theta + \delta \theta}{2} \ket{1} \right) $. Consequently the measure on the space of gauge rotations is given by the measure on the unit sphere $ \sin\theta~d\theta~d\phi $.} One can see from \eqref{eqn:group-average} that the integral is invariant under automorphisms of the group of the form: $ g \rightarrow g' = g_0g $, where every group element $ g $, is multiplied by some constant group element $ g_0 $ and shifted to a new element $ g' $.
 
-\begin{figure}[tbph]
+\subsection{Spin Networks as Gauged Tensor Networks}\label{subsec:spin-nets-tensors}
+
+
+
+\subsection{Microscopic Structure of Spacetime}\label{subsec:quantum-geometry}
+
+Spin-networks have a beautiful interpretation in terms of geometric observables. As such spin-networks are abstract graphs which do not require any background manifold. The whole idea is that the notion of a smooth manifold with some geometry \emph{emerges} from considering superpositions or ensembles of large numbers of such graphs. The first step towards achieving this goal is to relate the physical variables living on the graph with geometric quantities. Since spin-networks arise as the quantization of Einstein's equations, which are themselves built out of purely geometric quantities such as the metric and Christoffel connection, it is natural that they would encode spacetime geometry. The manner in which this happens is as follows. Consider a single edge of a graph carrying a spin $ j $. Whenever this edge intersects a surface, as shown in \autoref{fig:area-operator}, it endows the surface with a quantum of area at the location of the puncture. The area arises as the eigenvalue of the Casimir operator $ \unit{j}^2 $ acting on the state of the spin-network \emph{at that edge}. These eigenvalues thus take the form:
+\begin{equation}\label{eqn:area-eigenvalue}
+	A = 8 \pi \gamma l_p^2 \sqrt{j(j+1)}
+\end{equation}
+where $ l_p $ is the Planck length, $ \gamma $ is known as the Barbero-Immirzi parameter and $ j $ is the spin on that edge. From this equation it is clear that the area operator is gapped, \ie it has smallest eigenvalue which is greater than zero. This occurs for the smallest value of spin $ j = 1/2 $,
+\begin{equation}\label{eqn:area-minimum}
+	A_{min} = 4 \sqrt{3} \gamma l_p^2
+\end{equation}
+\begin{figure}[h]
 \centering
 \includegraphics[width=0.3\linewidth]{area_puncture}
-\caption{}
+\caption{The area associated with a single spin puncture}
 \label{fig:area-operator}
 \end{figure}
-
-\begin{figure}[tbph]
+One can build up larger surfaces from such elementary \emph{quanta of geometry} by considering several such edges intersecting a surface as shown in \autoref{fig:many-punctures}.
+\begin{figure}[h]
 \centering
 \includegraphics[width=0.4\linewidth]{area_punctures}
-\caption{}
+\caption{A graph state with many edges puncturing a given surface}
 \label{fig:many-punctures}
 \end{figure}
-
-\section{Spin Networks as Tensor Networks}\label{sec:spin-nets-tensors}
 
 \section{Arrow of Time from LQG}\label{sec:lqg-time}
 
