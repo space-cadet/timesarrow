@@ -1,0 +1,69 @@
+\documentclass[10pt]{article}
+\usepackage[usenames]{color} %used for font color
+\usepackage{amssymb} %maths
+\usepackage{amsmath} %maths
+\usepackage[utf8]{inputenc} %useful to type directly diacritic characters
+\usepackage[svgnames]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings}
+\pagestyle{empty}
+
+\pgfdeclarelayer{edgelayer}
+\pgfdeclarelayer{nodelayer}
+\pgfsetlayers{edgelayer,nodelayer,main}
+
+\tikzstyle{none}=[inner sep=0pt]
+
+
+
+\usepackage[graphics,tight page,active]{preview}
+\PreviewEnvironment{tikzpicture}
+\newlength{\imagewidth}
+\newlength{\imagescale}
+
+\begin{document}
+
+\definecolor{lightblue}{rgb}{36,175,233}
+
+\tikzstyle{tensor}=[rectangle,draw=blue!50,fill=lightblue,thick]
+\tikzstyle{gauge}=[rectangle,draw=blue!50, fill=blue!30!green,thick]
+
+
+
+\begin{tikzpicture}[inner sep=1mm]
+
+\node[tensor] (a1) at (1,0) {$A^1$};
+\node[tensor] (an) at (7,0) {$A^n$};
+
+\node[gauge] (m) at (3,0) {$M$};
+\node[tensor] (ai) at (4,0) {$A^i$};
+\node[tensor] (minv) at (5,0) {$M^{-1}$};
+
+\draw[dashed] (a1.east) -- (m);
+\draw[-] (m) -- (ai);
+
+
+
+%  \foreach \i in {1,...,5} {
+
+%        \node[tensor] (\i) at (\i, 0) {$A^\i$};
+
+%%        \node (\i spin) at (\i, -0.7) {$s_\i$};
+
+%        \draw[-] (\i) -- (\i.south);
+
+%    };
+
+%    \foreach \i in {1,...,4} {
+%        \pgfmathtruncatemacro{\iplusone}{\i + 1};
+
+%        \draw[-] (\i) -- (\iplusone);
+
+%    };
+    \draw[-] (a1.west) -- ([xshift=-10pt]a1.west);
+    \draw[-] (an.east) -- ([xshift=10pt]an.east);
+%    \draw[-] (1.west) .. controls +(-1.5, 1) and +(1.5, 1) .. (5.east);
+
+\end{tikzpicture}
+
+\end{document}

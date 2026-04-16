@@ -1,0 +1,60 @@
+%\documentclass[10pt]{article}
+\documentclass[tikz,border=3pt]{standalone}
+%\usepackage[usenames]{color} %used for font color
+\usepackage{amssymb} %maths
+\usepackage{amsmath} %maths
+\usepackage[utf8]{inputenc} %useful to type directly diacritic characters
+%\usepackage[svgnames]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings, calc}
+\pagestyle{empty}
+
+\usepackage{amsmath, amssymb, amsfonts,amsthm} % Math packages for equations
+\input{/Users/deepak/ownCloud/root/research/articles/timesarrow/bridgeman-chubbs/testing/macros}
+
+
+\pgfdeclarelayer{edgelayer}
+\pgfdeclarelayer{nodelayer}
+\pgfsetlayers{edgelayer,nodelayer,main}
+
+\tikzstyle{none}=[inner sep=2pt]
+
+\usepackage[graphics,tight page,active]{preview}
+\PreviewEnvironment{tikzpicture}
+\newlength{\imagewidth}
+\newlength{\imagescale}
+
+\tikzstyle{tensor}=[rectangle,draw=blue!50,fill=blue!20,thick]
+
+\tikzset{node distance=2cm}
+
+
+\begin{document}
+\definecolor{darkorange}{HTML}{f9a262}
+\definecolor{lightorange}{HTML}{f2dbde}
+\tikzstyle{tensor}=[rectangle,draw=blue!50,fill=blue!20,thick]
+
+\tikzstyle{spin}=[circle,draw=black!50!white,fill=darkorange,thick]
+\tikzstyle{vertex}=[circle,radius=3.0,draw=black,fill=lightorange,thick]
+
+\begin{tikzpicture}
+  \draw [help lines] (-3,-3) grid (3,3);
+
+  \node[vertex, scale=16] (v1) at (0,0) {};
+
+  \node[spin, scale=3] (s1) at (-1,1) {};
+  \node[spin, scale=3] (s2) at (1,1) {};
+  \node[spin, scale=3] (s3) at (1,-1) {};
+  \node[spin, scale=3] (s4) at (-1,-1) {};
+
+  \draw[dashed,thick] (s1.east) -- (s2.west);
+  \draw[dashed,thick] (s2.south) -- (s3.north);
+  \draw[dashed,thick] (s3.west) -- (s4.east);
+  \draw[dashed,thick] (s4.north) -- (s1.south);
+
+  \draw[thick] (s1.west) -- (
+
+\end{tikzpicture}
+
+
+\end{document}

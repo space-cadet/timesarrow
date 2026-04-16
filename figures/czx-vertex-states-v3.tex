@@ -1,0 +1,54 @@
+%\documentclass[10pt]{article}
+\documentclass[tikz,border=3pt]{standalone}
+%\usepackage[usenames]{color} %used for font color
+\usepackage{amssymb} %maths
+\usepackage{amsmath} %maths
+\usepackage[utf8]{inputenc} %useful to type directly diacritic characters
+%\usepackage[svgnames]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings, calc,positioning}
+\pagestyle{empty}
+
+\usepackage{amsmath, amssymb, amsfonts,amsthm} % Math packages for equations
+\input{/Users/deepak/ownCloud/root/research/articles/timesarrow/bridgeman-chubbs/testing/macros}
+
+
+\pgfdeclarelayer{edgelayer}
+\pgfdeclarelayer{nodelayer}
+\pgfsetlayers{edgelayer,nodelayer,main}
+
+\tikzstyle{none}=[inner sep=2pt]
+
+\usepackage[graphics,tight page,active]{preview}
+\PreviewEnvironment{tikzpicture}
+\newlength{\imagewidth}
+\newlength{\imagescale}
+
+\tikzstyle{tensor}=[rectangle,draw=blue!50,fill=blue!20,thick]
+
+%\tikzset{node distance=2cm}
+
+\definecolor{darkorange}{HTML}{f9a262}
+\definecolor{lightorange}{HTML}{f2dbde}\begin{document}
+\tikzstyle{spinsite}=[fill={rgb,255: red,255; green,176; blue,123}, draw=black, shape=circle, minimum size=1cm]
+\tikzstyle{vertex}=[fill={rgb,255: red,255; green,221; blue,179}, draw=black, shape=circle, minimum size=5cm]
+
+\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+		\node [style=vertex] (5) at (0, 0) {};
+		\node [style=spinsite] (0) at (-1, 1) {$ \vert 1 \rangle $};
+		\node [style=spinsite] (1) at (1, 1) {$ \vert 1 \rangle $};
+		\node [style=spinsite] (3) at (1, -1) {$ \vert 0 \rangle $};
+		\node [style=spinsite] (4) at (-1, -1) {$ \vert 0 \rangle $};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+		\draw [dashed, thick] (0) to (1);
+		\draw [dashed, thick] (1) to (3);
+		\draw [dashed, thick] (3) to (4);
+		\draw [dashed, thick] (0) to (4);
+%	\end{pgfonlayer}
+\end{tikzpicture}
+
+
+%%
+\end{document}

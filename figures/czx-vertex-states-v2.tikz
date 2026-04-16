@@ -1,0 +1,15 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=vertex] (5) at (0, 0) {};
+		\node [style=spinsite] (0) at (-1, 1) {$ \vert 1 \rangle $};
+		\node [style=spinsite] (1) at (1, 1) {$ \vert 1 \rangle $};
+		\node [style=spinsite] (3) at (1, -1) {$ \vert 0 \rangle $};
+		\node [style=spinsite] (4) at (-1, -1) {$ \vert 0 \rangle $};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (0) to (1);
+		\draw (1) to (3);
+		\draw (3) to (4);
+		\draw (0) to (4);
+	\end{pgfonlayer}
+\end{tikzpicture}

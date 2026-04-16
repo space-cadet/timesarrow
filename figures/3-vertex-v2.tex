@@ -1,0 +1,112 @@
+%\documentclass[10pt]{article}
+\documentclass[tikz,border=3pt]{standalone}
+%\usepackage[usenames]{color} %used for font color
+\usepackage{amssymb} %maths
+\usepackage{amsmath} %maths
+\usepackage[utf8]{inputenc} %useful to type directly diacritic characters
+%\usepackage[svgnames]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings}
+\pagestyle{empty}
+
+\usepackage{amsmath, amssymb, amsfonts,amsthm} % Math packages for equations
+\input{/Users/deepak/ownCloud/root/research/articles/timesarrow/bridgeman-chubbs/testing/macros}
+
+
+\pgfdeclarelayer{edgelayer}
+\pgfdeclarelayer{nodelayer}
+\pgfsetlayers{edgelayer,nodelayer,main}
+
+\tikzstyle{none}=[inner sep=2pt]
+
+\usepackage[graphics,tight page,active]{preview}
+\PreviewEnvironment{tikzpicture}
+\newlength{\imagewidth}
+\newlength{\imagescale}
+
+\tikzstyle{tensor}=[rectangle,draw=blue!50,fill=blue!20,thick]
+
+\tikzset{node distance=2cm}
+\begin{document}
+\definecolor{darkorange}{HTML}{f9a262}
+\definecolor{lightorange}{HTML}{f2dbde}
+
+\tikzstyle{tensor}=[rectangle,draw=blue!50,fill=blue!20,thick]
+
+\tikzstyle{spin}=[circle,draw=black!50!white,fill=darkorange,thick]
+\tikzstyle{vertex}=[circle,draw=black,fill=lightorange,thick]
+
+\tikzstyle{siteline} = [dashed,line width=0.1cm];
+\tikzstyle{vertexline} = [line width=0.05cm]
+
+\tikzset{
+  spinsite/.pic = {
+      \node[vertex, scale=16] (v1) at (0,0) {};
+
+  \node[spin, scale=3] (s1) at (-1,1) {};
+  \node[spin, scale=3] (s2) at (1,1) {};
+  \node[spin, scale=3] (s3) at (1,-1) {};
+  \node[spin, scale=3] (s4) at (-1,-1) {};
+
+  \node[font=\huge] at ($ (s1) + (-0.6,0.6) $) {$1$};
+  \node[font=\huge] at ($ (s2) + (0.6,0.6) $) {$2$};
+  \node[font=\huge] at ($ (s3) + (0.6,-0.6) $) {$3$};
+  \node[font=\huge] at ($ (s4) + (-0.6,-0.6) $) {$4$};
+
+  \draw[siteline] (s1) -- node [midway, above] {$CZ$} (s2) -- node [midway,right]  {$CZ$} (s3) -- node [midway, below] {$CZ$} (s4) -- node [midway, left] {$CZ$} (s1);
+
+  \draw[vertexline] (s1) -- ($ (s1) + (-3,0) $);
+  \draw[vertexline] (s1) -- ($ (s1) + (0,3) $);
+  \draw[vertexline] (s2) -- ($ (s2) + (0,3) $);
+  \draw[vertexline] (s2) -- ($ (s2) + (3,0) $);
+  \draw[vertexline] (s3) -- ($ (s3) + (0,-3) $);
+  \draw[vertexline] (s3) -- ($ (s3) + (3,0) $);
+  \draw[vertexline] (s4) -- ($ (s4) + (0,-3) $);
+  \draw[vertexline] (s4) -- ($ (s4) + (-3,0) $);
+  }
+}
+
+\tikzset{
+    three-vertex/.pic =
+        {
+            \node [vertex] (v0) at (0,0) {#1};
+            \draw [vertexline] (v0) -- (0,-1);
+            \draw [rotate=120,vertexline] (v0) -- (0,-1);
+            \draw [rotate=240,vertexline] (v0) -- (0,-1);
+          }
+}
+
+\tikzset{
+    three-vertex-labelled/.pic = 
+      {
+            \node [vertex] (v0) at (0,0) {#1};
+            \draw [vertexline] (v0) -- (0,-1);
+            \draw [rotate=120,vertexline] (v0) -- (0,-1);
+            \draw [rotate=240,vertexline] (v0) -- (0,-1);
+    }
+}
+
+\begin{tikzpicture}
+
+  \draw [help lines] (-3,-3) grid (3,3);
+
+%  \pic at (0,0) {three-vertex={$T_{ijk}$}};
+
+%  \pic at (0,0) {spinsite};
+
+
+%  \pic at (0,0) {spinsite};
+%  \pic at (0,6) {spinsite};
+%  \pic at (6,0) {spinsite};
+%  \pic at (6,6) {spinsite};
+
+%  \foreach \i in {1,..,4}{
+%    \draw[vertexline] (s\i) -- ($ (s\i) + (0,3) $);
+%  };
+
+\end{tikzpicture}
+
+
+
+
+\end{document}

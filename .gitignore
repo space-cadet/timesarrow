@@ -1,0 +1,48 @@
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.dep
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.fls
+*.fdb_latexmk
+*.gz
+*.lof
+*.lot
+*.idx
+*.ind
+*.ilg
+*.nav
+*.snm
+*.vrb
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# TeXPad temporary directory
+.texpadtmp/
+
+# Backup files
+*.bkp
+*.backup
+*~
+
+# Editor files
+*.swp
+*.swo
+*~
+
+# Draw.io backup
+*.drawio.bkp
+
+# Reference Papers
+
+bridgeman-chubbs/
+Takato Mori_Tensor network, entanglement and holography, Mar 1, 2021.pdf

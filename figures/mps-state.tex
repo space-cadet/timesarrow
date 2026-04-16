@@ -1,0 +1,45 @@
+\documentclass[10pt]{article}
+\usepackage[usenames]{color} %used for font color
+\usepackage{amssymb} %maths
+\usepackage{amsmath} %maths
+\usepackage[utf8]{inputenc} %useful to type directly diacritic characters
+\usepackage[svgnames]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings}
+\pagestyle{empty}
+
+\usepackage{amsmath, amssymb, amsfonts,amsthm} % Math packages for equations
+\input{/Users/deepak/ownCloud/root/research/articles/bridgeman-chubbs/testing/macros}
+
+
+\pgfdeclarelayer{edgelayer}
+\pgfdeclarelayer{nodelayer}
+\pgfsetlayers{edgelayer,nodelayer,main}
+
+\tikzstyle{none}=[inner sep=0pt]
+
+\usepackage[graphics,tight page,active]{preview}
+\PreviewEnvironment{tikzpicture}
+\newlength{\imagewidth}
+\newlength{\imagescale}
+
+\tikzstyle{tensor}=[rectangle,draw=blue!50,fill=blue!20,thick]
+
+
+\begin{document}
+\begin{align}
+\diagramsized{1}{
+    \foreach \i in {1,...,5} {
+        \node[tensor] (\i) at (\i, 0) {$A^\i_{i_\i}$};
+        \node (\i spin) at (\i, -0.7) {$i_\i$};
+        \draw[-] (\i) -- (\i spin);
+    };
+    \foreach \i in {1,...,4} {
+        \pgfmathtruncatemacro{\iplusone}{\i + 1};
+        \draw[-] (\i) -- (\iplusone);
+    };
+    \draw[-] (1.west) .. controls +(-1.5, 1) and +(1.5, 1) .. (5.east);
+}.
+\end{align}
+
+\end{document}

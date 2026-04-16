@@ -1,0 +1,70 @@
+%\documentclass[10pt]{article}
+\documentclass[tikz,border=3pt]{standalone}
+%\usepackage[usenames]{color} %used for font color
+\usepackage{amssymb} %maths
+\usepackage{amsmath} %maths
+\usepackage[utf8]{inputenc} %useful to type directly diacritic characters
+%\usepackage[svgnames]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings}
+\pagestyle{empty}
+
+\usepackage{amsmath, amssymb, amsfonts,amsthm} % Math packages for equations
+\input{/Users/deepak/ownCloud/root/research/articles/timesarrow/bridgeman-chubbs/testing/macros}
+
+
+\pgfdeclarelayer{edgelayer}
+\pgfdeclarelayer{nodelayer}
+\pgfsetlayers{edgelayer,nodelayer,main}
+
+\tikzstyle{none}=[inner sep=2pt]
+
+\usepackage[graphics,tight page,active]{preview}
+\PreviewEnvironment{tikzpicture}
+\newlength{\imagewidth}
+\newlength{\imagescale}
+
+\tikzstyle{tensor}=[rectangle,draw=blue!50,fill=blue!20,thick]
+\tikzstyle{gauge}=[tensor, fill=tensorred]
+\tikzstyle{empty} = [fill=white, draw=white, rectangle]
+
+\tikzset{node distance=2cm}
+
+
+\begin{document}
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+\draw  [fill={rgb, 255:red, 239; green, 158; blue, 10 }  ,fill opacity=0.61 ]  (182, 72) rectangle (224, 110)   ;
+\draw    (224,91) -- (267,91) ;
+
+
+\draw  [fill={rgb, 255:red, 36; green, 175; blue, 233 }  ,fill opacity=0.61 ]  (267, 72) rectangle (309, 110)   ;
+
+\draw  [fill={rgb, 255:red, 239; green, 158; blue, 10 }  ,fill opacity=0.61 ]  (353, 72) rectangle (395, 110)   ;
+
+\draw    (309,91) -- (353,91) ;
+
+
+\draw    (395,91) -- (439,91) ;
+
+
+\draw    (139,91) -- (182,91) ;
+
+
+\draw    (288,44) -- (288,72) ;
+
+
+
+\draw (205,91) node   {$M$};
+\draw (288,90) node   {$A^{1}$};
+\draw (376,91) node   {$M^{-1}$};
+
+
+\end{tikzpicture}
+
+\end{document}
