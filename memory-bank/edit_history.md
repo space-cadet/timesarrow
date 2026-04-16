@@ -1,9 +1,29 @@
 # Edit History
 
 *Created: 2026-04-16 20:22:00 IST*
-*Last Updated: 2026-04-16 20:27:00 IST*
+*Last Updated: 2026-04-17 02:29:00 IST*
 
 ## File Modification Log
+
+### 2026-04-17
+
+#### 02:29:00 IST - T9: Create missing figure for Sec 3.5
+- Created `figures/tns-matrix-insertion-2d.tex` - TikZ 4×4 TNS grid showing M/M⁻¹ insertion on subregion bonds with interior cancellation and boundary survival labels
+- Created `figures/tns-matrix-insertion-2d.pdf` - Compiled standalone figure
+- Modified `timesarrow.tex` - Replaced \todo{Insert figure...} with figure environment, \autoref, and caption in Sec 3.5
+
+#### 02:29:00 IST - T8: Fix typos and structural errors
+- Modified `timesarrow.tex` - Moved \label{fig:czx-entangled} inside figure float; changed \captionof to \caption
+- Modified `timesarrow.tex` - Removed duplicate \usepackage{todonotes}; converted p.1 \todo to LaTeX comment
+- Modified `timesarrow.tex` - Fixed "two region", "a a single", "Legende", "othogonal", "Succintly", "difference representations", "Schrodinger" (×3)
+- Modified `timesarrow.bib` - Fixed doubled arXiv: prefix in Van Raamsdonk entry
+- Created `memory-bank/sessions/2026-04-17-night.md` - Session file for 2026-04-17 night
+- Created `memory-bank/tasks/T9.md` - Task file for missing figure creation
+- Modified `memory-bank/tasks/T8.md` - Updated to completed status with full fix log
+- Modified `memory-bank/tasks.md` - Added T9, moved T8 to completed, updated timestamps
+- Modified `memory-bank/activeContext.md` - Updated current status and next steps
+- Modified `memory-bank/session_cache.md` - Populated with current session and history
+- Created `memory-bank/edits/2026-04-17/022900-T8-T9.md` - Edit chunk for T8 and T9
 
 ### 2026-04-16
 

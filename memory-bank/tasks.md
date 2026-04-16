@@ -1,11 +1,10 @@
 # Task Registry
-*Last Updated: 2026-04-16 23:25:00 IST*
+*Last Updated: 2026-04-17 02:29:00 IST*
 
 ## Active Tasks
 | ID | Title | Status | Priority | Started | Dependencies | Owner | Details |
 |----|-------|--------|----------|---------|--------------|-------|---------|
 | T7 | Trim MPS Pedagogy and Appendices | 🔄 IN PROGRESS | MEDIUM | 2026-04-16 | - | Assistant | [Details](tasks/T7.md) |
-| T8 | Fix Typos and Cleanup | ⏸️ PAUSED | LOW | - | T7 | Assistant | [Details](tasks/T8.md) |
 
 ## Task Details
 
@@ -71,16 +70,30 @@
 **Related Files**:
 - `timesarrow.tex`
 
+### T8: Fix Typos and Cleanup
+**Description**: Full PDF review + 10 typo/structural fixes; removed visible margin todonote; fixed broken fig:czx-entangled ref; fixed duplicate todonotes package.
+**Status**: ✅ COMPLETED
+**Last Active**: 2026-04-17 02:29:00 IST
+**Related Files**: `timesarrow.tex`, `timesarrow.bib`
+
+### T9: Create Missing Figure (Sec 3.5)
+**Description**: TikZ figure showing M/M⁻¹ insertion on 2D TNS subregion; interior cancellation; boundary survival. Replaced \todo in Sec 3.5.
+**Status**: ✅ COMPLETED
+**Last Active**: 2026-04-17 02:29:00 IST
+**Related Files**: `figures/tns-matrix-insertion-2d.tex`, `timesarrow.tex`
+
 ## Completed Tasks
-| ID | Title | Completed | Related Tasks |
-|----|-------|-----------|---------------|
-| T0 | Project Examination | 2026-04-16 | - |
-| T1 | Initial Memory Bank Population | 2026-04-16 | - |
-| T2 | Critical Manuscript Review & Rewrite Plan | 2026-04-16 | - |
-| T3 | Rewrite z2-action-derivation.tex | 2026-04-16 | - |
-| T4 | Rewrite spt-lqg-mapping.tex | 2026-04-16 | - |
-| T5 | Update Title and Abstract | 2026-04-16 | - |
-| T6 | Revise Discussion Section | 2026-04-16 | - |
+| ID | Title | Completed | Related Tasks | Archive |
+|----|-------|-----------|---------------|---------|
+| T0 | Project Examination | 2026-04-16 | - | [Details](tasks/T0.md) |
+| T1 | Initial Memory Bank Population | 2026-04-16 | - | [Details](tasks/T1.md) |
+| T2 | Critical Manuscript Review & Rewrite Plan | 2026-04-16 | - | [Details](tasks/T2.md) |
+| T3 | Rewrite z2-action-derivation.tex | 2026-04-16 | - | [Details](tasks/T3.md) |
+| T4 | Rewrite spt-lqg-mapping.tex | 2026-04-16 | - | [Details](tasks/T4.md) |
+| T5 | Update Title and Abstract | 2026-04-16 | - | [Details](tasks/T5.md) |
+| T6 | Revise Discussion Section | 2026-04-16 | - | [Details](tasks/T6.md) |
+| T8 | Fix Typos and Cleanup | 2026-04-17 | T9 | [Details](tasks/T8.md) |
+| T9 | Create Missing Figure (Sec 3.5) | 2026-04-17 | T8 | [Details](tasks/T9.md) |
 
 ## Task Relationships
 ```mermaid

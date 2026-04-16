@@ -176,13 +176,13 @@
 \usepackage{parskip}
 \setlength{\parindent}{1cm}
 
-\usepackage{todonotes}
+% todonotes already loaded above with [draft] option
 
 \graphicspath{{figures/}}
 
 \begin{document}
 
-\todo{Discuss work by Yoshida on the stability of SPT states at non-zero temperature and possible relation to emergence of stable geometry. \cite{Roberts2017Symmetry-protected,Yoshida2011Feasibility}}
+% TODO: discuss Yoshida on SPT stability at non-zero T and relation to stable geometry \cite{Roberts2017Symmetry-protected,Yoshida2011Feasibility}
 
 % TODO: write your article's title here.
 % The article title is centered, Large boldface, and should fit in two lines
@@ -279,7 +279,7 @@ Significant conceptual and technical breakthroughs \cite{Van-Raamsdonk2010Buildi
 \begin{equation}\label{eqn:rt-formula}
 	S_{EE} \propto A_{min}.
 \end{equation}
-Now, imagine disconnecting the two bulk regions from each other, by ``pinching'' off the boundary surface joining the two region. As the area of the surface shrinks to zero, points in one region become increasingly disconnected from points in the other, until when the area reaches zero, the two regions become completely geometrically separate. At this stage, as per the RT formula \eqref{eqn:rt-formula} the entanglement entropy between the two regions also goes to zero. This simple argument - anchored in the well understood physics of the AdS/CFT correspondence - is sufficient to suggest that an apparently smooth, extended macroscopic geometry arises when smaller regions of quantum spacetime are ``stitched'' together by entanglement.
+Now, imagine disconnecting the two bulk regions from each other, by ``pinching'' off the boundary surface joining the two regions. As the area of the surface shrinks to zero, points in one region become increasingly disconnected from points in the other, until when the area reaches zero, the two regions become completely geometrically separate. At this stage, as per the RT formula \eqref{eqn:rt-formula} the entanglement entropy between the two regions also goes to zero. This simple argument - anchored in the well understood physics of the AdS/CFT correspondence - is sufficient to suggest that an apparently smooth, extended macroscopic geometry arises when smaller regions of quantum spacetime are ``stitched'' together by entanglement.
 
 There is a flip side to this argument. If the metric distance between two neighboring regions of space is inversely proportional to the entanglement entropy between the two regions, then as the entanglement entropy between any two regions increases the metric distance between the two should decrease. Now, the spacetime we observe around us exhibits the property of \emph{locality}. The metric geometry changes smoothly as we increase the scales and distances between different systems. For instance, we ``know'' that Saturn is closer to Earth than is Alpha Centauri. This means that the geometric degrees of freedom around our planet have a greater amount of entanglement with the degrees of freedom around Saturn than they do with the degrees of freedom around Alpha Centauri. If this were not the case, then it would not be possible a to have a \emph{sense} of the separation between the Earth and Alpha Centauri.
 
@@ -520,7 +520,14 @@ where now the matrix $ M $ acts on the bond indices of $ A $, rather than on the
 	\caption{Insertion of local gauge symmetry fluxes in a MPS}
 \end{figure}
 
-We can extend this reasoning to two and three dimensional systems. In this case the site tensors will have three or more indices and a matrix insertion will be required on every leg \todo{Insert figure showing matrix insertion of tensor legs}. When applied to a subregion of a given lattice, the result will be that matrices on the interior will multiply to give the identity and we will be left with the non-trivial unitaries only on the boundary of the region as shown in \autoref{fig:symmetry-flux-line}.
+We can extend this reasoning to two and three dimensional systems. In this case the site tensors will have three or more indices and a matrix insertion will be required on every leg. As illustrated in \autoref{fig:tns-matrix-insertion-2d}, when $M$ is inserted on every bond of a subregion in a 2D tensor network, the $M$ and $M^{-1}$ factors on interior bonds cancel pairwise, leaving non-trivial matrix insertions only on the boundary bonds of the region. When applied to a subregion of a given lattice, the result will be that matrices on the interior will multiply to give the identity and we will be left with the non-trivial unitaries only on the boundary of the region as shown in \autoref{fig:symmetry-flux-line}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\columnwidth]{tns-matrix-insertion-2d}
+    \caption{Matrix insertion on a subregion of a 2D tensor network state. Applying the symmetry $M$ to the bonds of the shaded subregion (cols 2--3, rows 2--3) inserts $M$ and $M^{-1}$ on every bond touching the region. Interior bonds carry both $M$ and $M^{-1}$ which cancel ($M \cdot M^{-1} = \mathbf{1}$, shown with strikethrough). Only the boundary bonds retain a net $M$ or $M^{-1}$ insertion.}
+    \label{fig:tns-matrix-insertion-2d}
+\end{figure}
 
 \begin{figure}[h]
 	\centering
@@ -766,7 +773,7 @@ where:
 	\ket{\Psi_A} = \ket{0101} + \ket{1010} \nonumber \\
 	\ket{\Psi_B} = \ket{1001} + \ket{0110}
 \end{align}
-Here the $ \ket{0}, \ket{1} $ are the two possible states of each edge carrying a spin $ 1/2 $ label. One can then write down the effective degrees of freedom carried by a four-valent intertwiner in terms of a a single spin $ 1/2 $ state $ \ket{\tilde\Psi} $ spanned by the invariant basis states $ \{\ket{\Psi_1}, \ket{\Psi_2}\} $:
+Here the $ \ket{0}, \ket{1} $ are the two possible states of each edge carrying a spin $ 1/2 $ label. One can then write down the effective degrees of freedom carried by a four-valent intertwiner in terms of a single spin $ 1/2 $ state $ \ket{\tilde\Psi} $ spanned by the invariant basis states $ \{\ket{\Psi_1}, \ket{\Psi_2}\} $:
 \begin{equation}\label{key}
 	\ket{\tilde \Psi} = \alpha \ket{\Psi_1} + \beta \ket{\Psi_2}
 \end{equation}.
@@ -894,10 +901,11 @@ and consequently the ground state of the total Hamiltonian will simply be the pr
 	\caption{The ``code'' subspace of the vertex Hilbert space which is mapped to itself under the action of $ U_{CZ} $ and $ U_X $. E.g. $ U_X \ket{1100} = \ket{0011} $ and $ U_{CZ} \ket{1100} = - \ket{1100} $}
 \end{table}
 
-\begin{figure}[thbp]\label{fig:czx-entangled}
+\begin{figure}[thbp]
 	\centering
 	\includegraphics[width=0.2\linewidth]{czx_plaquette}
-	\captionof{figure}{Each plaquette is in an entangled state: $ \ket{0000} + \ket{1111}$}
+	\caption{Each plaquette is in an entangled state: $ \ket{0000} + \ket{1111}$}
+	\label{fig:czx-entangled}
 \end{figure}
 
 %\section{From Intertwiners to Dual Intertwiners}\label{sec:dual-intertwiners}
@@ -1026,7 +1034,7 @@ where $ \vect{x'} = \mc{T} \vect{x} = \vect{x} $, $ \vect{p'} = \mc{T} \vect{p} 
 \begin{equation}\label{eqn:classical-eom}
 \vect{\dot{x}'} = \frac{\partial H}{\partial \vect{p'}}; \quad \vect{\dot{p}'} = - \frac{\partial H}{\partial \vect{x'}}
 \end{equation}
-In quantum mechanics the situation is quite different and this difference can ultimately be traced back to the appearance of the imaginary $ i = \sqrt{-1} $ in the canonical commutation relations and the Schrodinger equation. If, proceeding by analogy with the classical case, we implement time reversal for quantum operators in the expected way:
+In quantum mechanics the situation is quite different and this difference can ultimately be traced back to the appearance of the imaginary $ i = \sqrt{-1} $ in the canonical commutation relations and the Schr\"{o}dinger equation. If, proceeding by analogy with the classical case, we implement time reversal for quantum operators in the expected way:
 \begin{equation}\label{eqn:trs-quantum}
 \vect{\hat{x}} \rightarrow \vect{\hat{x}}; \quad \vect{\hat{p}} \rightarrow -\vect{\hat{p}}
 \end{equation}
@@ -1062,11 +1070,11 @@ where $ t' = -t $. This can be resolved, however, if following Wigner we define 
 \begin{equation}\label{eqn:wigner-time-reversal}
 \mc{T} ( c_1 \psi_1 + c_2 \psi_2 ) = c_1^* \mc{T} \psi_1 + c_2^* \mc{T} \psi_2
 \end{equation}
-Such an operator is called \emph{anti-linear} or \emph{anti-unitary}. Acting with this operator on both sides of the Schrodinger equation we obtain:
+Such an operator is called \emph{anti-linear} or \emph{anti-unitary}. Acting with this operator on both sides of the Schr\"{o}dinger equation we obtain:
 \begin{equation}\label{eqn:trs-schrodinger-2}
 \mc{T} \left( i \hbar \frac{\partial \psi}{\partial t} \right) = i \hbar \frac{\partial (\mc{T} \psi)}{\partial t'} = H (\mc{T} \psi)
 \end{equation}
-where in the second step we have used the fact that $ i \rightarrow -i $ under the action of $ \mc{T} $ and that $ t' = -t $. Consequently, if $ \psi $ satisfies the Schrodinger equation, then $ \mc{T} \psi $ satisfies the time-reversed Schrodinger equation. A second benefit of this definition is that under $ \mc{T} $, the quantum commutators no longer change sign:
+where in the second step we have used the fact that $ i \rightarrow -i $ under the action of $ \mc{T} $ and that $ t' = -t $. Consequently, if $ \psi $ satisfies the Schr\"{o}dinger equation, then $ \mc{T} \psi $ satisfies the time-reversed Schr\"{o}dinger equation. A second benefit of this definition is that under $ \mc{T} $, the quantum commutators no longer change sign:
 \begin{equation}\label{eqn:quantum-poisson-2}
 \mc{T} \left(\left[ \hat{x}_i, \hat{p}_j \right]\right) \mc{T}^{-1} = \mc{T} i \mc{T}^{-1} \hbar \delta_{ij} \rightarrow \left[\hat{x}'_i, \hat{p}'_j \right]= i \hbar \delta_{ij}
 \end{equation}
@@ -1170,7 +1178,7 @@ We will divide the process into several parts: the first part describes the path
 		E^\mu_{IJ} = \frac{1}{2} \epsilon_{IJKL} \epsilon^{abc} e_a^K e_b^L
 		\end{equation}
 		is the momentum conjugate to $ A $; $ \epsilon^{abc} $ is the anti-symmetric tensor living only on the spatial slices. The inner integral is over the spatial 3-manifolds $ M $ which are the ``leaves'' of our $ 3+1 $ decomposition.
-		\item One can now perform a Legende transformation to obtain the Hamiltonian for general relativity in connection variables:
+		\item One can now perform a Legendre transformation to obtain the Hamiltonian for general relativity in connection variables:
 		\begin{equation}\label{eqn:tetrad-hamiltonian}
 		H_{LQG} = N \mathcal{H} - N_{a} \mathcal{C}^{a} - \Lambda_{IJ} \mc{G}^{IJ}
 		\end{equation}
@@ -1211,7 +1219,7 @@ We will divide the process into several parts: the first part describes the path
 		\ie the space of square integrable functions living on $ L $ copies of $ SU(2) $.
 		\item we can use the Peter-Weyl theorem to perform a sort of Fourier transform on states living in $ \mc{H}_\Gamma $ and write them in terms of spin-labels $ \{j_{e_i}\} $ associated with each edge rather than with function on the group manifold:
 		\begin{namedthm*}{Peter-Weyl Theorem}
-			The matrix elements of the Wigner representation matrices of a compact Lie group are othogonal \wrt the Haar measure on the group:
+			The matrix elements of the Wigner representation matrices of a compact Lie group are orthogonal \wrt the Haar measure on the group:
 			\begin{equation}\label{eqn:peter-weyl}
 			\int d\mu(g) ~\overline{D^{j'}_{m'n'}(g)}~D^j_{mn}(g)  = \frac{1}{d_j} \delta^{jj'} \delta_{mm'} \delta_{nn'},
 			\end{equation}
@@ -1266,7 +1274,7 @@ We will divide the process into several parts: the first part describes the path
 		\begin{equation}\label{eqn:gauss-operator-v1}
 		\sum_{e \in E_v} \mb{J}^e_i = 0
 		\end{equation}
-		Succintly, this is nothing more than the statement that \emph{the total angular momentum carried by edges into any vertex must vanish in the absence of matter}. Somewhat less transparent is the statement that physical states must live in the $ SU(2) $ invariant subspace of each vertex $ \mc{H}_v $:
+		Succinctly, this is nothing more than the statement that \emph{the total angular momentum carried by edges into any vertex must vanish in the absence of matter}. Somewhat less transparent is the statement that physical states must live in the $ SU(2) $ invariant subspace of each vertex $ \mc{H}_v $:
 		\begin{equation}\label{eqn:su2-invariant-space}
 		\mc{H}_\Gamma^{phys} = L^2\left[SU(2)^L/SU(2)^N\right] = \underset{v \in \Gamma}{\bigotimes}~ \mathcal{H}_v^{Inv},
 		\end{equation}
@@ -1312,7 +1320,7 @@ We will divide the process into several parts: the first part describes the path
 
 \section{Invariant Tensors and Intertwiners}\label{sec:invariant-tensors}
 
-Given $ n $ particles transformation under difference representations of $ SU(2) $, \ie labeled by different spins $ \{j_1,\ldots,j_n \} $, an ``invariant tensor'' is a state in the tensor product state space: $ \mc{H}^n = \underset{i=1..n}{\bigotimes} \mc{H}^i $; where $ \mc{H}^i $ is the $ 2(j_i+1) $ dimensional space for a spin $ j_i $ particle. States in $ \mc{H}^n $ can be written in terms of the canonical basis:
+Given $ n $ particles transforming under different representations of $ SU(2) $, \ie labeled by different spins $ \{j_1,\ldots,j_n \} $, an ``invariant tensor'' is a state in the tensor product state space: $ \mc{H}^n = \underset{i=1..n}{\bigotimes} \mc{H}^i $; where $ \mc{H}^i $ is the $ 2(j_i+1) $ dimensional space for a spin $ j_i $ particle. States in $ \mc{H}^n $ can be written in terms of the canonical basis:
 \begin{equation}\label{eqn:n-body-state}
 	\ket{\Psi} = \sum_{\{i_1,\ldots,i_n\}} C_{i_1,\ldots,i_n} \ket{i_1,\ldots,j_n}
 \end{equation}

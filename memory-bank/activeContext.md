@@ -1,38 +1,29 @@
 # Active Context
-*Last Updated: 2026-04-16 23:15:00 IST*
+*Last Updated: 2026-04-17 02:29:00 IST*
 
 ## Current Status
-✅ **Major rewrite complete.** The paper now has:
-- Expanded `z2-action-derivation.tex` (Sec 7) — 4 subsections with full treatment of Z2 gauge theory, confinement-deconfinement phases, Wilson loop order parameter, cosmological transition, topological protection via QECC
-- Expanded `spt-lqg-mapping.tex` (Sec 6) — 4 subsections with rigorous CZX-to-LQG mapping, j=1/2 justification, SPT=deconfined identification, edge modes as conjecture
-- Updated title and abstract
-- Expanded Discussion section with 3 new subsections (Elitzur, QECC, Hopf algebras/future directions)
-- 9 new bibliography entries
-- Document builds cleanly: 38 pages
+✅ **T8 (Typos/Cleanup) and T9 (Missing Figure) complete.** The manuscript is now clean and ready for the remaining structural work.
 
-## Next Steps (Optional, Lower Priority)
-Two remaining cleanup tasks:
-1. **T7: Trim MPS Pedagogy** — Sec 3 (~4 pages) could be condensed to 1-2 pages; move pedagogical details to appendix or cite Bridgeman-Chubb
-2. **T8: Fix Typos** — Minor fixes throughout (typos, remove commented code, fill \todo items)
+Changes in this session (2026-04-17 night):
+- Full 38-page PDF review conducted; all issues triaged by priority
+- 10 typo/structural fixes applied to `timesarrow.tex` and `timesarrow.bib`
+- Visible margin todonote on p.1 removed (duplicate `\usepackage{todonotes}` was overriding `[draft]`)
+- Broken `fig:czx-entangled` reference fixed
+- Missing figure created: `figures/tns-matrix-insertion-2d.tex` (Sec 3.5 \todo resolved)
+- Document builds cleanly: 36 pages
 
-These are optional and don't affect the scientific content or argument quality.
+## Active Task
+**T7: Trim MPS Pedagogy and Appendices** — still open, not yet started.
 
-## Key Achievements in This Session
-- Resolved the Elitzur's theorem objection via confinement-deconfinement framing
-- Established the full Z2 lattice gauge theory picture with phase structure
-- Connected CZX SPT phase to deconfined Z2 gauge phase
-- Added Hopf algebraic perspective and connection to Markopoulou's work
-- Framed fermion emergence as a well-motivated conjecture
-- Paper now has clear, compelling argument from premise to conclusion
+## Next Steps
+1. **T7**: Sec 3 (MPS) is ~4 pages; trim to ~2 pages by removing the GHZ example and the detailed MPS gauge action walkthrough, citing Bridgeman-Chubb instead. Shorten Appendix D similarly.
+2. **Author decision needed**: Appendix D sub-label shadowing and abstract emphasis ordering (two items left open from T8).
+
+## Open Low-Priority Items (Author Decision)
+- Appendix D: sub-sections labeled A/B/C/D shadow top-level appendix labels — may confuse readers
+- Abstract: SPT framing currently leads; confinement-deconfinement should lead per the title
 
 ## Document Statistics
-- Pages: 38 (up from ~30 in critical review)
-- New sections: 2 (z2-action and spt-lqg fully expanded)
-- Discussion subsections: +3
-- Bibliography entries: +9
+- Pages: 36 (down from 38 after todonote fix; up from ~30 before T3-T6 rewrite)
 - LaTeX compilation: Clean, no errors
-
-## Ready for:
-- Final cleanup (typos, formatting)
-- Submission to SciPost Physics
-- Peer review (argument is now solid and self-contained)
+- Pending: T7 (trim), author decisions on 2 items above
