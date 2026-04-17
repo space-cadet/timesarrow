@@ -27,13 +27,13 @@ The key insight, following Chen and Vishwanath \cite{Chen2015Gauging}, is that i
 
 \subsection{Effective Action for the $ Z_2 $ Field}\label{subsec:z2-effective-action}
 
-Given that the $ Z_2 $ field $ \sigma_e $ lives on the edges of the spin network graph $ \Gamma $, and that gauge-invariant observables must be constructed from products of $ \sigma_e $ around closed loops, the most natural effective action is that of a $ Z_2 $ lattice gauge theory \cite{Wegner1971Duality,Kogut1979Introduction}:
+Given that the $ Z_2 $ field $ \sigma_e $ lives on the edges of the spin network graph $ \Gamma $, and that gauge-invariant observables must be constructed from products of $ \sigma_e $ around closed loops, the most natural effective action is that of a $ Z_2 $ lattice gauge theory \cite{Wegner1971Duality,Kogut1979An-introduction}:
 \begin{equation}\label{eqn:z2-gauge-action}
 	S_{Z_2}[\sigma] = -K \sum_{p \in \Gamma^*} \prod_{e \in \partial p} \sigma_e
 \end{equation}
 where the sum runs over the plaquettes $ p $ of the graph (or equivalently the faces of the dual graph $ \Gamma^* $), and $ K $ is a dimensionless coupling constant. Each term in the sum is the product of the $ Z_2 $ field around a minimal closed loop -- a plaquette -- and is manifestly gauge-invariant under the local $ Z_2 $ transformation $ \sigma_e \rightarrow \tau_v \sigma_e \tau_{v'} $ at the endpoints $ v, v' $ of each edge.
 
-The coupling constant $ K $ encodes the dynamics of the spin-network state and is, in principle, determined by the intertwiner amplitudes. For spin-network states dominated by the $ j = 1/2 $ sector, $ K $ is related to the relative weight between states with aligned and anti-aligned time orientations at neighboring vertices. In the language of spin-foam amplitudes \cite{Perez2013Spin}, the coupling $ K $ receives contributions from the vertex amplitude evaluated on configurations with and without $ Z_2 $ flux through the plaquettes.
+The coupling constant $ K $ encodes the dynamics of the spin-network state and is, in principle, determined by the intertwiner amplitudes. For spin-network states dominated by the $ j = 1/2 $ sector, $ K $ is related to the relative weight between states with aligned and anti-aligned time orientations at neighboring vertices. In the language of spin-foam amplitudes \cite{Perez2013The-Spin-Foam,Dona2020Numerical,Dona2022Asymptotics}, the coupling $ K $ receives contributions from the vertex amplitude evaluated on configurations with and without $ Z_2 $ flux through the plaquettes.
 
 The partition function for the $ Z_2 $ gauge theory on the spin network is then:
 \begin{equation}\label{eqn:z2-partition-function}
@@ -43,7 +43,7 @@ where $ \mc{Z}_{\text{geom}}[\sigma] $ is the contribution from the geometric (s
 
 \subsection{Phase Structure: Confinement and Deconfinement}\label{subsec:z2-phases}
 
-The $ Z_2 $ lattice gauge theory in three spatial dimensions is one of the best studied models in mathematical physics \cite{Wegner1971Duality,Kogut1979Introduction,Fradkin1979Phase}. Its phase structure is well established and contains two distinct phases separated by a phase transition at a critical coupling $ K_c $:
+The $ Z_2 $ lattice gauge theory in three spatial dimensions is one of the best studied models in mathematical physics \cite{Wegner1971Duality,Kogut1979An-introduction,Fradkin1979Phase}. Its phase structure is well established and contains two distinct phases separated by a phase transition at a critical coupling $ K_c $:
 
 \begin{enumerate}
 	\item \textbf{Confined phase} ($ K < K_c $): The $ Z_2 $ flux is disordered. The Wilson loop observable:
@@ -72,7 +72,7 @@ As the spin network evolves -- which in the language of spin foams corresponds t
 Several features of this picture are physically attractive:
 
 \begin{itemize}
-	\item \textbf{Universality}: The confined-deconfined transition in 3d $ Z_2 $ gauge theory is in the same universality class as the 3d Ising model (by Kramers-Wannier duality). The critical exponents and the nature of the transition (first order in 3+1d, continuous in 2+1d) are universal and do not depend on the microscopic details of the spin-network state. This suggests that the emergence of the arrow of time is a robust phenomenon, insensitive to the precise form of the quantum gravity dynamics at the Planck scale.
+	\item \textbf{Universality}: The confined-deconfined transition in 3d $ Z_2 $ gauge theory is in the same universality class as the 3d Ising model (by Kramers-Wannier duality). The critical exponents and the nature of the transition (second order in 3d, consistent with Ising universality) are universal and do not depend on the microscopic details of the spin-network state. This suggests that the emergence of the arrow of time is a robust phenomenon, insensitive to the precise form of the quantum gravity dynamics at the Planck scale.
 
 	\item \textbf{Topological protection}: In the deconfined phase, the coherent time orientation is topologically protected. Local perturbations -- such as the creation of a small region with reversed time orientation -- are energetically suppressed and cannot destabilize the global arrow of time. This can be understood in the language of quantum error correction \cite{Dennis2002Topological}: the deconfined phase of the $ Z_2 $ gauge theory is equivalent to the toric code, which is a topological quantum error correcting code. Local ``errors'' (vertices with reversed time orientation) are automatically corrected by the topological order, preventing the formation of macroscopic domains of reversed time.
 

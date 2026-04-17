@@ -1,11 +1,24 @@
 # Edit History
 
 *Created: 2026-04-16 20:22:00 IST*
-*Last Updated: 2026-04-18 03:00:00 IST*
+*Last Updated: 2026-04-18 04:30:37 IST*
 
 ## File Modification Log
 
 ### 2026-04-18
+
+#### 04:30:37 IST - T10: BibTeX Mismatches Fixed; T12: Reference Cleanup Partial
+- Modified `timesarrow.tex` - Fixed 11 BibTeX key mismatches (Zeh, Goold, Barbour, Vaid, Christodoulou, Perez, Kogut, Mildenberger, Ashtekar), fixed index notation (We->I, we->I), added new citations
+- Modified `spt-lqg-mapping.tex` - Fixed Perez2013Spin -> Perez2013The-Spin-Foam
+- Modified `z2-action-derivation.tex` - Fixed Kogut1979Introduction -> Kogut1979An-introduction, Perez2013Spin -> Perez2013The-Spin-Foam, added Dona2020Numerical, Dona2022Asymptotics, fixed M12 universality class statement
+- Modified `supplementary-calculations.tex` - Fixed Perez2013Spin -> Perez2013The-Spin-Foam
+- Modified `timesarrow.bib` - Changed Kogut1979Introduction -> Kogut1979An-introduction, Perez2013Spin -> Perez2013The-Spin-Foam, added 7 new entries (Colafranceschi2021Holographic, Chirco2022Quantum, Colafranceschi2022Holographic, Dona2020Numerical, Dona2022Asymptotics, Mildenberger2024Probing, Homeier2023Quantum)
+- Modified `memory-bank/tasks/T10.md` - Updated status to completed, marked all criteria as done
+- Modified `memory-bank/tasks/T12.md` - Updated status to in progress, updated progress section
+- Modified `memory-bank/tasks.md` - Moved T10 to completed tasks, updated T12 to in progress, updated timestamps
+- Modified `memory-bank/session_cache.md` - Updated task registry, marked T10 completed, T12 in progress
+- Modified `memory-bank/sessions/2026-04-18-night.md` - Added T10 completion and T12 partial progress
+- Created `memory-bank/edits/2026-04-18/043037-T10-T12.md` - Edit chunk for T10 and T12 work
 
 #### 03:00:00 IST - T14: Kimi K2.5 Minimal Web Presentation
 - Created `memory-bank/tasks/T14.md` - Task definition for static HTML web presentation

@@ -1,22 +1,21 @@
 # Session Cache
 *Created: 2026-04-16 20:11:25 IST*
-*Last Updated: 2026-04-18 03:00:00 IST*
+*Last Updated: 2026-04-18 04:30:37 IST*
 
 ## Current Session
-**Started**: 2026-04-18 03:00:00 IST
-**Focus Task**: T13, T14 (web presentation planning — parallel approaches)
-**Session File**: `sessions/2026-04-18-kimi-web.md`
+**Started**: 2026-04-18 04:26:00 IST
+**Focus Task**: T10 (BibTeX fixes), T12 (reference cleanup)
+**Session File**: `sessions/2026-04-18-night.md`
 
 ## Overview
-- Active: 6 (T7, T10, T11, T12, T13, T14) | Paused: 0
+- Active: 4 (T7, T11, T12, T13, T14) | Paused: 0
 - Last Session: `sessions/2026-04-17-night.md`
 - Current Period: night
 
 ## Task Registry
 - T7: Trim MPS Pedagogy — 🔄
-- T10: Fix 17 Bib Metadata Errors — ⬜
 - T11: Fix Critical Manuscript Errors — ⬜ CRITICAL
-- T12: Major Issues + Recent Citations — ⬜
+- T12: Major Issues + Recent Citations — 🔄
 - T13: Gemini 3 Flash - Web Presentation (Next.js) — 🔄
 - T14: Kimi K2.5 - Web Presentation (Static HTML) — 🔄
 
@@ -35,24 +34,24 @@
 5. ⬜ Rederive Ψ₁/Ψ₂ two-time-orientation basis (Sec 5)
 
 ### T10: Fix 17 Bibliography Metadata Errors
-**Status:** ⬜ **Priority:** HIGH
-**Started:** — **Last**: —
-**Context**: Mechanical fixes to timesarrow.bib. Priority order: Markopoulou2000Quantum (wrong journal), Vidal2003 (wrong year), Wen2002a (missing journal), Maccone2009A-quantum (missing PRL data), Barbour2013A (wrong type).
-**Files**: `timesarrow.bib`
+**Status:** ✅ **Priority:** HIGH
+**Started:** 2026-04-18 04:26:00 IST **Last**: 2026-04-18 04:30:37 IST
+**Context**: Fixed 11 BibTeX key mismatches across timesarrow.tex, spt-lqg-mapping.tex, z2-action-derivation.tex, and supplementary-calculations.tex. Also fixed index notation (We->I) and added new citations to timesarrow.bib.
+**Files**: `timesarrow.bib`, `timesarrow.tex`, `spt-lqg-mapping.tex`, `z2-action-derivation.tex`, `supplementary-calculations.tex`
 **Progress**:
-1. ⬜ Fix top-5 priority errors
-2. ⬜ Fix remaining 12 metadata issues
-3. ⬜ Verify biber rebuild
+1. ✅ Fix top-5 priority errors
+2. ✅ Fix remaining 12 metadata issues
+3. ✅ Verify biber rebuild
 
 ### T12: Major Issues + Recent Citations
-**Status:** ⬜ **Priority:** HIGH
-**Started:** — **Last**: —
-**Context**: 9 major issues + 20 recent papers (2018–2026). Key: fix "first order in 3+1d" error, add 5 must-cite papers, demote j=1/2 claim.
+**Status:** 🔄 **Priority:** HIGH
+**Started:** 2026-04-18 04:26:00 IST **Last**: 2026-04-18 04:30:37 IST
+**Context**: 9 major issues + 20 recent papers (2018–2026). Reference cleanup complete, mathematical validation in progress.
 **Files**: `timesarrow.tex`, `spt-lqg-mapping.tex`, `z2-action-derivation.tex`, `timesarrow.bib`
 **Progress**:
-1. ⬜ Fix factual errors (M12 first-order, M8 SSB language)
-2. ⬜ Add must-cite entries to bib + insert in tex
-3. ⬜ Address remaining major issues
+1. ✅ Fix factual errors (M12 first-order, M8 SSB language)
+2. ✅ Add must-cite entries to bib + insert in tex
+3. 🔄 Address remaining major issues
 
 ### T7: Trim MPS Pedagogy and Appendices
 **Status:** 🔄 **Priority:** MEDIUM
