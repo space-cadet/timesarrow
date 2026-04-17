@@ -19,7 +19,9 @@
 - [x] Full document builds cleanly: 38 pages, no LaTeX errors.
 
 ## Work in Progress
-- [ ] (None currently — major rewrite complete)
+- [ ] T11: Fix 5 critical manuscript errors (CRITICAL — blocks publication)
+- [ ] T10: Fix 17 bibliography metadata errors (HIGH)
+- [ ] T12: Address 9 major issues + add ~20 recent citations (HIGH)
 
 ## Known Issues (Addressed)
 - ~~`sec:z2-action` was essentially empty~~ → Rewritten with 4 subsections
@@ -27,13 +29,12 @@
 - ~~Elitzur's theorem problem unaddressed~~ → Fully addressed in new Discussion subsection
 
 ## Remaining Tasks (Lower Priority)
-- [ ] Trim MPS pedagogy (Sec 3) by ~50% — move GHZ/diagrams to appendix or cite Bridgeman-Chubb
-- [ ] Shorten Appendix D (quantum geometry review)
-- [ ] Fix typos: "sysem" (l.319), "symplicity" (l.546), unclosed paren (l.480), placeholder `\label{key}` (l.769), "othogonal" in Peter-Weyl
-- [ ] Remove commented-out code blocks throughout source
-- [ ] Fill/remove remaining `\todo` items
+- [ ] T7: Trim MPS pedagogy (Sec 3) by ~50% — cite Bridgeman-Chubb
+- [ ] T7: Shorten Appendix D (duplicates Sec 4)
+- [ ] Minor: Remove commented-out code blocks throughout source
+- [ ] Minor: Fill/remove remaining \todo items
 
 ## Future Plans
-- Verify all new citations compile correctly with biber
-- Final cleanup and formatting pass
-- Optional: fine-tune exposition in the three new Discussion subsections
+- Verify all new citations compile correctly with biber after T10/T12
+- Final cleanup and formatting pass after T11
+- Author decisions: Appendix D sub-label shadowing; abstract emphasis ordering; "original contributions" paragraph in Sec 1
