@@ -1,5 +1,5 @@
 # Task Registry
-*Last Updated: 2026-04-18 02:12:39 IST*
+*Last Updated: 2026-04-18 02:55:00 IST*
 
 ## Active Tasks
 | ID | Title | Status | Priority | Started | Dependencies | Owner | Details |
@@ -8,6 +8,8 @@
 | T10 | Fix 17 Bibliography Metadata Errors | ⬜ NOT STARTED | HIGH | - | - | Assistant | [Details](tasks/T10.md) |
 | T11 | Fix Critical Manuscript Errors | ⬜ NOT STARTED | CRITICAL | - | - | Assistant | [Details](tasks/T11.md) |
 | T12 | Address Major Issues and Add Recent Citations | ⬜ NOT STARTED | HIGH | - | T11 | Assistant | [Details](tasks/T12.md) |
+| T13 | Gemini 3 Flash - Create Accessible Web Presentation | 🔄 IN PROGRESS | - | - | - | Assistant | [Details](tasks/T13.md) |
+| T14 | Kimi K2.5 - Minimal Web Presentation | 🔄 IN PROGRESS | MEDIUM | 2026-04-18 | - | Assistant | [Details](tasks/T14.md) |
 
 ## Task Details
 

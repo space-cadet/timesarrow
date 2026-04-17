@@ -1,9 +1,38 @@
 # Edit History
 
 *Created: 2026-04-16 20:22:00 IST*
-*Last Updated: 2026-04-17 02:29:00 IST*
+*Last Updated: 2026-04-18 03:00:00 IST*
 
 ## File Modification Log
+
+### 2026-04-18
+
+#### 03:00:00 IST - T14: Kimi K2.5 Minimal Web Presentation
+- Created `memory-bank/tasks/T14.md` - Task definition for static HTML web presentation
+- Created `memory-bank/implementation-details/kimi-k25-web-minimal-plan.md` - Detailed plan with ASCII layout diagrams
+- Created `memory-bank/sessions/2026-04-18-kimi-web.md` - Session tracking file
+- Modified `memory-bank/tasks.md` - Added T14 to active tasks table
+- Modified `memory-bank/session_cache.md` - Updated current session and task registry
+- Created `memory-bank/edits/2026-04-18/030000-T14.md` - Edit chunk for T14 work
+
+#### 02:32:38 IST - T11/T12: Implementation Docs Created
+- Created `memory-bank/implementation-details/holography-lqg-survey.md` - LQG holography survey (9 groups, 2015–2026)
+- Created `memory-bank/implementation-details/arrow-of-time-survey.md` - Arrow of time approaches survey (16 approaches)
+- Created `supplementary-calculations.tex` - Full calculations for T11/C3, T12/M6, T12/M9; compiles to 14pp PDF
+- Updated `memory-bank/sessions/2026-04-18-night.md` - Added implementation doc records
+- Updated `memory-bank/activeContext.md` - Added impl docs section and revised next session order
+- Created `memory-bank/edits/2026-04-18/023238-impl-docs.md` - Edit chunk for implementation docs
+
+#### 02:12:39 IST - T10/T11/T12: Subagent Audit Tasks Created
+- Created `memory-bank/tasks/T10.md` - New task: fix 17 bibliography metadata errors
+- Created `memory-bank/tasks/T11.md` - New task: fix 5 critical manuscript errors
+- Created `memory-bank/tasks/T12.md` - New task: address 9 major issues + add recent citations
+- Updated `memory-bank/tasks.md` - Added T10, T11, T12 to active tasks registry
+- Updated `memory-bank/activeContext.md` - Recorded audit findings; recommended next session order
+- Updated `memory-bank/session_cache.md` - New session; T10/T11/T12 registered as active
+- Created `memory-bank/sessions/2026-04-18-night.md` - Session record for audit work
+- Updated `memory-bank/progress.md` - Work in progress and remaining tasks updated
+- Created `memory-bank/edits/2026-04-18/021239-T10T11T12.md` - Edit chunk for audit tasks
 
 ### 2026-04-17
 

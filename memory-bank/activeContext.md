@@ -23,13 +23,14 @@ Three subagent audits completed (2026-04-18 night). Full findings recorded in T1
 - Full details: `tasks/T11.md` (critical) and `tasks/T12.md` (major)
 
 ## Active Tasks
+- **T13**: Gemini 3 Flash - Create Accessible Web Presentation — 
+- **T11**: Fix Critical Manuscript Errors — ⬜ CRITICAL
+- **T10**: Fix 17 bib metadata errors — ⬜
+- **T12**: Major issues + recent citations — ⬜
 - **T7**: Trim MPS Pedagogy — still open, not yet started
-- **T10**: Fix 17 bib metadata errors — not started
-- **T11**: Fix 5 critical manuscript errors — not started (**HIGHEST PRIORITY**)
-- **T12**: Major issues + recent citations — not started (depends on T11)
 
 ## Implementation Docs Created (2026-04-18)
-- `implementation-details/holography-lqg-survey.md` — 9 groups/programs; Chirco-Colafranceschi-Oriti, Han, Qi, Swingle, HaPPY, Singh-McMahon etc.
+- `implementation-details/gemini-web-presentation-plan.md` — 9 groups/programs; Chirco-Colafranceschi-Oriti, Han, Qi, Swingle, HaPPY, Singh-McMahon etc.
 - `implementation-details/arrow-of-time-survey.md` — 16 approaches surveyed with acceptance ratings
 - `supplementary-calculations.tex` — **compiled cleanly (14pp PDF, verified)**; works out T11/C3, T12/M6, T12/M9
 
