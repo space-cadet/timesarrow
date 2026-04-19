@@ -1,7 +1,25 @@
 # Edit History
 
 *Created: 2026-04-16 20:22:00 IST*
-*Last Updated: 2026-04-18 04:30:37 IST*
+*Last Updated: 2026-04-20 02:50:00 IST*
+
+## File Modification Log
+
+### 2026-04-20
+
+#### 02:50:00 IST - T12: Major Issues M7/M9/M10/M13/M14 Fixed; T15 Created
+- Modified `spt-lqg-mapping.tex` - M14: Added cohomological rationale for fermionic edge modes (H²(Z₂ᵀ,U(1)ₜ)); cite Kapustin2014Symmetry
+- Modified `timesarrow.tex` - M7: Added Jahn2021Holographic, Steinberg2023Holographic citations to QECC section; M10: Added Dittrich2016Coarse to Future Work; M13: Added Cao2018Bulk, Hohn2021The-Trinity to Future Work
+- Modified `z2-action-derivation.tex` - M13: Specified 3D toric code (not 2D) in topological protection discussion
+- Modified `timesarrow.bib` - Added Dittrich2016Coarse, Cao2018Bulk, Hohn2021The-Trinity, Jahn2021Holographic, Steinberg2023Holographic, Baytas2018Gluing, Bianchi2018Intertwiner entries
+- Created `memory-bank/tasks/T15.md` - New task for 3D SPT classification survey to resolve 2D/3D mismatch
+- Created `memory-bank/implementation-details/3d-spt-survey-needed.md` - Survey requirements doc linked to T15
+- Modified `memory-bank/tasks/T12.md` - Updated progress: M7, M9, M10, M13, M14 completed
+- Modified `memory-bank/tasks.md` - Added T15 to active tasks, updated T12 status, moved T10 to completed
+- Modified `memory-bank/activeContext.md` - Updated audit summary and recommended next session order
+- Modified `memory-bank/session_cache.md` - Updated current session and task registry
+- Created `memory-bank/sessions/2026-04-20-dawn.md` - Session record for this work
+- Created `memory-bank/edits/2026-04-20/025000-T15-T12-sync.md` - Edit chunk for T12 completion and T15 creation
 
 ## File Modification Log
 

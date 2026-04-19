@@ -1,21 +1,22 @@
 # Session Cache
 *Created: 2026-04-16 20:11:25 IST*
-*Last Updated: 2026-04-18 04:30:37 IST*
+*Last Updated: 2026-04-20 02:50:00 IST*
 
 ## Current Session
-**Started**: 2026-04-18 04:26:00 IST
-**Focus Task**: T10 (BibTeX fixes), T12 (reference cleanup)
-**Session File**: `sessions/2026-04-18-night.md`
+**Started**: 2026-04-20 02:37:00 IST
+**Focus Task**: T12 (Reference completion), T15 (3D SPT Survey initialization)
+**Session File**: `sessions/2026-04-20-dawn.md`
 
 ## Overview
-- Active: 4 (T7, T11, T12, T13, T14) | Paused: 0
-- Last Session: `sessions/2026-04-17-night.md`
-- Current Period: night
+- Active: 5 (T7, T11, T12, T13, T14, T15) | Paused: 0
+- Last Session: `sessions/2026-04-18-night.md`
+- Current Period: dawn
 
 ## Task Registry
 - T7: Trim MPS Pedagogy — 🔄
 - T11: Fix Critical Manuscript Errors — ⬜ CRITICAL
 - T12: Major Issues + Recent Citations — 🔄
+- T15: 3D SPT Survey and Mapping — 🔄 ACTIVE
 - T13: Gemini 3 Flash - Web Presentation (Next.js) — 🔄
 - T14: Kimi K2.5 - Web Presentation (Static HTML) — 🔄
 

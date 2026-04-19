@@ -1,52 +1,41 @@
 # Active Context
-*Last Updated: 2026-04-18 02:12:39 IST*
+*Last Updated: 2026-04-20 02:50:00 IST*
 
 ## Current Status
-Three subagent audits completed (2026-04-18 night). Full findings recorded in T10, T11, T12.
+Major reference cleanup (T12) and bib metadata fixes (T10) completed. New task T15 created for 3D SPT survey to resolve dimensional mismatch. Focus shifts to T11 (Critical Manuscript Errors) and T15.
 
-## Audit Summary
+## Audit Summary (Updated)
 
 ### Agent A — Reference Verification
-- 42/59 cited entries clean; 17 need fixes; 0 unverifiable
-- Highest priority: Markopoulou2000Quantum (wrong journal: CMP→CQG 17, 2059)
-- Full details and fix list: `tasks/T10.md`
+- ✅ T10 Completed: 17 bib metadata errors fixed; all keys verified and building.
 
 ### Agent B — Claim Audit + Recent Literature
-- ~15 external attributions verified; no fabricated citations
-- Two real errors: spin-foam "A_v ~ j^{-α}" overclaim; "first order in 3+1d" Z₂ LGT (should be second-order)
-- ~20 recent papers (2018–2026) identified; 5 must-cite for reviewer protection
-- Full details: `tasks/T12.md`
+- ✅ T12 Partially Completed: 20 recent papers (2018–2026) added; "first order" error fixed; "SSB" language corrected.
+- 🔄 T15 Created: Addressing M14 (2D/3D mismatch) via detailed 3D SPT survey.
 
 ### Agent C — Manuscript Quality Audit
-- 5 critical issues (block publication), 9 major issues, 9 minor issues
-- Most critical: "We" glyph corruption in ~10 equations; Ψ₁/Ψ₂ central derivation internally inconsistent
-- Full details: `tasks/T11.md` (critical) and `tasks/T12.md` (major)
+- 🔄 T11 Pending: 5 critical issues remaining. C1, C2, C5 are prioritized for next session.
+- ✅ T12 Partially Completed: 9 major issues addressed (except M6).
 
 ## Active Tasks
-- **T13**: Gemini 3 Flash - Create Accessible Web Presentation — 
 - **T11**: Fix Critical Manuscript Errors — ⬜ CRITICAL
-- **T10**: Fix 17 bib metadata errors — ⬜
-- **T12**: Major issues + recent citations — ⬜
-- **T7**: Trim MPS Pedagogy — still open, not yet started
+- **T12**: Major issues + recent citations — 🔄 IN PROGRESS (Ref cleanup ✅)
+- **T15**: 3D SPT Survey and Mapping — 🔄 ACTIVE
+- **T13**: Gemini 3 Flash - Web Presentation — 🔄
+- **T14**: Kimi K2.5 - Web Presentation — 🔄
+- **T7**: Trim MPS Pedagogy — 🔄
 
-## Implementation Docs Created (2026-04-18)
-- `implementation-details/gemini-web-presentation-plan.md` — 9 groups/programs; Chirco-Colafranceschi-Oriti, Han, Qi, Swingle, HaPPY, Singh-McMahon etc.
-- `implementation-details/arrow-of-time-survey.md` — 16 approaches surveyed with acceptance ratings
-- `supplementary-calculations.tex` — **compiled cleanly (14pp PDF, verified)**; works out T11/C3, T12/M6, T12/M9
-
-Key findings from supplementary calculations:
-- Ψ₁ in manuscript is NOT a singlet; Ψ₂/2 = −Φ₁ is correct
-- Time orientation = eigenvalue of signed Q̂ (not V̂, which is degenerate)
-- U_CZX does not preserve the singlet subspace; LQG–CZX is structural correspondence
-- j=1/2 thermal dominance holds for β > 2/κ; entropy claim needs replacing with BH entropy argument
+## Implementation Docs Created
+- `implementation-details/gemini-web-presentation-plan.md`
+- `implementation-details/arrow-of-time-survey.md`
+- `implementation-details/3d-spt-survey-needed.md` — NEW: 3D SPT classification survey requirements.
+- `supplementary-calculations.tex` — Verified; contains T11/C3 derivations.
 
 ## Recommended Next Session Order
-1. **T11** first — "We" bug (easy) + D_e formula (easy) + gauge-invariance sentence (easy) = 3 of 5 criticals in minutes
-2. **T11/C3** — use supplementary-calculations.tex as the derivation; replace Ψ₁/Ψ₂ with Φ₁/Φ₂ and reframe V̂ → Q̂
-3. **T12/M6** — reframe LQG–CZX using Result 5 from supplementary doc
-4. **T10** — bib metadata fixes (mechanical, batch in one pass)
-5. **T12** — remaining major issues and new citations
-6. **T7** — MPS trimming (lower priority)
+1. **T11/C1, C2, C5** — Fast mechanical fixes (glyphs, formulas).
+2. **T11/C3** — Rederive Ψ₁/Ψ₂ using supplementary-calculations.tex.
+3. **T15** — Begin 3D SPT survey to support M14 fix.
+4. **T12/M6** — Final major issue fix.
 
 ## Open Author Decisions (unchanged from previous session)
 - Appendix D: sub-sections labeled A/B/C/D shadow top-level appendix labels
