@@ -1,16 +1,12 @@
 # Task Registry
-*Last Updated: 2026-04-20 02:50:00 IST*
+*Last Updated: 2026-04-20 04:10:00 IST*
 
 ## Active Tasks
 | ID | Title | Status | Priority | Started | Dependencies | Owner | Details |
 |----|-------|--------|----------|---------|--------------|-------|---------|
-| T7 | Trim MPS Pedagogy and Appendices | 🔄 IN PROGRESS | MEDIUM | 2026-04-16 | - | Assistant | [Details](tasks/T7.md) |
-| T11 | Fix Critical Manuscript Errors | ⬜ NOT STARTED | CRITICAL | - | - | Assistant | [Details](tasks/T11.md) |
-| T12 | Address Major Issues and Add Recent Citations | 🔄 IN PROGRESS | HIGH | 2026-04-18 | T11 | Assistant | [Details](tasks/T12.md) |
 | T15 | 3D SPT Survey and Mapping | 🔄 ACTIVE | HIGH | 2026-04-20 | T12 | Assistant | [Details](tasks/T15.md) |
-| T13 | Gemini 3 Flash - Create Accessible Web Presentation | 🔄 IN PROGRESS | - | - | - | Assistant | [Details](tasks/T13.md) |
+| T13 | Gemini 3 Flash - Create Accessible Web Presentation | 🔄 IN PROGRESS | MEDIUM | 2026-04-18 | - | Assistant | [Details](tasks/T13.md) |
 | T14 | Kimi K2.5 - Minimal Web Presentation | 🔄 IN PROGRESS | MEDIUM | 2026-04-18 | - | Assistant | [Details](tasks/T14.md) |
-| T10 | Fix 17 Bibliography Metadata Errors | ✅ COMPLETED | HIGH | 2026-04-18 | - | Assistant | [Details](tasks/T10.md) |
 
 ## Task Details
 
@@ -94,19 +90,6 @@
 **Last Active**: 2026-04-18 04:30:37 IST
 **Related Files**: `timesarrow.bib`, `timesarrow.tex`, `spt-lqg-mapping.tex`, `z2-action-derivation.tex`, `supplementary-calculations.tex`
 
-### T11: Fix Critical Manuscript Errors
-**Description**: Five publication-blocking errors from Agent C: "We" glyph corruption in ~10 equations, D_e = j(j+1) wrong formula, Ψ₁/Ψ₂ internal inconsistency (crux derivation), det scaling muddled, gauge invariance unshown.
-**Status**: ⬜ NOT STARTED
-**Last Active**: —
-**Related Files**: `timesarrow.tex`, `spt-lqg-mapping.tex`, `z2-action-derivation.tex`
-
-### T12: Address Major Issues and Add Recent Citations
-**Description**: 9 major issues (Agent C) + ~20 recent citations 2018–2026 (Agent B). Includes fixing "first order in 3+1d" factual error, CZX global/local Z₂ conflation, SSB language leak, j=1/2 overstatement, and adding must-cite recent papers.
-**Status**: 🔄 IN PROGRESS
-**Last Active**: 2026-04-20 02:50:00 IST
-**Dependencies**: T11
-**Related Files**: `timesarrow.tex`, `spt-lqg-mapping.tex`, `z2-action-derivation.tex`, `timesarrow.bib`
-
 ### T15: 3D SPT Survey and Mapping
 **Description**: Survey classification of 3D bosonic SPT phases with Z₂ᵀ symmetry to resolve the 2D/3D mismatch identified in M14. Match deconfined 3D Z₂ LGT to the appropriate SPT entry.
 **Status**: 🔄 ACTIVE
@@ -124,9 +107,12 @@
 | T4 | Rewrite spt-lqg-mapping.tex | 2026-04-16 | - | [Details](tasks/T4.md) |
 | T5 | Update Title and Abstract | 2026-04-16 | - | [Details](tasks/T5.md) |
 | T6 | Revise Discussion Section | 2026-04-16 | - | [Details](tasks/T6.md) |
+| T7 | Trim MPS Pedagogy and Appendices | 2026-04-20 | - | [Details](tasks/T7.md) |
 | T8 | Fix Typos and Cleanup | 2026-04-17 | T9 | [Details](tasks/T8.md) |
 | T9 | Create Missing Figure (Sec 3.5) | 2026-04-17 | T8 | [Details](tasks/T9.md) |
 | T10 | Fix 17 Bibliography Metadata Errors | 2026-04-18 | - | [Details](tasks/T10.md) |
+| T11 | Fix Critical Manuscript Errors | 2026-04-20 | - | [Details](tasks/T11.md) |
+| T12 | Address Major Issues and Add Recent Citations | 2026-04-20 | T11 | [Details](tasks/T12.md) |
 
 ## Task Relationships
 ```mermaid

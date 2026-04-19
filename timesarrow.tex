@@ -304,6 +304,8 @@ However, only SRE is not sufficient to ensure the emergence of a connected, bulk
 
 \section{Matrix Product States and All That}\label{sec:mps-all}
 
+\emph{Readers familiar with matrix product states and tensor network states may skip directly to \autoref{subsec:mps-local-gauge}, where the local gauge action relevant for the remainder of the paper is introduced.}
+
 Consider a many body system consisting of $ N $ quantum degrees of freedom. The most general many body state of such as system can be written as:
 \begin{equation}\label{eqn:many-body-state}
 	\ket{\psi} = \sum_{i_1, i_2, \ldots, i_N} C_{i_1, i_2, \ldots, i_N} \ket{i_1, i_2, \ldots, i_N}
@@ -1328,5 +1330,53 @@ The dimension of the subspace consisting of invariant tensors, \ie elements $ \k
 \end{equation}
 
 \nolinenumbers
+
+\section{Action of $U_{\mathrm{CZX}}$ on the Intertwiner Subspace}\label{subsec:czx-intertwiner}
+
+We work with the orthonormal singlet basis $\{\ket{\Phi_1},\ket{\Phi_2}\}$ for the $SU(2)$-invariant subspace of $(\mc{H}_{1/2})^{\otimes 4}$ defined in \eqref{eqn:vol-states}. The on-site CZX unitary is $U_{CZX} = U_X \cdot U_{CZ}$, where
+\begin{align}
+  U_X &= X_1\otimes X_2\otimes X_3\otimes X_4, \\
+  U_{CZ} &= \mathrm{CZ}_{12}\cdot\mathrm{CZ}_{23}\cdot\mathrm{CZ}_{34}\cdot\mathrm{CZ}_{41},
+\end{align}
+with $\mathrm{CZ}_{ij}\ket{m_i m_j} = (-1)^{m_i m_j}\ket{m_i m_j}$.
+
+\paragraph{$U_X$ acts as identity on the singlet subspace.}
+Since $U_X$ maps $\ket{m_1 m_2 m_3 m_4}\mapsto\ket{\bar{m}_1\bar{m}_2\bar{m}_3\bar{m}_4}$ (with $\bar{0}=1$, $\bar{1}=0$), a direct computation gives $U_X\ket{\Phi_1} = \ket{\Phi_1}$ and $U_X\ket{\Phi_2} = \ket{\Phi_2}$.
+
+\paragraph{$U_{CZ}$ exits the singlet subspace.}
+The phase factor from $U_{CZ}$ on each basis state is $(-1)^f$ where $f = m_1m_2+m_2m_3+m_3m_4+m_4m_1$:
+
+\begin{center}
+\begin{tabular}{c|c|c}
+  State & $f$ & Phase \\ \hline
+  $\ket{0101}$ & 0 & $+1$ \\
+  $\ket{0110}$ & 1 & $-1$ \\
+  $\ket{1001}$ & 1 & $-1$ \\
+  $\ket{1010}$ & 0 & $+1$ \\
+  $\ket{0011}$ & 1 & $-1$ \\
+  $\ket{1100}$ & 1 & $-1$ \\
+\end{tabular}
+\end{center}
+
+Applying these phases:
+\begin{align}
+  U_{CZ}\ket{\Phi_1} &= \frac{1}{2}\bigl(\ket{0101}+\ket{0110}+\ket{1001}+\ket{1010}\bigr).
+\end{align}
+One verifies that $\hat{S}^+_{\rm tot}(U_{CZ}\ket{\Phi_1}) \neq 0$, so this state lies \emph{outside} the $j_{\rm tot}=0$ subspace. The same holds for $U_{CZ}\ket{\Phi_2}$. Since $U_{CZX} = U_X\cdot U_{CZ}$ and $U_X$ preserves the singlet subspace while $U_{CZ}$ does not, $U_{CZX}$ does not preserve the singlet subspace.
+
+\paragraph{The CZX code subspace and the correct $Z_2$ action.}
+The correct subspace on which $U_{CZX}$ acts as a Pauli-$X$ gate is the \emph{code subspace} $\operatorname{span}\{\ket{0000},\ket{1111}\}$ \cite{Chen2010Local}. Direct computation gives:
+\begin{align}
+  U_{CZX}\ket{0000} &= \ket{1111}, & U_{CZX}\ket{1111} &= \ket{0000},
+\end{align}
+so that $U_{CZX}\big|_{\rm code} = \bigl(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\bigr) = \sigma_x^{\rm eff}$.
+
+The LQG--CZX correspondence is therefore the identification:
+\begin{equation}
+  \underbrace{\operatorname{span}\{\ket{\Phi_1},\ket{\Phi_2}\}}_{\text{LQG intertwiner qubit}}
+  \;\xrightarrow{\;\sim\;}\;
+  \underbrace{\operatorname{span}\{\ket{0000},\ket{1111}\}}_{\text{CZX code qubit}},
+\end{equation}
+where $U_{CZX}$ acts as $\sigma_x^{\rm eff}$ on the right-hand side, and the $\hat{Q}$-sign flip acts as $\sigma_z^{\rm eff}$ on the left-hand side. Both generate the same abstract $\mathbb{Z}_2$.
 
 \end{document}

@@ -1,7 +1,24 @@
 # Edit History
 
 *Created: 2026-04-16 20:22:00 IST*
-*Last Updated: 2026-04-20 02:50:00 IST*
+*Last Updated: 2026-04-20 04:10:00 IST*
+
+## File Modification Log
+
+### 2026-04-20
+
+#### 04:07:00 IST - T11, T7, T12: Verification and Completion
+- Verified `z2-action-derivation.tex` line 34: C5 gauge invariance sentence (τ_v²=1) present
+- Verified `spt-lqg-mapping.tex` line 30: C3 U_CZX correction to CZX code subspace framing
+- Verified `supplementary-calculations.tex`: Addenda noting manuscript update present
+- Verified `timesarrow.tex` line 307: T7 skip-ahead note present
+- Modified `memory-bank/tasks/T7.md`: Status → COMPLETED, added completion details
+- Modified `memory-bank/tasks/T12.md`: M6 resolved by C3, Status → COMPLETED
+- Modified `memory-bank/tasks.md`: Moved T11, T7, T12 to Completed Tasks; updated T15 as sole active manuscript task
+- Modified `memory-bank/activeContext.md`: Refreshed status (T11/T7/T12 completed)
+- Modified `memory-bank/session_cache.md`: Updated task registry with completions
+- Modified `memory-bank/sessions/2026-04-20-dawn.md`: Added Session Completion section
+- Created `memory-bank/edits/2026-04-20/0407-T11-T7-T12-completion.md`: Edit chunk documenting verification and completion
 
 ## File Modification Log
 

@@ -1,8 +1,8 @@
 # Active Context
-*Last Updated: 2026-04-20 02:50:00 IST*
+*Last Updated: 2026-04-20 04:10:00 IST*
 
 ## Current Status
-Major reference cleanup (T12) and bib metadata fixes (T10) completed. New task T15 created for 3D SPT survey to resolve dimensional mismatch. Focus shifts to T11 (Critical Manuscript Errors) and T15.
+T11 (Critical Manuscript Errors) and T7 (MPS Pedagogy) completed. T12 (Major Issues + Recent Citations) completed — all 9 major issues resolved including M6 via T11/C3. T15 (3D SPT Survey) remains active. Only web presentation tasks (T13, T14) and T15 remain open.
 
 ## Audit Summary (Updated)
 
@@ -14,16 +14,18 @@ Major reference cleanup (T12) and bib metadata fixes (T10) completed. New task T
 - 🔄 T15 Created: Addressing M14 (2D/3D mismatch) via detailed 3D SPT survey.
 
 ### Agent C — Manuscript Quality Audit
-- 🔄 T11 Pending: 5 critical issues remaining. C1, C2, C5 are prioritized for next session.
-- ✅ T12 Partially Completed: 9 major issues addressed (except M6).
+- ✅ T11 Completed: All 5 critical errors fixed (C1-C5).
+- ✅ T12 Completed: All 9 major issues addressed; M6 resolved by C3 correction.
 
 ## Active Tasks
-- **T11**: Fix Critical Manuscript Errors — ⬜ CRITICAL
-- **T12**: Major issues + recent citations — 🔄 IN PROGRESS (Ref cleanup ✅)
-- **T15**: 3D SPT Survey and Mapping — 🔄 ACTIVE
-- **T13**: Gemini 3 Flash - Web Presentation — 🔄
-- **T14**: Kimi K2.5 - Web Presentation — 🔄
-- **T7**: Trim MPS Pedagogy — 🔄
+- **T15**: 3D SPT Survey and Mapping — 🔄 ACTIVE (manuscript blocking)
+- **T13**: Gemini 3 Flash - Web Presentation — 🔄 IN PROGRESS
+- **T14**: Kimi K2.5 - Web Presentation — 🔄 IN PROGRESS
+
+## Completed Tasks (This Session)
+- **T11**: Fix Critical Manuscript Errors — ✅ COMPLETED (C1-C5 all fixed)
+- **T12**: Major issues + recent citations — ✅ COMPLETED (M6-M14 all resolved)
+- **T7**: Trim MPS Pedagogy — ✅ COMPLETED (skip note added)
 
 ## Implementation Docs Created
 - `implementation-details/gemini-web-presentation-plan.md`
@@ -32,10 +34,8 @@ Major reference cleanup (T12) and bib metadata fixes (T10) completed. New task T
 - `supplementary-calculations.tex` — Verified; contains T11/C3 derivations.
 
 ## Recommended Next Session Order
-1. **T11/C1, C2, C5** — Fast mechanical fixes (glyphs, formulas).
-2. **T11/C3** — Rederive Ψ₁/Ψ₂ using supplementary-calculations.tex.
-3. **T15** — Begin 3D SPT survey to support M14 fix.
-4. **T12/M6** — Final major issue fix.
+1. **T15** — Continue 3D SPT classification survey (only remaining manuscript work).
+2. **T13/T14** — Web presentation implementation (parallel, non-blocking).
 
 ## Open Author Decisions (unchanged from previous session)
 - Appendix D: sub-sections labeled A/B/C/D shadow top-level appendix labels
@@ -45,4 +45,4 @@ Major reference cleanup (T12) and bib metadata fixes (T10) completed. New task T
 ## Document Statistics
 - Pages: 36
 - LaTeX: builds cleanly
-- Pending: T7 (trim), T10 (bib), T11 (critical fixes), T12 (major fixes + new cites)
+- Pending: T15 (3D SPT survey), T13/T14 (web presentations)
