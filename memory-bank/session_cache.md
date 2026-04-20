@@ -1,68 +1,47 @@
 # Session Cache
 *Created: 2026-04-16 20:11:25 IST*
-*Last Updated: 2026-04-20 04:10:00 IST*
+*Last Updated: 2026-04-20 11:09:51 IST*
 
 ## Current Session
-**Started**: 2026-04-20 02:37:00 IST
-**Ended**: 2026-04-20 04:10:00 IST
-**Focus Task**: T11 (Critical errors), T7 (MPS trim), T12 completion verification
-**Session File**: `sessions/2026-04-20-dawn.md`
+**Started**: 2026-04-20 11:03:00 IST
+**Focus Task**: T15 (3D SPT Survey and Mapping - Integration Phase)
+**Session File**: `sessions/2026-04-20-morning.md`
 
 ## Overview
-- Active: 5 (T7, T11, T12, T13, T14, T15) | Paused: 0
-- Last Session: `sessions/2026-04-18-night.md`
-- Current Period: dawn
+- Active: 4 (T15, T15.1, T13, T14) | Paused: 0
+- Last Session: `sessions/2026-04-20-dawn.md`
+- Current Period: morning
 
 ## Task Registry
-- T7: Trim MPS Pedagogy — ✅ COMPLETED
-- T11: Fix Critical Manuscript Errors — ✅ COMPLETED
-- T12: Major Issues + Recent Citations — ✅ COMPLETED
-- T15: 3D SPT Survey and Mapping — 🔄 ACTIVE
+- T15: 3D SPT Survey and Mapping — 🔄 ACTIVE (Integration Phase)
+- T15.1: Verify 3D spin-network anyon statistics — 🔄 ACTIVE
 - T13: Gemini 3 Flash - Web Presentation (Next.js) — 🔄
 - T14: Kimi K2.5 - Web Presentation (Static HTML) — 🔄
 
 ## Active Tasks
 
-### T11: Fix Critical Manuscript Errors
-**Status:** ✅ **Priority:** CRITICAL
-**Started:** 2026-04-20 **Last**: 2026-04-20 04:07 IST
-**Context**: All 5 publication-blocking errors resolved. C1, C2 were previously fixed. C3 (Ψ₁/Ψ₂) resolved via CZX code subspace correction. C4 (det scaling) author-confirmed. C5 (gauge invariance) τ_v²=1 sentence added.
-**Files**: `timesarrow.tex`, `spt-lqg-mapping.tex`, `z2-action-derivation.tex`, `supplementary-calculations.tex`
+### T15: 3D SPT Survey and Mapping
+**Status:** 🔄 **Priority:** HIGH
+**Started:** 2026-04-20 **Last**: 2026-04-20 11:09:51 IST
+**Context**: Survey complete. Identified non-trivial 3D Z₂ᵀ SPT and gapped all-fermion toric code surface. Manuscript edits (Sec 7.3/7.4) drafted in spt-lqg-mapping.tex. Moving to integration phase.
+**Files**: `memory-bank/implementation-details/3d-spt-survey-results.md`, `memory-bank/implementation-details/fermionic-matter-emergence.md`, `spt-lqg-mapping.tex`, `timesarrow.tex`
 **Progress**:
-1. ✅ Fix "We" glyph in Appendices B/C (was already corrected)
-2. ✅ Fix D_e = j(j+1) → 2j+1 (Sec 4, was already corrected)
-3. ✅ Add gauge-invariance vertex-cancellation sentence (z2-action-derivation.tex:34)
-4. ✅ Clarify det(³e) scaling — author confirmed self-evident, no change needed
-5. ✅ Rederive Ψ₁/Ψ₂ — corrected to CZX code subspace framing (spt-lqg-mapping.tex:30)
+1. ✅ Survey classification of 3D bosonic SPT phases (H⁴(Z₂ᵀ, U(1)_T) = Z₂)
+2. ✅ Identify non-trivial SPT phase (twisted 3+1d toric code)
+3. ✅ Revise fermionic edge mode conjecture (gapless → gapped all-fermion toric code)
+4. ✅ Document findings in implementation detail docs
+5. 🔄 Integrate Sec 7.3/7.4 edits into main manuscript (timesarrow.tex)
+6. ⬜ Verify 3D spin-network anyon statistics (delegated to T15.1)
 
-### T10: Fix 17 Bibliography Metadata Errors
-**Status:** ✅ **Priority:** HIGH
-**Started:** 2026-04-18 04:26:00 IST **Last**: 2026-04-18 04:30:37 IST
-**Context**: Fixed 11 BibTeX key mismatches across timesarrow.tex, spt-lqg-mapping.tex, z2-action-derivation.tex, and supplementary-calculations.tex. Also fixed index notation (We->I) and added new citations to timesarrow.bib.
-**Files**: `timesarrow.bib`, `timesarrow.tex`, `spt-lqg-mapping.tex`, `z2-action-derivation.tex`, `supplementary-calculations.tex`
+### T15.1: Verify 3D Spin-Network Anyon Statistics
+**Status:** 🔄 **Priority:** MEDIUM
+**Started:** 2026-04-20 **Last**: 2026-04-20 11:09:51 IST
+**Context**: Subtask of T15. Need to verify whether spin-network Z₂ gauge theory has standard or twisted anyon statistics (point-loop braiding). This determines whether the non-trivial SPT identification holds.
+**Files**: `timesarrow.tex`, `spt-lqg-mapping.tex`
 **Progress**:
-1. ✅ Fix top-5 priority errors
-2. ✅ Fix remaining 12 metadata issues
-3. ✅ Verify biber rebuild
-
-### T12: Major Issues + Recent Citations
-**Status:** ✅ **Priority:** HIGH
-**Started:** 2026-04-18 04:26:00 IST **Last**: 2026-04-20 04:07 IST
-**Context**: All 9 major issues resolved. M6 resolved via T11/C3 (U_CZX acts on code subspace, not singlet). All 20 recent papers (2018–2026) cited.
-**Files**: `timesarrow.tex`, `spt-lqg-mapping.tex`, `z2-action-derivation.tex`, `timesarrow.bib`
-**Progress**:
-1. ✅ Fix factual errors (M12 first-order, M8 SSB language, M11 unitarity)
-2. ✅ Add must-cite and should-cite entries to bib + insert in tex
-3. ✅ Address all major issues (M6-M14) — M6 resolved by T11/C3 correction
-
-### T7: Trim MPS Pedagogy and Appendices
-**Status:** ✅ **Priority:** MEDIUM
-**Started:** 2026-04-16 **Last**: 2026-04-20 04:07 IST
-**Context**: Skip-ahead note added at line 307 of timesarrow.tex. Full trim (50% reduction) deemed unnecessary; preserves pedagogical content while giving experts clear exit path.
-**Files**: `timesarrow.tex`
-**Progress**:
-1. ✅ Added skip-ahead note: "Readers familiar with MPS... may skip directly to §3.5"
-2. ⬜ Full Section 3 trim deferred (not needed)
+1. ⬜ Construct explicit 3D lattice model combining spin-network intertwiner structure with SPT invariant
+2. ⬜ Compute anyon braiding statistics (e-m mutual π, loop linking = -1 for twisted case)
+3. ⬜ Compare with standard 3+1d toric code statistics
 
 ### T13: Gemini 3 Flash - Web Presentation
 **Status:** 🔄 **Priority:** MEDIUM

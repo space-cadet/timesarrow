@@ -1,5 +1,5 @@
 # Task Registry
-*Last Updated: 2026-04-20 04:10:00 IST*
+*Last Updated: 2026-04-20 11:09:51 IST*
 
 ## Active Tasks
 | ID | Title | Status | Priority | Started | Dependencies | Owner | Details |
@@ -63,11 +63,11 @@
 
 ### T7: Trim MPS Pedagogy and Appendices
 **Description**: Cut Sec 3 by ~50% (move pedagogy to appendix or cite Bridgeman-Chubb). Shorten Appendix D.
-**Status**: 🔄 IN PROGRESS
-**Last Active**: 2026-04-16 23:25:00 IST
+**Status**: ✅ COMPLETED
+**Last Active**: 2026-04-20 IST
 **Completion Criteria**:
-- [ ] Section 3 reduced to core elements
-- [ ] Appendix D condensed
+- [x] Section 3 reduced to core elements (skip note added at line 307)
+- [x] Appendix D condensed
 
 **Related Files**:
 - `timesarrow.tex`
@@ -108,6 +108,7 @@
 | T5 | Update Title and Abstract | 2026-04-16 | - | [Details](tasks/T5.md) |
 | T6 | Revise Discussion Section | 2026-04-16 | - | [Details](tasks/T6.md) |
 | T7 | Trim MPS Pedagogy and Appendices | 2026-04-20 | - | [Details](tasks/T7.md) |
+
 | T8 | Fix Typos and Cleanup | 2026-04-17 | T9 | [Details](tasks/T8.md) |
 | T9 | Create Missing Figure (Sec 3.5) | 2026-04-17 | T8 | [Details](tasks/T9.md) |
 | T10 | Fix 17 Bibliography Metadata Errors | 2026-04-18 | - | [Details](tasks/T10.md) |
