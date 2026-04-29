@@ -1,5 +1,5 @@
 # Task Registry
-*Last Updated: 2026-04-29 22:14:09 IST*
+*Last Updated: 2026-04-29 22:27:33 IST*
 
 ## Active Tasks
 | ID | Title | Status | Priority | Started | Dependencies | Owner | Details |
@@ -115,6 +115,7 @@
 | T12 | Address Major Issues and Add Recent Citations | 2026-04-20 | T11 | [Details](tasks/T12.md) |
 | T15 | 3D SPT Survey and Mapping | 2026-04-20 | T12 | [Details](tasks/T15.md) |
 | T14 | Kimi K2.5 - Minimal Web Presentation | 2026-04-29 | T13 | [Details](tasks/T14.md) |
+| T16 | Submission Documentation | 2026-04-29 | T15 | [Details](tasks/T16.md) |
 
 ## Task Relationships
 ```mermaid

@@ -3,6 +3,10 @@
 
 ## Current Status
 T14 (Static Web Presentation) completed. `web-static/` scaffold created with `index.html` (34 KB, 6 sections), dark quantum theme CSS, KaTeX math rendering, 4 embedded figures, and 4 inline SVG illustrations. Committed and pushed to `claude/continue-web-page-GpeKt`. Only T13 (Next.js interactive) remains open. Manuscript itself remains ready for submission.
+*Last Updated: 2026-04-29 22:27:33 IST*
+
+## Current Status
+T16 (Submission Documentation) completed. All submission documentation created: cover letter, AI assistance statement, contribution record, and manuscript acknowledgment update. Manuscript and all supporting documents are ready for SciPost Physics submission. Only web presentation tasks (T13, T14) remain open.
 
 ## Audit Summary (Updated)
 
@@ -22,6 +26,7 @@ T14 (Static Web Presentation) completed. `web-static/` scaffold created with `in
 
 ## Completed Tasks (This Session)
 - **T14**: Static Web Presentation — ✅ COMPLETED (`web-static/` with index.html, CSS, KaTeX, inline SVGs)
+- **T16**: Submission Documentation — ✅ COMPLETED (cover letter, AI statement, contribution record, manuscript acknowledgment)
 
 ## Implementation Docs Created
 - `implementation-details/gemini-web-presentation-plan.md`
@@ -30,15 +35,16 @@ T14 (Static Web Presentation) completed. `web-static/` scaffold created with `in
 - `implementation-details/3d-spt-survey-results.md` — Survey findings and appendix outline
 - `implementation-details/biber-infrastructure-fix.md` — Apple Silicon biber fix documentation
 - `supplementary-calculations.tex` — Verified; contains T11/C3 derivations
+- `project_contributions.md` — Author vs AI contribution delineation for submission
 
 ## Recommended Next Session Order
 1. **T13** — Next.js interactive web presentation (remaining open task).
 2. **Deploy T14** — Netlify drop-in deployment of `/web-static/` when deploy tool is available.
 
-## Open Author Decisions (unchanged from previous session)
-- Appendix D: sub-sections labeled A/B/C/D shadow top-level appendix labels
-- Abstract: SPT framing leads; confinement-deconfinement should lead per title
-- New (from audit): add explicit "original contributions" paragraph at end of Sec 1
+## Open Author Decisions
+- ~~Appendix D sub-label shadowing~~ ✅ RESOLVED: appendix subsections use `\subsection*{}` (unnumbered), no shadowing exists
+- ~~Abstract emphasis ordering~~ ✅ RESOLVED: abstract leads with confinement-deconfinement (line 219), SPT is secondary
+- ~~"Original contributions" paragraph~~ ✅ RESOLVED: present at timesarrow.tex line 247, 5 numbered contributions (i)–(v)
 
 ## Document Statistics
 - Pages: 36

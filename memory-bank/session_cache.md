@@ -4,11 +4,11 @@
 
 ## Current Session
 **Started**: 2026-04-29 22:14:09 IST
-**Focus Task**: T14 Completed
+**Focus Task**: T14 Completed, T16 Submission Documentation
 **Session File**: `sessions/2026-04-29-evening.md`
 
 ## Overview
-- Active: 1 (T13) | Paused: 0
+- Active: 2 (T13, T14) | Paused: 0
 - Last Session: `sessions/2026-04-20-afternoon.md`
 - Current Period: evening
 
@@ -38,7 +38,7 @@
 3. ✅ Committed and pushed (b770e1e)
 
 ## Session History (Last 5)
-1. `sessions/2026-04-29-evening.md` - T14 implementation complete: static web page "The Beginning of Time"
+1. `sessions/2026-04-29-evening.md` - T14 implementation complete: static web page "The Beginning of Time", T16 submission documentation (cover letter, AI statement, contribution record)
 2. `sessions/2026-04-20-afternoon.md` - T15 completion, M9 refinement, template cleanup, biber infrastructure fix
 3. `sessions/2026-04-20-morning.md` - T15 integration phase (Sec 7.3/7.4 edits)
 4. `sessions/2026-04-20-dawn.md` - T11, T7, T12 verification and completion
