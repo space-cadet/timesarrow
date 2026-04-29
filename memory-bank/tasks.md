@@ -1,5 +1,5 @@
 # Task Registry
-*Last Updated: 2026-04-20 12:36:54 IST*
+*Last Updated: 2026-04-29 22:27:33 IST*
 
 ## Active Tasks
 | ID | Title | Status | Priority | Started | Dependencies | Owner | Details |
@@ -114,6 +114,7 @@
 | T11 | Fix Critical Manuscript Errors | 2026-04-20 | - | [Details](tasks/T11.md) |
 | T12 | Address Major Issues and Add Recent Citations | 2026-04-20 | T11 | [Details](tasks/T12.md) |
 | T15 | 3D SPT Survey and Mapping | 2026-04-20 | T12 | [Details](tasks/T15.md) |
+| T16 | Submission Documentation | 2026-04-29 | T15 | [Details](tasks/T16.md) |
 
 ## Task Relationships
 ```mermaid

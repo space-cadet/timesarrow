@@ -1,8 +1,8 @@
 # Active Context
-*Last Updated: 2026-04-20 12:36:54 IST*
+*Last Updated: 2026-04-29 22:27:33 IST*
 
 ## Current Status
-T15 (3D SPT Survey) completed. All manuscript corrections applied including M9 refinement, SciPost template cleanup, acknowledgements update, and gapless/gapped terminology resolution. Infrastructure fix (biber) documented. Manuscript builds cleanly and is ready for submission. Only web presentation tasks (T13, T14) remain open.
+T16 (Submission Documentation) completed. All submission documentation created: cover letter, AI assistance statement, contribution record, and manuscript acknowledgment update. Manuscript and all supporting documents are ready for SciPost Physics submission. Only web presentation tasks (T13, T14) remain open.
 
 ## Audit Summary (Updated)
 
@@ -22,8 +22,7 @@ T15 (3D SPT Survey) completed. All manuscript corrections applied including M9 r
 - **T14**: Kimi K2.5 - Web Presentation — 🔄 IN PROGRESS
 
 ## Completed Tasks (This Session)
-- **T15**: 3D SPT Survey and Mapping — ✅ COMPLETED (Sec 7.3 integration complete, gapless/gapped resolved)
-- **T12**: Major issues + recent citations — ✅ COMPLETED (M6-M14 all resolved, M9 refined with new citations)
+- **T16**: Submission Documentation — ✅ COMPLETED (cover letter, AI statement, contribution record, manuscript acknowledgment)
 
 ## Implementation Docs Created
 - `implementation-details/gemini-web-presentation-plan.md`
@@ -32,14 +31,15 @@ T15 (3D SPT Survey) completed. All manuscript corrections applied including M9 r
 - `implementation-details/3d-spt-survey-results.md` — Survey findings and appendix outline
 - `implementation-details/biber-infrastructure-fix.md` — Apple Silicon biber fix documentation
 - `supplementary-calculations.tex` — Verified; contains T11/C3 derivations
+- `project_contributions.md` — Author vs AI contribution delineation for submission
 
 ## Recommended Next Session Order
 1. **T13/T14** — Web presentation implementation (parallel, non-blocking).
 
-## Open Author Decisions (unchanged from previous session)
-- Appendix D: sub-sections labeled A/B/C/D shadow top-level appendix labels
-- Abstract: SPT framing leads; confinement-deconfinement should lead per title
-- New (from audit): add explicit "original contributions" paragraph at end of Sec 1
+## Open Author Decisions
+- ~~Appendix D sub-label shadowing~~ ✅ RESOLVED: appendix subsections use `\subsection*{}` (unnumbered), no shadowing exists
+- ~~Abstract emphasis ordering~~ ✅ RESOLVED: abstract leads with confinement-deconfinement (line 219), SPT is secondary
+- ~~"Original contributions" paragraph~~ ✅ RESOLVED: present at timesarrow.tex line 247, 5 numbered contributions (i)–(v)
 
 ## Document Statistics
 - Pages: 36
