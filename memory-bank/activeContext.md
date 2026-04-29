@@ -1,8 +1,8 @@
 # Active Context
-*Last Updated: 2026-04-20 12:36:54 IST*
+*Last Updated: 2026-04-29 22:14:09 IST*
 
 ## Current Status
-T15 (3D SPT Survey) completed. All manuscript corrections applied including M9 refinement, SciPost template cleanup, acknowledgements update, and gapless/gapped terminology resolution. Infrastructure fix (biber) documented. Manuscript builds cleanly and is ready for submission. Only web presentation tasks (T13, T14) remain open.
+T14 (Static Web Presentation) completed. `web-static/` scaffold created with `index.html` (34 KB, 6 sections), dark quantum theme CSS, KaTeX math rendering, 4 embedded figures, and 4 inline SVG illustrations. Committed and pushed to `claude/continue-web-page-GpeKt`. Only T13 (Next.js interactive) remains open. Manuscript itself remains ready for submission.
 
 ## Audit Summary (Updated)
 
@@ -19,11 +19,9 @@ T15 (3D SPT Survey) completed. All manuscript corrections applied including M9 r
 
 ## Active Tasks
 - **T13**: Gemini 3 Flash - Web Presentation — 🔄 IN PROGRESS
-- **T14**: Kimi K2.5 - Web Presentation — 🔄 IN PROGRESS
 
 ## Completed Tasks (This Session)
-- **T15**: 3D SPT Survey and Mapping — ✅ COMPLETED (Sec 7.3 integration complete, gapless/gapped resolved)
-- **T12**: Major issues + recent citations — ✅ COMPLETED (M6-M14 all resolved, M9 refined with new citations)
+- **T14**: Static Web Presentation — ✅ COMPLETED (`web-static/` with index.html, CSS, KaTeX, inline SVGs)
 
 ## Implementation Docs Created
 - `implementation-details/gemini-web-presentation-plan.md`
@@ -34,7 +32,8 @@ T15 (3D SPT Survey) completed. All manuscript corrections applied including M9 r
 - `supplementary-calculations.tex` — Verified; contains T11/C3 derivations
 
 ## Recommended Next Session Order
-1. **T13/T14** — Web presentation implementation (parallel, non-blocking).
+1. **T13** — Next.js interactive web presentation (remaining open task).
+2. **Deploy T14** — Netlify drop-in deployment of `/web-static/` when deploy tool is available.
 
 ## Open Author Decisions (unchanged from previous session)
 - Appendix D: sub-sections labeled A/B/C/D shadow top-level appendix labels

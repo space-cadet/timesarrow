@@ -1,11 +1,11 @@
 # Task Registry
-*Last Updated: 2026-04-20 12:36:54 IST*
+*Last Updated: 2026-04-29 22:14:09 IST*
 
 ## Active Tasks
 | ID | Title | Status | Priority | Started | Dependencies | Owner | Details |
 |----|-------|--------|----------|---------|--------------|-------|---------|
 | T13 | Gemini 3 Flash - Create Accessible Web Presentation | 🔄 IN PROGRESS | MEDIUM | 2026-04-18 | - | Assistant | [Details](tasks/T13.md) |
-| T14 | Kimi K2.5 - Minimal Web Presentation | 🔄 IN PROGRESS | MEDIUM | 2026-04-18 | - | Assistant | [Details](tasks/T14.md) |
+| T14 | Kimi K2.5 - Minimal Web Presentation | ✅ COMPLETED | MEDIUM | 2026-04-18 | - | Assistant | [Details](tasks/T14.md) |
 
 ## Task Details
 
@@ -114,6 +114,7 @@
 | T11 | Fix Critical Manuscript Errors | 2026-04-20 | - | [Details](tasks/T11.md) |
 | T12 | Address Major Issues and Add Recent Citations | 2026-04-20 | T11 | [Details](tasks/T12.md) |
 | T15 | 3D SPT Survey and Mapping | 2026-04-20 | T12 | [Details](tasks/T15.md) |
+| T14 | Kimi K2.5 - Minimal Web Presentation | 2026-04-29 | T13 | [Details](tasks/T14.md) |
 
 ## Task Relationships
 ```mermaid
