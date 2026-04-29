@@ -1,4 +1,8 @@
 # Active Context
+*Last Updated: 2026-04-29 22:14:09 IST*
+
+## Current Status
+T14 (Static Web Presentation) completed. `web-static/` scaffold created with `index.html` (34 KB, 6 sections), dark quantum theme CSS, KaTeX math rendering, 4 embedded figures, and 4 inline SVG illustrations. Committed and pushed to `claude/continue-web-page-GpeKt`. Only T13 (Next.js interactive) remains open. Manuscript itself remains ready for submission.
 *Last Updated: 2026-04-29 22:27:33 IST*
 
 ## Current Status
@@ -19,9 +23,9 @@ T16 (Submission Documentation) completed. All submission documentation created: 
 
 ## Active Tasks
 - **T13**: Gemini 3 Flash - Web Presentation — 🔄 IN PROGRESS
-- **T14**: Kimi K2.5 - Web Presentation — 🔄 IN PROGRESS
 
 ## Completed Tasks (This Session)
+- **T14**: Static Web Presentation — ✅ COMPLETED (`web-static/` with index.html, CSS, KaTeX, inline SVGs)
 - **T16**: Submission Documentation — ✅ COMPLETED (cover letter, AI statement, contribution record, manuscript acknowledgment)
 
 ## Implementation Docs Created
@@ -34,7 +38,8 @@ T16 (Submission Documentation) completed. All submission documentation created: 
 - `project_contributions.md` — Author vs AI contribution delineation for submission
 
 ## Recommended Next Session Order
-1. **T13/T14** — Web presentation implementation (parallel, non-blocking).
+1. **T13** — Next.js interactive web presentation (remaining open task).
+2. **Deploy T14** — Netlify drop-in deployment of `/web-static/` when deploy tool is available.
 
 ## Open Author Decisions
 - ~~Appendix D sub-label shadowing~~ ✅ RESOLVED: appendix subsections use `\subsection*{}` (unnumbered), no shadowing exists
