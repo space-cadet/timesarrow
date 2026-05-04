@@ -1,8 +1,8 @@
 # Active Context
-*Last Updated: 2026-05-05 01:23:22 IST*
+*Last Updated: 2026-05-05 01:31 IST*
 
 ## Current Status
-T17 (arXiv Submission Preparation) completed. `arxiv_submission_v1/` created with clean `timesarrow.tex` (44 pages), `SciPost.cls`, `timesarrow.bbl`, 34 figure files. AI assistance statement added as end addendum with hyperlinked git commits and verified dates. Build clean. Tarball `arxiv-submission-v1.tar.gz` (1.4 MB) ready. User will do one final pass in new session before upload.
+T17 (arXiv Submission Preparation) — AI peer review complete. Nine issues identified (2 critical, 4 major, 3 moderate); all resolved with author approval. Fixed manuscript copied to `arxiv_submission_v1/`. Build clean (42 pages). Ready for final author read-through before upload.
 
 ## Audit Summary (Updated)
 
@@ -34,6 +34,7 @@ T17 (arXiv Submission Preparation) completed. `arxiv_submission_v1/` created wit
 - `implementation-details/biber-infrastructure-fix.md` — Apple Silicon biber fix documentation
 - `supplementary-calculations.tex` — Verified; contains T11/C3 derivations
 - `project_contributions.md` — Author vs AI contribution delineation for submission
+- `implementation-details/ai-peer-review-2026-05-05.md` — Full dialog of final peer review: reviewer claims, author responses, admitted errors, and resolutions
 
 ## Recommended Next Session Order
 1. **Final arXiv pass** — User will review submission bundle in new session.

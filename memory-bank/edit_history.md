@@ -1,11 +1,26 @@
 # Edit History
 
 *Created: 2026-04-16 20:22:00 IST*
-*Last Updated: 2026-05-05 01:23:22 IST*
+*Last Updated: 2026-05-05 02:13:32 IST*
 
 ## File Modification Log
 
 ### 2026-05-05
+
+#### 02:13:32 IST - T17-ext: AI Peer Review — 9 Fixes Applied
+- Modified `timesarrow.tex` - Fixed eqn:area-minimum: added missing pi factor (4√3 π γ lp²)
+- Modified `timesarrow.tex` - Fixed eqn:vol-states basis consistency in Appendix F (manuscript basis, not supplementary basis)
+- Modified `timesarrow.tex` - Clarified line 1437: SU(2) Gauss constraint reduces to effective Z₂ on j=1/2 intertwiner qubit
+- Modified `timesarrow.tex` - Reframed Intro claim (iv): structural correspondence of Z₂-invariant effective qubits (not literal U_CZX action)
+- Modified `timesarrow.tex` - Added regular-lattice dominance paragraph in Sec 6.3 justifying 2D CZX ↔ 3D spin-network mapping
+- Modified `timesarrow.tex` - Added universality footnote at line 1084 distinguishing 3+1D quantum Ising from classical 3D→2D duality
+- Modified `timesarrow.tex` - Made thermal argument dimensionally consistent: explicit Planck units with restoration at end
+- Modified `timesarrow.tex` - Added MPS caveat: generic states require exponential bond dimension
+- Modified `timesarrow.tex` - En-dash typography consistency in title and abstract
+- Modified `arxiv_submission_v1/timesarrow.tex` - Synced from root manuscript after all fixes
+- Modified `arxiv-submission-v1.tar.gz` - Rebuilt bundle (~1.5 MB)
+- Created `memory-bank/implementation-details/ai-peer-review-2026-05-05.md` - Full 3-round peer review dialog with resolutions table
+- Created `memory-bank/sessions/2026-05-05-peer-review.md` - Session record for peer review work
 
 #### 01:23:22 IST - T17: arXiv Submission Preparation
 - Created `arxiv_submission_v1/` - Clean submission folder with figures subdirectory
