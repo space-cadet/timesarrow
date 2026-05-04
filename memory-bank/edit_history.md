@@ -1,11 +1,21 @@
 # Edit History
 
 *Created: 2026-04-16 20:22:00 IST*
-*Last Updated: 2026-05-05 02:13:32 IST*
+*Last Updated: 2026-05-05 02:42:04 IST*
 
 ## File Modification Log
 
 ### 2026-05-05
+
+#### 02:42:04 IST - T17: arXiv Submission Uploaded
+- Modified `arxiv_submission_v1/timesarrow.tex` - Restored full AI addendum (84 lines) accidentally stripped during peer-review fixes
+- Modified `timesarrow.tex` - Restored full AI addendum at end of document
+- Modified `arxiv-submission-v1.tar.gz` - Rebuilt with root-level files (no top-level directory)
+- Updated `memory-bank/tasks/T17.md` - Added submission reference submit/7550944
+- Updated `memory-bank/tasks.md` - Updated last-updated timestamp
+- Updated `memory-bank/activeContext.md` - Marked T17 as submitted to arXiv
+- Updated `memory-bank/session_cache.md` - Recorded submission status and reference
+- Updated `memory-bank/sessions/2026-05-05-peer-review.md` - Added arXiv upload section
 
 #### 02:13:32 IST - T17-ext: AI Peer Review — 9 Fixes Applied
 - Modified `timesarrow.tex` - Fixed eqn:area-minimum: added missing pi factor (4√3 π γ lp²)

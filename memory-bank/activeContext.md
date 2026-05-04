@@ -1,8 +1,8 @@
 # Active Context
-*Last Updated: 2026-05-05 01:31 IST*
+*Last Updated: 2026-05-05 02:42 IST*
 
 ## Current Status
-T17 (arXiv Submission Preparation) — AI peer review complete. Nine issues identified (2 critical, 4 major, 3 moderate); all resolved with author approval. Fixed manuscript copied to `arxiv_submission_v1/`. Build clean (42 pages). Ready for final author read-through before upload.
+T17 (arXiv Submission Preparation) — **SUBMITTED** to arXiv. Reference `submit/7550944`; status **on hold**. AI peer review complete (9 issues fixed). Fixed manuscript copied to `arxiv_submission_v1/`. Build clean (44 pages).
 
 ## Audit Summary (Updated)
 
@@ -24,7 +24,7 @@ T17 (arXiv Submission Preparation) — AI peer review complete. Nine issues iden
 - **T13**: Gemini 3 Flash - Web Presentation — 🔄 IN PROGRESS
 
 ## Completed Tasks (This Session)
-- **T17**: arXiv Submission Preparation — ✅ COMPLETED
+- **T17**: arXiv Submission Preparation — ✅ COMPLETED & SUBMITTED (submit/7550944)
 
 ## Implementation Docs Created
 - `implementation-details/gemini-web-presentation-plan.md`
@@ -50,5 +50,5 @@ T17 (arXiv Submission Preparation) — AI peer review complete. Nine issues iden
 ## Document Statistics
 - Pages: 44
 - LaTeX: builds cleanly
-- Status: Ready for arXiv submission (pending final user review)
+- Status: Submitted to arXiv (submit/7550944, on hold)
 - Pending: T13 (web presentation), final submission upload

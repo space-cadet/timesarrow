@@ -1,12 +1,12 @@
 # Session Cache
 *Created: 2026-04-16 20:11:25 IST*
-*Last Updated: 2026-05-05 02:13 IST*
+*Last Updated: 2026-05-05 02:42 IST*
 
 ## Current Session
 **Started**: 2026-05-05 01:31 IST
 **Focus Task**: T17 arXiv Submission Preparation — AI Peer Review
 **Session File**: `sessions/2026-05-05-peer-review.md`
-**Status**: ✅ COMPLETED (02:13 IST)
+**Status**: ✅ COMPLETED (02:13 IST) → **SUBMITTED** (02:42 IST)
 
 ## Overview
 - Active: 1 (T13) | Paused: 0
@@ -16,7 +16,7 @@
 ## Task Registry
 - T13: Gemini 3 Flash - Web Presentation (Next.js) — 🔄
 - T14: Kimi K2.5 - Web Presentation (Static HTML) — ✅
-- T17: arXiv Submission Preparation — ✅
+- T17: arXiv Submission Preparation — ✅ SUBMITTED (submit/7550944)
 
 ## Active Tasks
 
@@ -31,8 +31,8 @@
 
 ### T17: arXiv Submission Preparation
 **Status:** ✅ **Priority:** HIGH
-**Started:** 2026-05-05 **Last**: 2026-05-05 01:23:22 IST
-**Context**: Clean submission bundle created. User will do final pass in new session.
+**Started:** 2026-05-05 **Last**: 2026-05-05 02:42:04 IST
+**Context**: arXiv submission uploaded. Reference `submit/7550944`; status on hold.
 **Files**: `arxiv_submission_v1/timesarrow.tex`, `arxiv-submission-v1.tar.gz`
 **Progress**:
 1. ✅ Folder created and files copied
@@ -40,9 +40,10 @@
 3. ✅ AI addendum added with hyperlinked commits
 4. ✅ Build verified (44 pages, clean)
 5. ✅ Tarball created (1.4 MB)
+6. ✅ Submitted to arXiv (submit/7550944)
 
 ## Session History (Last 5)
-1. `sessions/2026-05-05-peer-review.md` - T17: AI peer review — 9 issues fixed, manuscript updated
+1. `sessions/2026-05-05-peer-review.md` - T17: AI peer review + arXiv upload (submit/7550944)
 2. `sessions/2026-05-05-early.md` - T17: arXiv submission preparation complete
 3. `sessions/2026-04-29-evening.md` - T14 implementation complete: static web page "The Beginning of Time", T16 submission documentation
 4. `sessions/2026-04-20-afternoon.md` - T15 completion, M9 refinement, template cleanup, biber infrastructure fix

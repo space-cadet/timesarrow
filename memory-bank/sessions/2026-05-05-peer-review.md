@@ -5,7 +5,7 @@ source_commit: 89816d1a9be1060870f068c509ca9ce0429b1014
 
 # Session 2026-05-05 — AI Peer Review (Final Manuscript Pass)
 *Created: 2026-05-05 01:31 IST*
-*Last Updated: 2026-05-05 01:31 IST*
+*Last Updated: 2026-05-05 02:42 IST*
 
 ## Focus Task
 T17: arXiv Submission Preparation — Final peer review before upload
@@ -51,7 +51,13 @@ AI Peer Review / Pre-submission audit
 ## Build Verification
 - `pdflatex` + `biber` + `pdflatex` × 2: clean, 42 pages, stable output
 
+## arXiv Upload
+- **Time**: 2026-05-05 02:42 IST
+- **Reference**: `submit/7550944`
+- **Status**: On hold (arXiv standard review queue)
+- **Bundle**: `arxiv-submission-v1.tar.gz` (files at root level, no top-level directory)
+- **Addendum**: Full AI assistance statement restored and included
+
 ## Next Steps
-- User to perform final read-through of submission bundle
-- Rebuild tarball `arxiv-submission-v1.tar.gz` after any final author edits
-- Proceed to arXiv upload
+- Wait for arXiv moderation decision
+- T13 (web presentation) remains active task
