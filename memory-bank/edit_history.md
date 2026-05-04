@@ -1,9 +1,27 @@
 # Edit History
 
 *Created: 2026-04-16 20:22:00 IST*
-*Last Updated: 2026-04-29 22:27:33 IST*
+*Last Updated: 2026-05-05 01:23:22 IST*
 
 ## File Modification Log
+
+### 2026-05-05
+
+#### 01:23:22 IST - T17: arXiv Submission Preparation
+- Created `arxiv_submission_v1/` - Clean submission folder with figures subdirectory
+- Created `arxiv_submission_v1/timesarrow.tex` - Edited for arXiv (disabled todonotes, added `\pdfoutput=1`, cleaned template comments)
+- Created `arxiv_submission_v1/SciPost.cls` - Document class file
+- Created `arxiv_submission_v1/timesarrow.bbl` - Bibliography (biblatex format 3.3)
+- Created `arxiv_submission_v1/timesarrow.bib` - BibTeX source
+- Created `arxiv_submission_v1/figures/` - 34 referenced figure files
+- Modified `arxiv_submission_v1/timesarrow.tex` - Added AI assistance statement addendum at end of document
+- Modified `arxiv_submission_v1/timesarrow.tex` - Hyperlinked all commit IDs in addendum to GitHub repo
+- Modified `arxiv_submission_v1/timesarrow.tex` - Updated "What the AI Did Not Do" to note Appendix F was AI-drafted
+- Modified `arxiv_submission_v1/timesarrow.tex` - Changed "editor" analogy to "research assistant"
+- Modified `arxiv_submission_v1/timesarrow.tex` - Added `\thanks` footnote with repo link on author line
+- Created `arxiv-submission-v1.tar.gz` - Final submission bundle (1.4 MB)
+- Created `memory-bank/tasks/T17.md` - Task documentation
+- Created `memory-bank/sessions/2026-05-05-early.md` - Session log
 
 ### 2026-04-29
 

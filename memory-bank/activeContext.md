@@ -1,12 +1,8 @@
 # Active Context
-*Last Updated: 2026-04-29 22:14:09 IST*
+*Last Updated: 2026-05-05 01:23:22 IST*
 
 ## Current Status
-T14 (Static Web Presentation) completed. `web-static/` scaffold created with `index.html` (34 KB, 6 sections), dark quantum theme CSS, KaTeX math rendering, 4 embedded figures, and 4 inline SVG illustrations. Committed and pushed to `claude/continue-web-page-GpeKt`. Only T13 (Next.js interactive) remains open. Manuscript itself remains ready for submission.
-*Last Updated: 2026-04-29 22:27:33 IST*
-
-## Current Status
-T16 (Submission Documentation) completed. All submission documentation created: cover letter, AI assistance statement, contribution record, and manuscript acknowledgment update. Manuscript and all supporting documents are ready for SciPost Physics submission. Only web presentation tasks (T13, T14) remain open.
+T17 (arXiv Submission Preparation) completed. `arxiv_submission_v1/` created with clean `timesarrow.tex` (44 pages), `SciPost.cls`, `timesarrow.bbl`, 34 figure files. AI assistance statement added as end addendum with hyperlinked git commits and verified dates. Build clean. Tarball `arxiv-submission-v1.tar.gz` (1.4 MB) ready. User will do one final pass in new session before upload.
 
 ## Audit Summary (Updated)
 
@@ -21,12 +17,14 @@ T16 (Submission Documentation) completed. All submission documentation created: 
 - ✅ T11 Completed: All 5 critical errors fixed (C1-C5).
 - ✅ T12 Completed: All 9 major issues addressed; M6 resolved by C3 correction.
 
+### Agent D — arXiv Submission Preparation
+- ✅ T17 Completed: Clean submission bundle created, build verified, tarball ready.
+
 ## Active Tasks
 - **T13**: Gemini 3 Flash - Web Presentation — 🔄 IN PROGRESS
 
 ## Completed Tasks (This Session)
-- **T14**: Static Web Presentation — ✅ COMPLETED (`web-static/` with index.html, CSS, KaTeX, inline SVGs)
-- **T16**: Submission Documentation — ✅ COMPLETED (cover letter, AI statement, contribution record, manuscript acknowledgment)
+- **T17**: arXiv Submission Preparation — ✅ COMPLETED
 
 ## Implementation Docs Created
 - `implementation-details/gemini-web-presentation-plan.md`
@@ -38,16 +36,18 @@ T16 (Submission Documentation) completed. All submission documentation created: 
 - `project_contributions.md` — Author vs AI contribution delineation for submission
 
 ## Recommended Next Session Order
-1. **T13** — Next.js interactive web presentation (remaining open task).
-2. **Deploy T14** — Netlify drop-in deployment of `/web-static/` when deploy tool is available.
+1. **Final arXiv pass** — User will review submission bundle in new session.
+2. **T13** — Next.js interactive web presentation (remaining open task).
+3. **Deploy T14** — Netlify drop-in deployment of `/web-static/` when deploy tool is available.
 
 ## Open Author Decisions
-- ~~Appendix D sub-label shadowing~~ ✅ RESOLVED: appendix subsections use `\subsection*{}` (unnumbered), no shadowing exists
-- ~~Abstract emphasis ordering~~ ✅ RESOLVED: abstract leads with confinement-deconfinement (line 219), SPT is secondary
-- ~~"Original contributions" paragraph~~ ✅ RESOLVED: present at timesarrow.tex line 247, 5 numbered contributions (i)–(v)
+- ~~Appendix D sub-label shadowing~~ ✅ RESOLVED
+- ~~Abstract emphasis ordering~~ ✅ RESOLVED
+- ~~"Original contributions" paragraph~~ ✅ RESOLVED
+- ~~Front-page repo link footnote~~ 🔄 ATTEMPTED: `\thanks` added but may not render correctly in SciPost class
 
 ## Document Statistics
-- Pages: 36
+- Pages: 44
 - LaTeX: builds cleanly
-- Status: Ready for submission
-- Pending: T13/T14 (web presentations)
+- Status: Ready for arXiv submission (pending final user review)
+- Pending: T13 (web presentation), final submission upload
