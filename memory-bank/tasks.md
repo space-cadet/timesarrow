@@ -1,11 +1,11 @@
 # Task Registry
-*Last Updated: 2026-05-05 02:42:04 IST*
+*Last Updated: 2026-05-06 17:26:52 IST*
 
 ## Active Tasks
-| ID | Title | Status | Priority | Started | Dependencies | Owner | Details |
-|----|-------|--------|----------|---------|--------------|-------|---------|
-| T13 | Gemini 3 Flash - Create Accessible Web Presentation | 🔄 IN PROGRESS | MEDIUM | 2026-04-18 | - | Assistant | [Details](tasks/T13.md) |
-| T14 | Kimi K2.5 - Minimal Web Presentation | ✅ COMPLETED | MEDIUM | 2026-04-18 | - | Assistant | [Details](tasks/T14.md) |
+| ID | Title | Status | Priority | Started | Dependencies | Details |
+|----|-------|--------|----------|---------|--------------|---------|
+| T13 | Gemini 3 Flash - Create Accessible Web Presentation | 🔄 | MEDIUM | 2026-04-18 | - | [Details](tasks/T13.md) |
+| T18 | Manuscript Claim-Hardening and Reviewer-Response Roadmap | 🔄 | HIGH | 2026-05-06 | T15, T17 | [Details](tasks/T18.md) |
 
 ## Task Details
 
@@ -91,10 +91,17 @@
 
 ### T15: 3D SPT Survey and Mapping
 **Description**: Survey classification of 3D bosonic SPT phases with Z₂ᵀ symmetry to resolve the 2D/3D mismatch identified in M14. Match deconfined 3D Z₂ LGT to the appropriate SPT entry.
-**Status**: 🔄 ACTIVE
-**Last Active**: 2026-04-20 02:50:00 IST
+**Status**: ✅ COMPLETED
+**Last Active**: 2026-04-20 12:36:54 IST
 **Dependencies**: T12
-**Related Files**: `memory-bank/implementation-details/3d-spt-survey-needed.md`, `spt-lqg-mapping.tex`, `timesarrow.bib`
+**Related Files**: `memory-bank/implementation-details/3d-spt-survey-needed.md`, `memory-bank/implementation-details/3d-spt-survey-results.md`, `memory-bank/implementation-details/fermionic-matter-emergence.md`, `spt-lqg-mapping.tex`, `timesarrow.bib`
+
+### T18: Manuscript Claim-Hardening and Reviewer-Response Roadmap
+**Description**: Build a reviewer-survival memo that separates derivable manuscript claims from model assumptions, conjectures, and future-work items before any manuscript edits.
+**Status**: 🔄 ACTIVE
+**Last Active**: 2026-05-06 17:26:52 IST
+**Dependencies**: T15, T17
+**Related Files**: `memory-bank/tasks/T18.md`, `memory-bank/implementation-details/manuscript-claim-hardening-proposal-2026-05-06.md`, `timesarrow.pdf`, `timesarrow.tex`
 
 ## Completed Tasks
 | ID | Title | Completed | Related Tasks | Archive |

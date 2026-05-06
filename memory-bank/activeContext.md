@@ -1,8 +1,8 @@
 # Active Context
-*Last Updated: 2026-05-05 02:42 IST*
+*Last Updated: 2026-05-06 17:26:52 IST*
 
 ## Current Status
-T17 (arXiv Submission Preparation) — **SUBMITTED** to arXiv. Reference `submit/7550944`; status **on hold**. AI peer review complete (9 issues fixed). Fixed manuscript copied to `arxiv_submission_v1/`. Build clean (44 pages).
+T18 (Manuscript Claim-Hardening and Reviewer-Response Roadmap) — **ACTIVE**. Fresh PDF review identified a follow-up need: produce a technical memo before any manuscript edits, separating derivable claims from model assumptions, conjectures, and future-work items. T17 remains submitted to arXiv as `submit/7550944`; status on hold.
 
 ## Audit Summary (Updated)
 
@@ -21,12 +21,17 @@ T17 (arXiv Submission Preparation) — **SUBMITTED** to arXiv. Reference `submit
 - ✅ T17 Completed: Clean submission bundle created, build verified, tarball ready.
 
 ## Active Tasks
+- **T18**: Manuscript Claim-Hardening and Reviewer-Response Roadmap — 🔄 IN PROGRESS
 - **T13**: Gemini 3 Flash - Web Presentation — 🔄 IN PROGRESS
 
-## Completed Tasks (This Session)
+## Completed Tasks (Current Session)
+- None. T18 planning task is active; no manuscript edits made.
+
+## Recent Completed Tasks
 - **T17**: arXiv Submission Preparation — ✅ COMPLETED & SUBMITTED (submit/7550944)
 
 ## Implementation Docs Created
+- `implementation-details/manuscript-claim-hardening-proposal-2026-05-06.md` — T18 proposal: defensible claims map, derivation targets, and reframe points
 - `implementation-details/gemini-web-presentation-plan.md`
 - `implementation-details/arrow-of-time-survey.md`
 - `implementation-details/3d-spt-survey-needed.md` — 3D SPT classification survey requirements
@@ -37,11 +42,13 @@ T17 (arXiv Submission Preparation) — **SUBMITTED** to arXiv. Reference `submit
 - `implementation-details/ai-peer-review-2026-05-05.md` — Full dialog of final peer review: reviewer claims, author responses, admitted errors, and resolutions
 
 ## Recommended Next Session Order
-1. **Final arXiv pass** — User will review submission bundle in new session.
-2. **T13** — Next.js interactive web presentation (remaining open task).
-3. **Deploy T14** — Netlify drop-in deployment of `/web-static/` when deploy tool is available.
+1. **T18 technical memo** — Build claim/support/gap/repair/proposed wording map before manuscript edits.
+2. **Final arXiv pass** — User may review submission bundle while arXiv status remains on hold.
+3. **T13** — Next.js interactive web presentation.
+4. **Deploy T14** — Netlify drop-in deployment of `/web-static/` when deploy tool is available.
 
 ## Open Author Decisions
+- T18 memo scope: whether to focus first on `Z_2` gauge derivation, CZX/SPT framing, fermion conjecture, or all claims in one pass.
 - ~~Appendix D sub-label shadowing~~ ✅ RESOLVED
 - ~~Abstract emphasis ordering~~ ✅ RESOLVED
 - ~~"Original contributions" paragraph~~ ✅ RESOLVED
@@ -51,4 +58,4 @@ T17 (arXiv Submission Preparation) — **SUBMITTED** to arXiv. Reference `submit
 - Pages: 44
 - LaTeX: builds cleanly
 - Status: Submitted to arXiv (submit/7550944, on hold)
-- Pending: T13 (web presentation), final submission upload
+- Pending: T18 technical memo, T13 web presentation, arXiv moderation decision

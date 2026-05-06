@@ -1,9 +1,20 @@
 # Edit History
 
 *Created: 2026-04-16 20:22:00 IST*
-*Last Updated: 2026-05-05 02:42:04 IST*
+*Last Updated: 2026-05-06 17:26:52 IST*
 
 ## File Modification Log
+
+### 2026-05-06
+
+#### 17:26:52 IST - T18: Claim-hardening roadmap recorded
+- Created `memory-bank/tasks/T18.md` - New task for manuscript claim-hardening and reviewer-response roadmap
+- Created `memory-bank/implementation-details/manuscript-claim-hardening-proposal-2026-05-06.md` - Proposal capturing defensible claims map approach and technical gaps
+- Created `memory-bank/sessions/2026-05-06-evening.md` - Session log for PDF review follow-up and memory-bank update
+- Updated `memory-bank/tasks.md` - Added T18 active task and updated strict task registry table
+- Updated `memory-bank/activeContext.md` - Set T18 as current manuscript follow-up focus and refreshed timestamp
+- Updated `memory-bank/session_cache.md` - Recorded T18 in current session state and active task list
+- Updated `memory-bank/edit_history.md` - Regenerated generated-view entry for the T18 update
 
 ### 2026-05-05
 
