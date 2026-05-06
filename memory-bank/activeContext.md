@@ -1,8 +1,8 @@
 # Active Context
-*Last Updated: 2026-05-06 17:26:52 IST*
+*Last Updated: 2026-05-06 18:34:13 IST*
 
 ## Current Status
-T18 (Manuscript Claim-Hardening and Reviewer-Response Roadmap) — **ACTIVE**. Fresh PDF review identified a follow-up need: produce a technical memo before any manuscript edits, separating derivable claims from model assumptions, conjectures, and future-work items. T17 remains submitted to arXiv as `submit/7550944`; status on hold.
+T18 (Manuscript Claim-Hardening and Reviewer-Response Roadmap) — **ACTIVE**. Fresh PDF review and Sonnet 4.6 (Medium) second opinion identified a refined hardening path: `sigma_e` should be described as the shared binary bond index on a spin-network edge, with the full `SU(2)` intertwiner projection leading to signed-volume orientation sectors. T17 remains submitted to arXiv as `submit/7550944`; status on hold.
 
 ## Audit Summary (Updated)
 
@@ -49,6 +49,7 @@ T18 (Manuscript Claim-Hardening and Reviewer-Response Roadmap) — **ACTIVE**. F
 
 ## Open Author Decisions
 - T18 memo scope: whether to focus first on `Z_2` gauge derivation, CZX/SPT framing, fermion conjecture, or all claims in one pass.
+- T18 wording choice: new subsection should likely be "From Intertwiner Bond Indices to a `Z_2` Link Field" rather than half-edge comparison language.
 - ~~Appendix D sub-label shadowing~~ ✅ RESOLVED
 - ~~Abstract emphasis ordering~~ ✅ RESOLVED
 - ~~"Original contributions" paragraph~~ ✅ RESOLVED

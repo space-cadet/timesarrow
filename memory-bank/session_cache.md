@@ -1,12 +1,12 @@
 # Session Cache
 *Created: 2026-04-16 20:11:25 IST*
-*Last Updated: 2026-05-06 17:26:52 IST*
+*Last Updated: 2026-05-06 18:34:13 IST*
 
 ## Current Session
 **Started**: 2026-05-06 17:26:52 IST
 **Focus Task**: T18 Manuscript Claim-Hardening and Reviewer-Response Roadmap
 **Session File**: `sessions/2026-05-06-evening.md`
-**Status**: 🔄 ACTIVE — proposal recorded; no manuscript edits made
+**Status**: 🔄 ACTIVE — proposal and second-opinion discussion recorded; no manuscript edits made
 
 ## Overview
 - Active: 2 (T13, T18) | Paused: 0
@@ -23,13 +23,14 @@
 
 ### T18: Manuscript Claim-Hardening and Reviewer-Response Roadmap
 **Status:** 🔄 **Priority:** HIGH
-**Started:** 2026-05-06 **Last**: 2026-05-06 17:26:52 IST
-**Context**: Fresh PDF review found the need for a reviewer-facing memo before manuscript edits. The memo should separate derivable claims from model assumptions, conjectures, and future work.
+**Started:** 2026-05-06 **Last**: 2026-05-06 18:34:13 IST
+**Context**: Fresh PDF review found the need for a reviewer-facing memo before manuscript edits. Sonnet 4.6 (Medium) second opinion sharpened the structural claim: `sigma_e` is the shared binary bond index on an edge; the `Z_2` even-parity structure should not be conflated with the full `SU(2)` Gauss constraint.
 **Files**: `memory-bank/tasks/T18.md`, `memory-bank/implementation-details/manuscript-claim-hardening-proposal-2026-05-06.md`, `timesarrow.pdf`, `timesarrow.tex`
 **Progress**:
 1. ✅ Fresh PDF review completed
 2. ✅ Proposal recorded in memory bank
-3. 🔄 Draft technical memo with claim/support/gap/repair/proposed wording schema
+3. ✅ Second-opinion feasibility discussion recorded
+4. 🔄 Draft technical memo with claim/support/gap/repair/proposed wording schema
 
 ### T13: Gemini 3 Flash - Web Presentation
 **Status:** 🔄 **Priority:** MEDIUM

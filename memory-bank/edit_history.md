@@ -1,11 +1,20 @@
 # Edit History
 
 *Created: 2026-04-16 20:22:00 IST*
-*Last Updated: 2026-05-06 17:26:52 IST*
+*Last Updated: 2026-05-06 18:34:13 IST*
 
 ## File Modification Log
 
 ### 2026-05-06
+
+#### 18:34:13 IST - T18: Second-opinion feasibility discussion recorded
+- Updated `memory-bank/tasks/T18.md` - Added Sonnet 4.6 and GPT 5.5 model provenance, refined `Z_2` bond-index claim, and progress update
+- Updated `memory-bank/implementation-details/manuscript-claim-hardening-proposal-2026-05-06.md` - Appended full second-opinion discussion and GPT 5.5 follow-up assessment
+- Updated `memory-bank/sessions/2026-05-06-evening.md` - Added second-opinion discussion summary and key decisions
+- Updated `memory-bank/tasks.md` - Refreshed T18 last-active timestamp
+- Updated `memory-bank/activeContext.md` - Recorded refined T18 hardening path and subsection wording decision
+- Updated `memory-bank/session_cache.md` - Recorded second-opinion status and next memo step
+- Updated `memory-bank/edit_history.md` - Added generated-view entry for the second-opinion memory update
 
 #### 17:26:52 IST - T18: Claim-hardening roadmap recorded
 - Created `memory-bank/tasks/T18.md` - New task for manuscript claim-hardening and reviewer-response roadmap
