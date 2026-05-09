@@ -1,8 +1,8 @@
 # Active Context
-*Last Updated: 2026-05-06 18:34:13 IST*
+*Last Updated: 2026-05-09 12:03:05 IST*
 
 ## Current Status
-T18 (Manuscript Claim-Hardening and Reviewer-Response Roadmap) — **ACTIVE**. Fresh PDF review and Sonnet 4.6 (Medium) second opinion identified a refined hardening path: `sigma_e` should be described as the shared binary bond index on a spin-network edge, with the full `SU(2)` intertwiner projection leading to signed-volume orientation sectors. T17 remains submitted to arXiv as `submit/7550944`; status on hold.
+T18 (Manuscript Claim-Hardening and Reviewer-Response Roadmap) — **ACTIVE**. The reviewer-safe `sigma_e` / emergent-link clarification remains the main manuscript hardening thread. T19 (Markdown-First Z2 Section Pilot) — **COMPLETED**. A standalone `markdown-pilot/` workflow now generates and builds the `Z_2` section without modifying `timesarrow.tex`; full-manuscript integration was intentionally deferred. T17 remains submitted to arXiv as `submit/7550944`; status on hold.
 
 ## Audit Summary (Updated)
 
@@ -25,12 +25,14 @@ T18 (Manuscript Claim-Hardening and Reviewer-Response Roadmap) — **ACTIVE**. F
 - **T13**: Gemini 3 Flash - Web Presentation — 🔄 IN PROGRESS
 
 ## Completed Tasks (Current Session)
-- None. T18 planning task is active; no manuscript edits made.
+- **T19**: Markdown-First Z2 Section Pilot — ✅ COMPLETED
 
 ## Recent Completed Tasks
+- **T19**: Markdown-First Z2 Section Pilot — ✅ COMPLETED
 - **T17**: arXiv Submission Preparation — ✅ COMPLETED & SUBMITTED (submit/7550944)
 
 ## Implementation Docs Created
+- `implementation-details/markdown-first-z2-pilot-2026-05-09.md` — T19 pilot artifacts, workflow decisions, verification notes, and recommended full-manuscript integration test
 - `implementation-details/manuscript-claim-hardening-proposal-2026-05-06.md` — T18 proposal: defensible claims map, derivation targets, and reframe points
 - `implementation-details/gemini-web-presentation-plan.md`
 - `implementation-details/arrow-of-time-survey.md`
@@ -42,12 +44,13 @@ T18 (Manuscript Claim-Hardening and Reviewer-Response Roadmap) — **ACTIVE**. F
 - `implementation-details/ai-peer-review-2026-05-05.md` — Full dialog of final peer review: reviewer claims, author responses, admitted errors, and resolutions
 
 ## Recommended Next Session Order
-1. **T18 technical memo** — Build claim/support/gap/repair/proposed wording map before manuscript edits.
-2. **Final arXiv pass** — User may review submission bundle while arXiv status remains on hold.
-3. **T13** — Next.js interactive web presentation.
-4. **Deploy T14** — Netlify drop-in deployment of `/web-static/` when deploy tool is available.
+1. **T19 integration test** — If the Markdown route resumes, wire `markdown-pilot/generated/z2-action.tex` into the full SciPost manuscript and compare the output.
+2. **T18 technical memo** — Build claim/support/gap/repair/proposed wording map before manuscript edits if staying on the current LaTeX source.
+3. **Final arXiv pass** — User may review submission bundle while arXiv status remains on hold.
+4. **T13** — Next.js interactive web presentation.
 
 ## Open Author Decisions
+- T19 integration choice: keep the Markdown pilot isolated, or replace the live `Z_2` section via `\input{markdown-pilot/generated/z2-action.tex}` for a full-manuscript test.
 - T18 memo scope: whether to focus first on `Z_2` gauge derivation, CZX/SPT framing, fermion conjecture, or all claims in one pass.
 - T18 wording choice: new subsection should likely be "From Intertwiner Bond Indices to a `Z_2` Link Field" rather than half-edge comparison language.
 - ~~Appendix D sub-label shadowing~~ ✅ RESOLVED
@@ -58,5 +61,6 @@ T18 (Manuscript Claim-Hardening and Reviewer-Response Roadmap) — **ACTIVE**. F
 ## Document Statistics
 - Pages: 44
 - LaTeX: builds cleanly
+- Markdown pilot: `markdown-pilot/build/z2-pilot.pdf` verified as a 7-page standalone artifact
 - Status: Submitted to arXiv (submit/7550944, on hold)
-- Pending: T18 technical memo, T13 web presentation, arXiv moderation decision
+- Pending: T19 full-manuscript integration decision, T18 technical memo, T13 web presentation, arXiv moderation decision

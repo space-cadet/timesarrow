@@ -1,0 +1,23 @@
+\PassOptionsToPackage{colorlinks=true,citecolor=blue,linkcolor=blue,urlcolor=blue}{hyperref}
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage[backend=biber,url=false,eprint=true,doi=true,sorting=none,backref=true]{biblatex}
+\addbibresource{../timesarrow.bib}
+\usepackage{amsmath,amssymb}
+\usepackage{bbm}
+
+\newcommand{\mb}[1]{\mathbf{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\expect}[1]{\langle #1\rangle}
+\newcommand{\id}{\mathbbm{1}}
+
+\begin{document}
+
+\input{generated/z2-action.tex}
+
+\printbibliography[title={Bibliography}]
+
+\end{document}

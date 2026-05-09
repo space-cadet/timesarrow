@@ -1,5 +1,5 @@
 # Task Registry
-*Last Updated: 2026-05-06 18:34:13 IST*
+*Last Updated: 2026-05-09 12:03:05 IST*
 
 ## Active Tasks
 | ID | Title | Status | Priority | Started | Dependencies | Details |
@@ -103,6 +103,13 @@
 **Dependencies**: T15, T17
 **Related Files**: `memory-bank/tasks/T18.md`, `memory-bank/implementation-details/manuscript-claim-hardening-proposal-2026-05-06.md`, `timesarrow.pdf`, `timesarrow.tex`
 
+### T19: Markdown-First Z2 Section Pilot
+**Description**: Build a non-destructive Markdown-plus-LaTeX pilot for the manuscript's `Z_2` section, verify a standalone PDF, and document the workflow before any full-manuscript integration.
+**Status**: ✅ COMPLETED
+**Last Active**: 2026-05-09 11:44:31 IST
+**Dependencies**: T18
+**Related Files**: `markdown-pilot/z2-action.md`, `markdown-pilot/generated/z2-action.tex`, `markdown-pilot/z2-pilot.tex`, `markdown-pilot/build/z2-pilot.pdf`, `memory-bank/tasks/T19.md`, `memory-bank/implementation-details/markdown-first-z2-pilot-2026-05-09.md`
+
 ## Completed Tasks
 | ID | Title | Completed | Related Tasks | Archive |
 |----|-------|-----------|---------------|---------|
@@ -124,6 +131,7 @@
 | T14 | Kimi K2.5 - Minimal Web Presentation | 2026-04-29 | T13 | [Details](tasks/T14.md) |
 | T16 | Submission Documentation | 2026-04-29 | T15 | [Details](tasks/T16.md) |
 | T17 | arXiv Submission Preparation | 2026-05-05 | T16 | [Details](tasks/T17.md) |
+| T19 | Markdown-First Z2 Section Pilot | 2026-05-09 | T18 | [Details](tasks/T19.md) |
 
 ## Task Relationships
 ```mermaid

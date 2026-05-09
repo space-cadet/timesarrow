@@ -1,23 +1,24 @@
 # Session Cache
 *Created: 2026-04-16 20:11:25 IST*
-*Last Updated: 2026-05-06 18:34:13 IST*
+*Last Updated: 2026-05-09 12:03:05 IST*
 
 ## Current Session
-**Started**: 2026-05-06 17:26:52 IST
-**Focus Task**: T18 Manuscript Claim-Hardening and Reviewer-Response Roadmap
-**Session File**: `sessions/2026-05-06-evening.md`
-**Status**: 🔄 ACTIVE — proposal and second-opinion discussion recorded; no manuscript edits made
+**Started**: 2026-05-09 11:22:52 IST
+**Focus Task**: T19 Markdown-First Z2 Section Pilot
+**Session File**: `sessions/2026-05-09-afternoon.md`
+**Status**: ✅ COMPLETED — standalone Markdown/LaTeX pilot created and verified; full-manuscript integration deferred
 
 ## Overview
 - Active: 2 (T13, T18) | Paused: 0
-- Last Session: `sessions/2026-05-05-peer-review.md`
-- Current Period: evening
+- Last Session: `sessions/2026-05-06-evening.md`
+- Current Period: afternoon
 
 ## Task Registry
 - T13: Gemini 3 Flash - Web Presentation (Next.js) — 🔄
 - T14: Kimi K2.5 - Web Presentation (Static HTML) — ✅
 - T17: arXiv Submission Preparation — ✅ SUBMITTED (submit/7550944)
 - T18: Manuscript Claim-Hardening and Reviewer-Response Roadmap — 🔄
+- T19: Markdown-First Z2 Section Pilot — ✅
 
 ## Active Tasks
 
@@ -43,6 +44,17 @@
 
 ## Recent Completed Tasks
 
+### T19: Markdown-First Z2 Section Pilot
+**Status:** ✅ **Priority:** MEDIUM
+**Started:** 2026-05-09 **Last**: 2026-05-09 11:44:31 IST
+**Context**: Standalone `markdown-pilot/` workflow created for the manuscript's `Z_2` section. Markdown source, generated TeX, wrapper, scripts, and verification PDF are in place; full-manuscript integration was intentionally deferred.
+**Files**: `markdown-pilot/z2-action.md`, `markdown-pilot/generated/z2-action.tex`, `markdown-pilot/z2-pilot.tex`, `markdown-pilot/build/z2-pilot.pdf`, `memory-bank/implementation-details/markdown-first-z2-pilot-2026-05-09.md`
+**Progress**:
+1. ✅ Markdown-first section source and standalone wrapper created
+2. ✅ Inline-math normalization added for Pandoc compatibility
+3. ✅ Standalone PDF build verified
+4. ⬜ Full-manuscript `\input{}` integration left for a future session
+
 ### T17: arXiv Submission Preparation
 **Status:** ✅ **Priority:** HIGH
 **Started:** 2026-05-05 **Last**: 2026-05-05 02:42:04 IST
@@ -57,8 +69,8 @@
 6. ✅ Submitted to arXiv (submit/7550944)
 
 ## Session History (Last 5)
-1. `sessions/2026-05-06-evening.md` - T18: Claim-hardening proposal recorded
-2. `sessions/2026-05-05-peer-review.md` - T17: AI peer review + arXiv upload (submit/7550944)
-3. `sessions/2026-05-05-early.md` - T17: arXiv submission preparation complete
-4. `sessions/2026-04-29-evening.md` - T14 implementation complete: static web page "The Beginning of Time", T16 submission documentation
-5. `sessions/2026-04-20-afternoon.md` - T15 completion, M9 refinement, template cleanup, biber infrastructure fix
+1. `sessions/2026-05-09-afternoon.md` - T19: standalone Markdown-first Z2 pilot created and verified
+2. `sessions/2026-05-06-evening.md` - T18: Claim-hardening proposal recorded
+3. `sessions/2026-05-05-peer-review.md` - T17: AI peer review + arXiv upload (submit/7550944)
+4. `sessions/2026-05-05-early.md` - T17: arXiv submission preparation complete
+5. `sessions/2026-04-29-evening.md` - T14 implementation complete: static web page "The Beginning of Time", T16 submission documentation
