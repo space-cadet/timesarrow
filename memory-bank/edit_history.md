@@ -1,9 +1,26 @@
 # Edit History
 
 *Created: 2026-04-16 20:22:00 IST*
-*Last Updated: 2026-05-09 12:03:05 IST*
+*Last Updated: 2026-05-12 13:36:57 IST*
 
 ## File Modification Log
+
+### 2026-05-12
+
+#### 13:36:57 IST - T18: Z2 link-field origin integrated
+- Modified `timesarrow.tex` - Identified `sigma_e` as the shared binary bond index on a `j=1/2` spin-network edge
+- Modified `timesarrow.tex` - Distinguished effective `Z_2` bond/even-parity structure from the full `SU(2)` singlet projection
+- Modified `timesarrow.tex` - Added local `Z_2` transformation law and referenced it in the plaquette-action discussion
+- Modified `timesarrow.tex` - Reframed the Wilson plaquette action and coupling `K` as effective dynamics pending spin-foam derivation
+- Modified `timesarrow.tex` - Tightened abstract and introduction wording from "introduce" to "identify" the `Z_2` link field
+- Modified `timesarrow.pdf` - Rebuilt 44-page manuscript PDF after the `sigma_e` integration
+- Updated `memory-bank/tasks/T18.md` - Recorded progress on the manuscript hardening task and remaining review state
+- Updated `memory-bank/tasks.md` - Refreshed T18 last-active timestamp
+- Updated `memory-bank/activeContext.md` - Recorded current T18 manuscript state and next review step
+- Updated `memory-bank/session_cache.md` - Set current session to the 2026-05-12 T18 manuscript integration
+- Created `memory-bank/sessions/2026-05-12-afternoon.md` - Logged the manuscript integration session
+- Created `memory-bank/edits/2026-05-12/133025-T18.md` - Added canonical edit chunk for the manuscript and memory-bank updates
+- Updated `memory-bank/edit_history.md` - Prepended the generated-view entry for the T18 integration
 
 ### 2026-05-09
 

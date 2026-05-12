@@ -1,5 +1,5 @@
 # Task Registry
-*Last Updated: 2026-05-09 12:03:05 IST*
+*Last Updated: 2026-05-12 13:36:57 IST*
 
 ## Active Tasks
 | ID | Title | Status | Priority | Started | Dependencies | Details |
@@ -99,7 +99,7 @@
 ### T18: Manuscript Claim-Hardening and Reviewer-Response Roadmap
 **Description**: Build a reviewer-survival memo that separates derivable manuscript claims from model assumptions, conjectures, and future-work items before any manuscript edits.
 **Status**: 🔄 ACTIVE
-**Last Active**: 2026-05-06 18:34:13 IST
+**Last Active**: 2026-05-12 13:36:57 IST
 **Dependencies**: T15, T17
 **Related Files**: `memory-bank/tasks/T18.md`, `memory-bank/implementation-details/manuscript-claim-hardening-proposal-2026-05-06.md`, `timesarrow.pdf`, `timesarrow.tex`
 

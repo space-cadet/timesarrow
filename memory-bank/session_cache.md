@@ -1,12 +1,12 @@
 # Session Cache
 *Created: 2026-04-16 20:11:25 IST*
-*Last Updated: 2026-05-09 12:03:05 IST*
+*Last Updated: 2026-05-12 13:36:57 IST*
 
 ## Current Session
-**Started**: 2026-05-09 11:22:52 IST
-**Focus Task**: T19 Markdown-First Z2 Section Pilot
-**Session File**: `sessions/2026-05-09-afternoon.md`
-**Status**: ✅ COMPLETED — standalone Markdown/LaTeX pilot created and verified; full-manuscript integration deferred
+**Started**: 2026-05-12 13:30:25 IST
+**Focus Task**: T18 Manuscript Claim-Hardening and Reviewer-Response Roadmap
+**Session File**: `sessions/2026-05-12-afternoon.md`
+**Status**: 🔄 ACTIVE — `sigma_e` link-field origin integrated into `timesarrow.tex`; focused reading pass completed with abstract/introduction wording tightened
 
 ## Overview
 - Active: 2 (T13, T18) | Paused: 0
@@ -24,14 +24,17 @@
 
 ### T18: Manuscript Claim-Hardening and Reviewer-Response Roadmap
 **Status:** 🔄 **Priority:** HIGH
-**Started:** 2026-05-06 **Last**: 2026-05-06 18:34:13 IST
-**Context**: Fresh PDF review found the need for a reviewer-facing memo before manuscript edits. Sonnet 4.6 (Medium) second opinion sharpened the structural claim: `sigma_e` is the shared binary bond index on an edge; the `Z_2` even-parity structure should not be conflated with the full `SU(2)` Gauss constraint.
+**Started:** 2026-05-06 **Last**: 2026-05-12 13:36:57 IST
+**Context**: Fresh PDF review and second-opinion discussion sharpened the structural claim: `sigma_e` is the shared binary bond index on a `j=1/2` spin-network edge; the `Z_2` even-parity structure should not be conflated with the full `SU(2)` Gauss constraint. This clarification is now integrated into `timesarrow.tex`; the Wilson plaquette action is framed as effective dynamics pending spin-foam derivation. Follow-up reading tightened abstract/introduction wording from "introduce" to "identify."
 **Files**: `memory-bank/tasks/T18.md`, `memory-bank/implementation-details/manuscript-claim-hardening-proposal-2026-05-06.md`, `timesarrow.pdf`, `timesarrow.tex`
 **Progress**:
 1. ✅ Fresh PDF review completed
 2. ✅ Proposal recorded in memory bank
 3. ✅ Second-opinion feasibility discussion recorded
-4. 🔄 Draft technical memo with claim/support/gap/repair/proposed wording schema
+4. ✅ `sigma_e` bond-index origin integrated into `timesarrow.tex`
+5. ✅ `timesarrow.pdf` rebuilt successfully as 44 pages
+6. ✅ Focused reading pass tightened abstract/introduction consistency
+7. 🔄 User reading of revised manuscript flow
 
 ### T13: Gemini 3 Flash - Web Presentation
 **Status:** 🔄 **Priority:** MEDIUM
@@ -69,8 +72,8 @@
 6. ✅ Submitted to arXiv (submit/7550944)
 
 ## Session History (Last 5)
-1. `sessions/2026-05-09-afternoon.md` - T19: standalone Markdown-first Z2 pilot created and verified
-2. `sessions/2026-05-06-evening.md` - T18: Claim-hardening proposal recorded
-3. `sessions/2026-05-05-peer-review.md` - T17: AI peer review + arXiv upload (submit/7550944)
-4. `sessions/2026-05-05-early.md` - T17: arXiv submission preparation complete
-5. `sessions/2026-04-29-evening.md` - T14 implementation complete: static web page "The Beginning of Time", T16 submission documentation
+1. `sessions/2026-05-12-afternoon.md` - T18: `sigma_e` link-field origin integrated into manuscript and PDF rebuilt
+2. `sessions/2026-05-09-afternoon.md` - T19: standalone Markdown-first Z2 pilot created and verified
+3. `sessions/2026-05-06-evening.md` - T18: Claim-hardening proposal recorded
+4. `sessions/2026-05-05-peer-review.md` - T17: AI peer review + arXiv upload (submit/7550944)
+5. `sessions/2026-05-05-early.md` - T17: arXiv submission preparation complete

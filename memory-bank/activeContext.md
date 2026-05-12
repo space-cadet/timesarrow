@@ -1,8 +1,8 @@
 # Active Context
-*Last Updated: 2026-05-09 12:03:05 IST*
+*Last Updated: 2026-05-12 13:36:57 IST*
 
 ## Current Status
-T18 (Manuscript Claim-Hardening and Reviewer-Response Roadmap) — **ACTIVE**. The reviewer-safe `sigma_e` / emergent-link clarification remains the main manuscript hardening thread. T19 (Markdown-First Z2 Section Pilot) — **COMPLETED**. A standalone `markdown-pilot/` workflow now generates and builds the `Z_2` section without modifying `timesarrow.tex`; full-manuscript integration was intentionally deferred. T17 remains submitted to arXiv as `submit/7550944`; status on hold.
+T18 (Manuscript Claim-Hardening and Reviewer-Response Roadmap) — **ACTIVE**. The reviewer-safe `sigma_e` / emergent-link clarification has now been integrated into `timesarrow.tex`: `sigma_e` is identified as the shared binary bond index on a `j=1/2` spin-network edge; the effective `Z_2` bond/even-parity structure is distinguished from the full `SU(2)` singlet projection; the Wilson plaquette action and coupling `K` are framed as effective dynamics pending spin-foam derivation. Follow-up reading tightened abstract/introduction wording so the manuscript says the link field is identified, not introduced by hand. T19 (Markdown-First Z2 Section Pilot) — **COMPLETED** and remains isolated. T17 remains submitted to arXiv as `submit/7550944`; status on hold.
 
 ## Audit Summary (Updated)
 
@@ -25,6 +25,7 @@ T18 (Manuscript Claim-Hardening and Reviewer-Response Roadmap) — **ACTIVE**. T
 - **T13**: Gemini 3 Flash - Web Presentation — 🔄 IN PROGRESS
 
 ## Completed Tasks (Current Session)
+- **T18**: `sigma_e` link-field origin integrated into live manuscript; `timesarrow.pdf` rebuilt cleanly
 - **T19**: Markdown-First Z2 Section Pilot — ✅ COMPLETED
 
 ## Recent Completed Tasks
@@ -44,15 +45,15 @@ T18 (Manuscript Claim-Hardening and Reviewer-Response Roadmap) — **ACTIVE**. T
 - `implementation-details/ai-peer-review-2026-05-05.md` — Full dialog of final peer review: reviewer claims, author responses, admitted errors, and resolutions
 
 ## Recommended Next Session Order
-1. **T19 integration test** — If the Markdown route resumes, wire `markdown-pilot/generated/z2-action.tex` into the full SciPost manuscript and compare the output.
-2. **T18 technical memo** — Build claim/support/gap/repair/proposed wording map before manuscript edits if staying on the current LaTeX source.
+1. **T18 focused reading pass** — Review the revised `Volume Operator`, `SPT-LQG`, and `Z_2 Action` chain for flow and reviewer-safety.
+2. **T19 integration test** — If the Markdown route resumes, wire `markdown-pilot/generated/z2-action.tex` into the full SciPost manuscript and compare the output.
 3. **Final arXiv pass** — User may review submission bundle while arXiv status remains on hold.
 4. **T13** — Next.js interactive web presentation.
 
 ## Open Author Decisions
 - T19 integration choice: keep the Markdown pilot isolated, or replace the live `Z_2` section via `\input{markdown-pilot/generated/z2-action.tex}` for a full-manuscript test.
-- T18 memo scope: whether to focus first on `Z_2` gauge derivation, CZX/SPT framing, fermion conjecture, or all claims in one pass.
-- T18 wording choice: new subsection should likely be "From Intertwiner Bond Indices to a `Z_2` Link Field" rather than half-edge comparison language.
+- T18 reading result: whether the integrated `sigma_e` origin now flows well enough, or whether it needs a dedicated subsection title such as "From Intertwiner Bond Indices to a `Z_2` Link Field."
+- T18 remaining scope: whether to next harden CZX/SPT framing, regular-lattice assumptions, or defer directly to the fermion conjecture.
 - ~~Appendix D sub-label shadowing~~ ✅ RESOLVED
 - ~~Abstract emphasis ordering~~ ✅ RESOLVED
 - ~~"Original contributions" paragraph~~ ✅ RESOLVED
@@ -60,7 +61,7 @@ T18 (Manuscript Claim-Hardening and Reviewer-Response Roadmap) — **ACTIVE**. T
 
 ## Document Statistics
 - Pages: 44
-- LaTeX: builds cleanly
+- LaTeX: builds cleanly after 2026-05-12 `sigma_e` integration
 - Markdown pilot: `markdown-pilot/build/z2-pilot.pdf` verified as a 7-page standalone artifact
 - Status: Submitted to arXiv (submit/7550944, on hold)
-- Pending: T19 full-manuscript integration decision, T18 technical memo, T13 web presentation, arXiv moderation decision
+- Pending: T18 focused reading pass, T19 full-manuscript integration decision, T13 web presentation, arXiv moderation decision
