@@ -2,14 +2,14 @@
 
 **Manuscript**: Gauging Time Reversal Symmetry in Quantum Gravity: Arrow of Time from a Confinement-Deconfinement Transition  
 **Author**: Deepak Vaid  
-**Date**: April 2026  
+**Date**: April-May 2026
 **Public repository**: https://github.com/space-cadet/timesarrow
 
 ---
 
 ## Summary
 
-The original manuscript was written entirely by the author between 2016 and 2018. In April 2026, the author used Claude (Anthropic, model claude-sonnet-4-6) as an AI writing assistant to prepare the manuscript for submission. The AI's role was limited to formalization, error correction, bibliography management, and LaTeX editing. All physical ideas, arguments, and conclusions originate with the author.
+The original manuscript was written entirely by the author between 2016 and 2018. In April-May 2026, the author used AI systems as technical writing and review assistants to prepare and refine the manuscript. These included Claude (Anthropic, model claude-sonnet-4-6), GPT-5.5, Kimi, and Codex. The AI's role was limited to formalization, error correction, bibliography management, LaTeX editing, critical review, and reviewer-safety calibration. All physical ideas, arguments, and conclusions originate with the author.
 
 The complete revision history is publicly auditable via the git repository linked above.
 
@@ -64,16 +64,38 @@ Commits `09dfd48` through `509fb79` (April 2026) represent work done with AI ass
 
 ---
 
+## AI-Assisted Claim Hardening (May 2026)
+
+After the initial arXiv submission, the author used AI systems for a focused reviewer-safety pass on the manuscript's central chain of reasoning. The author directed the questions, evaluated the responses, and approved the resulting changes.
+
+### Z₂ link-field origin clarification
+
+- AI-assisted review identified the lack of a sufficiently explicit origin for the `Z₂` link field as the main technical vulnerability.
+- The author clarified the intended construction: the `Z₂` variable is not added by hand, but is the shared binary bond index already present on `j=1/2` spin-network edges in the tensor-network/intertwiner representation.
+- AI-assisted drafting helped integrate this clarification into the manuscript: `sigma_e` is now identified as the shared edge bond index; the local vertex flip gives the usual `Z₂` gauge transformation; and the effective `Z₂` even-parity structure is distinguished from the full `SU(2)` singlet projection.
+- The Wilson plaquette action and coupling `K` were reframed as minimal effective dynamics consistent with the emergent gauge structure, not as quantities derived from spin-foam amplitudes.
+
+### Referee-facing calibration
+
+- GPT-5.5 and Kimi were used for independent critical discussion of the manuscript's interpretation of confinement/deconfinement, Wilson loops, and coherent time orientation.
+- Codex was used to apply targeted LaTeX edits that distinguish coherent cosmological time orientation from a complete derivation of the thermodynamic arrow of time.
+- A gauge-invariant dressed relative-orientation correlator was added to complement the Wilson loop and make the long-distance coherence claim operational.
+- The CZX/SPT language was calibrated to present a concrete tensor-network/bond-index correspondence, while preserving the Appendix F caveat that the projected LQG volume-qubit basis and the CZX code-space basis require careful operator-level matching.
+- The fermionic matter discussion was calibrated as a conjectural boundary/defect-surface mechanism rather than an established derivation.
+
+---
+
 ## What the AI Did Not Do
 
-- Propose any new physical mechanism or hypothesis
+- Propose the central physical mechanism or hypothesis
 - Identify the relevant condensed matter models (CZX, toric code) — these were the author's choices
 - Select the research question or the LQG framework
 - Generate any figures other than the one noted above
 - Write any of the appendices (all pre-existing author work)
+- Decide the physical interpretation of the `Z₂` bond index; the author supplied and approved this interpretation
 
 ---
 
 ## Author Responsibility
 
-The author reviewed all AI-generated content, approved all changes, and takes full scientific responsibility for the manuscript as submitted. The AI was used as a writing and formalization tool, analogous to a technically knowledgeable editor.
+The author reviewed all AI-generated content, approved all changes, and takes full scientific responsibility for the manuscript. The AI was used as a writing, review, and formalization tool, functioning in a role analogous to a technically knowledgeable research assistant working under the author's direct supervision.

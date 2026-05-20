@@ -1,17 +1,17 @@
 # Session Cache
 *Created: 2026-04-16 20:11:25 IST*
-*Last Updated: 2026-05-12 13:36:57 IST*
+*Last Updated: 2026-05-20 09:30:55 IST*
 
 ## Current Session
-**Started**: 2026-05-12 13:30:25 IST
-**Focus Task**: T18 Manuscript Claim-Hardening and Reviewer-Response Roadmap
-**Session File**: `sessions/2026-05-12-afternoon.md`
-**Status**: 🔄 ACTIVE — `sigma_e` link-field origin integrated into `timesarrow.tex`; focused reading pass completed with abstract/introduction wording tightened
+**Started**: 2026-05-20 09:30:55 IST
+**Focus Task**: T18: Manuscript Claim-Hardening and Reviewer-Response Roadmap
+**Session File**: `sessions/2026-05-20-morning.md`
+**Status**: Reviewer-safety manuscript updates, disclosure updates, and PDF rebuild recorded
 
 ## Overview
 - Active: 2 (T13, T18) | Paused: 0
-- Last Session: `sessions/2026-05-06-evening.md`
-- Current Period: afternoon
+- Last Session: `sessions/2026-05-19-afternoon.md`
+- Current Period: morning
 
 ## Task Registry
 - T13: Gemini 3 Flash - Web Presentation (Next.js) — 🔄
@@ -24,9 +24,9 @@
 
 ### T18: Manuscript Claim-Hardening and Reviewer-Response Roadmap
 **Status:** 🔄 **Priority:** HIGH
-**Started:** 2026-05-06 **Last**: 2026-05-12 13:36:57 IST
-**Context**: Fresh PDF review and second-opinion discussion sharpened the structural claim: `sigma_e` is the shared binary bond index on a `j=1/2` spin-network edge; the `Z_2` even-parity structure should not be conflated with the full `SU(2)` Gauss constraint. This clarification is now integrated into `timesarrow.tex`; the Wilson plaquette action is framed as effective dynamics pending spin-foam derivation. Follow-up reading tightened abstract/introduction wording from "introduce" to "identify."
-**Files**: `memory-bank/tasks/T18.md`, `memory-bank/implementation-details/manuscript-claim-hardening-proposal-2026-05-06.md`, `timesarrow.pdf`, `timesarrow.tex`
+**Started:** 2026-05-06 **Last**: 2026-05-20 09:30:55 IST
+**Context**: The T18 hardening pass now incorporates the May 19 GPT 5.5 and Kimi critique set. The live manuscript distinguishes coherent cosmological time orientation from a full thermodynamic-arrow derivation, uses a dressed relative-orientation correlator alongside the Wilson loop, calibrates the CZX/SPT discussion toward a concrete tensor-network/bond-index correspondence, and softens the fermionic-matter claim toward boundary/defect-surface language. The AI assistance disclosure was updated in parallel, and the manuscript PDF rebuilt successfully.
+**Files**: `memory-bank/tasks/T18.md`, `memory-bank/implementation-details/manuscript-claim-hardening-proposal-2026-05-06.md`, `memory-bank/implementation-details/ai-reviews/gpt55-peer-review-2026-05-19.md`, `memory-bank/implementation-details/ai-reviews/gpt55-response-to-kimi-comparison-2026-05-19.md`, `memory-bank/implementation-details/ai-reviews/kimi-gpt55-synthesis-2026-05-19.md`, `ai-assistance-statement.md`, `timesarrow.pdf`, `timesarrow.tex`
 **Progress**:
 1. ✅ Fresh PDF review completed
 2. ✅ Proposal recorded in memory bank
@@ -34,7 +34,10 @@
 4. ✅ `sigma_e` bond-index origin integrated into `timesarrow.tex`
 5. ✅ `timesarrow.pdf` rebuilt successfully as 44 pages
 6. ✅ Focused reading pass tightened abstract/introduction consistency
-7. 🔄 User reading of revised manuscript flow
+7. ✅ May 19 critique set captured in memory-bank implementation docs
+8. ✅ Manuscript framing hardened around coherent time orientation, dressed correlator, and calibrated CZX/SPT language
+9. ✅ `ai-assistance-statement.md` expanded to cover the April-May 2026 reviewer-safety pass
+10. 🔄 User reading of revised manuscript flow
 
 ### T13: Gemini 3 Flash - Web Presentation
 **Status:** 🔄 **Priority:** MEDIUM
@@ -72,8 +75,8 @@
 6. ✅ Submitted to arXiv (submit/7550944)
 
 ## Session History (Last 5)
-1. `sessions/2026-05-12-afternoon.md` - T18: `sigma_e` link-field origin integrated into manuscript and PDF rebuilt
-2. `sessions/2026-05-09-afternoon.md` - T19: standalone Markdown-first Z2 pilot created and verified
-3. `sessions/2026-05-06-evening.md` - T18: Claim-hardening proposal recorded
-4. `sessions/2026-05-05-peer-review.md` - T17: AI peer review + arXiv upload (submit/7550944)
-5. `sessions/2026-05-05-early.md` - T17: arXiv submission preparation complete
+1. `sessions/2026-05-20-morning.md` - T18: reviewer-safety manuscript and disclosure calibration recorded; PDF rebuilt
+2. `sessions/2026-05-19-afternoon.md` - T18: terminology clarification, Mikhail Q&A, and AI review archive recorded
+3. `sessions/2026-05-12-afternoon.md` - T18: `sigma_e` link-field origin integrated into manuscript and PDF rebuilt
+4. `sessions/2026-05-09-afternoon.md` - T19: standalone Markdown-first Z2 pilot created and verified
+5. `sessions/2026-05-06-evening.md` - T18: Claim-hardening proposal recorded
