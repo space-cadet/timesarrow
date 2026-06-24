@@ -9,7 +9,8 @@ Timesarrow — quantum gravity simulation and visualization project. Monte Carlo
 | ID | Task | Status | Next |
 |----|------|--------|------|
 | T20-Phase1 | Z₂ LGT 2D square lattice | ✅ Complete | Phase 2 |
-| T20-Phase2 | Sharp phase transition figures | 🔄 In Progress | Multi-lattice sweep |
+| T20-Phase2 | Sharp phase transition figures | 🔄 In Progress | Multi-lattice sweep running |
+| T21 | Performance optimization (fast MC kernel) | 🔄 Planning | Benchmark phase pending T20-Phase2 |
 | T25 | Volume operator eigenvalues | ✅ Complete | — |
 
 ## Decisions

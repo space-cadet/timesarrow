@@ -1,41 +1,56 @@
 # timesarrow — Active Context
 
-*Updated: 2026-06-24*
+*Updated: 2026-06-25 03:37 IST*
 
 ## Current Focus
 
-**T20-Phase2**: Making the Z₂ LGT phase transition sharp in figures.
+**T20-Phase2**: Multi-lattice finite-size scaling simulation is RUNNING.
 
-Phase 1 is complete (single L=8 lattice, basic ⟨P⟩ vs β plot). The transition is visible but smooth — expected for a second-order transition on a small lattice. Phase 2 will show it clearly via:
+**Status**: Batch 1/12 in progress. 72 total simulations (3 lattice sizes × 24 β values).
+**ETA**: ~60-90 minutes.
+**Monitoring**: Process `fresh-seaslug` (pid 54286), healthy at 99.9% CPU.
 
-- Multi-lattice finite-size scaling (L=8, 16, 32)
-- Higher-order observables (susceptibility, Binder cumulant, specific heat)
-- Dense β sampling near βc = 0.4407
-- CPU parallelization across 6 cores
+## T21 — Performance Optimization (New)
 
-## Immediate Next Step
+**Status**: 🔄 Planning phase. **Blocked until T20-Phase2 completes**.
 
-Implement the observables extensions in `ts-quantum` and run the multi-lattice sweep. Estimated time: 3 minutes for Phase 2A.
+**Plan**: Benchmark 5 approaches for fast MC kernel, then implement winner.
 
-## Blockers
+| # | Approach | Expected Speedup | Effort |
+|---|----------|-----------------|--------|
+| 1 | Node.js Worker Threads | 6-8× | Low |
+| 2 | Bun runtime | 3-5× | Very Low |
+| 3 | Rust + napi-rs | 50-100× | Medium |
+| 4 | C++ + WASM | 20-50× | Medium |
+| 5 | C++ native addon | 50-100× | Medium-High |
 
-None. All dependencies (ts-quantum lattice module, simulation scripts) are in place.
+**Approach**: Write minimal benchmark test in each framework, measure actual wall-clock time on M2 Air for identical workload (L=16, 10k sweeps). Decide based on speed × maintainability.
+
+**Likely winner**: Rust + napi-rs (best perf/safety tradeoff, ARM64-native, path to GPU).
 
 ## Key Decisions (this session)
 
-- **GPU not needed**: CPU parallelization of independent simulations gives same speedup with zero complexity.
-- **Phase 2A first**: L=8,16,32 with 100k+500k sweeps. If peaks sharpen clearly, proceed to 2B/2C as needed.
-- **Observable priority**: Binder cumulant crossing is the most visually convincing signature.
+- **GPU not needed**: CPU parallelization of independent simulations sufficient.
+- **T21 deferred**: Start benchmarking after T20-Phase2 results confirm physics is correct.
+- **Pure-JS preserved**: Fast kernel will be opt-in; JS fallback stays for testing/debugging.
 
 ## Files in Play
 
-| File | Role |
-|------|------|
-| `ts-quantum/src/lattice/observables.ts` | Add P², P⁴, Binder, C, χ |
-| `numerics/src/scripts/t20-phase2.ts` | Multi-lattice parallel sweep |
-| `numerics/docs/tasks/t20-z2-lgt.qmd` | Update with Phase 2 results |
-| `numerics/docs/assets/t20-*.png` | New plots (4 figures) |
+| File | Role | Status |
+|------|------|--------|
+| `ts-quantum/src/lattice/observables.ts` | P², P⁴, Binder, C, χ | ✅ Added |
+| `numerics/src/scripts/t20-z2-lgt-phase2a.cjs` | Production multi-lattice sweep | 🔄 Running |
+| `numerics/output/t20-phase2a-finite-size.json` | Results (81 sims) | ⏳ Pending |
+| `memory-bank/tasks/T21-performance-optimization.md` | Benchmark plan | ✅ Created |
+
+## What's Next
+
+1. **Wait** for T20-Phase2 simulation to complete (~1 hour)
+2. **Validate** results: check χ peaks, U crossing, ⟨P⟩ sharpening
+3. **Start T21 benchmarks**: Worker Threads → Bun → Rust → C++
+4. **Implement** winner and integrate into ts-quantum
 
 ---
 
-*See `memory-bank/tasks/T20-Phase2-sharp-transition.md` for full plan.*
+*See `memory-bank/tasks/T20-Phase2-sharp-transition.md` for Phase 2 plan.*
+*See `memory-bank/tasks/T21-performance-optimization.md` for benchmark plan.*
