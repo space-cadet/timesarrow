@@ -1,0 +1,7 @@
+=== T20 Phase 1: Z₂ LGT on 2D Square Lattice ===
+Lattice size: 16 x 16
+Thermalization: 10000 sweeps
+Measurement: 100000 sweeps (every 10 )
+β values: 18 points
+
+β = 0.10 ... 

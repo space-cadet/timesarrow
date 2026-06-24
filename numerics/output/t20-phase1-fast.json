@@ -1,0 +1,62 @@
+{
+  "timestamp": "2026-06-24T10:05:13.754Z",
+  "parameters": {
+    "L": 8,
+    "thermalSweeps": 1000,
+    "measureSweeps": 5000,
+    "measureEvery": 5,
+    "binSize": 20
+  },
+  "results": [
+    {
+      "beta": 0.1,
+      "meanPlaquette": 0.09690624999999999,
+      "errorPlaquette": 0.00360710141860922
+    },
+    {
+      "beta": 0.2,
+      "meanPlaquette": 0.19940625000000003,
+      "errorPlaquette": 0.004152479300744586
+    },
+    {
+      "beta": 0.3,
+      "meanPlaquette": 0.30115624999999996,
+      "errorPlaquette": 0.003917092096322423
+    },
+    {
+      "beta": 0.4,
+      "meanPlaquette": 0.3747812499999999,
+      "errorPlaquette": 0.0038512091635853644
+    },
+    {
+      "beta": 0.44,
+      "meanPlaquette": 0.41621874999999997,
+      "errorPlaquette": 0.003451932249679538
+    },
+    {
+      "beta": 0.5,
+      "meanPlaquette": 0.4608437499999999,
+      "errorPlaquette": 0.0033495265285650986
+    },
+    {
+      "beta": 0.6,
+      "meanPlaquette": 0.53353125,
+      "errorPlaquette": 0.0030097398492991384
+    },
+    {
+      "beta": 0.8,
+      "meanPlaquette": 0.66446875,
+      "errorPlaquette": 0.0028293887764346795
+    },
+    {
+      "beta": 1,
+      "meanPlaquette": 0.7571562499999999,
+      "errorPlaquette": 0.002176580801617351
+    },
+    {
+      "beta": 1.5,
+      "meanPlaquette": 0.9046874999999999,
+      "errorPlaquette": 0.0017364866373908688
+    }
+  ]
+}
