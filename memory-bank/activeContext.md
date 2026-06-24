@@ -34,8 +34,8 @@ T18 (Manuscript Claim-Hardening) — **ACTIVE**. The reviewer-safe `sigma_e` / e
 ## Active Tasks
 - **T18**: Manuscript Claim-Hardening and Reviewer-Response Roadmap — 🔄 IN PROGRESS
 - **T13**: Gemini 3 Flash - Web Presentation — 🔄 IN PROGRESS
-- **T25**: Volume Operator Extension — 🟢 **READY** (no blockers)
-- **T22**: Spin Foam Amplitudes — 🟢 **READY** (no blockers)
+- **T25**: Volume Operator Extension — 🟢 **READY** (uses ts-quantum's `constructNValentBasis`, `computeVolumeSpectrum`)
+- **T22**: Spin Foam Amplitudes — 🟢 **READY** (uses ts-quantum's Wigner 6j symbols)
 - **T20**: Z₂ LGT Monte Carlo — 🔴 **BLOCKED** on T25
 - **T23**: Entanglement Structure — 🔴 **BLOCKED** on T20
 - **T21**: CZX PEPS Ground State — 🔴 **BLOCKED** on T22
