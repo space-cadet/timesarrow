@@ -100,6 +100,20 @@ $$
 | 1.00 | 0.7572 | ±0.0022 | Deconfined |
 | 1.50 | 0.9047 | ±0.0017 | Strongly ordered |
 
+### Figures
+
+![Plaquette expectation vs coupling β](../assets/t20-plaquette-vs-beta.png)
+
+*Figure 1: Plaquette expectation value ⟨P⟩ versus coupling β. The vertical dashed line marks the exact critical point βc = ½ ln(1+√2) ≈ 0.4407. Red points: confined phase; orange: near-critical; green: deconfined phase.*
+
+![Susceptibility estimate](../assets/t20-susceptibility.png)
+
+*Figure 2: Approximate susceptibility χ = d⟨P⟩/dβ, showing the peak in the critical region around βc ≈ 0.44. This response function peaks where the system is most sensitive to parameter changes.*
+
+![Statistical error bars](../assets/t20-error-bars.png)
+
+*Figure 3: Standard error per β value from binning + jackknife analysis. Errors are well-controlled (all < 0.5%), confirming good statistical quality of the Monte Carlo data.*
+
 ### Analysis
 
 The results confirm the expected phase transition at $\beta_c \approx 0.44$:
