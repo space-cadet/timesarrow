@@ -66,6 +66,8 @@ This shows the **Z₂ structure persists**: eigenvalues come in ± pairs, with o
 | 5 | 1/2 | 0 | — | N/A (no singlet) |
 | 6 | 1/2 | 5 | ±2.2913, ±0.8660, 0 | ✅ Confirmed |
 
+**Data file**: [`t25-volume-operator-spectrum.json`](https://github.com/space-cadet/timesarrow/blob/main/numerics/output/t25-volume-operator-spectrum.json)
+
 ### Z₂ Diagnostic
 
 The `checkZ2Structure()` function validates that eigenvalues come in ±q pairs (with optional zeros). This is the key numerical diagnostic for the paper's central claim about time-orientation symmetry.

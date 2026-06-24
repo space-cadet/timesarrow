@@ -9,7 +9,7 @@ Classical Monte Carlo simulation of 3D Z₂ gauge theory to demonstrate the conf
 
 ## Status
 
-🔴 **Blocked on T25** (intertwiner framework)
+🟡 **Ready** — T25 intertwiner framework complete. Ready for implementation.
 
 ## Theory
 

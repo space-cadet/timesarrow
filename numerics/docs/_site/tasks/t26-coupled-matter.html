@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>T25 — Volume Operator Extension</title>
+<title>T26 — Coupled Spin Network + Matter</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,56 +20,21 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="t25-volume-operator_files/libs/clipboard/clipboard.min.js"></script>
-<script src="t25-volume-operator_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="t25-volume-operator_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="t25-volume-operator_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="t25-volume-operator_files/libs/quarto-html/popper.min.js"></script>
-<script src="t25-volume-operator_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="t25-volume-operator_files/libs/quarto-html/anchor.min.js"></script>
-<link href="t25-volume-operator_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="t25-volume-operator_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="t25-volume-operator_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="t25-volume-operator_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="t25-volume-operator_files/libs/bootstrap/bootstrap-d6a003b94517c951b2d65075d42fb01b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="t26-coupled-matter_files/libs/clipboard/clipboard.min.js"></script>
+<script src="t26-coupled-matter_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="t26-coupled-matter_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="t26-coupled-matter_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="t26-coupled-matter_files/libs/quarto-html/popper.min.js"></script>
+<script src="t26-coupled-matter_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="t26-coupled-matter_files/libs/quarto-html/anchor.min.js"></script>
+<link href="t26-coupled-matter_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="t26-coupled-matter_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="t26-coupled-matter_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="t26-coupled-matter_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="t26-coupled-matter_files/libs/bootstrap/bootstrap-d6a003b94517c951b2d65075d42fb01b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -111,8 +76,8 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">T25 — Volume Operator Extension</h1>
-<p class="subtitle lead">Higher-valence intertwiner spectrum and Z₂ structure</p>
+<h1 class="title">T26 — Coupled Spin Network + Matter</h1>
+<p class="subtitle lead">Arrow-of-time emergence</p>
 </div>
 
 
@@ -131,147 +96,28 @@ window.Quarto = {
 
 <section id="objective" class="level2">
 <h2 class="anchored" data-anchor-id="objective">Objective</h2>
-<p>Extend the volume operator <span class="math inline">\(\hat{Q}\)</span> diagonalization from 4-valent to 5-valent and 6-valent intertwiners. Verify whether the Z₂ sign-flip structure (±q₀ degeneracy) persists.</p>
+<p>Couple Z₂ gauge field to a scalar field and study symmetry breaking that selects a global arrow of time.</p>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>🟢 <strong>Complete</strong> — 4-valent, 5-valent, and 6-valent implemented with Z₂ structure verified.</p>
+<p>🔴 <strong>Blocked on T20 + T24</strong></p>
 </section>
 <section id="theory" class="level2">
 <h2 class="anchored" data-anchor-id="theory">Theory</h2>
-<p>The volume operator for an n-valent vertex is:</p>
+<p>Combined action:</p>
 <p><span class="math display">\[
-\hat{Q} = \sum_{i&lt;j&lt;k} \epsilon_{ijk} \, \hat{J}_i \cdot (\hat{J}_j \times \hat{J}_k)
+S = S_{Z_2} + S_\phi + S_{\text{int}}
 \]</span></p>
-<p>For j=1/2: <span class="math inline">\(\hat{J}_i = \frac{1}{2}\sigma_i\)</span> (Pauli matrices)</p>
-<section id="valent-j12-complete" class="level3">
-<h3 class="anchored" data-anchor-id="valent-j12-complete">4-valent j=1/2 (Complete)</h3>
-<p>The intertwiner space is 2-dimensional with basis states <span class="math inline">\(|Φ_1⟩, |Φ_2⟩\)</span>. The volume operator matrix in this basis is:</p>
-<p><span class="math display">\[
-\hat{Q} = \frac{8\sqrt{3}}{9} \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}
-\]</span></p>
-<p>Eigenvalues: <span class="math inline">\(\pm \frac{8\sqrt{3}}{9} \approx \pm 1.5396\)</span></p>
-<p>This shows the <strong>Z₂ structure</strong>: eigenvalues come in ± pairs, reflecting the time-orientation flip symmetry.</p>
+<p>where S_int = λ Σ_v φ_v τ_v</p>
 </section>
-<section id="valent-j12-trivially-excluded" class="level3">
-<h3 class="anchored" data-anchor-id="valent-j12-trivially-excluded">5-valent j=1/2 (Trivially excluded)</h3>
-<p>An <strong>odd number of half-integer spins cannot couple to total J=0</strong>. Therefore:</p>
-<ul>
-<li>Intertwiner dimension: <strong>0</strong></li>
-<li>No volume operator spectrum exists</li>
-<li>This is a <strong>selection rule</strong>, not a bug</li>
-</ul>
-</section>
-<section id="valent-j12-complete-with-geometric-embedding" class="level3">
-<h3 class="anchored" data-anchor-id="valent-j12-complete-with-geometric-embedding">6-valent j=1/2 (Complete with geometric embedding)</h3>
-<p>The singlet subspace has dimension 5. For a <strong>generic geometric embedding</strong> (edges forming a triangular prism in 3D), the volume operator is a 5×5 matrix with eigenvalues:</p>
-<p><span class="math display">\[
-\hat{Q} \text{ eigenvalues: } \pm 2.2913, \pm 0.8660, 0
-\]</span></p>
-<p>This shows the <strong>Z₂ structure persists</strong>: eigenvalues come in ± pairs, with one zero mode. The zero eigenvalue corresponds to a state with no “oriented volume” under the chosen geometric embedding.</p>
-<p><strong>Key insight:</strong> With trivial embedding (all <span class="math inline">\(\epsilon_{ijk} = +1\)</span>), the volume operator vanishes identically on the 6-valent singlet subspace due to symmetry. Non-zero eigenvalues require a <strong>non-coplanar geometric embedding</strong> where edge triples have mixed signs.</p>
-</section>
-</section>
-<section id="results" class="level2">
-<h2 class="anchored" data-anchor-id="results">Results</h2>
-<section id="spectrum-comparison" class="level3">
-<h3 class="anchored" data-anchor-id="spectrum-comparison">Spectrum Comparison</h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Valence</th>
-<th>j</th>
-<th>Dimension</th>
-<th>Eigenvalues</th>
-<th>Z₂ Structure</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>4</td>
-<td>1/2</td>
-<td>2</td>
-<td>±1.5396</td>
-<td>✅ Confirmed</td>
-</tr>
-<tr class="even">
-<td>5</td>
-<td>1/2</td>
-<td>0</td>
-<td>—</td>
-<td>N/A (no singlet)</td>
-</tr>
-<tr class="odd">
-<td>6</td>
-<td>1/2</td>
-<td>5</td>
-<td>±2.2913, ±0.8660, 0</td>
-<td>✅ Confirmed</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Data file</strong>: <a href="https://github.com/space-cadet/timesarrow/blob/main/numerics/output/t25-volume-operator-spectrum.json"><code>t25-volume-operator-spectrum.json</code></a></p>
-</section>
-<section id="z₂-diagnostic" class="level3">
-<h3 class="anchored" data-anchor-id="z₂-diagnostic">Z₂ Diagnostic</h3>
-<p>The <code>checkZ2Structure()</code> function validates that eigenvalues come in ±q pairs (with optional zeros). This is the key numerical diagnostic for the paper’s central claim about time-orientation symmetry.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode typescript code-with-copy"><code class="sourceCode typescript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Examples:</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">checkZ2Structure</span>([<span class="op">-</span><span class="fl">1.5</span><span class="op">,</span> <span class="fl">1.5</span>])        <span class="co">// ✅ true  (± pair)</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">checkZ2Structure</span>([<span class="op">-</span><span class="dv">2</span><span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">2</span>])     <span class="co">// ✅ true  (two ± pairs)</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">checkZ2Structure</span>([<span class="dv">0</span><span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="dv">1</span>])         <span class="co">// ✅ true  (zero + ± pair)</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">checkZ2Structure</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span>])          <span class="co">// ❌ false (no symmetry)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-</section>
-<section id="code" class="level2">
-<h2 class="anchored" data-anchor-id="code">Code</h2>
-<section id="ts-quantum-library" class="level3">
-<h3 class="anchored" data-anchor-id="ts-quantum-library">ts-quantum Library</h3>
-<p>The general-purpose intertwiner and volume operator code lives in <code>ts-quantum</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode typescript code-with-copy"><code class="sourceCode typescript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  constructNValentBasis<span class="op">,</span> </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  computeVolumeSpectrum<span class="op">,</span> </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  checkZ2Structure<span class="op">,</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  buildGeneric6ValentEmbedding</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>} <span class="im">from</span> <span class="st">'ts-quantum'</span><span class="op">;</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">// 4-valent j=1/2</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> space4 <span class="op">=</span> <span class="fu">constructNValentBasis</span>(<span class="dv">4</span><span class="op">,</span> <span class="fl">0.5</span>)<span class="op">;</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> spec4 <span class="op">=</span> <span class="fu">computeVolumeSpectrum</span>(space4)<span class="op">;</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(spec4<span class="op">.</span><span class="at">eigenvalues</span>)<span class="op">;</span>     <span class="co">// [ -1.5396, 1.5396 ]</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(spec4<span class="op">.</span><span class="at">hasZ2Structure</span>)<span class="op">;</span>  <span class="co">// true</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">// 6-valent j=1/2 with geometric embedding</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> embedding <span class="op">=</span> <span class="fu">buildGeneric6ValentEmbedding</span>()<span class="op">;</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> space6 <span class="op">=</span> <span class="fu">constructNValentBasis</span>(<span class="dv">6</span><span class="op">,</span> <span class="fl">0.5</span>)<span class="op">;</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> spec6 <span class="op">=</span> <span class="fu">computeVolumeSpectrum</span>(space6<span class="op">,</span> embedding)<span class="op">;</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(spec6<span class="op">.</span><span class="at">eigenvalues</span>)<span class="op">;</span>     <span class="co">// [ -2.2913, -0.8660, 0, 0.8660, 2.2913 ]</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(spec6<span class="op">.</span><span class="at">hasZ2Structure</span>)<span class="op">;</span>  <span class="co">// true</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="timesarrow-specific-wrappers" class="level3">
-<h3 class="anchored" data-anchor-id="timesarrow-specific-wrappers">TimesArrow-Specific Wrappers</h3>
-<p>Domain-specific utilities for the paper live in <code>timesarrow-numerics</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode typescript code-with-copy"><code class="sourceCode typescript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { analyzeVolumeSpectrum } <span class="im">from</span> <span class="st">'timesarrow-numerics'</span><span class="op">;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> result <span class="op">=</span> <span class="fu">analyzeVolumeSpectrum</span>(<span class="dv">4</span><span class="op">,</span> <span class="fl">0.5</span>)<span class="op">;</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">// { eigenvalues: [...], hasZ2Structure: true, dimension: 2 }</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-</section>
-<section id="next-steps" class="level2">
-<h2 class="anchored" data-anchor-id="next-steps">Next Steps</h2>
-<ol type="1">
-<li><strong>Higher spins</strong> — Test j=1 for 4-valent (check if Z₂ breaks)</li>
-<li><strong>Mixed valence</strong> — Two j=1/2 and two j=1 edges</li>
-<li><strong>Visualization</strong> — Spectrum plots comparing n=4,5,6</li>
-<li><strong>Lattice applications</strong> — 3D square lattice (8-valent) and 2D triangular lattice (6-valent)</li>
-</ol>
+<section id="expected-outcome" class="level2">
+<h2 class="anchored" data-anchor-id="expected-outcome">Expected Outcome</h2>
+<p>⟨φ⟩ ≠ 0 spontaneously breaks remaining Z₂ symmetry, completing “orientability → arrow.”</p>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <ul>
-<li>Paper: Section 3.2, Eq. (24)</li>
-<li>Supplementary: Corrected basis states <span class="math inline">\(|Φ_1⟩, |Φ_2⟩\)</span> (T11/C3)</li>
-<li>Brunnemann &amp; Thiemann (2006): <em>Simplification of the Spectral Analysis of the Volume Operator in Loop Quantum Gravity</em></li>
-<li>Borissenko &amp; Ivanov (2021): <em>Volume operator in loop quantum gravity</em></li>
+<li>Paper: Section 6 (Discussion)</li>
 </ul>
 </section>
 
