@@ -185,13 +185,18 @@ numerics/src/
 
 ## Next Steps
 
-1. Implement `ts-quantum/src/lattice/geometry.ts` (square lattice first)
-2. Implement `Z2GaugeField` class
-3. Implement action and Metropolis
-4. Implement observables (plaquette, specific heat)
-5. Write `timesarrow/numerics/src/scripts/t20-z2-lgt-phase1.ts`
-6. Run parameter sweep and verify β_c ≈ 0.4407
-7. Extend to triangular and 3D cubic
+1. Implement `ts-quantum/src/lattice/geometry.ts` (square lattice first) — ✅ DONE
+2. Implement `Z2GaugeField` class — ✅ DONE
+3. Implement action and Metropolis — ✅ DONE
+4. Implement observables (plaquette, specific heat) — ✅ DONE
+5. Write `timesarrow/numerics/src/scripts/t20-z2-lgt-phase1.ts` — ✅ DONE
+6. Run parameter sweep and verify β_c ≈ 0.4407 — ✅ DONE
+7. **Phase 2: Sharp phase transition** — See `memory-bank/tasks/T20-Phase2-sharp-transition.md`
+   - Extend observables: P², P⁴, Binder cumulant, susceptibility
+   - Multi-lattice finite-size scaling (L=8, 16, 32)
+   - CPU-parallel parameter sweep with dense β grid
+   - Generate plots showing peak divergence and Binder crossing
+8. Extend to triangular and 3D cubic — Phase 3
 
 ## References
 
