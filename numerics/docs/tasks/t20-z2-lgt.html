@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2026-06-25">
 
 <title>T20 — Z₂ Lattice Gauge Theory Monte Carlo</title>
 <style>
@@ -120,7 +121,19 @@ window.Quarto = {
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 25, 2026</p>
+    </div>
+  </div>
   
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">Invalid Date</p>
+    </div>
+  </div>
     
   </div>
   
@@ -129,6 +142,7 @@ window.Quarto = {
 </header>
 
 
+<p><em>Last updated: 2026-06-25 04:27 IST</em></p>
 <section id="objective" class="level2">
 <h2 class="anchored" data-anchor-id="objective">Objective</h2>
 <p>Classical Monte Carlo simulation of Z₂ gauge theory to demonstrate the confinement-deconfinement transition that underpins the paper’s central claim.</p>
@@ -210,6 +224,168 @@ W(\gamma) = \left\langle \prod_{e \in \gamma} \sigma_e \right\rangle
 <li><code>numerics/src/scripts/t20-z2-lgt-phase3.ts</code> — 3D cubic lattice (paper target)</li>
 <li><code>numerics/output/t20-phase1-fast.json</code> — Phase 1 results</li>
 </ul>
+</section>
+</section>
+<section id="chronological-log" class="level2">
+<h2 class="anchored" data-anchor-id="chronological-log">Chronological Log</h2>
+<section id="ist-phase-1-production-run-l16" class="level3">
+<h3 class="anchored" data-anchor-id="ist-phase-1-production-run-l16">2026-06-24 21:40 IST — Phase 1 Production Run (L=16)</h3>
+<p><strong>Completed</strong>: 2026-06-24 21:40 IST</p>
+<p><strong>Parameters</strong>: - Lattice size: L = 16 (upgraded from L = 8) - Thermalization: 10,000 sweeps (10× longer) - Measurement: 100,000 sweeps (20× longer) - Measure every: 10 sweeps - Bin size: 100 - β values: 18 points (finer near critical region) - Wall-clock time: ~60 minutes</p>
+<p><strong>Results</strong>:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>β</th>
+<th>⟨P⟩</th>
+<th>Error</th>
+<th>Phase</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.10</td>
+<td>0.1004</td>
+<td>±0.0006</td>
+<td>Confined</td>
+</tr>
+<tr class="even">
+<td>0.20</td>
+<td>0.1973</td>
+<td>±0.0007</td>
+<td>Confined</td>
+</tr>
+<tr class="odd">
+<td>0.30</td>
+<td>0.2917</td>
+<td>±0.0006</td>
+<td>Confined</td>
+</tr>
+<tr class="even">
+<td>0.35</td>
+<td>0.3359</td>
+<td>±0.0006</td>
+<td>Confined</td>
+</tr>
+<tr class="odd">
+<td>0.38</td>
+<td>0.3631</td>
+<td>±0.0006</td>
+<td>Near critical</td>
+</tr>
+<tr class="even">
+<td>0.40</td>
+<td>0.3805</td>
+<td>±0.0006</td>
+<td>Near critical</td>
+</tr>
+<tr class="odd">
+<td>0.42</td>
+<td>0.3969</td>
+<td>±0.0006</td>
+<td>Near critical</td>
+</tr>
+<tr class="even">
+<td><strong>0.44</strong></td>
+<td><strong>0.4134</strong></td>
+<td><strong>±0.0006</strong></td>
+<td><strong>Critical</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>0.45</strong></td>
+<td><strong>0.4224</strong></td>
+<td><strong>±0.0006</strong></td>
+<td><strong>Critical</strong></td>
+</tr>
+<tr class="even">
+<td><strong>0.46</strong></td>
+<td><strong>0.4306</strong></td>
+<td><strong>±0.0005</strong></td>
+<td><strong>Critical</strong></td>
+</tr>
+<tr class="odd">
+<td>0.48</td>
+<td>0.4460</td>
+<td>±0.0005</td>
+<td>Deconfined</td>
+</tr>
+<tr class="even">
+<td>0.50</td>
+<td>0.4620</td>
+<td>±0.0005</td>
+<td>Deconfined</td>
+</tr>
+<tr class="odd">
+<td>0.55</td>
+<td>0.5005</td>
+<td>±0.0005</td>
+<td>Deconfined</td>
+</tr>
+<tr class="even">
+<td>0.60</td>
+<td>0.5374</td>
+<td>±0.0005</td>
+<td>Deconfined</td>
+</tr>
+<tr class="odd">
+<td>0.80</td>
+<td>0.6642</td>
+<td>±0.0004</td>
+<td>Deconfined</td>
+</tr>
+<tr class="even">
+<td>1.00</td>
+<td>0.7616</td>
+<td>±0.0004</td>
+<td>Deconfined</td>
+</tr>
+<tr class="odd">
+<td>1.50</td>
+<td>0.9052</td>
+<td>±0.0003</td>
+<td>Deconfined</td>
+</tr>
+<tr class="even">
+<td>2.00</td>
+<td>0.9640</td>
+<td>±0.0002</td>
+<td>Deconfined</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Figures</strong>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/t20-plaquette-vs-beta-L16.png" class="img-fluid figure-img"></p>
+<figcaption>Plaquette expectation vs coupling β — L=16 production run</figcaption>
+</figure>
+</div>
+<p><em>Figure 4: L=16 production run. Plaquette expectation value ⟨P⟩ versus coupling β, with L=8 fast run shown for comparison. The critical point βc ≈ 0.4407 is marked with a dashed line. Error bars are ~6× smaller than the L=8 run.</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/t20-error-comparison-L16.png" class="img-fluid figure-img"></p>
+<figcaption>Statistical error comparison</figcaption>
+</figure>
+</div>
+<p><em>Figure 5: Statistical errors: L=16 vs L=8. The L=16 run achieves ~5-6× smaller errors across all β values due to 20× more measurement sweeps.</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/t20-convergence-L16.png" class="img-fluid figure-img"></p>
+<figcaption>Convergence at critical point</figcaption>
+</figure>
+</div>
+<p><em>Figure 6: Monte Carlo convergence at β=0.44 (critical point). The L=16 run with 100k measurements follows the expected 1/√N scaling, achieving errors ~0.0006 compared to ~0.0035 for the L=8 run with 5k measurements.</em></p>
+<p><strong>Key improvements over L=8 run</strong>: - Error bars reduced by ~6× (from ~0.0035 to ~0.0005) - Finer β resolution near critical point (0.42, 0.44, 0.45, 0.46 instead of just 0.44) - Clearer identification of critical crossover region</p>
+<p><strong>Files</strong>: - Output: <code>numerics/output/t20-phase1-square-lattice.json</code> - Log: <code>numerics/output/t20-phase1-run.log</code></p>
+</section>
+<section id="ist-phase-1-fast-run-l8" class="level3">
+<h3 class="anchored" data-anchor-id="ist-phase-1-fast-run-l8">2026-06-24 16:30 IST — Phase 1 Fast Run (L=8)</h3>
+<p><strong>Completed</strong>: 2026-06-24 16:30 IST</p>
+<p><strong>Purpose</strong>: Quick validation run to verify implementation correctness.</p>
+<p><strong>Parameters</strong>: - Lattice size: L = 8 - Thermalization: 1,000 sweeps - Measurement: 5,000 sweeps - β values: 10 points - Wall-clock time: ~5 minutes</p>
+<p><strong>Results</strong>: See table in Phase 1 section below. Errors ~0.0035, sufficient to confirm correct physics.</p>
+<p><strong>Files</strong>: - Output: <code>numerics/output/t20-phase1-fast.json</code></p>
+<hr>
 </section>
 </section>
 <section id="phase-1-2d-square-lattice" class="level2">

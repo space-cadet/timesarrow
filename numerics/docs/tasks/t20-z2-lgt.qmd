@@ -1,7 +1,11 @@
 ---
 title: "T20 — Z₂ Lattice Gauge Theory Monte Carlo"
 subtitle: "Confinement-deconfinement transition"
+date: "2026-06-25"
+date-modified: "2026-06-25 04:27 IST"
 ---
+
+*Last updated: 2026-06-25 04:27 IST*
 
 ## Objective
 
@@ -67,9 +71,9 @@ $$
 
 ## Chronological Log
 
-### 2024-06-24 — Phase 1 Production Run (L=16)
+### 2026-06-24 21:40 IST — Phase 1 Production Run (L=16)
 
-**Completed**: Full-scale simulation with proper statistics.
+**Completed**: 2026-06-24 21:40 IST
 
 **Parameters**:
 - Lattice size: L = 16 (upgraded from L = 8)
@@ -78,6 +82,7 @@ $$
 - Measure every: 10 sweeps
 - Bin size: 100
 - β values: 18 points (finer near critical region)
+- Wall-clock time: ~60 minutes
 
 **Results**:
 
@@ -102,6 +107,20 @@ $$
 | 1.50 | 0.9052 | ±0.0003 | Deconfined |
 | 2.00 | 0.9640 | ±0.0002 | Deconfined |
 
+**Figures**:
+
+![Plaquette expectation vs coupling β — L=16 production run](../assets/t20-plaquette-vs-beta-L16.png)
+
+*Figure 4: L=16 production run. Plaquette expectation value ⟨P⟩ versus coupling β, with L=8 fast run shown for comparison. The critical point βc ≈ 0.4407 is marked with a dashed line. Error bars are ~6× smaller than the L=8 run.*
+
+![Statistical error comparison](../assets/t20-error-comparison-L16.png)
+
+*Figure 5: Statistical errors: L=16 vs L=8. The L=16 run achieves ~5-6× smaller errors across all β values due to 20× more measurement sweeps.*
+
+![Convergence at critical point](../assets/t20-convergence-L16.png)
+
+*Figure 6: Monte Carlo convergence at β=0.44 (critical point). The L=16 run with 100k measurements follows the expected 1/√N scaling, achieving errors ~0.0006 compared to ~0.0035 for the L=8 run with 5k measurements.*
+
 **Key improvements over L=8 run**:
 - Error bars reduced by ~6× (from ~0.0035 to ~0.0005)
 - Finer β resolution near critical point (0.42, 0.44, 0.45, 0.46 instead of just 0.44)
@@ -111,7 +130,9 @@ $$
 - Output: `numerics/output/t20-phase1-square-lattice.json`
 - Log: `numerics/output/t20-phase1-run.log`
 
-### 2024-06-24 — Phase 1 Fast Run (L=8)
+### 2026-06-24 16:30 IST — Phase 1 Fast Run (L=8)
+
+**Completed**: 2026-06-24 16:30 IST
 
 **Purpose**: Quick validation run to verify implementation correctness.
 
@@ -120,8 +141,9 @@ $$
 - Thermalization: 1,000 sweeps
 - Measurement: 5,000 sweeps
 - β values: 10 points
+- Wall-clock time: ~5 minutes
 
-**Results**: See table in Phase 1 section above. Errors ~0.0035, sufficient to confirm correct physics.
+**Results**: See table in Phase 1 section below. Errors ~0.0035, sufficient to confirm correct physics.
 
 **Files**:
 - Output: `numerics/output/t20-phase1-fast.json`
