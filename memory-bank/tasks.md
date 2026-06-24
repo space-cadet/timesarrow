@@ -6,7 +6,7 @@
 |----|-------|--------|----------|---------|--------------|---------|
 | T13 | Gemini 3 Flash - Create Accessible Web Presentation | 🔄 | MEDIUM | 2026-04-18 | - | [Details](tasks/T13.md) |
 | T18 | Manuscript Claim-Hardening and Reviewer-Response Roadmap | 🔄 | HIGH | 2026-05-06 | T15, T17 | [Details](tasks/T18.md) |
-| T25 | Volume Operator Eigenvalue Distribution (Extended) | 🟢 | LOW | 2026-06-24 | — | [Details](tasks/T25.md) |
+| T25 | Volume Operator Extension | ✅ COMPLETE | LOW | 2026-06-24 | — | [Details](tasks/T25.md) |
 | T22 | Spin Foam Amplitude for j=1/2 Dominance | 🟢 | HIGH | 2026-06-24 | — | [Details](tasks/T22.md) |
 | T20 | 3D Z₂ Lattice Gauge Theory Monte Carlo | 🔴 | CRITICAL | 2026-06-24 | T25 | [Details](tasks/T20.md) |
 | T23 | Entanglement Structure of Deconfined Phase | 🔴 | MEDIUM | 2026-06-24 | T20 | [Details](tasks/T23.md) |
@@ -139,6 +139,7 @@
 | T16 | Submission Documentation | 2026-04-29 | T15 | [Details](tasks/T16.md) |
 | T17 | arXiv Submission Preparation | 2026-05-05 | T16 | [Details](tasks/T17.md) |
 | T19 | Markdown-First Z2 Section Pilot | 2026-05-09 | T18 | [Details](tasks/T19.md) |
+| T25 | Volume Operator Extension | 2026-06-24 | — | [Details](tasks/T25.md) |
 
 ## Task Relationships
 ```mermaid
