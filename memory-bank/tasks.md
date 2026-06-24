@@ -6,13 +6,13 @@
 |----|-------|--------|----------|---------|--------------|---------|
 | T13 | Gemini 3 Flash - Create Accessible Web Presentation | 🔄 | MEDIUM | 2026-04-18 | - | [Details](tasks/T13.md) |
 | T18 | Manuscript Claim-Hardening and Reviewer-Response Roadmap | 🔄 | HIGH | 2026-05-06 | T15, T17 | [Details](tasks/T18.md) |
-| T20 | 3D Z₂ Lattice Gauge Theory Monte Carlo | 🔄 | CRITICAL | 2026-06-24 | — | [Details](tasks/T20.md) |
-| T21 | CZX-Spin Network PEPS Ground State | 🔄 | HIGH | 2026-06-24 | T20 | [Details](tasks/T21.md) |
-| T22 | Spin Foam Amplitude for j=1/2 Dominance | 🔄 | HIGH | 2026-06-24 | — | [Details](tasks/T22.md) |
-| T23 | Entanglement Structure of Deconfined Phase | 🔄 | MEDIUM | 2026-06-24 | T20 | [Details](tasks/T23.md) |
-| T24 | Domain Wall Dynamics and Surface Topological Order | 🔄 | MEDIUM | 2026-06-24 | T20, T21 | [Details](tasks/T24.md) |
-| T25 | Volume Operator Eigenvalue Distribution (Extended) | 🔄 | LOW | 2026-06-24 | — | [Details](tasks/T25.md) |
-| T26 | Coupled Spin Network + Matter Simulation | 🔄 | LOW | 2026-06-24 | T20 | [Details](tasks/T26.md) |
+| T25 | Volume Operator Eigenvalue Distribution (Extended) | 🟢 | LOW | 2026-06-24 | — | [Details](tasks/T25.md) |
+| T22 | Spin Foam Amplitude for j=1/2 Dominance | 🟢 | HIGH | 2026-06-24 | — | [Details](tasks/T22.md) |
+| T20 | 3D Z₂ Lattice Gauge Theory Monte Carlo | 🔴 | CRITICAL | 2026-06-24 | T25 | [Details](tasks/T20.md) |
+| T23 | Entanglement Structure of Deconfined Phase | 🔴 | MEDIUM | 2026-06-24 | T20 | [Details](tasks/T23.md) |
+| T21 | CZX-Spin Network PEPS Ground State | 🔴 | HIGH | 2026-06-24 | T22 | [Details](tasks/T21.md) |
+| T24 | Domain Wall Dynamics and Surface Topological Order | 🔴 | MEDIUM | 2026-06-24 | T20, T21 | [Details](tasks/T24.md) |
+| T26 | Coupled Spin Network + Matter Simulation | 🔴 | LOW | 2026-06-24 | T20, T24 | [Details](tasks/T26.md) |
 
 ## Task Details
 
@@ -170,10 +170,11 @@ graph TD
     T6 --> T7
     T7 --> T8
     
-    T20 --> T21
+    T25 --> T20
+    T22 --> T21
     T20 --> T23
     T20 --> T24
-    T20 --> T26
     T21 --> T24
-    T22 --> T21
+    T20 --> T26
+    T24 --> T26
 ```

@@ -2,9 +2,18 @@
 *Last Updated: 2026-06-24 09:35:00 IST*
 
 ## Current Status
-T18 (Manuscript Claim-Hardening and Reviewer-Response Roadmap) — **ACTIVE**. The reviewer-safe `sigma_e` / emergent-link clarification remains integrated into `timesarrow.tex`, and the May 2026 review pass has now hardened the broader framing: the manuscript explicitly distinguishes coherent cosmological time orientation from a full thermodynamic-arrow derivation, adds a gauge-invariant dressed relative-orientation correlator alongside the Wilson loop, presents the CZX discussion as a concrete tensor-network/bond-index correspondence with the Appendix F caveat intact, and softens the fermionic-matter story toward boundary/defect-surface conjecture language. `ai-assistance-statement.md` was updated in parallel to cover the April-May 2026 reviewer-safety pass, and `timesarrow.pdf` rebuilt cleanly. T19 (Markdown-First Z2 Section Pilot) — **COMPLETED** and remains isolated. T17 remains submitted to arXiv as `submit/7550944`; status on hold.
+**Numerics Package Initialized (2026-06-24):** A unified `timesarrow-numerics` package has been created under `numerics/` with TypeScript, ts-quantum integration, and Quarto docs. Seven beads tasks (T20-T26) are tracked in the workspace beads database with dependency chains. T25 and T22 are unblocked and ready to start; T20 is blocked on T25.
 
-**NEW (2026-06-24):** Seven numerical simulation tasks (T20–T26) have been created to back up the theoretical work, following a comprehensive review of the manuscript and GPT 5.5 peer-review critique. The simulation program is designed to address the three main weaknesses identified: (1) the Z₂ gauge action is "posited, not derived" → T22 (spin foam amplitudes) addresses this; (2) the CZX/SPT correspondence is "overstated" → T21 (PEPS ground state) addresses this; (3) the fermion conjecture is "very speculative" → T24 (domain wall dynamics) addresses this. T20 (Z₂ LGT Monte Carlo) is the foundational simulation validating the core confinement-deconfinement claim.
+T18 (Manuscript Claim-Hardening) — **ACTIVE**. The reviewer-safe `sigma_e` / emergent-link clarification remains integrated into `timesarrow.tex`. T17 remains submitted to arXiv as `submit/7550944`; status on hold.
+
+**Simulation Priority (Revised):**
+1. **T25** (Volume Operator Extension) — 🟢 READY (no blockers, 3-5 days)
+2. **T22** (Spin Foam Amplitudes) — 🟢 READY (no blockers, 2-4 weeks)
+3. **T20** (Z₂ LGT Monte Carlo) — 🔴 BLOCKED on T25 (2-3 weeks)
+4. **T23** (Entanglement Entropy) — 🔴 BLOCKED on T20 (1-2 weeks)
+5. **T21** (CZX PEPS) — 🔴 BLOCKED on T22 (1-2 months)
+6. **T24** (Domain Walls) — 🔴 BLOCKED on T20+T21 (1-2 months)
+7. **T26** (Coupled Matter) — 🔴 BLOCKED on T20+T24 (2-3 months)
 
 ## Audit Summary (Updated)
 
@@ -25,13 +34,13 @@ T18 (Manuscript Claim-Hardening and Reviewer-Response Roadmap) — **ACTIVE**. T
 ## Active Tasks
 - **T18**: Manuscript Claim-Hardening and Reviewer-Response Roadmap — 🔄 IN PROGRESS
 - **T13**: Gemini 3 Flash - Web Presentation — 🔄 IN PROGRESS
-- **T20**: 3D Z₂ Lattice Gauge Theory Monte Carlo — 🔄 ACTIVE (CRITICAL)
-- **T21**: CZX-Spin Network PEPS Ground State — 🔄 ACTIVE (HIGH)
-- **T22**: Spin Foam Amplitude for j=1/2 Dominance — 🔄 ACTIVE (HIGH)
-- **T23**: Entanglement Structure of Deconfined Phase — 🔄 ACTIVE (MEDIUM)
-- **T24**: Domain Wall Dynamics and Surface Topological Order — 🔄 ACTIVE (MEDIUM)
-- **T25**: Volume Operator Eigenvalue Distribution (Extended) — 🔄 ACTIVE (LOW, quick win)
-- **T26**: Coupled Spin Network + Matter Simulation — 🔄 ACTIVE (LOW, long-term)
+- **T25**: Volume Operator Extension — 🟢 **READY** (no blockers)
+- **T22**: Spin Foam Amplitudes — 🟢 **READY** (no blockers)
+- **T20**: Z₂ LGT Monte Carlo — 🔴 **BLOCKED** on T25
+- **T23**: Entanglement Structure — 🔴 **BLOCKED** on T20
+- **T21**: CZX PEPS Ground State — 🔴 **BLOCKED** on T22
+- **T24**: Domain Wall Dynamics — 🔴 **BLOCKED** on T20+T21
+- **T26**: Coupled Matter Simulation — 🔴 **BLOCKED** on T20+T24
 
 ## Completed Tasks (Current Session)
 - **T18**: May 2026 reviewer-safety calibration integrated into the live manuscript and AI assistance disclosure; `timesarrow.pdf` rebuilt cleanly
@@ -63,19 +72,19 @@ T18 (Manuscript Claim-Hardening and Reviewer-Response Roadmap) — **ACTIVE**. T
 - `implementation-details/ai-peer-review-2026-05-05.md` — Full dialog of final peer review: reviewer claims, author responses, admitted errors, and resolutions
 
 ## Recommended Next Session Order
-1. **T20 implementation** — Begin the Z₂ LGT Monte Carlo simulation (foundational; validates core claim).
-2. **T22 spin foam amplitudes** — Start EPRL/FK vertex amplitude calculation (addresses j=1/2 weakness; can run in parallel with T20).
-3. **T25 quick win** — Extend volume operator diagonalization (3-5 days; strengthens j=1/2 argument).
-4. **T18 focused reading pass** — Review the revised `Volume Operator`, `SPT-LQG`, `Z_2 Action`, and discussion chain for flow and reviewer-safety after the May 2026 calibration.
-5. **T21 PEPS construction** — Begin after T20 is running; build CZX ground state in 2D first, then 3D.
-6. **T23 entanglement entropy** — Run once T20 infrastructure is ready; topological entanglement entropy is the smoking gun.
-7. **T24 domain walls** — Most ambitious; tackle after T20 and T21 are producing results.
-8. **T26 coupled matter** — Long-term; matter-selection of arrow is the conceptual gap to bridge.
-9. **T13** — Next.js interactive web presentation (can proceed in parallel with simulations).
+1. **T25 implementation** — Start volume operator extension (3-5 days, no blockers, validates ts-quantum integration)
+2. **T22 implementation** — Start spin foam amplitude calculation (2-4 weeks, no blockers, can run in parallel with T25)
+3. **T20 implementation** — Begin Z₂ LGT Monte Carlo once T25 intertwiner framework is validated
+4. **T23 entanglement entropy** — Run once T20 infrastructure is ready
+5. **T21 PEPS construction** — Begin after T22 spin foam results are available
+6. **T24 domain walls** — Most ambitious; tackle after T20 and T21
+7. **T26 coupled matter** — Long-term; matter-selection of arrow
+8. **T18 focused reading pass** — Review revised sections for flow and reviewer-safety
+9. **T13** — Next.js interactive web presentation (can proceed in parallel)
 
 ## Open Author Decisions
-- **Simulation priority and sequencing**: Which of T20–T26 to start first, and whether to run multiple simulations in parallel. T20 and T22 are recommended as parallel starting points; T25 is a quick win that can be done immediately.
-- **T20 code infrastructure**: Whether to build from scratch or adapt existing open-source Z₂ LGT code (e.g., from lattice QCD community).
+- **Simulation priority and sequencing**: ✅ RESOLVED — T25 and T22 start first (parallel), then T20, T23, T21, T24, T26 in sequence. Beads tasks created with dependencies.
+- **T20 code infrastructure**: ✅ DECIDED — Build unified `timesarrow-numerics` package using ts-quantum as base, Quarto docs for web output.
 - **T21 computational strategy**: Whether to attempt full 3D PEPS or start with 2D CZX benchmark, then extrapolate. 3D PEPS is computationally expensive; may need GPU or cluster access.
 - **T22 collaboration**: Whether to implement spin foam amplitudes from scratch or collaborate with spin-foam experts (e.g., Donà et al.) who have existing code.
 - T19 integration choice: keep the Markdown pilot isolated, or replace the live `Z_2` section via `\input{markdown-pilot/generated/z2-action.tex}` for a full-manuscript test.
