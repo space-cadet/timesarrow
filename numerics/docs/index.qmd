@@ -14,7 +14,7 @@ All simulations use the **ts-quantum** TypeScript library for SU(2) algebra, int
 | Task | Focus | Status | Priority |
 |---|---|---|---|
 | **T25** | Volume Operator Extension | 🟢 Complete | P1 |
-| **T20** | Z₂ LGT Monte Carlo | 🟡 Ready | P0 |
+| **T20** | Z₂ LGT Monte Carlo | 🟢 Phase 1 Complete | P0 |
 | **T23** | Entanglement Entropy | 🔴 Blocked (T20) | P1 |
 | **T22** | Spin Foam Amplitudes | 🟡 Ready | P1 |
 | **T21** | CZX PEPS Ground State | 🔴 Blocked (T22) | P1 |

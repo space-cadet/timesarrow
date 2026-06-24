@@ -4,4 +4,5 @@ Thermalization: 10000 sweeps
 Measurement: 100000 sweeps (every 10 )
 β values: 18 points
 
-β = 0.10 ... 
+β = 0.10 ... ⟨P⟩ = 0.1004 ± 0.0006
+β = 0.20 ... 

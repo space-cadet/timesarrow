@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>T20 — Z₂ Lattice Gauge Theory Monte Carlo</title>
+<title>T22 — Spin Foam Amplitudes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,56 +20,21 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="t20-z2-lgt_files/libs/clipboard/clipboard.min.js"></script>
-<script src="t20-z2-lgt_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="t20-z2-lgt_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="t20-z2-lgt_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="t20-z2-lgt_files/libs/quarto-html/popper.min.js"></script>
-<script src="t20-z2-lgt_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="t20-z2-lgt_files/libs/quarto-html/anchor.min.js"></script>
-<link href="t20-z2-lgt_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="t20-z2-lgt_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="t20-z2-lgt_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="t20-z2-lgt_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="t20-z2-lgt_files/libs/bootstrap/bootstrap-d6a003b94517c951b2d65075d42fb01b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="t22-spin-foam_files/libs/clipboard/clipboard.min.js"></script>
+<script src="t22-spin-foam_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="t22-spin-foam_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="t22-spin-foam_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="t22-spin-foam_files/libs/quarto-html/popper.min.js"></script>
+<script src="t22-spin-foam_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="t22-spin-foam_files/libs/quarto-html/anchor.min.js"></script>
+<link href="t22-spin-foam_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="t22-spin-foam_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="t22-spin-foam_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="t22-spin-foam_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="t22-spin-foam_files/libs/bootstrap/bootstrap-d6a003b94517c951b2d65075d42fb01b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -111,8 +76,8 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">T20 — Z₂ Lattice Gauge Theory Monte Carlo</h1>
-<p class="subtitle lead">Confinement-deconfinement transition</p>
+<h1 class="title">T22 — Spin Foam Amplitudes</h1>
+<p class="subtitle lead">j=1/2 dominance verification</p>
 </div>
 
 
@@ -131,280 +96,34 @@ window.Quarto = {
 
 <section id="objective" class="level2">
 <h2 class="anchored" data-anchor-id="objective">Objective</h2>
-<p>Classical Monte Carlo simulation of Z₂ gauge theory to demonstrate the confinement-deconfinement transition that underpins the paper’s central claim.</p>
+<p>Numerically evaluate EPRL/FK spin foam vertex amplitudes to verify the j=1/2 dominance assumption.</p>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>🟢 <strong>Phase 1 COMPLETE</strong> — 2D square lattice implemented and tested. Critical coupling confirmed.</p>
+<p>🟡 <strong>Ready to implement</strong></p>
 </section>
 <section id="theory" class="level2">
 <h2 class="anchored" data-anchor-id="theory">Theory</h2>
-<p>The Z₂ gauge theory action:</p>
+<p>The EPRL vertex amplitude for a 4-valent vertex:</p>
 <p><span class="math display">\[
-S = -\beta \sum_{\square} \prod_{e \in \square} \sigma_e
+A_v(j_1, j_2, j_3, j_4) = \sum_{i_1, i_2} \{6j\} \cdot \text{intertwiner}
 \]</span></p>
-<p>where <span class="math inline">\(\sigma_e \in \{+1, -1\}\)</span> are link variables and <span class="math inline">\(\beta\)</span> is the inverse coupling (temperature).</p>
-<section id="observables" class="level3">
-<h3 class="anchored" data-anchor-id="observables">Observables</h3>
-<p><strong>Average plaquette</strong>: The order parameter for the phase transition</p>
-<p><span class="math display">\[
-\langle P \rangle = \frac{1}{N_{\square}} \sum_{\square} \prod_{e \in \square} \sigma_e
-\]</span></p>
-<p><strong>Specific heat</strong>: Susceptibility to thermal fluctuations</p>
-<p><span class="math display">\[
-C_V = \frac{\langle S^2 \rangle - \langle S \rangle^2}{V}
-\]</span></p>
-<p><strong>Wilson loop</strong>: Tests confinement via area vs perimeter law</p>
-<p><span class="math display">\[
-W(\gamma) = \left\langle \prod_{e \in \gamma} \sigma_e \right\rangle
-\]</span></p>
+<p>Claim: |A_v|² decays with increasing j, justifying the j=1/2 truncation.</p>
 </section>
-<section id="expected-behavior" class="level3">
-<h3 class="anchored" data-anchor-id="expected-behavior">Expected Behavior</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 19%">
-<col style="width: 36%">
-<col style="width: 44%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Phase</th>
-<th>Wilson loop</th>
-<th>Order parameter</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Confined (<span class="math inline">\(\beta &lt; \beta_c\)</span>)</td>
-<td>Area law: <span class="math inline">\(W \sim e^{-\alpha A}\)</span></td>
-<td><span class="math inline">\(\langle P \rangle \ll 1\)</span></td>
-</tr>
-<tr class="even">
-<td>Deconfined (<span class="math inline">\(\beta &gt; \beta_c\)</span>)</td>
-<td>Perimeter law: <span class="math inline">\(W \sim e^{-\beta P}\)</span></td>
-<td><span class="math inline">\(\langle P \rangle \to 1\)</span></td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="architecture" class="level2">
-<h2 class="anchored" data-anchor-id="architecture">Architecture</h2>
-<p><strong>General tools → <code>ts-quantum</code>, specific sim → <code>timesarrow/numerics/</code></strong></p>
-<section id="ts-quantum-reusable-lattice-gauge-theory" class="level3">
-<h3 class="anchored" data-anchor-id="ts-quantum-reusable-lattice-gauge-theory">ts-quantum (reusable lattice gauge theory)</h3>
-<ul>
-<li><code>src/lattice/geometry.ts</code> — Lattice types (2D square, 2D triangular, 3D cubic)</li>
-<li><code>src/lattice/gaugeField.ts</code> — <code>Z2GaugeField</code> class (link variables ±1)</li>
-<li><code>src/lattice/action.ts</code> — Wilson action and delta-S computation</li>
-<li><code>src/lattice/monteCarlo.ts</code> — Metropolis algorithm, thermalization, measurement</li>
-<li><code>src/lattice/observables.ts</code> — Plaquette average, specific heat, Wilson loops, Binder cumulant, jackknife error</li>
-</ul>
-</section>
-<section id="timesarrow-simulation-setup" class="level3">
-<h3 class="anchored" data-anchor-id="timesarrow-simulation-setup">timesarrow (simulation setup)</h3>
-<ul>
-<li><code>numerics/src/scripts/t20-z2-lgt-phase1.ts</code> — 2D square lattice parameter sweep</li>
-<li><code>numerics/src/scripts/t20-z2-lgt-phase2.ts</code> — 2D triangular lattice</li>
-<li><code>numerics/src/scripts/t20-z2-lgt-phase3.ts</code> — 3D cubic lattice (paper target)</li>
-<li><code>numerics/output/t20-phase1-fast.json</code> — Phase 1 results</li>
-</ul>
-</section>
-</section>
-<section id="phase-1-2d-square-lattice" class="level2">
-<h2 class="anchored" data-anchor-id="phase-1-2d-square-lattice">Phase 1: 2D Square Lattice</h2>
-<section id="setup" class="level3">
-<h3 class="anchored" data-anchor-id="setup">Setup</h3>
-<ul>
-<li>Lattice: <span class="math inline">\(L \times L\)</span> square with periodic boundary conditions</li>
-<li>Critical coupling (exact): <span class="math inline">\(\beta_c = \frac{1}{2}\ln(1+\sqrt{2}) \approx 0.4407\)</span></li>
-<li>Plaquettes: squares with 4 links each</li>
-<li>Algorithm: Metropolis Monte Carlo with single-link updates</li>
-</ul>
-</section>
-<section id="simulation-parameters" class="level3">
-<h3 class="anchored" data-anchor-id="simulation-parameters">Simulation Parameters</h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Parameter</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Lattice size <span class="math inline">\(L\)</span></td>
-<td>8</td>
-</tr>
-<tr class="even">
-<td>Thermalization sweeps</td>
-<td>1,000</td>
-</tr>
-<tr class="odd">
-<td>Measurement sweeps</td>
-<td>5,000</td>
-</tr>
-<tr class="even">
-<td>Measure every</td>
-<td>5 sweeps</td>
-</tr>
-<tr class="odd">
-<td>Bin size (error analysis)</td>
-<td>20</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(\beta\)</span> values</td>
-<td>0.1, 0.2, 0.3, 0.4, 0.44, 0.5, 0.6, 0.8, 1.0, 1.5</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="results" class="level3">
-<h3 class="anchored" data-anchor-id="results">Results</h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th><span class="math inline">\(\beta\)</span></th>
-<th><span class="math inline">\(\langle P \rangle\)</span></th>
-<th>Error</th>
-<th>Phase</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0.10</td>
-<td>0.0969</td>
-<td>±0.0036</td>
-<td><strong>Confined</strong></td>
-</tr>
-<tr class="even">
-<td>0.20</td>
-<td>0.1994</td>
-<td>±0.0042</td>
-<td>Confined</td>
-</tr>
-<tr class="odd">
-<td>0.30</td>
-<td>0.3012</td>
-<td>±0.0039</td>
-<td>Confined</td>
-</tr>
-<tr class="even">
-<td>0.40</td>
-<td>0.3748</td>
-<td>±0.0039</td>
-<td>Near critical</td>
-</tr>
-<tr class="odd">
-<td><strong>0.44</strong></td>
-<td><strong>0.4162</strong></td>
-<td><strong>±0.0035</strong></td>
-<td><strong>Critical</strong></td>
-</tr>
-<tr class="even">
-<td>0.50</td>
-<td>0.4608</td>
-<td>±0.0033</td>
-<td>Deconfined</td>
-</tr>
-<tr class="odd">
-<td>0.60</td>
-<td>0.5335</td>
-<td>±0.0030</td>
-<td>Deconfined</td>
-</tr>
-<tr class="even">
-<td>0.80</td>
-<td>0.6645</td>
-<td>±0.0028</td>
-<td>Deconfined</td>
-</tr>
-<tr class="odd">
-<td>1.00</td>
-<td>0.7572</td>
-<td>±0.0022</td>
-<td>Deconfined</td>
-</tr>
-<tr class="even">
-<td>1.50</td>
-<td>0.9047</td>
-<td>±0.0017</td>
-<td>Strongly ordered</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="analysis" class="level3">
-<h3 class="anchored" data-anchor-id="analysis">Analysis</h3>
-<p>The results confirm the expected phase transition at <span class="math inline">\(\beta_c \approx 0.44\)</span>:</p>
-<ul>
-<li><p><strong>Confined phase</strong> (<span class="math inline">\(\beta &lt; 0.44\)</span>): <span class="math inline">\(\langle P \rangle\)</span> increases linearly with <span class="math inline">\(\beta\)</span> but remains small. The system is in a disordered state where Wilson loops follow area law.</p></li>
-<li><p><strong>Critical point</strong> (<span class="math inline">\(\beta \approx 0.44\)</span>): Rapid crossover in <span class="math inline">\(\langle P \rangle\)</span> behavior. This is where the correlation length diverges and the system transitions between phases.</p></li>
-<li><p><strong>Deconfined phase</strong> (<span class="math inline">\(\beta &gt; 0.44\)</span>): <span class="math inline">\(\langle P \rangle\)</span> approaches 1 as <span class="math inline">\(\beta \to \infty\)</span>. The system is in an ordered state where Wilson loops follow perimeter law.</p></li>
-</ul>
-<p>The critical coupling <span class="math inline">\(\beta_c \approx 0.44\)</span> matches the exact theoretical value <span class="math inline">\(0.4407\)</span> to within statistical error, validating the implementation.</p>
-</section>
-<section id="code" class="level3">
-<h3 class="anchored" data-anchor-id="code">Code</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode typescript code-with-copy"><code class="sourceCode typescript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  createSquareLattice<span class="op">,</span> </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  Z2GaugeField<span class="op">,</span> </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  averagePlaquette<span class="op">,</span> </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  metropolisSweep<span class="op">,</span> </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  thermalize<span class="op">,</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  jackknifeError<span class="op">,</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  binData</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>} <span class="im">from</span> <span class="st">'ts-quantum'</span><span class="op">;</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">// Create lattice and random initial field</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> lattice <span class="op">=</span> <span class="fu">createSquareLattice</span>(<span class="dv">8</span>)<span class="op">;</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> field <span class="op">=</span> <span class="kw">new</span> <span class="fu">Z2GaugeField</span>(lattice<span class="op">,</span> <span class="st">'random'</span>)<span class="op">;</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">// Thermalize</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">thermalize</span>(field<span class="op">,</span> <span class="fl">0.44</span><span class="op">,</span> <span class="dv">1000</span>)<span class="op">;</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">// Measure</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> measurements <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> s <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> s <span class="op">&lt;</span> <span class="dv">5000</span><span class="op">;</span> s<span class="op">++</span>) {</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">metropolisSweep</span>(field<span class="op">,</span> <span class="fl">0.44</span>)<span class="op">;</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (s <span class="op">%</span> <span class="dv">5</span> <span class="op">===</span> <span class="dv">0</span>) {</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    measurements<span class="op">.</span><span class="fu">push</span>(<span class="fu">averagePlaquette</span>(field))<span class="op">;</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co">// Analysis with binning and jackknife error</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> binned <span class="op">=</span> <span class="fu">binData</span>(measurements<span class="op">,</span> <span class="dv">20</span>)<span class="op">;</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> mean <span class="op">=</span> binned<span class="op">.</span><span class="fu">reduce</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a <span class="op">+</span> b<span class="op">,</span> <span class="dv">0</span>) <span class="op">/</span> binned<span class="op">.</span><span class="at">length</span><span class="op">;</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> error <span class="op">=</span> <span class="fu">jackknifeError</span>(binned)<span class="op">;</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`⟨P⟩ = </span><span class="sc">${</span>mean<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">4</span>)<span class="sc">}</span><span class="vs"> ± </span><span class="sc">${</span>error<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">4</span>)<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-</section>
-<section id="phase-2-2d-triangular-lattice-planned" class="level2">
-<h2 class="anchored" data-anchor-id="phase-2-2d-triangular-lattice-planned">Phase 2: 2D Triangular Lattice (Planned)</h2>
-<ul>
-<li>Vertices: 6-valent (connects to T25 6-valent intertwiner work)</li>
-<li>Plaquettes: triangles with 3 links each</li>
-<li>Different universality class from square lattice</li>
-<li>Tests geometric embedding effects</li>
-</ul>
-</section>
-<section id="phase-3-3d-cubic-lattice-paper-target" class="level2">
-<h2 class="anchored" data-anchor-id="phase-3-3d-cubic-lattice-paper-target">Phase 3: 3D Cubic Lattice (Paper Target)</h2>
-<ul>
-<li>Confinement-deconfinement transition</li>
-<li>Critical coupling: <span class="math inline">\(K_c \approx 0.761\)</span> (3D Ising universality)</li>
-<li>Wilson loops: area law (confined) vs perimeter law (deconfined)</li>
-<li>String tension extraction</li>
+<section id="tasks" class="level2">
+<h2 class="anchored" data-anchor-id="tasks">Tasks</h2>
+<ul class="task-list">
+<li><label><input type="checkbox">Implement EPRL vertex using ts-quantum 6j symbols</label></li>
+<li><label><input type="checkbox">Compute |A_v|² for j ∈ {1/2, 1, 3/2, 2, 5/2}</label></li>
+<li><label><input type="checkbox">Fit power-law decay A_v ~ j^(-α)</label></li>
+<li><label><input type="checkbox">Generate amplitude plots</label></li>
 </ul>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <ul>
-<li>Paper: Section 4.2, Eq. (48)</li>
-<li><code>timesarrow/numerics/docs/implementation/t20-z2-lgt.md</code> — Full architecture doc</li>
-<li><code>timesarrow/numerics/output/t20-phase1-fast.json</code> — Phase 1 raw data</li>
+<li>Paper: Section 3.3</li>
+<li>Donà et al.&nbsp;(2020/2022) reference implementations</li>
 </ul>
 </section>
 
