@@ -1,9 +1,30 @@
 # Edit History
 
 *Created: 2026-04-16 20:22:00 IST*
-*Last Updated: 2026-05-20 09:30:55 IST*
+*Last Updated: 2026-06-24 09:35:00 IST*
 
 ## File Modification Log
+
+### 2026-06-24
+
+#### 09:30:00 IST - T20–T26: Numerical simulation tasks created
+- Created `memory-bank/tasks/T20.md` — 3D Z₂ Lattice Gauge Theory Monte Carlo (CRITICAL priority)
+- Created `memory-bank/tasks/T21.md` — CZX-Spin Network PEPS Ground State (HIGH priority)
+- Created `memory-bank/tasks/T22.md` — Spin Foam Amplitude for j=1/2 Dominance (HIGH priority)
+- Created `memory-bank/tasks/T23.md` — Entanglement Structure of Deconfined Phase (MEDIUM priority)
+- Created `memory-bank/tasks/T24.md` — Domain Wall Dynamics and Surface Topological Order (MEDIUM priority)
+- Created `memory-bank/tasks/T25.md` — Volume Operator Eigenvalue Distribution (LOW priority, quick win)
+- Created `memory-bank/tasks/T26.md` — Coupled Spin Network + Matter Simulation (LOW priority, long-term)
+- Created `memory-bank/implementation-details/z2-lgt-monte-carlo-plan.md` — T20 detailed simulation plan
+- Created `memory-bank/implementation-details/czx-peps-simulation-plan.md` — T21 detailed simulation plan
+- Created `memory-bank/implementation-details/spin-foam-amplitude-calculation.md` — T22 detailed calculation plan
+- Created `memory-bank/implementation-details/entanglement-structure-simulation.md` — T23 detailed simulation plan
+- Created `memory-bank/implementation-details/domain-wall-dynamics-plan.md` — T24 detailed simulation plan
+- Created `memory-bank/implementation-details/volume-operator-extension.md` — T25 detailed calculation plan
+- Created `memory-bank/implementation-details/coupled-matter-simulation-plan.md` — T26 detailed simulation plan
+- Updated `memory-bank/tasks.md` — Added T20–T26 to Active Tasks table and updated task relationship graph
+- Updated `memory-bank/activeContext.md` — Updated current status, active tasks list, recommended next session order, open author decisions, and implementation docs list
+- Created `memory-bank/edits/2026-06-24/093000-T20-T26.md` — Canonical edit chunk for the simulation task creation
 
 ### 2026-05-20
 
