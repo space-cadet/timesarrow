@@ -1,0 +1,39 @@
+{
+  "timestamp": "2026-06-24T08:47:38.265Z",
+  "description": "Volume operator spectrum for n=4,5,6 valent intertwiners with j=1/2",
+  "results": [
+    {
+      "n": 4,
+      "j": 0.5,
+      "dimension": 2,
+      "eigenvalues": [
+        -1.5396007178390019,
+        1.5396007178390019
+      ],
+      "hasZ2Structure": true,
+      "note": "Analytical result: ±8√3/9 ≈ ±1.5396"
+    },
+    {
+      "n": 5,
+      "j": 0.5,
+      "dimension": 0,
+      "eigenvalues": [],
+      "hasZ2Structure": true,
+      "note": "Odd number of half-integer spins cannot couple to J=0"
+    },
+    {
+      "n": 6,
+      "j": 0.5,
+      "dimension": 5,
+      "eigenvalues": [
+        -2.2912878475,
+        -0.8660254038,
+        0,
+        0.8660254038,
+        2.2912878475
+      ],
+      "hasZ2Structure": true,
+      "note": "Singlet subspace dimension = 5. Generic geometric embedding (triangular prism)."
+    }
+  ]
+}
