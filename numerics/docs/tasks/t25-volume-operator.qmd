@@ -1,0 +1,46 @@
+---
+title: "T25 — Volume Operator Extension"
+subtitle: "Higher-valence intertwiner spectrum"
+---
+
+## Objective
+
+Extend the volume operator Q̂ diagonalization from 4-valent to 5-valent and 6-valent intertwiners. Verify whether the Z₂ sign-flip structure (±q₀ degeneracy) persists.
+
+## Status
+
+🟡 **Ready to implement**
+
+## Theory
+
+The volume operator for an n-valent vertex is:
+
+$$
+\hat{Q} = \sum_{i<j<k} \epsilon_{ijk} \, \hat{J}_i \cdot (\hat{J}_j \times \hat{J}_k)
+$$
+
+For the 4-valent case with j=1/2, the spectrum shows two-fold degeneracy with ±q₀ pairs.
+
+## Tasks
+
+- [ ] Build intertwiner basis for n=5,6 using ts-quantum
+- [ ] Construct Q̂ matrix in singlet subspace
+- [ ] Diagonalize and extract spectrum
+- [ ] Check Z₂ structure: does ±q₀ persist?
+- [ ] Generate figures and Quarto page
+
+## Code
+
+```typescript
+import { buildVolumeOperator, diagonalizeSymmetric, checkZ2Structure } from 'timesarrow-numerics';
+
+// Example: 5-valent vertex with j=1/2
+const n = 5;
+const j = 0.5;
+// ... (implementation pending)
+```
+
+## References
+
+- Paper: Section 3.2, Eq. (24)
+- Supplementary: Corrected basis states |Φ₁⟩, |Φ₂⟩

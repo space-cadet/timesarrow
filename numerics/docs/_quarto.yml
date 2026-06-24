@@ -1,0 +1,55 @@
+project:
+  type: website
+  title: "TimesArrow Numerics"
+  output-dir: _site
+
+website:
+  title: "TimesArrow"
+  description: "Numerical simulations for time reversal symmetry in quantum gravity"
+  site-url: https://quantumofgravity.com/timesarrow
+  repo-url: https://github.com/space-cadet/timesarrow
+  navbar:
+    left:
+      - href: index.qmd
+        text: Overview
+      - text: Simulations
+        menu:
+          - href: tasks/t25-volume-operator.qmd
+            text: T25 — Volume Operator
+          - href: tasks/t20-z2-lgt.qmd
+            text: T20 — Z₂ LGT Monte Carlo
+          - href: tasks/t23-entanglement.qmd
+            text: T23 — Entanglement Entropy
+          - href: tasks/t22-spin-foam.qmd
+            text: T22 — Spin Foam Amplitudes
+          - href: tasks/t21-czx-peps.qmd
+            text: T21 — CZX PEPS
+          - href: tasks/t24-domain-walls.qmd
+            text: T24 — Domain Walls
+          - href: tasks/t26-coupled-matter.qmd
+            text: T26 — Coupled Matter
+  sidebar:
+    - title: "Simulations"
+      style: "docked"
+      contents:
+        - index.qmd
+        - section: "Tasks"
+          contents:
+            - tasks/t25-volume-operator.qmd
+            - tasks/t20-z2-lgt.qmd
+            - tasks/t23-entanglement.qmd
+            - tasks/t22-spin-foam.qmd
+            - tasks/t21-czx-peps.qmd
+            - tasks/t24-domain-walls.qmd
+            - tasks/t26-coupled-matter.qmd
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-fold: true
+    code-overflow: wrap
+    math: mathjax
+
+execute:
+  freeze: auto

@@ -1,0 +1,35 @@
+---
+title: "TimesArrow Numerics"
+subtitle: "Numerical simulations for time reversal symmetry in quantum gravity"
+---
+
+## Overview
+
+This site documents the numerical simulation program for the paper *"Gauging Time Reversal Symmetry in Quantum Gravity: Arrow of Time from a Confinement–Deconfinement Transition."*
+
+All simulations use the **ts-quantum** TypeScript library for SU(2) algebra, intertwiner construction, and tensor operations.
+
+## Simulation Tasks
+
+| Task | Focus | Status | Priority |
+|---|---|---|---|
+| **T25** | Volume Operator Extension | 🟡 Ready | P1 |
+| **T20** | Z₂ LGT Monte Carlo | 🔴 Blocked (T25) | P0 |
+| **T23** | Entanglement Entropy | 🔴 Blocked (T20) | P1 |
+| **T22** | Spin Foam Amplitudes | 🟡 Ready | P1 |
+| **T21** | CZX PEPS Ground State | 🔴 Blocked (T22) | P1 |
+| **T24** | Domain Wall Dynamics | 🔴 Blocked (T20+T21) | P2 |
+| **T26** | Coupled Matter | 🔴 Blocked (T20+T24) | P2 |
+
+## Philosophy
+
+1. **Unified code base** — All simulations share a common core (intertwiners, operators, utilities)
+2. **Incremental complexity** — Start with exact diagonalization (T25), build to Monte Carlo (T20), then tensor networks (T21)
+3. **Reproducible artifacts** — Scripts, data, and figures versioned alongside the paper
+4. **Web-deployed** — Results published as they become available
+
+## Quick Links
+
+- [GitHub repo](https://github.com/space-cadet/timesarrow)
+- [ts-quantum library](https://github.com/space-cadet/ts-quantum)
+- [Paper (arXiv)](https://arxiv.org/abs/XXXX.XXXXX)
