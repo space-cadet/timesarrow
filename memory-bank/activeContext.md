@@ -1,56 +1,80 @@
 # timesarrow — Active Context
 
-*Updated: 2026-06-25 03:37 IST*
+*Updated: 2026-06-25 04:12 IST*
 
 ## Current Focus
 
-**T20-Phase2**: Multi-lattice finite-size scaling simulation is RUNNING.
+**T21 — Worker Threads + Checkpointing**
 
-**Status**: Batch 1/12 in progress. 72 total simulations (3 lattice sizes × 24 β values).
-**ETA**: ~60-90 minutes.
-**Monitoring**: Process `fresh-seaslug` (pid 54286), healthy at 99.9% CPU.
+**Status**: 🔄 Ready to implement. T20 Phase 1 complete, results validated.
 
-## T21 — Performance Optimization (New)
+**Plan**: Implement coarse-grained checkpointing first, then worker thread orchestration.
 
-**Status**: 🔄 Planning phase. **Blocked until T20-Phase2 completes**.
+**Decision**: Start implementation immediately. Physics is validated (β_c ≈ 0.44 confirmed).
 
-**Plan**: Benchmark 5 approaches for fast MC kernel, then implement winner.
+## Completed This Session
 
-| # | Approach | Expected Speedup | Effort |
-|---|----------|-----------------|--------|
-| 1 | Node.js Worker Threads | 6-8× | Low |
-| 2 | Bun runtime | 3-5× | Very Low |
-| 3 | Rust + napi-rs | 50-100× | Medium |
-| 4 | C++ + WASM | 20-50× | Medium |
-| 5 | C++ native addon | 50-100× | Medium-High |
+### T20 Phase 1 — Production Run
+- ✅ L=16, 18 β values, 100k sweeps completed
+- ✅ Results saved and documented
+- ✅ Numerics page updated with chronological log
+- ✅ Error bars ~0.0005 (excellent statistics)
 
-**Approach**: Write minimal benchmark test in each framework, measure actual wall-clock time on M2 Air for identical workload (L=16, 10k sweeps). Decide based on speed × maintainability.
+**Key finding**: Critical coupling β_c ≈ 0.44-0.46 confirmed, matching exact value 0.4407.
 
-**Likely winner**: Rust + napi-rs (best perf/safety tradeoff, ARM64-native, path to GPU).
+## T21 — Worker Threads + Checkpointing (In Progress)
+
+**Status**: 🔄 Planning complete, implementation starting
+
+**Scope**:
+1. **Coarse checkpointing** (per-β completion tracking) — implement first
+2. **Fine-grained checkpointing** (mid-simulation state) — if needed for L≥32
+3. **Worker thread orchestration** — parallel β sweeps across CPU cores
+
+**Architecture**:
+- Main thread: distributes β values, collects results, handles I/O
+- Workers: one per core, independent simulations
+- Checkpoints: JSON manifest tracking completed β values
+
+**Files to create**:
+| File | Purpose |
+|------|---------|
+| `numerics/src/utils/checkpoint.ts` | Save/resume logic |
+| `numerics/src/scripts/t20-z2-lgt-phase1-worker.ts` | Worker entry point |
+| `numerics/src/scripts/t20-z2-lgt-phase1-main.ts` | Main orchestrator |
 
 ## Key Decisions (this session)
 
-- **GPU not needed**: CPU parallelization of independent simulations sufficient.
-- **T21 deferred**: Start benchmarking after T20-Phase2 results confirm physics is correct.
-- **Pure-JS preserved**: Fast kernel will be opt-in; JS fallback stays for testing/debugging.
+- **Coarse checkpointing first**: Per-β tracking sufficient for current lattice sizes (L≤16)
+- **Fine-grained deferred**: Only implement if L≥32 simulations require it
+- **Z2GaugeField.toJSON() reusable**: Serialization already implemented
+- **Keep single-threaded fallback**: For debugging and validation
+- **Worker threads over Rust/WASM**: For T21, Node.js worker threads are sufficient (parallel β sweeps, not inner loop optimization)
+
+## Blocked Tasks
+
+| Task | Blocked By | When Unblocked |
+|------|-----------|---------------|
+| T20-Phase2 (finite-size scaling) | T21 | After worker threads + checkpointing ready |
+| T20-Phase3 (3D cubic) | T21 | After Phase 2 |
 
 ## Files in Play
 
 | File | Role | Status |
 |------|------|--------|
-| `ts-quantum/src/lattice/observables.ts` | P², P⁴, Binder, C, χ | ✅ Added |
-| `numerics/src/scripts/t20-z2-lgt-phase2a.cjs` | Production multi-lattice sweep | 🔄 Running |
-| `numerics/output/t20-phase2a-finite-size.json` | Results (81 sims) | ⏳ Pending |
-| `memory-bank/tasks/T21-performance-optimization.md` | Benchmark plan | ✅ Created |
+| `ts-quantum/src/lattice/gaugeField.ts` | Z2GaugeField with toJSON/fromJSON | ✅ Ready |
+| `numerics/output/t20-phase1-square-lattice.json` | Production results | ✅ Complete |
+| `numerics/docs/tasks/t20-z2-lgt.qmd` | Numerics page with chronological log | ✅ Updated |
+| `memory-bank/edits/2026-06-25-t20-results-and-checkpointing-plan.md` | This session's work log | ✅ Created |
 
 ## What's Next
 
-1. **Wait** for T20-Phase2 simulation to complete (~1 hour)
-2. **Validate** results: check χ peaks, U crossing, ⟨P⟩ sharpening
-3. **Start T21 benchmarks**: Worker Threads → Bun → Rust → C++
-4. **Implement** winner and integrate into ts-quantum
+1. **Implement** `checkpoint.ts` module
+2. **Create** worker thread scripts
+3. **Test** with L=8 validation run
+4. **Verify** results match single-threaded version
+5. **Document** in numerics pages
 
 ---
 
-*See `memory-bank/tasks/T20-Phase2-sharp-transition.md` for Phase 2 plan.*
-*See `memory-bank/tasks/T21-performance-optimization.md` for benchmark plan.*
+*See `memory-bank/tasks/T21-worker-threads-checkpointing.md` for detailed plan.*
