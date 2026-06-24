@@ -19,6 +19,8 @@ Implement a fast numerical kernel for Monte Carlo simulations to replace the cur
 - [ ] Benchmark results for all 5 approaches (documented in implementation details)
 - [ ] Decision record with speedup numbers and rationale
 - [ ] Working fast kernel integrated into ts-quantum
+- [ ] **Checkpointing & resume**: Simulations must be pausable and resumable (save/load state)
+- [ ] Incremental result writing (don't lose progress on crash)
 - [ ] CI build for native addon
 - [ ] Pure-JS fallback preserved for testing/debugging
 

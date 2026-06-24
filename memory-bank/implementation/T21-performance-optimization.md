@@ -176,6 +176,49 @@ impl Z2GaugeField {
 | 2026-06-25 | Worker Threads first (quick win) | 6-8× speedup, zero new dependencies |
 | 2026-06-25 | Rust as likely long-term winner | Best perf/safety tradeoff, ARM64-native, GPU path |
 
+## Checkpointing & Resume (Critical Requirement)
+
+**Discovered during T20-Phase2**: The current simulation writes results only at the very end. A 6-hour run with no intermediate saves is unacceptable — crashes, power loss, or user interruption lose all progress.
+
+### Requirements for All Future Simulation Scripts
+
+1. **Incremental Writing**: After each batch (or each simulation), append results to a JSONL/CSV file
+2. **Checkpoint Files**: Save RNG state + lattice config periodically (every N sweeps)
+3. **Resume Capability**: On restart, read existing results, skip completed (L, β) pairs
+4. **Atomic Updates**: Write to temp file, then rename (prevent corruption)
+
+### Implementation Pattern
+
+```javascript
+// On startup: check for existing results
+const checkpointPath = 'output/t20-phase2a-checkpoint.json';
+let completedPairs = new Set();
+if (fs.existsSync(checkpointPath)) {
+    const checkpoint = JSON.parse(fs.readFileSync(checkpointPath));
+    completedPairs = new Set(checkpoint.completed.map(r => `${r.L}-${r.beta}`));
+    results.push(...checkpoint.results);
+}
+
+// Skip already-completed simulations
+const pendingParams = allParams.filter(p => !completedPairs.has(`${p.L}-${p.beta}`));
+
+// After each batch: append to checkpoint
+function saveCheckpoint(results) {
+    const tmp = checkpointPath + '.tmp';
+    fs.writeFileSync(tmp, JSON.stringify({ completed: results }, null, 2));
+    fs.renameSync(tmp, checkpointPath);
+}
+```
+
+### Fast Kernel Implication
+
+The Rust/C++ kernel must also support:
+- **Serialize state**: Dump lattice config + RNG state to bytes
+- **Deserialize state**: Restore from bytes
+- **Stream results**: Write observables to disk after each measurement block
+
+This is a **hard requirement** for T21 — no fast kernel is acceptable without checkpointing.
+
 ## Risks & Mitigations
 
 | Risk | Mitigation |
