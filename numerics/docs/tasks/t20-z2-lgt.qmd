@@ -35,24 +35,76 @@ Key observables:
 
 Critical coupling: K_c ≈ 0.761 (3D Ising universality)
 
+## Architecture
+
+**General tools → `ts-quantum`, specific sim → `timesarrow/numerics/`**
+
+### ts-quantum (reusable lattice gauge theory)
+- `src/lattice/geometry.ts` — Lattice types (2D square, 2D triangular, 3D cubic), neighbors, plaquettes
+- `src/lattice/gaugeField.ts` — Z₂GaugeField class (link variables ±1)
+- `src/lattice/action.ts` — Wilson action computation
+- `src/lattice/monteCarlo.ts` — Metropolis update, thermalization, sweep
+- `src/lattice/observables.ts` — Average plaquette, Wilson loop, specific heat
+
+### timesarrow (simulation setup)
+- `numerics/src/scripts/t20-z2-lgt.ts` — Parameter sweep, measurement, output
+- `numerics/src/analysis/t20-analysis.ts` — Finite-size scaling, critical coupling extraction
+- `numerics/output/t20-z2-lgt.json` — Raw data + analysis results
+
 ## Implementation Plan
 
-1. **Metropolis algorithm** with single-link updates
-2. **Thermalization**: 10⁴ sweeps
-3. **Measurement**: 10⁵ sweeps, every 10
-4. **Finite-size scaling**: L = 8, 12, 16, 20
+### Phase 1: 2D Square Lattice (simplest, exact solution known)
+- Z₂ gauge theory on L×L square lattice
+- Plaquettes: squares, 4 links each
+- Critical coupling: β_c = ½ ln(1+√2) ≈ 0.4407
+- Observables: average plaquette, specific heat, Wilson loop (area law check)
 
-## Code
+### Phase 2: 2D Triangular Lattice (connects to T25 6-valent)
+- Z₂ gauge theory on triangular lattice
+- Vertices: 6-valent (connects to intertwiner work)
+- Plaquettes: triangles, 3 links each
+- Different universality class, tests geometric embedding
+
+### Phase 3: 3D Cubic Lattice (paper's target)
+- Z₂ gauge theory on L³ cubic lattice
+- Plaquettes: squares, 6 faces per cube
+- Critical coupling: K_c ≈ 0.761 (3D Ising universality)
+- Confinement-deconfinement transition with area → perimeter law crossover
+
+## Expected Results
+
+| Phase | Lattice | Critical Coupling | Observable Focus |
+|-------|---------|-------------------|------------------|
+| 1 | 2D square | β_c ≈ 0.4407 | Average plaquette, specific heat |
+| 2 | 2D triangular | TBD | Plaquette, Wilson loop, link to 6-valent intertwiner |
+| 3 | 3D cubic | K_c ≈ 0.761 | Confinement-deconfinement, area vs perimeter law |
+
+## Code (Phase 1)
 
 ```typescript
-import { initializeZ2Lattice, computeAction, computeWilsonLoop } from 'timesarrow-numerics';
+import { 
+  createSquareLattice, 
+  Z2GaugeField, 
+  computeWilsonAction, 
+  metropolisSweep, 
+  averagePlaquette 
+} from 'ts-quantum';
 
-const config = { L: 12, K: 0.8 };
-let links = initializeZ2Lattice(config, 'hot');
+const lattice = createSquareLattice({ L: 16, dim: 2 });
+const field = new Z2GaugeField(lattice, 'hot');
 
-// Metropolis sweep
-for (let sweep = 0; sweep < 100000; sweep++) {
-  // ... (implementation pending)
+// Thermalization
+for (let s = 0; s < 10000; s++) {
+  metropolisSweep(field, beta);
+}
+
+// Measurement
+const measurements = [];
+for (let s = 0; s < 100000; s++) {
+  metropolisSweep(field, beta);
+  if (s % 10 === 0) {
+    measurements.push(averagePlaquette(field));
+  }
 }
 ```
 
