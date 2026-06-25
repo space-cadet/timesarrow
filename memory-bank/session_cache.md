@@ -1,49 +1,73 @@
-# Session Cache: T20 Gap Analysis
-*Updated: 2026-06-26 01:21 IST*
+# Session Cache
 
-## Current Session
-**Started**: 2026-06-26 00:17 IST
-**Focus**: T20 — Wilson loop implementation and re-run (COMPLETED)
-**Status**: 🔄 ACTIVE
-**Session File**: `sessions/2026-06-26-night.md`
+*Created: 2026-06-25 23:25:52 IST*
+*Last Updated: 2026-06-25 23:25:52 IST*
 
-## Task Registry
-- T20: Z₂ LGT (all phases) — 🔄 IN PROGRESS (missing observables)
-- T21: Worker threads + checkpointing — ✅ COMPLETE
-- T22: Spin Foam Amplitudes — 🟡 Ready
-- T25: Volume operator eigenvalues — ✅ COMPLETE
-- T27: Rust Z₂ LGT framework — ✅ COMPLETE
+**Started**: 2026-06-25 23:25:52 IST
+**Focus Task**: T22: Spin Foam Amplitudes
+**Session File**: `sessions/latest.md`
+**Status**: 🔄 Active: 4, Paused: 0, Completed: 3
 
-## Completed Work
-- Examined prior tasks before moving to T22
-- Discovered T20 marked COMPLETE but missing key physics observables
-- Performed gap analysis across all three phases
+## Overview
 
-## Missing Observables
-- **Phase 1**: Wilson loops W(γ), critical exponents (ν, γ)
-- **Phase 2**: Scaling collapse plots, Binder crossing, correlation length ξ
-- **Phase 3**: Wilson loops (area vs perimeter law), string tension σ, critical exponents (ν, β)
+- Active: 4 | Paused: 0 | Completed: 3
+- Last Session: -
+- Current Period: morning
 
-## Impact
-Without Wilson loops, cannot demonstrate:
-- Area law (confined): W(γ) ~ exp(-σ·Area)
-- Perimeter law (deconfined): W(γ) ~ exp(-τ·Perimeter)
-- String tension σ as order parameter
+## Active Tasks
 
-## Next Session Priorities
-1. Compute Wilson loops for Phase 3 (3D — most critical)
-2. Compute Wilson loops for Phase 1 (2D — validate)
-3. Extract critical exponents (all phases)
-4. Generate scaling plots (Phase 2)
-5. String tension analysis (Phase 3)
-6. THEN proceed to T22 — Spin Foam Amplitudes
+### T20-Phase1: Z₂ LGT 2D square lattice
+**Status:** 🔄 **IN PROGRESS**
+**Started:** 2026-06-24
+**Context**: [Details](tasks/T20.md)
+**Progress**:
+[Details](tasks/T20.md)
 
-## Files Updated
-- `memory-bank/tasks/T20.md` — Status: IN PROGRESS, gap analysis added
-- `memory-bank/tasks.md` — Phase statuses updated
-- `memory-bank/implementation-details/t20-missing-observables.md` — Created
-- `memory-bank/sessions/2026-06-26-night.md` — Created
-- `memory-bank/edits/2026-06-26/003000-T20-gap-analysis.md` — Created
+### T20-Phase2: Sharp phase transition figures
+**Status:** 🔄 **IN PROGRESS**
+**Started:** 2026-06-25
+**Context**: [Details](tasks/T20.md)
+**Progress**:
+[Details](tasks/T20.md)
 
-## DB Workflow Note
-Attempted DB-native workflow but found schema/template mismatches. Using text workflow until mb-core fixes are applied by Cloudy.
+### T20-Phase3: 3D cubic lattice
+**Status:** 🔄 **IN PROGRESS**
+**Started:** 2026-06-25
+**Context**: [Details](tasks/T20.md)
+**Progress**:
+[Details](tasks/T20.md)
+
+### T22: Spin Foam Amplitudes
+**Status:** 🔄 **IN PROGRESS**
+**Started:** 2026-06-25
+**Context**: [Details](tasks/T22.md)
+**Progress**:
+[Details](tasks/T22.md)
+
+## Completed Tasks
+
+### T21: Worker threads + checkpointing
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-06-25
+**Completed:** 2026-06-25
+
+### T25: Volume operator eigenvalues
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-06-24
+**Completed:** 2026-06-24
+
+### T27: Rust Z₂ LGT framework
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-06-25
+**Completed:** 2026-06-25
+
+## Next Session Focus
+
+1. T20-Phase1: Z₂ LGT 2D square lattice
+1. T20-Phase2: Sharp phase transition figures
+1. T20-Phase3: 3D cubic lattice
+
+## System Status
+
+- **Memory Bank**: 🔄 Active
+- **OpenClaw**: ✅ Operational

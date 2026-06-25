@@ -6,15 +6,15 @@ Timesarrow — quantum gravity simulation and visualization project. Monte Carlo
 
 ## Active Tasks
 
-| ID | Task | Status | Next |
-|----|------|--------|------|
-| T27 | Rust Z₂ LGT framework | ✅ Complete | Benchmark vs TypeScript |
-| T20-Phase1 | Z₂ LGT 2D square lattice | 🔄 IN PROGRESS | Wilson loops ✅ (re-run complete), missing: critical exponents |
-| T21 | Worker threads + checkpointing | ✅ Complete | — |
-| T20-Phase2 | Sharp phase transition figures | 🔄 IN PROGRESS | Missing: scaling collapse, Binder crossing |
-| T20-Phase3 | 3D cubic lattice | 🔄 IN PROGRESS | Wilson loops ✅ (re-run complete), missing: string tension analysis, critical exponents |
-| T25 | Volume operator eigenvalues | ✅ Complete | — |
-| **T22** | **Spin Foam Amplitudes** | **🟡 Ready** | **Single vertex computation** |
+| ID | Title | Status | Priority | Started | Dependencies | Details |
+|----|-------|--------|----------|---------|--------------|---------|
+| T27 | Rust Z₂ LGT framework | ✅ Complete | MEDIUM | 2026-06-25 | — | [Details](tasks/T27.md) |
+| T20-Phase1 | Z₂ LGT 2D square lattice | 🔄 IN PROGRESS | HIGH | 2026-06-24 | T27 | [Details](tasks/T20.md) |
+| T21 | Worker threads + checkpointing | ✅ Complete | MEDIUM | 2026-06-25 | — | [Details](tasks/T21.md) |
+| T20-Phase2 | Sharp phase transition figures | 🔄 IN PROGRESS | HIGH | 2026-06-25 | T20-Phase1 | [Details](tasks/T20.md) |
+| T20-Phase3 | 3D cubic lattice | 🔄 IN PROGRESS | HIGH | 2026-06-25 | T20-Phase1 | [Details](tasks/T20.md) |
+| T25 | Volume operator eigenvalues | ✅ Complete | MEDIUM | 2026-06-24 | — | [Details](tasks/T25.md) |
+| **T22** | **Spin Foam Amplitudes** | **🟡 Ready** | **HIGH** | **2026-06-25** | **T20-Phase3** | **[Details](tasks/T22.md)** |
 
 ## Completed Tasks
 
@@ -147,4 +147,4 @@ Critical coupling β_c ≈ 0.44 confirmed, matching exact value 0.4407.
 ---
 
 *Memory bank format: v6.12*
-*Last updated: 2026-06-25 22:55 IST*
+*Last updated: 2026-06-26 04:55 IST*

@@ -120,7 +120,7 @@ export async function updateTaskStatus(taskId, newStatus, detailsUpdate = null) 
   if (!existing) {
     // Auto-create task if it doesn't exist
     const { lastInsertRowid } = await sqlite.execRun(
-      `INSERT INTO task_items (id, title, status, priority, started, last_updated, details)
+    `INSERT INTO task_items (id, title, status, priority, started, last_updated, details)
        VALUES (?, ?, ?, ?, ?, ?, ?)`,
       [taskId, detailsUpdate || taskId, newStatus, 'medium', now.slice(0, 10), now, detailsUpdate || 'Auto-created task']
     );
@@ -206,28 +206,18 @@ export async function addTaskSubtasks(taskId, subtasks) {
  * @param {string} data.start_time - ISO timestamp
  * @param {string} [data.end_time] - ISO timestamp
  * @param {string} [data.status] - in_progress (default) or completed
- * @param {string} [data.notes] - Session notes
+ * @param {string} [data.content] - Session notes/content
  * @returns {Promise<{sessionId:number}>}
  */
-export async function createSession({ id = null, session_date, session_period, focus_task = null, status = 'active', notes = '' }) {
+export async function createSession({ id = null, session_date, session_period, focus_task = null, status = 'active', content = '', start_time = null, end_time = null }) {
   const normalizedStatus = status === 'in_progress' ? 'active' : status;
-  if (id) {
-    // Explicit ID provided (e.g., from existing session)
-    await sqlite.execRun(
-      `INSERT INTO sessions (id, session_date, session_period, focus_task, status, notes)
-       VALUES (?, ?, ?, ?, ?, ?)`,
-      [id, session_date, session_period, focus_task, normalizedStatus, notes]
-    );
-    return { sessionId: id };
-  } else {
-    // Let database auto-increment
-    const { lastInsertRowid: sessionId } = await sqlite.execRun(
-      `INSERT INTO sessions (session_date, session_period, focus_task, status, notes)
-       VALUES (?, ?, ?, ?, ?)`,
-      [session_date, session_period, focus_task, normalizedStatus, notes]
-    );
-    return { sessionId };
-  }
+  const sessionId = id || buildSessionId(session_date, session_period);
+  await sqlite.execRun(
+    `INSERT INTO sessions (id, session_date, session_period, focus_task, status, content, start_time, end_time)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+    [sessionId, session_date, session_period, focus_task, normalizedStatus, content, start_time, end_time]
+  );
+  return { sessionId };
 }
 
 /**
@@ -241,7 +231,7 @@ export async function completeSession(sessionId, notes = null) {
   if (notes) {
     const { changes } = await sqlite.execRun(
       `UPDATE sessions
-       SET status = 'completed', notes = COALESCE(notes, '') || '\n\n' || ?
+       SET status = 'completed', content = COALESCE(content, '') || '\n\n' || ?
        WHERE id = ?`,
       [notes, sessionId]
     );

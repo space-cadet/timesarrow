@@ -119,7 +119,7 @@ export async function recordSessionWork({
       const sessionContent = session_notes || `Working on ${task_id}: ${task_description}`;
       await sqlite.execRun(
         `UPDATE sessions
-         SET focus_task = ?, notes = COALESCE(notes, '') || '\n\n' || ?
+         SET focus_task = ?, content = COALESCE(content, '') || '\n\n' || ?
          WHERE id = ?`,
         [task_id, sessionContent, sessionId]
       );
@@ -129,7 +129,7 @@ export async function recordSessionWork({
         session_period: session_period,
         focus_task: task_id,
         status: 'active',
-        notes: session_notes || `Working on ${task_id}: ${task_description}`
+        content: session_notes || `Working on ${task_id}: ${task_description}`
       });
       sessionId = sessionResult.sessionId;
     }
