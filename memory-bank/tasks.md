@@ -13,6 +13,7 @@ Timesarrow — quantum gravity simulation and visualization project. Monte Carlo
 | T21 | Worker threads + checkpointing | ✅ Complete | MEDIUM | 2026-06-25 | — | [Details](tasks/T21.md) |
 | T20-Phase2 | Sharp phase transition figures | 🔄 IN PROGRESS | HIGH | 2026-06-25 | T20-Phase1 | [Details](tasks/T20.md) |
 | T20-Phase3 | 3D cubic lattice | 🔄 IN PROGRESS | HIGH | 2026-06-25 | T20-Phase1 | [Details](tasks/T20.md) |
+| T20-Phase3b | Critical exponents (3D Z₂ LGT) | 🔴 NOT STARTED | HIGH | — | T20-Phase3 | [Details](tasks/T20-Phase3b.md) |
 | T25 | Volume operator eigenvalues | ✅ Complete | MEDIUM | 2026-06-24 | — | [Details](tasks/T25.md) |
 | **T22** | **Spin Foam Amplitudes** | **🟡 Ready** | **HIGH** | **2026-06-25** | **T20-Phase3** | **[Details](tasks/T22.md)** |
 
