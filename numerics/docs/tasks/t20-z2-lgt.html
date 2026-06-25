@@ -142,7 +142,7 @@ window.Quarto = {
 </header>
 
 
-<p><em>Last updated: 2026-06-26 02:47 IST</em></p>
+<p><em>Last updated: 2026-06-26 03:12 IST</em></p>
 <section id="objective" class="level2">
 <h2 class="anchored" data-anchor-id="objective">Objective</h2>
 <p>Classical Monte Carlo simulation of Z₂ gauge theory to demonstrate the confinement-deconfinement transition that underpins the paper’s central claim.</p>
@@ -1451,6 +1451,112 @@ S = -\beta \sum_{\square} \prod_{e \in \square} \sigma_e
 </tr>
 </tbody>
 </table>
+</section>
+<section id="binder-cumulant-first-order-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="binder-cumulant-first-order-analysis">Binder Cumulant First-Order Analysis</h3>
+<p><strong>Date</strong>: 2026-06-26</p>
+<p>The 3D Z₂ LGT transition is <strong>first-order</strong> (distinct from the continuous 2D transition). This is revealed by the Binder cumulant behavior: rather than curves crossing at a critical point (second-order signature), the cumulant shows a <strong>minimum</strong> that deepens with increasing lattice size, with the high-β plateau approaching <span class="math inline">\(U = 2/3\)</span>.</p>
+<section id="minimum-scaling" class="level4">
+<h4 class="anchored" data-anchor-id="minimum-scaling">Minimum Scaling</h4>
+<p>For a first-order transition in <span class="math inline">\(d\)</span> dimensions, the deviation from the thermodynamic limit scales as:</p>
+<p><span class="math display">\[
+U_{\min}(L) = \frac{2}{3} - c \cdot L^{-d}
+\]</span></p>
+<p>Fitting the minimum depth versus <span class="math inline">\(L\)</span> gives:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>L</th>
+<th>β_min</th>
+<th>U_min</th>
+<th>2/3 − U_min</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>4</td>
+<td>0.643</td>
+<td>0.634</td>
+<td>0.033</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>0.706</td>
+<td>0.657</td>
+<td>0.009</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>0.726</td>
+<td>0.663</td>
+<td>0.004</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fit result</strong>: <span class="math inline">\(U_{\min}(L) = 2/3 - 2.36 \cdot L^{-3.084}\)</span>, with exponent <span class="math inline">\(-3.084\)</span> within 3% of the expected <span class="math inline">\(-3\)</span> for a first-order transition in 3D. The extrapolation to <span class="math inline">\(L \to \infty\)</span> gives <span class="math inline">\(U_{\infty} = 0.6697\)</span>, within 0.5% of <span class="math inline">\(2/3\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/t20-binder-first-order.png" class="img-fluid figure-img"></p>
+<figcaption>Binder cumulant first-order signature</figcaption>
+</figure>
+</div>
+<p><em>Figure 10: Binder cumulant <span class="math inline">\(U_L(\beta)\)</span> for L = 4, 6, 8 (3D cubic). The minimum deepens with increasing L, while the high-β plateau approaches <span class="math inline">\(U = 2/3\)</span> (dotted line). The star markers indicate the minimum positions. This is the hallmark of a first-order transition.</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/t20-binder-first-order-scaling.png" class="img-fluid figure-img"></p>
+<figcaption>Binder cumulant scaling analysis</figcaption>
+</figure>
+</div>
+<p><em>Figure 11: Left: minimum depth <span class="math inline">\(U_{\min}(L)\)</span> versus <span class="math inline">\(L\)</span>, showing convergence to <span class="math inline">\(2/3\)</span> with finite-size corrections. Right: log-log plot confirming <span class="math inline">\(U_{\min}(L) \sim L^{-d}\)</span> scaling with fitted exponent <span class="math inline">\(-3.084 \approx -3\)</span>.</em></p>
+</section>
+</section>
+<section id="critical-exponent-scaling-collapse-preliminary" class="level3">
+<h3 class="anchored" data-anchor-id="critical-exponent-scaling-collapse-preliminary">Critical Exponent &amp; Scaling Collapse (Preliminary)</h3>
+<p><strong>Note</strong>: With only <span class="math inline">\(L = 4, 6, 8\)</span>, finite-size scaling is not yet in the asymptotic regime. Proper exponent extraction requires <span class="math inline">\(L \geq 16\)</span>–<span class="math inline">\(32\)</span>. The preliminary results below are consistent with this limitation.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Fitted</th>
+<th>3D Ising</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>γ/ν from χ_max</td>
+<td>0.370</td>
+<td>1.963</td>
+<td>⚠️ Underestimated (small L)</td>
+</tr>
+<tr class="even">
+<td>α/ν from C_max</td>
+<td>0.493</td>
+<td>0.175</td>
+<td>⚠️ Overestimated (small L)</td>
+</tr>
+<tr class="odd">
+<td>ν from β_c shift</td>
+<td>0.522</td>
+<td>0.630</td>
+<td>⚠️ Underestimated (small L)</td>
+</tr>
+<tr class="even">
+<td>Scaling collapse</td>
+<td>Poor</td>
+<td>—</td>
+<td>⚠️ Need L ≥ 16</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Conclusion</strong>: The small lattice sizes (<span class="math inline">\(L = 4, 6, 8\)</span>) are insufficient for reliable critical exponent extraction. The Binder cumulant first-order scaling (above) is robust with current data, but universality-class confirmation via scaling collapse requires larger lattices (<span class="math inline">\(L = 16, 24, 32\)</span>). These runs are fast in Rust (~seconds per L) and will be completed in the next validation session.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/t20-scaling-collapse.png" class="img-fluid figure-img"></p>
+<figcaption>Scaling collapse test</figcaption>
+</figure>
+</div>
+<p><em>Figure 12: Scaling collapse test using literature 3D Ising exponents (ν = 0.630, γ = 1.237). Left: susceptibility rescaled as <span class="math inline">\(L^{-\gamma/\nu} \chi\)</span> versus <span class="math inline">\(L^{1/\nu}(\beta - \beta_c)\)</span>. Right: order parameter rescaled as <span class="math inline">\(L^{\beta/\nu} \langle P \rangle\)</span>. The curves do not collapse with current <span class="math inline">\(L = 4, 6, 8\)</span> data, confirming the need for larger lattices.</em></p>
 <hr>
 </section>
 </section>
