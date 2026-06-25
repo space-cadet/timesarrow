@@ -1,0 +1,104 @@
+{
+  "simulationId": "t20-phase1-L8-N100-1782347580141",
+  "parameters": {
+    "L": 8,
+    "thermalSweeps": 10,
+    "measureSweeps": 100,
+    "measureEvery": 10,
+    "binSize": 10
+  },
+  "completed": [
+    0.1,
+    0.3,
+    0.2,
+    0.4,
+    0.44,
+    0.5,
+    0.6,
+    0.8,
+    1,
+    1.5,
+    2
+  ],
+  "results": [
+    {
+      "beta": 0.1,
+      "meanPlaquette": 0.103125,
+      "errorPlaquette": 0,
+      "numMeasurements": 10,
+      "wallTimeMs": 78
+    },
+    {
+      "beta": 0.3,
+      "meanPlaquette": 0.31875,
+      "errorPlaquette": 0,
+      "numMeasurements": 10,
+      "wallTimeMs": 78
+    },
+    {
+      "beta": 0.2,
+      "meanPlaquette": 0.184375,
+      "errorPlaquette": 0,
+      "numMeasurements": 10,
+      "wallTimeMs": 79
+    },
+    {
+      "beta": 0.4,
+      "meanPlaquette": 0.36875,
+      "errorPlaquette": 0,
+      "numMeasurements": 10,
+      "wallTimeMs": 76
+    },
+    {
+      "beta": 0.44,
+      "meanPlaquette": 0.509375,
+      "errorPlaquette": 0,
+      "numMeasurements": 10,
+      "wallTimeMs": 67
+    },
+    {
+      "beta": 0.5,
+      "meanPlaquette": 0.45625,
+      "errorPlaquette": 0,
+      "numMeasurements": 10,
+      "wallTimeMs": 66
+    },
+    {
+      "beta": 0.6,
+      "meanPlaquette": 0.521875,
+      "errorPlaquette": 0,
+      "numMeasurements": 10,
+      "wallTimeMs": 66
+    },
+    {
+      "beta": 0.8,
+      "meanPlaquette": 0.709375,
+      "errorPlaquette": 0,
+      "numMeasurements": 10,
+      "wallTimeMs": 66
+    },
+    {
+      "beta": 1,
+      "meanPlaquette": 0.7375,
+      "errorPlaquette": 0,
+      "numMeasurements": 10,
+      "wallTimeMs": 62
+    },
+    {
+      "beta": 1.5,
+      "meanPlaquette": 0.871875,
+      "errorPlaquette": 0,
+      "numMeasurements": 10,
+      "wallTimeMs": 58
+    },
+    {
+      "beta": 2,
+      "meanPlaquette": 0.95625,
+      "errorPlaquette": 0,
+      "numMeasurements": 10,
+      "wallTimeMs": 56
+    }
+  ],
+  "timestamp": "2026-06-25T00:33:00.704Z",
+  "version": "1.0"
+}

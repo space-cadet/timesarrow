@@ -1,0 +1,88 @@
+{
+  "parameters": {
+    "L": 8,
+    "thermalSweeps": 10,
+    "measureSweeps": 100,
+    "measureEvery": 10,
+    "binSize": 10
+  },
+  "results": [
+    {
+      "beta": 0.1,
+      "meanPlaquette": 0.134375,
+      "errorPlaquette": 0,
+      "numMeasurements": 10,
+      "wallTimeMs": 57
+    },
+    {
+      "beta": 0.2,
+      "meanPlaquette": 0.21875,
+      "errorPlaquette": 0,
+      "numMeasurements": 10,
+      "wallTimeMs": 57
+    },
+    {
+      "beta": 0.3,
+      "meanPlaquette": 0.325,
+      "errorPlaquette": 0,
+      "numMeasurements": 10,
+      "wallTimeMs": 53
+    },
+    {
+      "beta": 0.4,
+      "meanPlaquette": 0.390625,
+      "errorPlaquette": 0,
+      "numMeasurements": 10,
+      "wallTimeMs": 53
+    },
+    {
+      "beta": 0.44,
+      "meanPlaquette": 0.421875,
+      "errorPlaquette": 0,
+      "numMeasurements": 10,
+      "wallTimeMs": 53
+    },
+    {
+      "beta": 0.5,
+      "meanPlaquette": 0.45,
+      "errorPlaquette": 0,
+      "numMeasurements": 10,
+      "wallTimeMs": 52
+    },
+    {
+      "beta": 0.6,
+      "meanPlaquette": 0.540625,
+      "errorPlaquette": 0,
+      "numMeasurements": 10,
+      "wallTimeMs": 53
+    },
+    {
+      "beta": 0.8,
+      "meanPlaquette": 0.68125,
+      "errorPlaquette": 0,
+      "numMeasurements": 10,
+      "wallTimeMs": 53
+    },
+    {
+      "beta": 1,
+      "meanPlaquette": 0.73125,
+      "errorPlaquette": 0,
+      "numMeasurements": 10,
+      "wallTimeMs": 52
+    },
+    {
+      "beta": 1.5,
+      "meanPlaquette": 0.91875,
+      "errorPlaquette": 0,
+      "numMeasurements": 10,
+      "wallTimeMs": 52
+    },
+    {
+      "beta": 2,
+      "meanPlaquette": 0.959375,
+      "errorPlaquette": 0,
+      "numMeasurements": 10,
+      "wallTimeMs": 52
+    }
+  ]
+}

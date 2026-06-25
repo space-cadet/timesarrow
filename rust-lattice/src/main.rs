@@ -17,22 +17,24 @@ struct BetaResult {
 fn main() {
     let args: Vec<String> = env::args().collect();
     
-    if args.len() < 6 {
-        eprintln!("Usage: {} <L> <measure_sweeps> <thermal_sweeps> <workers> <beta_values...>", args[0]);
+    if args.len() < 7 {
+        eprintln!("Usage: {} <L> <dimension> <measure_sweeps> <thermal_sweeps> <workers> <beta_values...>", args[0]);
         eprintln!("  L: lattice size (e.g., 16)");
+        eprintln!("  dimension: lattice dimension 2 or 3 (e.g., 3)");
         eprintln!("  measure_sweeps: number of measurement sweeps (e.g., 100000)");
         eprintln!("  thermal_sweeps: number of thermalization sweeps (e.g., 10000)");
-        eprintln!("  workers: number of parallel workers (e.g., 3)");
+        eprintln!("  workers: number of parallel workers (e.g., 4)");
         eprintln!("  beta_values: space-separated list of beta values");
         std::process::exit(1);
     }
     
     let l: usize = args[1].parse().expect("L must be a positive integer");
-    let measure_sweeps: usize = args[2].parse().expect("measure_sweeps must be a positive integer");
-    let thermal_sweeps: usize = args[3].parse().expect("thermal_sweeps must be a positive integer");
-    let workers: usize = args[4].parse().expect("workers must be a positive integer");
+    let dimension: usize = args[2].parse().expect("dimension must be 2 or 3");
+    let measure_sweeps: usize = args[3].parse().expect("measure_sweeps must be a positive integer");
+    let thermal_sweeps: usize = args[4].parse().expect("thermal_sweeps must be a positive integer");
+    let workers: usize = args[5].parse().expect("workers must be a positive integer");
     
-    let beta_values: Vec<f64> = args[5..]
+    let beta_values: Vec<f64> = args[6..]
         .iter()
         .map(|s| s.parse().expect("beta values must be floats"))
         .collect();
@@ -40,6 +42,7 @@ fn main() {
     println!("{{");
     println!("  \"parameters\": {{");
     println!("    \"L\": {},", l);
+    println!("    \"dimension\": {},", dimension);
     println!("    \"thermalSweeps\": {},", thermal_sweeps);
     println!("    \"measureSweeps\": {},", measure_sweeps);
     println!("    \"measureEvery\": 10,");
@@ -56,8 +59,8 @@ fn main() {
         .enumerate()
         .map(|(i, beta)| {
             let seed = 42 + i as u64;
-            let (mean_p, error, chi, cv, binder, wall_time) = simulate_beta(
-                l, *beta, thermal_sweeps, measure_sweeps, 10, seed
+            let (mean_p, error, chi, cv, binder, wall_time) = simulate_beta_dim(
+                l, dimension, *beta, thermal_sweeps, measure_sweeps, 10, seed
             );
             BetaResult {
                 beta: *beta,

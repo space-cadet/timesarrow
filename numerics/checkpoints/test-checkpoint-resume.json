@@ -1,0 +1,40 @@
+{
+  "simulationId": "test-checkpoint-resume",
+  "parameters": {
+    "L": 8,
+    "thermalSweeps": 100,
+    "measureSweeps": 1000,
+    "measureEvery": 10,
+    "binSize": 10
+  },
+  "completed": [
+    0.1,
+    0.2,
+    0.3
+  ],
+  "results": [
+    {
+      "beta": 0.1,
+      "meanPlaquette": 0.10718750000000002,
+      "errorPlaquette": 0.010056804806531077,
+      "numMeasurements": 100,
+      "wallTimeMs": 531
+    },
+    {
+      "beta": 0.2,
+      "meanPlaquette": 0.21031249999999999,
+      "errorPlaquette": 0.010785652281567835,
+      "numMeasurements": 100,
+      "wallTimeMs": 534
+    },
+    {
+      "beta": 0.3,
+      "meanPlaquette": 0.3128125,
+      "errorPlaquette": 0.010400508300879654,
+      "numMeasurements": 100,
+      "wallTimeMs": 534
+    }
+  ],
+  "timestamp": "2026-06-25T00:03:55.692Z",
+  "version": "1.0"
+}

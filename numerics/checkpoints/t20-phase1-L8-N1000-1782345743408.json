@@ -1,0 +1,104 @@
+{
+  "simulationId": "t20-phase1-L8-N1000-1782345743408",
+  "parameters": {
+    "L": 8,
+    "thermalSweeps": 100,
+    "measureSweeps": 1000,
+    "measureEvery": 10,
+    "binSize": 100
+  },
+  "completed": [
+    0.3,
+    0.1,
+    0.4,
+    0.6,
+    0.8,
+    0.44,
+    0.2,
+    0.5,
+    1.5,
+    1,
+    2
+  ],
+  "results": [
+    {
+      "beta": 0.3,
+      "meanPlaquette": 0.2909375,
+      "errorPlaquette": 0,
+      "numMeasurements": 100,
+      "wallTimeMs": 1230
+    },
+    {
+      "beta": 0.1,
+      "meanPlaquette": 0.126875,
+      "errorPlaquette": 0,
+      "numMeasurements": 100,
+      "wallTimeMs": 1217
+    },
+    {
+      "beta": 0.4,
+      "meanPlaquette": 0.366875,
+      "errorPlaquette": 0,
+      "numMeasurements": 100,
+      "wallTimeMs": 1220
+    },
+    {
+      "beta": 0.6,
+      "meanPlaquette": 0.536875,
+      "errorPlaquette": 0,
+      "numMeasurements": 100,
+      "wallTimeMs": 1219
+    },
+    {
+      "beta": 0.8,
+      "meanPlaquette": 0.675,
+      "errorPlaquette": 0,
+      "numMeasurements": 100,
+      "wallTimeMs": 1238
+    },
+    {
+      "beta": 0.44,
+      "meanPlaquette": 0.394375,
+      "errorPlaquette": 0,
+      "numMeasurements": 100,
+      "wallTimeMs": 1244
+    },
+    {
+      "beta": 0.2,
+      "meanPlaquette": 0.2109375,
+      "errorPlaquette": 0,
+      "numMeasurements": 100,
+      "wallTimeMs": 1241
+    },
+    {
+      "beta": 0.5,
+      "meanPlaquette": 0.473125,
+      "errorPlaquette": 0,
+      "numMeasurements": 100,
+      "wallTimeMs": 1206
+    },
+    {
+      "beta": 1.5,
+      "meanPlaquette": 0.9015625,
+      "errorPlaquette": 0,
+      "numMeasurements": 100,
+      "wallTimeMs": 563
+    },
+    {
+      "beta": 1,
+      "meanPlaquette": 0.7625,
+      "errorPlaquette": 0,
+      "numMeasurements": 100,
+      "wallTimeMs": 563
+    },
+    {
+      "beta": 2,
+      "meanPlaquette": 0.966875,
+      "errorPlaquette": 0,
+      "numMeasurements": 100,
+      "wallTimeMs": 558
+    }
+  ],
+  "timestamp": "2026-06-25T00:02:25.790Z",
+  "version": "1.0"
+}

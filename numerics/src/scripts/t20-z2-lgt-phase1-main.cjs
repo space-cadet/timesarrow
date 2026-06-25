@@ -16,8 +16,9 @@ const {
   createSimulationId
 } = require('ts-quantum');
 
-const NUM_WORKERS = os.cpus().length;
-const WORKER_SCRIPT = path.join(__dirname, 't20-z2-lgt-phase1-worker.cjs');
+// Use configurable workers (default: half cores)
+const NUM_WORKERS = Math.max(1, parseInt(process.argv[5]) || Math.floor(os.cpus().length / 2));
+const WORKER_SCRIPT = path.resolve(__dirname, 't20-z2-lgt-phase1-worker.cjs');
 
 function formatTime(ms) {
   const totalSec = Math.floor(ms / 1000);
@@ -28,6 +29,11 @@ function formatTime(ms) {
 
 async function runParallelSweeps(config) {
   const { betaValues, params, simulationId: customId, verbose = true } = config;
+  
+  console.log('[DEBUG] runParallelSweeps started');
+  console.log('[DEBUG] betaValues:', betaValues.length);
+  console.log('[DEBUG] params:', JSON.stringify(params));
+  console.log('[DEBUG] NUM_WORKERS:', NUM_WORKERS);
   
   const simulationId = customId || createSimulationId('t20-phase1', params);
   
@@ -104,7 +110,9 @@ async function runParallelSweeps(config) {
     }
     
     function checkDone() {
+      console.log('[DEBUG] checkDone called. activeWorkers:', activeWorkers, 'queue:', queue.length);
       if (activeWorkers === 0 && queue.length === 0) {
+        console.log('[DEBUG] All work complete!');
         // All done
         workers.forEach(w => w.terminate());
         const totalTime = formatTime(Date.now() - startTime);
@@ -117,17 +125,23 @@ async function runParallelSweeps(config) {
     
     // Create worker pool
     const numToCreate = Math.min(NUM_WORKERS, remainingBetas.length);
+    console.log('[DEBUG] Creating worker pool, numToCreate:', numToCreate);
     for (let i = 0; i < numToCreate; i++) {
+      console.log(`[DEBUG] Creating worker ${i}...`);
       const worker = new Worker(WORKER_SCRIPT);
+      console.log(`[DEBUG] Worker ${i} created, threadId:`, worker.threadId);
       workers.push(worker);
       
       worker.on('message', (msg) => {
+        console.log(`[DEBUG] Worker ${i} received message type:`, msg.type);
         if (msg.type === 'result') {
           onResult(msg.data);
           
           // Assign next work or shut down
+          console.log(`[DEBUG] Worker ${i} assigning next work...`);
           if (!assignWork(worker)) {
             activeWorkers--;
+            console.log(`[DEBUG] Worker ${i} idle. Active workers:`, activeWorkers);
             checkDone();
           }
         } else if (msg.type === 'error') {
@@ -140,21 +154,36 @@ async function runParallelSweeps(config) {
       });
       
       worker.on('error', (err) => {
-        console.error('Worker error:', err);
+        console.error(`[DEBUG] Worker ${i} error:`, err.message);
         activeWorkers--;
         checkDone();
       });
       
       // Initial assignment
+      console.log(`[DEBUG] Worker ${i} initial assignment...`);
       if (assignWork(worker)) {
         activeWorkers++;
+        console.log(`[DEBUG] Worker ${i} assigned work. Active:`, activeWorkers);
+      } else {
+        console.log(`[DEBUG] Worker ${i} no work available`);
       }
     }
+    
+    console.log('[DEBUG] Worker pool created. Active:', activeWorkers);
   });
 }
 
 // CLI entry point
 if (require.main === module) {
+  if (process.argv[2] === '--help' || process.argv[2] === '-h') {
+    console.log('Usage: node t20-z2-lgt-phase1-main.cjs <L> [measureSweeps] [thermalSweeps] [workers]');
+    console.log('  L: Lattice size (default: 8)');
+    console.log('  measureSweeps: Number of measurement sweeps (default: 5000)');
+    console.log('  thermalSweeps: Number of thermalization sweeps (default: 1000)');
+    console.log('  workers: Number of worker threads (default: half of CPU cores)');
+    process.exit(0);
+  }
+  
   const L = parseInt(process.argv[2]) || 8;
   const measureSweeps = parseInt(process.argv[3]) || 5000;
   const thermalSweeps = parseInt(process.argv[4]) || 1000;
@@ -169,6 +198,7 @@ if (require.main === module) {
     binSize: 10
   };
   
+  console.log('Starting runParallelSweeps...');
   runParallelSweeps({ betaValues, params })
     .then(results => {
       console.log('\n═══════════════════════════════════════════');

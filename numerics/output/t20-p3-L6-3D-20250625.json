@@ -1,0 +1,114 @@
+{
+  "parameters": {
+    "L": 6,
+    "dimension": 3,
+    "thermalSweeps": 10000,
+    "measureSweeps": 100000,
+    "measureEvery": 10,
+    "binSize": 10,
+    "workers": 4
+  },
+  "results": [
+    {
+      "beta": 0.5,
+      "meanPlaquette": 0.5022141975308643,
+      "errorPlaquette": 0.0004261326851442662,
+      "susceptibility": 0.1961161905758977,
+      "specificHeat": 0.09805809528794884,
+      "binderCumulant": 0.6571061374293972,
+      "numMeasurements": 10000,
+      "wallTimeMs": 3293
+    },
+    {
+      "beta": 0.6,
+      "meanPlaquette": 0.6268820987654387,
+      "errorPlaquette": 0.00046135600117000323,
+      "susceptibility": 0.27585277031730254,
+      "specificHeat": 0.16551166219038152,
+      "binderCumulant": 0.6594443815088147,
+      "numMeasurements": 10000,
+      "wallTimeMs": 3096
+    },
+    {
+      "beta": 0.7,
+      "meanPlaquette": 0.805046296296288,
+      "errorPlaquette": 0.0006627088557950234,
+      "susceptibility": 0.6640447376554568,
+      "specificHeat": 0.46483131635881975,
+      "binderCumulant": 0.6574648018951854,
+      "numMeasurements": 10000,
+      "wallTimeMs": 2899
+    },
+    {
+      "beta": 0.75,
+      "meanPlaquette": 0.9362456790123479,
+      "errorPlaquette": 0.0004788161617792123,
+      "susceptibility": 0.37140916518516986,
+      "specificHeat": 0.2785568738888774,
+      "binderCumulant": 0.6633891186012895,
+      "numMeasurements": 10000,
+      "wallTimeMs": 2763
+    },
+    {
+      "beta": 0.76,
+      "meanPlaquette": 0.9501123456790171,
+      "errorPlaquette": 0.00038279225027937445,
+      "susceptibility": 0.24054349512414702,
+      "specificHeat": 0.18281305629435174,
+      "binderCumulant": 0.6646158987839975,
+      "numMeasurements": 10000,
+      "wallTimeMs": 2743
+    },
+    {
+      "beta": 0.77,
+      "meanPlaquette": 0.9585907407407476,
+      "errorPlaquette": 0.0003373184909356266,
+      "susceptibility": 0.1892451568288549,
+      "specificHeat": 0.14571877075821826,
+      "binderCumulant": 0.6650977577694485,
+      "numMeasurements": 10000,
+      "wallTimeMs": 2736
+    },
+    {
+      "beta": 0.8,
+      "meanPlaquette": 0.9737592592592659,
+      "errorPlaquette": 0.00023060491646061291,
+      "susceptibility": 0.09189266831342949,
+      "specificHeat": 0.07351413465074359,
+      "binderCumulant": 0.6659427391318877,
+      "numMeasurements": 10000,
+      "wallTimeMs": 1266
+    },
+    {
+      "beta": 0.85,
+      "meanPlaquette": 0.9856993827160606,
+      "errorPlaquette": 0.0001575586432752,
+      "susceptibility": 0.045578197065039114,
+      "specificHeat": 0.03874146750528325,
+      "binderCumulant": 0.6663338221211352,
+      "numMeasurements": 10000,
+      "wallTimeMs": 2714
+    },
+    {
+      "beta": 0.9,
+      "meanPlaquette": 0.9913592592592704,
+      "errorPlaquette": 0.00011466470939196353,
+      "susceptibility": 0.025559703405811974,
+      "specificHeat": 0.023003733065230778,
+      "binderCumulant": 0.6664913293968935,
+      "numMeasurements": 10000,
+      "wallTimeMs": 2661
+    },
+    {
+      "beta": 1,
+      "meanPlaquette": 0.9966358024691458,
+      "errorPlaquette": 0.00006899166522448108,
+      "susceptibility": 0.010281275717367144,
+      "specificHeat": 0.010281275717367144,
+      "binderCumulant": 0.6666037709196351,
+      "numMeasurements": 10000,
+      "wallTimeMs": 1285
+    }
+  ],
+  "totalWallTimeMs": 3985
+}

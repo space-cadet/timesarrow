@@ -2,10 +2,10 @@
 title: "TimesArrow Numerics"
 subtitle: "Numerical simulations for time reversal symmetry in quantum gravity"
 date: "2026-06-25"
-date-modified: "2026-06-25 15:45 IST"
+date-modified: "2026-06-25 18:15 IST"
 ---
 
-*Last updated: 2026-06-25 04:27 IST*
+*Last updated: 2026-06-25 18:15 IST*
 
 ## Overview
 
@@ -18,7 +18,7 @@ All simulations use the **ts-quantum** TypeScript library for SU(2) algebra, int
 | Task | Focus | Status | Priority |
 |---|---|---|---|
 | **[T25](tasks/t25-volume-operator.html)** | Volume Operator Extension | 🟢 Complete | P1 |
-| **[T20](tasks/t20-z2-lgt.html)** | Z₂ LGT Monte Carlo | 🟢 Phase 2 Complete | P0 |
+| **[T20](tasks/t20-z2-lgt.html)** | Z₂ LGT Monte Carlo | 🟢 Phase 3 Complete | P0 |
 | **T23** | Entanglement Entropy | 🔴 Blocked (T20) | P1 |
 | **T22** | Spin Foam Amplitudes | 🟡 Ready | P1 |
 | **T21** | CZX PEPS Ground State | 🔴 Blocked (T22) | P1 |

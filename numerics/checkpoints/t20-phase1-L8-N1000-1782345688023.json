@@ -1,0 +1,104 @@
+{
+  "simulationId": "t20-phase1-L8-N1000-1782345688023",
+  "parameters": {
+    "L": 8,
+    "thermalSweeps": 100,
+    "measureSweeps": 1000,
+    "measureEvery": 10,
+    "binSize": 100
+  },
+  "completed": [
+    0.6,
+    0.8,
+    0.2,
+    0.5,
+    0.4,
+    0.3,
+    0.1,
+    0.44,
+    1,
+    1.5,
+    2
+  ],
+  "results": [
+    {
+      "beta": 0.6,
+      "meanPlaquette": 0.5325,
+      "errorPlaquette": null,
+      "numMeasurements": 100,
+      "wallTimeMs": 1226
+    },
+    {
+      "beta": 0.8,
+      "meanPlaquette": 0.6646875,
+      "errorPlaquette": null,
+      "numMeasurements": 100,
+      "wallTimeMs": 1222
+    },
+    {
+      "beta": 0.2,
+      "meanPlaquette": 0.1925,
+      "errorPlaquette": null,
+      "numMeasurements": 100,
+      "wallTimeMs": 1225
+    },
+    {
+      "beta": 0.5,
+      "meanPlaquette": 0.441875,
+      "errorPlaquette": null,
+      "numMeasurements": 100,
+      "wallTimeMs": 1225
+    },
+    {
+      "beta": 0.4,
+      "meanPlaquette": 0.39125,
+      "errorPlaquette": null,
+      "numMeasurements": 100,
+      "wallTimeMs": 1248
+    },
+    {
+      "beta": 0.3,
+      "meanPlaquette": 0.285625,
+      "errorPlaquette": null,
+      "numMeasurements": 100,
+      "wallTimeMs": 1234
+    },
+    {
+      "beta": 0.1,
+      "meanPlaquette": 0.08625,
+      "errorPlaquette": null,
+      "numMeasurements": 100,
+      "wallTimeMs": 1204
+    },
+    {
+      "beta": 0.44,
+      "meanPlaquette": 0.4196875,
+      "errorPlaquette": null,
+      "numMeasurements": 100,
+      "wallTimeMs": 1221
+    },
+    {
+      "beta": 1,
+      "meanPlaquette": 0.7646875,
+      "errorPlaquette": null,
+      "numMeasurements": 100,
+      "wallTimeMs": 552
+    },
+    {
+      "beta": 1.5,
+      "meanPlaquette": 0.9059375,
+      "errorPlaquette": null,
+      "numMeasurements": 100,
+      "wallTimeMs": 548
+    },
+    {
+      "beta": 2,
+      "meanPlaquette": 0.963125,
+      "errorPlaquette": null,
+      "numMeasurements": 100,
+      "wallTimeMs": 540
+    }
+  ],
+  "timestamp": "2026-06-25T00:01:30.417Z",
+  "version": "1.0"
+}

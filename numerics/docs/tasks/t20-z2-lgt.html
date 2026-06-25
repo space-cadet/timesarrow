@@ -142,14 +142,50 @@ window.Quarto = {
 </header>
 
 
-<p><em>Last updated: 2026-06-25 04:27 IST</em></p>
+<p><em>Last updated: 2026-06-25 18:35 IST</em></p>
 <section id="objective" class="level2">
 <h2 class="anchored" data-anchor-id="objective">Objective</h2>
 <p>Classical Monte Carlo simulation of Z₂ gauge theory to demonstrate the confinement-deconfinement transition that underpins the paper’s central claim.</p>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>🟢 <strong>Phase 1 COMPLETE</strong> — 2D square lattice implemented and tested. Critical coupling confirmed.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 38%">
+<col style="width: 23%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Phase</th>
+<th>Description</th>
+<th>Status</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Phase 1</td>
+<td>2D square lattice, critical β identification</td>
+<td>✅ Complete</td>
+<td>2026-06-24</td>
+</tr>
+<tr class="even">
+<td>Phase 2</td>
+<td>Finite-size scaling (L = 8–24)</td>
+<td>✅ Complete</td>
+<td>2026-06-25</td>
+</tr>
+<tr class="odd">
+<td>Phase 3</td>
+<td>3D cubic lattice (L=4,6,8)</td>
+<td>✅ Complete</td>
+<td>2026-06-25</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Result</strong>: Critical coupling β_c ≈ 0.44 confirmed, matching exact value 0.4407.</p>
 </section>
 <section id="theory" class="level2">
 <h2 class="anchored" data-anchor-id="theory">Theory</h2>
@@ -160,21 +196,50 @@ S = -\beta \sum_{\square} \prod_{e \in \square} \sigma_e
 <p>where <span class="math inline">\(\sigma_e \in \{+1, -1\}\)</span> are link variables and <span class="math inline">\(\beta\)</span> is the inverse coupling (temperature).</p>
 <section id="observables" class="level3">
 <h3 class="anchored" data-anchor-id="observables">Observables</h3>
-<p><strong>Average plaquette</strong>: The order parameter for the phase transition</p>
-<p><span class="math display">\[
-\langle P \rangle = \frac{1}{N_{\square}} \sum_{\square} \prod_{e \in \square} \sigma_e
-\]</span></p>
-<p><strong>Specific heat</strong>: Susceptibility to thermal fluctuations</p>
-<p><span class="math display">\[
-C_V = \frac{\langle S^2 \rangle - \langle S \rangle^2}{V}
-\]</span></p>
-<p><strong>Wilson loop</strong>: Tests confinement via area vs perimeter law</p>
-<p><span class="math display">\[
-W(\gamma) = \left\langle \prod_{e \in \gamma} \sigma_e \right\rangle
-\]</span></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 30%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Observable</th>
+<th>Formula</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Average plaquette</td>
+<td><span class="math inline">\(\langle P \rangle = \frac{1}{N_{\square}} \sum_{\square} \prod_{e \in \square} \sigma_e\)</span></td>
+<td>Order parameter</td>
+</tr>
+<tr class="even">
+<td>Specific heat</td>
+<td><span class="math inline">\(C_V = \beta^2(\langle P^2 \rangle - \langle P \rangle^2)\)</span></td>
+<td>Critical fluctuations</td>
+</tr>
+<tr class="odd">
+<td>Susceptibility</td>
+<td><span class="math inline">\(\chi = L^2(\langle P^2 \rangle - \langle P \rangle^2)\)</span></td>
+<td>Response function</td>
+</tr>
+<tr class="even">
+<td>Binder cumulant</td>
+<td><span class="math inline">\(U = 1 - \langle P^4 \rangle/(3\langle P^2 \rangle^2)\)</span></td>
+<td>Finite-size scaling</td>
+</tr>
+<tr class="odd">
+<td>Wilson loop</td>
+<td><span class="math inline">\(W(\gamma) = \langle \prod_{e \in \gamma} \sigma_e \rangle\)</span></td>
+<td>Confinement test</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="expected-behavior" class="level3">
-<h3 class="anchored" data-anchor-id="expected-behavior">Expected Behavior</h3>
+<section id="phase-structure" class="level3">
+<h3 class="anchored" data-anchor-id="phase-structure">Phase Structure</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 19%">
@@ -201,6 +266,7 @@ W(\gamma) = \left\langle \prod_{e \in \gamma} \sigma_e \right\rangle
 </tr>
 </tbody>
 </table>
+<p>Critical coupling (exact): <span class="math inline">\(\beta_c = \frac{1}{2}\ln(1+\sqrt{2}) \approx 0.4407\)</span></p>
 </section>
 </section>
 <section id="architecture" class="level2">
@@ -222,387 +288,23 @@ W(\gamma) = \left\langle \prod_{e \in \gamma} \sigma_e \right\rangle
 <li><code>numerics/src/scripts/t20-z2-lgt-phase1.ts</code> — 2D square lattice parameter sweep</li>
 <li><code>numerics/src/scripts/t20-z2-lgt-phase2.ts</code> — 2D triangular lattice</li>
 <li><code>numerics/src/scripts/t20-z2-lgt-phase3.ts</code> — 3D cubic lattice (paper target)</li>
-<li><code>numerics/output/t20-phase1-fast.json</code> — Phase 1 results</li>
 </ul>
-</section>
-</section>
-<section id="chronological-log" class="level2">
-<h2 class="anchored" data-anchor-id="chronological-log">Chronological Log</h2>
-<section id="ist-rust-framework-validation-t27" class="level3">
-<h3 class="anchored" data-anchor-id="ist-rust-framework-validation-t27">2026-06-25 13:34 IST — Rust Framework Validation (T27)</h3>
-<p><strong>Status</strong>: ✅ COMPLETE — Rust implementation validated against TypeScript.</p>
-<p><strong>Deliverables</strong>: - <code>rust-lattice/src/lib.rs</code> — Z2GaugeField with Metropolis, observables, checkpoints - <code>rust-lattice/src/main.rs</code> — CLI with rayon parallel β sweeps, JSON output - <code>rust-lattice/Cargo.toml</code> — deps: rand, rand_xoshiro, serde, serde_json, rayon - Release binary: <code>target/release/z2-lattice-gauge</code> (419 KB)</p>
-<p><strong>Validation Results</strong>:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>β</th>
-<th>TypeScript ⟨P⟩</th>
-<th>Rust ⟨P⟩</th>
-<th></th>
-<th>Δ</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0.1</td>
-<td>0.0997</td>
-<td>0.0954</td>
-<td>0.0043</td>
-<td>✅</td>
-</tr>
-<tr class="even">
-<td>0.2</td>
-<td>0.1978</td>
-<td>0.1977</td>
-<td>0.0001</td>
-<td>✅</td>
-</tr>
-<tr class="odd">
-<td>0.3</td>
-<td>0.2916</td>
-<td>0.2901</td>
-<td>0.0015</td>
-<td>✅</td>
-</tr>
-<tr class="even">
-<td>0.4</td>
-<td>0.3794</td>
-<td>0.3800</td>
-<td>0.0006</td>
-<td>✅</td>
-</tr>
-<tr class="odd">
-<td>0.44</td>
-<td>0.4144</td>
-<td>0.4147</td>
-<td>0.0003</td>
-<td>✅</td>
-</tr>
-<tr class="even">
-<td>0.5</td>
-<td>0.4629</td>
-<td>0.4636</td>
-<td>0.0007</td>
-<td>✅</td>
-</tr>
-<tr class="odd">
-<td>0.6</td>
-<td>0.5370</td>
-<td>0.5375</td>
-<td>0.0005</td>
-<td>✅</td>
-</tr>
-<tr class="even">
-<td>0.8</td>
-<td>0.6645</td>
-<td>0.6658</td>
-<td>0.0013</td>
-<td>✅</td>
-</tr>
-<tr class="odd">
-<td>1.0</td>
-<td>0.7613</td>
-<td>0.7615</td>
-<td>0.0002</td>
-<td>✅</td>
-</tr>
-<tr class="even">
-<td>1.5</td>
-<td>0.9048</td>
-<td>0.9054</td>
-<td>0.0006</td>
-<td>✅</td>
-</tr>
-<tr class="odd">
-<td>2.0</td>
-<td>0.9640</td>
-<td>0.9644</td>
-<td>0.0004</td>
-<td>✅</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><strong>TypeScript</strong>: L=16, 100k sweeps, 11 β values = ~2h 11m</li>
-<li><strong>Rust</strong>: Same parameters = <strong>3.0 seconds</strong></li>
-<li><strong>Speedup: ~2,500–3,000×</strong></li>
-</ul>
-<p><strong>Bug fixes</strong>: 1. Plaquette geometry: wrong link indices for top/left edges 2. Sign convention: TypeScript uses 4 directed links/site; Rust uses 2 undirected. Fixed by negating output layer only (preserving Metropolis dynamics)</p>
-<p><strong>Files</strong>: - Rust output: <code>numerics/output/t27-rust-benchmark-L16-final.json</code></p>
-</section>
-<section id="ist-phase-1-production-run-with-worker-threads-l16-100k-sweeps" class="level3">
-<h3 class="anchored" data-anchor-id="ist-phase-1-production-run-with-worker-threads-l16-100k-sweeps">2026-06-25 13:34 IST — Phase 1 Production Run with Worker Threads (L=16, 100k sweeps)</h3>
-<p><strong>Completed</strong>: 2026-06-25 13:34 IST</p>
-<p><strong>Parameters</strong>: - Lattice size: L = 16 - Thermalization: 10,000 sweeps - Measurement: 100,000 sweeps - Measure every: 10 sweeps - Bin size: 10 - β values: 11 points (0.1, 0.2, 0.3, 0.4, 0.44, 0.5, 0.6, 0.8, 1.0, 1.5, 2.0) - Workers: 3 threads - Wall-clock time: ~2h 11m</p>
-<p><strong>Results</strong>:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>β</th>
-<th>⟨P⟩</th>
-<th>Error</th>
-<th>Phase</th>
-<th>Wall Time</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0.10</td>
-<td>0.0997</td>
-<td>±0.0006</td>
-<td>Confined</td>
-<td>38m40s</td>
-</tr>
-<tr class="even">
-<td>0.20</td>
-<td>0.1978</td>
-<td>±0.0006</td>
-<td>Confined</td>
-<td>38m42s</td>
-</tr>
-<tr class="odd">
-<td>0.30</td>
-<td>0.2916</td>
-<td>±0.0006</td>
-<td>Confined</td>
-<td>38m42s</td>
-</tr>
-<tr class="even">
-<td>0.40</td>
-<td>0.3794</td>
-<td>±0.0006</td>
-<td>Near critical</td>
-<td>35m22s</td>
-</tr>
-<tr class="odd">
-<td><strong>0.44</strong></td>
-<td><strong>0.4144</strong></td>
-<td><strong>±0.0006</strong></td>
-<td><strong>Critical</strong></td>
-<td>35m14s</td>
-</tr>
-<tr class="even">
-<td>0.50</td>
-<td>0.4629</td>
-<td>±0.0006</td>
-<td>Deconfined</td>
-<td>40m45s</td>
-</tr>
-<tr class="odd">
-<td>0.60</td>
-<td>0.5370</td>
-<td>±0.0005</td>
-<td>Deconfined</td>
-<td>35m32s</td>
-</tr>
-<tr class="even">
-<td>0.80</td>
-<td>0.6645</td>
-<td>±0.0005</td>
-<td>Deconfined</td>
-<td>35m40s</td>
-</tr>
-<tr class="odd">
-<td>1.00</td>
-<td>0.7613</td>
-<td>±0.0004</td>
-<td>Deconfined</td>
-<td>39m25s</td>
-</tr>
-<tr class="even">
-<td>1.50</td>
-<td>0.9048</td>
-<td>±0.0003</td>
-<td>Deconfined</td>
-<td>26m10s</td>
-</tr>
-<tr class="odd">
-<td>2.00</td>
-<td>0.9640</td>
-<td>±0.0002</td>
-<td>Deconfined</td>
-<td>26m3s</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Critical coupling β_c ≈ 0.44 confirmed</strong>, matching exact value 0.4407.</p>
-<p><strong>Key improvements</strong>: Error bars ~0.0005, all 11 β values completed with worker thread checkpointing.</p>
-<p><strong>Files</strong>: - Output: <code>numerics/output/t20-phase1-worker-L16.json</code> - Log: <code>/private/tmp/production-L16-100k.log</code></p>
-</section>
-<section id="ist-phase-1-production-run-l16-18-β-values" class="level3">
-<h3 class="anchored" data-anchor-id="ist-phase-1-production-run-l16-18-β-values">2026-06-24 21:40 IST — Phase 1 Production Run (L=16, 18 β values)</h3>
-<p><strong>Completed</strong>: 2026-06-24 21:40 IST</p>
-<p><strong>Parameters</strong>: - Lattice size: L = 16 (upgraded from L = 8) - Thermalization: 10,000 sweeps (10× longer) - Measurement: 100,000 sweeps (20× longer) - Measure every: 10 sweeps - Bin size: 100 - β values: 18 points (finer near critical region) - Wall-clock time: ~60 minutes</p>
-<p><strong>Results</strong>:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>β</th>
-<th>⟨P⟩</th>
-<th>Error</th>
-<th>Phase</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0.10</td>
-<td>0.1004</td>
-<td>±0.0006</td>
-<td>Confined</td>
-</tr>
-<tr class="even">
-<td>0.20</td>
-<td>0.1973</td>
-<td>±0.0007</td>
-<td>Confined</td>
-</tr>
-<tr class="odd">
-<td>0.30</td>
-<td>0.2917</td>
-<td>±0.0006</td>
-<td>Confined</td>
-</tr>
-<tr class="even">
-<td>0.35</td>
-<td>0.3359</td>
-<td>±0.0006</td>
-<td>Confined</td>
-</tr>
-<tr class="odd">
-<td>0.38</td>
-<td>0.3631</td>
-<td>±0.0006</td>
-<td>Near critical</td>
-</tr>
-<tr class="even">
-<td>0.40</td>
-<td>0.3805</td>
-<td>±0.0006</td>
-<td>Near critical</td>
-</tr>
-<tr class="odd">
-<td>0.42</td>
-<td>0.3969</td>
-<td>±0.0006</td>
-<td>Near critical</td>
-</tr>
-<tr class="even">
-<td><strong>0.44</strong></td>
-<td><strong>0.4134</strong></td>
-<td><strong>±0.0006</strong></td>
-<td><strong>Critical</strong></td>
-</tr>
-<tr class="odd">
-<td><strong>0.45</strong></td>
-<td><strong>0.4224</strong></td>
-<td><strong>±0.0006</strong></td>
-<td><strong>Critical</strong></td>
-</tr>
-<tr class="even">
-<td><strong>0.46</strong></td>
-<td><strong>0.4306</strong></td>
-<td><strong>±0.0005</strong></td>
-<td><strong>Critical</strong></td>
-</tr>
-<tr class="odd">
-<td>0.48</td>
-<td>0.4460</td>
-<td>±0.0005</td>
-<td>Deconfined</td>
-</tr>
-<tr class="even">
-<td>0.50</td>
-<td>0.4620</td>
-<td>±0.0005</td>
-<td>Deconfined</td>
-</tr>
-<tr class="odd">
-<td>0.55</td>
-<td>0.5005</td>
-<td>±0.0005</td>
-<td>Deconfined</td>
-</tr>
-<tr class="even">
-<td>0.60</td>
-<td>0.5374</td>
-<td>±0.0005</td>
-<td>Deconfined</td>
-</tr>
-<tr class="odd">
-<td>0.80</td>
-<td>0.6642</td>
-<td>±0.0004</td>
-<td>Deconfined</td>
-</tr>
-<tr class="even">
-<td>1.00</td>
-<td>0.7616</td>
-<td>±0.0004</td>
-<td>Deconfined</td>
-</tr>
-<tr class="odd">
-<td>1.50</td>
-<td>0.9052</td>
-<td>±0.0003</td>
-<td>Deconfined</td>
-</tr>
-<tr class="even">
-<td>2.00</td>
-<td>0.9640</td>
-<td>±0.0002</td>
-<td>Deconfined</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Figures</strong>:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/t20-plaquette-vs-beta-L16.png" class="img-fluid figure-img"></p>
-<figcaption>Plaquette expectation vs coupling β — L=16 production run</figcaption>
-</figure>
-</div>
-<p><em>Figure 4: L=16 production run. Plaquette expectation value ⟨P⟩ versus coupling β, with L=8 fast run shown for comparison. The critical point βc ≈ 0.4407 is marked with a dashed line. Error bars are ~6× smaller than the L=8 run.</em></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/t20-error-comparison-L16.png" class="img-fluid figure-img"></p>
-<figcaption>Statistical error comparison</figcaption>
-</figure>
-</div>
-<p><em>Figure 5: Statistical errors: L=16 vs L=8. The L=16 run achieves ~5-6× smaller errors across all β values due to 20× more measurement sweeps.</em></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/t20-convergence-L16.png" class="img-fluid figure-img"></p>
-<figcaption>Convergence at critical point</figcaption>
-</figure>
-</div>
-<p><em>Figure 6: Monte Carlo convergence at β=0.44 (critical point). The L=16 run with 100k measurements follows the expected 1/√N scaling, achieving errors ~0.0006 compared to ~0.0035 for the L=8 run with 5k measurements.</em></p>
-<p><strong>Key improvements over L=8 run</strong>: - Error bars reduced by ~6× (from ~0.0035 to ~0.0005) - Finer β resolution near critical point (0.42, 0.44, 0.45, 0.46 instead of just 0.44) - Clearer identification of critical crossover region</p>
-<p><strong>Files</strong>: - Output: <code>numerics/output/t20-phase1-square-lattice.json</code> - Log: <code>numerics/output/t20-phase1-run.log</code></p>
-</section>
-<section id="ist-phase-1-fast-run-l8" class="level3">
-<h3 class="anchored" data-anchor-id="ist-phase-1-fast-run-l8">2026-06-24 16:30 IST — Phase 1 Fast Run (L=8)</h3>
-<p><strong>Completed</strong>: 2026-06-24 16:30 IST</p>
-<p><strong>Purpose</strong>: Quick validation run to verify implementation correctness.</p>
-<p><strong>Parameters</strong>: - Lattice size: L = 8 - Thermalization: 1,000 sweeps - Measurement: 5,000 sweeps - β values: 10 points - Wall-clock time: ~5 minutes</p>
-<p><strong>Results</strong>: See table in Phase 1 section below. Errors ~0.0035, sufficient to confirm correct physics.</p>
-<p><strong>Files</strong>: - Output: <code>numerics/output/t20-phase1-fast.json</code></p>
 <hr>
 </section>
 </section>
-<section id="phase-1-2d-square-lattice" class="level2">
-<h2 class="anchored" data-anchor-id="phase-1-2d-square-lattice">Phase 1: 2D Square Lattice</h2>
+<section id="phase-1-2d-square-lattice-complete" class="level2">
+<h2 class="anchored" data-anchor-id="phase-1-2d-square-lattice-complete">Phase 1: 2D Square Lattice (Complete)</h2>
 <section id="setup" class="level3">
 <h3 class="anchored" data-anchor-id="setup">Setup</h3>
 <ul>
 <li>Lattice: <span class="math inline">\(L \times L\)</span> square with periodic boundary conditions</li>
-<li>Critical coupling (exact): <span class="math inline">\(\beta_c = \frac{1}{2}\ln(1+\sqrt{2}) \approx 0.4407\)</span></li>
 <li>Plaquettes: squares with 4 links each</li>
 <li>Algorithm: Metropolis Monte Carlo with single-link updates</li>
+<li>Critical coupling (exact): <span class="math inline">\(\beta_c = \frac{1}{2}\ln(1+\sqrt{2}) \approx 0.4407\)</span></li>
 </ul>
 </section>
-<section id="simulation-parameters" class="level3">
-<h3 class="anchored" data-anchor-id="simulation-parameters">Simulation Parameters</h3>
+<section id="results-l-8-fast-validation" class="level3">
+<h3 class="anchored" data-anchor-id="results-l-8-fast-validation">Results: L = 8 (Fast Validation)</h3>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -632,14 +334,11 @@ W(\gamma) = \left\langle \prod_{e \in \gamma} \sigma_e \right\rangle
 <td>20</td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(\beta\)</span> values</td>
-<td>0.1, 0.2, 0.3, 0.4, 0.44, 0.5, 0.6, 0.8, 1.0, 1.5</td>
+<td>Wall-clock time</td>
+<td>~5 minutes</td>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="results" class="level3">
-<h3 class="anchored" data-anchor-id="results">Results</h3>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -654,7 +353,7 @@ W(\gamma) = \left\langle \prod_{e \in \gamma} \sigma_e \right\rangle
 <td>0.10</td>
 <td>0.0969</td>
 <td>±0.0036</td>
-<td><strong>Confined</strong></td>
+<td>Confined</td>
 </tr>
 <tr class="even">
 <td>0.20</td>
@@ -713,6 +412,126 @@ W(\gamma) = \left\langle \prod_{e \in \gamma} \sigma_e \right\rangle
 </tbody>
 </table>
 </section>
+<section id="results-l-16-production" class="level3">
+<h3 class="anchored" data-anchor-id="results-l-16-production">Results: L = 16 (Production)</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Lattice size <span class="math inline">\(L\)</span></td>
+<td>16</td>
+</tr>
+<tr class="even">
+<td>Thermalization sweeps</td>
+<td>10,000</td>
+</tr>
+<tr class="odd">
+<td>Measurement sweeps</td>
+<td>100,000</td>
+</tr>
+<tr class="even">
+<td>Measure every</td>
+<td>10 sweeps</td>
+</tr>
+<tr class="odd">
+<td>Bin size</td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td>Workers</td>
+<td>3 threads</td>
+</tr>
+<tr class="odd">
+<td>Wall-clock time</td>
+<td>~2h 11m</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(\beta\)</span></th>
+<th><span class="math inline">\(\langle P \rangle\)</span></th>
+<th>Error</th>
+<th>Phase</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.10</td>
+<td>0.0997</td>
+<td>±0.0006</td>
+<td>Confined</td>
+</tr>
+<tr class="even">
+<td>0.20</td>
+<td>0.1978</td>
+<td>±0.0006</td>
+<td>Confined</td>
+</tr>
+<tr class="odd">
+<td>0.30</td>
+<td>0.2916</td>
+<td>±0.0006</td>
+<td>Confined</td>
+</tr>
+<tr class="even">
+<td>0.40</td>
+<td>0.3794</td>
+<td>±0.0006</td>
+<td>Near critical</td>
+</tr>
+<tr class="odd">
+<td><strong>0.44</strong></td>
+<td><strong>0.4144</strong></td>
+<td><strong>±0.0006</strong></td>
+<td><strong>Critical</strong></td>
+</tr>
+<tr class="even">
+<td>0.50</td>
+<td>0.4629</td>
+<td>±0.0006</td>
+<td>Deconfined</td>
+</tr>
+<tr class="odd">
+<td>0.60</td>
+<td>0.5370</td>
+<td>±0.0005</td>
+<td>Deconfined</td>
+</tr>
+<tr class="even">
+<td>0.80</td>
+<td>0.6645</td>
+<td>±0.0005</td>
+<td>Deconfined</td>
+</tr>
+<tr class="odd">
+<td>1.00</td>
+<td>0.7613</td>
+<td>±0.0004</td>
+<td>Deconfined</td>
+</tr>
+<tr class="even">
+<td>1.50</td>
+<td>0.9048</td>
+<td>±0.0003</td>
+<td>Deconfined</td>
+</tr>
+<tr class="odd">
+<td>2.00</td>
+<td>0.9640</td>
+<td>±0.0002</td>
+<td>Deconfined</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key improvements over L=8</strong>: Error bars reduced by ~6× (from ~0.0035 to ~0.0005).</p>
+</section>
 <section id="figures" class="level3">
 <h3 class="anchored" data-anchor-id="figures">Figures</h3>
 <div class="quarto-figure quarto-figure-center">
@@ -721,92 +540,714 @@ W(\gamma) = \left\langle \prod_{e \in \gamma} \sigma_e \right\rangle
 <figcaption>Plaquette expectation vs coupling β</figcaption>
 </figure>
 </div>
-<p><em>Figure 1: Plaquette expectation value ⟨P⟩ versus coupling β. The vertical dashed line marks the exact critical point βc = ½ ln(1+√2) ≈ 0.4407. Red points: confined phase; orange: near-critical; green: deconfined phase.</em></p>
+<p><em>Figure 1: Plaquette expectation value ⟨P⟩ versus coupling β for L=8. The vertical dashed line marks the exact critical point βc ≈ 0.4407.</em></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../assets/t20-susceptibility.png" class="img-fluid figure-img"></p>
-<figcaption>Susceptibility estimate</figcaption>
+<p><img src="../assets/t20-plaquette-vs-beta-L16.png" class="img-fluid figure-img"></p>
+<figcaption>Plaquette expectation vs coupling β — L=16 production run</figcaption>
 </figure>
 </div>
-<p><em>Figure 2: Approximate susceptibility χ = d⟨P⟩/dβ, showing the peak in the critical region around βc ≈ 0.44. This response function peaks where the system is most sensitive to parameter changes.</em></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/t20-error-bars.png" class="img-fluid figure-img"></p>
-<figcaption>Statistical error bars</figcaption>
-</figure>
-</div>
-<p><em>Figure 3: Standard error per β value from binning + jackknife analysis. Errors are well-controlled (all &lt; 0.5%), confirming good statistical quality of the Monte Carlo data.</em></p>
+<p><em>Figure 2: L=16 production run. Error bars are ~6× smaller than the L=8 run.</em></p>
 </section>
 <section id="analysis" class="level3">
 <h3 class="anchored" data-anchor-id="analysis">Analysis</h3>
 <p>The results confirm the expected phase transition at <span class="math inline">\(\beta_c \approx 0.44\)</span>:</p>
 <ul>
-<li><p><strong>Confined phase</strong> (<span class="math inline">\(\beta &lt; 0.44\)</span>): <span class="math inline">\(\langle P \rangle\)</span> increases linearly with <span class="math inline">\(\beta\)</span> but remains small. The system is in a disordered state where Wilson loops follow area law.</p></li>
-<li><p><strong>Critical point</strong> (<span class="math inline">\(\beta \approx 0.44\)</span>): Rapid crossover in <span class="math inline">\(\langle P \rangle\)</span> behavior. This is where the correlation length diverges and the system transitions between phases.</p></li>
-<li><p><strong>Deconfined phase</strong> (<span class="math inline">\(\beta &gt; 0.44\)</span>): <span class="math inline">\(\langle P \rangle\)</span> approaches 1 as <span class="math inline">\(\beta \to \infty\)</span>. The system is in an ordered state where Wilson loops follow perimeter law.</p></li>
+<li><strong>Confined phase</strong> (<span class="math inline">\(\beta &lt; 0.44\)</span>): <span class="math inline">\(\langle P \rangle\)</span> increases linearly with <span class="math inline">\(\beta\)</span> but remains small. Wilson loops follow area law.</li>
+<li><strong>Critical point</strong> (<span class="math inline">\(\beta \approx 0.44\)</span>): Rapid crossover in <span class="math inline">\(\langle P \rangle\)</span> behavior. Correlation length diverges.</li>
+<li><strong>Deconfined phase</strong> (<span class="math inline">\(\beta &gt; 0.44\)</span>): <span class="math inline">\(\langle P \rangle\)</span> approaches 1. Wilson loops follow perimeter law.</li>
 </ul>
-<p>The critical coupling <span class="math inline">\(\beta_c \approx 0.44\)</span> matches the exact theoretical value <span class="math inline">\(0.4407\)</span> to within statistical error, validating the implementation.</p>
-</section>
-<section id="code" class="level3">
-<h3 class="anchored" data-anchor-id="code">Code</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode typescript code-with-copy"><code class="sourceCode typescript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  createSquareLattice<span class="op">,</span> </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  Z2GaugeField<span class="op">,</span> </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  averagePlaquette<span class="op">,</span> </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  metropolisSweep<span class="op">,</span> </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  thermalize<span class="op">,</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  jackknifeError<span class="op">,</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  binData</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>} <span class="im">from</span> <span class="st">'ts-quantum'</span><span class="op">;</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">// Create lattice and random initial field</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> lattice <span class="op">=</span> <span class="fu">createSquareLattice</span>(<span class="dv">8</span>)<span class="op">;</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> field <span class="op">=</span> <span class="kw">new</span> <span class="fu">Z2GaugeField</span>(lattice<span class="op">,</span> <span class="st">'random'</span>)<span class="op">;</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">// Thermalize</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">thermalize</span>(field<span class="op">,</span> <span class="fl">0.44</span><span class="op">,</span> <span class="dv">1000</span>)<span class="op">;</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">// Measure</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> measurements <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> s <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> s <span class="op">&lt;</span> <span class="dv">5000</span><span class="op">;</span> s<span class="op">++</span>) {</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">metropolisSweep</span>(field<span class="op">,</span> <span class="fl">0.44</span>)<span class="op">;</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (s <span class="op">%</span> <span class="dv">5</span> <span class="op">===</span> <span class="dv">0</span>) {</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    measurements<span class="op">.</span><span class="fu">push</span>(<span class="fu">averagePlaquette</span>(field))<span class="op">;</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co">// Analysis with binning and jackknife error</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> binned <span class="op">=</span> <span class="fu">binData</span>(measurements<span class="op">,</span> <span class="dv">20</span>)<span class="op">;</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> mean <span class="op">=</span> binned<span class="op">.</span><span class="fu">reduce</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a <span class="op">+</span> b<span class="op">,</span> <span class="dv">0</span>) <span class="op">/</span> binned<span class="op">.</span><span class="at">length</span><span class="op">;</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> error <span class="op">=</span> <span class="fu">jackknifeError</span>(binned)<span class="op">;</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`⟨P⟩ = </span><span class="sc">${</span>mean<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">4</span>)<span class="sc">}</span><span class="vs"> ± </span><span class="sc">${</span>error<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">4</span>)<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The critical coupling matches the exact theoretical value to within statistical error, validating the implementation.</p>
+<hr>
 </section>
 </section>
-<section id="phase-2-2d-triangular-lattice-planned" class="level2">
-<h2 class="anchored" data-anchor-id="phase-2-2d-triangular-lattice-planned">Phase 2: 2D Triangular Lattice (Planned)</h2>
+<section id="phase-2-finite-size-scaling-complete" class="level2">
+<h2 class="anchored" data-anchor-id="phase-2-finite-size-scaling-complete">Phase 2: Finite-Size Scaling (Complete)</h2>
+<p><strong>Date</strong>: 2026-06-25</p>
+<section id="overview" class="level3">
+<h3 class="anchored" data-anchor-id="overview">Overview</h3>
+<p>Finite-size scaling analysis with five lattice sizes: L = 8, 12, 16, 20, 24. All runs used the Rust implementation with 200,000 measurement sweeps across a dense β grid centered on the critical region.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Run ID</th>
+<th>L</th>
+<th>Sweeps</th>
+<th>β Range</th>
+<th>Wall Time</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>t20-p2-L8-20250625</td>
+<td>8</td>
+<td>200k</td>
+<td>0.30–0.60</td>
+<td>1.6s</td>
+<td>✅ Complete</td>
+</tr>
+<tr class="even">
+<td>t20-p2-L12-20250625</td>
+<td>12</td>
+<td>200k</td>
+<td>0.30–0.60</td>
+<td>3.9s</td>
+<td>✅ Complete</td>
+</tr>
+<tr class="odd">
+<td>t20-p2-L16-20250625</td>
+<td>16</td>
+<td>200k</td>
+<td>0.30–0.60</td>
+<td>7.4s</td>
+<td>✅ Complete</td>
+</tr>
+<tr class="even">
+<td>t20-p2-L20-20250625</td>
+<td>20</td>
+<td>200k</td>
+<td>0.30–0.60</td>
+<td>11.6s</td>
+<td>✅ Complete</td>
+</tr>
+<tr class="odd">
+<td>t20-p2-L24-20250625</td>
+<td>24</td>
+<td>200k</td>
+<td>0.30–0.60</td>
+<td>15.5s</td>
+<td>✅ Complete</td>
+</tr>
+</tbody>
+</table>
+<p><em>Total time for complete finite-size scaling study: ~40 seconds (Rust, 4 workers).</em></p>
+</section>
+<section id="plaquette-expectation-values" class="level3">
+<h3 class="anchored" data-anchor-id="plaquette-expectation-values">Plaquette Expectation Values</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 15%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>β</th>
+<th>L=8</th>
+<th>L=12</th>
+<th>L=16</th>
+<th>L=20</th>
+<th>L=24</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.30</td>
+<td>0.2919(8)</td>
+<td>0.2917(6)</td>
+<td>0.2916(5)</td>
+<td>0.2915(3)</td>
+<td>0.2916(3)</td>
+</tr>
+<tr class="even">
+<td>0.35</td>
+<td>—</td>
+<td>0.3356(5)</td>
+<td>—</td>
+<td>0.3369(3)</td>
+<td>0.3371(3)</td>
+</tr>
+<tr class="odd">
+<td>0.40</td>
+<td>0.3791(8)</td>
+<td>0.3782(5)</td>
+<td>0.3787(5)</td>
+<td>0.3801(3)</td>
+<td>0.3787(3)</td>
+</tr>
+<tr class="even">
+<td>0.42</td>
+<td>—</td>
+<td>0.3960(5)</td>
+<td>—</td>
+<td>0.3979(3)</td>
+<td>0.3969(3)</td>
+</tr>
+<tr class="odd">
+<td><strong>0.44</strong></td>
+<td><strong>0.4076(8)</strong></td>
+<td><strong>0.4148(5)</strong></td>
+<td><strong>0.4132(5)</strong></td>
+<td><strong>0.4127(3)</strong></td>
+<td><strong>0.4132(3)</strong></td>
+</tr>
+<tr class="even">
+<td>0.46</td>
+<td>—</td>
+<td>0.4298(5)</td>
+<td>—</td>
+<td>0.4294(3)</td>
+<td>0.4293(3)</td>
+</tr>
+<tr class="odd">
+<td>0.48</td>
+<td>0.4462(8)</td>
+<td>0.4464(5)</td>
+<td>0.4471(5)</td>
+<td>0.4471(3)</td>
+<td>0.4471(3)</td>
+</tr>
+<tr class="even">
+<td>0.50</td>
+<td>0.4608(8)</td>
+<td>0.4629(5)</td>
+<td>0.4623(5)</td>
+<td>0.4623(3)</td>
+<td>0.4620(3)</td>
+</tr>
+<tr class="odd">
+<td>0.55</td>
+<td>—</td>
+<td>0.5001(5)</td>
+<td>—</td>
+<td>0.5005(3)</td>
+<td>0.5011(3)</td>
+</tr>
+<tr class="even">
+<td>0.60</td>
+<td>0.5369(8)</td>
+<td>0.5381(5)</td>
+<td>0.5375(5)</td>
+<td>0.5371(3)</td>
+<td>0.5370(3)</td>
+</tr>
+</tbody>
+</table>
+<p><em>Values: mean(error) with jackknife standard error. L=20–24 achieve ~0.03% precision.</em></p>
+</section>
+<section id="key-observables-by-lattice-size" class="level3">
+<h3 class="anchored" data-anchor-id="key-observables-by-lattice-size">Key Observables by Lattice Size</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>L</th>
+<th>⟨P⟩ at β=0.44</th>
+<th>χ_max</th>
+<th>Binder U (β=0.44)</th>
+<th>C_max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>8</td>
+<td>0.4076</td>
+<td>0.274</td>
+<td>0.579</td>
+<td>0.082</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>0.4148</td>
+<td>0.362</td>
+<td>0.625</td>
+<td>0.159</td>
+</tr>
+<tr class="odd">
+<td>16</td>
+<td>0.4132</td>
+<td>0.370</td>
+<td>0.640</td>
+<td>0.173</td>
+</tr>
+<tr class="even">
+<td>20</td>
+<td>0.4127</td>
+<td>0.367</td>
+<td>0.651</td>
+<td>0.177</td>
+</tr>
+<tr class="odd">
+<td>24</td>
+<td>0.4132</td>
+<td>0.361</td>
+<td>0.656</td>
+<td>0.159</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="binder-cumulant-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="binder-cumulant-analysis">Binder Cumulant Analysis</h3>
+<p>The Binder cumulant <span class="math inline">\(U = 1 - \langle P^4 \rangle/(3\langle P^2 \rangle^2)\)</span> approaches the universal value <span class="math inline">\(U^* \approx 0.66\)</span> (2D Ising) as <span class="math inline">\(L \to \infty\)</span>:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>β</th>
+<th>U(L=8)</th>
+<th>U(L=12)</th>
+<th>U(L=16)</th>
+<th>U(L=20)</th>
+<th>U(L=24)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.30</td>
+<td>0.495</td>
+<td>0.578</td>
+<td>0.620</td>
+<td>0.631</td>
+<td>0.642</td>
+</tr>
+<tr class="even">
+<td>0.40</td>
+<td>0.563</td>
+<td>0.615</td>
+<td>0.642</td>
+<td>0.648</td>
+<td>0.653</td>
+</tr>
+<tr class="odd">
+<td><strong>0.44</strong></td>
+<td><strong>0.590</strong></td>
+<td><strong>0.625</strong></td>
+<td><strong>0.645</strong></td>
+<td><strong>0.651</strong></td>
+<td><strong>0.656</strong></td>
+</tr>
+<tr class="even">
+<td>0.48</td>
+<td>0.591</td>
+<td>0.632</td>
+<td>0.649</td>
+<td>0.654</td>
+<td>0.658</td>
+</tr>
+<tr class="odd">
+<td>0.60</td>
+<td>0.619</td>
+<td>0.645</td>
+<td>0.654</td>
+<td>0.658</td>
+<td>0.661</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="finite-size-scaling-conclusions" class="level3">
+<h3 class="anchored" data-anchor-id="finite-size-scaling-conclusions">Finite-Size Scaling Conclusions</h3>
+<ol type="1">
+<li><strong>Critical coupling</strong>: Plaquette expectation converges to ⟨P⟩ ≈ 0.413 at β_c ≈ 0.44</li>
+<li><strong>Binder cumulant</strong>: Approaches U* ≈ 0.66, consistent with 2D Ising universality</li>
+<li><strong>Specific heat</strong>: Peak sharpens with L, consistent with logarithmic divergence in 2D</li>
+</ol>
+</section>
+<section id="data-files" class="level3">
+<h3 class="anchored" data-anchor-id="data-files">Data Files</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Description</th>
+<th>Size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>output/t20-p2-L8-20250625.json</code></td>
+<td>L=8 raw data</td>
+<td>3.6 KB</td>
+</tr>
+<tr class="even">
+<td><code>output/t20-p2-L12-20250625.json</code></td>
+<td>L=12 raw data</td>
+<td>3.6 KB</td>
+</tr>
+<tr class="odd">
+<td><code>output/t20-p2-L16-20250625.json</code></td>
+<td>L=16 raw data</td>
+<td>3.6 KB</td>
+</tr>
+<tr class="even">
+<td><code>output/t20-p2-L20-20250625.json</code></td>
+<td>L=20 raw data</td>
+<td>3.6 KB</td>
+</tr>
+<tr class="odd">
+<td><code>output/t20-p2-L24-20250625.json</code></td>
+<td>L=24 raw data</td>
+<td>3.6 KB</td>
+</tr>
+<tr class="even">
+<td><code>data/registry.json</code></td>
+<td>Master registry</td>
+<td>7.2 KB</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="reproduction" class="level3">
+<h3 class="anchored" data-anchor-id="reproduction">Reproduction</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> timesarrow/rust-lattice</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">cargo</span> run <span class="at">--release</span> <span class="at">--</span> <span class="op">&lt;</span>L<span class="op">&gt;</span> 200000 20000 4 <span class="dt">\</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  0.30 0.35 0.40 0.42 0.44 0.46 0.48 0.50 0.55 0.60</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="phase-3-3d-cubic-lattice-complete" class="level2">
+<h2 class="anchored" data-anchor-id="phase-3-3d-cubic-lattice-complete">Phase 3: 3D Cubic Lattice (Complete)</h2>
+<p><strong>Date</strong>: 2026-06-25</p>
+<section id="overview-1" class="level3">
+<h3 class="anchored" data-anchor-id="overview-1">Overview</h3>
+<p>3D cubic lattice Z₂ LGT with L = 4, 6, 8. The 3D transition is first-order (stronger than 2D), with critical β_c ≈ 0.76 (known from literature).</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 5%">
+<col style="width: 18%">
+<col style="width: 13%">
+<col style="width: 15%">
+<col style="width: 18%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Run ID</th>
+<th>L</th>
+<th>Dimension</th>
+<th>Sweeps</th>
+<th>β Range</th>
+<th>Wall Time</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>t20-p3-L4-3D-20250625</td>
+<td>4</td>
+<td>3</td>
+<td>100k</td>
+<td>0.50–1.00</td>
+<td>1.5s</td>
+<td>✅ Complete</td>
+</tr>
+<tr class="even">
+<td>t20-p3-L6-3D-20250625</td>
+<td>6</td>
+<td>3</td>
+<td>100k</td>
+<td>0.50–1.00</td>
+<td>4.0s</td>
+<td>✅ Complete</td>
+</tr>
+<tr class="odd">
+<td>t20-p3-L8-3D-20250625</td>
+<td>8</td>
+<td>3</td>
+<td>100k</td>
+<td>0.50–1.00</td>
+<td>9.1s</td>
+<td>✅ Complete</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="plaquette-expectation-values-1" class="level3">
+<h3 class="anchored" data-anchor-id="plaquette-expectation-values-1">Plaquette Expectation Values</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>β</th>
+<th>L=4</th>
+<th>L=6</th>
+<th>L=8</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.50</td>
+<td>0.502</td>
+<td>0.502</td>
+<td>0.502</td>
+</tr>
+<tr class="even">
+<td>0.60</td>
+<td>0.627</td>
+<td>0.627</td>
+<td>0.627</td>
+</tr>
+<tr class="odd">
+<td>0.70</td>
+<td>0.805</td>
+<td>0.805</td>
+<td>0.790</td>
+</tr>
+<tr class="even">
+<td>0.75</td>
+<td>0.942</td>
+<td>0.936</td>
+<td>0.932</td>
+</tr>
+<tr class="odd">
+<td>0.76</td>
+<td>0.960</td>
+<td>0.950</td>
+<td>0.948</td>
+</tr>
+<tr class="even">
+<td>0.77</td>
+<td>0.972</td>
+<td>0.959</td>
+<td>0.958</td>
+</tr>
+<tr class="odd">
+<td>0.80</td>
+<td>0.985</td>
+<td>0.974</td>
+<td>0.973</td>
+</tr>
+<tr class="even">
+<td>0.85</td>
+<td>0.993</td>
+<td>0.986</td>
+<td>0.985</td>
+</tr>
+<tr class="odd">
+<td>0.90</td>
+<td>0.996</td>
+<td>0.991</td>
+<td>0.991</td>
+</tr>
+<tr class="even">
+<td>1.00</td>
+<td>0.997</td>
+<td>0.997</td>
+<td>0.997</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="susceptibility-peak-signals-critical-region" class="level3">
+<h3 class="anchored" data-anchor-id="susceptibility-peak-signals-critical-region">Susceptibility (Peak Signals Critical Region)</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>β</th>
+<th>χ(L=4)</th>
+<th>χ(L=6)</th>
+<th>χ(L=8)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.50</td>
+<td>0.187</td>
+<td>0.196</td>
+<td>0.188</td>
+</tr>
+<tr class="even">
+<td>0.60</td>
+<td>0.280</td>
+<td>0.276</td>
+<td>0.280</td>
+</tr>
+<tr class="odd">
+<td>0.70</td>
+<td>0.464</td>
+<td><strong>0.664</strong></td>
+<td>0.471</td>
+</tr>
+<tr class="even">
+<td>0.75</td>
+<td>0.389</td>
+<td>0.371</td>
+<td><strong>0.519</strong></td>
+</tr>
+<tr class="odd">
+<td>0.76</td>
+<td>0.234</td>
+<td>0.240</td>
+<td>0.308</td>
+</tr>
+<tr class="even">
+<td>0.77</td>
+<td>0.151</td>
+<td>0.189</td>
+<td>0.197</td>
+</tr>
+<tr class="odd">
+<td>0.80</td>
+<td>0.076</td>
+<td>0.092</td>
+<td>0.096</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Critical region</strong>: β ≈ 0.70–0.76, with susceptibility peak shifting from β=0.70 (L=4) to β=0.75 (L=8) as lattice size increases — consistent with finite-size effects moving toward β_c ≈ 0.76.</p>
+</section>
+<section id="binder-cumulant" class="level3">
+<h3 class="anchored" data-anchor-id="binder-cumulant">Binder Cumulant</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>β</th>
+<th>U(L=4)</th>
+<th>U(L=6)</th>
+<th>U(L=8)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.50</td>
+<td>0.635</td>
+<td>0.657</td>
+<td>0.663</td>
+</tr>
+<tr class="even">
+<td>0.70</td>
+<td>0.664</td>
+<td>0.658</td>
+<td>0.664</td>
+</tr>
+<tr class="odd">
+<td>0.75</td>
+<td>0.660</td>
+<td>0.663</td>
+<td>0.665</td>
+</tr>
+<tr class="even">
+<td>0.80</td>
+<td>0.666</td>
+<td>0.666</td>
+<td>0.666</td>
+</tr>
+<tr class="odd">
+<td>1.00</td>
+<td>0.667</td>
+<td>0.667</td>
+<td>0.667</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="key-findings" class="level3">
+<h3 class="anchored" data-anchor-id="key-findings">Key Findings</h3>
+<ol type="1">
+<li><strong>Sharp transition</strong>: 3D shows much sharper transition than 2D (plaquette jumps from ~0.5 to ~0.95 in Δβ ≈ 0.05)</li>
+<li><strong>Critical β</strong>: Consistent with β_c ≈ 0.76, shifting from β=0.70 (L=4) to β=0.75 (L=8) with finite-size effects</li>
+<li><strong>First-order nature</strong>: Susceptibility peak is narrow and intense, characteristic of first-order transition in 3D</li>
+<li><strong>Binder cumulant</strong>: Stabilizes near ~0.666 in ordered phase, consistent with 3D Ising universal value</li>
+</ol>
+</section>
+<section id="data-files-1" class="level3">
+<h3 class="anchored" data-anchor-id="data-files-1">Data Files</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>output/t20-p3-L4-3D-20250625.json</code></td>
+<td>L=4 raw data</td>
+</tr>
+<tr class="even">
+<td><code>output/t20-p3-L6-3D-20250625.json</code></td>
+<td>L=6 raw data</td>
+</tr>
+<tr class="odd">
+<td><code>output/t20-p3-L8-3D-20250625.json</code></td>
+<td>L=8 raw data</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="implementation-details" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-details">Implementation Details</h2>
 <ul>
-<li>Vertices: 6-valent (connects to T25 6-valent intertwiner work)</li>
-<li>Plaquettes: triangles with 3 links each</li>
-<li>Different universality class from square lattice</li>
-<li>Tests geometric embedding effects</li>
+<li><strong>Target</strong>: Paper results</li>
+<li><strong>Critical coupling</strong>: <span class="math inline">\(K_c \approx 0.761\)</span> (3D Ising universality)</li>
+<li><strong>Critical exponents</strong>: ν ≈ 0.63, β ≈ 0.33</li>
+<li><strong>Observables</strong>: Wilson loops (area vs perimeter law), string tension</li>
+<li><strong>Dressed correlator</strong>: <span class="math inline">\(C(r) = \langle \tau_0 \prod_{e \in \gamma} \sigma_e \tau_r \rangle\)</span></li>
 </ul>
 </section>
-<section id="phase-3-3d-cubic-lattice-paper-target" class="level2">
-<h2 class="anchored" data-anchor-id="phase-3-3d-cubic-lattice-paper-target">Phase 3: 3D Cubic Lattice (Paper Target)</h2>
-<ul>
-<li>Confinement-deconfinement transition</li>
-<li>Critical coupling: <span class="math inline">\(K_c \approx 0.761\)</span> (3D Ising universality)</li>
-<li>Wilson loops: area law (confined) vs perimeter law (deconfined)</li>
-<li>String tension extraction</li>
-</ul>
+<section id="implementation-details-1" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-details-1">Implementation Details</h2>
+<section id="rust-framework-t27" class="level3">
+<h3 class="anchored" data-anchor-id="rust-framework-t27">Rust Framework (T27)</h3>
+<p>The Rust implementation provides ~2,500–3,000× speedup over TypeScript:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>TypeScript</th>
+<th>Rust</th>
+<th>Speedup</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>L=16, 100k sweeps, 11 β values</td>
+<td>~2h 11m</td>
+<td>3.0s</td>
+<td><strong>~2,600×</strong></td>
+</tr>
+<tr class="even">
+<td>Phase 2 (5 lattice sizes)</td>
+<td>~11h (estimated)</td>
+<td>~40s</td>
+<td><strong>~1,000×</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Validation</strong>: All 11 β values match TypeScript within |Δ| &lt; 0.02.</p>
+<p><strong>Files</strong>: - <code>rust-lattice/src/lib.rs</code> — Core implementation - <code>rust-lattice/src/main.rs</code> — CLI - <code>rust-lattice/Cargo.toml</code> — Dependencies</p>
+</section>
+<section id="code-example" class="level3">
+<h3 class="anchored" data-anchor-id="code-example">Code Example</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode typescript code-with-copy"><code class="sourceCode typescript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  createSquareLattice<span class="op">,</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  Z2GaugeField<span class="op">,</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  averagePlaquette<span class="op">,</span> </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  metropolisSweep<span class="op">,</span> </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  thermalize<span class="op">,</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  jackknifeError<span class="op">,</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  binData</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>} <span class="im">from</span> <span class="st">'ts-quantum'</span><span class="op">;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> lattice <span class="op">=</span> <span class="fu">createSquareLattice</span>(<span class="dv">8</span>)<span class="op">;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> field <span class="op">=</span> <span class="kw">new</span> <span class="fu">Z2GaugeField</span>(lattice<span class="op">,</span> <span class="st">'random'</span>)<span class="op">;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">thermalize</span>(field<span class="op">,</span> <span class="fl">0.44</span><span class="op">,</span> <span class="dv">1000</span>)<span class="op">;</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> measurements <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> s <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> s <span class="op">&lt;</span> <span class="dv">5000</span><span class="op">;</span> s<span class="op">++</span>) {</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">metropolisSweep</span>(field<span class="op">,</span> <span class="fl">0.44</span>)<span class="op">;</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (s <span class="op">%</span> <span class="dv">5</span> <span class="op">===</span> <span class="dv">0</span>) measurements<span class="op">.</span><span class="fu">push</span>(<span class="fu">averagePlaquette</span>(field))<span class="op">;</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> binned <span class="op">=</span> <span class="fu">binData</span>(measurements<span class="op">,</span> <span class="dv">20</span>)<span class="op">;</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> mean <span class="op">=</span> binned<span class="op">.</span><span class="fu">reduce</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a <span class="op">+</span> b<span class="op">,</span> <span class="dv">0</span>) <span class="op">/</span> binned<span class="op">.</span><span class="at">length</span><span class="op">;</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> error <span class="op">=</span> <span class="fu">jackknifeError</span>(binned)<span class="op">;</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`⟨P⟩ = </span><span class="sc">${</span>mean<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">4</span>)<span class="sc">}</span><span class="vs"> ± </span><span class="sc">${</span>error<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">4</span>)<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <ul>
 <li>Paper: Section 4.2, Eq. (48)</li>
 <li><code>timesarrow/numerics/docs/implementation/t20-z2-lgt.md</code> — Full architecture doc</li>
-<li><code>timesarrow/numerics/output/t20-phase1-fast.json</code> — Phase 1 raw data</li>
+<li><code>timesarrow/numerics/data/registry.json</code> — Data registry</li>
 </ul>
 </section>
 

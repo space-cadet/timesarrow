@@ -5,6 +5,7 @@
  */
 
 const { parentPort } = require('worker_threads');
+
 const {
   createSquareLattice,
   Z2GaugeField,
@@ -54,10 +55,13 @@ function runSimulation(params) {
 // Listen for messages from main thread
 if (parentPort) {
   parentPort.on('message', (params) => {
+    console.log(`[WORKER] Starting β=${params.beta}, sweeps=${params.measureSweeps}`);
     try {
       const result = runSimulation(params);
+      console.log(`[WORKER] Done β=${params.beta}, P=${result.meanPlaquette.toFixed(4)}`);
       parentPort.postMessage({ type: 'result', data: result });
     } catch (error) {
+      console.error(`[WORKER] Error β=${params.beta}:`, error.message);
       parentPort.postMessage({ 
         type: 'error', 
         beta: params.beta,

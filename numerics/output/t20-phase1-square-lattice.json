@@ -1,0 +1,138 @@
+{
+  "timestamp": "2026-06-24T16:10:55.003Z",
+  "parameters": {
+    "L": 16,
+    "thermalSweeps": 10000,
+    "measureSweeps": 100000,
+    "measureEvery": 10,
+    "binSize": 100
+  },
+  "results": [
+    {
+      "beta": 0.1,
+      "meanPlaquette": 0.10039687499999998,
+      "errorPlaquette": 0.0005714606584620095,
+      "numMeasurements": 10000,
+      "numBinned": 100
+    },
+    {
+      "beta": 0.2,
+      "meanPlaquette": 0.19730703125000001,
+      "errorPlaquette": 0.000682298402949366,
+      "numMeasurements": 10000,
+      "numBinned": 100
+    },
+    {
+      "beta": 0.3,
+      "meanPlaquette": 0.29167109374999994,
+      "errorPlaquette": 0.0005546679322821963,
+      "numMeasurements": 10000,
+      "numBinned": 100
+    },
+    {
+      "beta": 0.35,
+      "meanPlaquette": 0.3359390624999999,
+      "errorPlaquette": 0.0005985103932713858,
+      "numMeasurements": 10000,
+      "numBinned": 100
+    },
+    {
+      "beta": 0.38,
+      "meanPlaquette": 0.36308125000000013,
+      "errorPlaquette": 0.0005859267886226579,
+      "numMeasurements": 10000,
+      "numBinned": 100
+    },
+    {
+      "beta": 0.4,
+      "meanPlaquette": 0.38046328124999995,
+      "errorPlaquette": 0.0005942038476359586,
+      "numMeasurements": 10000,
+      "numBinned": 100
+    },
+    {
+      "beta": 0.42,
+      "meanPlaquette": 0.3968945312499999,
+      "errorPlaquette": 0.0005573872128073502,
+      "numMeasurements": 10000,
+      "numBinned": 100
+    },
+    {
+      "beta": 0.44,
+      "meanPlaquette": 0.41335703124999973,
+      "errorPlaquette": 0.0005572102998781541,
+      "numMeasurements": 10000,
+      "numBinned": 100
+    },
+    {
+      "beta": 0.45,
+      "meanPlaquette": 0.42244843750000016,
+      "errorPlaquette": 0.000607170745439662,
+      "numMeasurements": 10000,
+      "numBinned": 100
+    },
+    {
+      "beta": 0.46,
+      "meanPlaquette": 0.4305960937500003,
+      "errorPlaquette": 0.0005346874905450709,
+      "numMeasurements": 10000,
+      "numBinned": 100
+    },
+    {
+      "beta": 0.48,
+      "meanPlaquette": 0.4460203125000001,
+      "errorPlaquette": 0.0005129443009365792,
+      "numMeasurements": 10000,
+      "numBinned": 100
+    },
+    {
+      "beta": 0.5,
+      "meanPlaquette": 0.462,
+      "errorPlaquette": 0.0005325875356337326,
+      "numMeasurements": 10000,
+      "numBinned": 100
+    },
+    {
+      "beta": 0.55,
+      "meanPlaquette": 0.5004984375000001,
+      "errorPlaquette": 0.0004953181758110518,
+      "numMeasurements": 10000,
+      "numBinned": 100
+    },
+    {
+      "beta": 0.6,
+      "meanPlaquette": 0.5374070312499999,
+      "errorPlaquette": 0.0004771290449166778,
+      "numMeasurements": 10000,
+      "numBinned": 100
+    },
+    {
+      "beta": 0.8,
+      "meanPlaquette": 0.6641812500000001,
+      "errorPlaquette": 0.0004414273468074687,
+      "numMeasurements": 10000,
+      "numBinned": 100
+    },
+    {
+      "beta": 1,
+      "meanPlaquette": 0.7615999999999998,
+      "errorPlaquette": 0.00038984847058696044,
+      "numMeasurements": 10000,
+      "numBinned": 100
+    },
+    {
+      "beta": 1.5,
+      "meanPlaquette": 0.9051664062500001,
+      "errorPlaquette": 0.00027506539904394297,
+      "numMeasurements": 10000,
+      "numBinned": 100
+    },
+    {
+      "beta": 2,
+      "meanPlaquette": 0.9640320312499996,
+      "errorPlaquette": 0.00018744374879592425,
+      "numMeasurements": 10000,
+      "numBinned": 100
+    }
+  ]
+}

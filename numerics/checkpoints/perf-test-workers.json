@@ -1,0 +1,104 @@
+{
+  "simulationId": "perf-test-workers",
+  "parameters": {
+    "L": 8,
+    "thermalSweeps": 1000,
+    "measureSweeps": 5000,
+    "measureEvery": 10,
+    "binSize": 50
+  },
+  "completed": [
+    0.1,
+    0.8,
+    0.3,
+    0.5,
+    0.6,
+    0.4,
+    0.2,
+    0.44,
+    1,
+    1.5,
+    2
+  ],
+  "results": [
+    {
+      "beta": 0.1,
+      "meanPlaquette": 0.09662499999999999,
+      "errorPlaquette": 0.004742684425044063,
+      "numMeasurements": 500,
+      "wallTimeMs": 6671
+    },
+    {
+      "beta": 0.8,
+      "meanPlaquette": 0.6613749999999999,
+      "errorPlaquette": 0.003976711720895864,
+      "numMeasurements": 500,
+      "wallTimeMs": 6696
+    },
+    {
+      "beta": 0.3,
+      "meanPlaquette": 0.2969375,
+      "errorPlaquette": 0.004154617996211466,
+      "numMeasurements": 500,
+      "wallTimeMs": 6757
+    },
+    {
+      "beta": 0.5,
+      "meanPlaquette": 0.45856249999999993,
+      "errorPlaquette": 0.003672875897864148,
+      "numMeasurements": 500,
+      "wallTimeMs": 6740
+    },
+    {
+      "beta": 0.6,
+      "meanPlaquette": 0.5357500000000001,
+      "errorPlaquette": 0.0024734703466092814,
+      "numMeasurements": 500,
+      "wallTimeMs": 6781
+    },
+    {
+      "beta": 0.4,
+      "meanPlaquette": 0.3808125,
+      "errorPlaquette": 0.004568204196764128,
+      "numMeasurements": 500,
+      "wallTimeMs": 6793
+    },
+    {
+      "beta": 0.2,
+      "meanPlaquette": 0.194,
+      "errorPlaquette": 0.0051211028543121885,
+      "numMeasurements": 500,
+      "wallTimeMs": 6799
+    },
+    {
+      "beta": 0.44,
+      "meanPlaquette": 0.41431250000000003,
+      "errorPlaquette": 0.004502555215899357,
+      "numMeasurements": 500,
+      "wallTimeMs": 6786
+    },
+    {
+      "beta": 1,
+      "meanPlaquette": 0.753,
+      "errorPlaquette": 0.004486476593299252,
+      "numMeasurements": 500,
+      "wallTimeMs": 3004
+    },
+    {
+      "beta": 1.5,
+      "meanPlaquette": 0.9029999999999999,
+      "errorPlaquette": 0.0020000000000000386,
+      "numMeasurements": 500,
+      "wallTimeMs": 2972
+    },
+    {
+      "beta": 2,
+      "meanPlaquette": 0.9614375,
+      "errorPlaquette": 0.0017727930332921565,
+      "numMeasurements": 500,
+      "wallTimeMs": 2954
+    }
+  ],
+  "timestamp": "2026-06-25T00:04:55.127Z",
+  "version": "1.0"
+}

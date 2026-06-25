@@ -1,0 +1,80 @@
+{
+  "simulationId": "t20-phase1-L16-N1000-1782347011451",
+  "parameters": {
+    "L": 16,
+    "thermalSweeps": 100,
+    "measureSweeps": 1000,
+    "measureEvery": 10,
+    "binSize": 10
+  },
+  "completed": [
+    0.1,
+    0.4,
+    0.3,
+    0.2,
+    0.44,
+    0.6,
+    0.5,
+    0.8
+  ],
+  "results": [
+    {
+      "beta": 0.1,
+      "meanPlaquette": 0.104296875,
+      "errorPlaquette": 0.005460373048439552,
+      "numMeasurements": 100,
+      "wallTimeMs": 18796
+    },
+    {
+      "beta": 0.4,
+      "meanPlaquette": 0.3818750000000001,
+      "errorPlaquette": 0.004351062988735556,
+      "numMeasurements": 100,
+      "wallTimeMs": 18870
+    },
+    {
+      "beta": 0.3,
+      "meanPlaquette": 0.29781250000000004,
+      "errorPlaquette": 0.006532047399488691,
+      "numMeasurements": 100,
+      "wallTimeMs": 18858
+    },
+    {
+      "beta": 0.2,
+      "meanPlaquette": 0.191953125,
+      "errorPlaquette": 0.002852840514598765,
+      "numMeasurements": 100,
+      "wallTimeMs": 18919
+    },
+    {
+      "beta": 0.44,
+      "meanPlaquette": 0.4189062499999999,
+      "errorPlaquette": 0.006602268720443334,
+      "numMeasurements": 100,
+      "wallTimeMs": 22204
+    },
+    {
+      "beta": 0.6,
+      "meanPlaquette": 0.5396875,
+      "errorPlaquette": 0.005360789516117112,
+      "numMeasurements": 100,
+      "wallTimeMs": 22160
+    },
+    {
+      "beta": 0.5,
+      "meanPlaquette": 0.470859375,
+      "errorPlaquette": 0.006540607083109769,
+      "numMeasurements": 100,
+      "wallTimeMs": 22178
+    },
+    {
+      "beta": 0.8,
+      "meanPlaquette": 0.6634374999999999,
+      "errorPlaquette": 0.004863311753864584,
+      "numMeasurements": 100,
+      "wallTimeMs": 22178
+    }
+  ],
+  "timestamp": "2026-06-25T00:24:12.916Z",
+  "version": "1.0"
+}
