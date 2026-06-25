@@ -1,82 +1,55 @@
-# Session Cache
-*Created: 2026-04-16 20:11:25 IST*
-*Last Updated: 2026-05-20 09:30:55 IST*
+# Session Cache: T20 Phase 1 + T27 Rust Framework
+*Updated: 2026-06-25 14:45 IST*
 
 ## Current Session
-**Started**: 2026-05-20 09:30:55 IST
-**Focus Task**: T18: Manuscript Claim-Hardening and Reviewer-Response Roadmap
-**Session File**: `sessions/2026-05-20-morning.md`
-**Status**: Reviewer-safety manuscript updates, disclosure updates, and PDF rebuild recorded
-
-## Overview
-- Active: 2 (T13, T18) | Paused: 0
-- Last Session: `sessions/2026-05-19-afternoon.md`
-- Current Period: morning
+**Started**: 2026-06-25 12:45 IST
+**Ended**: 2026-06-25 14:45 IST
+**Focus**: T20 Phase 1 completion + T27 Rust validation
+**Status**: ✅ All objectives met
 
 ## Task Registry
-- T13: Gemini 3 Flash - Web Presentation (Next.js) — 🔄
-- T14: Kimi K2.5 - Web Presentation (Static HTML) — ✅
-- T17: arXiv Submission Preparation — ✅ SUBMITTED (submit/7550944)
-- T18: Manuscript Claim-Hardening and Reviewer-Response Roadmap — 🔄
-- T19: Markdown-First Z2 Section Pilot — ✅
+- T20: Z₂ LGT Phase 1 (2D square lattice) — ✅ COMPLETE
+- T21: Worker threads + checkpointing — ✅ COMPLETE
+- T27: Rust Z₂ lattice gauge framework — ✅ COMPLETE
+- T20-Phase2: Sharp phase transition — ⬜ PENDING (next session)
+- T20-Phase3: 3D cubic lattice — ⬜ PENDING
 
-## Active Tasks
+## Completed Work
 
-### T18: Manuscript Claim-Hardening and Reviewer-Response Roadmap
-**Status:** 🔄 **Priority:** HIGH
-**Started:** 2026-05-06 **Last**: 2026-05-20 09:30:55 IST
-**Context**: The T18 hardening pass now incorporates the May 19 GPT 5.5 and Kimi critique set. The live manuscript distinguishes coherent cosmological time orientation from a full thermodynamic-arrow derivation, uses a dressed relative-orientation correlator alongside the Wilson loop, calibrates the CZX/SPT discussion toward a concrete tensor-network/bond-index correspondence, and softens the fermionic-matter claim toward boundary/defect-surface language. The AI assistance disclosure was updated in parallel, and the manuscript PDF rebuilt successfully.
-**Files**: `memory-bank/tasks/T18.md`, `memory-bank/implementation-details/manuscript-claim-hardening-proposal-2026-05-06.md`, `memory-bank/implementation-details/ai-reviews/gpt55-peer-review-2026-05-19.md`, `memory-bank/implementation-details/ai-reviews/gpt55-response-to-kimi-comparison-2026-05-19.md`, `memory-bank/implementation-details/ai-reviews/kimi-gpt55-synthesis-2026-05-19.md`, `ai-assistance-statement.md`, `timesarrow.pdf`, `timesarrow.tex`
-**Progress**:
-1. ✅ Fresh PDF review completed
-2. ✅ Proposal recorded in memory bank
-3. ✅ Second-opinion feasibility discussion recorded
-4. ✅ `sigma_e` bond-index origin integrated into `timesarrow.tex`
-5. ✅ `timesarrow.pdf` rebuilt successfully as 44 pages
-6. ✅ Focused reading pass tightened abstract/introduction consistency
-7. ✅ May 19 critique set captured in memory-bank implementation docs
-8. ✅ Manuscript framing hardened around coherent time orientation, dressed correlator, and calibrated CZX/SPT language
-9. ✅ `ai-assistance-statement.md` expanded to cover the April-May 2026 reviewer-safety pass
-10. 🔄 User reading of revised manuscript flow
+### T20 Phase 1 Production Run (L=16, 100k sweeps, 3 workers)
+**Status**: ✅ COMPLETE
+**Wall time**: ~2h 11m
+**Results**: 11 β values (0.1–2.0), all match critical coupling β_c ≈ 0.44
+**Output**: `numerics/output/t20-phase1-worker-L16.json`
 
-### T13: Gemini 3 Flash - Web Presentation
-**Status:** 🔄 **Priority:** MEDIUM
-**Started:** 2026-04-18 **Last**: 2026-04-18 03:00:00 IST
-**Context**: Next.js + Tailwind + MDX approach with interactive visualizations.
-**Files**: `memory-bank/implementation-details/gemini-web-presentation-plan.md`
-**Progress**:
-1. ✅ Implementation plan drafted
-2. ⬜ Initialize Next.js scaffold
+### T27 Rust Framework Validation
+**Status**: ✅ COMPLETE — Validated against TypeScript
+**Performance**: 3.0s for L=16, 100k sweeps, 11 β values
+**Speedup**: ~2,500–3,000× vs TypeScript
+**Bug fixes**: Plaquette geometry (wrong link indices), sign convention (negate output layer only)
+**Output**: `numerics/output/t27-rust-benchmark-L16-final.json`
 
-## Recent Completed Tasks
+## Validation Summary
+| Metric | TypeScript | Rust | Ratio |
+|--------|-----------|------|-------|
+| Wall time (11 β) | ~2h 11m | 3.0s | ~2,600× |
+| Accuracy | Statistical errors | Deterministic | Match within tolerance |
+| Code size | ~4k lines TS | ~400 lines Rust | — |
 
-### T19: Markdown-First Z2 Section Pilot
-**Status:** ✅ **Priority:** MEDIUM
-**Started:** 2026-05-09 **Last**: 2026-05-09 11:44:31 IST
-**Context**: Standalone `markdown-pilot/` workflow created for the manuscript's `Z_2` section. Markdown source, generated TeX, wrapper, scripts, and verification PDF are in place; full-manuscript integration was intentionally deferred.
-**Files**: `markdown-pilot/z2-action.md`, `markdown-pilot/generated/z2-action.tex`, `markdown-pilot/z2-pilot.tex`, `markdown-pilot/build/z2-pilot.pdf`, `memory-bank/implementation-details/markdown-first-z2-pilot-2026-05-09.md`
-**Progress**:
-1. ✅ Markdown-first section source and standalone wrapper created
-2. ✅ Inline-math normalization added for Pandoc compatibility
-3. ✅ Standalone PDF build verified
-4. ⬜ Full-manuscript `\input{}` integration left for a future session
+## Next Session Priorities
+1. T20 Phase 2: Finite-size scaling (L=8,12,16,20,24) — Rust-based
+2. T20 Phase 3: 3D cubic lattice — Rust-based
+3. Higher statistics: 1M sweeps (now practical with Rust speed)
 
-### T17: arXiv Submission Preparation
-**Status:** ✅ **Priority:** HIGH
-**Started:** 2026-05-05 **Last**: 2026-05-05 02:42:04 IST
-**Context**: arXiv submission uploaded. Reference `submit/7550944`; status on hold.
-**Files**: `arxiv_submission_v1/timesarrow.tex`, `arxiv-submission-v1.tar.gz`
-**Progress**:
-1. ✅ Folder created and files copied
-2. ✅ Edits applied (todonotes disabled, pdfoutput=1)
-3. ✅ AI addendum added with hyperlinked commits
-4. ✅ Build verified (44 pages, clean)
-5. ✅ Tarball created (1.4 MB)
-6. ✅ Submitted to arXiv (submit/7550944)
+## Files
+- `memory-bank/tasks/T20.md` — Updated with Phase 1 results
+- `memory-bank/tasks/T27.md` — Created with Rust validation data
+- `numerics/docs/tasks/t20-z2-lgt.qmd` — Updated with Rust comparison
+- `numerics/docs/implementation/t20-z2-lgt.md` — Updated with architecture
+- `rust-lattice/src/lib.rs` — Z2GaugeField implementation
+- `rust-lattice/src/main.rs` — CLI with rayon parallel sweeps
 
-## Session History (Last 5)
-1. `sessions/2026-05-20-morning.md` - T18: reviewer-safety manuscript and disclosure calibration recorded; PDF rebuilt
-2. `sessions/2026-05-19-afternoon.md` - T18: terminology clarification, Mikhail Q&A, and AI review archive recorded
-3. `sessions/2026-05-12-afternoon.md` - T18: `sigma_e` link-field origin integrated into manuscript and PDF rebuilt
-4. `sessions/2026-05-09-afternoon.md` - T19: standalone Markdown-first Z2 pilot created and verified
-5. `sessions/2026-05-06-evening.md` - T18: Claim-hardening proposal recorded
+## Session End
+Session closed by user request. All memory banks updated. Git commits pushed to:
+- `space-cadet/timesarrow` (main): T20+T27 code + docs
+- `space-cadet/space-cadet.github.io` (main): Updated T20 page

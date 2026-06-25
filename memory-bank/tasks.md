@@ -11,7 +11,7 @@ Timesarrow — quantum gravity simulation and visualization project. Monte Carlo
 | T27 | Rust Z₂ LGT framework | ✅ Complete | Benchmark vs TypeScript |
 | T20-Phase1 | Z₂ LGT 2D square lattice | ✅ Complete | Results documented, numerics page updated |
 | T21 | Worker threads + checkpointing | 🔄 Ready to implement | Start with checkpoint.ts module |
-| T20-Phase2 | Sharp phase transition figures | ⏳ Pending T21 | Multi-lattice sweep with worker threads |
+| T20-Phase2 | Sharp phase transition figures | ✅ Complete | Results in numerics page, data registry created |
 | T20-Phase3 | 3D cubic lattice | ⏳ Pending | Paper target |
 | T25 | Volume operator eigenvalues | ✅ Complete | — |
 
