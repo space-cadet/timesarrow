@@ -1,0 +1,219 @@
+{
+  "schemaVersion": "1.0.0",
+  "project": "timesarrow",
+  "description": "Registry of all numerical simulation runs for TimesArrow project",
+  "lastUpdated": "2026-06-25T15:45:00+05:30",
+  "runs": [
+    {
+      "runId": "t20-p1-L8-20250624",
+      "task": "T20",
+      "phase": "phase1",
+      "status": "complete",
+      "timestamp": "2026-06-24T12:00:00+05:30",
+      "description": "2D square lattice Z₂ LGT, L=8, critical β identification",
+      "parameters": {
+        "latticeSize": 8,
+        "dimension": 2,
+        "betaValues": [0.2, 0.3, 0.4, 0.44, 0.5, 0.6, 0.8, 1.0],
+        "thermalizationSweeps": 10000,
+        "measurementSweeps": 100000,
+        "workers": 4
+      },
+      "results": {
+        "criticalBetaEstimate": 0.44,
+        "observables": ["plaquette", "plaquetteError", "susceptibility", "specificHeat"],
+        "keyFinding": "Confirmed β_c ≈ 0.44 from exact solution by Osterwalder-Seiler"
+      },
+      "outputFiles": [
+        "output/t20-phase1-worker-L8.json",
+        "output/t20-phase1-worker-L16.json"
+      ],
+      "page": "tasks/t20-z2-lgt.qmd"
+    },
+    {
+      "runId": "t27-rust-benchmark-L16-20250624",
+      "task": "T27",
+      "phase": "phase1",
+      "status": "complete",
+      "timestamp": "2026-06-24T16:00:00+05:30",
+      "description": "Rust implementation benchmark, validated against TypeScript",
+      "parameters": {
+        "latticeSize": 16,
+        "dimension": 2,
+        "betaValues": [0.2, 0.3, 0.4, 0.44, 0.5, 0.6, 0.8, 1.0],
+        "thermalizationSweeps": 10000,
+        "measurementSweeps": 100000
+      },
+      "results": {
+        "speedupVsTypescript": "~2500-3000x",
+        "validationStatus": "passed",
+        "keyFinding": "Rust implementation validated, ready for production runs"
+      },
+      "outputFiles": [
+        "output/t27-rust-benchmark-L16-20250624.json"
+      ],
+      "page": "tasks/t27-rust-framework.qmd"
+    },
+    {
+      "runId": "t20-p2-L8-20250625",
+      "task": "T20",
+      "phase": "phase2",
+      "status": "complete",
+      "timestamp": "2026-06-25T15:35:00+05:30",
+      "description": "Finite-size scaling, L=8, 200k sweeps, dense β grid",
+      "parameters": {
+        "latticeSize": 8,
+        "dimension": 2,
+        "betaValues": [0.30, 0.35, 0.40, 0.42, 0.44, 0.46, 0.48, 0.50, 0.55, 0.60],
+        "thermalizationSweeps": 20000,
+        "measurementSweeps": 200000,
+        "workers": 4
+      },
+      "results": {
+        "plaquetteRange": [0.2919, 0.5369],
+        "binderCumulantRange": [0.4947, 0.6187],
+        "wallTimeSeconds": 1.56,
+        "keyFinding": "Clean data, monotonic plaquette increase with β"
+      },
+      "outputFiles": ["output/t20-p2-L8-20250625.json"],
+      "page": "tasks/t20-z2-lgt.qmd"
+    },
+    {
+      "runId": "t20-p2-L12-20250625",
+      "task": "T20",
+      "phase": "phase2",
+      "status": "complete",
+      "timestamp": "2026-06-25T15:40:00+05:30",
+      "description": "Finite-size scaling, L=12, 200k sweeps, dense β grid",
+      "parameters": {
+        "latticeSize": 12,
+        "dimension": 2,
+        "betaValues": [0.30, 0.35, 0.40, 0.42, 0.44, 0.46, 0.48, 0.50, 0.55, 0.60],
+        "thermalizationSweeps": 20000,
+        "measurementSweeps": 200000,
+        "workers": 4
+      },
+      "results": {
+        "plaquetteRange": [0.2917, 0.5381],
+        "binderCumulantRange": [0.5781, 0.6447],
+        "wallTimeSeconds": 3.9,
+        "keyFinding": "Binder cumulant shows stronger finite-size effects than L=8"
+      },
+      "outputFiles": ["output/t20-p2-L12-20250625.json"],
+      "page": "tasks/t20-z2-lgt.qmd"
+    },
+    {
+      "runId": "t20-p2-L16-20250625",
+      "task": "T20",
+      "phase": "phase2",
+      "status": "complete",
+      "timestamp": "2026-06-25T15:42:00+05:30",
+      "description": "Finite-size scaling, L=16, 200k sweeps, dense β grid",
+      "parameters": {
+        "latticeSize": 16,
+        "dimension": 2,
+        "betaValues": [0.30, 0.35, 0.40, 0.42, 0.44, 0.46, 0.48, 0.50, 0.55, 0.60],
+        "thermalizationSweeps": 20000,
+        "measurementSweeps": 200000,
+        "workers": 4
+      },
+      "results": {
+        "plaquetteRange": [0.2915, 0.5375],
+        "binderCumulantRange": [0.620, 0.652],
+        "wallTimeSeconds": 7.4,
+        "keyFinding": "Approaching thermodynamic limit behavior"
+      },
+      "outputFiles": ["output/t20-p2-L16-20250625.json"],
+      "page": "tasks/t20-z2-lgt.qmd"
+    },
+    {
+      "runId": "t20-p2-L20-20250625",
+      "task": "T20",
+      "phase": "phase2",
+      "status": "complete",
+      "timestamp": "2026-06-25T15:43:00+05:30",
+      "description": "Finite-size scaling, L=20, 200k sweeps, dense β grid",
+      "parameters": {
+        "latticeSize": 20,
+        "dimension": 2,
+        "betaValues": [0.30, 0.35, 0.40, 0.42, 0.44, 0.46, 0.48, 0.50, 0.55, 0.60],
+        "thermalizationSweeps": 20000,
+        "measurementSweeps": 200000,
+        "workers": 4
+      },
+      "results": {
+        "plaquetteRange": [0.2915, 0.5371],
+        "binderCumulantRange": [0.631, 0.658],
+        "specificHeatPeakBeta": 0.5,
+        "wallTimeSeconds": 11.6,
+        "keyFinding": "Specific heat peak around β ≈ 0.5, excellent precision (~0.03% error)"
+      },
+      "outputFiles": ["output/t20-p2-L20-20250625.json"],
+      "page": "tasks/t20-z2-lgt.qmd"
+    },
+    {
+      "runId": "t20-p2-L24-20250625",
+      "task": "T20",
+      "phase": "phase2",
+      "status": "complete",
+      "timestamp": "2026-06-25T15:44:00+05:30",
+      "description": "Finite-size scaling, L=24, 200k sweeps, dense β grid",
+      "parameters": {
+        "latticeSize": 24,
+        "dimension": 2,
+        "betaValues": [0.30, 0.35, 0.40, 0.42, 0.44, 0.46, 0.48, 0.50, 0.55, 0.60],
+        "thermalizationSweeps": 20000,
+        "measurementSweeps": 200000,
+        "workers": 4
+      },
+      "results": {
+        "plaquetteRange": [0.2916, 0.5370],
+        "binderCumulantRange": [0.642, 0.661],
+        "wallTimeSeconds": 15.5,
+        "keyFinding": "Largest lattice, strongest finite-size effects, clean data"
+      },
+      "outputFiles": ["output/t20-p2-L24-20250625.json"],
+      "page": "tasks/t20-z2-lgt.qmd"
+    }
+  ],
+  "tasks": {
+    "T20": {
+      "name": "Z₂ Lattice Gauge Theory Monte Carlo",
+      "status": "in-progress",
+      "phases": {
+        "phase1": {
+          "status": "complete",
+          "description": "2D square lattice, single L=8, critical β identification",
+          "runs": ["t20-p1-L8-20250624"]
+        },
+        "phase2": {
+          "status": "complete",
+          "description": "Finite-size scaling with L=8,12,16,20,24",
+          "runs": [
+            "t20-p2-L8-20250625",
+            "t20-p2-L12-20250625",
+            "t20-p2-L16-20250625",
+            "t20-p2-L20-20250625",
+            "t20-p2-L24-20250625"
+          ]
+        },
+        "phase3": {
+          "status": "pending",
+          "description": "3D cubic lattice",
+          "runs": []
+        }
+      }
+    },
+    "T22": {
+      "name": "2D Spin Foam Amplitudes",
+      "status": "ready",
+      "phases": {
+        "phase1": {
+          "status": "pending",
+          "description": "Single vertex (L=1) amplitude computation",
+          "runs": []
+        }
+      }
+    }
+  }
+}

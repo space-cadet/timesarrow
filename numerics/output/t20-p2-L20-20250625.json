@@ -1,0 +1,120 @@
+{
+  "metadata": {
+    "taskId": "T20",
+    "phase": "Phase 2",
+    "latticeSize": 20,
+    "timestamp": "2025-06-25T15:38:00+05:30",
+    "description": "Finite-size scaling simulation for Z2 lattice gauge theory"
+  },
+  "parameters": {
+    "L": 20,
+    "thermalSweeps": 20000,
+    "measureSweeps": 200000,
+    "measureEvery": 10,
+    "binSize": 10,
+    "workers": 4
+  },
+  "results": [
+    {
+      "beta": 0.3,
+      "meanPlaquette": 0.29153200000001434,
+      "errorPlaquette": 0.00034355734426731315,
+      "susceptibility": 0.2832759571184651,
+      "specificHeat": 0.08498278713553953,
+      "binderCumulant": 0.6312834398116123,
+      "numMeasurements": 20000,
+      "wallTimeMs": 6978
+    },
+    {
+      "beta": 0.35,
+      "meanPlaquette": 0.33692000000001415,
+      "errorPlaquette": 0.0003251886836899468,
+      "susceptibility": 0.2960935039986201,
+      "specificHeat": 0.10363272639951704,
+      "binderCumulant": 0.6426395384728092,
+      "numMeasurements": 20000,
+      "wallTimeMs": 4686
+    },
+    {
+      "beta": 0.4,
+      "meanPlaquette": 0.3801354999999976,
+      "errorPlaquette": 0.00032452169725227776,
+      "susceptibility": 0.3370058623605221,
+      "specificHeat": 0.13480234494420884,
+      "binderCumulant": 0.6477103356945184,
+      "numMeasurements": 20000,
+      "wallTimeMs": 7070
+    },
+    {
+      "beta": 0.42,
+      "meanPlaquette": 0.3979109999999881,
+      "errorPlaquette": 0.00032396188657001125,
+      "susceptibility": 0.3526363812730313,
+      "specificHeat": 0.14810728013467317,
+      "binderCumulant": 0.6494872324275347,
+      "numMeasurements": 20000,
+      "wallTimeMs": 6980
+    },
+    {
+      "beta": 0.44,
+      "meanPlaquette": 0.4126814999999814,
+      "errorPlaquette": 0.0003230684569677244,
+      "susceptibility": 0.36739376216570907,
+      "specificHeat": 0.16165325535291197,
+      "binderCumulant": 0.6507010133942649,
+      "numMeasurements": 20000,
+      "wallTimeMs": 4600
+    },
+    {
+      "beta": 0.46,
+      "meanPlaquette": 0.42941499999997684,
+      "errorPlaquette": 0.00031904057539754226,
+      "susceptibility": 0.3745757506022811,
+      "specificHeat": 0.1723048452770493,
+      "binderCumulant": 0.6522911514173403,
+      "numMeasurements": 20000,
+      "wallTimeMs": 7018
+    },
+    {
+      "beta": 0.48,
+      "meanPlaquette": 0.44706549999997414,
+      "errorPlaquette": 0.00031542461141687505,
+      "susceptibility": 0.3820519122740933,
+      "specificHeat": 0.18338491789156477,
+      "binderCumulant": 0.6536952523677666,
+      "numMeasurements": 20000,
+      "wallTimeMs": 7033
+    },
+    {
+      "beta": 0.5,
+      "meanPlaquette": 0.4622549999999764,
+      "errorPlaquette": 0.00031654738784263206,
+      "susceptibility": 0.4008089950025884,
+      "specificHeat": 0.2004044975012942,
+      "binderCumulant": 0.6543789570605447,
+      "numMeasurements": 20000,
+      "wallTimeMs": 7022
+    },
+    {
+      "beta": 0.55,
+      "meanPlaquette": 0.5004560000000001,
+      "errorPlaquette": 0.0003069912102976228,
+      "susceptibility": 0.4146718540802952,
+      "specificHeat": 0.2280695197441624,
+      "binderCumulant": 0.6567806372582462,
+      "numMeasurements": 20000,
+      "wallTimeMs": 6974
+    },
+    {
+      "beta": 0.6,
+      "meanPlaquette": 0.5370835000000325,
+      "errorPlaquette": 0.00030070326135161194,
+      "susceptibility": 0.4340277666509973,
+      "specificHeat": 0.2604166599905984,
+      "binderCumulant": 0.658415401233365,
+      "numMeasurements": 20000,
+      "wallTimeMs": 6851
+    }
+  ],
+  "totalWallTimeMs": 11575
+}

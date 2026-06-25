@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1.0.0",
+  "project": "timesarrow",
+  "description": "Registry of all numerical simulation runs for TimesArrow project",
+  "lastUpdated": "",
+  "runs": [],
+  "tasks": {
+    "T20": {
+      "name": "Z₂ Lattice Gauge Theory Monte Carlo",
+      "status": "in-progress",
+      "phases": {
+        "phase1": {
+          "status": "complete",
+          "description": "2D square lattice, single L=8, critical β identification",
+          "runs": []
+        },
+        "phase2": {
+          "status": "in-progress",
+          "description": "Finite-size scaling with L=8,12,16,20,24",
+          "runs": []
+        },
+        "phase3": {
+          "status": "pending",
+          "description": "3D cubic lattice",
+          "runs": []
+        }
+      }
+    },
+    "T22": {
+      "name": "2D Spin Foam Amplitudes",
+      "status": "ready",
+      "phases": {
+        "phase1": {
+          "status": "pending",
+          "description": "Single vertex (L=1) amplitude computation",
+          "runs": []
+        }
+      }
+    }
+  }
+}
