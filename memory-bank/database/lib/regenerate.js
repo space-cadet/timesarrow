@@ -76,7 +76,7 @@ export async function regenerateEditHistory(outputPath) {
  */
 export async function regenerateTasks(outputPath) {
   const allTasks = await sqlite.queryAll(
-    `SELECT id, title, status, priority, started, last_updated as updated, details
+    `SELECT id, title, status, priority, started, updated, details
      FROM task_items
      ORDER BY id`
   );
@@ -423,7 +423,7 @@ function activeFocusTaskId(cacheFocusTask, currentSession) {
  */
 export async function regenerateTaskFiles(tasksDir) {
   const tasks = await sqlite.queryAll(
-    `SELECT id, title, status, priority, started, last_updated as updated, details FROM task_items ORDER BY id`
+    `SELECT id, title, status, priority, started, updated, details FROM task_items ORDER BY id`
   );
 
   for (const task of tasks) {

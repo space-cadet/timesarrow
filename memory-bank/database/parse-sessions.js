@@ -117,7 +117,7 @@ async function main() {
     await sqlite.openDb(dbPath);
     
     // Recreate table to ensure clean slate
-    await sqlite.exec('DELETE FROM sessions');
+    await sqlite.exec('DROP TABLE IF EXISTS sessions');
     await initSchema();
 
     // Get all .md files

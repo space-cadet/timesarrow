@@ -1,13 +1,40 @@
 # Edit History
 
 *Created: 2026-04-16 20:22:00 IST*
-*Last Updated: 2026-06-26 01:21:00 IST*
+*Last Updated: 2026-06-26 02:28:00 IST*
 
 ## File Modification Log
 
 ### 2026-06-26
 
-#### 01:21:00 IST - T20: Discovered Rust lacks Wilson loop implementation; existing data insufficient
+#### 02:28:00 IST - T20: Final commit — timesarrow repo updated with all Wilson loop work
+- Committed `3b1c716` to timesarrow repo: 39 files, 17,737 insertions(+), 158 deletions(-)
+- Includes: Rust Wilson loop implementation, fine-grained data (21 β values), all Phase 3 plots, analysis scripts, updated webpage
+- Created `memory-bank/edits/2026-06-26/022800-T20-final-commit.md` - Canonical edit chunk
+
+#### 02:15:00 IST - T20: Re-ran Phase 3 with fine-grained beta spacing for smoother plots
+- Created `numerics/output/t20-p3-L8-3D-wilson-fine-20250626.json` - 21 beta values with fine spacing around critical region
+- Created `numerics/src/scripts/t20-plot-wilson-fine.py` and `t20-plot-phase3-fine.py` - Matplotlib plotting scripts
+- Re-generated all Phase 3 plots with 21 data points: plaquette, specific heat, susceptibility, Binder cumulant, string tension, Wilson loops
+- Specific heat peak: β=0.74, C_V=0.586; Susceptibility peak: β=0.74, χ=0.79
+- Updated `numerics/docs/tasks/t20-z2-lgt.qmd` and rendered HTML
+- Deployed to space-cadet.github.io (commits 3b3b767, 793bc47, 8c543ce, d3e0eaf)
+- Created `memory-bank/edits/2026-06-26/021500-T20-wilson-loop-fine.md` - Canonical edit chunk
+
+#### 02:00:00 IST - T20: Created Wilson loop plots and updated numerics webpage
+- Created `numerics/src/scripts/t20-analyze-wilson-loops.cjs` - Analysis script for string tension fits
+- Created string tension and Wilson loop plots (PNG + SVG)
+- Updated `numerics/docs/tasks/t20-z2-lgt.qmd` with Phase 3b, Wilson loop results, string tension analysis
+- Deployed to space-cadet.github.io (commits a566f07, 793bc47)
+- Created `memory-bank/edits/2026-06-26/020000-T20-wilson-loop-plots.md` - Canonical edit chunk
+
+#### 01:34:00 IST - T20: Re-ran Phase 1 & 3 with Wilson loop measurements
+- Modified `rust-lattice/src/lib.rs` - Added Wilson loop functions (2D and 3D), measure_with_wilson_loops(), simulate_beta_with_wilson_loops()
+- Modified `rust-lattice/src/main.rs` - Updated CLI to accept loop sizes parameter
+- Re-ran Phase 1 (2D, L=16): 11 beta values, output `t20-p1-L16-wilson-20250626.json`
+- Re-ran Phase 3 (3D, L=8): 10 beta values, output `t20-p3-L8-3D-wilson-20250626.json`
+- All 16 Rust tests pass in release mode
+- Created `memory-bank/edits/2026-06-26/013400-T20-wilson-loop-re-runs.md` - Canonical edit chunk
 - Modified `memory-bank/implementation-details/t20-missing-observables.md` - Corrected: raw configurations NOT saved, must re-run simulations; added Rust implementation requirements and time estimates
 - Modified `memory-bank/tasks/T20.md` - Added critical finding: Rust code missing Wilson loop, no saved configs, must re-run with new measurements
 - Modified `memory-bank/activeContext.md` - Added corrected understanding of missing observables path with dependency table

@@ -18,13 +18,54 @@ const __dirname = dirname(__filename);
  * Initialize the database schema
  */
 async function initDatabase() {
-  // Schema already initialized by schema.sql + init-schema.js
-  // Just verify tables exist
-  const tables = sqlite.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='edit_entries'").get();
-  if (!tables) {
-    throw new Error('edit_entries table not found. Run init-schema.js first.');
-  }
-  console.log('✓ Database schema verified\n');
+  // Create tables
+  await sqlite.exec(`
+    CREATE TABLE IF NOT EXISTS edit_entries (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      date TEXT NOT NULL,
+      time TEXT NOT NULL,
+      timezone TEXT,
+      timestamp TEXT NOT NULL,
+      task_id TEXT,
+      task_description TEXT NOT NULL,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE IF NOT EXISTS file_modifications (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      edit_entry_id INTEGER NOT NULL,
+      action TEXT NOT NULL,
+      file_path TEXT NOT NULL,
+      description TEXT NOT NULL,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (edit_entry_id) REFERENCES edit_entries(id) ON DELETE CASCADE
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_edit_entries_date ON edit_entries(date);
+    CREATE INDEX IF NOT EXISTS idx_edit_entries_task_id ON edit_entries(task_id);
+    CREATE INDEX IF NOT EXISTS idx_edit_entries_timestamp ON edit_entries(timestamp);
+    CREATE INDEX IF NOT EXISTS idx_file_modifications_file_path ON file_modifications(file_path);
+    CREATE INDEX IF NOT EXISTS idx_file_modifications_edit_entry_id ON file_modifications(edit_entry_id);
+    CREATE INDEX IF NOT EXISTS idx_file_modifications_action ON file_modifications(action);
+  `);
+
+  // Create view that joins entries with modifications
+  await sqlite.exec(`
+    CREATE VIEW IF NOT EXISTS edit_entry_modifications AS
+    SELECT 
+        e.id AS entry_id,
+        e.timestamp,
+        e.task_id,
+        e.task_description,
+        f.id AS modification_id,
+        f.action,
+        f.file_path,
+        f.description
+    FROM edit_entries e
+    JOIN file_modifications f ON e.id = f.edit_entry_id
+  `);
+
+  console.log('✓ Database schema initialized\n');
 }
 
 /**
@@ -261,8 +302,8 @@ async function main() {
 
     // Clear existing tables
     console.log('Clearing existing database data...\n');
-    await sqlite.exec('DELETE FROM file_modifications');
-    await sqlite.exec('DELETE FROM edit_entries');
+    await sqlite.exec('DROP TABLE IF EXISTS file_modifications');
+    await sqlite.exec('DROP TABLE IF EXISTS edit_entries');
 
     // Initialize schema
     await initDatabase();
