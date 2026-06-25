@@ -2,10 +2,10 @@
 title: "T20 — Z₂ Lattice Gauge Theory Monte Carlo"
 subtitle: "Confinement-deconfinement transition"
 date: "2026-06-25"
-date-modified: "2026-06-26 02:47 IST"
+date-modified: "2026-06-26T02:47:00+05:30"
 ---
 
-*Last updated: 2026-06-26 02:23 IST*
+*Last updated: 2026-06-26 02:47 IST*
 
 ## Objective
 

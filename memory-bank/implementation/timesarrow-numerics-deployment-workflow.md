@@ -50,12 +50,12 @@ Edit the `.qmd` file to reference new figures. **Critical: Update timestamps.**
 
 #### Timestamp Format (IST)
 
-Use the exact format: `YYYY-MM-DD HH:MM IST`
+Use the exact format: `YYYY-MM-DD HH:MM IST` for inline text, **ISO 8601 with timezone offset** for YAML:
 
 ```yaml
 ---
 date: "2026-06-25"
-date-modified: "2026-06-26 02:47 IST"
+date-modified: "2026-06-26T02:47:00+05:30"
 ---
 ```
 
@@ -65,7 +65,9 @@ Also update the running text timestamp:
 *Last updated: 2026-06-26 02:47 IST*
 ```
 
-**Why both?** The YAML `date-modified` is machine-readable (Quarto uses it for metadata). The inline text is human-readable for readers checking currency. Keep them synchronized.
+**Why both?** The YAML `date-modified` is machine-readable (Quarto uses it for metadata, needs ISO 8601). The inline text is human-readable for readers checking currency. Keep them synchronized.
+
+**⚠️ Quarto pitfall**: `date-modified: "2026-06-26 02:47 IST"` renders as **"Invalid Date"** because Quarto expects ISO 8601. Use `+05:30` offset instead.
 
 #### Figure Management
 
