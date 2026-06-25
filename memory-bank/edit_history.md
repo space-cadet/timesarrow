@@ -6,6 +6,36 @@
 
 ## 2026-06-26
 
+#### 05:14 IST - T20-Phase3b: Created critical exponent extraction task
+
+**Action:** Created
+**Scope:** timesarrow project — T20-Phase3b critical exponents
+
+**Reason:** The current T20-Phase3 data is insufficient for extracting critical exponents. A dedicated finite-size scaling study is needed.
+
+**What was done:**
+1. Created task file: `memory-bank/tasks/T20-Phase3b.md` — comprehensive requirements document
+2. Created implementation doc: `memory-bank/implementation-details/t20-phase3b-requirements.md` — detailed specs
+3. Updated `memory-bank/tasks.md` to include new task
+
+**Key requirements identified:**
+- Lattice sizes: L = 8, 12, 16, 20, 24, 32 (minimum), add 48, 64 (ideal)
+- β grid: Δβ = 0.001–0.005 near β_c (current 0.02 is too coarse)
+- Sweeps: 1.5M per β (current 200k insufficient)
+- Independent runs: 3× per (L, β) for error estimates
+- New observable: Polyakov loop (current plaquette is not order parameter)
+- Analysis methods: Binder crossing, scaling collapse, peak scaling, β_c shift
+- Corrections to scaling: needed for L < 32
+- Autocorrelation: must measure τ_int for reliable error bars
+
+**Estimated cost:** 6-8 hours (minimum) to 20+ hours (ideal)
+
+**Decision:** For the paper, cite literature values (Pelissetto & Vicari 2002) and state consistency. A dedicated FSS study is a separate project.
+
+**Status:** 🔴 NOT STARTED — blocked by implementation requirements
+
+**Commits:** `80d9988` — feat: Add T20-Phase3b task for critical exponent extraction
+
 #### 00:50:02 IST - T20: Gap analysis: identified missing Wilson loops, critical exponents, and Phase 2 plots across all T20 phases
 - Identified `memory-bank/implementation-details/t20-missing-observables.md` - Documented all missing observables: Wilson loops (all phases), critical exponents (2D & 3D), Phase 2 scaling plots
 - To-Do `numerics/src/scripts/wilson-loop-measurement.ts` - Wilson loop measurement for all phases (area vs perimeter law)
