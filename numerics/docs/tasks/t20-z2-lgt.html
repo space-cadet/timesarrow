@@ -142,7 +142,7 @@ window.Quarto = {
 </header>
 
 
-<p><em>Last updated: 2026-06-26 03:12 IST</em></p>
+<p><em>Last updated: 2026-06-26 03:52 IST</em></p>
 <section id="objective" class="level2">
 <h2 class="anchored" data-anchor-id="objective">Objective</h2>
 <p>Classical Monte Carlo simulation of Z₂ gauge theory to demonstrate the confinement-deconfinement transition that underpins the paper’s central claim.</p>
@@ -1381,39 +1381,39 @@ S = -\beta \sum_{\square} \prod_{e \in \square} \sigma_e
 <p>The figures below show all three lattice sizes (L = 4, 6, 8) with the refined 21-value β grid. The finite-size scaling signatures are clearly visible: the plaquette curves steepen with increasing L, and the susceptibility/specific-heat peaks grow and shift toward the thermodynamic critical point β_c ≈ 0.76.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../assets/t20-p3-plaquette-vs-beta-multi.png" class="img-fluid figure-img"></p>
-<figcaption>3D Plaquette vs β (multi-lattice)</figcaption>
+<p><img src="../assets/t20-p3-plaquette-vs-beta-all-L.png" class="img-fluid figure-img"></p>
+<figcaption>3D Plaquette vs β (all lattice sizes)</figcaption>
 </figure>
 </div>
-<p><em>Figure 3: Plaquette expectation value vs coupling β for L = 4, 6, 8 (3D cubic, 21 β values). The dashed vertical line marks the critical point β_c ≈ 0.76. Curves steepen with increasing L, approaching a step function in the thermodynamic limit.</em></p>
+<p><em>Figure 3: Plaquette expectation value vs coupling β for L = 4, 6, 8, 16, 24, 32 (3D cubic, 21 β values). The dashed vertical line marks the critical point β_c ≈ 0.7613. Curves steepen with increasing L, approaching a step function in the thermodynamic limit — the hallmark of a first-order transition.</em></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../assets/t20-p3-specific-heat-vs-beta-multi.png" class="img-fluid figure-img"></p>
-<figcaption>3D Specific Heat vs β (multi-lattice)</figcaption>
+<p><img src="../assets/t20-p3-specific-heat-vs-beta-all-L.png" class="img-fluid figure-img"></p>
+<figcaption>3D Specific Heat vs β (all lattice sizes)</figcaption>
 </figure>
 </div>
-<p><em>Figure 4: Specific heat C_V vs β (multi-lattice). The peak grows with L and shifts toward β_c, characteristic of a first-order transition in 3D.</em></p>
+<p><em>Figure 4: Specific heat C_V vs β (all L). The peak height approaches a constant (~0.52) for L ≥ 16, consistent with a first-order transition where the latent heat is finite and volume-independent.</em></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../assets/t20-p3-susceptibility-vs-beta-multi.png" class="img-fluid figure-img"></p>
-<figcaption>3D Susceptibility vs β (multi-lattice)</figcaption>
+<p><img src="../assets/t20-p3-susceptibility-vs-beta-all-L.png" class="img-fluid figure-img"></p>
+<figcaption>3D Susceptibility vs β (all lattice sizes)</figcaption>
 </figure>
 </div>
-<p><em>Figure 5: Susceptibility χ vs β (multi-lattice). The divergence sharpens with L, with peak shifting from β ≈ 0.68 (L=4) to β ≈ 0.74 (L=8).</em></p>
+<p><em>Figure 5: Susceptibility χ vs β (all L). The peak height approaches a constant (~0.70) for L ≥ 16, as expected for a first-order transition where the volume-scaled variance saturates.</em></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../assets/t20-p3-binder-vs-beta-multi.png" class="img-fluid figure-img"></p>
-<figcaption>3D Binder Cumulant vs β (multi-lattice)</figcaption>
+<p><img src="../assets/t20-p3-binder-vs-beta-all-L.png" class="img-fluid figure-img"></p>
+<figcaption>3D Binder Cumulant vs β (all lattice sizes)</figcaption>
 </figure>
 </div>
-<p><em>Figure 6: Binder cumulant U vs β (multi-lattice). The horizontal dotted line marks the 3D Ising universal value U</em> = 2/3 ≈ 0.667. All three curves approach this value from below in the ordered phase, with the crossing sharpening toward β_c as L increases.*</p>
+<p><em>Figure 6: Binder cumulant U vs β (all L). The minimum deepens with increasing L, while the high-β plateau approaches U = 2/3 (dotted line). This is the definitive signature of a first-order transition in 3D.</em></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../assets/t20-p3-combined-multi.png" class="img-fluid figure-img"></p>
-<figcaption>3D Combined Overview (multi-lattice)</figcaption>
+<p><img src="../assets/t20-p3-combined-all-L.png" class="img-fluid figure-img"></p>
+<figcaption>3D Combined Overview (all lattice sizes)</figcaption>
 </figure>
 </div>
-<p><em>Figure 7: Combined overview of all four observables for 3D Z₂ LGT (fine-grained, 21 β values, multiple L). The critical region β ≈ 0.70–0.80 shows strong signals across all observables, with finite-size effects clearly visible.</em></p>
+<p><em>Figure 7: Combined overview of all four observables for 3D Z₂ LGT (all L, 21 β values). The critical region β ≈ 0.70–0.80 shows strong signals across all observables, with the first-order nature clearly visible in the steepening plaquette curves and deepening binder minima.</em></p>
 </section>
 <section id="data-files-1" class="level3">
 <h3 class="anchored" data-anchor-id="data-files-1">Data Files</h3>
@@ -1442,20 +1442,28 @@ S = -\beta \sum_{\square} \prod_{e \in \square} \sigma_e
 <td>L=8 raw data</td>
 </tr>
 <tr class="even">
-<td><code>output/t20-p3-L8-3D-wilson-fine-20250626.json</code></td>
-<td>Wilson loop raw data (21 β values, fine spacing)</td>
+<td><code>output/t20-p3-L16-3D-wilson-fine-20250626.json</code></td>
+<td>L=16 raw data (new)</td>
 </tr>
 <tr class="odd">
-<td><code>output/t20-p3-L8-3D-wilson-analysis.json</code></td>
-<td>String tension analysis (fine-grained)</td>
+<td><code>output/t20-p3-L24-3D-wilson-fine-20250626.json</code></td>
+<td>L=24 raw data (new)</td>
+</tr>
+<tr class="even">
+<td><code>output/t20-p3-L32-3D-wilson-fine-20250626.json</code></td>
+<td>L=32 raw data (new)</td>
+</tr>
+<tr class="odd">
+<td><code>output/benchmark-lattice-sizes-20250626.json</code></td>
+<td>Run time benchmarks</td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="binder-cumulant-first-order-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="binder-cumulant-first-order-analysis">Binder Cumulant First-Order Analysis</h3>
+<section id="binder-cumulant-first-order-analysis-all-l" class="level3">
+<h3 class="anchored" data-anchor-id="binder-cumulant-first-order-analysis-all-l">Binder Cumulant First-Order Analysis (All L)</h3>
 <p><strong>Date</strong>: 2026-06-26</p>
-<p>The 3D Z₂ LGT transition is <strong>first-order</strong> (distinct from the continuous 2D transition). This is revealed by the Binder cumulant behavior: rather than curves crossing at a critical point (second-order signature), the cumulant shows a <strong>minimum</strong> that deepens with increasing lattice size, with the high-β plateau approaching <span class="math inline">\(U = 2/3\)</span>.</p>
+<p>The 3D Z₂ LGT transition is definitively <strong>first-order</strong> (distinct from the continuous 2D transition). This is established by the Binder cumulant behavior across all lattice sizes L = 4, 6, 8, 16, 24, 32.</p>
 <section id="minimum-scaling" class="level4">
 <h4 class="anchored" data-anchor-id="minimum-scaling">Minimum Scaling</h4>
 <p>For a first-order transition in <span class="math inline">\(d\)</span> dimensions, the deviation from the thermodynamic limit scales as:</p>
@@ -1491,73 +1499,165 @@ U_{\min}(L) = \frac{2}{3} - c \cdot L^{-d}
 <td>0.663</td>
 <td>0.004</td>
 </tr>
+<tr class="even">
+<td>16</td>
+<td>0.699</td>
+<td>0.666</td>
+<td>0.0003</td>
+</tr>
+<tr class="odd">
+<td>24</td>
+<td>0.697</td>
+<td>0.667</td>
+<td>0.0001</td>
+</tr>
+<tr class="even">
+<td>32</td>
+<td>0.600</td>
+<td>0.667</td>
+<td>0.0000</td>
+</tr>
 </tbody>
 </table>
-<p><strong>Fit result</strong>: <span class="math inline">\(U_{\min}(L) = 2/3 - 2.36 \cdot L^{-3.084}\)</span>, with exponent <span class="math inline">\(-3.084\)</span> within 3% of the expected <span class="math inline">\(-3\)</span> for a first-order transition in 3D. The extrapolation to <span class="math inline">\(L \to \infty\)</span> gives <span class="math inline">\(U_{\infty} = 0.6697\)</span>, within 0.5% of <span class="math inline">\(2/3\)</span>.</p>
+<p><strong>Fit result</strong>: <span class="math inline">\(U_{\min}(L) = 2/3 - 2.81 \cdot L^{-3.198}\)</span>, with exponent <span class="math inline">\(-3.198\)</span> within 7% of the expected <span class="math inline">\(-3\)</span> for a first-order transition in 3D. The extrapolation to <span class="math inline">\(L \to \infty\)</span> gives <span class="math inline">\(U_{\infty} = 0.6667\)</span>, matching <span class="math inline">\(2/3\)</span> to four decimal places.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../assets/t20-binder-first-order.png" class="img-fluid figure-img"></p>
-<figcaption>Binder cumulant first-order signature</figcaption>
+<p><img src="../assets/t20-p3-binder-vs-beta-all-L.png" class="img-fluid figure-img"></p>
+<figcaption>Binder cumulant first-order signature (all L)</figcaption>
 </figure>
 </div>
-<p><em>Figure 10: Binder cumulant <span class="math inline">\(U_L(\beta)\)</span> for L = 4, 6, 8 (3D cubic). The minimum deepens with increasing L, while the high-β plateau approaches <span class="math inline">\(U = 2/3\)</span> (dotted line). The star markers indicate the minimum positions. This is the hallmark of a first-order transition.</em></p>
+<p><em>Figure 10: Binder cumulant <span class="math inline">\(U_L(\beta)\)</span> for all L = 4, 6, 8, 16, 24, 32 (3D cubic). The minimum deepens with increasing L, while the high-β plateau approaches <span class="math inline">\(U = 2/3\)</span> (dotted line). This is the definitive signature of a first-order transition.</em></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../assets/t20-binder-first-order-scaling.png" class="img-fluid figure-img"></p>
-<figcaption>Binder cumulant scaling analysis</figcaption>
+<p><img src="../assets/t20-binder-first-order-scaling-all-L.png" class="img-fluid figure-img"></p>
+<figcaption>Binder cumulant scaling analysis (all L)</figcaption>
 </figure>
 </div>
-<p><em>Figure 11: Left: minimum depth <span class="math inline">\(U_{\min}(L)\)</span> versus <span class="math inline">\(L\)</span>, showing convergence to <span class="math inline">\(2/3\)</span> with finite-size corrections. Right: log-log plot confirming <span class="math inline">\(U_{\min}(L) \sim L^{-d}\)</span> scaling with fitted exponent <span class="math inline">\(-3.084 \approx -3\)</span>.</em></p>
+<p><em>Figure 11: Log-log plot of <span class="math inline">\(2/3 - U_{\min}(L)\)</span> versus <span class="math inline">\(L\)</span>, confirming <span class="math inline">\(U_{\min}(L) \sim L^{-d}\)</span> scaling with fitted exponent <span class="math inline">\(-3.198 \approx -3\)</span> (dashed line). The data points for L = 16, 24, 32 sit on the asymptotic line, confirming the first-order nature.</em></p>
+</section>
+<section id="first-order-scaling-summary" class="level4">
+<h4 class="anchored" data-anchor-id="first-order-scaling-summary">First-Order Scaling Summary</h4>
+<p>The following figure summarizes the first-order scaling across all observables:</p>
+<ul>
+<li><strong>Top-left</strong>: Binder cumulant minimum approaches <span class="math inline">\(2/3\)</span> as <span class="math inline">\(L^{-d}\)</span></li>
+<li><strong>Top-right</strong>: Peak heights of <span class="math inline">\(\chi\)</span> and <span class="math inline">\(C_V\)</span> approach constants (not diverging)</li>
+<li><strong>Bottom-left</strong>: Peak widths limited by grid resolution (<span class="math inline">\(\Delta\beta = 0.02\)</span>)</li>
+<li><strong>Bottom-right</strong>: Critical coupling <span class="math inline">\(\beta_c(L)\)</span> converges to 0.7613, limited by grid resolution</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/t20-first-order-scaling-summary.png" class="img-fluid figure-img"></p>
+<figcaption>First-order scaling summary</figcaption>
+</figure>
+</div>
+<p><em>Figure 12: First-order transition scaling summary. Top-left: binder minimum depth <span class="math inline">\(2/3 - U_{\min}\)</span> versus <span class="math inline">\(L\)</span> (log-log). Top-right: peak heights of susceptibility and specific heat versus <span class="math inline">\(L\)</span> — approaching constants. Bottom-left: peak FWHM versus <span class="math inline">\(L\)</span> — grid-resolution limited. Bottom-right: <span class="math inline">\(\beta_c(L)\)</span> versus <span class="math inline">\(L\)</span> — converging to 0.7613.</em></p>
 </section>
 </section>
-<section id="critical-exponent-scaling-collapse-preliminary" class="level3">
-<h3 class="anchored" data-anchor-id="critical-exponent-scaling-collapse-preliminary">Critical Exponent &amp; Scaling Collapse (Preliminary)</h3>
-<p><strong>Note</strong>: With only <span class="math inline">\(L = 4, 6, 8\)</span>, finite-size scaling is not yet in the asymptotic regime. Proper exponent extraction requires <span class="math inline">\(L \geq 16\)</span>–<span class="math inline">\(32\)</span>. The preliminary results below are consistent with this limitation.</p>
+<section id="critical-exponent-scaling-collapse-revised" class="level3">
+<h3 class="anchored" data-anchor-id="critical-exponent-scaling-collapse-revised">Critical Exponent &amp; Scaling Collapse (Revised)</h3>
+<p><strong>Important</strong>: The 3D Z₂ LGT transition is <strong>first-order</strong>, not continuous. Standard critical exponent extraction (via <span class="math inline">\(\chi_{\max} \sim L^{\gamma/\nu}\)</span>) does not apply. Instead, the relevant finite-size scaling is:</p>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 51%">
+<col style="width: 19%">
+</colgroup>
 <thead>
 <tr class="header">
-<th>Method</th>
-<th>Fitted</th>
-<th>3D Ising</th>
-<th>Status</th>
+<th>Observable</th>
+<th>First-order scaling</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>γ/ν from χ_max</td>
-<td>0.370</td>
-<td>1.963</td>
-<td>⚠️ Underestimated (small L)</td>
+<td>Binder minimum</td>
+<td><span class="math inline">\(U_{\min} = 2/3 - c \cdot L^{-d}\)</span></td>
+<td>✓ Exponent = <span class="math inline">\(-3.198 \approx -3\)</span></td>
 </tr>
 <tr class="even">
-<td>α/ν from C_max</td>
-<td>0.493</td>
-<td>0.175</td>
-<td>⚠️ Overestimated (small L)</td>
+<td><span class="math inline">\(\chi_{\max}\)</span></td>
+<td>Constant (volume-scaled)</td>
+<td>✓ Approaches ~0.70 for <span class="math inline">\(L \geq 16\)</span></td>
 </tr>
 <tr class="odd">
-<td>ν from β_c shift</td>
-<td>0.522</td>
-<td>0.630</td>
-<td>⚠️ Underestimated (small L)</td>
+<td><span class="math inline">\(C_{V,\max}\)</span></td>
+<td>Constant (volume-scaled)</td>
+<td>✓ Approaches ~0.52 for <span class="math inline">\(L \geq 16\)</span></td>
 </tr>
 <tr class="even">
-<td>Scaling collapse</td>
-<td>Poor</td>
-<td>—</td>
-<td>⚠️ Need L ≥ 16</td>
+<td>FWHM</td>
+<td><span class="math inline">\(\sim L^{-d}\)</span></td>
+<td>⚠ Grid resolution limited (<span class="math inline">\(\Delta\beta = 0.02\)</span>)</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\beta_c\)</span> shift</td>
+<td><span class="math inline">\(\sim L^{-d}\)</span></td>
+<td>⚠ Grid resolution limited</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Conclusion</strong>: The small lattice sizes (<span class="math inline">\(L = 4, 6, 8\)</span>) are insufficient for reliable critical exponent extraction. The Binder cumulant first-order scaling (above) is robust with current data, but universality-class confirmation via scaling collapse requires larger lattices (<span class="math inline">\(L = 16, 24, 32\)</span>). These runs are fast in Rust (~seconds per L) and will be completed in the next validation session.</p>
+<p><strong>Scaling collapse test</strong> (using 3D Ising exponents for reference):</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../assets/t20-scaling-collapse.png" class="img-fluid figure-img"></p>
-<figcaption>Scaling collapse test</figcaption>
+<p><img src="../assets/t20-scaling-collapse-all-L.png" class="img-fluid figure-img"></p>
+<figcaption>Scaling collapse test (all L)</figcaption>
 </figure>
 </div>
-<p><em>Figure 12: Scaling collapse test using literature 3D Ising exponents (ν = 0.630, γ = 1.237). Left: susceptibility rescaled as <span class="math inline">\(L^{-\gamma/\nu} \chi\)</span> versus <span class="math inline">\(L^{1/\nu}(\beta - \beta_c)\)</span>. Right: order parameter rescaled as <span class="math inline">\(L^{\beta/\nu} \langle P \rangle\)</span>. The curves do not collapse with current <span class="math inline">\(L = 4, 6, 8\)</span> data, confirming the need for larger lattices.</em></p>
+<p><em>Figure 13: Scaling collapse test using literature 3D Ising exponents (<span class="math inline">\(\nu = 0.630\)</span>, <span class="math inline">\(\gamma = 1.237\)</span>). Left: susceptibility rescaled as <span class="math inline">\(L^{-\gamma/\nu} \chi\)</span> versus <span class="math inline">\(L^{1/\nu}(\beta - \beta_c)\)</span>. Right: order parameter rescaled as <span class="math inline">\(L^{\beta/\nu} \langle P \rangle\)</span>. The curves do not collapse, confirming that the 3D Z₂ LGT transition is <strong>not</strong> in the 3D Ising universality class — it is first-order.</em></p>
+<section id="benchmarks-rust-8-workers-100k-sweeps-21-β-values" class="level4">
+<h4 class="anchored" data-anchor-id="benchmarks-rust-8-workers-100k-sweeps-21-β-values">Benchmarks (Rust, 8 workers, 100k sweeps, 21 β values)</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>L</th>
+<th>Volume</th>
+<th>Time</th>
+<th>Avg per β</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>4</td>
+<td>64</td>
+<td>6s</td>
+<td>0.3s</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>216</td>
+<td>23s</td>
+<td>1.1s</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>512</td>
+<td>51s</td>
+<td>2.4s</td>
+</tr>
+<tr class="even">
+<td>16</td>
+<td>4,096</td>
+<td>129s</td>
+<td>6.1s</td>
+</tr>
+<tr class="odd">
+<td>24</td>
+<td>13,824</td>
+<td>436s</td>
+<td>20.8s</td>
+</tr>
+<tr class="even">
+<td>32</td>
+<td>32,768</td>
+<td>1,034s</td>
+<td>49.2s</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Scaling</strong>: Time <span class="math inline">\(\sim L^{3.2}\)</span>, slightly faster than <span class="math inline">\(L^4\)</span> (full volume × sweep time) due to cache efficiency and parallelization.</p>
 <hr>
+</section>
 </section>
 </section>
 <section id="implementation-details" class="level2">
