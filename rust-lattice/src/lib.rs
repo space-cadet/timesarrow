@@ -320,6 +320,98 @@ impl Z2GaugeField {
         accepted
     }
 
+    /// Compute the Wilson loop for a rectangular loop of size r×c starting at (x, y) in 2D.
+    /// W = ∏ links around the rectangle (right, up, left, down).
+    /// For Z₂, U† = U, so traversing in either direction gives the same product.
+    pub fn wilson_loop_2d(&self, x: usize, y: usize, r: usize, c: usize) -> i8 {
+        assert!(self.dimension == 2, "wilson_loop_2d is for 2D only");
+        let l = self.l;
+        let mut product = 1i8;
+        
+        // Right edge: x-links from (x,y) to (x+r,y)
+        for i in 0..r {
+            product *= self.link((x + i) % l, y, 0);
+        }
+        
+        // Up edge: y-links from (x+r,y) to (x+r,y+c)
+        for j in 0..c {
+            product *= self.link((x + r) % l, (y + j) % l, 1);
+        }
+        
+        // Left edge: x-links from (x+r,y+c) to (x,y+c)
+        for i in 0..r {
+            product *= self.link((x + i) % l, (y + c) % l, 0);
+        }
+        
+        // Down edge: y-links from (x,y+c) to (x,y)
+        for j in 0..c {
+            product *= self.link(x, (y + j) % l, 1);
+        }
+        
+        product
+    }
+
+    /// Average Wilson loop over all starting positions for a given r×c loop size in 2D.
+    pub fn average_wilson_loop_2d(&self, r: usize, c: usize) -> f64 {
+        let l = self.l;
+        let mut sum = 0i64;
+        let count = (l * l) as i64;
+        
+        for y in 0..l {
+            for x in 0..l {
+                sum += self.wilson_loop_2d(x, y, r, c) as i64;
+            }
+        }
+        
+        sum as f64 / count as f64
+    }
+
+    /// Compute the Wilson loop for a rectangular loop in the xy-plane at height z in 3D.
+    pub fn wilson_loop_xy_3d(&self, x: usize, y: usize, z: usize, r: usize, c: usize) -> i8 {
+        assert!(self.dimension == 3, "wilson_loop_xy_3d is for 3D only");
+        let l = self.l;
+        let mut product = 1i8;
+        
+        // Right: x-links from (x,y,z) to (x+r,y,z)
+        for i in 0..r {
+            product *= self.link_3d((x + i) % l, y, z, 0);
+        }
+        
+        // Up: y-links from (x+r,y,z) to (x+r,y+c,z)
+        for j in 0..c {
+            product *= self.link_3d((x + r) % l, (y + j) % l, z, 1);
+        }
+        
+        // Left: x-links from (x+r,y+c,z) to (x,y+c,z)
+        for i in 0..r {
+            product *= self.link_3d((x + i) % l, (y + c) % l, z, 0);
+        }
+        
+        // Down: y-links from (x,y+c,z) to (x,y,z)
+        for j in 0..c {
+            product *= self.link_3d(x, (y + j) % l, z, 1);
+        }
+        
+        product
+    }
+
+    /// Average Wilson loop in the xy-plane over all starting positions for a given r×c loop size in 3D.
+    pub fn average_wilson_loop_xy_3d(&self, r: usize, c: usize) -> f64 {
+        let l = self.l;
+        let mut sum = 0i64;
+        let count = (l * l * l) as i64;
+        
+        for z in 0..l {
+            for y in 0..l {
+                for x in 0..l {
+                    sum += self.wilson_loop_xy_3d(x, y, z, r, c) as i64;
+                }
+            }
+        }
+        
+        sum as f64 / count as f64
+    }
+
     /// Thermalize the lattice with `n_sweeps` sweeps.
     pub fn thermalize(&mut self, beta: f64, n_sweeps: usize) {
         for _ in 0..n_sweeps {
@@ -382,6 +474,89 @@ impl Z2GaugeField {
         (mean_p, error, susceptibility, specific_heat, binder)
     }
 
+    /// Measure observables including Wilson loops over `n_sweeps` sweeps,
+    /// taking measurements every `measure_every` sweeps.
+    /// Returns (mean plaquette, error, chi, cv, binder, Vec<(r, c, mean_W, var_W)>)
+    /// where the Vec contains Wilson loop data for each requested loop size.
+    pub fn measure_with_wilson_loops(
+        &mut self,
+        beta: f64,
+        n_sweeps: usize,
+        measure_every: usize,
+        loop_sizes: &[(usize, usize)],
+    ) -> (f64, f64, f64, f64, f64, Vec<(usize, usize, f64, f64)>) {
+        let mut measurements = Vec::new();
+        let mut measurements_sq = Vec::new();
+        let mut measurements_quad = Vec::new();
+
+        // For each loop size, accumulate W and W²
+        let n_loop_sizes = loop_sizes.len();
+        let mut wilson_sums = vec![0.0f64; n_loop_sizes];
+        let mut wilson_sums_sq = vec![0.0f64; n_loop_sizes];
+        let mut n_measurements = 0usize;
+
+        for sweep in 0..n_sweeps {
+            self.sweep(beta);
+
+            if sweep % measure_every == 0 {
+                let (mean_plaq, _, _) = self.plaquette_stats();
+                measurements.push(mean_plaq);
+                measurements_sq.push(mean_plaq * mean_plaq);
+                measurements_quad.push(mean_plaq * mean_plaq * mean_plaq * mean_plaq);
+
+                // Measure Wilson loops for each requested size
+                for (idx, &(r, c)) in loop_sizes.iter().enumerate() {
+                    let w = if self.dimension == 2 {
+                        self.average_wilson_loop_2d(r, c)
+                    } else {
+                        self.average_wilson_loop_xy_3d(r, c)
+                    };
+                    wilson_sums[idx] += w;
+                    wilson_sums_sq[idx] += w * w;
+                }
+
+                n_measurements += 1;
+            }
+        }
+
+        let n = n_measurements as f64;
+
+        // Standard observables
+        let mean_p = measurements.iter().sum::<f64>() / n;
+        let mean_p2 = measurements_sq.iter().sum::<f64>() / n;
+        let mean_p4 = measurements_quad.iter().sum::<f64>() / n;
+
+        let variance = measurements.iter().map(|x| (x - mean_p).powi(2)).sum::<f64>() / n;
+        let error = (variance / n).sqrt();
+
+        let volume = if self.dimension == 2 {
+            (self.l * self.l) as f64
+        } else {
+            (self.l * self.l * self.l) as f64
+        };
+
+        let susceptibility = volume * beta * (mean_p2 - mean_p * mean_p);
+        let specific_heat = volume * beta * beta * (mean_p2 - mean_p * mean_p);
+
+        let binder = if mean_p2 > 0.0 {
+            1.0 - mean_p4 / (3.0 * mean_p2 * mean_p2)
+        } else {
+            0.0
+        };
+
+        // Wilson loop statistics
+        let mut wilson_results = Vec::with_capacity(n_loop_sizes);
+        for idx in 0..n_loop_sizes {
+            let mean_w = wilson_sums[idx] / n;
+            let mean_w2 = wilson_sums_sq[idx] / n;
+            let var_w = mean_w2 - mean_w * mean_w;
+            let (r, c) = loop_sizes[idx];
+            wilson_results.push((r, c, mean_w, var_w));
+        }
+
+        (mean_p, error, susceptibility, specific_heat, binder, wilson_results)
+    }
+
     /// Serialize to JSON checkpoint format.
     pub fn to_checkpoint(&self) -> String {
         let state = CheckpointState {
@@ -439,6 +614,32 @@ pub fn simulate_beta_dim(
     let measure_time = measure_start.elapsed().as_millis() as u64;
 
     (mean_p, error, chi, cv, binder, thermal_time + measure_time)
+}
+
+/// Run a simulation at a single β value with Wilson loop measurements.
+/// Returns (mean_p, error, chi, cv, binder, wall_time, Vec<(r, c, mean_W, var_W)>).
+pub fn simulate_beta_with_wilson_loops(
+    l: usize,
+    dimension: usize,
+    beta: f64,
+    thermal_sweeps: usize,
+    measure_sweeps: usize,
+    measure_every: usize,
+    seed: u64,
+    loop_sizes: &[(usize, usize)],
+) -> (f64, f64, f64, f64, f64, u64, Vec<(usize, usize, f64, f64)>) {
+    let mut field = Z2GaugeField::new_dim(l, dimension, seed);
+
+    let thermal_start = std::time::Instant::now();
+    field.thermalize(beta, thermal_sweeps);
+    let thermal_time = thermal_start.elapsed().as_millis() as u64;
+
+    let measure_start = std::time::Instant::now();
+    let (mean_p, error, chi, cv, binder, wilson_data) =
+        field.measure_with_wilson_loops(beta, measure_sweeps, measure_every, loop_sizes);
+    let measure_time = measure_start.elapsed().as_millis() as u64;
+
+    (mean_p, error, chi, cv, binder, thermal_time + measure_time, wilson_data)
 }
 
 #[cfg(test)]
@@ -572,26 +773,93 @@ mod tests {
         assert_eq!(field.l, 4);
     }
 
-    /// Quick 3D run: L=4, 1000 sweeps, beta=0.5, dimension=3
+    /// Quick 3D run with Wilson loops: L=4, 1000 sweeps, beta=0.5
     #[test]
-    fn test_3d_quick_run() {
+    fn test_3d_wilson_loops() {
         let l = 4;
         let beta = 0.5;
         let n_sweeps = 1000;
         let seed = 12345u64;
+        let loop_sizes = vec![(1, 1), (2, 2)];
 
-        let _field = Z2GaugeField::new_dim(l, 3, seed);
-        let (mean_p, error, chi, cv, binder, wall_time) =
-            simulate_beta_dim(l, 3, beta, n_sweeps / 2, n_sweeps / 2, 10, seed);
+        let (mean_p, error, chi, cv, binder, wall_time, wilson_data) =
+            simulate_beta_with_wilson_loops(l, 3, beta, n_sweeps / 2, n_sweeps / 2, 10, seed, &loop_sizes);
 
-        println!("3D L={} beta={}:", l, beta);
+        println!("3D L={} beta={} with Wilson loops:", l, beta);
         println!("  mean_plaquette = {:.6} ± {:.6}", mean_p, error);
-        println!("  susceptibility = {:.6}", chi);
-        println!("  specific_heat  = {:.6}", cv);
-        println!("  binder         = {:.6}", binder);
+        for (r, c, mean_w, var_w) in &wilson_data {
+            println!("  W({}×{}) = {:.6} ± {:.6}", r, c, mean_w, var_w.sqrt());
+        }
         println!("  wall_time_ms   = {}", wall_time);
 
         assert!(mean_p.abs() <= 1.0);
+        assert!(!wilson_data.is_empty());
         assert!(wall_time > 0);
+    }
+
+    /// Test Wilson loop on cold start: all 1×1 loops should be +1
+    #[test]
+    fn test_cold_wilson_loop_2d() {
+        let field = Z2GaugeField::cold(4, 42);
+        // 1×1 Wilson loop on cold start = plaquette = +1
+        for y in 0..4 {
+            for x in 0..4 {
+                assert_eq!(field.wilson_loop_2d(x, y, 1, 1), 1, "1×1 loop at ({},{}) failed", x, y);
+            }
+        }
+        // Average should also be +1
+        assert_eq!(field.average_wilson_loop_2d(1, 1), 1.0);
+    }
+
+    /// Test Wilson loop on cold start 3D
+    #[test]
+    fn test_cold_wilson_loop_3d() {
+        let field = Z2GaugeField::cold_dim(4, 3, 42);
+        // 1×1 loop in xy-plane on cold start = plaquette_xy = +1
+        for z in 0..4 {
+            for y in 0..4 {
+                for x in 0..4 {
+                    assert_eq!(field.wilson_loop_xy_3d(x, y, z, 1, 1), 1,
+                        "1×1 loop at ({},{},{}) failed", x, y, z);
+                }
+            }
+        }
+        assert_eq!(field.average_wilson_loop_xy_3d(1, 1), 1.0);
+    }
+
+    /// Test Wilson loop changes with link flip
+    #[test]
+    fn test_wilson_loop_changes_with_flip() {
+        let mut field = Z2GaugeField::cold(4, 42);
+        // Flip a link at (0,0) in x-direction
+        field.flip_link(0, 0, 0);
+        // The 1×1 Wilson loop at (0,0) should now be -1 (contains the flipped link)
+        assert_eq!(field.wilson_loop_2d(0, 0, 1, 1), -1);
+        // But the loop at (1,0) should still be +1 (doesn't contain the flipped link)
+        assert_eq!(field.wilson_loop_2d(1, 0, 1, 1), 1);
+    }
+
+    /// Quick 2D run with Wilson loops: L=4, 1000 sweeps, beta=0.5
+    #[test]
+    fn test_2d_wilson_loops() {
+        let l = 4;
+        let beta = 0.5;
+        let n_sweeps = 1000;
+        let seed = 12345u64;
+        let loop_sizes = vec![(1, 1), (2, 2)];
+
+        let (mean_p, error, chi, cv, binder, wall_time, wilson_data) =
+            simulate_beta_with_wilson_loops(l, 2, beta, n_sweeps / 2, n_sweeps / 2, 10, seed, &loop_sizes);
+
+        println!("2D L={} beta={} with Wilson loops:", l, beta);
+        println!("  mean_plaquette = {:.6} ± {:.6}", mean_p, error);
+        for (r, c, mean_w, var_w) in &wilson_data {
+            println!("  W({}×{}) = {:.6} ± {:.6}", r, c, mean_w, var_w.sqrt());
+        }
+        println!("  wall_time_ms   = {}", wall_time);
+
+        assert!(mean_p.abs() <= 1.0);
+        assert!(!wilson_data.is_empty());
+        assert!(wall_time >= 0);
     }
 }

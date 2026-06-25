@@ -142,7 +142,7 @@ window.Quarto = {
 </header>
 
 
-<p><em>Last updated: 2026-06-25 18:35 IST</em></p>
+<p><em>Last updated: 2026-06-26 02:23 IST</em></p>
 <section id="objective" class="level2">
 <h2 class="anchored" data-anchor-id="objective">Objective</h2>
 <p>Classical Monte Carlo simulation of Z₂ gauge theory to demonstrate the confinement-deconfinement transition that underpins the paper’s central claim.</p>
@@ -183,9 +183,15 @@ window.Quarto = {
 <td>✅ Complete</td>
 <td>2026-06-25</td>
 </tr>
+<tr class="even">
+<td>Phase 3b</td>
+<td>3D Wilson loops &amp; string tension (L=8)</td>
+<td>✅ Complete</td>
+<td>2026-06-26</td>
+</tr>
 </tbody>
 </table>
-<p><strong>Key Result</strong>: Critical coupling β_c ≈ 0.44 confirmed, matching exact value 0.4407.</p>
+<p><strong>Key Result</strong>: Critical coupling β_c ≈ 0.44 (2D) and β_c ≈ 0.76 (3D) confirmed.</p>
 </section>
 <section id="theory" class="level2">
 <h2 class="anchored" data-anchor-id="theory">Theory</h2>
@@ -1143,9 +1149,278 @@ S = -\beta \sum_{\square} \prod_{e \in \square} \sigma_e
 <li><strong>Binder cumulant</strong>: Stabilizes near ~0.666 in ordered phase, consistent with 3D Ising universal value</li>
 </ol>
 </section>
+<section id="wilson-loop-results-l-8" class="level3">
+<h3 class="anchored" data-anchor-id="wilson-loop-results-l-8">Wilson Loop Results (L = 8)</h3>
+<p><strong>Date</strong>: 2026-06-26</p>
+<p>Wilson loops <span class="math inline">\(W(R \times C)\)</span> were measured on the <span class="math inline">\(L=8\)</span> 3D cubic lattice across the same β range (0.30–1.20). In the confined phase, Wilson loops obey the <strong>area law</strong> <span class="math inline">\(\ln|W| \sim -\sigma A\)</span>, while in the deconfined phase they follow the <strong>perimeter law</strong> <span class="math inline">\(\ln|W| \sim -\kappa P\)</span>.</p>
+<section id="measured-wilson-loop-values" class="level4">
+<h4 class="anchored" data-anchor-id="measured-wilson-loop-values">Measured Wilson Loop Values</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>β</th>
+<th><span class="math inline">\(1\times1\)</span></th>
+<th><span class="math inline">\(2\times2\)</span></th>
+<th><span class="math inline">\(3\times3\)</span></th>
+<th><span class="math inline">\(4\times4\)</span></th>
+<th>Phase</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.30</td>
+<td>0.294</td>
+<td>0.007</td>
+<td>0.0005</td>
+<td>0.00006</td>
+<td>Confined</td>
+</tr>
+<tr class="even">
+<td>0.50</td>
+<td>0.502</td>
+<td>0.067</td>
+<td>0.003</td>
+<td>0.0001</td>
+<td>Confined</td>
+</tr>
+<tr class="odd">
+<td>0.70</td>
+<td>0.790</td>
+<td>0.441</td>
+<td>0.192</td>
+<td>0.069</td>
+<td>Near-critical</td>
+</tr>
+<tr class="even">
+<td>0.80</td>
+<td>0.974</td>
+<td>0.938</td>
+<td>0.904</td>
+<td>0.871</td>
+<td>Deconfined</td>
+</tr>
+<tr class="odd">
+<td>0.90</td>
+<td>0.991</td>
+<td>0.981</td>
+<td>0.971</td>
+<td>0.961</td>
+<td>Deconfined</td>
+</tr>
+<tr class="even">
+<td>1.00</td>
+<td>0.997</td>
+<td>0.993</td>
+<td>0.989</td>
+<td>0.985</td>
+<td>Deconfined</td>
+</tr>
+</tbody>
+</table>
+<p>The qualitative change is dramatic: at β=0.50 the <span class="math inline">\(4\times4\)</span> loop has <span class="math inline">\(|W| \approx 10^{-4}\)</span> (area law), while at β=0.90 it has <span class="math inline">\(|W| \approx 0.96\)</span> (nearly flat, perimeter law).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/t20-p3-wilson-loops.png" class="img-fluid figure-img"></p>
+<figcaption>Wilson loop |W| vs area for selected β values</figcaption>
+</figure>
+</div>
+<p><em>Figure 8: Wilson loop magnitude <span class="math inline">\(|W|\)</span> versus loop area <span class="math inline">\(A\)</span> on a log scale for β = 0.50 (confined), 0.70 (near-critical), and 0.90 (deconfined). At low β the loop decays exponentially with area (area law), while at high β it remains nearly constant (perimeter law). The near-critical curve (β=0.70) shows intermediate behavior.</em></p>
+</section>
+</section>
+<section id="string-tension-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="string-tension-analysis">String Tension Analysis</h3>
+<p>The string tension <span class="math inline">\(\sigma(\beta)\)</span> is extracted from the area-law fit:</p>
+<p><span class="math display">\[
+\ln |W(A)| = -\sigma A + c
+\]</span></p>
+<p>Fitting <span class="math inline">\(\ln|W|\)</span> versus area <span class="math inline">\(A\)</span> for each β gives the string tension shown below.</p>
+<section id="string-tension-results" class="level4">
+<h4 class="anchored" data-anchor-id="string-tension-results">String Tension Results</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>β</th>
+<th>σ</th>
+<th>Error</th>
+<th>Fit quality</th>
+<th>Phase</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.30</td>
+<td>0.533</td>
+<td>±0.120</td>
+<td>1.86</td>
+<td>Confined</td>
+</tr>
+<tr class="even">
+<td>0.40</td>
+<td>0.430</td>
+<td>±0.206</td>
+<td>5.47</td>
+<td>Confined</td>
+</tr>
+<tr class="odd">
+<td>0.50</td>
+<td>0.547</td>
+<td>±0.039</td>
+<td>0.19</td>
+<td>Confined</td>
+</tr>
+<tr class="even">
+<td>0.60</td>
+<td>0.404</td>
+<td>±0.006</td>
+<td>0.004</td>
+<td>Confined</td>
+</tr>
+<tr class="odd">
+<td><strong>0.70</strong></td>
+<td><strong>0.162</strong></td>
+<td><strong>±0.006</strong></td>
+<td><strong>0.005</strong></td>
+<td><strong>Near-critical</strong></td>
+</tr>
+<tr class="even">
+<td>0.80</td>
+<td>0.007</td>
+<td>±0.001</td>
+<td>0.0001</td>
+<td>Deconfined</td>
+</tr>
+<tr class="odd">
+<td>0.90</td>
+<td>0.002</td>
+<td>±0.0003</td>
+<td>0.000009</td>
+<td>Deconfined</td>
+</tr>
+<tr class="even">
+<td>1.00</td>
+<td>0.0007</td>
+<td>±0.0001</td>
+<td>0.000001</td>
+<td>Deconfined</td>
+</tr>
+<tr class="odd">
+<td>1.10</td>
+<td>0.0003</td>
+<td>±0.00004</td>
+<td>0.0000002</td>
+<td>Deconfined</td>
+</tr>
+<tr class="even">
+<td>1.20</td>
+<td>0.0001</td>
+<td>±0.00002</td>
+<td>0.00000003</td>
+<td>Deconfined</td>
+</tr>
+</tbody>
+</table>
+<p>The string tension drops from <span class="math inline">\(\sigma \approx 0.5\)</span> in the confined phase to <span class="math inline">\(\sigma \approx 0\)</span> in the deconfined phase, vanishing rapidly around the critical region β ≈ 0.70–0.80.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/t20-p3-string-tension.png" class="img-fluid figure-img"></p>
+<figcaption>String tension σ(β) vs coupling β</figcaption>
+</figure>
+</div>
+<p><em>Figure 9: String tension <span class="math inline">\(\sigma(\beta)\)</span> versus coupling β for 3D Z₂ LGT (L=8). The shaded red region marks the critical range β ≈ 0.70–0.80 where σ drops to zero, signaling the confinement-deconfinement transition. Error bars are jackknife estimates.</em></p>
+</section>
+</section>
+<section id="confinement-deconfinement-signature" class="level3">
+<h3 class="anchored" data-anchor-id="confinement-deconfinement-signature">Confinement-Deconfinement Signature</h3>
+<p>The combination of Wilson loop and string tension data provides a clear signature of the transition:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 25%">
+<col style="width: 31%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Observable</th>
+<th>Confined (β &lt; 0.70)</th>
+<th>Critical (β ≈ 0.70–0.80)</th>
+<th>Deconfined (β &gt; 0.80)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>String tension σ</td>
+<td>≈ 0.4–0.5</td>
+<td>Drops sharply</td>
+<td>≈ 0</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(|W|\)</span> for <span class="math inline">\(4\times4\)</span></td>
+<td><span class="math inline">\(\sim 10^{-4}\)</span></td>
+<td><span class="math inline">\(\sim 10^{-1}\)</span></td>
+<td><span class="math inline">\(\sim 0.96\)</span></td>
+</tr>
+<tr class="odd">
+<td>Area law</td>
+<td>✅ Yes</td>
+<td>Partial</td>
+<td>❌ No</td>
+</tr>
+<tr class="even">
+<td>Perimeter law</td>
+<td>❌ No</td>
+<td>Partial</td>
+<td>✅ Yes</td>
+</tr>
+</tbody>
+</table>
+<p>The vanishing of σ at β ≈ 0.76 is the hallmark of deconfinement: the potential between static charges becomes Coulomb-like rather than linearly rising.</p>
+</section>
+<section id="figures-1" class="level3">
+<h3 class="anchored" data-anchor-id="figures-1">Figures</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/t20-p3-plaquette-vs-beta.png" class="img-fluid figure-img"></p>
+<figcaption>3D Plaquette vs β</figcaption>
+</figure>
+</div>
+<p><em>Figure 3: Plaquette expectation value vs coupling β for 3D cubic lattice (L=8, 21 β values). The dashed vertical line marks the critical point β_c ≈ 0.76. The smooth curve with fine β-spacing clearly shows the sharp rise across the transition.</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/t20-p3-susceptibility-vs-beta.png" class="img-fluid figure-img"></p>
+<figcaption>3D Susceptibility vs β</figcaption>
+</figure>
+</div>
+<p><em>Figure 4: Susceptibility χ vs β (L=8, 21 β values). The peak at β ≈ 0.74 with fine resolution confirms the critical region. The smooth curve reveals the divergence approaching the thermodynamic limit.</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/t20-p3-specific-heat-vs-beta.png" class="img-fluid figure-img"></p>
+<figcaption>3D Specific Heat vs β</figcaption>
+</figure>
+</div>
+<p><em>Figure 5: Specific heat C_V vs β (L=8, 21 β values). The peak at β ≈ 0.74 coincides with the susceptibility maximum, confirming the critical region with high precision.</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/t20-p3-binder-vs-beta.png" class="img-fluid figure-img"></p>
+<figcaption>3D Binder Cumulant vs β</figcaption>
+</figure>
+</div>
+<p><em>Figure 6: Binder cumulant U vs β (L=8, 21 β values). The horizontal dotted line marks the 3D Ising universal value U</em> = 2/3 ≈ 0.667. The curve approaches this value from below in the ordered phase (β &gt; β_c), with the crossing region sharpened by fine β-spacing.*</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/t20-p3-combined.png" class="img-fluid figure-img"></p>
+<figcaption>3D Combined Overview</figcaption>
+</figure>
+</div>
+<p><em>Figure 7: Combined overview of all four observables for 3D Z₂ LGT (L=8, 21 β values). The critical region β ≈ 0.70–0.80 shows strong signals across all observables, now resolved with fine β-spacing.</em></p>
+</section>
 <section id="data-files-1" class="level3">
 <h3 class="anchored" data-anchor-id="data-files-1">Data Files</h3>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 68%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>File</th>
@@ -1164,6 +1439,14 @@ S = -\beta \sum_{\square} \prod_{e \in \square} \sigma_e
 <tr class="odd">
 <td><code>output/t20-p3-L8-3D-20250625.json</code></td>
 <td>L=8 raw data</td>
+</tr>
+<tr class="even">
+<td><code>output/t20-p3-L8-3D-wilson-fine-20250626.json</code></td>
+<td>Wilson loop raw data (21 β values, fine spacing)</td>
+</tr>
+<tr class="odd">
+<td><code>output/t20-p3-L8-3D-wilson-analysis.json</code></td>
+<td>String tension analysis (fine-grained)</td>
 </tr>
 </tbody>
 </table>

@@ -2,10 +2,10 @@
 title: "T20 — Z₂ Lattice Gauge Theory Monte Carlo"
 subtitle: "Confinement-deconfinement transition"
 date: "2026-06-25"
-date-modified: "2026-06-25 18:35 IST"
+date-modified: "2026-06-26 02:23 IST"
 ---
 
-*Last updated: 2026-06-25 18:35 IST*
+*Last updated: 2026-06-26 02:23 IST*
 
 ## Objective
 
@@ -18,8 +18,9 @@ Classical Monte Carlo simulation of Z₂ gauge theory to demonstrate the confine
 | Phase 1 | 2D square lattice, critical β identification | ✅ Complete | 2026-06-24 |
 | Phase 2 | Finite-size scaling (L = 8–24) | ✅ Complete | 2026-06-25 |
 | Phase 3 | 3D cubic lattice (L=4,6,8) | ✅ Complete | 2026-06-25 |
+| Phase 3b | 3D Wilson loops & string tension (L=8) | ✅ Complete | 2026-06-26 |
 
-**Key Result**: Critical coupling β_c ≈ 0.44 confirmed, matching exact value 0.4407.
+**Key Result**: Critical coupling β_c ≈ 0.44 (2D) and β_c ≈ 0.76 (3D) confirmed.
 
 ## Theory
 
@@ -295,6 +296,95 @@ cargo run --release -- <L> 200000 20000 4 \
 3. **First-order nature**: Susceptibility peak is narrow and intense, characteristic of first-order transition in 3D
 4. **Binder cumulant**: Stabilizes near ~0.666 in ordered phase, consistent with 3D Ising universal value
 
+### Wilson Loop Results (L = 8)
+
+**Date**: 2026-06-26
+
+Wilson loops $W(R \times C)$ were measured on the $L=8$ 3D cubic lattice across the same β range (0.30–1.20). In the confined phase, Wilson loops obey the **area law** $\ln|W| \sim -\sigma A$, while in the deconfined phase they follow the **perimeter law** $\ln|W| \sim -\kappa P$.
+
+#### Measured Wilson Loop Values
+
+| β | $1\times1$ | $2\times2$ | $3\times3$ | $4\times4$ | Phase |
+|---|-----------|-----------|-----------|-----------|-------|
+| 0.30 | 0.294 | 0.007 | 0.0005 | 0.00006 | Confined |
+| 0.50 | 0.502 | 0.067 | 0.003 | 0.0001 | Confined |
+| 0.70 | 0.790 | 0.441 | 0.192 | 0.069 | Near-critical |
+| 0.80 | 0.974 | 0.938 | 0.904 | 0.871 | Deconfined |
+| 0.90 | 0.991 | 0.981 | 0.971 | 0.961 | Deconfined |
+| 1.00 | 0.997 | 0.993 | 0.989 | 0.985 | Deconfined |
+
+The qualitative change is dramatic: at β=0.50 the $4\times4$ loop has $|W| \approx 10^{-4}$ (area law), while at β=0.90 it has $|W| \approx 0.96$ (nearly flat, perimeter law).
+
+![Wilson loop |W| vs area for selected β values](../assets/t20-p3-wilson-loops.png)
+
+*Figure 8: Wilson loop magnitude $|W|$ versus loop area $A$ on a log scale for β = 0.50 (confined), 0.70 (near-critical), and 0.90 (deconfined). At low β the loop decays exponentially with area (area law), while at high β it remains nearly constant (perimeter law). The near-critical curve (β=0.70) shows intermediate behavior.*
+
+### String Tension Analysis
+
+The string tension $\sigma(\beta)$ is extracted from the area-law fit:
+
+$$
+\ln |W(A)| = -\sigma A + c
+$$
+
+Fitting $\ln|W|$ versus area $A$ for each β gives the string tension shown below.
+
+#### String Tension Results
+
+| β | σ | Error | Fit quality | Phase |
+|---|------|-------|-------------|-------|
+| 0.30 | 0.533 | ±0.120 | 1.86 | Confined |
+| 0.40 | 0.430 | ±0.206 | 5.47 | Confined |
+| 0.50 | 0.547 | ±0.039 | 0.19 | Confined |
+| 0.60 | 0.404 | ±0.006 | 0.004 | Confined |
+| **0.70** | **0.162** | **±0.006** | **0.005** | **Near-critical** |
+| 0.80 | 0.007 | ±0.001 | 0.0001 | Deconfined |
+| 0.90 | 0.002 | ±0.0003 | 0.000009 | Deconfined |
+| 1.00 | 0.0007 | ±0.0001 | 0.000001 | Deconfined |
+| 1.10 | 0.0003 | ±0.00004 | 0.0000002 | Deconfined |
+| 1.20 | 0.0001 | ±0.00002 | 0.00000003 | Deconfined |
+
+The string tension drops from $\sigma \approx 0.5$ in the confined phase to $\sigma \approx 0$ in the deconfined phase, vanishing rapidly around the critical region β ≈ 0.70–0.80.
+
+![String tension σ(β) vs coupling β](../assets/t20-p3-string-tension.png)
+
+*Figure 9: String tension $\sigma(\beta)$ versus coupling β for 3D Z₂ LGT (L=8). The shaded red region marks the critical range β ≈ 0.70–0.80 where σ drops to zero, signaling the confinement-deconfinement transition. Error bars are jackknife estimates.*
+
+### Confinement-Deconfinement Signature
+
+The combination of Wilson loop and string tension data provides a clear signature of the transition:
+
+| Observable | Confined (β < 0.70) | Critical (β ≈ 0.70–0.80) | Deconfined (β > 0.80) |
+|------------|---------------------|--------------------------|-----------------------|
+| String tension σ | ≈ 0.4–0.5 | Drops sharply | ≈ 0 |
+| $|W|$ for $4\times4$ | $\sim 10^{-4}$ | $\sim 10^{-1}$ | $\sim 0.96$ |
+| Area law | ✅ Yes | Partial | ❌ No |
+| Perimeter law | ❌ No | Partial | ✅ Yes |
+
+The vanishing of σ at β ≈ 0.76 is the hallmark of deconfinement: the potential between static charges becomes Coulomb-like rather than linearly rising.
+
+### Figures
+
+![3D Plaquette vs β](../assets/t20-p3-plaquette-vs-beta.png)
+
+*Figure 3: Plaquette expectation value vs coupling β for 3D cubic lattice (L=8, 21 β values). The dashed vertical line marks the critical point β_c ≈ 0.76. The smooth curve with fine β-spacing clearly shows the sharp rise across the transition.*
+
+![3D Susceptibility vs β](../assets/t20-p3-susceptibility-vs-beta.png)
+
+*Figure 4: Susceptibility χ vs β (L=8, 21 β values). The peak at β ≈ 0.74 with fine resolution confirms the critical region. The smooth curve reveals the divergence approaching the thermodynamic limit.*
+
+![3D Specific Heat vs β](../assets/t20-p3-specific-heat-vs-beta.png)
+
+*Figure 5: Specific heat C_V vs β (L=8, 21 β values). The peak at β ≈ 0.74 coincides with the susceptibility maximum, confirming the critical region with high precision.*
+
+![3D Binder Cumulant vs β](../assets/t20-p3-binder-vs-beta.png)
+
+*Figure 6: Binder cumulant U vs β (L=8, 21 β values). The horizontal dotted line marks the 3D Ising universal value U* = 2/3 ≈ 0.667. The curve approaches this value from below in the ordered phase (β > β_c), with the crossing region sharpened by fine β-spacing.*
+
+![3D Combined Overview](../assets/t20-p3-combined.png)
+
+*Figure 7: Combined overview of all four observables for 3D Z₂ LGT (L=8, 21 β values). The critical region β ≈ 0.70–0.80 shows strong signals across all observables, now resolved with fine β-spacing.*
+
 ### Data Files
 
 | File | Description |
@@ -302,6 +392,8 @@ cargo run --release -- <L> 200000 20000 4 \
 | `output/t20-p3-L4-3D-20250625.json` | L=4 raw data |
 | `output/t20-p3-L6-3D-20250625.json` | L=6 raw data |
 | `output/t20-p3-L8-3D-20250625.json` | L=8 raw data |
+| `output/t20-p3-L8-3D-wilson-fine-20250626.json` | Wilson loop raw data (21 β values, fine spacing) |
+| `output/t20-p3-L8-3D-wilson-analysis.json` | String tension analysis (fine-grained) |
 
 ---
 

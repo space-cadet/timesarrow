@@ -1,9 +1,29 @@
 # Edit History
 
 *Created: 2026-04-16 20:22:00 IST*
-*Last Updated: 2026-06-24 09:35:00 IST*
+*Last Updated: 2026-06-26 01:21:00 IST*
 
 ## File Modification Log
+
+### 2026-06-26
+
+#### 01:21:00 IST - T20: Discovered Rust lacks Wilson loop implementation; existing data insufficient
+- Modified `memory-bank/implementation-details/t20-missing-observables.md` - Corrected: raw configurations NOT saved, must re-run simulations; added Rust implementation requirements and time estimates
+- Modified `memory-bank/tasks/T20.md` - Added critical finding: Rust code missing Wilson loop, no saved configs, must re-run with new measurements
+- Modified `memory-bank/activeContext.md` - Added corrected understanding of missing observables path with dependency table
+- Modified `memory-bank/session_cache.md` - Updated session focus and findings
+- Modified `memory-bank/sessions/2026-06-26-night.md` - Appended gap analysis follow-up work with corrections
+- Created `memory-bank/edits/2026-06-26/012100-T20-wilson-loop-gap-correction.md` - Canonical edit chunk for correction
+
+#### 00:30:00 IST - T20: Gap analysis — identified missing Wilson loops, critical exponents, and Phase 2 plots
+- Modified `memory-bank/tasks/T20.md` - Updated status from COMPLETE to IN PROGRESS, added Gap Analysis section with missing observables by phase
+- Modified `memory-bank/tasks.md` - Updated T20-Phase1/2/3 status from Complete to In Progress, added missing observables checklist, created In Progress section with gap analysis summary
+- Identified `numerics/src/scripts/wilson-loop-measurement.ts` - Wilson loop measurement needed for all phases (area vs perimeter law)
+- Identified `numerics/src/scripts/critical-exponent-extraction.ts` - Critical exponent extraction needed (nu, gamma, beta) for 2D and 3D
+- Identified `numerics/src/scripts/phase2-scaling-plots.ts` - Phase 2 finite-size scaling plots needed (chi scaling collapse, Binder crossing)
+- Created `memory-bank/implementation-details/t20-missing-observables.md` - Full gap analysis documentation with missing observables by phase, implementation notes, and next steps
+- Created `memory-bank/sessions/2026-06-26-night.md` - Session log for gap analysis work
+- Created `memory-bank/edits/2026-06-26/003000-T20-gap-analysis.md` - Canonical edit chunk
 
 ### 2026-06-24
 
