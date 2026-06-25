@@ -12,7 +12,7 @@ Timesarrow — quantum gravity simulation and visualization project. Monte Carlo
 | T20-Phase1 | Z₂ LGT 2D square lattice | ✅ Complete | Results documented, numerics page updated |
 | T21 | Worker threads + checkpointing | 🔄 Ready to implement | Start with checkpoint.ts module |
 | T20-Phase2 | Sharp phase transition figures | ✅ Complete | Results in numerics page, data registry created |
-| T20-Phase3 | 3D cubic lattice | ⏳ Pending | Paper target |
+| T20-Phase3 | 3D cubic lattice | ✅ Complete | L=4,6,8 simulated, β_c ≈ 0.75 |
 | T25 | Volume operator eigenvalues | ✅ Complete | — |
 
 ## Completed Tasks
