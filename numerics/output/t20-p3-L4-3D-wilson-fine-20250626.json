@@ -1,0 +1,312 @@
+{
+  "parameters": {
+    "L": 4,
+    "dimension": 3,
+    "thermalSweeps": 10000,
+    "measureSweeps": 100000,
+    "measureEvery": 10,
+    "binSize": 10,
+    "workers": 8,
+    "loopSizes": [
+      {"r": 1, "c": 1},
+      {"r": 2, "c": 2}
+    ]
+  },
+  "results": [
+    {
+      "beta": 0.3,
+      "meanPlaquette": 0.29485833333333283,
+      "errorPlaquette": 0.0007134657733362188,
+      "susceptibility": 0.09773441466672574,
+      "specificHeat": 0.029320324400017722,
+      "binderCumulant": 0.5951583834199712,
+      "numMeasurements": 10000,
+      "wallTimeMs": 986,
+      "wilsonLoops": [
+        {"r": 1, "c": 1, "meanW": -0.29468125, "varW": 0.014850070273437502},
+        {"r": 2, "c": 2, "meanW": 0.00679375, "varW": 0.0159589230859375}
+      ]
+    },
+    {
+      "beta": 0.4,
+      "meanPlaquette": 0.3954312500000006,
+      "errorPlaquette": 0.0007368443268872915,
+      "susceptibility": 0.13899252788881852,
+      "specificHeat": 0.05559701115552742,
+      "binderCumulant": 0.6225192163706912,
+      "numMeasurements": 10000,
+      "wallTimeMs": 884,
+      "wilsonLoops": [
+        {"r": 1, "c": 1, "meanW": -0.39595625, "varW": 0.014079194960937486},
+        {"r": 2, "c": 2, "meanW": 0.0262375, "varW": 0.01758581234375}
+      ]
+    },
+    {
+      "beta": 0.5,
+      "meanPlaquette": 0.5035062500000006,
+      "errorPlaquette": 0.0007726042470001463,
+      "susceptibility": 0.19101354319448838,
+      "specificHeat": 0.09550677159724419,
+      "binderCumulant": 0.6358957515700006,
+      "numMeasurements": 10000,
+      "wallTimeMs": 864,
+      "wilsonLoops": [
+        {"r": 1, "c": 1, "meanW": -0.5036625, "varW": 0.013131117343749998},
+        {"r": 2, "c": 2, "meanW": 0.06635625, "varW": 0.0217081762109375}
+      ]
+    },
+    {
+      "beta": 0.55,
+      "meanPlaquette": 0.5624458333333336,
+      "errorPlaquette": 0.0008041826757905539,
+      "susceptibility": 0.22764184116695338,
+      "specificHeat": 0.12520301264182437,
+      "binderCumulant": 0.63952370051978,
+      "numMeasurements": 10000,
+      "wallTimeMs": 811,
+      "wilsonLoops": [
+        {"r": 1, "c": 1, "meanW": -0.56365625, "varW": 0.012936553710937548},
+        {"r": 2, "c": 2, "meanW": 0.11243125, "varW": 0.0282205421484375}
+      ]
+    },
+    {
+      "beta": 0.6,
+      "meanPlaquette": 0.6323145833333319,
+      "errorPlaquette": 0.0009176989639608641,
+      "susceptibility": 0.3233938131672481,
+      "specificHeat": 0.19403628790034885,
+      "binderCumulant": 0.6378249690713647,
+      "numMeasurements": 10000,
+      "wallTimeMs": 697,
+      "wilsonLoops": [
+        {"r": 1, "c": 1, "meanW": -0.63298125, "varW": 0.013782784023437411},
+        {"r": 2, "c": 2, "meanW": 0.18630625, "varW": 0.0423888093359375}
+      ]
+    },
+    {
+      "beta": 0.65,
+      "meanPlaquette": 0.7343124999999999,
+      "errorPlaquette": 0.0011384228361287425,
+      "susceptibility": 0.5391387263884113,
+      "specificHeat": 0.35044017215246737,
+      "binderCumulant": 0.6341217208341181,
+      "numMeasurements": 10000,
+      "wallTimeMs": 733,
+      "wilsonLoops": [
+        {"r": 1, "c": 1, "meanW": -0.73373125, "varW": 0.017156812148437672},
+        {"r": 2, "c": 2, "meanW": 0.36106875, "varW": 0.08374615464843749}
+      ]
+    },
+    {
+      "beta": 0.68,
+      "meanPlaquette": 0.8140687499999947,
+      "errorPlaquette": 0.0011905521797139157,
+      "susceptibility": 0.6168587871881493,
+      "specificHeat": 0.4194639752879416,
+      "binderCumulant": 0.6398613522250692,
+      "numMeasurements": 10000,
+      "wallTimeMs": 590,
+      "wilsonLoops": [
+        {"r": 1, "c": 1, "meanW": -0.8145125, "varW": 0.016924074843750136},
+        {"r": 2, "c": 2, "meanW": 0.54138125, "varW": 0.10048095152343745}
+      ]
+    },
+    {
+      "beta": 0.7,
+      "meanPlaquette": 0.8645083333333267,
+      "errorPlaquette": 0.0010955240976861663,
+      "susceptibility": 0.5376775257764634,
+      "specificHeat": 0.37637426804352436,
+      "binderCumulant": 0.6472864215021242,
+      "numMeasurements": 10000,
+      "wallTimeMs": 737,
+      "wilsonLoops": [
+        {"r": 1, "c": 1, "meanW": -0.86465, "varW": 0.014192096249999953},
+        {"r": 2, "c": 2, "meanW": 0.66169375, "varW": 0.09038755308593754}
+      ]
+    },
+    {
+      "beta": 0.72,
+      "meanPlaquette": 0.9039916666666602,
+      "errorPlaquette": 0.0009445762902252038,
+      "susceptibility": 0.4111369887982937,
+      "specificHeat": 0.29601863193477146,
+      "binderCumulant": 0.6538369193519399,
+      "numMeasurements": 10000,
+      "wallTimeMs": 589,
+      "wilsonLoops": [
+        {"r": 1, "c": 1, "meanW": -0.90381875, "varW": 0.010851120273437487},
+        {"r": 2, "c": 2, "meanW": 0.7591125, "varW": 0.07199118109375002}
+      ]
+    },
+    {
+      "beta": 0.74,
+      "meanPlaquette": 0.9311416666666642,
+      "errorPlaquette": 0.0007878045310651262,
+      "susceptibility": 0.2939331997311909,
+      "specificHeat": 0.21751056780108127,
+      "binderCumulant": 0.6582562364557281,
+      "numMeasurements": 10000,
+      "wallTimeMs": 548,
+      "wilsonLoops": [
+        {"r": 1, "c": 1, "meanW": -0.931325, "varW": 0.00758374437500009},
+        {"r": 2, "c": 2, "meanW": 0.82775625, "varW": 0.05230435621093754}
+      ]
+    },
+    {
+      "beta": 0.76,
+      "meanPlaquette": 0.9530229166666612,
+      "errorPlaquette": 0.0006243234529244363,
+      "susceptibility": 0.18958888200925686,
+      "specificHeat": 0.1440875503270352,
+      "binderCumulant": 0.6616034362810473,
+      "numMeasurements": 10000,
+      "wallTimeMs": 566,
+      "wilsonLoops": [
+        {"r": 1, "c": 1, "meanW": -0.9534375, "varW": 0.004635058593749908},
+        {"r": 2, "c": 2, "meanW": 0.8863875, "varW": 0.03154923109374996}
+      ]
+    },
+    {
+      "beta": 0.78,
+      "meanPlaquette": 0.9640479166666659,
+      "errorPlaquette": 0.0005190912327321012,
+      "susceptibility": 0.13451228938089302,
+      "specificHeat": 0.10491958571709656,
+      "binderCumulant": 0.6632055120411398,
+      "numMeasurements": 10000,
+      "wallTimeMs": 678,
+      "wilsonLoops": [
+        {"r": 1, "c": 1, "meanW": -0.96426875, "varW": 0.0033385121484375},
+        {"r": 2, "c": 2, "meanW": 0.91348125, "varW": 0.02253520902343742}
+      ]
+    },
+    {
+      "beta": 0.8,
+      "meanPlaquette": 0.9730208333333292,
+      "errorPlaquette": 0.00043073011134520925,
+      "susceptibility": 0.09499055555352243,
+      "specificHeat": 0.07599244444281796,
+      "binderCumulant": 0.6642981943915403,
+      "numMeasurements": 10000,
+      "wallTimeMs": 563,
+      "wilsonLoops": [
+        {"r": 1, "c": 1, "meanW": -0.972675, "varW": 0.002438500625000062},
+        {"r": 2, "c": 2, "meanW": 0.93575, "varW": 0.015466468750000129}
+      ]
+    },
+    {
+      "beta": 0.82,
+      "meanPlaquette": 0.9787229166666657,
+      "errorPlaquette": 0.0003693701417945103,
+      "susceptibility": 0.07160072150328715,
+      "specificHeat": 0.05871259163269546,
+      "binderCumulant": 0.6649352409199529,
+      "numMeasurements": 10000,
+      "wallTimeMs": 621,
+      "wilsonLoops": [
+        {"r": 1, "c": 1, "meanW": -0.978625, "varW": 0.001753265625000111},
+        {"r": 2, "c": 2, "meanW": 0.9503625, "varW": 0.011035337343750062}
+      ]
+    },
+    {
+      "beta": 0.84,
+      "meanPlaquette": 0.9836854166666679,
+      "errorPlaquette": 0.00031155791259298795,
+      "susceptibility": 0.052183935764471695,
+      "specificHeat": 0.04383450604215622,
+      "binderCumulant": 0.6654278709948125,
+      "numMeasurements": 10000,
+      "wallTimeMs": 600,
+      "wilsonLoops": [
+        {"r": 1, "c": 1, "meanW": -0.98371875, "varW": 0.0012681240234375668},
+        {"r": 2, "c": 2, "meanW": 0.96240625, "varW": 0.007670694335937367}
+      ]
+    },
+    {
+      "beta": 0.86,
+      "meanPlaquette": 0.9863166666666658,
+      "errorPlaquette": 0.0002787320746603262,
+      "susceptibility": 0.042761439820348815,
+      "specificHeat": 0.03677483824549997,
+      "binderCumulant": 0.6656767308297706,
+      "numMeasurements": 10000,
+      "wallTimeMs": 565,
+      "wilsonLoops": [
+        {"r": 1, "c": 1, "meanW": -0.98631875, "varW": 0.0010288390234374223},
+        {"r": 2, "c": 2, "meanW": 0.96905625, "varW": 0.005893656210937515}
+      ]
+    },
+    {
+      "beta": 0.9,
+      "meanPlaquette": 0.9916979166666684,
+      "errorPlaquette": 0.00020929960810968075,
+      "susceptibility": 0.0252324437482244,
+      "specificHeat": 0.022709199373401958,
+      "binderCumulant": 0.6661088801025925,
+      "numMeasurements": 10000,
+      "wallTimeMs": 565,
+      "wilsonLoops": [
+        {"r": 1, "c": 1, "meanW": -0.99159375, "varW": 0.0005961318359374301},
+        {"r": 2, "c": 2, "meanW": 0.98151875, "varW": 0.0031197715234374535}
+      ]
+    },
+    {
+      "beta": 0.95,
+      "meanPlaquette": 0.9946854166666667,
+      "errorPlaquette": 0.00016220914006777464,
+      "susceptibility": 0.015997577512699833,
+      "specificHeat": 0.015197698637064843,
+      "binderCumulant": 0.6663318341557889,
+      "numMeasurements": 10000,
+      "wallTimeMs": 553,
+      "wilsonLoops": [
+        {"r": 1, "c": 1, "meanW": -0.99476875, "varW": 0.00036677464843759555},
+        {"r": 2, "c": 2, "meanW": 0.98863125, "varW": 0.0018687983984375656}
+      ]
+    },
+    {
+      "beta": 1,
+      "meanPlaquette": 0.9965875000000005,
+      "errorPlaquette": 0.00012630732334490202,
+      "susceptibility": 0.010210265554661646,
+      "specificHeat": 0.010210265554661646,
+      "binderCumulant": 0.6664630785528035,
+      "numMeasurements": 10000,
+      "wallTimeMs": 565,
+      "wilsonLoops": [
+        {"r": 1, "c": 1, "meanW": -0.99655625, "varW": 0.0002260312109374496},
+        {"r": 2, "c": 2, "meanW": 0.9927, "varW": 0.0010560849999999844}
+      ]
+    },
+    {
+      "beta": 1.1,
+      "meanPlaquette": 0.9986479166666677,
+      "errorPlaquette": 0.00007775272134841074,
+      "susceptibility": 0.004256021916098263,
+      "specificHeat": 0.0046816241077080895,
+      "binderCumulant": 0.6665895199050389,
+      "numMeasurements": 10000,
+      "wallTimeMs": 569,
+      "wilsonLoops": [
+        {"r": 1, "c": 1, "meanW": -0.99863125, "varW": 0.00008601714843747832},
+        {"r": 2, "c": 2, "meanW": 0.99714375, "varW": 0.00038129496093752824}
+      ]
+    },
+    {
+      "beta": 1.2,
+      "meanPlaquette": 0.9993854166666669,
+      "errorPlaquette": 0.000051467083432845065,
+      "susceptibility": 0.0020343249997068825,
+      "specificHeat": 0.002441189999648259,
+      "binderCumulant": 0.6666328338210178,
+      "numMeasurements": 10000,
+      "wallTimeMs": 613,
+      "wilsonLoops": [
+        {"r": 1, "c": 1, "meanW": -0.9994125, "varW": 0.00003715484374988698},
+        {"r": 2, "c": 2, "meanW": 0.99880625, "varW": 0.00015443433593742562}
+      ]
+    }
+  ],
+  "totalWallTimeMs": 1890
+}
