@@ -4,7 +4,7 @@
 
 ## Session Summary — 2026-06-26 Morning
 
-**T20-Phase3b FSS Infrastructure**: ✅ COMPLETE — All 6 blockers mapped, scripts generated, subagents completed. Simulations not yet run.
+**T32 FSS Infrastructure**: ✅ COMPLETE — All 6 blockers mapped, scripts generated, subagents completed. Simulations not yet run.
 
 - **Contradiction resolved**: α = -3.084 claim was mixing 2D vs 3D physics. 3D Z₂ LGT is second-order (3D Ising universality, α ≈ 0.11).
 - **Scripts created**: `t20-autocorr-v2.py`, `t20-sim-3d-fss.py`, `t20-multi-run.py`, `t20-fss-analysis.py`
@@ -80,14 +80,14 @@ Registry tracking all 8 runs:
 
 | Priority | Task | Description | Depends On |
 |----------|------|-------------|------------|
-| 1 | **T20-Phase3b** | **Run FSS simulations (L=8→64, fine β grid, autocorrelation)** | **Scripts ready** |
-| 2 | T20-Phase3b | Polyakov loop implementation in Rust | T20-Phase3b sims |
-| 3 | T20-Phase3b | Critical exponent fitting (ν, γ, β, α) | T20-Phase3b sims |
-| 4 | T20-Phase2 | Scaling collapse plots (existing data) | — |
+| 1 | **T32** | **Run FSS simulations (L=8→64, fine β grid, autocorrelation)** | **Scripts ready** |
+| 2 | T32 | Polyakov loop implementation in Rust | T32 sims |
+| 3 | T32 | Critical exponent fitting (ν, γ, β, α) | T32 sims |
+| 4 | T30 | Scaling collapse plots (existing data) | — |
 | 5 | T22 | Spin Foam Amplitudes — single vertex computation | T20 |
 | 6 | T23 | Entanglement entropy — needs T22 completion | T22 |
 
-**Key decision**: T20-Phase3b simulations are the next priority. All scripts are ready; ~12–15 hours of compute needed.
+**Key decision**: T32 simulations are the next priority. All scripts are ready; ~12–15 hours of compute needed.
 
 ---
 

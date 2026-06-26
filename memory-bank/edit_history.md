@@ -1,6 +1,6 @@
 # Edit History
 
-*Last Updated: 2026-06-26 06:03:54 IST*
+*Last Updated: 2026-06-26 06:34:48 IST*
 
 ---
 
@@ -17,7 +17,7 @@
 - Modified `numerics/docs/_quarto.yml` - Added Dashboard to navbar and sidebar
 - Created `numerics/docs/data-registry.json` - Registry snapshot for dashboard FileAttachment
 
-#### 06:34:05 IST - T20-Phase3b: Finite-Size Scaling Analysis for 3D Z₂ LGT: Identified and resolved the α = -3.084 contradiction (mixing 2D vs 3D physics). Created infrastructure for rigorous FSS: 6 blockers mapped, all scripts generated, subagents completed. Simulations not yet run.
+#### 06:34:05 IST - T32: Finite-Size Scaling Analysis for 3D Z₂ LGT: Identified and resolved the α = -3.084 contradiction (mixing 2D vs 3D physics). Created infrastructure for rigorous FSS: 6 blockers mapped, all scripts generated, subagents completed. Simulations not yet run.
 - Created `numerics/src/scripts/t20-autocorr-v2.py` - Rust-based autocorrelation analysis with 8 worker threads, --raw-output flag, τ_int measurement
 - Created `numerics/src/scripts/t20-sim-3d-fss.py` - Fine β grid (Δβ=0.001-0.005) near critical point for L=8,16,32,48,64
 - Created `numerics/src/scripts/t20-multi-run.py` - Multiple independent runs with unique seeds per (L,β) configuration

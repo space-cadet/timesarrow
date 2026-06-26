@@ -1,55 +1,27 @@
 # Session Cache
 
-*Created: 2026-06-26 06:03:54 IST*
-*Last Updated: 2026-06-26 06:03:54 IST*
+*Created: 2026-06-26 06:34:48 IST*
+*Last Updated: 2026-06-26 06:34:48 IST*
 
 **Started**: 2026-06-26 01:04:05 IST
-**Focus Task**: T20: Rust checkpointing, data collation fix, and simulation dashboard deployment
+**Focus Task**: T20: Rust checkpointing and data collation fix
 **Session File**: `sessions/2026-06-26-morning.md`
-**Status**: 🔄 Active: 6, Paused: 0, Completed: 3
+**Status**: 🔄 Active: 6, Paused: 0, Completed: 4
 
 ## Overview
 
-- Active: 6 | Paused: 0 | Completed: 3
+- Active: 6 | Paused: 0 | Completed: 4
 - Last Session: 2026-06-26
 - Current Period: morning
 
 ## Active Tasks
 
-### T20: Rust checkpointing, data collation fix, and simulation dashboard deployment
+### T20: Rust checkpointing and data collation fix
 **Status:** 🔄 **IN PROGRESS**
 **Started:** 2026-06-26
-**Context**: Rust checkpointing, data collation fix, and simulation dashboard deployment
+**Context**: Make simulation code pausable/resumable with incremental data writes. Fix registry system for tracking simulation outputs.
 **Progress**:
-Rust checkpointing, data collation fix, and simulation dashboard deployment
-
-### T20-Phase1: Z₂ LGT 2D square lattice
-**Status:** 🔄 **IN PROGRESS**
-**Started:** 2026-06-24
-**Context**: [Details](tasks/T20.md)
-**Progress**:
-[Details](tasks/T20.md)
-
-### T20-Phase2: Sharp phase transition figures
-**Status:** 🔄 **IN PROGRESS**
-**Started:** 2026-06-25
-**Context**: [Details](tasks/T20.md)
-**Progress**:
-[Details](tasks/T20.md)
-
-### T20-Phase3: 3D cubic lattice
-**Status:** 🔄 **IN PROGRESS**
-**Started:** 2026-06-25
-**Context**: [Details](tasks/T20.md)
-**Progress**:
-[Details](tasks/T20.md)
-
-### T20-Phase3b: Critical Exponent Extraction from 3D Z₂ LGT
-**Status:** 🔄 **IN PROGRESS**
-**Started:** 2026-06-26
-**Context**: [Details](tasks/T20-Phase3b.md)
-**Progress**:
-[Details](tasks/T20-Phase3b.md)
+Make simulation code pausable/resumable with incremental data writes. Fix registry system for tracking simulation outputs.
 
 ### T22: Spin Foam Amplitudes
 **Status:** 🔄 **IN PROGRESS**
@@ -57,6 +29,34 @@ Rust checkpointing, data collation fix, and simulation dashboard deployment
 **Context**: **[Details](tasks/T22.md)**
 **Progress**:
 **[Details](tasks/T22.md)**
+
+### T29: Z₂ LGT 2D square lattice
+**Status:** 🔄 **IN PROGRESS**
+**Started:** 2026-06-24
+**Context**: [Details](tasks/T20.md)
+**Progress**:
+[Details](tasks/T20.md)
+
+### T30: Sharp phase transition figures
+**Status:** 🔄 **IN PROGRESS**
+**Started:** 2026-06-25
+**Context**: [Details](tasks/T20.md)
+**Progress**:
+[Details](tasks/T20.md)
+
+### T31: 3D cubic lattice
+**Status:** 🔄 **IN PROGRESS**
+**Started:** 2026-06-25
+**Context**: [Details](tasks/T20.md)
+**Progress**:
+[Details](tasks/T20.md)
+
+### T32: Critical Exponent Extraction from 3D Z₂ LGT
+**Status:** 🔄 **IN PROGRESS**
+**Started:** 2026-06-26
+**Context**: [Details](tasks/T20-Phase3b.md)
+**Progress**:
+[Details](tasks/T20-Phase3b.md)
 
 ## Completed Tasks
 
@@ -75,11 +75,16 @@ Rust checkpointing, data collation fix, and simulation dashboard deployment
 **Started:** 2026-06-25
 **Completed:** 2026-06-25
 
+### T28: Simulation Dashboard
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-06-26
+**Completed:** 2026-06-26
+
 ## Next Session Focus
 
-1. T20: Rust checkpointing, data collation fix, and simulation dashboard deployment
-1. T20-Phase1: Z₂ LGT 2D square lattice
-1. T20-Phase2: Sharp phase transition figures
+1. T20: Rust checkpointing and data collation fix
+1. T22: Spin Foam Amplitudes
+1. T29: Z₂ LGT 2D square lattice
 
 ## System Status
 
