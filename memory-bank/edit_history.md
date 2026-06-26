@@ -2,7 +2,7 @@
 
 *Last Updated: 2026-06-26 06:34:48 IST*
 
-> ⚠️ **STALE**: This generated view references old task IDs (T20-Phase3b, T29-T32) that were restructured on 2026-06-26. See `tasks/T20.md` and subtasks T20a–T20d for current task structure.
+> ⚠️ **STALE**: This generated view references old task IDs that were restructured on 2026-06-26. See `tasks/T20.md` and subtasks T20a–T20d for current task structure.
 
 ---
 
@@ -19,15 +19,15 @@
 - Modified `numerics/docs/_quarto.yml` - Added Dashboard to navbar and sidebar
 - Created `numerics/docs/data-registry.json` - Registry snapshot for dashboard FileAttachment
 
-#### 06:34:05 IST - T32: Finite-Size Scaling Analysis for 3D Z₂ LGT: Identified and resolved the α = -3.084 contradiction (mixing 2D vs 3D physics). Created infrastructure for rigorous FSS: 6 blockers mapped, all scripts generated, subagents completed. Simulations not yet run.
+#### 06:34:05 IST - T20d: Finite-Size Scaling Analysis for 3D Z₂ LGT: Identified and resolved the α = -3.084 contradiction (mixing 2D vs 3D physics). Created infrastructure for rigorous FSS: 6 blockers mapped, all scripts generated, subagents completed. Simulations not yet run.
 - Created `numerics/src/scripts/t20-autocorr-v2.py` - Rust-based autocorrelation analysis with 8 worker threads, --raw-output flag, τ_int measurement
 - Created `numerics/src/scripts/t20-sim-3d-fss.py` - Fine β grid (Δβ=0.001-0.005) near critical point for L=8,16,32,48,64
 - Created `numerics/src/scripts/t20-multi-run.py` - Multiple independent runs with unique seeds per (L,β) configuration
 - Created `numerics/src/scripts/t20-fss-analysis.py` - 4 FSS methods: Binder cumulant crossing, scaling collapse, peak height scaling, β_c shift with corrections-to-scaling
 - Modified `rust-lattice/src/main.rs` - Added --raw-output flag for raw time series output (autocorrelation pipeline)
-- Created `memory-bank/tasks/T20-Phase3b.md` - Full task specification: 6 blockers, requirements, estimated compute cost, analysis methods
+- Created `memory-bank/tasks/T20d.md` - Full task specification: 6 blockers, requirements, estimated compute cost, analysis methods
 - Modified `memory-bank/tasks/T20.md` - Updated gap analysis: Wilson loops implemented (2026-06-26 night), missing observables corrected
-- Modified `memory-bank/activeContext.md` - Added T20-Phase3b status and next steps
+- Modified `memory-bank/activeContext.md` - Added T20d status and next steps
 
 #### 00:50:02 IST - T20: Gap analysis: identified missing Wilson loops, critical exponents, and Phase 2 plots across all T20 phases
 - Identified `memory-bank/implementation-details/t20-missing-observables.md` - Documented all missing observables: Wilson loops (all phases), critical exponents (2D & 3D), Phase 2 scaling plots

@@ -23,11 +23,11 @@
 
 ## Summary
 
-Extracting critical exponents from the 3D Z₂ LGT simulation requires a dedicated finite-size scaling study that is substantially more demanding than the current T31 data collection. This document details the specific requirements.
+Extracting critical exponents from the 3D Z₂ LGT simulation requires a dedicated finite-size scaling study that is substantially more demanding than the current T20c data collection. This document details the specific requirements.
 
 ## The Gap
 
-T31 collected data at L = 4, 6, 8, 16, 24, 32 with Δβ = 0.02 spacing. This demonstrated the phase transition but cannot extract critical exponents because:
+T20c collected data at L = 4, 6, 8, 16, 24, 32 with Δβ = 0.02 spacing. This demonstrated the phase transition but cannot extract critical exponents because:
 - Grid resolution (Δβ = 0.02) is much larger than the peak width (~0.006 for L=32)
 - Peak heights are quantized by grid, not resolved
 - Only 3 sizes have well-resolved peaks; L≥16 peaks are at the same grid points
@@ -273,7 +273,7 @@ error = np.std(observable) / np.sqrt(N_eff)
 
 ## Decision Log
 
-**2026-06-26:** Current T31 data is sufficient for demonstrating the phase transition and Wilson loop behavior, but insufficient for critical exponent extraction. A dedicated FSS study is needed if we want to confirm the universality class from first principles. For the paper, citing literature values and stating consistency is the pragmatic approach.
+**2026-06-26:** Current T20c data is sufficient for demonstrating the phase transition and Wilson loop behavior, but insufficient for critical exponent extraction. A dedicated FSS study is needed if we want to confirm the universality class from first principles. For the paper, citing literature values and stating consistency is the pragmatic approach.
 
 ---
 

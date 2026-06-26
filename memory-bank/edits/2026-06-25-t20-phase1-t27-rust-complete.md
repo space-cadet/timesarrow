@@ -7,7 +7,7 @@
 
 ## What Was Completed
 
-### 1. T20-Phase1 — TypeScript Production Run (CONTINUED from previous session)
+### 1. T20a — TypeScript Production Run (CONTINUED from previous session)
 
 The L=16, 100k sweeps, 11 β values run that was already in progress when the session started.
 
@@ -90,8 +90,8 @@ Built from scratch during this session.
 
 ## Next Steps
 
-1. **T20-Phase2**: Finite-size scaling with Rust — L = 8, 12, 16, 20, 24, β values 0.3–0.6 (critical region)
-2. **T20-Phase3**: 3D cubic lattice extension — Wilson loops, critical exponents, dressed correlator
+1. **T20b**: Finite-size scaling with Rust — L = 8, 12, 16, 20, 24, β values 0.3–0.6 (critical region)
+2. **T20c**: 3D cubic lattice extension — Wilson loops, critical exponents, dressed correlator
 
 ## Issues Encountered
 
