@@ -1,12 +1,16 @@
 # Session Cache
 
 *Created: 2026-06-26*
-*Last Updated: 2026-06-26*
+*Last Updated: 2026-06-26 23:50 IST*
 
 **Started**: 2026-06-26 01:04:05 IST
 **Focus Task**: T20d: Critical Exponent Extraction from 3D Z₂ LGT
 **Session File**: `sessions/2026-06-26-night.md`
 **Status**: 🔄 Active: 5, Paused: 0, Completed: 4
+
+## Recent Activity
+
+- **23:50**: Diagnosed DB schema mismatch (v1.0 column names vs v1.1 expectations). Plan: Recreate database from text files. Committed 4 rename files. See `edits/2026-06-26/235000-T20-schema-fix-plan.md`.
 
 ## Overview
 

@@ -1,12 +1,18 @@
 # Edit History
 
-*Last Updated: 2026-06-26 06:34:48 IST*
+*Last Updated: 2026-06-26 23:50:00 IST*
 
 > ⚠️ **STALE**: This generated view references old task IDs that were restructured on 2026-06-26. See `tasks/T20.md` and subtasks T20a–T20d for current task structure.
 
 ---
 
 ## 2026-06-26
+
+#### 23:50:00 IST - T20/T20d: Memory-bank schema fix plan — diagnosed v1.0→v1.1 column name mismatch, committed rename files, planned database recreation from text
+- Diagnosed `memory-bank/database/schema.sql` mismatch: `sessions` table has `session_date`, `session_period`, `focus_task` but mb-cli v1.1 expects `date`, `period`, `focus`
+- Committed 4 staged rename files to git: `edit_history.md`, `edits/2026-06-25-t20-phase1-t27-rust-complete.md`, `edits/2026-06-26/003000-T20-gap-analysis.md`, `implementation-details/t20-phase3b-requirements.md`
+- Created `memory-bank/edits/2026-06-26/235000-T20-schema-fix-plan.md` — Full Option A plan: backup → init → populate → verify
+- Modified `memory-bank/session_cache.md` — Updated with schema fix status
 
 #### 11:33:34 IST - T20: Rust checkpointing, data collation fix, and simulation dashboard deployment
 - Modified `rust-lattice/src/main.rs` - Added --checkpoint flag, mpsc streaming, atomic writes, resume support
