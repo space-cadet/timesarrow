@@ -20,18 +20,18 @@ async function initSchema() {
   await sqlite.exec(`
     CREATE TABLE IF NOT EXISTS sessions (
       id TEXT PRIMARY KEY,         -- Filename (e.g., 2025-11-22-evening.md)
-      session_date TEXT NOT NULL,  -- YYYY-MM-DD (canonical: session_date)
-      session_period TEXT,         -- morning, afternoon, evening, night (canonical: session_period)
-      status TEXT,                 -- In Progress, Complete, etc.
-      focus_task TEXT,             -- Main focus of the session (canonical: focus_task)
-      active_count INTEGER,        -- From "Active: X"
-      paused_count INTEGER,        -- From "Paused: X"
-      completed_count INTEGER,     -- From "Completed: X"
-      cancelled_count INTEGER,     -- From "Cancelled: X"
-      content TEXT                 -- Full markdown content
+      date TEXT NOT NULL,           -- YYYY-MM-DD
+      period TEXT,                  -- morning, afternoon, evening, night
+      status TEXT,                  -- In Progress, Complete, etc.
+      focus TEXT,                   -- Main focus of the session
+      active_count INTEGER,         -- From "Active: X"
+      paused_count INTEGER,         -- From "Paused: X"
+      completed_count INTEGER,      -- From "Completed: X"
+      cancelled_count INTEGER,      -- From "Cancelled: X"
+      content TEXT                  -- Full markdown content
     );
 
-    CREATE INDEX IF NOT EXISTS idx_sessions_date ON sessions(session_date);
+    CREATE INDEX IF NOT EXISTS idx_sessions_date ON sessions(date);
   `);
   console.log('✓ Database schema initialized\n');
 }
@@ -133,7 +133,7 @@ async function main() {
     // Prepare insert statement
     const insertSession = sqlite.prepare(`
       INSERT INTO sessions (
-        id, session_date, session_period, status, focus_task, 
+        id, date, period, status, focus, 
         active_count, paused_count, completed_count, cancelled_count, 
         content
       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -181,7 +181,7 @@ async function main() {
     // Display Stats
     console.log('\n=====================================');
     const totalSessions = sqlite.prepare('SELECT COUNT(*) as count FROM sessions').get().count;
-    const dateRange = sqlite.prepare('SELECT MIN(session_date) as start, MAX(session_date) as end FROM sessions').get();
+    const dateRange = sqlite.prepare('SELECT MIN(date) as start, MAX(date) as end FROM sessions').get();
     
     console.log(`Total Sessions: ${totalSessions}`);
     console.log(`Date Range: ${dateRange.start} to ${dateRange.end}`);
