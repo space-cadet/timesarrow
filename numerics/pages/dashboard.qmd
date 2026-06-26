@@ -1,0 +1,231 @@
+---
+title: "TimesArrow Simulation Dashboard"
+description: "Unified view of all numerical simulation runs"
+date: 2026-06-26
+format:
+  html:
+    toc: true
+    page-layout: full
+    css: styles.css
+---
+
+```{ojs}
+//| echo: false
+
+// Load registry data
+registry = await FileAttachment("../data/registry.json").json()
+
+// Extract runs with computed fields
+runs = registry.runs.map(r => ({
+  ...r,
+  latticeSize: r.parameters?.latticeSize || "—",
+  betaRange: r.parameters?.betaValues 
+    ? `${Math.min(...r.parameters.betaValues)}–${Math.max(...r.parameters.betaValues)}`
+    : "—",
+  keyFinding: r.results?.keyFinding || r.results?.criticalBetaEstimate || "—",
+  date: new Date(r.timestamp).toLocaleDateString('en-GB'),
+  hasOutput: r.outputFiles?.length > 0 ? "✅" : "❌"
+}))
+
+// Summary stats
+totalRuns = runs.length
+tasks = [...new Set(runs.map(r => r.task))].sort()
+phases = [...new Set(runs.map(r => r.phase))].sort()
+```
+
+## Summary
+
+::: {.callout-note appearance="simple"}
+**Project:** `{ojs} registry.project`  
+**Schema Version:** `{ojs} registry.schemaVersion`  
+**Last Updated:** `{ojs} new Date(registry.lastUpdated).toLocaleString('en-GB')`
+:::
+
+::: {.grid}
+
+::: {.g-col-3}
+<div class="card">
+<div class="card-body text-center">
+<h3 class="card-title">{ojs} totalRuns</h3>
+<p class="card-text text-muted">Total Runs</p>
+</div>
+</div>
+:::
+
+::: {.g-col-3}
+<div class="card">
+<div class="card-body text-center">
+<h3 class="card-title">{ojs} tasks.length</h3>
+<p class="card-text text-muted">Tasks</p>
+</div>
+</div>
+:::
+
+::: {.g-col-3}
+<div class="card">
+<div class="card-body text-center">
+<h3 class="card-title">{ojs} phases.length</h3>
+<p class="card-text text-muted">Phases</p>
+</div>
+</div>
+:::
+
+::: {.g-col-3}
+<div class="card">
+<div class="card-body text-center">
+<h3 class="card-title">{ojs} runs.filter(r => r.status === 'complete').length</h3>
+<p class="card-text text-muted">Complete</p>
+</div>
+</div>
+:::
+
+:::
+
+## All Runs
+
+```{ojs}
+//| echo: false
+
+viewof taskFilter = Inputs.select(
+  ["All", ...tasks],
+  {label: "Task:", value: "All"}
+)
+
+viewof phaseFilter = Inputs.select(
+  ["All", ...phases],
+  {label: "Phase:", value: "All"}
+)
+
+viewof searchQuery = Inputs.text(
+  {label: "Search:", placeholder: "Run ID, description, finding..."}
+)
+```
+
+```{ojs}
+//| echo: false
+
+filteredRuns = runs.filter(r => {
+  const taskMatch = taskFilter === "All" || r.task === taskFilter;
+  const phaseMatch = phaseFilter === "All" || r.phase === phaseFilter;
+  const searchMatch = !searchQuery || 
+    r.runId.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    r.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    String(r.keyFinding).toLowerCase().includes(searchQuery.toLowerCase());
+  return taskMatch && phaseMatch && searchMatch;
+})
+```
+
+```{ojs}
+//| echo: false
+
+Inputs.table(filteredRuns, {
+  columns: [
+    "runId",
+    "task",
+    "phase", 
+    "latticeSize",
+    "betaRange",
+    "date",
+    "status",
+    "keyFinding",
+    "hasOutput"
+  ],
+  header: {
+    runId: "Run ID",
+    task: "Task",
+    phase: "Phase",
+    latticeSize: "L",
+    betaRange: "β Range",
+    date: "Date",
+    status: "Status",
+    keyFinding: "Key Finding",
+    hasOutput: "Output"
+  },
+  format: {
+    runId: id => htl.html`<code>${id}</code>`,
+    status: s => s === "complete" 
+      ? htl.html`<span class="badge bg-success">${s}</span>`
+      : htl.html`<span class="badge bg-warning">${s}</span>`,
+    hasOutput: h => h === "✅"
+      ? htl.html`<span class="text-success">${h}</span>`
+      : htl.html`<span class="text-danger">${h}</span>`,
+    keyFinding: k => htl.html`<span class="text-truncate d-inline-block" style="max-width:300px" title="${k}">${k}</span>`
+  },
+  width: {
+    runId: 200,
+    task: 60,
+    phase: 80,
+    latticeSize: 50,
+    betaRange: 100,
+    date: 100,
+    status: 80,
+    keyFinding: 300,
+    hasOutput: 60
+  },
+  rows: 15
+})
+```
+
+## Task Breakdown
+
+```{ojs}
+//| echo: false
+
+taskSummary = tasks.map(t => {
+  const taskRuns = runs.filter(r => r.task === t);
+  const taskInfo = registry.tasks[t] || {};
+  return {
+    task: t,
+    name: taskInfo.name || t,
+    status: taskInfo.status || "unknown",
+    total: taskRuns.length,
+    complete: taskRuns.filter(r => r.status === "complete").length,
+    phases: [...new Set(taskRuns.map(r => r.phase))].join(", ")
+  };
+})
+
+Inputs.table(taskSummary, {
+  columns: ["task", "name", "status", "total", "complete", "phases"],
+  header: {
+    task: "Task ID",
+    name: "Name",
+    status: "Status",
+    total: "Total Runs",
+    complete: "Complete",
+    phases: "Phases"
+  },
+  format: {
+    status: s => s === "complete"
+      ? htl.html`<span class="badge bg-success">${s}</span>`
+      : s === "in-progress"
+      ? htl.html`<span class="badge bg-primary">${s}</span>`
+      : htl.html`<span class="badge bg-secondary">${s}</span>`
+  }
+})
+```
+
+## Recent Activity
+
+```{ojs}
+//| echo: false
+
+recentRuns = runs
+  .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+  .slice(0, 10)
+
+html`<div class="list-group">
+  ${recentRuns.map(r => htl.html`
+    <div class="list-group-item d-flex justify-content-between align-items-start">
+      <div>
+        <div class="fw-bold">${r.runId}</div>
+        <small class="text-muted">${r.description}</small>
+      </div>
+      <span class="badge bg-light text-dark">${r.date}</span>
+    </div>
+  `).join('')}
+</div>`
+```
+
+---
+
+*Auto-generated from [`registry.json`](../data/registry.json). Run `npx ts-node --esm src/scripts/collate-data.ts` to update.*
