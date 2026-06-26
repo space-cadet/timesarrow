@@ -12,6 +12,8 @@ website:
     left:
       - href: index.qmd
         text: Overview
+      - href: dashboard.qmd
+        text: Dashboard
       - text: Simulations
         menu:
           - href: tasks/t25-volume-operator.qmd
@@ -29,10 +31,11 @@ website:
           - href: tasks/t26-coupled-matter.qmd
             text: T26 — Coupled Matter
   sidebar:
-    - title: "Simulations"
+    - title: "Navigation"
       style: "docked"
       contents:
         - index.qmd
+        - dashboard.qmd
         - section: "Tasks"
           contents:
             - tasks/t25-volume-operator.qmd

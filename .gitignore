@@ -2,3 +2,5 @@ node_modules/
 *.js.map
 .DS_Store
 *_files/
+rust-lattice/target/debug/
+*.bak.*
