@@ -1,40 +1,20 @@
 # Edit History
 
-*Last Updated: 2026-06-25 23:25:52 IST*
+*Last Updated: 2026-06-26 01:08:34 IST*
 
 ---
 
 ## 2026-06-26
 
-#### 05:14 IST - T20-Phase3b: Created critical exponent extraction task
-
-**Action:** Created
-**Scope:** timesarrow project — T20-Phase3b critical exponents
-
-**Reason:** The current T20-Phase3 data is insufficient for extracting critical exponents. A dedicated finite-size scaling study is needed.
-
-**What was done:**
-1. Created task file: `memory-bank/tasks/T20-Phase3b.md` — comprehensive requirements document
-2. Created implementation doc: `memory-bank/implementation-details/t20-phase3b-requirements.md` — detailed specs
-3. Updated `memory-bank/tasks.md` to include new task
-
-**Key requirements identified:**
-- Lattice sizes: L = 8, 12, 16, 20, 24, 32 (minimum), add 48, 64 (ideal)
-- β grid: Δβ = 0.001–0.005 near β_c (current 0.02 is too coarse)
-- Sweeps: 1.5M per β (current 200k insufficient)
-- Independent runs: 3× per (L, β) for error estimates
-- New observable: Polyakov loop (current plaquette is not order parameter)
-- Analysis methods: Binder crossing, scaling collapse, peak scaling, β_c shift
-- Corrections to scaling: needed for L < 32
-- Autocorrelation: must measure τ_int for reliable error bars
-
-**Estimated cost:** 6-8 hours (minimum) to 20+ hours (ideal)
-
-**Decision:** For the paper, cite literature values (Pelissetto & Vicari 2002) and state consistency. A dedicated FSS study is a separate project.
-
-**Status:** 🔴 NOT STARTED — blocked by implementation requirements
-
-**Commits:** `80d9988` — feat: Add T20-Phase3b task for critical exponent extraction
+#### 06:34:05 IST - T20-Phase3b: Finite-Size Scaling Analysis for 3D Z₂ LGT: Identified and resolved the α = -3.084 contradiction (mixing 2D vs 3D physics). Created infrastructure for rigorous FSS: 6 blockers mapped, all scripts generated, subagents completed. Simulations not yet run.
+- Created `numerics/src/scripts/t20-autocorr-v2.py` - Rust-based autocorrelation analysis with 8 worker threads, --raw-output flag, τ_int measurement
+- Created `numerics/src/scripts/t20-sim-3d-fss.py` - Fine β grid (Δβ=0.001-0.005) near critical point for L=8,16,32,48,64
+- Created `numerics/src/scripts/t20-multi-run.py` - Multiple independent runs with unique seeds per (L,β) configuration
+- Created `numerics/src/scripts/t20-fss-analysis.py` - 4 FSS methods: Binder cumulant crossing, scaling collapse, peak height scaling, β_c shift with corrections-to-scaling
+- Modified `rust-lattice/src/main.rs` - Added --raw-output flag for raw time series output (autocorrelation pipeline)
+- Created `memory-bank/tasks/T20-Phase3b.md` - Full task specification: 6 blockers, requirements, estimated compute cost, analysis methods
+- Modified `memory-bank/tasks/T20.md` - Updated gap analysis: Wilson loops implemented (2026-06-26 night), missing observables corrected
+- Modified `memory-bank/activeContext.md` - Added T20-Phase3b status and next steps
 
 #### 00:50:02 IST - T20: Gap analysis: identified missing Wilson loops, critical exponents, and Phase 2 plots across all T20 phases
 - Identified `memory-bank/implementation-details/t20-missing-observables.md` - Documented all missing observables: Wilson loops (all phases), critical exponents (2D & 3D), Phase 2 scaling plots

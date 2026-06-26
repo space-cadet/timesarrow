@@ -3,6 +3,23 @@
 *Document: Detailed requirements for extracting critical exponents from 3D Z₂ LGT*
 *Task: T20-Phase3b.md*
 *Date: 2026-06-26*
+*Status: 🔄 IN PROGRESS — Infrastructure ready, simulations pending*
+
+## Session Update (2026-06-26 Morning)
+
+**Contradiction resolved**: The claimed α = -3.084 was mixing 2D vs 3D physics. 3D Z₂ LGT is second-order (3D Ising universality, α ≈ 0.11), not first-order.
+
+**Infrastructure created**: All 6 FSS blockers mapped and scripts generated:
+- ✅ `t20-autocorr-v2.py` — Rust-based autocorrelation (8 workers, τ_int measured)
+- ✅ `t20-sim-3d-fss.py` — Fine β grid near β_c
+- ✅ `t20-multi-run.py` — Multiple independent runs with unique seeds
+- ✅ `t20-fss-analysis.py` — 4 FSS methods with corrections-to-scaling
+
+**Subagents completed**: `t20_fss_analysis` (13m36s), `t20_multi_run` (9m13s), `t20_fine_grid_l48` (8m17s), `t20_polyakov_loop` (done). `t20_autocorr` timed out but pipeline fixed with Rust `--raw-output` + worker threads.
+
+**Estimated compute**: ~12–15 hours for full L=8→64 suite.
+
+**Next**: Run simulations with proper CPU utilization.
 
 ## Summary
 
@@ -226,14 +243,14 @@ error = np.std(observable) / np.sqrt(N_eff)
 
 ## Blockers
 
-| Blocker | Impact | Resolution | Effort |
+| Blocker | Impact | Resolution | Status |
 |---------|--------|------------|--------|
-| No Polyakov loop in Rust code | Cannot measure true order parameter | Add to rust-lattice/src/lib.rs | ~1 hour |
-| No autocorrelation measurement | Error bars unreliable | Add to analysis script | ~1 hour |
-| No fine β grid | Peaks quantized, exponents unreliable | Re-run with Δβ = 0.001-0.005 | ~3 hours compute |
-| No L ≥ 48 | Corrections to scaling significant | Add L=48, 64 (if memory allows) | ~2-3 hours compute |
-| No multiple independent runs | No variance estimate | Run 3× per (L, β) | ×3 compute |
-| No corrections-to-scaling fit | ν biased low | Implement 3-parameter fit | ~1 hour |
+| No Polyakov loop in Rust code | Cannot measure true order parameter | Add to rust-lattice/src/lib.rs | 🟡 Script ready, needs implementation |
+| No autocorrelation measurement | Error bars unreliable | Add to analysis script | ✅ `t20-autocorr-v2.py` ready |
+| No fine β grid | Peaks quantized, exponents unreliable | Re-run with Δβ = 0.001-0.005 | ✅ `t20-sim-3d-fss.py` ready |
+| No L ≥ 48 | Corrections to scaling significant | Add L=48, 64 | ✅ `t20-sim-3d-fss.py` ready |
+| No multiple independent runs | No variance estimate | Run 3× per (L, β) | ✅ `t20-multi-run.py` ready |
+| No corrections-to-scaling fit | ν biased low | Implement 3-parameter fit | ✅ `t20-fss-analysis.py` ready |
 
 ## Recommended Next Steps
 

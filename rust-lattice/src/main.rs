@@ -26,6 +26,7 @@ fn main() {
     // Parse flags
     let mut base_seed: u64 = 42;
     let mut use_polyakov = false;
+    let mut raw_output = false;
     let mut i = 1;
     while i < args.len() {
         if args[i] == "--seed" && i + 1 < args.len() {
@@ -35,14 +36,18 @@ fn main() {
         } else if args[i] == "--polyakov" {
             use_polyakov = true;
             args.remove(i);
+        } else if args[i] == "--raw-output" {
+            raw_output = true;
+            args.remove(i);
         } else {
             i += 1;
         }
     }
 
     if args.len() < 8 {
-        eprintln!("Usage: {} [--polyakov] <L> <dimension> <measure_sweeps> <thermal_sweeps> <workers> <loop_sizes> <beta_values...> [--seed <value>]", args[0]);
+        eprintln!("Usage: {} [--polyakov] [--raw-output] <L> <dimension> <measure_sweeps> <thermal_sweeps> <workers> <loop_sizes> <beta_values...> [--seed <value>]", args[0]);
         eprintln!("  --polyakov: measure Polyakov loop (3D only)");
+        eprintln!("  --raw-output: output raw time series (plaquette values) for autocorrelation analysis");
         eprintln!("  L: lattice size (e.g., 16)");
         eprintln!("  dimension: lattice dimension 2 or 3 (e.g., 3)");
         eprintln!("  measure_sweeps: number of measurement sweeps (e.g., 100000)");
@@ -106,7 +111,44 @@ fn main() {
 
     let total_start = std::time::Instant::now();
 
-    // Run each beta value in parallel using rayon
+    // Raw output mode: output raw measurements for autocorrelation analysis
+    if raw_output {
+        let raw_results: Vec<(f64, Vec<f64>, u64)> = beta_values
+            .par_iter()
+            .enumerate()
+            .map(|(i, beta)| {
+                let seed = base_seed + i as u64;
+                let (measurements, wall_time) = simulate_beta_raw(
+                    l, dimension, *beta, thermal_sweeps, measure_sweeps, 10, seed
+                );
+                (*beta, measurements, wall_time)
+            })
+            .collect();
+
+        let total_time = total_start.elapsed().as_millis() as u64;
+
+        for (i, (beta, measurements, wall_time)) in raw_results.iter().enumerate() {
+            let comma = if i < raw_results.len() - 1 { "," } else { "" };
+            println!("    {{");
+            println!("      \"beta\": {},", beta);
+            println!("      \"numMeasurements\": {},", measurements.len());
+            println!("      \"wallTimeMs\": {},", wall_time);
+            println!("      \"rawPlaquettes\": [");
+            for (j, val) in measurements.iter().enumerate() {
+                let v_comma = if j < measurements.len() - 1 { "," } else { "" };
+                println!("        {}{}", val, v_comma);
+            }
+            println!("      ]");
+            println!("    }}{}", comma);
+        }
+
+        println!("  ],");
+        println!("  \"totalWallTimeMs\": {}", total_time);
+        println!("}}");
+        return;
+    }
+
+    // Normal mode: binned statistics
     let results: Vec<BetaResult> = beta_values
         .par_iter()
         .enumerate()

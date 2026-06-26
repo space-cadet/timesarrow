@@ -931,6 +931,37 @@ impl Z2GaugeField {
 }
 
 /// Run a simulation at a single β value on a 2D lattice.
+/// Run a simulation at a single β value and return raw measurements.
+/// Returns (Vec<plaquette>, wall_time_ms) for autocorrelation analysis.
+pub fn simulate_beta_raw(
+    l: usize,
+    dimension: usize,
+    beta: f64,
+    thermal_sweeps: usize,
+    measure_sweeps: usize,
+    measure_every: usize,
+    seed: u64,
+) -> (Vec<f64>, u64) {
+    let mut field = Z2GaugeField::new_dim(l, dimension, seed);
+
+    let thermal_start = std::time::Instant::now();
+    field.thermalize(beta, thermal_sweeps);
+    let thermal_time = thermal_start.elapsed().as_millis() as u64;
+
+    let measure_start = std::time::Instant::now();
+    let mut measurements = Vec::new();
+    for sweep in 0..measure_sweeps {
+        field.sweep(beta);
+        if sweep % measure_every == 0 {
+            let (mean_plaq, _, _) = field.plaquette_stats();
+            measurements.push(mean_plaq);
+        }
+    }
+    let measure_time = measure_start.elapsed().as_millis() as u64;
+
+    (measurements, thermal_time + measure_time)
+}
+
 pub fn simulate_beta(
     l: usize,
     beta: f64,

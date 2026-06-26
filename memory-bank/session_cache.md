@@ -1,17 +1,17 @@
 # Session Cache
 
-*Created: 2026-06-25 23:25:52 IST*
-*Last Updated: 2026-06-25 23:25:52 IST*
+*Created: 2026-06-26 01:08:35 IST*
+*Last Updated: 2026-06-26 01:08:35 IST*
 
-**Started**: 2026-06-25 23:25:52 IST
-**Focus Task**: T22: Spin Foam Amplitudes
-**Session File**: `sessions/latest.md`
-**Status**: 🔄 Active: 4, Paused: 0, Completed: 3
+**Started**: 2026-06-26 01:04:05 IST
+**Focus Task**: T20-Phase3b: Critical Exponent Extraction from 3D Z₂ LGT
+**Session File**: `sessions/2026-06-26-morning.md`
+**Status**: 🔄 Active: 5, Paused: 0, Completed: 3
 
 ## Overview
 
-- Active: 4 | Paused: 0 | Completed: 3
-- Last Session: -
+- Active: 5 | Paused: 0 | Completed: 3
+- Last Session: 2026-06-26
 - Current Period: morning
 
 ## Active Tasks
@@ -37,12 +37,19 @@
 **Progress**:
 [Details](tasks/T20.md)
 
+### T20-Phase3b: Critical Exponent Extraction from 3D Z₂ LGT
+**Status:** 🔄 **IN PROGRESS**
+**Started:** 2026-06-26
+**Context**: [Details](tasks/T20-Phase3b.md)
+**Progress**:
+[Details](tasks/T20-Phase3b.md)
+
 ### T22: Spin Foam Amplitudes
 **Status:** 🔄 **IN PROGRESS**
 **Started:** 2026-06-25
-**Context**: [Details](tasks/T22.md)
+**Context**: **[Details](tasks/T22.md)**
 **Progress**:
-[Details](tasks/T22.md)
+**[Details](tasks/T22.md)**
 
 ## Completed Tasks
 

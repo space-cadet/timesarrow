@@ -1,6 +1,17 @@
 # timesarrow — Active Context
 
-*Updated: 2026-06-26 02:28 IST*
+*Updated: 2026-06-26 06:34 IST*
+
+## Session Summary — 2026-06-26 Morning
+
+**T20-Phase3b FSS Infrastructure**: ✅ COMPLETE — All 6 blockers mapped, scripts generated, subagents completed. Simulations not yet run.
+
+- **Contradiction resolved**: α = -3.084 claim was mixing 2D vs 3D physics. 3D Z₂ LGT is second-order (3D Ising universality, α ≈ 0.11).
+- **Scripts created**: `t20-autocorr-v2.py`, `t20-sim-3d-fss.py`, `t20-multi-run.py`, `t20-fss-analysis.py`
+- **Subagents**: `t20_fss_analysis` (13m36s), `t20_multi_run` (9m13s), `t20_fine_grid_l48` (8m17s), `t20_polyakov_loop` (done). `t20_autocorr` timed out but fixed with Rust `--raw-output` + worker threads.
+- **Estimated compute**: ~12–15 hours for full L=8→64 suite.
+
+---
 
 ## Session Summary — 2026-06-26 Night
 
@@ -16,6 +27,7 @@
 | Phase 1 | 2D square, L=16 | ✅ Data collected | ✅ Wilson loops complete | Critical exponents |
 | Phase 2 | 2D finite-size scaling | ✅ Data collected | 🔄 Missing analysis | Scaling collapse, Binder crossing, ξ |
 | Phase 3 | 3D cubic lattice | ✅ Data collected | ✅ Wilson loops & string tension complete | Critical exponents |
+| **Phase 3b** | **FSS critical exponent extraction** | **🔄 Infrastructure ready** | **🔄 Scripts ready, sims pending** | **Polyakov loop implementation, compute** |
 
 ### Critical Finding (2026-06-26)
 
@@ -64,20 +76,18 @@ Registry tracking all 8 runs:
 
 ---
 
-## What's Next (CORRECTED 2026-06-26)
+## What's Next (Updated 2026-06-26)
 
 | Priority | Task | Description | Depends On |
 |----------|------|-------------|------------|
-| 1 | T20-ext | Add Wilson loop to Rust code, re-run Phase 1 & 3 | — |
-| 2 | T20-ext | Compute string tension from new Wilson loop data | Step 1 |
-| 3 | T20-ext | Critical exponents fitting (can use existing Phase 2 data) | Step 1 (for Phase 1/3) |
-| 4 | T20-ext | Scaling collapse plots (can use existing Phase 2 data) | — |
-| 5 | T22 | Spin Foam Amplitudes — single vertex computation (after T20 complete) | T20 |
+| 1 | **T20-Phase3b** | **Run FSS simulations (L=8→64, fine β grid, autocorrelation)** | **Scripts ready** |
+| 2 | T20-Phase3b | Polyakov loop implementation in Rust | T20-Phase3b sims |
+| 3 | T20-Phase3b | Critical exponent fitting (ν, γ, β, α) | T20-Phase3b sims |
+| 4 | T20-Phase2 | Scaling collapse plots (existing data) | — |
+| 5 | T22 | Spin Foam Amplitudes — single vertex computation | T20 |
 | 6 | T23 | Entanglement entropy — needs T22 completion | T22 |
 
-**Decision needed**: Compute T20 missing observables now, or proceed to T22 with caveat?
-
-**Decision needed**: Compute T20 missing observables now, or proceed to T22 with caveat?
+**Key decision**: T20-Phase3b simulations are the next priority. All scripts are ready; ~12–15 hours of compute needed.
 
 ---
 
