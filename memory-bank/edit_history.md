@@ -1,10 +1,21 @@
 # Edit History
 
-*Last Updated: 2026-06-26 01:08:34 IST*
+*Last Updated: 2026-06-26 06:03:54 IST*
 
 ---
 
 ## 2026-06-26
+
+#### 11:33:34 IST - T20: Rust checkpointing, data collation fix, and simulation dashboard deployment
+- Modified `rust-lattice/src/main.rs` - Added --checkpoint flag, mpsc streaming, atomic writes, resume support
+- Modified `rust-lattice/Cargo.toml` - Added chrono dependency for timestamps
+- Modified `numerics/src/scripts/t20-sim-3d-fss-v2.py` - Pass checkpoint path to Rust binary
+- Modified `numerics/src/scripts/collate-data.ts` - Fixed ES module compatibility, updated regex for hyphen-date filenames
+- Modified `numerics/data/registry.json` - Fixed syntax error, backfilled 22 missing June 26 runs (33 total)
+- Modified `numerics/output/benchmark-lattice-sizes-20250626.json` - Reconstructed from corrupted file, added scaling analysis
+- Created `numerics/docs/dashboard.qmd` - Interactive OJS dashboard for browsing simulation runs
+- Modified `numerics/docs/_quarto.yml` - Added Dashboard to navbar and sidebar
+- Created `numerics/docs/data-registry.json` - Registry snapshot for dashboard FileAttachment
 
 #### 06:34:05 IST - T20-Phase3b: Finite-Size Scaling Analysis for 3D Z₂ LGT: Identified and resolved the α = -3.084 contradiction (mixing 2D vs 3D physics). Created infrastructure for rigorous FSS: 6 blockers mapped, all scripts generated, subagents completed. Simulations not yet run.
 - Created `numerics/src/scripts/t20-autocorr-v2.py` - Rust-based autocorrelation analysis with 8 worker threads, --raw-output flag, τ_int measurement
