@@ -2,7 +2,7 @@
   "schemaVersion": "1.0.0",
   "project": "timesarrow",
   "description": "Registry of all numerical simulation runs for TimesArrow project",
-  "lastUpdated": "2026-06-26T05:16:53.734Z",
+  "lastUpdated": "2026-06-26T05:18:54.077Z",
   "runs": [
     {
       "runId": "t20-p1-L8-20250624",
@@ -12584,6 +12584,22 @@
         "data/fss/t20-p3b-L8-3D-fine-20260626.json"
       ],
       "page": "tasks/t20-z2-lgt.qmd"
+    },
+    {
+      "runId": "benchmark-benchmark-lattice-sizes-20250626",
+      "task": "BENCHMARK",
+      "phase": "benchmark",
+      "status": "complete",
+      "timestamp": "2026-06-26T05:18:54.064Z",
+      "description": "Benchmark run from benchmark-lattice-sizes-20250626.json",
+      "parameters": {
+        "latticeSize": 0
+      },
+      "results": {},
+      "outputFiles": [
+        "output/benchmark-lattice-sizes-20250626.json"
+      ],
+      "page": "tasks/benchmark-z2-lgt.qmd"
     }
   ],
   "tasks": {

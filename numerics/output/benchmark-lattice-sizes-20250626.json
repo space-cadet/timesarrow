@@ -1,46 +1,37 @@
 {
   "date": "2026-06-26T03:18:00+05:30",
+  "description": "Lattice size scaling benchmark for 3D Z₂ LGT Wilson loop measurements",
+  "measurementSweeps": 100000,
+  "thermalSweeps": 10000,
+  "workers": 8,
+  "numBetas": 21,
   "runs": [
-Running L=16...
     {
       "L": 16,
       "dimension": 3,
-      "measureSweeps": 100000,
-      "thermalSweeps": 10000,
-      "workers": 8,
-      "numBetas": 21,
       "totalTimeSeconds": 129,
       "avgTimePerBetaSeconds": 6.14,
       "outputFile": "t20-p3-L16-3D-wilson-fine-20250626.json"
-    }
-  L=16 completed in 129s (avg 6.14s per β)
-    ,
-Running L=24...
+    },
     {
       "L": 24,
       "dimension": 3,
-      "measureSweeps": 100000,
-      "thermalSweeps": 10000,
-      "workers": 8,
-      "numBetas": 21,
       "totalTimeSeconds": 436,
       "avgTimePerBetaSeconds": 20.76,
       "outputFile": "t20-p3-L24-3D-wilson-fine-20250626.json"
-    }
-  L=24 completed in 436s (avg 20.76s per β)
-    ,
-Running L=32...
+    },
     {
       "L": 32,
       "dimension": 3,
-      "measureSweeps": 100000,
-      "thermalSweeps": 10000,
-      "workers": 8,
-      "numBetas": 21,
       "totalTimeSeconds": 1034,
       "avgTimePerBetaSeconds": 49.23,
       "outputFile": "t20-p3-L32-3D-wilson-fine-20250626.json"
     }
-  L=32 completed in 1034s (avg 49.23s per β)
-  ]
+  ],
+  "scalingAnalysis": {
+    "observation": "Time per beta scales super-linearly with lattice size",
+    "L16_to_L24_ratio": 3.38,
+    "L24_to_L32_ratio": 2.37,
+    "estimatedL64_timeHours": "~3.5 hours (estimated)"
+  }
 }
