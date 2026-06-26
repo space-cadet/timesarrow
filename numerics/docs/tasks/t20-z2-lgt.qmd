@@ -2,10 +2,10 @@
 title: "T20 — Z₂ Lattice Gauge Theory Monte Carlo"
 subtitle: "Confinement-deconfinement transition"
 date: "2026-06-25"
-date-modified: "2026-06-26T03:52:00+05:30"
+date-modified: "2026-06-26T07:44:00+05:30"
 ---
 
-*Last updated: 2026-06-26 03:52 IST*
+*Last updated: 2026-06-26 07:44 IST*
 
 ## Objective
 
@@ -17,6 +17,7 @@ Classical Monte Carlo simulation of Z₂ gauge theory to demonstrate the confine
 |-------|-------------|--------|------|
 | Phase 1 | 2D square lattice, critical β identification | ✅ Complete | 2026-06-24 |
 | Phase 2 | Finite-size scaling (L = 8–24) | ✅ Complete | 2026-06-25 |
+| Phase 3b | 3D FSS & critical exponents | 🟡 In Progress | 2026-06-26 |
 | Phase 3 | 3D cubic lattice (L=4,6,8) | ✅ Complete | 2026-06-25 |
 | Phase 3b | 3D Wilson loops & string tension (L=8) | ✅ Complete | 2026-06-26 |
 
@@ -536,6 +537,53 @@ const error = jackknifeError(binned);
 
 console.log(`⟨P⟩ = ${mean.toFixed(4)} ± ${error.toFixed(4)}`);
 ```
+
+## Phase 3b: Finite-Size Scaling & Critical Exponents (In Progress)
+
+**Status**: Infrastructure complete, simulations running (2026-06-26)
+
+Following the identification of a critical contradiction in early analysis (claiming α = −3.084, a first-order 2D value, for a 3D second-order transition), a rigorous finite-size scaling study was designed.
+
+### Scripts Created
+
+| Script | Purpose | Status |
+|--------|---------|--------|
+| `t20-sim-3d-fss-v2.py` | Fine β grid simulations (batched β parallelization) | ✅ Ready |
+| `t20-multi-run.py` | Multiple independent runs per (L,β) | ✅ Ready |
+| `t20-autocorr-v2.py` | Autocorrelation time τ_int measurement | ✅ Done |
+| `t20-fss-analysis.py` | 4 FSS methods + corrections-to-scaling | ✅ Ready |
+
+### Analysis Methods
+
+1. **Binder cumulant crossing** — U(β, L) curves cross at β_c
+2. **Scaling collapse** — Data collapse onto universal scaling function
+3. **Peak height scaling** — χ_max ∝ L^{γ/ν} with ω corrections
+4. **β_c shift** — β_c(L) = β_c(∞) + aL^{-1/ν} + bL^{-(1+ω)/ν}
+
+### Expected Results (3D Ising Universality)
+
+| Exponent | Value | Method |
+|----------|-------|--------|
+| ν | ≈ 0.63 | Binder crossing, β_c shift |
+| β | ≈ 0.33 | Order parameter scaling |
+| γ | ≈ 1.24 | Susceptibility peak scaling |
+| α | ≈ 0.11 | 2 − 3ν (Rushbrooke) |
+
+### Compute Plan
+
+| Run Set | Description | Status |
+|---------|-------------|--------|
+| 1a | L=8 validation | ✅ Complete |
+| 1b | L=16,32,48,64 fine β grid | 🔄 Running (~1.5h) |
+| 2 | Multiple independent runs | ⏳ Blocked |
+| 3 | FSS analysis & exponent extraction | ⏳ Blocked |
+
+### Key Files
+
+- `implementation-details/t20-phase3b-requirements.md` — Full specifications
+- `numerics/data/fss/` — Simulation outputs
+
+---
 
 ## References
 
