@@ -41,3 +41,48 @@ Every time `.qmd` files in `numerics/docs/` change, follow this exact workflow:
 **Critical**: Update timestamps on **EVERY** change. Forgetting requires amending commits on both repos.
 
 **Live site**: https://space-cadet.github.io/projects/timesarrow/numerics/
+
+## Simulation Script Requirements
+
+*Added: 2026-06-26*
+
+**ALL simulation scripts MUST be checkpointable and resumable.** This is non-negotiable.
+
+### Why
+- Subagents get killed after timeouts
+- Context compaction kills long-running sessions
+- System restarts happen
+- Rust batch processes take 1-2 hours per L value
+
+### Requirements
+
+1. **Incremental writes**: Save results after EACH β value or batch, not just at the end
+2. **`--resume` flag**: Check existing output file, skip completed β values, continue from where left off
+3. **Atomic writes**: Write to `.tmp` file, then `mv` to final name — never leave corrupted JSON
+4. **Progress logging**: Print status after each β so we can see progress without checking files
+5. **Test the resume path**: Verify that running with `--resume` on partial data actually works
+
+### Anti-Patterns (Don't Do This)
+
+❌ Collect all results in memory, write one big JSON at the end
+❌ Overwrite output file without checking what's already there
+❌ Leave orphaned Rust processes when Python parent dies
+❌ Assume the script will run to completion in one go
+
+### Example Pattern (t20-sim-3d-fss-v2.py)
+
+```python
+# Load existing data
+if resume and outfile.exists():
+    existing = load_existing_results(outfile)
+    completed_betas = {r["beta"] for r in existing["results"]}
+    remaining_betas = [b for b in betas if b not in completed_betas]
+else:
+    remaining_betas = betas
+
+# Run remaining
+for beta in remaining_betas:
+    result = run_single_beta(beta)
+    all_results.append(result)
+    save_results(outfile, {"results": all_results})  # Incremental write!
+```
