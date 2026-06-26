@@ -665,11 +665,102 @@ impl Z2GaugeField {
         sum / (self.l * self.l * self.l) as f64
     }
 
+    /// Compute the Polyakov loop at fixed spatial position (x, y) in 3D.
+    /// P(x,y) = ∏_{z=0}^{L-1} U_{(x,y,z),2}
+    /// Returns f64 (±1.0) for consistency with average_polyakov_3d.
+    pub fn polyakov_loop_3d(&self, x: usize, y: usize) -> f64 {
+        assert!(self.dimension == 3, "polyakov_loop_3d requires 3D lattice");
+        let mut product = 1i8;
+        for z in 0..self.l {
+            product *= self.link_3d(x, y, z, 2);
+        }
+        product as f64
+    }
+
+    /// Compute the average magnitude of the Polyakov loop over all spatial sites in 3D.
+    /// ⟨|P|⟩ = (1/L²) Σ_{x,y} |P(x,y)|
+    pub fn average_polyakov_3d(&self) -> f64 {
+        assert!(self.dimension == 3, "average_polyakov_3d requires 3D lattice");
+        let mut sum = 0.0;
+        for x in 0..self.l {
+            for y in 0..self.l {
+                sum += self.polyakov_loop_3d(x, y).abs();
+            }
+        }
+        sum / (self.l * self.l) as f64
+    }
+
     /// Thermalize the lattice with `n_sweeps` sweeps.
     pub fn thermalize(&mut self, beta: f64, n_sweeps: usize) {
         for _ in 0..n_sweeps {
             self.sweep(beta);
         }
+    }
+
+    /// Measure observables including Polyakov loop over `n_sweeps` sweeps in 3D,
+    /// taking measurements every `measure_every` sweeps.
+    /// Returns (mean plaquette, error, chi, cv, binder, mean |P|, error |P|, chi_P, binder_P)
+    /// where chi_P = L³ (⟨P²⟩ - ⟨P⟩²) and binder_P = 1 - ⟨P⁴⟩/(3⟨P²⟩²).
+    pub fn measure_with_polyakov_3d(
+        &mut self,
+        beta: f64,
+        n_sweeps: usize,
+        measure_every: usize,
+    ) -> (f64, f64, f64, f64, f64, f64, f64, f64, f64) {
+        assert!(self.dimension == 3, "measure_with_polyakov_3d requires 3D lattice");
+
+        let mut p_measurements = Vec::new();
+        let mut p_measurements_sq = Vec::new();
+        let mut p_measurements_quad = Vec::new();
+
+        let mut poly_measurements = Vec::new();
+        let mut poly_measurements_sq = Vec::new();
+        let mut poly_measurements_quad = Vec::new();
+
+        for sweep in 0..n_sweeps {
+            self.sweep(beta);
+
+            if sweep % measure_every == 0 {
+                let (mean_plaq, _, _) = self.plaquette_stats();
+                p_measurements.push(mean_plaq);
+                p_measurements_sq.push(mean_plaq * mean_plaq);
+                p_measurements_quad.push(mean_plaq * mean_plaq * mean_plaq * mean_plaq);
+
+                let poly = self.average_polyakov_3d();
+                poly_measurements.push(poly);
+                poly_measurements_sq.push(poly * poly);
+                poly_measurements_quad.push(poly * poly * poly * poly);
+            }
+        }
+
+        let n = p_measurements.len() as f64;
+        let vol = (self.l * self.l * self.l) as f64;
+
+        // Plaquette statistics
+        let mean_p = p_measurements.iter().sum::<f64>() / n;
+        let mean_p2 = p_measurements_sq.iter().sum::<f64>() / n;
+        let mean_p4 = p_measurements_quad.iter().sum::<f64>() / n;
+
+        let p_variance = p_measurements.iter().map(|x| (x - mean_p).powi(2)).sum::<f64>() / n;
+        let p_error = (p_variance / n).sqrt();
+
+        let susceptibility = vol * beta * (mean_p2 - mean_p * mean_p);
+        let specific_heat = vol * beta * beta * (mean_p2 - mean_p * mean_p);
+        let binder = if mean_p2 > 0.0 { 1.0 - mean_p4 / (3.0 * mean_p2 * mean_p2) } else { 0.0 };
+
+        // Polyakov loop statistics
+        let mean_poly = poly_measurements.iter().sum::<f64>() / n;
+        let mean_poly2 = poly_measurements_sq.iter().sum::<f64>() / n;
+        let mean_poly4 = poly_measurements_quad.iter().sum::<f64>() / n;
+
+        let poly_variance = poly_measurements.iter().map(|x| (x - mean_poly).powi(2)).sum::<f64>() / n;
+        let poly_error = (poly_variance / n).sqrt();
+
+        let poly_susceptibility = vol * (mean_poly2 - mean_poly * mean_poly);
+        let poly_binder = if mean_poly2 > 0.0 { 1.0 - mean_poly4 / (3.0 * mean_poly2 * mean_poly2) } else { 0.0 };
+
+        (mean_p, p_error, susceptibility, specific_heat, binder,
+         mean_poly, poly_error, poly_susceptibility, poly_binder)
     }
 
     /// Measure observables over `n_sweeps` sweeps, taking measurements every `measure_every` sweeps.
@@ -901,6 +992,30 @@ pub fn simulate_beta_with_wilson_loops(
     let measure_time = measure_start.elapsed().as_millis() as u64;
 
     (mean_p, error, chi, cv, binder, thermal_time + measure_time, wilson_data)
+}
+
+/// Run a 3D simulation at a single β value with Polyakov loop measurements.
+/// Returns (mean_p, error, chi, cv, binder_p, mean_poly, error_poly, chi_poly, binder_poly, wall_time).
+pub fn simulate_beta_with_polyakov_3d(
+    l: usize,
+    beta: f64,
+    thermal_sweeps: usize,
+    measure_sweeps: usize,
+    measure_every: usize,
+    seed: u64,
+) -> (f64, f64, f64, f64, f64, f64, f64, f64, f64, u64) {
+    let mut field = Z2GaugeField::new_dim(l, 3, seed);
+
+    let thermal_start = std::time::Instant::now();
+    field.thermalize(beta, thermal_sweeps);
+    let thermal_time = thermal_start.elapsed().as_millis() as u64;
+
+    let measure_start = std::time::Instant::now();
+    let (mean_p, error, chi, cv, binder_p, mean_poly, error_poly, chi_poly, binder_poly) =
+        field.measure_with_polyakov_3d(beta, measure_sweeps, measure_every);
+    let measure_time = measure_start.elapsed().as_millis() as u64;
+
+    (mean_p, error, chi, cv, binder_p, mean_poly, error_poly, chi_poly, binder_poly, thermal_time + measure_time)
 }
 
 #[cfg(test)]
