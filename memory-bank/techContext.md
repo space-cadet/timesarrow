@@ -24,3 +24,20 @@
 - **Base Paths**:
   - Figures: `/Volumes/Data/owncloud/root/research/articles/timesarrow/figures/`
   - References: `/Volumes/Data/owncloud/root/research/articles/timesarrow/bridgeman-chubbs/` (local reference PDFs).
+
+## Numerics Documentation Workflow
+
+*Added: 2026-06-26*
+
+Every time `.qmd` files in `numerics/docs/` change, follow this exact workflow:
+
+1. **Edit** `.qmd` files in `timesarrow/numerics/docs/`
+2. **Update `date-modified`** timestamp in YAML frontmatter (both YAML and body text if present)
+3. **Commit** to timesarrow repo
+4. **Render** HTML: `quarto render file.qmd --to html` (individual file, not project render — hangs)
+5. **Copy** rendered `.html` to `space-cadet.github.io/projects/timesarrow/numerics/` (preserve subdirectory structure)
+6. **Commit and push** gh-pages repo (`space-cadet.github.io`)
+
+**Critical**: Update timestamps on **EVERY** change. Forgetting requires amending commits on both repos.
+
+**Live site**: https://space-cadet.github.io/projects/timesarrow/numerics/
