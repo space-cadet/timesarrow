@@ -16,10 +16,11 @@ struct CheckpointState {
     dimension: usize,
 }
 
-/// A Z₂ lattice gauge field with L×L (2D) or L×L×L (3D) sites.
+/// A Z₂ lattice gauge field with L×L (2D), L×L×L (3D), or L×L×L×L (4D) sites.
 /// Links are stored as a flat Vec<i8> where each element is ±1.
 /// Layout 2D: for each site (x, y), two links: x (dir=0) and y (dir=1). Total: 2*L².
 /// Layout 3D: for each site (x, y, z), three links: x (dir=0), y (dir=1), z (dir=2). Total: 3*L³.
+/// Layout 4D: for each site (x, y, z, t), four links: x (dir=0), y (dir=1), z (dir=2), t (dir=3). Total: 4*L⁴.
 #[derive(Clone, Debug)]
 pub struct Z2GaugeField {
     pub l: usize,
@@ -35,14 +36,16 @@ impl Z2GaugeField {
         Self::new_dim(l, 2, seed)
     }
 
-    /// Create a new lattice with specified dimension (2 or 3) and random initial configuration.
+    /// Create a new lattice with specified dimension (2, 3, or 4) and random initial configuration.
     pub fn new_dim(l: usize, dimension: usize, seed: u64) -> Self {
-        assert!(dimension == 2 || dimension == 3, "Only dimensions 2 and 3 are supported");
+        assert!(dimension == 2 || dimension == 3 || dimension == 4, "Only dimensions 2, 3, and 4 are supported");
         let mut rng = Xoshiro256PlusPlus::seed_from_u64(seed);
         let n_links = if dimension == 2 {
             2 * l * l
-        } else {
+        } else if dimension == 3 {
             3 * l * l * l
+        } else {
+            4 * l * l * l * l
         };
         let links: Vec<i8> = (0..n_links)
             .map(|_| if rng.random::<bool>() { 1 } else { -1 })
@@ -57,11 +60,13 @@ impl Z2GaugeField {
 
     /// Create a cold-start configuration with specified dimension (all links = +1).
     pub fn cold_dim(l: usize, dimension: usize, seed: u64) -> Self {
-        assert!(dimension == 2 || dimension == 3, "Only dimensions 2 and 3 are supported");
+        assert!(dimension == 2 || dimension == 3 || dimension == 4, "Only dimensions 2, 3, and 4 are supported");
         let n_links = if dimension == 2 {
             2 * l * l
-        } else {
+        } else if dimension == 3 {
             3 * l * l * l
+        } else {
+            4 * l * l * l * l
         };
         Self {
             l,
@@ -75,7 +80,7 @@ impl Z2GaugeField {
     /// Get the index of a link at site (x, y) in direction dir (0=x, 1=y). 2D only.
     #[inline(always)]
     pub fn link_idx(&self, x: usize, y: usize, dir: usize) -> usize {
-        assert!(self.dimension == 2, "link_idx is for 2D; use link_idx_3d for 3D");
+        assert!(self.dimension == 2, "link_idx is for 2D; use link_idx_3d or link_idx_4d");
         2 * (y * self.l + x) + dir
     }
 
@@ -84,6 +89,13 @@ impl Z2GaugeField {
     pub fn link_idx_3d(&self, x: usize, y: usize, z: usize, dir: usize) -> usize {
         assert!(self.dimension == 3, "link_idx_3d is for 3D");
         3 * (z * self.l * self.l + y * self.l + x) + dir
+    }
+
+    /// Get the index of a link at site (x, y, z, t) in direction dir (0=x, 1=y, 2=z, 3=t). 4D only.
+    #[inline(always)]
+    pub fn link_idx_4d(&self, x: usize, y: usize, z: usize, t: usize, dir: usize) -> usize {
+        assert!(self.dimension == 4, "link_idx_4d is for 4D");
+        4 * (t * self.l * self.l * self.l + z * self.l * self.l + y * self.l + x) + dir
     }
 
     /// Get the value of a 2D link (±1).
@@ -98,6 +110,12 @@ impl Z2GaugeField {
         self.links[self.link_idx_3d(x, y, z, dir)]
     }
 
+    /// Get the value of a 4D link (±1).
+    #[inline(always)]
+    pub fn link_4d(&self, x: usize, y: usize, z: usize, t: usize, dir: usize) -> i8 {
+        self.links[self.link_idx_4d(x, y, z, t, dir)]
+    }
+
     /// Flip a 2D link (multiply by -1).
     #[inline(always)]
     pub fn flip_link(&mut self, x: usize, y: usize, dir: usize) {
@@ -109,6 +127,13 @@ impl Z2GaugeField {
     #[inline(always)]
     pub fn flip_link_3d(&mut self, x: usize, y: usize, z: usize, dir: usize) {
         let idx = self.link_idx_3d(x, y, z, dir);
+        self.links[idx] *= -1;
+    }
+
+    /// Flip a 4D link (multiply by -1).
+    #[inline(always)]
+    pub fn flip_link_4d(&mut self, x: usize, y: usize, z: usize, t: usize, dir: usize) {
+        let idx = self.link_idx_4d(x, y, z, t, dir);
         self.links[idx] *= -1;
     }
 
@@ -176,8 +201,105 @@ impl Z2GaugeField {
         right * up * left * down
     }
 
+    /// XY plaquette at (x, y, z, t) in 4D.
+    #[inline(always)]
+    pub fn plaquette_xy_4d(&self, x: usize, y: usize, z: usize, t: usize) -> i8 {
+        assert!(self.dimension == 4, "plaquette_xy_4d is for 4D");
+        let l = self.l;
+        let xp1 = (x + 1) % l;
+        let yp1 = (y + 1) % l;
+
+        let right = self.link_4d(x, y, z, t, 0);     // x-link at (x,y,z,t)
+        let up    = self.link_4d(xp1, y, z, t, 1);   // y-link at (x+1,y,z,t)
+        let left  = self.link_4d(x, yp1, z, t, 0);   // x-link at (x,y+1,z,t)
+        let down  = self.link_4d(x, y, z, t, 1);     // y-link at (x,y,z,t)
+
+        right * up * left * down
+    }
+
+    /// YZ plaquette at (x, y, z, t) in 4D.
+    #[inline(always)]
+    pub fn plaquette_yz_4d(&self, x: usize, y: usize, z: usize, t: usize) -> i8 {
+        assert!(self.dimension == 4, "plaquette_yz_4d is for 4D");
+        let l = self.l;
+        let yp1 = (y + 1) % l;
+        let zp1 = (z + 1) % l;
+
+        let right = self.link_4d(x, y, z, t, 1);     // y-link at (x,y,z,t)
+        let up    = self.link_4d(x, yp1, z, t, 2);   // z-link at (x,y+1,z,t)
+        let left  = self.link_4d(x, y, zp1, t, 1);   // y-link at (x,y,z+1,t)
+        let down  = self.link_4d(x, y, z, t, 2);     // z-link at (x,y,z,t)
+
+        right * up * left * down
+    }
+
+    /// XZ plaquette at (x, y, z, t) in 4D.
+    #[inline(always)]
+    pub fn plaquette_xz_4d(&self, x: usize, y: usize, z: usize, t: usize) -> i8 {
+        assert!(self.dimension == 4, "plaquette_xz_4d is for 4D");
+        let l = self.l;
+        let xp1 = (x + 1) % l;
+        let zp1 = (z + 1) % l;
+
+        let right = self.link_4d(x, y, z, t, 0);     // x-link at (x,y,z,t)
+        let up    = self.link_4d(xp1, y, z, t, 2);   // z-link at (x+1,y,z,t)
+        let left  = self.link_4d(x, y, zp1, t, 0);   // x-link at (x,y,z+1,t)
+        let down  = self.link_4d(x, y, z, t, 2);     // z-link at (x,y,z,t)
+
+        right * up * left * down
+    }
+
+    /// XT plaquette at (x, y, z, t) in 4D.
+    #[inline(always)]
+    pub fn plaquette_xt(&self, x: usize, y: usize, z: usize, t: usize) -> i8 {
+        assert!(self.dimension == 4, "plaquette_xt is for 4D");
+        let l = self.l;
+        let xp1 = (x + 1) % l;
+        let tp1 = (t + 1) % l;
+
+        let right = self.link_4d(x, y, z, t, 0);     // x-link at (x,y,z,t)
+        let up    = self.link_4d(xp1, y, z, t, 3);   // t-link at (x+1,y,z,t)
+        let left  = self.link_4d(x, y, z, tp1, 0);   // x-link at (x,y,z,t+1)
+        let down  = self.link_4d(x, y, z, t, 3);     // t-link at (x,y,z,t)
+
+        right * up * left * down
+    }
+
+    /// YT plaquette at (x, y, z, t) in 4D.
+    #[inline(always)]
+    pub fn plaquette_yt(&self, x: usize, y: usize, z: usize, t: usize) -> i8 {
+        assert!(self.dimension == 4, "plaquette_yt is for 4D");
+        let l = self.l;
+        let yp1 = (y + 1) % l;
+        let tp1 = (t + 1) % l;
+
+        let right = self.link_4d(x, y, z, t, 1);     // y-link at (x,y,z,t)
+        let up    = self.link_4d(x, yp1, z, t, 3);   // t-link at (x,y+1,z,t)
+        let left  = self.link_4d(x, y, z, tp1, 1);   // y-link at (x,y,z,t+1)
+        let down  = self.link_4d(x, y, z, t, 3);     // t-link at (x,y,z,t)
+
+        right * up * left * down
+    }
+
+    /// ZT plaquette at (x, y, z, t) in 4D.
+    #[inline(always)]
+    pub fn plaquette_zt(&self, x: usize, y: usize, z: usize, t: usize) -> i8 {
+        assert!(self.dimension == 4, "plaquette_zt is for 4D");
+        let l = self.l;
+        let zp1 = (z + 1) % l;
+        let tp1 = (t + 1) % l;
+
+        let right = self.link_4d(x, y, z, t, 2);     // z-link at (x,y,z,t)
+        let up    = self.link_4d(x, y, zp1, t, 3);   // t-link at (x,y,z+1,t)
+        let left  = self.link_4d(x, y, z, tp1, 2);   // z-link at (x,y,z,t+1)
+        let down  = self.link_4d(x, y, z, t, 3);     // t-link at (x,y,z,t)
+
+        right * up * left * down
+    }
+
     /// Compute all plaquette products and return (mean, sum of squares, count).
     /// In 2D: L² plaquettes. In 3D: 3·L³ plaquettes (xy, yz, xz at each site).
+    /// In 4D: 6·L⁴ plaquettes (xy, yz, xz, xt, yt, zt at each site).
     /// Mean is negated to match TypeScript output convention.
     #[inline(always)]
     pub fn plaquette_stats(&self) -> (f64, f64, usize) {
@@ -192,7 +314,7 @@ impl Z2GaugeField {
             }
             let mean = -(sum as f64 / n_plaquettes as f64);
             (mean, n_plaquettes as f64, n_plaquettes)
-        } else {
+        } else if self.dimension == 3 {
             let n_plaquettes = 3 * l * l * l;
             let mut sum = 0i64;
             for z in 0..l {
@@ -206,6 +328,25 @@ impl Z2GaugeField {
             }
             let mean = -(sum as f64 / n_plaquettes as f64);
             (mean, n_plaquettes as f64, n_plaquettes)
+        } else {
+            let n_plaquettes = 6 * l * l * l * l;
+            let mut sum = 0i64;
+            for t in 0..l {
+                for z in 0..l {
+                    for y in 0..l {
+                        for x in 0..l {
+                            sum += self.plaquette_xy_4d(x, y, z, t) as i64;
+                            sum += self.plaquette_yz_4d(x, y, z, t) as i64;
+                            sum += self.plaquette_xz_4d(x, y, z, t) as i64;
+                            sum += self.plaquette_xt(x, y, z, t) as i64;
+                            sum += self.plaquette_yt(x, y, z, t) as i64;
+                            sum += self.plaquette_zt(x, y, z, t) as i64;
+                        }
+                    }
+                }
+            }
+            let mean = -(sum as f64 / n_plaquettes as f64);
+            (mean, n_plaquettes as f64, n_plaquettes)
         }
     }
 
@@ -214,8 +355,10 @@ impl Z2GaugeField {
     pub fn sweep(&mut self, beta: f64) -> usize {
         if self.dimension == 2 {
             self.sweep_2d(beta)
-        } else {
+        } else if self.dimension == 3 {
             self.sweep_3d(beta)
+        } else {
+            self.sweep_4d(beta)
         }
     }
 
@@ -320,6 +463,89 @@ impl Z2GaugeField {
         accepted
     }
 
+    fn sweep_4d(&mut self, beta: f64) -> usize {
+        let l = self.l;
+        let mut accepted = 0usize;
+
+        for t in 0..l {
+            for z in 0..l {
+                for y in 0..l {
+                    for x in 0..l {
+                        for dir in 0..4 {
+                            let delta_sum = match dir {
+                                0 => {
+                                    // x-link: xy, xz, xt plaquettes
+                                    let y_prev = (y + l - 1) % l;
+                                    let z_prev = (z + l - 1) % l;
+                                    let t_prev = (t + l - 1) % l;
+                                    self.plaquette_xy_4d(x, y, z, t)
+                                        + self.plaquette_xy_4d(x, y_prev, z, t)
+                                        + self.plaquette_xz_4d(x, y, z, t)
+                                        + self.plaquette_xz_4d(x, y, z_prev, t)
+                                        + self.plaquette_xt(x, y, z, t)
+                                        + self.plaquette_xt(x, y, z, t_prev)
+                                }
+                                1 => {
+                                    // y-link: xy, yz, yt plaquettes
+                                    let x_prev = (x + l - 1) % l;
+                                    let z_prev = (z + l - 1) % l;
+                                    let t_prev = (t + l - 1) % l;
+                                    self.plaquette_xy_4d(x, y, z, t)
+                                        + self.plaquette_xy_4d(x_prev, y, z, t)
+                                        + self.plaquette_yz_4d(x, y, z, t)
+                                        + self.plaquette_yz_4d(x, y, z_prev, t)
+                                        + self.plaquette_yt(x, y, z, t)
+                                        + self.plaquette_yt(x, y, z, t_prev)
+                                }
+                                2 => {
+                                    // z-link: xz, yz, zt plaquettes
+                                    let x_prev = (x + l - 1) % l;
+                                    let y_prev = (y + l - 1) % l;
+                                    let t_prev = (t + l - 1) % l;
+                                    self.plaquette_xz_4d(x, y, z, t)
+                                        + self.plaquette_xz_4d(x_prev, y, z, t)
+                                        + self.plaquette_yz_4d(x, y, z, t)
+                                        + self.plaquette_yz_4d(x, y_prev, z, t)
+                                        + self.plaquette_zt(x, y, z, t)
+                                        + self.plaquette_zt(x, y, z, t_prev)
+                                }
+                                3 => {
+                                    // t-link: xt, yt, zt plaquettes
+                                    let x_prev = (x + l - 1) % l;
+                                    let y_prev = (y + l - 1) % l;
+                                    let z_prev = (z + l - 1) % l;
+                                    self.plaquette_xt(x, y, z, t)
+                                        + self.plaquette_xt(x_prev, y, z, t)
+                                        + self.plaquette_yt(x, y, z, t)
+                                        + self.plaquette_yt(x, y_prev, z, t)
+                                        + self.plaquette_zt(x, y, z, t)
+                                        + self.plaquette_zt(x, y, z_prev, t)
+                                }
+                                _ => unreachable!(),
+                            };
+
+                            let delta_e = -2.0 * beta * delta_sum as f64;
+
+                            let accept = if delta_e <= 0.0 {
+                                true
+                            } else {
+                                let r: f64 = self.rng.random();
+                                r < (-delta_e).exp()
+                            };
+
+                            if accept {
+                                self.flip_link_4d(x, y, z, t, dir);
+                                accepted += 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        accepted
+    }
+
     /// Compute the Wilson loop for a rectangular loop of size r×c starting at (x, y) in 2D.
     /// W = ∏ links around the rectangle (right, up, left, down).
     /// For Z₂, U† = U, so traversing in either direction gives the same product.
@@ -412,6 +638,33 @@ impl Z2GaugeField {
         sum as f64 / count as f64
     }
 
+    /// Compute the Polyakov loop at fixed spatial position (x, y, z) in 4D.
+    /// P(x,y,z) = ∏_{t=0}^{L-1} U_{(x,y,z,t),3}
+    /// Returns f64 (±1.0) for consistency with average_polyakov.
+    pub fn polyakov_loop(&self, x: usize, y: usize, z: usize) -> f64 {
+        assert!(self.dimension == 4, "polyakov_loop requires 4D lattice");
+        let mut product = 1i8;
+        for t in 0..self.l {
+            product *= self.link_4d(x, y, z, t, 3);
+        }
+        product as f64
+    }
+
+    /// Compute the average magnitude of the Polyakov loop over all spatial sites.
+    /// ⟨|P|⟩ = (1/L³) Σ_{x,y,z} |P(x,y,z)|
+    pub fn average_polyakov(&self) -> f64 {
+        assert!(self.dimension == 4, "average_polyakov requires 4D lattice");
+        let mut sum = 0.0;
+        for x in 0..self.l {
+            for y in 0..self.l {
+                for z in 0..self.l {
+                    sum += self.polyakov_loop(x, y, z).abs();
+                }
+            }
+        }
+        sum / (self.l * self.l * self.l) as f64
+    }
+
     /// Thermalize the lattice with `n_sweeps` sweeps.
     pub fn thermalize(&mut self, beta: f64, n_sweeps: usize) {
         for _ in 0..n_sweeps {
@@ -454,8 +707,10 @@ impl Z2GaugeField {
         // Volume factor: L^d where d is dimension
         let volume = if self.dimension == 2 {
             (self.l * self.l) as f64
-        } else {
+        } else if self.dimension == 3 {
             (self.l * self.l * self.l) as f64
+        } else {
+            (self.l * self.l * self.l * self.l) as f64
         };
 
         // Susceptibility: χ = V * β * Var(P)
@@ -485,6 +740,9 @@ impl Z2GaugeField {
         measure_every: usize,
         loop_sizes: &[(usize, usize)],
     ) -> (f64, f64, f64, f64, f64, Vec<(usize, usize, f64, f64)>) {
+        assert!(self.dimension == 2 || self.dimension == 3,
+            "measure_with_wilson_loops only supports 2D and 3D");
+
         let mut measurements = Vec::new();
         let mut measurements_sq = Vec::new();
         let mut measurements_quad = Vec::new();
@@ -628,6 +886,9 @@ pub fn simulate_beta_with_wilson_loops(
     seed: u64,
     loop_sizes: &[(usize, usize)],
 ) -> (f64, f64, f64, f64, f64, u64, Vec<(usize, usize, f64, f64)>) {
+    assert!(dimension == 2 || dimension == 3,
+        "simulate_beta_with_wilson_loops only supports 2D and 3D");
+
     let mut field = Z2GaugeField::new_dim(l, dimension, seed);
 
     let thermal_start = std::time::Instant::now();
@@ -742,6 +1003,93 @@ mod tests {
         assert!(mean_p.abs() <= 1.0);
     }
 
+    // ---- 4D tests ----
+
+    #[test]
+    fn test_cold_start_plaquettes_4d() {
+        let field = Z2GaugeField::cold_dim(4, 4, 42);
+        assert_eq!(field.dimension, 4);
+        assert_eq!(field.links.len(), 4 * 4 * 4 * 4 * 4);
+        for t in 0..4 {
+            for z in 0..4 {
+                for y in 0..4 {
+                    for x in 0..4 {
+                        assert_eq!(field.plaquette_xy_4d(x, y, z, t), 1,
+                            "xy plaq at ({},{},{},{}) failed", x, y, z, t);
+                        assert_eq!(field.plaquette_yz_4d(x, y, z, t), 1,
+                            "yz plaq at ({},{},{},{}) failed", x, y, z, t);
+                        assert_eq!(field.plaquette_xz_4d(x, y, z, t), 1,
+                            "xz plaq at ({},{},{},{}) failed", x, y, z, t);
+                        assert_eq!(field.plaquette_xt(x, y, z, t), 1,
+                            "xt plaq at ({},{},{},{}) failed", x, y, z, t);
+                        assert_eq!(field.plaquette_yt(x, y, z, t), 1,
+                            "yt plaq at ({},{},{},{}) failed", x, y, z, t);
+                        assert_eq!(field.plaquette_zt(x, y, z, t), 1,
+                            "zt plaq at ({},{},{},{}) failed", x, y, z, t);
+                    }
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn test_sweep_preserves_detailed_balance_4d() {
+        let mut field = Z2GaugeField::new_dim(4, 4, 42);
+        let beta = 1.0;
+        field.thermalize(beta, 10);
+        let (mean_p, _, _, _, _) = field.measure(beta, 100, 10);
+        assert!(mean_p.abs() <= 1.0);
+    }
+
+    #[test]
+    fn test_cold_polyakov_loop_4d() {
+        let field = Z2GaugeField::cold_dim(4, 4, 42);
+        // On cold start, all temporal links are +1, so Polyakov loop = +1 everywhere
+        for z in 0..4 {
+            for y in 0..4 {
+                for x in 0..4 {
+                    assert_eq!(field.polyakov_loop(x, y, z), 1.0,
+                        "Polyakov loop at ({},{},{}) failed", x, y, z);
+                }
+            }
+        }
+        // Average should be exactly 1.0
+        assert_eq!(field.average_polyakov(), 1.0);
+    }
+
+    #[test]
+    fn test_polyakov_loop_changes_with_flip() {
+        let mut field = Z2GaugeField::cold_dim(4, 4, 42);
+        // Flip a temporal link at (0,0,0,0)
+        field.flip_link_4d(0, 0, 0, 0, 3);
+        // The Polyakov loop at (0,0,0) should now be -1
+        assert_eq!(field.polyakov_loop(0, 0, 0), -1.0);
+        // But at (1,0,0) it should still be +1 (different spatial site)
+        assert_eq!(field.polyakov_loop(1, 0, 0), 1.0);
+    }
+
+    #[test]
+    fn test_polyakov_loop_two_flips() {
+        let mut field = Z2GaugeField::cold_dim(4, 4, 42);
+        // Flip two temporal links at the same spatial site
+        field.flip_link_4d(0, 0, 0, 0, 3);
+        field.flip_link_4d(0, 0, 0, 1, 3);
+        // (-1) * (-1) = +1
+        assert_eq!(field.polyakov_loop(0, 0, 0), 1.0);
+    }
+
+    #[test]
+    fn test_polyakov_loop_average_range() {
+        let mut field = Z2GaugeField::new_dim(4, 4, 42);
+        field.thermalize(1.0, 50);
+        let avg = field.average_polyakov();
+        // Average magnitude of Polyakov loop must be in [0, 1]
+        assert!(avg >= 0.0 && avg <= 1.0,
+            "average_polyakov = {} is out of range [0, 1]", avg);
+    }
+
+    // ---- Checkpoint tests ----
+
     #[test]
     fn test_checkpoint_roundtrip_2d() {
         let field = Z2GaugeField::new(4, 42);
@@ -765,6 +1113,17 @@ mod tests {
     }
 
     #[test]
+    fn test_checkpoint_roundtrip_4d() {
+        let field = Z2GaugeField::new_dim(4, 4, 42);
+        let cp = field.to_checkpoint();
+        let restored = Z2GaugeField::from_checkpoint(&cp).unwrap();
+        assert_eq!(field.l, restored.l);
+        assert_eq!(field.dimension, restored.dimension);
+        assert_eq!(field.links, restored.links);
+        assert_eq!(field.seed, restored.seed);
+    }
+
+    #[test]
     fn test_backward_compatible_checkpoint() {
         // Old checkpoint without dimension field should default to 2
         let json = r#"{"l":4,"links":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"seed":42}"#;
@@ -772,6 +1131,8 @@ mod tests {
         assert_eq!(field.dimension, 2);
         assert_eq!(field.l, 4);
     }
+
+    // ---- Wilson loop tests ----
 
     /// Quick 3D run with Wilson loops: L=4, 1000 sweeps, beta=0.5
     #[test]
