@@ -2,6 +2,8 @@
 
 *Last Updated: 2026-06-26 06:34:48 IST*
 
+> ⚠️ **STALE**: This generated view references old task IDs (T20-Phase3b, T29-T32) that were restructured on 2026-06-26. See `tasks/T20.md` and subtasks T20a–T20d for current task structure.
+
 ---
 
 ## 2026-06-26

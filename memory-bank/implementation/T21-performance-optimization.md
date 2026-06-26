@@ -178,7 +178,7 @@ impl Z2GaugeField {
 
 ## Checkpointing & Resume (Critical Requirement)
 
-**Discovered during T20-Phase2**: The current simulation writes results only at the very end. A 6-hour run with no intermediate saves is unacceptable — crashes, power loss, or user interruption lose all progress.
+**Discovered during T20b**: The current simulation writes results only at the very end. A 6-hour run with no intermediate saves is unacceptable — crashes, power loss, or user interruption lose all progress.
 
 ### Requirements for All Future Simulation Scripts
 
@@ -237,7 +237,7 @@ This is a **hard requirement** for T21 — no fast kernel is acceptable without 
 
 ## Next Steps
 
-1. **T20-Phase2 completes** → validate physics is correct
+1. **T20b completes** → validate physics is correct
 2. **Write minimal benchmark tests** for each approach (single file each)
 3. **Run benchmarks** → record numbers
 4. **Decide** → based on speedup × maintainability

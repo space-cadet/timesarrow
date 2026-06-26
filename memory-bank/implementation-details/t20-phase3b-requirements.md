@@ -1,7 +1,7 @@
-# T32: Critical Exponent Extraction Requirements
+# T20d: Critical Exponent Extraction Requirements
 
 *Document: Detailed requirements for extracting critical exponents from 3D Z₂ LGT*
-*Task: T32.md*
+*Task: T20d.md*
 *Date: 2026-06-26*
 *Status: 🔄 IN PROGRESS — Infrastructure ready, simulations pending*
 
@@ -279,4 +279,4 @@ error = np.std(observable) / np.sqrt(N_eff)
 
 *Document created by Sage (灵剑) on 2026-06-26*
 *Based on critical analysis in t20-critical-analysis.md*
-*Task: T32.md*
+*Task: T20d.md*
