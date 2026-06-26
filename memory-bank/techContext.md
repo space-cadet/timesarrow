@@ -86,3 +86,30 @@ for beta in remaining_betas:
     all_results.append(result)
     save_results(outfile, {"results": all_results})  # Incremental write!
 ```
+
+## Rust Checkpointing Pattern
+
+*Added: 2026-06-26*
+
+For Rust binaries, implement checkpointing via `--checkpoint <path>`:
+
+1. **Read existing checkpoint** on startup → skip completed work
+2. **Use mpsc channel** instead of `.collect()` for streaming results
+3. **Main thread writes incrementally** — append after each result
+4. **Atomic writes**: `.tmp` → `rename` to avoid corruption
+5. **Python wrapper** passes checkpoint path, handles retry logic
+
+See: `implementation-details/t20-rust-checkpointing.md`
+
+## Data Collation Pattern
+
+*Added: 2026-06-26*
+
+All simulation outputs should be registered in `numerics/data/registry.json`:
+
+1. **Filename convention**: `t{task}-p{phase}-L{size}-{date}.json`
+2. **Run collation script** after batch: `npx ts-node --esm src/scripts/collate-data.ts`
+3. **Copy snapshot** for dashboard: `cp data/registry.json docs/data-registry.json`
+4. **Commit registry changes** with the data
+
+See: `implementation-details/t20-data-collation.md`
