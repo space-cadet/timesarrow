@@ -1,0 +1,59 @@
+{
+  "parameters": {
+    "L": 8,
+    "dimension": 3,
+    "thermalSweeps": 500,
+    "measureSweeps": 2000,
+    "measureEvery": 10,
+    "binSize": 10,
+    "workers": 4,
+    "polyakov": false,
+    "loopSizes": [
+      {
+        "r": 1,
+        "c": 1
+      },
+      {
+        "r": 2,
+        "c": 2
+      },
+      {
+        "r": 3,
+        "c": 3
+      }
+    ]
+  },
+  "results": [
+    {
+      "beta": 0.76,
+      "meanPlaquette": 0.9490624999999997,
+      "errorPlaquette": 0.0018829079476728862,
+      "susceptibility": 0.27591272222241287,
+      "specificHeat": 0.2096936688890338,
+      "binderCumulant": 0.6656539793362332,
+      "numMeasurements": 200,
+      "wallTimeMs": 33,
+      "wilsonLoops": [
+        {
+          "r": 1,
+          "c": 1,
+          "meanW": -0.95140625,
+          "varW": 0.0007685302734374844
+        },
+        {
+          "r": 2,
+          "c": 2,
+          "meanW": 0.8778515625,
+          "varW": 0.00573863372802752
+        },
+        {
+          "r": 3,
+          "c": 3,
+          "meanW": -0.80796875,
+          "varW": 0.014215307617187478
+        }
+      ]
+    }
+  ],
+  "totalWallTimeMs": 34
+}

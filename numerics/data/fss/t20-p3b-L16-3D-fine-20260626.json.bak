@@ -1,0 +1,78 @@
+{
+  "parameters": {
+    "L": 16,
+    "dimension": 3,
+    "thermalSweeps": 500000,
+    "measureSweeps": 1000000,
+    "measureEvery": 10,
+    "workers": 8,
+    "betaValues": [
+      0.72,
+      0.723,
+      0.726,
+      0.729,
+      0.732,
+      0.735,
+      0.738,
+      0.741,
+      0.744,
+      0.747,
+      0.75,
+      0.753,
+      0.756,
+      0.759,
+      0.762,
+      0.765,
+      0.768,
+      0.771,
+      0.774,
+      0.777,
+      0.78,
+      0.783,
+      0.786,
+      0.789,
+      0.792,
+      0.795,
+      0.798
+    ],
+    "loopSizes": "1x1,2x2,3x3",
+    "polyakov": true
+  },
+  "results": [
+    {
+      "beta": 0.72,
+      "meanPlaquette": 0.8307727115885448,
+      "errorPlaquette": 4.2184361666358755e-05,
+      "susceptibility": 0.524801911541108,
+      "specificHeat": 0.3778573763095977,
+      "binderCumulant": 0.666322776873701,
+      "numMeasurements": 100000,
+      "wallTimeMs": 168647,
+      "meanPolyakov": 1,
+      "errorPolyakov": 0,
+      "polyakovSusceptibility": 0,
+      "polyakovBinder": 0.6666666666666667,
+      "wilsonLoops": []
+    },
+    {
+      "beta": 0.723,
+      "meanPlaquette": 0.8374313476562464,
+      "errorPlaquette": 4.276982566648689e-05,
+      "susceptibility": 0.5417179242478155,
+      "specificHeat": 0.39166205923117065,
+      "binderCumulant": 0.6663187444267746,
+      "numMeasurements": 100000,
+      "wallTimeMs": 168135,
+      "meanPolyakov": 1,
+      "errorPolyakov": 0,
+      "polyakovSusceptibility": 0,
+      "polyakovBinder": 0.6666666666666667,
+      "wilsonLoops": []
+    }
+  ],
+  "metadata": {
+    "timestamp": "2026-06-26T07:20:35.031924+05:30",
+    "completed": 2,
+    "total": 27
+  }
+}
