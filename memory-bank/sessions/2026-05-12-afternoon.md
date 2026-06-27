@@ -1,3 +1,11 @@
+# Session: 2026-05-12 Afternoon
+
+**Started**: -
+**Focus Task**: None
+**Status**: ✅ MANUSCRIPT UPDATED WITH REVIEWER-SAFE `SIGMA_E` ORIGIN CLARIFICATION; FOLLOW-UP READING PENDING
+
+## Work Done
+
 ---
 source_branch: main
 source_commit: 199456a046cc1226c91d3dbb25781c72e7dc1b31
@@ -43,3 +51,5 @@ Manuscript hardening / memory-bank update
 ## Next Steps
 - User to read the revised manuscript section.
 - After review, decide whether to further adjust the CZX/SPT framing or postpone directly to the fermion/matter issue.
+
+

@@ -1,0 +1,34 @@
+=== Monitor started at Sat Jun 27 14:39:10 IST 2026 ===
+PID: 9595
+Initial log size:      353 bytes,       18 lines
+
+--- Check at Sat Jun 27 14:44:10 IST 2026 (elapsed: 5m) ---
+  PID  %CPU %MEM ELAPSED COMMAND
+ 9595 416.5  0.1   06:54 ./target/release/z2-lattice-gauge --polyakov --checkpoint /Users/sage/.openclaw/workspace/code/timesarrow/numerics/data/fss/.checkpoint-L32-20260627-lean.json 32 3 300000 200000 8 1x1,2x2,3x3 0.74 0.742 0.744 0.746 0.748 0.75 0.752 0.754 0.756 0.758 0.76 0.762 0.764 0.766 0.768 0.77 0.772 0.774 0.776 0.778 0.78
+NO CHECKPOINT
+LOG:      353 bytes (0),       18 lines (0)
+
+--- Check at Sat Jun 27 14:49:10 IST 2026 (elapsed: 10m) ---
+  PID  %CPU %MEM ELAPSED COMMAND
+ 9595 646.5  0.2   11:54 ./target/release/z2-lattice-gauge --polyakov --checkpoint /Users/sage/.openclaw/workspace/code/timesarrow/numerics/data/fss/.checkpoint-L32-20260627-lean.json 32 3 300000 200000 8 1x1,2x2,3x3 0.74 0.742 0.744 0.746 0.748 0.75 0.752 0.754 0.756 0.758 0.76 0.762 0.764 0.766 0.768 0.77 0.772 0.774 0.776 0.778 0.78
+NO CHECKPOINT
+LOG:      353 bytes (0),       18 lines (0)
+
+--- Check at Sat Jun 27 14:54:10 IST 2026 (elapsed: 15m) ---
+  PID  %CPU %MEM ELAPSED COMMAND
+ 9595 642.4  0.2   16:54 ./target/release/z2-lattice-gauge --polyakov --checkpoint /Users/sage/.openclaw/workspace/code/timesarrow/numerics/data/fss/.checkpoint-L32-20260627-lean.json 32 3 300000 200000 8 1x1,2x2,3x3 0.74 0.742 0.744 0.746 0.748 0.75 0.752 0.754 0.756 0.758 0.76 0.762 0.764 0.766 0.768 0.77 0.772 0.774 0.776 0.778 0.78
+NO CHECKPOINT
+LOG:      353 bytes (0),       18 lines (0)
+
+--- Check at Sat Jun 27 14:59:10 IST 2026 (elapsed: 20m) ---
+  PID  %CPU %MEM ELAPSED COMMAND
+ 9595 700.5  0.3   21:54 ./target/release/z2-lattice-gauge --polyakov --checkpoint /Users/sage/.openclaw/workspace/code/timesarrow/numerics/data/fss/.checkpoint-L32-20260627-lean.json 32 3 300000 200000 8 1x1,2x2,3x3 0.74 0.742 0.744 0.746 0.748 0.75 0.752 0.754 0.756 0.758 0.76 0.762 0.764 0.766 0.768 0.77 0.772 0.774 0.776 0.778 0.78
+NO CHECKPOINT
+LOG:      353 bytes (0),       18 lines (0)
+
+--- Check at Sat Jun 27 15:04:11 IST 2026 (elapsed: 25m) ---
+  PID  %CPU %MEM ELAPSED COMMAND
+ 9595 659.3  0.3   26:55 ./target/release/z2-lattice-gauge --polyakov --checkpoint /Users/sage/.openclaw/workspace/code/timesarrow/numerics/data/fss/.checkpoint-L32-20260627-lean.json 32 3 300000 200000 8 1x1,2x2,3x3 0.74 0.742 0.744 0.746 0.748 0.75 0.752 0.754 0.756 0.758 0.76 0.762 0.764 0.766 0.768 0.77 0.772 0.774 0.776 0.778 0.78
+NO CHECKPOINT
+LOG:      353 bytes (0),       18 lines (0)
+

@@ -1,3 +1,11 @@
+# Session: 2026-05-09 Afternoon
+
+**Started**: -
+**Focus Task**: None
+**Status**: ✅ STANDALONE MARKDOWN/LATEX PILOT COMPLETED; FULL-MANUSCRIPT INTEGRATION DEFERRED
+
+## Work Done
+
 ---
 source_branch: main
 source_commit: 677733ee7b3c04b37ada8b972bf972462cb8538b
@@ -49,3 +57,5 @@ Technical prototype / memory-bank update
 ## Next Steps
 - If the Markdown route is resumed, test `markdown-pilot/generated/z2-action.tex` inside the full SciPost manuscript build.
 - Otherwise resume `T18` reviewer-response / claim-hardening work from the current read-only manuscript state.
+
+

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard v2 Prototype — Static Mockup</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.5; color: #212529; background: #f8f9fa; padding: 20px; }
+    .container { max-width: 1400px; margin: 0 auto; background: white; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 24px; }
+    h1 { font-size: 1.5rem; margin-bottom: 4px; }
+    .subtitle { color: #6c757d; font-size: 0.9rem; margin-bottom: 20px; }
+    
+    /* Summary Cards */
+    .summary { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
+    .card { flex: 1 1 100px; min-width: 100px; max-width: 140px; border: 2px solid; border-radius: 6px; padding: 10px; text-align: center; }
+    .card-value { font-size: 1.5rem; font-weight: 600; line-height: 1.2; }
+    .card-label { font-size: 0.7rem; color: #6c757d; margin-top: 2px; }
+    
+    /* Section Headers */
+    h2 { font-size: 1.1rem; margin: 24px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #e9ecef; }
+    
+    /* Tabs */
+    .tabs { display: flex; gap: 4px; margin-bottom: 12px; border-bottom: 1px solid #dee2e6; }
+    .tab { padding: 8px 16px; border: none; background: none; cursor: pointer; font-size: 0.9rem; border-bottom: 2px solid transparent; }
+    .tab.active { border-bottom-color: #0d6efd; color: #0d6efd; font-weight: 500; }
+    .tab:hover { background: #f8f9fa; }
+    
+    /* Filters */
+    .filters { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; padding: 12px; background: #f8f9fa; border-radius: 6px; }
+    .filter-group { display: flex; align-items: center; gap: 6px; }
+    .filter-group label { font-size: 0.8rem; font-weight: 500; color: #495057; }
+    select, input[type="text"] { padding: 4px 8px; border: 1px solid #ced4da; border-radius: 4px; font-size: 0.85rem; }
+    
+    /* Table */
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-bottom: 12px; }
+    th { text-align: left; padding: 8px; border-bottom: 2px solid #dee2e6; background: #f8f9fa; font-weight: 600; }
+    td { padding: 6px 8px; border-bottom: 1px solid #eee; }
+    tr:hover { background: #f8f9fa; cursor: pointer; }
+    tr.selected { background: #e7f1ff !important; }
+    .mono { font-family: 'SF Mono', Monaco, monospace; font-size: 0.8rem; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 500; }
+    .badge-success { background: #d1e7dd; color: #0f5132; }
+    .badge-warning { background: #fff3cd; color: #856404; }
+    .badge-test { background: #f8d7da; color: #721c24; }
+    
+    /* Detail Panel */
+    .detail-panel { background: #f8f9fa; border-radius: 6px; padding: 16px; margin-top: 12px; }
+    .detail-grid { display: flex; gap: 12px; flex-wrap: wrap; }
+    .detail-card { flex: 1 1 280px; min-width: 260px; background: white; border: 1px solid #dee2e6; border-radius: 6px; padding: 12px; }
+    .detail-card h4 { font-size: 0.85rem; color: #495057; margin-bottom: 8px; }
+    .param-row { display: flex; justify-content: space-between; padding: 3px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.8rem; }
+    .param-key { color: #6c757d; }
+    .param-value { font-family: monospace; word-break: break-all; max-width: 200px; text-align: right; }
+    
+    /* Figure Archive */
+    .fig-filters { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; padding: 12px; background: #f8f9fa; border-radius: 6px; }
+    .checkbox-group { display: flex; flex-direction: column; gap: 4px; }
+    .checkbox-group label { font-size: 0.8rem; font-weight: 500; color: #495057; }
+    .checkbox-group div { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; }
+    
+    .figure-grid { display: flex; flex-wrap: wrap; gap: 16px; }
+    .figure-card { flex: 1 1 260px; max-width: 320px; min-width: 220px; border: 1px solid #dee2e6; border-radius: 8px; overflow: hidden; background: white; }
+    .figure-img { background: #f8f9fa; padding: 12px; text-align: center; min-height: 160px; display: flex; align-items: center; justify-content: center; }
+    .figure-img img { max-width: 100%; max-height: 150px; object-fit: contain; }
+    .figure-info { padding: 12px; }
+    .figure-title { font-weight: 600; font-size: 0.85rem; margin-bottom: 4px; }
+    .figure-desc { font-size: 0.75rem; color: #6c757d; margin-bottom: 8px; }
+    .figure-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 6px; }
+    .tag { font-size: 0.7rem; background: #e9ecef; color: #495057; padding: 2px 8px; border-radius: 3px; }
+    .type-badge { display: inline-block; font-size: 0.75rem; padding: 2px 8px; border-radius: 4px; margin-right: 8px; }
+    .type-fss { background: #d1e7dd; color: #0f5132; }
+    .type-raw { background: #cfe2ff; color: #084298; }
+    .type-analysis { background: #fff3cd; color: #856404; }
+    
+    .section-header { display: flex; align-items: center; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 2px solid #e9ecef; }
+    
+    .hint { font-size: 0.75rem; color: #6c757d; margin-top: 6px; }
+    
+    /* Performance Chart Placeholder */
+    .chart-placeholder { background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 8px; padding: 40px; text-align: center; color: #6c757d; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Simulation Dashboard v2 (Prototype)</h1>
+    <p class="subtitle">Redesigned with unified run exploration and figure archive</p>
+    
+    <!-- Summary Cards -->
+    <div class="summary">
+      <div class="card" style="border-color: #0d6efd;">
+        <div class="card-value">34</div>
+        <div class="card-label">Total Runs</div>
+      </div>
+      <div class="card" style="border-color: #0dcaf0;">
+        <div class="card-value">4</div>
+        <div class="card-label">Tasks</div>
+      </div>
+      <div class="card" style="border-color: #6c757d;">
+        <div class="card-value">6</div>
+        <div class="card-label">Phases</div>
+      </div>
+      <div class="card" style="border-color: #198754;">
+        <div class="card-value">31</div>
+        <div class="card-label">Complete</div>
+      </div>
+      <div class="card" style="border-color: #ffc107;">
+        <div class="card-value">12</div>
+        <div class="card-label">With Timing</div>
+      </div>
+      <div class="card" style="border-color: #212529;">
+        <div class="card-value">284m</div>
+        <div class="card-label">Compute</div>
+      </div>
+      <div class="card" style="border-color: #dc3545;">
+        <div class="card-value">142K</div>
+        <div class="card-label">Avg sw/s</div>
+      </div>
+      <div class="card" style="border-color: #6610f2;">
+        <div class="card-value">18</div>
+        <div class="card-label">Figures</div>
+      </div>
+    </div>
+    
+    <!-- Runs & Results Section -->
+    <h2>Runs & Results</h2>
+    
+    <div class="tabs">
+      <button class="tab active">Runs Table</button>
+      <button class="tab">Detail Panel</button>
+    </div>
+    
+    <div class="filters">
+      <div class="filter-group">
+        <label>Task:</label>
+        <select><option>All</option><option>T20</option><option>T25</option><option>T27</option></select>
+      </div>
+      <div class="filter-group">
+        <label>Phase:</label>
+        <select><option>All</option><option>phase1</option><option>phase2</option><option>phase3</option><option>phase3b</option></select>
+      </div>
+      <div class="filter-group">
+        <label>Search:</label>
+        <input type="text" placeholder="Run ID, description, finding..." style="width: 200px;">
+      </div>
+    </div>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Run ID</th><th>Task</th><th>Phase</th><th>L</th><th>D</th><th>β Range</th>
+          <th>Wall</th><th>Perf</th><th>βs</th><th>Date</th><th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="selected">
+          <td class="mono">t20-p3b-L8-3D-fine</td>
+          <td>T20</td><td>phase3b</td><td>8</td><td>3</td>
+          <td>0.70–0.82</td><td>45.2m</td><td>85,432</td><td>25</td>
+          <td>27/06/2026</td>
+          <td><span class="badge badge-success">complete</span></td>
+        </tr>
+        <tr>
+          <td class="mono">t20-p3b-L16-3D-fine</td>
+          <td>T20</td><td>phase3b</td><td>16</td><td>3</td>
+          <td>0.72–0.738</td><td>—</td><td>—</td><td>7/27</td>
+          <td>26/06/2026</td>
+          <td><span class="badge badge-warning">in-progress</span></td>
+        </tr>
+        <tr>
+          <td class="mono">t20-p3-L24-3D-wilson</td>
+          <td>T20</td><td>phase3</td><td>24</td><td>3</td>
+          <td>0.3–1.2</td><td>7.3m</td><td>142,380</td><td>21</td>
+          <td>26/06/2026</td>
+          <td><span class="badge badge-success">complete</span></td>
+        </tr>
+        <tr>
+          <td class="mono">t20-p3-L32-3D-wilson</td>
+          <td>T20</td><td>phase3</td><td>32</td><td>3</td>
+          <td>0.3–1.2</td><td>17.2m</td><td>98,765</td><td>21</td>
+          <td>26/06/2026</td>
+          <td><span class="badge badge-success">complete</span></td>
+        </tr>
+        <tr>
+          <td class="mono">t20-p2-L8</td>
+          <td>T20</td><td>phase2</td><td>8</td><td>2</td>
+          <td>0.2–0.8</td><td>0.5m</td><td>320,000</td><td>7</td>
+          <td>25/06/2026</td>
+          <td><span class="badge badge-success">complete</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="hint">💡 Click any row to select it and view details</p>
+    
+    <!-- Detail Panel (shown for selected run) -->
+    <div class="detail-panel">
+      <div style="font-weight: 600; margin-bottom: 12px;">📋 t20-p3b-L8-3D-fine-20260627 <span class="badge badge-success">complete</span></div>
+      <p style="font-size: 0.85rem; color: #6c757d; margin-bottom: 12px;">3D Z₂ LGT finite-size scaling, L=8, fine-grained β sweep</p>
+      
+      <div class="detail-grid">
+        <div class="detail-card">
+          <h4>📋 Parameters</h4>
+          <div class="param-row"><span class="param-key">latticeSize</span><span class="param-value">8</span></div>
+          <div class="param-row"><span class="param-key">dimension</span><span class="param-value">3</span></div>
+          <div class="param-row"><span class="param-key">thermalSweeps</span><span class="param-value">500000</span></div>
+          <div class="param-row"><span class="param-key">measureSweeps</span><span class="param-value">1000000</span></div>
+          <div class="param-row"><span class="param-key">measureEvery</span><span class="param-value">10</span></div>
+          <div class="param-row"><span class="param-key">workers</span><span class="param-value">8</span></div>
+          <div class="param-row"><span class="param-key">loopSizes</span><span class="param-value">1x1,2x2,3x3</span></div>
+          <div class="param-row"><span class="param-key">betaValues</span><span class="param-value">[0.7, 0.705, 0.71, ... +22 more]</span></div>
+        </div>
+        <div class="detail-card">
+          <h4>📊 Results</h4>
+          <div class="param-row"><span class="param-key">criticalBetaEstimate</span><span class="param-value">0.761</span></div>
+          <div class="param-row"><span class="param-key">plaquetteRange</span><span class="param-value">[0.295, 0.955]</span></div>
+          <div class="param-row"><span class="param-key">binderCumulantRange</span><span class="param-value">[0.62, 0.666]</span></div>
+          <div class="param-row"><span class="param-key">wallTimeSeconds</span><span class="param-value">2712.4</span></div>
+        </div>
+      </div>
+      
+      <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px;">
+        <div style="border: 1px solid #dee2e6; border-radius: 4px; padding: 6px 12px; font-size: 0.8rem;">⏱️ <strong>45.2 min</strong> wall time</div>
+        <div style="border: 1px solid #dee2e6; border-radius: 4px; padding: 6px 12px; font-size: 0.8rem;">⚡ <strong>85,432</strong> sweeps/sec</div>
+        <div style="border: 1px solid #dee2e6; border-radius: 4px; padding: 6px 12px; font-size: 0.8rem;">📈 <strong>25</strong> β values</div>
+        <a href="#" style="border: 1px solid #0d6efd; border-radius: 4px; padding: 6px 12px; font-size: 0.8rem; text-decoration: none; color: #0d6efd;">🔽 JSON</a>
+      </div>
+      
+      <div style="margin-top: 16px;">
+        <div style="font-weight: 600; font-size: 0.85rem; margin-bottom: 8px;">📁 Generated Figures (6)</div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <a href="#" style="border: 1px solid #dee2e6; border-radius: 4px; padding: 4px 10px; font-size: 0.8rem; text-decoration: none; color: #0d6efd; background: white;">Plaquette (FSS)</a>
+          <a href="#" style="border: 1px solid #dee2e6; border-radius: 4px; padding: 4px 10px; font-size: 0.8rem; text-decoration: none; color: #0d6efd; background: white;">Susceptibility</a>
+          <a href="#" style="border: 1px solid #dee2e6; border-radius: 4px; padding: 4px 10px; font-size: 0.8rem; text-decoration: none; color: #0d6efd; background: white;">Specific Heat</a>
+          <a href="#" style="border: 1px solid #dee2e6; border-radius: 4px; padding: 4px 10px; font-size: 0.8rem; text-decoration: none; color: #0d6efd; background: white;">Binder Cumulant</a>
+          <a href="#" style="border: 1px solid #dee2e6; border-radius: 4px; padding: 4px 10px; font-size: 0.8rem; text-decoration: none; color: #0d6efd; background: white;">Critical Zoom</a>
+          <a href="#" style="border: 1px solid #dee2e6; border-radius: 4px; padding: 4px 10px; font-size: 0.8rem; text-decoration: none; color: #0d6efd; background: white;">Polyakov Loop</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Figure Archive Section -->
+    <h2>Figure Archive</h2>
+    
+    <div class="fig-filters">
+      <div class="checkbox-group">
+        <label>Task</label>
+        <div><input type="checkbox" checked> T20</div>
+        <div><input type="checkbox" checked> T25</div>
+        <div><input type="checkbox" checked> T27</div>
+      </div>
+      <div class="checkbox-group">
+        <label>Dimension</label>
+        <div><input type="checkbox" checked> 2D</div>
+        <div><input type="checkbox" checked> 3D</div>
+      </div>
+      <div class="checkbox-group">
+        <label>Type</label>
+        <div><input type="checkbox" checked> FSS</div>
+        <div><input type="checkbox" checked> Raw</div>
+        <div><input type="checkbox" checked> Analysis</div>
+      </div>
+      <div class="filter-group" style="align-self: flex-end;">
+        <label>Search:</label>
+        <input type="text" placeholder="Figure title or description..." style="width: 180px;">
+      </div>
+    </div>
+    
+    <p style="font-size: 0.85rem; color: #6c757d; margin-bottom: 12px;">Showing <strong>18</strong> of 18 figures</p>
+    
+    <!-- FSS Figures -->
+    <div class="section-header">
+      <span class="type-badge type-fss">FSS</span>
+      <span>6 figures</span>
+    </div>
+    <div class="figure-grid">
+      <div class="figure-card">
+        <div class="figure-img">
+          <img src="figures/t20-p3-fss-plaquette.png" alt="Plaquette FSS" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color:#adb5bd\'>📊 Plaquette vs β (FSS)</span>';">
+        </div>
+        <div class="figure-info">
+          <div class="figure-title">Plaquette vs β (FSS)</div>
+          <div class="figure-desc">Plaquette expectation across β for all L values</div>
+          <div class="figure-tags">
+            <span class="tag">T20</span><span class="tag">3D</span><span class="tag">phase3b</span>
+          </div>
+          <div style="font-size: 0.7rem; color: #adb5bd;">Source: 4 runs</div>
+        </div>
+      </div>
+      <div class="figure-card">
+        <div class="figure-img">
+          <img src="figures/t20-p3-fss-susceptibility.png" alt="Susceptibility" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color:#adb5bd\'>📊 Susceptibility (FSS)</span>';">
+        </div>
+        <div class="figure-info">
+          <div class="figure-title">Susceptibility (FSS)</div>
+          <div class="figure-desc">Magnetic susceptibility peak sharpening</div>
+          <div class="figure-tags">
+            <span class="tag">T20</span><span class="tag">3D</span><span class="tag">phase3b</span>
+          </div>
+          <div style="font-size: 0.7rem; color: #adb5bd;">Source: 4 runs</div>
+        </div>
+      </div>
+      <div class="figure-card">
+        <div class="figure-img">
+          <img src="figures/t20-p3-fss-binder.png" alt="Binder" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color:#adb5bd\'>📊 Binder Cumulant (FSS)</span>';">
+        </div>
+        <div class="figure-info">
+          <div class="figure-title">Binder Cumulant (FSS)</div>
+          <div class="figure-desc">Binder cumulant convergence to 2/3</div>
+          <div class="figure-tags">
+            <span class="tag">T20</span><span class="tag">3D</span><span class="tag">phase3b</span>
+          </div>
+          <div style="font-size: 0.7rem; color: #adb5bd;">Source: 4 runs</div>
+        </div>
+      </div>
+      <div class="figure-card">
+        <div class="figure-img">
+          <img src="figures/t20-p3-fss-critical-zoom.png" alt="Critical Zoom" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color:#adb5gd\'>📊 Critical Region (2×2)</span>';">
+        </div>
+        <div class="figure-info">
+          <div class="figure-title">Critical Region (2×2)</div>
+          <div class="figure-desc">All observables near β≈0.76</div>
+          <div class="figure-tags">
+            <span class="tag">T20</span><span class="tag">3D</span><span class="tag">phase3b</span>
+          </div>
+          <div style="font-size: 0.7rem; color: #adb5bd;">Source: 4 runs</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Raw Figures -->
+    <div class="section-header" style="margin-top: 24px;">
+      <span class="type-badge type-raw">Raw</span>
+      <span>8 figures</span>
+    </div>
+    <div class="figure-grid">
+      <div class="figure-card">
+        <div class="figure-img">
+          <img src="figures/t20-p3-plaquette-vs-beta.png" alt="Plaquette 3D" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color:#adb5bd\'>📊 Plaquette vs β (3D)</span>';">
+        </div>
+        <div class="figure-info">
+          <div class="figure-title">Plaquette vs β (3D)</div>
+          <div class="figure-desc">Plaquette expectation across β</div>
+          <div class="figure-tags">
+            <span class="tag">T20</span><span class="tag">3D</span><span class="tag">phase3</span>
+          </div>
+          <div style="font-size: 0.7rem; color: #adb5bd;">Source: 2 runs</div>
+        </div>
+      </div>
+      <div class="figure-card">
+        <div class="figure-img">
+          <img src="figures/t20-p3-combined.png" alt="Combined 3D" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color:#adb5bd\'>📊 Combined Observables (3D)</span>';">
+        </div>
+        <div class="figure-info">
+          <div class="figure-title">Combined Observables (3D)</div>
+          <div class="figure-desc">2×2 panel with all observables</div>
+          <div class="figure-tags">
+            <span class="tag">T20</span><span class="tag">3D</span><span class="tag">phase3</span>
+          </div>
+          <div style="font-size: 0.7rem; color: #adb5bd;">Source: 1 run</div>
+        </div>
+      </div>
+      <div class="figure-card">
+        <div class="figure-img">
+          <img src="figures/t20-plaquette-vs-beta.png" alt="Plaquette 2D" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color:#adb5bd\'>📊 Plaquette vs β (2D)</span>';">
+        </div>
+        <div class="figure-info">
+          <div class="figure-title">Plaquette vs β (2D)</div>
+          <div class="figure-desc">2D plaquette expectation</div>
+          <div class="figure-tags">
+            <span class="tag">T20</span><span class="tag">2D</span><span class="tag">phase2</span>
+          </div>
+          <div style="font-size: 0.7rem; color: #adb5bd;">Source: 2 runs</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Analysis Figures -->
+    <div class="section-header" style="margin-top: 24px;">
+      <span class="type-badge type-analysis">Analysis</span>
+      <span>4 figures</span>
+    </div>
+    <div class="figure-grid">
+      <div class="figure-card">
+        <div class="figure-img">
+          <img src="figures/t20-binder-first-order-scaling.png" alt="First-Order Scaling" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color:#adb5bd\'>📊 First-Order Scaling</span>';">
+        </div>
+        <div class="figure-info">
+          <div class="figure-title">First-Order Scaling</div>
+          <div class="figure-desc">Binder cumulant first-order scaling</div>
+          <div class="figure-tags">
+            <span class="tag">T20</span><span class="tag">3D</span><span class="tag">phase3</span>
+          </div>
+          <div style="font-size: 0.7rem; color: #adb5bd;">Source: 1 run</div>
+        </div>
+      </div>
+      <div class="figure-card">
+        <div class="figure-img">
+          <img src="figures/t20-scaling-collapse.png" alt="Scaling Collapse" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color:#adb5bd\'>📊 Scaling Collapse</span>';">
+        </div>
+        <div class="figure-info">
+          <div class="figure-title">Scaling Collapse</div>
+          <div class="figure-desc">Finite-size scaling collapse</div>
+          <div class="figure-tags">
+            <span class="tag">T20</span><span class="tag">3D</span><span class="tag">phase3</span>
+          </div>
+          <div style="font-size: 0.7rem; color: #adb5bd;">Source: 1 run</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Performance Scaling -->
+    <h2>Performance Scaling</h2>
+    <div class="chart-placeholder">
+      <div style="font-size: 2rem; margin-bottom: 8px;">📈</div>
+      <div>Scatter plot: L vs wallTime (log-log)</div>
+      <div style="font-size: 0.8rem; margin-top: 8px; color: #adb5bd;">Colored by dimension (2D/3D)</div>
+    </div>
+    
+    <!-- Task Breakdown -->
+    <h2>Task Breakdown</h2>
+    <table>
+      <thead>
+        <tr><th>Task ID</th><th>Name</th><th>Status</th><th>Runs</th><th>Done</th><th>Phases</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="mono">T20</td>
+          <td>Z₂ LGT Monte Carlo</td>
+          <td><span class="badge badge-success">in-progress</span></td>
+          <td>28</td>
+          <td>25</td>
+          <td>phase1, phase2, phase3, phase3b</td>
+        </tr>
+        <tr>
+          <td class="mono">T25</td>
+          <td>Volume Operator</td>
+          <td><span class="badge badge-success">complete</span></td>
+          <td>1</td>
+          <td>1</td>
+          <td>phase1</td>
+        </tr>
+        <tr>
+          <td class="mono">T27</td>
+          <td>Rust Benchmark</td>
+          <td><span class="badge badge-success">complete</span></td>
+          <td>5</td>
+          <td>5</td>
+          <td>benchmark</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <!-- Recent Activity -->
+    <h2>Recent Activity</h2>
+    <div style="border: 1px solid #dee2e6; border-radius: 6px; overflow: hidden;">
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; border-bottom: 1px solid #f0f0f0;">
+        <div>
+          <div style="font-weight: 500; font-size: 0.85rem;">t20-p3b-L8-3D-fine-20260627 <span class="badge badge-success">complete</span></div>
+          <div style="font-size: 0.75rem; color: #6c757d;">3D Z₂ LGT finite-size scaling, L=8, fine-grained β sweep</div>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-size: 0.75rem; color: #adb5bd;">27/06/2026</div>
+          <div style="font-size: 0.7rem; color: #6c757d;">45.2m</div>
+        </div>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; border-bottom: 1px solid #f0f0f0;">
+        <div>
+          <div style="font-weight: 500; font-size: 0.85rem;">t20-p3b-L16-3D-fine-20260626 <span class="badge badge-warning">in-progress</span></div>
+          <div style="font-size: 0.75rem; color: #6c757d;">3D Z₂ LGT finite-size scaling, L=16, fine-grained β sweep</div>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-size: 0.75rem; color: #adb5bd;">26/06/2026</div>
+        </div>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 12px;">
+        <div>
+          <div style="font-weight: 500; font-size: 0.85rem;">t20-p3-L24-3D-wilson-fine-20250626 <span class="badge badge-success">complete</span></div>
+          <div style="font-size: 0.75rem; color: #6c757d;">3D Z₂ LGT, L=24, Wilson loops</div>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-size: 0.75rem; color: #adb5bd;">26/06/2026</div>
+          <div style="font-size: 0.7rem; color: #6c757d;">7.3m</div>
+        </div>
+      </div>
+    </div>
+    
+    <p style="margin-top: 24px; font-size: 0.75rem; color: #adb5bd; text-align: center;">
+      Static mockup — no dynamic content. Production version would use OJS for reactivity.
+    </p>
+  </div>
+</body>
+</html>

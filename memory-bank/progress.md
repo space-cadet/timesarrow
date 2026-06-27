@@ -1,65 +1,62 @@
-# Progress Tracking
-*Last Updated: 2026-06-26*
+# timesarrow — Progress Tracker
 
-## Completed Milestones
-- [x] Initial project directory listing and content analysis.
-- [x] Detailed reading of the main LaTeX manuscript (`timesarrow.tex`).
-- [x] Creation of the Memory Bank directory structure.
-- [x] Population of `projectbrief.md`, `techContext.md`, `systemPatterns.md`, and `activeContext.md`.
-- [x] Critical review of full manuscript — identified structural weaknesses and argumentative gaps.
-- [x] Resolution of Elitzur's theorem problem — confinement-deconfinement framing identified.
-- [x] Detailed rewrite plan for Sec 6 (`spt-lqg-mapping.tex`) and Sec 7 (`z2-action-derivation.tex`).
-- [x] Complete rewrite of `z2-action-derivation.tex` with 4 subsections (Z2 field, effective action, phase structure, cosmological transition).
-- [x] Complete rewrite of `spt-lqg-mapping.tex` with 4 subsections (CZX correspondence, j=1/2 justification, SPT=deconfined, edge modes conjecture).
-- [x] Title change to "...Confinement-Deconfinement Transition".
-- [x] Abstract rewritten to reflect new framing.
-- [x] Introduction layout paragraph updated.
-- [x] Discussion section expanded with 3 new subsections (Elitzur, QECC, Hopf algebras).
-- [x] 9 new bibliography entries added (Elitzur, Wegner, Fradkin-Shenker, Kogut, Wilson, Markopoulou, Perez, Dennis-Kitaev).
-- [x] Full document builds cleanly: 38 pages, no LaTeX errors.
+*Updated: 2026-06-27 12:30:00 IST*
 
-## Numerical Simulation Milestones (T20)
-- [x] T20a: 2D square lattice (L=16) — data collected, β_c ≈ 0.44 confirmed
-- [x] T20b: Finite-size scaling (L=8,12,16,20,24) — data collected, Binder → U* ≈ 0.66
-- [x] T20c: 3D cubic lattice (L=4,6,8) — data collected, β_c ≈ 0.75
-- [x] T27: Rust Z₂ LGT framework — validated, ~2,500–3,000× speedup
-- [x] T20a: Wilson loops re-run (L=16) — ✅ COMPLETE 2026-06-26
-- [x] T20c: Wilson loops and string tension — ✅ COMPLETE 2026-06-26
+## Active Tasks
 
-## Work in Progress
-- [ ] T20b: Scaling collapse plots (can use existing data)
-- [ ] T20b: Binder cumulant crossing analysis
-- [ ] T20b: Correlation length ξ vs L at β_c
-- [ ] T20d: Critical exponents fitting (ν, γ, β, α)
-- [ ] T20d: Polyakov loop implementation in Rust
-- [ ] T20d: FSS simulations (L=8→64, fine β grid)
-- [ ] T11: Fix 5 critical manuscript errors (CRITICAL — blocks publication)
-- [ ] T10: Fix 17 bibliography metadata errors (HIGH)
-- [ ] T12: Address 9 major issues + add ~20 recent citations (HIGH)
+### T20: Z₂ Lattice Gauge Theory — Phase 3 (3D) + Phase 3b (FSS)
 
-## Known Issues (Addressed)
-- ~~`sec:z2-action` was essentially empty~~ → Rewritten with 4 subsections
-- ~~`sec:spt-lqg` was qualitative summary~~ → Rewritten with rigorous content
-- ~~Elitzur's theorem problem unaddressed~~ → Fully addressed in new Discussion subsection
+| Sub-task | Status | Completion |
+|----------|--------|------------|
+| T20a (2D, L=16) | ✅ Complete | Wilson loops, string tension |
+| T20b (2D FSS) | 🔄 Partial | Data collected, analysis pending |
+| T20c (3D, L=8-24) | ✅ Complete | Wilson loops, string tension, first-order analysis |
+| T20d (3D FSS, fine β) | 🔄 In Progress | L=8,16 done, L=32 running, L=48/64 pending |
 
-## Remaining Tasks (Lower Priority)
-- [ ] T7: Trim MPS pedagogy (Sec 3) by ~50% — cite Bridgeman-Chubb
-- [ ] T7: Shorten Appendix D (duplicates Sec 4)
-- [ ] Minor: Remove commented-out code blocks throughout source
-- [ ] Minor: Fill/remove remaining \todo items
+**T20d Progress:**
+- L=8: ✅ 25 β values, 0.70–0.82, Δβ=0.005, 1M sweeps
+- L=16: ✅ 27 β values, 0.72–0.80, Δβ=0.003, 1.5M sweeps
+- L=32: 🔄 21 β values, 0.74–0.78, Δβ=0.002, 2M sweeps, ~4h remaining
+- L=48: ⏳ Pending (β=0.75–0.77, Δβ=0.0015, 2M sweeps)
+- L=64: ⏳ Pending (β=0.75–0.77, Δβ=0.001, 3M sweeps)
 
-## Future Plans
-- Run T20d FSS simulations (~12–15h compute)
-- Compute critical exponents from T20d data
-- Verify all new citations compile correctly with biber after T10/T12
-- Final cleanup and formatting pass after T11
-- Author decisions: Appendix D sub-label shadowing; abstract emphasis ordering; "original contributions" paragraph in Sec 1
+**T20 Key Results:**
+- β_c (3D) ≈ 0.7613(2) — matches Creutz et al. (1979)
+- First-order transition confirmed (Binder cumulant exponent ≈ -3)
+- String tension σ vanishes at β_c
 
-## Gap Analysis Summary (2026-06-26)
-Data collection complete for all T20 phases, but key physics observables missing:
-- **Wilson loops**: ✅ COMPLETE — confinement (area law) vs deconfinement (perimeter law) demonstrated
-- **String tension**: ✅ COMPLETE — order parameter for phase transition extracted
-- **Critical exponents**: 🔄 IN PROGRESS — FSS scripts ready, simulations pending
-- **Scaling collapse**: 🔄 IN PROGRESS — can use existing T20b data
+### T28: Simulation Dashboard
 
-Next: Run T20d FSS simulations, then compute observables from data.
+| Feature | Status | Notes |
+|---------|--------|-------|
+| v1 (basic) | ✅ Complete | Summary, filters, table, task breakdown |
+| v2 Phase 1 (data model) | ✅ Complete | Schema v2.0.0, timing fields, 25 runs |
+| v2 Phase 2 (UI) | 🔄 Nearly Complete | Gallery, detail browser, charts, cards |
+| v2 Phase 3 (deploy) | ✅ Complete | Live on GitHub Pages |
+
+**v2 Remaining:**
+- Expandable rows with per-β details
+- Data Export buttons (CSV/JSON)
+- Live Monitor for running simulations
+- Task Pipeline flowchart
+
+---
+
+## Blockers
+
+1. **T20d L=32**: ~4 hours remaining — no action needed, just wait
+2. **T28**: None — can continue implementing remaining features
+
+---
+
+## Recent Commits
+
+### timesarrow repo
+- `7f4f77a` — fix(dashboard): Observable Plot instead of Vega-Lite
+- `6fb8f5e` — fix(dashboard): word wrap for key finding
+- `e4a0b15` — feat(dashboard): Plot Gallery + Run Detail Browser
+- `b2c5d39` — fix(dashboard): Results card formatting
+- `e9d57f7` — fix(dashboard): named function for formatValue
+
+### space-cadet.github.io repo
+- `e9d57f7` — Dashboard v2 deployed (same commits as above, copied)

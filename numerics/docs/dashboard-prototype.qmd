@@ -1,0 +1,570 @@
+---
+title: "Simulation Dashboard v2 (Prototype)"
+description: "Redesigned dashboard with unified run exploration and figure archive"
+date: 2026-06-27
+format:
+  html:
+    toc: true
+    page-layout: full
+---
+
+```{ojs}
+//| echo: false
+
+// ============================================================
+// DATA LOADING
+// ============================================================
+
+registry = await FileAttachment("data-registry.json").json()
+
+runs = registry.runs.map(r => ({
+  ...r,
+  latticeSize: r.parameters?.latticeSize || "—",
+  dimension: r.parameters?.dimension || 2,
+  betaRange: r.parameters?.betaValues 
+    ? `${Math.min(...r.parameters.betaValues)}–${Math.max(...r.parameters.betaValues)}`
+    : "—",
+  keyFinding: r.results?.keyFinding || r.results?.criticalBetaEstimate || "—",
+  date: new Date(r.timestamp).toLocaleDateString('en-GB'),
+  hasOutput: r.outputFiles?.length > 0 ? "✅" : "❌",
+  wallTimeSec: r.wallTimeMs ? Math.round(r.wallTimeMs / 1000) : null,
+  wallTimeMin: r.wallTimeMs ? (r.wallTimeMs / 60000).toFixed(1) : null,
+  sweepsPerSec: r.sweepsPerSecond ? Math.round(r.sweepsPerSecond) : null,
+  betasDone: r.betasCompleted || "—",
+  isTest: r.description?.startsWith('[TEST]') || false,
+  // Extract task ID (e.g., "T20d" from "t20-p3b-L8...")
+  taskId: r.runId.match(/^t(\d+)/i)?.[0]?.toUpperCase() || "OTHER"
+}))
+
+productionRuns = runs.filter(r => !r.isTest)
+
+// Summary stats
+totalRuns = runs.length
+tasks = [...new Set(runs.map(r => r.task))].sort()
+phases = [...new Set(runs.map(r => r.phase))].sort()
+
+// Performance stats
+totalWallTimeMin = productionRuns
+  .filter(r => r.wallTimeSec)
+  .reduce((sum, r) => sum + r.wallTimeSec, 0) / 60
+
+avgSweepsPerSec = productionRuns
+  .filter(r => r.sweepsPerSec)
+  .reduce((sum, r, _, arr) => sum + r.sweepsPerSec / arr.length, 0)
+
+runsWithTiming = productionRuns.filter(r => r.wallTimeSec).length
+```
+
+```{ojs}
+//| echo: false
+
+// ============================================================
+// FIGURE CATALOG (hardcoded for prototype — will come from registry)
+// ============================================================
+
+// Base URL for figures (relative to dashboard location on GitHub Pages)
+figureBase = "figures/"
+
+figureCatalog = [
+  // T20 Phase 3b - 3D Finite-Size Scaling (newly deployed)
+  {id: "t20-p3-fss-plaquette", title: "Plaquette vs β (FSS)", task: "T20", phase: "phase3b", dimension: 3, type: "FSS", runs: ["t20-p3b-L8-3D-fine-20260627", "t20-p3b-L16-3D-fine-20260626", "t20-p3-L24-3D-wilson-fine-20250626", "t20-p3-L32-3D-wilson-fine-20250626"], desc: "Plaquette expectation across β for all L values"},
+  {id: "t20-p3-fss-susceptibility", title: "Susceptibility (FSS)", task: "T20", phase: "phase3b", dimension: 3, type: "FSS", runs: ["t20-p3b-L8-3D-fine-20260627", "t20-p3b-L16-3D-fine-20260626", "t20-p3-L24-3D-wilson-fine-20250626", "t20-p3-L32-3D-wilson-fine-20250626"], desc: "Magnetic susceptibility peak sharpening"},
+  {id: "t20-p3-fss-specific-heat", title: "Specific Heat (FSS)", task: "T20", phase: "phase3b", dimension: 3, type: "FSS", runs: ["t20-p3b-L8-3D-fine-20260627", "t20-p3b-L16-3D-fine-20260626", "t20-p3-L24-3D-wilson-fine-20250626", "t20-p3-L32-3D-wilson-fine-20250626"], desc: "Specific heat near critical region"},
+  {id: "t20-p3-fss-binder", title: "Binder Cumulant (FSS)", task: "T20", phase: "phase3b", dimension: 3, type: "FSS", runs: ["t20-p3b-L8-3D-fine-20260627", "t20-p3b-L16-3D-fine-20260626", "t20-p3-L24-3D-wilson-fine-20250626", "t20-p3-L32-3D-wilson-fine-20250626"], desc: "Binder cumulant convergence to 2/3"},
+  {id: "t20-p3-fss-critical-zoom", title: "Critical Region (2×2)", task: "T20", phase: "phase3b", dimension: 3, type: "FSS", runs: ["t20-p3b-L8-3D-fine-20260627", "t20-p3b-L16-3D-fine-20260626", "t20-p3-L24-3D-wilson-fine-20250626", "t20-p3-L32-3D-wilson-fine-20250626"], desc: "All observables near β≈0.76"},
+  {id: "t20-p3-fss-polyakov", title: "Polyakov Loop", task: "T20", phase: "phase3b", dimension: 3, type: "FSS", runs: ["t20-p3b-L16-3D-fine-20260626"], desc: "Order parameter (L=16 partial data)"},
+  
+  // T20 Phase 3 - 3D Core (individual L)
+  {id: "t20-p3-plaquette-vs-beta", title: "Plaquette vs β (3D)", task: "T20", phase: "phase3", dimension: 3, type: "Raw", runs: ["t20-p3-L8-3D-20250625", "t20-p3-L16-3D-wilson-fine-20250626"], desc: "Plaquette expectation across β"},
+  {id: "t20-p3-susceptibility-vs-beta", title: "Susceptibility (3D)", task: "T20", phase: "phase3", dimension: 3, type: "Raw", runs: ["t20-p3-L8-3D-20250625"], desc: "Susceptibility peak at critical region"},
+  {id: "t20-p3-specific-heat-vs-beta", title: "Specific Heat (3D)", task: "T20", phase: "phase3", dimension: 3, type: "Raw", runs: ["t20-p3-L8-3D-20250625"], desc: "Specific heat"},
+  {id: "t20-p3-binder-vs-beta", title: "Binder Cumulant (3D)", task: "T20", phase: "phase3", dimension: 3, type: "Raw", runs: ["t20-p3-L8-3D-20250625"], desc: "Binder cumulant convergence"},
+  {id: "t20-p3-combined", title: "Combined Observables (3D)", task: "T20", phase: "phase3", dimension: 3, type: "Raw", runs: ["t20-p3-L8-3D-20250625"], desc: "2×2 panel with all observables"},
+  {id: "t20-p3-wilson-loops", title: "Wilson Loops (3D)", task: "T20", phase: "phase3", dimension: 3, type: "Raw", runs: ["t20-p3-L8-3D-20250625"], desc: "Wilson loop expectation values"},
+  
+  // T20 Phase 2 - 2D
+  {id: "t20-plaquette-vs-beta", title: "Plaquette vs β (2D)", task: "T20", phase: "phase2", dimension: 2, type: "Raw", runs: ["t20-p2-L8-20250625", "t20-p2-L16-20250625"], desc: "2D plaquette expectation"},
+  {id: "t20-susceptibility", title: "Susceptibility (2D)", task: "T20", phase: "phase2", dimension: 2, type: "Raw", runs: ["t20-p2-L8-20250625"], desc: "2D magnetic susceptibility"},
+  
+  // Scaling Analysis
+  {id: "t20-binder-first-order-scaling", title: "First-Order Scaling", task: "T20", phase: "phase3", dimension: 3, type: "Analysis", runs: ["t20-p3-L8-3D-20250625"], desc: "Binder cumulant first-order scaling"},
+  {id: "t20-scaling-collapse", title: "Scaling Collapse", task: "T20", phase: "phase3", dimension: 3, type: "Analysis", runs: ["t20-p3-L8-3D-20250625"], desc: "Finite-size scaling collapse"},
+]
+
+// Extract filter options from catalog
+figureTasks = [...new Set(figureCatalog.map(f => f.task))].sort()
+figureDimensions = [...new Set(figureCatalog.map(f => f.dimension))].sort((a,b) => a-b)
+figureTypes = [...new Set(figureCatalog.map(f => f.type))].sort()
+```
+
+```{ojs}
+//| echo: false
+
+// ============================================================
+// SUMMARY CARDS
+// ============================================================
+
+html`
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 1rem;">
+  ${[
+    [totalRuns, "Total Runs", "#0d6efd"],
+    [tasks.length, "Tasks", "#0dcaf0"],
+    [phases.length, "Phases", "#6c757d"],
+    [runs.filter(r => r.status === 'complete').length, "Complete", "#198754"],
+    [runsWithTiming, "With Timing", "#ffc107"],
+    [totalWallTimeMin > 0 ? `${totalWallTimeMin.toFixed(0)}m` : "—", "Compute", "#212529"],
+    [avgSweepsPerSec > 0 ? `${avgSweepsPerSec.toFixed(0)}` : "—", "Avg sw/s", "#dc3545"],
+    [figureCatalog.length, "Figures", "#6610f2"]
+  ].map(([value, label, color]) => html`
+    <div style="flex: 1 1 100px; min-width: 100px; max-width: 150px;">
+      <div style="border: 1px solid ${color}; border-radius: 6px; padding: 8px 10px; text-align: center;">
+        <div style="font-size: 1.4rem; font-weight: 600; line-height: 1.2;">${value}</div>
+        <div style="font-size: 0.7rem; color: #6c757d; margin-top: 2px;">${label}</div>
+      </div>
+    </div>
+  `)}
+</div>`
+```
+
+## Runs & Results
+
+```{ojs}
+//| echo: false
+
+// Filters for runs table
+viewof rsTaskFilter = Inputs.select(
+  ["All", ...tasks],
+  {label: "Task:"}
+)
+
+viewof rsPhaseFilter = Inputs.select(
+  ["All", ...phases],
+  {label: "Phase:"}
+)
+
+viewof rsSearchQuery = Inputs.text(
+  {label: "Search:", placeholder: "Run ID, description, finding..."}
+)
+```
+
+```{ojs}
+//| echo: false
+
+filteredRuns = runs.filter(r => {
+  const taskMatch = rsTaskFilter === "All" || r.task === rsTaskFilter;
+  const phaseMatch = rsPhaseFilter === "All" || r.phase === rsPhaseFilter;
+  const searchMatch = !rsSearchQuery || 
+    r.runId.toLowerCase().includes(rsSearchQuery.toLowerCase()) ||
+    r.description.toLowerCase().includes(rsSearchQuery.toLowerCase()) ||
+    String(r.keyFinding).toLowerCase().includes(rsSearchQuery.toLowerCase());
+  return taskMatch && phaseMatch && searchMatch;
+})
+```
+
+```{ojs}
+//| echo: false
+
+// Selected run for detail panel
+viewof selectedRunId = Inputs.select(
+  filteredRuns.filter(r => r.status === "complete").map(r => r.runId),
+  {label: "📋 Selected Run:"}
+)
+
+selectedRun = runs.find(r => r.runId === selectedRunId)
+```
+
+::: {.panel-tabset}
+
+### Runs Table
+
+```{ojs}
+//| echo: false
+
+// Render runs table with row highlighting for selected run
+html`
+<style>
+  .runs-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  .runs-table th { text-align: left; padding: 6px 8px; border-bottom: 2px solid #dee2e6; font-weight: 600; background: #f8f9fa; }
+  .runs-table td { padding: 5px 8px; border-bottom: 1px solid #eee; vertical-align: middle; }
+  .runs-table tr:hover { background: #f8f9fa; }
+  .runs-table tr.selected { background: #e7f1ff !important; }
+  .runs-table .run-id { font-family: monospace; font-size: 0.8rem; }
+  .runs-table .badge { font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; }
+  .runs-table .badge-complete { background: #d1e7dd; color: #0f5132; }
+  .runs-table .badge-inprogress { background: #fff3cd; color: #856404; }
+  .runs-table .badge-test { background: #f8d7da; color: #721c24; }
+</style>
+<table class="runs-table">
+  <thead>
+    <tr>
+      <th>Run ID</th>
+      <th>Task</th>
+      <th>Phase</th>
+      <th>L</th>
+      <th>D</th>
+      <th>β Range</th>
+      <th>Wall</th>
+      <th>Perf</th>
+      <th>βs</th>
+      <th>Date</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    ${filteredRuns.map(r => html`
+      <tr class="${r.runId === selectedRunId ? 'selected' : ''}" 
+          onclick="document.querySelector('select').value='${r.runId}'; document.querySelector('select').dispatchEvent(new Event('input'));"
+          style="cursor: pointer;">
+        <td class="run-id">${r.runId}</td>
+        <td>${r.task}</td>
+        <td>${r.phase}</td>
+        <td>${r.latticeSize}</td>
+        <td>${r.dimension}</td>
+        <td>${r.betaRange}</td>
+        <td>${r.wallTimeMin ? r.wallTimeMin + 'm' : '—'}</td>
+        <td>${r.sweepsPerSec ? r.sweepsPerSec.toLocaleString() : '—'}</td>
+        <td>${r.betasDone}</td>
+        <td>${r.date}</td>
+        <td>
+          <span class="badge badge-${r.status === 'complete' ? 'complete' : r.status === 'in-progress' ? 'inprogress' : 'test'}">
+            ${r.status}
+          </span>
+          ${r.isTest ? html`<span class="badge badge-test">TEST</span>` : ''}
+        </td>
+      </tr>
+    `)}
+  </tbody>
+</table>
+<p style="font-size: 0.75rem; color: #6c757d; margin-top: 6px;">
+  💡 Click any row to select it and view details →
+</p>
+`
+```
+
+### Detail Panel
+
+```{ojs}
+//| echo: false
+
+// Helper to format values
+formatValue = function fmt(v) {
+  if (v === null || v === undefined) return "—";
+  if (typeof v === "number") return Number.isInteger(v) ? v.toString() : v.toFixed(4);
+  if (typeof v === "string") return v;
+  if (Array.isArray(v)) {
+    if (v.length === 0) return "[]";
+    if (v.length <= 3) return `[${v.map(fmt).join(", ")}]`;
+    return `[${v.slice(0, 3).map(fmt).join(", ")}, ... +${v.length - 3} more]`;
+  }
+  if (typeof v === "object") {
+    const entries = Object.entries(v);
+    if (entries.length === 0) return "{}";
+    const pairs = entries.slice(0, 3).map(([k, val]) => `${k}: ${fmt(val)}`);
+    const suffix = entries.length > 3 ? `, ... +${entries.length - 3} more` : "";
+    return `{${pairs.join(", ")}${suffix}}`;
+  }
+  return String(v);
+}
+
+// Get figures for this run
+runFigures = selectedRun ? figureCatalog.filter(f => 
+  f.runs.includes(selectedRun.runId)
+) : []
+
+html`
+${selectedRun ? html`
+  <div style="font-size: 0.9rem;">
+    <!-- Header -->
+    <div style="background: #f8f9fa; border-radius: 6px; padding: 10px 14px; margin-bottom: 12px;">
+      <div style="font-weight: 600; font-size: 1rem; margin-bottom: 4px;">${selectedRun.runId}</div>
+      <div style="color: #6c757d; font-size: 0.8rem;">${selectedRun.description}</div>
+    </div>
+    
+    <!-- Two-column: Parameters & Results -->
+    <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px;">
+      <!-- Parameters -->
+      <div style="flex: 1 1 280px; min-width: 260px;">
+        <div style="border: 1px solid #dee2e6; border-radius: 6px; padding: 10px;">
+          <div style="font-weight: 600; font-size: 0.85rem; margin-bottom: 8px; color: #495057;">📋 Parameters</div>
+          ${selectedRun.parameters ? html`
+            <div style="font-size: 0.8rem;">
+              ${Object.entries(selectedRun.parameters).map(([k, v]) => html`
+                <div style="display: flex; justify-content: space-between; padding: 3px 0; border-bottom: 1px solid #f0f0f0;">
+                  <span style="color: #6c757d;">${k}</span>
+                  <span style="font-family: monospace; word-break: break-all; max-width: 180px; text-align: right;">${formatValue(v)}</span>
+                </div>
+              `)}
+            </div>
+          ` : html`<div style="color: #adb5bd; font-size: 0.8rem;">No parameters</div>`}
+        </div>
+      </div>
+      
+      <!-- Results -->
+      <div style="flex: 1 1 280px; min-width: 260px;">
+        <div style="border: 1px solid #dee2e6; border-radius: 6px; padding: 10px;">
+          <div style="font-weight: 600; font-size: 0.85rem; margin-bottom: 8px; color: #495057;">📊 Results</div>
+          ${selectedRun.results ? html`
+            <div style="font-size: 0.8rem;">
+              ${Object.entries(selectedRun.results).map(([k, v]) => html`
+                <div style="display: flex; justify-content: space-between; padding: 3px 0; border-bottom: 1px solid #f0f0f0;">
+                  <span style="color: #6c757d;">${k}</span>
+                  <span style="font-family: monospace;">${formatValue(v)}</span>
+                </div>
+              `)}
+            </div>
+          ` : html`<div style="color: #adb5bd; font-size: 0.8rem;">No results</div>`}
+        </div>
+      </div>
+    </div>
+    
+    <!-- Timing & Actions -->
+    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+      ${selectedRun.wallTimeMin ? html`
+        <div style="border: 1px solid #dee2e6; border-radius: 4px; padding: 6px 12px; font-size: 0.8rem;">
+          ⏱️ <strong>${selectedRun.wallTimeMin} min</strong> wall time
+        </div>
+      ` : ""}
+      ${selectedRun.sweepsPerSec ? html`
+        <div style="border: 1px solid #dee2e6; border-radius: 4px; padding: 6px 12px; font-size: 0.8rem;">
+          ⚡ <strong>${selectedRun.sweepsPerSec.toLocaleString()}</strong> sweeps/sec
+        </div>
+      ` : ""}
+      ${selectedRun.betasDone !== "—" ? html`
+        <div style="border: 1px solid #dee2e6; border-radius: 4px; padding: 6px 12px; font-size: 0.8rem;">
+          📈 <strong>${selectedRun.betasDone}</strong> β values
+        </div>
+      ` : ""}
+      ${selectedRun.outputFiles?.length > 0 ? html`
+        <a href="#" style="border: 1px solid #0d6efd; border-radius: 4px; padding: 6px 12px; font-size: 0.8rem; text-decoration: none; color: #0d6efd;">
+          🔽 JSON
+        </a>
+      ` : ""}
+    </div>
+    
+    <!-- Figures for this run -->
+    ${runFigures.length > 0 ? html`
+      <div style="margin-bottom: 12px;">
+        <div style="font-weight: 600; font-size: 0.85rem; margin-bottom: 8px; color: #495057;">📁 Generated Figures (${runFigures.length})</div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          ${runFigures.map(f => html`
+            <a href="${figureBase}${f.id}.svg" target="_blank" 
+               style="border: 1px solid #dee2e6; border-radius: 4px; padding: 4px 8px; font-size: 0.75rem; text-decoration: none; color: #0d6efd; background: #f8f9fa;">
+              ${f.title}
+            </a>
+          `)}
+        </div>
+      </div>
+    ` : html`<div style="color: #adb5bd; font-size: 0.8rem; margin-bottom: 12px;">No figures linked to this run</div>`}
+  </div>
+` : html`<div style="color: #adb5bd; padding: 20px; text-align: center;">Select a run from the table to view details</div>`}
+`
+```
+
+:::
+
+## Figure Archive
+
+```{ojs}
+//| echo: false
+
+// Orthogonal filters for figure archive
+viewof faTaskFilter = Inputs.checkbox(
+  figureTasks,
+  {label: "Task:", value: figureTasks}
+)
+
+viewof faDimFilter = Inputs.checkbox(
+  figureDimensions.map(d => `${d}D`),
+  {label: "Dimension:", value: figureDimensions.map(d => `${d}D`)}
+)
+
+viewof faTypeFilter = Inputs.checkbox(
+  figureTypes,
+  {label: "Type:", value: figureTypes}
+)
+
+viewof faSearchQuery = Inputs.text(
+  {label: "Search:", placeholder: "Figure title or description..."}
+)
+```
+
+```{ojs}
+//| echo: false
+
+filteredFigures = figureCatalog.filter(f => {
+  const taskMatch = faTaskFilter.includes(f.task);
+  const dimMatch = faDimFilter.includes(`${f.dimension}D`);
+  const typeMatch = faTypeFilter.includes(f.type);
+  const searchMatch = !faSearchQuery || 
+    f.title.toLowerCase().includes(faSearchQuery.toLowerCase()) ||
+    f.desc.toLowerCase().includes(faSearchQuery.toLowerCase());
+  return taskMatch && dimMatch && typeMatch && searchMatch;
+})
+
+// Group by type for display
+figuresByType = filteredFigures.reduce((acc, f) => {
+  if (!acc[f.type]) acc[f.type] = [];
+  acc[f.type].push(f);
+  return acc;
+}, {})
+```
+
+```{ojs}
+//| echo: false
+
+html`
+<div style="margin-bottom: 8px; font-size: 0.85rem; color: #6c757d;">
+  Showing <strong>${filteredFigures.length}</strong> of ${figureCatalog.length} figures
+  ${faSearchQuery ? html` | Search: "${faSearchQuery}"` : ''}
+</div>
+
+${Object.entries(figuresByType).length === 0 ? html`
+  <div style="text-align: center; padding: 40px; color: #adb5bd;">
+    <div style="font-size: 2rem; margin-bottom: 8px;">🔍</div>
+    <div>No figures match the current filters</div>
+  </div>
+` : Object.entries(figuresByType).map(([type, figs]) => html`
+  <div style="margin-bottom: 20px;">
+    <div style="font-weight: 600; font-size: 0.9rem; margin-bottom: 10px; padding-bottom: 4px; border-bottom: 2px solid #e9ecef; display: flex; align-items: center; gap: 8px;">
+      <span style="background: ${type === 'FSS' ? '#d1e7dd' : type === 'Analysis' ? '#fff3cd' : '#cfe2ff'}; color: ${type === 'FSS' ? '#0f5132' : type === 'Analysis' ? '#856404' : '#084298'}; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">
+        ${type}
+      </span>
+      <span>${figs.length} figure${figs.length > 1 ? 's' : ''}</span>
+    </div>
+    
+    <div style="display: flex; flex-wrap: wrap; gap: 16px;">
+      ${figs.map(f => html`
+        <div style="flex: 1 1 260px; max-width: 320px; min-width: 220px; border: 1px solid #dee2e6; border-radius: 8px; overflow: hidden; background: white;">
+          <a href="${figureBase}${f.id}.svg" target="_blank" style="text-decoration: none; color: inherit;">
+            <div style="background: #f8f9fa; padding: 8px; text-align: center; min-height: 160px; display: flex; align-items: center; justify-content: center;">
+              <img src="${figureBase}${f.id}.png" alt="${f.title}" 
+                   style="max-width: 100%; max-height: 150px; object-fit: contain;"
+                   onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\\'color:#adb5bd;font-size:0.8rem\\'>📊 ${f.title}</span>';">
+            </div>
+          </a>
+          <div style="padding: 10px 12px;">
+            <div style="font-weight: 600; font-size: 0.85rem; margin-bottom: 3px;">${f.title}</div>
+            <div style="font-size: 0.75rem; color: #6c757d; margin-bottom: 6px; line-height: 1.3;">${f.desc}</div>
+            <div style="display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 6px;">
+              <span style="font-size: 0.7rem; background: #e9ecef; color: #495057; padding: 1px 6px; border-radius: 3px;">${f.task}</span>
+              <span style="font-size: 0.7rem; background: #e9ecef; color: #495057; padding: 1px 6px; border-radius: 3px;">${f.dimension}D</span>
+              <span style="font-size: 0.7rem; background: #e9ecef; color: #495057; padding: 1px 6px; border-radius: 3px;">${f.phase}</span>
+            </div>
+            <div style="font-size: 0.7rem; color: #adb5bd;">
+              Source: ${f.runs.length} run${f.runs.length > 1 ? 's' : ''}
+            </div>
+          </div>
+        </div>
+      `)}
+    </div>
+  </div>
+`)}
+`
+```
+
+## Performance Scaling
+
+```{ojs}
+//| echo: false
+
+perfData = productionRuns
+  .filter(r => r.wallTimeSec && r.dimension && r.latticeSize !== "—")
+  .map(r => ({
+    L: Number(r.latticeSize),
+    wallTimeMin: Number(r.wallTimeMin),
+    dimension: r.dimension === 3 ? "3D" : "2D",
+    runId: r.runId,
+    sweepsPerSec: r.sweepsPerSec || 0,
+    task: r.task
+  }))
+
+Plot = require("@observablehq/plot")
+
+Plot.plot({
+  marginLeft: 60,
+  width: 600,
+  height: 350,
+  x: {type: "log", label: "Lattice Size L (log)", grid: true},
+  y: {type: "log", label: "Wall Time (min, log)", grid: true},
+  color: {legend: true, label: "Dimension"},
+  marks: [
+    Plot.dot(perfData, {x: "L", y: "wallTimeMin", stroke: "dimension", r: 5, opacity: 0.7}),
+    Plot.text(perfData, {x: "L", y: "wallTimeMin", text: "L", dx: 8, dy: -4, fontSize: 10, opacity: 0.6})
+  ]
+})
+```
+
+## Task Breakdown
+
+```{ojs}
+//| echo: false
+
+taskSummary = tasks.map(t => {
+  const taskRuns = runs.filter(r => r.task === t);
+  const taskInfo = registry.tasks[t] || {};
+  const taskProd = taskRuns.filter(r => !r.isTest);
+  const totalWall = taskProd
+    .filter(r => r.wallTimeSec)
+    .reduce((sum, r) => sum + r.wallTimeSec, 0);
+  return {
+    task: t,
+    name: taskInfo.name || t,
+    status: taskInfo.status || "unknown",
+    total: taskRuns.length,
+    complete: taskRuns.filter(r => r.status === "complete").length,
+    timing: taskProd.filter(r => r.wallTimeSec).length,
+    wallTime: totalWall > 0 ? `${(totalWall / 60).toFixed(0)}m` : "—",
+    phases: [...new Set(taskRuns.map(r => r.phase))].join(", ")
+  };
+})
+
+Inputs.table(taskSummary, {
+  columns: ["task", "name", "status", "total", "complete", "timing", "wallTime", "phases"],
+  header: {
+    task: "Task ID",
+    name: "Name",
+    status: "Status",
+    total: "Runs",
+    complete: "Done",
+    timing: "Timed",
+    wallTime: "Compute",
+    phases: "Phases"
+  },
+  format: {
+    status: s => s === "complete"
+      ? htl.html`<span style="background:#d1e7dd;color:#0f5132;padding:2px 6px;border-radius:4px;font-size:0.75rem;">${s}</span>`
+      : s === "in-progress"
+      ? htl.html`<span style="background:#cfe2ff;color:#084298;padding:2px 6px;border-radius:4px;font-size:0.75rem;">${s}</span>`
+      : htl.html`<span style="background:#e2e3e5;color:#41464b;padding:2px 6px;border-radius:4px;font-size:0.75rem;">${s}</span>`
+  }
+})
+```
+
+## Recent Activity
+
+```{ojs}
+//| echo: false
+
+recentRuns = runs
+  .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+  .slice(0, 10)
+
+html`<div style="border: 1px solid #dee2e6; border-radius: 6px; overflow: hidden;">
+  ${recentRuns.map(r => html`
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; border-bottom: 1px solid #f0f0f0;">
+      <div>
+        <div style="font-weight: 500; font-size: 0.85rem;">${r.runId} ${r.isTest ? html`<span style="background:#f8d7da;color:#721c24;padding:1px 6px;border-radius:3px;font-size:0.7rem;">TEST</span>` : ""}</div>
+        <div style="font-size: 0.75rem; color: #6c757d;">${r.description}</div>
+      </div>
+      <div style="text-align: right;">
+        <div style="font-size: 0.75rem; color: #adb5bd;">${r.date}</div>
+        ${r.wallTimeMin ? html`<div style="font-size: 0.7rem; color: #6c757d;">${r.wallTimeMin}m</div>` : ""}
+      </div>
+    </div>
+  `)}
+</div>`
+```
+
+---
+
+*Prototype v2 — Runs & Results + Figure Archive with orthogonal filters*

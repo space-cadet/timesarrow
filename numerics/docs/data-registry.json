@@ -2,7 +2,7 @@
   "schemaVersion": "1.0.0",
   "project": "timesarrow",
   "description": "Registry of all numerical simulation runs for TimesArrow project",
-  "lastUpdated": "2026-06-26T05:18:54.077Z",
+  "lastUpdated": "2026-06-27T06:07:25.659Z",
   "runs": [
     {
       "runId": "t20-p1-L8-20250624",
@@ -118,7 +118,13 @@
       "outputFiles": [
         "output/t20-p2-L8-20250625.json"
       ],
-      "page": "tasks/t20-z2-lgt.qmd"
+      "page": "tasks/t20-z2-lgt.qmd",
+      "wallTimeMs": 1560,
+      "sweepsPerSecond": 1282051.282051282,
+      "betasCompleted": 10,
+      "startTime": "2026-06-25T10:10:32.006Z",
+      "endTime": "2026-06-25T10:10:33.566Z",
+      "dataUrl": "output/t20-p2-L8-20250625.json"
     },
     {
       "runId": "t20-p2-L12-20250625",
@@ -161,7 +167,12 @@
       "outputFiles": [
         "output/t20-p2-L12-20250625.json"
       ],
-      "page": "tasks/t20-z2-lgt.qmd"
+      "page": "tasks/t20-z2-lgt.qmd",
+      "wallTimeMs": 3906,
+      "betasCompleted": 10,
+      "startTime": "2026-06-25T10:10:54.622Z",
+      "endTime": "2026-06-25T10:10:58.528Z",
+      "dataUrl": "output/t20-p2-L12-20250625.json"
     },
     {
       "runId": "t20-p2-L16-20250625",
@@ -204,7 +215,13 @@
       "outputFiles": [
         "output/t20-p2-L16-20250625.json"
       ],
-      "page": "tasks/t20-z2-lgt.qmd"
+      "page": "tasks/t20-z2-lgt.qmd",
+      "wallTimeMs": 7394,
+      "sweepsPerSecond": 270489.5861509332,
+      "betasCompleted": 10,
+      "startTime": "2026-06-25T10:10:09.072Z",
+      "endTime": "2026-06-25T10:10:16.466Z",
+      "dataUrl": "output/t20-p2-L16-20250625.json"
     },
     {
       "runId": "t20-p2-L20-20250625",
@@ -248,7 +265,13 @@
       "outputFiles": [
         "output/t20-p2-L20-20250625.json"
       ],
-      "page": "tasks/t20-z2-lgt.qmd"
+      "page": "tasks/t20-z2-lgt.qmd",
+      "wallTimeMs": 11575,
+      "sweepsPerSecond": 172786.17710583154,
+      "betasCompleted": 10,
+      "startTime": "2026-06-25T10:10:36.076Z",
+      "endTime": "2026-06-25T10:10:47.651Z",
+      "dataUrl": "output/t20-p2-L20-20250625.json"
     },
     {
       "runId": "t20-p2-L24-20250625",
@@ -291,7 +314,14 @@
       "outputFiles": [
         "output/t20-p2-L24-20250625.json"
       ],
-      "page": "tasks/t20-z2-lgt.qmd"
+      "page": "tasks/t20-z2-lgt.qmd",
+      "wallTimeMs": 15476,
+      "sweepsPerSecond": 129232.35978288963,
+      "betasCompleted": 10,
+      "totalBetas": 10,
+      "startTime": "2026-06-25T10:10:57.626Z",
+      "endTime": "2026-06-25T10:11:13.102Z",
+      "dataUrl": "output/t20-p2-L24-20250625.json"
     },
     {
       "runId": "t20-p3-L4-3D-20250625",
@@ -331,7 +361,13 @@
       "outputFiles": [
         "output/t20-p3-L4-3D-20250625.json"
       ],
-      "page": "tasks/t20-z2-lgt.qmd"
+      "page": "tasks/t20-z2-lgt.qmd",
+      "wallTimeMs": 1501,
+      "sweepsPerSecond": 666222.5183211192,
+      "betasCompleted": 10,
+      "startTime": "2026-06-25T13:05:05.143Z",
+      "endTime": "2026-06-25T13:05:06.644Z",
+      "dataUrl": "output/t20-p3-L4-3D-20250625.json"
     },
     {
       "runId": "t20-p3-L6-3D-20250625",
@@ -371,7 +407,13 @@
       "outputFiles": [
         "output/t20-p3-L6-3D-20250625.json"
       ],
-      "page": "tasks/t20-z2-lgt.qmd"
+      "page": "tasks/t20-z2-lgt.qmd",
+      "wallTimeMs": 3985,
+      "sweepsPerSecond": 250941.0288582183,
+      "betasCompleted": 10,
+      "startTime": "2026-06-25T13:05:26.182Z",
+      "endTime": "2026-06-25T13:05:30.167Z",
+      "dataUrl": "output/t20-p3-L6-3D-20250625.json"
     },
     {
       "runId": "t20-p3-L8-3D-20250625",
@@ -411,7 +453,13 @@
       "outputFiles": [
         "output/t20-p3-L8-3D-20250625.json"
       ],
-      "page": "tasks/t20-z2-lgt.qmd"
+      "page": "tasks/t20-z2-lgt.qmd",
+      "wallTimeMs": 9076,
+      "sweepsPerSecond": 110180.69634200088,
+      "betasCompleted": 10,
+      "startTime": "2026-06-25T13:04:47.815Z",
+      "endTime": "2026-06-25T13:04:56.891Z",
+      "dataUrl": "output/t20-p3-L8-3D-20250625.json"
     },
     {
       "runId": "t20-autocorr-results",
@@ -4170,7 +4218,13 @@
       "outputFiles": [
         "output/t20-p1-L16-wilson-20250626.json"
       ],
-      "page": "tasks/t20-z2-lgt.qmd"
+      "page": "tasks/t20-z2-lgt.qmd",
+      "wallTimeMs": 3956,
+      "sweepsPerSecond": 278058.6450960566,
+      "betasCompleted": 11,
+      "startTime": "2026-06-25T20:04:14.368Z",
+      "endTime": "2026-06-25T20:04:18.324Z",
+      "dataUrl": "output/t20-p1-L16-wilson-20250626.json"
     },
     {
       "runId": "t20-p1-L16-wilson-analysis",
@@ -5768,7 +5822,13 @@
       "outputFiles": [
         "output/t20-p3-L16-3D-wilson-fine-20250626.json"
       ],
-      "page": "tasks/t20-z2-lgt.qmd"
+      "page": "tasks/t20-z2-lgt.qmd",
+      "wallTimeMs": 129509,
+      "sweepsPerSecond": 16215.08929881321,
+      "betasCompleted": 21,
+      "startTime": "2026-06-25T21:49:56.400Z",
+      "endTime": "2026-06-25T21:52:05.909Z",
+      "dataUrl": "output/t20-p3-L16-3D-wilson-fine-20250626.json"
     },
     {
       "runId": "t20-p3-L24-3D-wilson-fine-20250626",
@@ -6436,7 +6496,13 @@
       "outputFiles": [
         "output/t20-p3-L24-3D-wilson-fine-20250626.json"
       ],
-      "page": "tasks/t20-z2-lgt.qmd"
+      "page": "tasks/t20-z2-lgt.qmd",
+      "wallTimeMs": 435678,
+      "sweepsPerSecond": 4820.07354055059,
+      "betasCompleted": 21,
+      "startTime": "2026-06-25T21:52:05.939Z",
+      "endTime": "2026-06-25T21:59:21.617Z",
+      "dataUrl": "output/t20-p3-L24-3D-wilson-fine-20250626.json"
     },
     {
       "runId": "t20-p3-L32-3D-wilson-fine-20250626",
@@ -7104,7 +7170,13 @@
       "outputFiles": [
         "output/t20-p3-L32-3D-wilson-fine-20250626.json"
       ],
-      "page": "tasks/t20-z2-lgt.qmd"
+      "page": "tasks/t20-z2-lgt.qmd",
+      "wallTimeMs": 1033402,
+      "sweepsPerSecond": 2032.1230266633895,
+      "betasCompleted": 21,
+      "startTime": "2026-06-25T21:59:21.645Z",
+      "endTime": "2026-06-25T22:16:35.047Z",
+      "dataUrl": "output/t20-p3-L32-3D-wilson-fine-20250626.json"
     },
     {
       "runId": "t20-p3-L4-3D-wilson-fine-20250626",
@@ -7642,7 +7714,13 @@
       "outputFiles": [
         "output/t20-p3-L4-3D-wilson-fine-20250626.json"
       ],
-      "page": "tasks/t20-z2-lgt.qmd"
+      "page": "tasks/t20-z2-lgt.qmd",
+      "wallTimeMs": 1890,
+      "sweepsPerSecond": 1111111.111111111,
+      "betasCompleted": 21,
+      "startTime": "2026-06-25T21:15:25.292Z",
+      "endTime": "2026-06-25T21:15:27.182Z",
+      "dataUrl": "output/t20-p3-L4-3D-wilson-fine-20250626.json"
     },
     {
       "runId": "t20-p3-L6-3D-wilson-fine-20250626",
@@ -8310,7 +8388,13 @@
       "outputFiles": [
         "output/t20-p3-L6-3D-wilson-fine-20250626.json"
       ],
-      "page": "tasks/t20-z2-lgt.qmd"
+      "page": "tasks/t20-z2-lgt.qmd",
+      "wallTimeMs": 6929,
+      "sweepsPerSecond": 303074.03665752633,
+      "betasCompleted": 21,
+      "startTime": "2026-06-25T21:15:48.920Z",
+      "endTime": "2026-06-25T21:15:55.849Z",
+      "dataUrl": "output/t20-p3-L6-3D-wilson-fine-20250626.json"
     },
     {
       "runId": "t20-p3-L8-3D-wilson-20250626",
@@ -8712,7 +8796,13 @@
       "outputFiles": [
         "output/t20-p3-L8-3D-wilson-20250626.json"
       ],
-      "page": "tasks/t20-z2-lgt.qmd"
+      "page": "tasks/t20-z2-lgt.qmd",
+      "wallTimeMs": 9029,
+      "sweepsPerSecond": 110754.23634954037,
+      "betasCompleted": 10,
+      "startTime": "2026-06-25T20:04:35.370Z",
+      "endTime": "2026-06-25T20:04:44.399Z",
+      "dataUrl": "output/t20-p3-L8-3D-wilson-20250626.json"
     },
     {
       "runId": "t20-p3-L8-3D-wilson-analysis",
@@ -10997,7 +11087,13 @@
       "outputFiles": [
         "output/t20-p3-L8-3D-wilson-fine-20250626.json"
       ],
-      "page": "tasks/t20-z2-lgt.qmd"
+      "page": "tasks/t20-z2-lgt.qmd",
+      "wallTimeMs": 16691,
+      "sweepsPerSecond": 125816.30819004253,
+      "betasCompleted": 21,
+      "startTime": "2026-06-25T20:41:34.698Z",
+      "endTime": "2026-06-25T20:41:51.389Z",
+      "dataUrl": "output/t20-p3-L8-3D-wilson-fine-20250626.json"
     },
     {
       "runId": "t20-phase1-fast",
@@ -11316,7 +11412,13 @@
       "outputFiles": [
         "output/t20-phase1-worker-L16.json"
       ],
-      "page": "tasks/t20-z2-lgt.qmd"
+      "page": "tasks/t20-z2-lgt.qmd",
+      "wallTimeMs": 23420824,
+      "sweepsPerSecond": 46.966750614752065,
+      "betasCompleted": 11,
+      "startTime": "2026-06-25T01:34:28.458Z",
+      "endTime": "2026-06-25T08:04:49.282Z",
+      "dataUrl": "output/t20-phase1-worker-L16.json"
     },
     {
       "runId": "t20-phase1-worker-L8",
@@ -11415,7 +11517,13 @@
       "outputFiles": [
         "output/t20-phase1-worker-L8.json"
       ],
-      "page": "tasks/t20-z2-lgt.qmd"
+      "page": "tasks/t20-z2-lgt.qmd",
+      "wallTimeMs": 587,
+      "sweepsPerSecond": 1873.9352640545144,
+      "betasCompleted": 11,
+      "startTime": "2026-06-25T00:44:30.572Z",
+      "endTime": "2026-06-25T00:44:31.159Z",
+      "dataUrl": "output/t20-phase1-worker-L8.json"
     },
     {
       "runId": "t25-volume-operator-spectrum",
@@ -11598,7 +11706,13 @@
       "outputFiles": [
         "output/t27-rust-benchmark-L16-final.json"
       ],
-      "page": "tasks/t27-z2-lgt.qmd"
+      "page": "tasks/t27-z2-lgt.qmd",
+      "wallTimeMs": 2958,
+      "sweepsPerSecond": 371872.8870858688,
+      "betasCompleted": 11,
+      "startTime": "2026-06-25T08:19:28.354Z",
+      "endTime": "2026-06-25T08:19:31.312Z",
+      "dataUrl": "output/t27-rust-benchmark-L16-final.json"
     },
     {
       "runId": "t27-rust-benchmark-L16-v2",
@@ -11731,7 +11845,13 @@
       "outputFiles": [
         "output/t27-rust-benchmark-L16-v2.json"
       ],
-      "page": "tasks/t27-z2-lgt.qmd"
+      "page": "tasks/t27-z2-lgt.qmd",
+      "wallTimeMs": 2557,
+      "sweepsPerSecond": 430191.6308173641,
+      "betasCompleted": 11,
+      "startTime": "2026-06-25T08:06:11.625Z",
+      "endTime": "2026-06-25T08:06:14.182Z",
+      "dataUrl": "output/t27-rust-benchmark-L16-v2.json"
     },
     {
       "runId": "t27-rust-benchmark-L16-v3",
@@ -11864,7 +11984,13 @@
       "outputFiles": [
         "output/t27-rust-benchmark-L16-v3.json"
       ],
-      "page": "tasks/t27-z2-lgt.qmd"
+      "page": "tasks/t27-z2-lgt.qmd",
+      "wallTimeMs": 2555,
+      "sweepsPerSecond": 430528.3757338552,
+      "betasCompleted": 11,
+      "startTime": "2026-06-25T08:10:28.973Z",
+      "endTime": "2026-06-25T08:10:31.528Z",
+      "dataUrl": "output/t27-rust-benchmark-L16-v3.json"
     },
     {
       "runId": "t27-rust-benchmark-L16",
@@ -11997,7 +12123,13 @@
       "outputFiles": [
         "output/t27-rust-benchmark-L16.json"
       ],
-      "page": "tasks/t27-z2-lgt.qmd"
+      "page": "tasks/t27-z2-lgt.qmd",
+      "wallTimeMs": 3455,
+      "sweepsPerSecond": 318379.1606367583,
+      "betasCompleted": 11,
+      "startTime": "2026-06-25T07:58:27.905Z",
+      "endTime": "2026-06-25T07:58:31.360Z",
+      "dataUrl": "output/t27-rust-benchmark-L16.json"
     },
     {
       "runId": "t20-p3b-L16-3D-fine-20260626",
@@ -12156,7 +12288,14 @@
       "outputFiles": [
         "data/fss/t20-p3b-L16-3D-fine-20260626.json"
       ],
-      "page": "tasks/t20-z2-lgt.qmd"
+      "page": "tasks/t20-z2-lgt.qmd",
+      "wallTimeMs": 3068529,
+      "sweepsPerSecond": 2281.2233483861487,
+      "betasCompleted": 7,
+      "totalBetas": 27,
+      "startTime": "2026-06-26T01:44:58.423Z",
+      "endTime": "2026-06-26T02:36:06.952Z",
+      "dataUrl": "data/fss/t20-p3b-L16-3D-fine-20260626.json"
     },
     {
       "runId": "t20-p3b-L8-3D-fine-20260626",
@@ -12583,7 +12722,14 @@
       "outputFiles": [
         "data/fss/t20-p3b-L8-3D-fine-20260626.json"
       ],
-      "page": "tasks/t20-z2-lgt.qmd"
+      "page": "tasks/t20-z2-lgt.qmd",
+      "wallTimeMs": 497001,
+      "sweepsPerSecond": 50301.70965450774,
+      "betasCompleted": 25,
+      "totalBetas": 25,
+      "startTime": "2026-06-26T01:34:26.751Z",
+      "endTime": "2026-06-26T01:42:43.752Z",
+      "dataUrl": "data/fss/t20-p3b-L8-3D-fine-20260626.json"
     },
     {
       "runId": "benchmark-benchmark-lattice-sizes-20250626",
@@ -12600,6 +12746,440 @@
         "output/benchmark-lattice-sizes-20250626.json"
       ],
       "page": "tasks/benchmark-z2-lgt.qmd"
+    },
+    {
+      "runId": "t20-p3b-L8-3D-fine-20260627",
+      "task": "T20",
+      "phase": "unknown",
+      "status": "complete",
+      "timestamp": "2026-06-27T06:07:25.659Z",
+      "description": "Auto-discovered run from t20-p3b-L8-3D-fine-20260627.json",
+      "parameters": {
+        "latticeSize": 8,
+        "L": 8,
+        "dimension": 3,
+        "thermalSweeps": 500000,
+        "measureSweeps": 1000000,
+        "measureEvery": 10,
+        "workers": 8,
+        "betaValues": [
+          0.7,
+          0.705,
+          0.71,
+          0.715,
+          0.72,
+          0.725,
+          0.73,
+          0.735,
+          0.74,
+          0.745,
+          0.75,
+          0.755,
+          0.76,
+          0.765,
+          0.77,
+          0.775,
+          0.78,
+          0.785,
+          0.79,
+          0.795,
+          0.8,
+          0.805,
+          0.81,
+          0.815,
+          0.82
+        ],
+        "loopSizes": "1x1,2x2,3x3",
+        "polyakov": true
+      },
+      "results": [
+        {
+          "beta": 0.79,
+          "binderCumulant": 0.6662759181795728,
+          "errorPlaquette": 0.00005294009864750461,
+          "errorPolyakov": 0,
+          "meanPlaquette": 0.9698564322916625,
+          "meanPolyakov": 1,
+          "numMeasurements": 100000,
+          "polyakovBinder": 0.6666666666666667,
+          "polyakovSusceptibility": 0,
+          "specificHeat": 0.08955578305777374,
+          "susceptibility": 0.11336175070604271,
+          "wallTimeMs": 213058,
+          "wilsonLoops": []
+        },
+        {
+          "beta": 0.78,
+          "binderCumulant": 0.6661553717860633,
+          "errorPlaquette": 0.00006037578064013168,
+          "errorPolyakov": 0,
+          "meanPlaquette": 0.9649860156250083,
+          "meanPolyakov": 1,
+          "numMeasurements": 100000,
+          "polyakovBinder": 0.6666666666666667,
+          "polyakovSusceptibility": 0,
+          "specificHeat": 0.1135493583024912,
+          "susceptibility": 0.14557610038780922,
+          "wallTimeMs": 213492,
+          "wilsonLoops": []
+        },
+        {
+          "beta": 0.775,
+          "binderCumulant": 0.6660684045632739,
+          "errorPlaquette": 0.00006519363581405998,
+          "errorPolyakov": 0,
+          "meanPlaquette": 0.9619542968749931,
+          "meanPolyakov": 1,
+          "numMeasurements": 100000,
+          "polyakovBinder": 0.6666666666666667,
+          "polyakovSusceptibility": 0,
+          "specificHeat": 0.13070246249199197,
+          "susceptibility": 0.16864833869934445,
+          "wallTimeMs": 213765,
+          "wilsonLoops": []
+        },
+        {
+          "beta": 0.76,
+          "binderCumulant": 0.6655152076799711,
+          "errorPlaquette": 0.00008971343396943038,
+          "errorPolyakov": 0,
+          "meanPlaquette": 0.9484675260416664,
+          "meanPolyakov": 1,
+          "numMeasurements": 100000,
+          "polyakovBinder": 0.6666666666666667,
+          "polyakovSusceptibility": 0,
+          "specificHeat": 0.23801926320567673,
+          "susceptibility": 0.313183241060101,
+          "wallTimeMs": 215603,
+          "wilsonLoops": []
+        },
+        {
+          "beta": 0.745,
+          "binderCumulant": 0.6640734842886654,
+          "errorPlaquette": 0.00013071908270537232,
+          "errorPolyakov": 0,
+          "meanPlaquette": 0.9209245833333357,
+          "meanPolyakov": 1,
+          "numMeasurements": 100000,
+          "polyakovBinder": 0.6666666666666667,
+          "polyakovSusceptibility": 0,
+          "specificHeat": 0.48557966336972963,
+          "susceptibility": 0.6517847830466169,
+          "wallTimeMs": 217268,
+          "wilsonLoops": []
+        },
+        {
+          "beta": 0.73,
+          "binderCumulant": 0.6625825380726594,
+          "errorPlaquette": 0.000152474700467787,
+          "errorPolyakov": 0,
+          "meanPlaquette": 0.8713464062500075,
+          "meanPolyakov": 1,
+          "numMeasurements": 100000,
+          "polyakovBinder": 0.6666666666666667,
+          "polyakovSusceptibility": 0,
+          "specificHeat": 0.6343241686711681,
+          "susceptibility": 0.8689372173577646,
+          "wallTimeMs": 222580,
+          "wilsonLoops": []
+        },
+        {
+          "beta": 0.715,
+          "binderCumulant": 0.6633013262380478,
+          "errorPlaquette": 0.00012997479441632733,
+          "errorPolyakov": 0,
+          "meanPlaquette": 0.8240132812499905,
+          "meanPolyakov": 1,
+          "numMeasurements": 100000,
+          "polyakovBinder": 0.6666666666666667,
+          "polyakovSusceptibility": 0,
+          "specificHeat": 0.4421812499122518,
+          "susceptibility": 0.6184353145625899,
+          "wallTimeMs": 226995,
+          "wilsonLoops": []
+        },
+        {
+          "beta": 0.7,
+          "binderCumulant": 0.6638004784918552,
+          "errorPlaquette": 0.00011553266575892293,
+          "errorPolyakov": 0,
+          "meanPlaquette": 0.7900599218749987,
+          "meanPolyakov": 1,
+          "numMeasurements": 100000,
+          "polyakovBinder": 0.6666666666666667,
+          "polyakovSusceptibility": 0,
+          "specificHeat": 0.3348695276079257,
+          "susceptibility": 0.4783850394398939,
+          "wallTimeMs": 230588,
+          "wilsonLoops": []
+        },
+        {
+          "beta": 0.795,
+          "binderCumulant": 0.6663157485392295,
+          "errorPlaquette": 0.00005024349467930052,
+          "errorPolyakov": 0,
+          "meanPlaquette": 0.9719291406250129,
+          "meanPolyakov": 1,
+          "numMeasurements": 100000,
+          "polyakovBinder": 0.6666666666666667,
+          "polyakovSusceptibility": 0,
+          "specificHeat": 0.08168905949374976,
+          "susceptibility": 0.1027535339544022,
+          "wallTimeMs": 234952,
+          "wilsonLoops": []
+        },
+        {
+          "beta": 0.785,
+          "binderCumulant": 0.6662241931757034,
+          "errorPlaquette": 0.00005623573297463379,
+          "errorPolyakov": 0,
+          "meanPlaquette": 0.9675547916666796,
+          "meanPolyakov": 1,
+          "numMeasurements": 100000,
+          "polyakovBinder": 0.6666666666666667,
+          "polyakovSusceptibility": 0,
+          "specificHeat": 0.09977781616303501,
+          "susceptibility": 0.12710549829685988,
+          "wallTimeMs": 234982,
+          "wilsonLoops": []
+        },
+        {
+          "beta": 0.765,
+          "binderCumulant": 0.665764640418534,
+          "errorPlaquette": 0.00007970535222807243,
+          "errorPolyakov": 0,
+          "meanPlaquette": 0.9537905729166709,
+          "meanPolyakov": 1,
+          "numMeasurements": 100000,
+          "polyakovBinder": 0.6666666666666667,
+          "polyakovSusceptibility": 0,
+          "specificHeat": 0.1903565397913547,
+          "susceptibility": 0.2488320781586336,
+          "wallTimeMs": 235940,
+          "wilsonLoops": []
+        },
+        {
+          "beta": 0.75,
+          "binderCumulant": 0.6647117722053564,
+          "errorPlaquette": 0.00011517523569909493,
+          "errorPolyakov": 0,
+          "meanPlaquette": 0.9327953385416706,
+          "meanPolyakov": 1,
+          "numMeasurements": 100000,
+          "polyakovBinder": 0.6666666666666667,
+          "polyakovSusceptibility": 0,
+          "specificHeat": 0.3820416456125031,
+          "susceptibility": 0.5093888608166708,
+          "wallTimeMs": 238284,
+          "wilsonLoops": []
+        },
+        {
+          "beta": 0.77,
+          "binderCumulant": 0.6659530028376471,
+          "errorPlaquette": 0.00007107502575294183,
+          "errorPolyakov": 0,
+          "meanPlaquette": 0.9585173437500176,
+          "meanPolyakov": 1,
+          "numMeasurements": 100000,
+          "polyakovBinder": 0.6666666666666667,
+          "polyakovSusceptibility": 0,
+          "specificHeat": 0.15335059400558462,
+          "susceptibility": 0.19915661559166836,
+          "wallTimeMs": 236521,
+          "wilsonLoops": []
+        },
+        {
+          "beta": 0.735,
+          "binderCumulant": 0.6628421617252186,
+          "errorPlaquette": 0.00015178480907889136,
+          "errorPolyakov": 0,
+          "meanPlaquette": 0.8898740104166544,
+          "meanPolyakov": 1,
+          "numMeasurements": 100000,
+          "polyakovBinder": 0.6666666666666667,
+          "polyakovSusceptibility": 0,
+          "specificHeat": 0.6372373993278676,
+          "susceptibility": 0.8669896589494798,
+          "wallTimeMs": 242207,
+          "wilsonLoops": []
+        },
+        {
+          "beta": 0.72,
+          "binderCumulant": 0.6629249469585653,
+          "errorPlaquette": 0.00013942154501349544,
+          "errorPolyakov": 0,
+          "meanPlaquette": 0.8385861979166781,
+          "meanPolyakov": 1,
+          "numMeasurements": 100000,
+          "polyakovBinder": 0.6666666666666667,
+          "polyakovSusceptibility": 0,
+          "specificHeat": 0.5159346976899669,
+          "susceptibility": 0.7165759690138429,
+          "wallTimeMs": 247253,
+          "wilsonLoops": []
+        },
+        {
+          "beta": 0.705,
+          "binderCumulant": 0.6637039789647982,
+          "errorPlaquette": 0.00011887404511269364,
+          "errorPolyakov": 0,
+          "meanPlaquette": 0.8009055208333233,
+          "meanPolyakov": 1,
+          "numMeasurements": 100000,
+          "polyakovBinder": 0.6666666666666667,
+          "polyakovSusceptibility": 0,
+          "specificHeat": 0.3596021484566871,
+          "susceptibility": 0.5100739694421094,
+          "wallTimeMs": 251352,
+          "wilsonLoops": []
+        },
+        {
+          "beta": 0.8,
+          "binderCumulant": 0.6663555633448093,
+          "errorPlaquette": 0.00004736117714069503,
+          "errorPolyakov": 0,
+          "meanPlaquette": 0.97380114583334,
+          "meanPolyakov": 1,
+          "numMeasurements": 100000,
+          "polyakovBinder": 0.6666666666666667,
+          "polyakovSusceptibility": 0,
+          "specificHeat": 0.07350128140140443,
+          "susceptibility": 0.09187660175175552,
+          "wallTimeMs": 230874,
+          "wilsonLoops": []
+        },
+        {
+          "beta": 0.805,
+          "binderCumulant": 0.6663809754857646,
+          "errorPlaquette": 0.000045439474102827536,
+          "errorPolyakov": 0,
+          "meanPlaquette": 0.9753551822916902,
+          "meanPolyakov": 1,
+          "numMeasurements": 100000,
+          "polyakovBinder": 0.6666666666666667,
+          "polyakovSusceptibility": 0,
+          "specificHeat": 0.06850595324448092,
+          "susceptibility": 0.08510056303662225,
+          "wallTimeMs": 230147,
+          "wilsonLoops": []
+        },
+        {
+          "beta": 0.74,
+          "binderCumulant": 0.6633892956977403,
+          "errorPlaquette": 0.00014395261726281476,
+          "errorPolyakov": 0,
+          "meanPlaquette": 0.9062090624999949,
+          "meanPolyakov": 1,
+          "numMeasurements": 100000,
+          "polyakovBinder": 0.6666666666666667,
+          "polyakovSusceptibility": 0,
+          "specificHeat": 0.5809951823167214,
+          "susceptibility": 0.7851286247523263,
+          "wallTimeMs": 236747,
+          "wilsonLoops": []
+        },
+        {
+          "beta": 0.755,
+          "binderCumulant": 0.6651571802898607,
+          "errorPlaquette": 0.00010208562892613153,
+          "errorPolyakov": 0,
+          "meanPlaquette": 0.9412329427083269,
+          "meanPolyakov": 1,
+          "numMeasurements": 100000,
+          "polyakovBinder": 0.6666666666666667,
+          "polyakovSusceptibility": 0,
+          "specificHeat": 0.30415368433173023,
+          "susceptibility": 0.4028525620287817,
+          "wallTimeMs": 233457,
+          "wilsonLoops": []
+        },
+        {
+          "beta": 0.725,
+          "binderCumulant": 0.6626939388072689,
+          "errorPlaquette": 0.00014666229344119827,
+          "errorPolyakov": 0,
+          "meanPlaquette": 0.8541842447916623,
+          "meanPolyakov": 1,
+          "numMeasurements": 100000,
+          "polyakovBinder": 0.6666666666666667,
+          "polyakovSusceptibility": 0,
+          "specificHeat": 0.5788724997034089,
+          "susceptibility": 0.7984448271771157,
+          "wallTimeMs": 241621,
+          "wilsonLoops": []
+        },
+        {
+          "beta": 0.815,
+          "binderCumulant": 0.6664289757150796,
+          "errorPlaquette": 0.00004154069448739282,
+          "errorPolyakov": 0,
+          "meanPlaquette": 0.9782648177083432,
+          "meanPolyakov": 1,
+          "numMeasurements": 100000,
+          "polyakovBinder": 0.6666666666666667,
+          "polyakovSusceptibility": 0,
+          "specificHeat": 0.05868575327697376,
+          "susceptibility": 0.07200705923555062,
+          "wallTimeMs": 229650,
+          "wilsonLoops": []
+        },
+        {
+          "beta": 0.71,
+          "binderCumulant": 0.6635250689661296,
+          "errorPlaquette": 0.0001238565646516409,
+          "errorPolyakov": 0,
+          "meanPlaquette": 0.811891432291668,
+          "meanPolyakov": 1,
+          "numMeasurements": 100000,
+          "polyakovBinder": 0.6666666666666667,
+          "polyakovSusceptibility": 0,
+          "specificHeat": 0.395935751370547,
+          "susceptibility": 0.5576559878458408,
+          "wallTimeMs": 244789,
+          "wilsonLoops": []
+        },
+        {
+          "beta": 0.82,
+          "binderCumulant": 0.6664478786627683,
+          "errorPlaquette": 0.000039896277668924067,
+          "errorPolyakov": 0,
+          "meanPlaquette": 0.9796082031250344,
+          "meanPolyakov": 1,
+          "numMeasurements": 100000,
+          "polyakovBinder": 0.6666666666666667,
+          "polyakovSusceptibility": 0,
+          "specificHeat": 0.05479771134140562,
+          "susceptibility": 0.0668264772456166,
+          "wallTimeMs": 228960,
+          "wilsonLoops": []
+        },
+        {
+          "beta": 0.81,
+          "binderCumulant": 0.6664089130618037,
+          "errorPlaquette": 0.00004320329107417313,
+          "errorPolyakov": 0,
+          "meanPlaquette": 0.9768855468750105,
+          "meanPolyakov": 1,
+          "numMeasurements": 100000,
+          "polyakovBinder": 0.6666666666666667,
+          "polyakovSusceptibility": 0,
+          "specificHeat": 0.06270088347412911,
+          "susceptibility": 0.07740849811620877,
+          "wallTimeMs": 166087,
+          "wilsonLoops": []
+        }
+      ],
+      "outputFiles": [
+        "data/fss/t20-p3b-L8-3D-fine-20260627.json"
+      ],
+      "page": "tasks/t20-z2-lgt.qmd",
+      "dataUrl": "data/fss/t20-p3b-L8-3D-fine-20260627.json",
+      "wallTimeMs": 5717172,
+      "betasCompleted": 25,
+      "totalBetas": 25,
+      "sweepsPerSecond": 4372.791303112797,
+      "endTime": "2026-06-27T04:10:19.916Z",
+      "startTime": "2026-06-27T02:35:02.744Z"
     }
   ],
   "tasks": {

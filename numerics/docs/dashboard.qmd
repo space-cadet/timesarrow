@@ -1,7 +1,7 @@
 ---
 title: "Simulation Dashboard"
 description: "Unified view of all TimesArrow numerical simulation runs"
-date: 2026-06-26
+date: 2026-06-27
 format:
   html:
     toc: true
@@ -18,18 +18,39 @@ registry = await FileAttachment("data-registry.json").json()
 runs = registry.runs.map(r => ({
   ...r,
   latticeSize: r.parameters?.latticeSize || "—",
+  dimension: r.parameters?.dimension || 2,
   betaRange: r.parameters?.betaValues 
     ? `${Math.min(...r.parameters.betaValues)}–${Math.max(...r.parameters.betaValues)}`
     : "—",
   keyFinding: r.results?.keyFinding || r.results?.criticalBetaEstimate || "—",
   date: new Date(r.timestamp).toLocaleDateString('en-GB'),
-  hasOutput: r.outputFiles?.length > 0 ? "✅" : "❌"
+  hasOutput: r.outputFiles?.length > 0 ? "✅" : "❌",
+  wallTimeSec: r.wallTimeMs ? Math.round(r.wallTimeMs / 1000) : null,
+  wallTimeMin: r.wallTimeMs ? (r.wallTimeMs / 60000).toFixed(1) : null,
+  sweepsPerSec: r.sweepsPerSecond ? Math.round(r.sweepsPerSecond) : null,
+  betasDone: r.betasCompleted || "—",
+  isTest: r.description?.startsWith('[TEST]') || false
 }))
+
+// Filter production runs for performance stats
+productionRuns = runs.filter(r => !r.isTest)
 
 // Summary stats
 totalRuns = runs.length
+totalProduction = productionRuns.length
 tasks = [...new Set(runs.map(r => r.task))].sort()
 phases = [...new Set(runs.map(r => r.phase))].sort()
+
+// Performance stats
+totalWallTimeMin = productionRuns
+  .filter(r => r.wallTimeSec)
+  .reduce((sum, r) => sum + r.wallTimeSec, 0) / 60
+
+avgSweepsPerSec = productionRuns
+  .filter(r => r.sweepsPerSec)
+  .reduce((sum, r, _, arr) => sum + r.sweepsPerSec / arr.length, 0)
+
+runsWithTiming = productionRuns.filter(r => r.wallTimeSec).length
 ```
 
 ## Summary
@@ -43,23 +64,71 @@ phases = [...new Set(runs.map(r => r.phase))].sort()
 ```{ojs}
 //| echo: false
 
-html`<div class="row">
+html`
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 1rem;"
+>
   ${[
-    [totalRuns, "Total Runs"],
-    [tasks.length, "Tasks"],
-    [phases.length, "Phases"],
-    [runs.filter(r => r.status === 'complete').length, "Complete"]
-  ].map(([value, label]) => html`
-    <div class="col-3">
-      <div class="card">
-        <div class="card-body text-center">
-          <h3 class="card-title">${value}</h3>
-          <p class="card-text text-muted">${label}</p>
-        </div>
+    [totalRuns, "Total Runs", "#0d6efd"],
+    [tasks.length, "Tasks", "#0dcaf0"],
+    [phases.length, "Phases", "#6c757d"],
+    [runs.filter(r => r.status === 'complete').length, "Complete", "#198754"],
+    [runsWithTiming, "With Timing", "#ffc107"],
+    [totalWallTimeMin > 0 ? `${totalWallTimeMin.toFixed(0)}m` : "—", "Compute", "#212529"],
+    [avgSweepsPerSec > 0 ? `${avgSweepsPerSec.toFixed(0)}` : "—", "Avg sw/s", "#dc3545"]
+  ].map(([value, label, color]) => html`
+    <div style="flex: 1 1 120px; min-width: 120px; max-width: 180px;"
+>
+      <div style="border: 1px solid ${color}; border-radius: 6px; padding: 8px 12px; text-align: center;"
+>
+        <div style="font-size: 1.5rem; font-weight: 600; line-height: 1.2;"
+>${value}</div>
+        <div style="font-size: 0.75rem; color: #6c757d; margin-top: 2px;"
+>${label}</div>
       </div>
     </div>
   `)}
 </div>`
+```
+
+## Performance Scaling
+
+```{ojs}
+//| echo: false
+
+// Prepare data for Vega-Lite: L vs wallTime (production runs only)
+perfData = productionRuns
+  .filter(r => r.wallTimeSec && r.dimension && r.latticeSize !== "—")
+  .map(r => ({
+    L: Number(r.latticeSize),
+    wallTimeMin: Number(r.wallTimeMin),
+    dimension: r.dimension === 3 ? "3D" : "2D",
+    runId: r.runId,
+    sweepsPerSec: r.sweepsPerSec || 0,
+    task: r.task
+  }))
+```
+
+```{ojs}
+//| echo: false
+
+// Scatter plot: L vs wallTime (log-log)
+vl = require("@observablehq/vega-lite")
+
+// Observable Plot (more reliable than Vega-Lite in Quarto OJS)
+Plot = require("@observablehq/plot")
+
+Plot.plot({
+  marginLeft: 60,
+  width: 500,
+  height: 350,
+  x: {type: "log", label: "Lattice Size L (log scale)", grid: true},
+  y: {type: "log", label: "Wall Time (min, log scale)", grid: true},
+  color: {legend: true, label: "Dimension"},
+  marks: [
+    Plot.dot(perfData, {x: "L", y: "wallTimeMin", stroke: "dimension", r: 5, opacity: 0.7}),
+    Plot.text(perfData, {x: "L", y: "wallTimeMin", text: "L", dx: 8, dy: -4, fontSize: 10, opacity: 0.6})
+  ]
+})
 ```
 
 ## All Runs
@@ -105,46 +174,247 @@ Inputs.table(filteredRuns, {
     "task",
     "phase", 
     "latticeSize",
+    "dimension",
     "betaRange",
+    "wallTimeMin",
+    "sweepsPerSec",
+    "betasDone",
     "date",
     "status",
-    "keyFinding",
-    "hasOutput"
+    "keyFinding"
   ],
   header: {
     runId: "Run ID",
     task: "Task",
     phase: "Phase",
     latticeSize: "L",
+    dimension: "D",
     betaRange: "β Range",
+    wallTimeMin: "Wall Time",
+    sweepsPerSec: "Perf (sw/s)",
+    betasDone: "βs",
     date: "Date",
     status: "Status",
-    keyFinding: "Key Finding",
-    hasOutput: "Output"
+    keyFinding: "Key Finding"
   },
   format: {
-    runId: id => htl.html`<code>${id}</code>`,
+    runId: id => htl.html`<code class="small">${id}</code>`,
     status: s => s === "complete" 
       ? htl.html`<span class="badge bg-success">${s}</span>`
       : htl.html`<span class="badge bg-warning">${s}</span>`,
-    hasOutput: h => h === "✅"
-      ? htl.html`<span class="text-success">${h}</span>`
-      : htl.html`<span class="text-danger">${h}</span>`,
-    keyFinding: k => htl.html`<span class="text-truncate d-inline-block" style="max-width:300px" title="${k}">${k}</span>`
+    wallTimeMin: t => t ? htl.html`<span class="font-monospace">${t}m</span>` : "—",
+    sweepsPerSec: p => p ? htl.html`<span class="font-monospace">${p.toLocaleString()}</span>` : "—",
+    betasDone: b => htl.html`<span class="font-monospace">${b}</span>`,
+    keyFinding: k => {
+      const val = k === undefined || k === null || k === "" || k === "undefined" ? "—" : String(k);
+      return val === "—" ? val : htl.html`<span style="white-space: normal; overflow-wrap: break-word; max-width: 250px; line-height: 1.3;">${val}</span>`;
+    }
   },
   width: {
-    runId: 200,
-    task: 60,
-    phase: 80,
-    latticeSize: 50,
-    betaRange: 100,
-    date: 100,
-    status: 80,
-    keyFinding: 300,
-    hasOutput: 60
+    runId: 180,
+    task: 50,
+    phase: 70,
+    latticeSize: 40,
+    dimension: 40,
+    betaRange: 90,
+    wallTimeMin: 70,
+    sweepsPerSec: 80,
+    betasDone: 50,
+    date: 90,
+    status: 70,
+    keyFinding: 250
   },
   rows: 15
 })
+```
+
+## Plot Gallery
+
+```{ojs}
+//| echo: false
+
+// Available figure files (relative to dashboard location)
+figureFiles = [
+  // T20 Phase 3 (3D) plots
+  {id: "t20-p3-plaquette-vs-beta", title: "Plaquette vs β (3D)", desc: "Plaquette expectation across β values"},
+  {id: "t20-p3-susceptibility-vs-beta", title: "Susceptibility (3D)", desc: "Magnetic susceptibility peak"},
+  {id: "t20-p3-specific-heat-vs-beta", title: "Specific Heat (3D)", desc: "Specific heat near critical region"},
+  {id: "t20-p3-binder-vs-beta", title: "Binder Cumulant (3D)", desc: "Binder cumulant convergence to 2/3"},
+  {id: "t20-p3-combined", title: "Combined Observables (3D)", desc: "All observables in 2×2 panel"},
+  {id: "t20-p3-wilson-loops", title: "Wilson Loops (3D)", desc: "Wilson loop expectation values"},
+  {id: "t20-p3-string-tension", title: "String Tension (3D)", desc: "String tension extraction"},
+  // All-L comparisons
+  {id: "t20-p3-plaquette-vs-beta-all-L", title: "Plaquette All L (3D)", desc: "Finite-size scaling comparison"},
+  {id: "t20-p3-binder-vs-beta-all-L", title: "Binder All L (3D)", desc: "Binder cumulant across lattice sizes"},
+  {id: "t20-p3-specific-heat-vs-beta-all-L", title: "Specific Heat All L", desc: "Specific heat finite-size scaling"},
+  {id: "t20-p3-susceptibility-vs-beta-all-L", title: "Susceptibility All L", desc: "Susceptibility scaling"},
+  {id: "t20-p3-combined-all-L", title: "Combined All L", desc: "All observables, all L sizes"},
+  // T20 Phase 2 (2D) plots
+  {id: "t20-plaquette-vs-beta", title: "Plaquette vs β (2D)", desc: "2D plaquette expectation"},
+  {id: "t20-susceptibility", title: "Susceptibility (2D)", desc: "2D magnetic susceptibility"},
+  // Scaling analysis
+  {id: "t20-binder-first-order-scaling", title: "First-Order Scaling", desc: "Binder cumulant first-order scaling"},
+  {id: "t20-binder-first-order-scaling-all-L", title: "First-Order All L", desc: "First-order scaling across all L"},
+  {id: "t20-scaling-collapse", title: "Scaling Collapse", desc: "Finite-size scaling collapse"},
+  {id: "t20-scaling-collapse-all-L", title: "Scaling Collapse All L", desc: "Scaling collapse all L sizes"},
+  {id: "t20-critical-exponents", title: "Critical Exponents", desc: "Critical exponent extraction"},
+  {id: "t20-first-order-scaling-summary", title: "First-Order Summary", desc: "Summary of first-order evidence"},
+  {id: "t20-convergence-L16", title: "Convergence L16", desc: "Convergence at L=16"},
+  {id: "t20-error-bars", title: "Error Bars", desc: "Error bar analysis"},
+  {id: "t20-error-comparison-L16", title: "Error Comparison", desc: "Error comparison at L=16"}
+]
+
+// Group by category
+figureCategories = [
+  {name: "3D Phase 3 (Core)", filter: f => f.id && f.id.includes("p3-") && !f.id.includes("all-L") && !f.id.includes("multi")},
+  {name: "3D Finite-Size Scaling", filter: f => f.id && f.id.includes("p3-") && (f.id.includes("all-L") || f.id.includes("multi"))},
+  {name: "2D Phase 2", filter: f => f.id && f.id.includes("t20-") && !f.id.includes("p3-") && !f.id.includes("all-L") && !f.id.includes("multi") && !f.id.includes("scaling") && !f.id.includes("critical") && !f.id.includes("first-order") && !f.id.includes("convergence") && !f.id.includes("error")},
+  {name: "Scaling Analysis", filter: f => f.id && (f.id.includes("scaling") || f.id.includes("collapse") || f.id.includes("critical") || f.id.includes("first-order") || f.id.includes("convergence") || f.id.includes("error"))}
+]
+
+viewof galleryCategory = Inputs.select(figureCategories.map(c => c.name), {label: "Category:", value: "3D Phase 3 (Core)"})
+
+activeCategory = figureCategories.find(c => c.name === galleryCategory)
+selectedFigures = activeCategory ? figureFiles.filter(activeCategory.filter) : figureFiles
+
+figureGrid = htl.html`
+<div style="display: flex; flex-wrap: wrap; gap: 16px; margin-top: 12px;">
+  ${selectedFigures.map(f => htl.html`
+    <div style="flex: 1 1 280px; max-width: 380px; min-width: 240px; border: 1px solid #dee2e6; border-radius: 8px; overflow: hidden;">
+      <a href="assets/${f.id}.svg" target="_blank" style="text-decoration: none; color: inherit;">
+        <div style="background: #f8f9fa; padding: 8px; text-align: center;">
+          <img src="assets/${f.id}.png" alt="${f.title}" style="max-width: 100%; height: 180px; object-fit: contain;" loading="lazy">
+        </div>
+        <div style="padding: 12px;">
+          <div style="font-weight: 600; font-size: 0.9rem; margin-bottom: 4px;">${f.title}</div>
+          <div style="font-size: 0.8rem; color: #6c757d;">${f.desc}</div>
+          <div style="font-size: 0.75rem; color: #adb5bd; margin-top: 6px;">
+            🔍 SVG &nbsp;|&nbsp; 📊 PNG
+          </div>
+        </div>
+      </a>
+    </div>
+  `)}
+</div>`
+
+figureGrid
+```
+
+## Run Detail Browser
+
+```{ojs}
+//| echo: false
+
+viewof selectedRun = Inputs.select(
+  runs.filter(r => r.status === "complete").map(r => r.runId),
+  {label: "Select Run:", value: runs[0]?.runId}
+)
+
+runDetail = runs.find(r => r.runId === selectedRun)
+
+runParams = runDetail?.parameters ? Object.entries(runDetail.parameters).map(([k, v]) => ({
+  key: k,
+  value: Array.isArray(v) ? (v.length > 5 ? `[${v.slice(0,3).join(", ")}, ... +${v.length-3} more]` : `[${v.join(", ")}]`) : String(v)
+})) : []
+
+// Helper to format values recursively (named function to avoid OJS circular dependency)
+formatValue = function fmt(v) {
+  if (v === null || v === undefined) return "—";
+  if (typeof v === "number") return v.toFixed(4);
+  if (typeof v === "string") return v;
+  if (Array.isArray(v)) {
+    if (v.length === 0) return "[]";
+    if (v.length <= 3) return `[${v.map(fmt).join(", ")}]`;
+    return `[${v.slice(0, 3).map(fmt).join(", ")}, ... +${v.length - 3} more]`;
+  }
+  if (typeof v === "object") {
+    const entries = Object.entries(v);
+    if (entries.length === 0) return "{}";
+    const pairs = entries.slice(0, 3).map(([k, val]) => `${k}: ${fmt(val)}`);
+    const suffix = entries.length > 3 ? `, ... +${entries.length - 3} more` : "";
+    return `{${pairs.join(", ")}${suffix}}`;
+  }
+  return String(v);
+}
+
+runResults = runDetail?.results ? Object.entries(runDetail.results).map(([k, v]) => ({
+  key: k,
+  value: formatValue(v)
+})) : []
+
+html`
+<div style="margin-top: 12px;">
+  ${runDetail ? htl.html`
+    <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+      <!-- Parameters Card -->
+      <div style="flex: 1 1 300px; min-width: 280px;">
+        <div style="border: 1px solid #dee2e6; border-radius: 8px; padding: 16px;">
+          <div style="font-weight: 600; margin-bottom: 12px;">📋 Parameters</div>
+          ${runParams.length > 0 ? htl.html`
+            <div style="font-size: 0.85rem;">
+              ${runParams.map(p => htl.html`
+                <div style="display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #f0f0f0;">
+                  <span style="color: #6c757d;">${p.key}</span>
+                  <span style="font-family: monospace; word-break: break-all; max-width: 200px; text-align: right;">${p.value}</span>
+                </div>
+              `)}
+            </div>
+          ` : htl.html`<div style="color: #adb5bd; font-size: 0.85rem;">No parameters recorded</div>`}
+        </div>
+      </div>
+
+      <!-- Results Card -->
+      <div style="flex: 1 1 300px; min-width: 280px;">
+        <div style="border: 1px solid #dee2e6; border-radius: 8px; padding: 16px;">
+          <div style="font-weight: 600; margin-bottom: 12px;">📊 Results</div>
+          ${runResults.length > 0 ? htl.html`
+            <div style="font-size: 0.85rem;">
+              ${runResults.map(r => htl.html`
+                <div style="display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #f0f0f0;">
+                  <span style="color: #6c757d;">${r.key}</span>
+                  <span style="font-family: monospace;">${r.value}</span>
+                </div>
+              `)}
+            </div>
+          ` : htl.html`<div style="color: #adb5bd; font-size: 0.85rem;">No results recorded</div>`}
+        </div>
+      </div>
+    </div>
+
+    <!-- Timing & Links -->
+    <div style="margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap;">
+      ${runDetail.wallTimeMin ? htl.html`
+        <div style="border: 1px solid #dee2e6; border-radius: 6px; padding: 8px 16px; font-size: 0.85rem;">
+          ⏱️ Wall time: <strong>${runDetail.wallTimeMin} min</strong>
+        </div>
+      ` : ""}
+      ${runDetail.betasDone ? htl.html`
+        <div style="border: 1px solid #dee2e6; border-radius: 6px; padding: 8px 16px; font-size: 0.85rem;">
+          📈 Betas: <strong>${runDetail.betasDone}</strong> completed
+        </div>
+      ` : ""}
+      ${runDetail.dataUrl ? htl.html`
+        <a href="${runDetail.dataUrl}" target="_blank" style="border: 1px solid #0d6efd; border-radius: 6px; padding: 8px 16px; font-size: 0.85rem; text-decoration: none; color: #0d6efd;">
+          🔽 Download JSON
+        </a>
+      ` : ""}
+    </div>
+
+    <!-- Figures for this run -->
+    ${runDetail.figures && runDetail.figures.length > 0 ? htl.html`
+      <div style="margin-top: 16px;">
+        <div style="font-weight: 600; margin-bottom: 8px;">📁 Generated Figures</div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          ${runDetail.figures.map(fig => htl.html`
+            <a href="${fig}" target="_blank" style="border: 1px solid #dee2e6; border-radius: 4px; padding: 4px 8px; font-size: 0.8rem; text-decoration: none; color: #0d6efd;">
+              ${fig.split("/").pop()}
+            </a>
+          `)}
+        </div>
+      </div>
+    ` : ""}
+  ` : htl.html`<div style="color: #adb5bd;">Select a run to view details</div>`}
+</div>`
 ```
 
 ## Task Breakdown
@@ -155,24 +425,32 @@ Inputs.table(filteredRuns, {
 taskSummary = tasks.map(t => {
   const taskRuns = runs.filter(r => r.task === t);
   const taskInfo = registry.tasks[t] || {};
+  const taskProd = taskRuns.filter(r => !r.isTest);
+  const totalWall = taskProd
+    .filter(r => r.wallTimeSec)
+    .reduce((sum, r) => sum + r.wallTimeSec, 0);
   return {
     task: t,
     name: taskInfo.name || t,
     status: taskInfo.status || "unknown",
     total: taskRuns.length,
     complete: taskRuns.filter(r => r.status === "complete").length,
+    timing: taskProd.filter(r => r.wallTimeSec).length,
+    wallTime: totalWall > 0 ? `${(totalWall / 60).toFixed(0)}m` : "—",
     phases: [...new Set(taskRuns.map(r => r.phase))].join(", ")
   };
 })
 
 Inputs.table(taskSummary, {
-  columns: ["task", "name", "status", "total", "complete", "phases"],
+  columns: ["task", "name", "status", "total", "complete", "timing", "wallTime", "phases"],
   header: {
     task: "Task ID",
     name: "Name",
     status: "Status",
-    total: "Total Runs",
-    complete: "Complete",
+    total: "Runs",
+    complete: "Done",
+    timing: "Timed",
+    wallTime: "Compute",
     phases: "Phases"
   },
   format: {
@@ -198,8 +476,9 @@ html`<div class="list-group">
   ${recentRuns.map(r => html`
     <div class="list-group-item d-flex justify-content-between align-items-start">
       <div>
-        <div class="fw-bold">${r.runId}</div>
+        <div class="fw-bold">${r.runId} ${r.isTest ? htl.html`<span class="badge bg-warning text-dark">TEST</span>` : ""}</div>
         <small class="text-muted">${r.description}</small>
+        ${r.wallTimeMin ? htl.html`<small class="text-muted ms-2">| ${r.wallTimeMin}m</small>` : ""}
       </div>
       <span class="badge bg-light text-dark">${r.date}</span>
     </div>
@@ -209,4 +488,4 @@ html`<div class="list-group">
 
 ---
 
-*Auto-generated from `data/registry.json`. Run `npx ts-node --esm src/scripts/collate-data.ts` to update, then re-render this page.*
+*Auto-generated from `data/registry.json`. Run `npx tsx src/scripts/collate-data.ts` to update, then `quarto render` to rebuild.*

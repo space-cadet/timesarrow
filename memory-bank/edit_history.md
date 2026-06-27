@@ -1,18 +1,52 @@
 # Edit History
 
-*Last Updated: 2026-06-26 23:50:00 IST*
-
-> ⚠️ **STALE**: This generated view references old task IDs that were restructured on 2026-06-26. See `tasks/T20.md` and subtasks T20a–T20d for current task structure.
+*Last Updated: 2026-06-27 10:45:51 IST*
 
 ---
 
-## 2026-06-26
+## 2026-06-27
+
+#### 16:11:58 IST - T28: Created dashboard v2 static HTML prototype with unified Runs & Results + Figure Archive layout. Analyzed old dashboard UX issues (unclear Plot Gallery dropdown, overlapping sections). Proposed extensible schema design with base+extension architecture for general numerics dashboard.
+- Created `space-cadet.github.io/projects/timesarrow/numerics/dashboard-prototype-static.html` - Created space-cadet.github.io/projects/timesarrow/numerics/dashboard-prototype-static.html
+- Created `numerics/docs/dashboard-prototype.qmd` - Created numerics/docs/dashboard-prototype.qmd
+- Created `memory-bank/implementation/dashboard-v2-implementation-plan.md` - Created memory-bank/implementation/dashboard-v2-implementation-plan.md
+
+#### 12:41:54 IST - T20d: L=32 simulation running (PID 49975, ~2h elapsed, 690% CPU). Corrected timing estimate: ~6h total wall time for 21 betas x 2M sweeps. L=8 and L=16 complete. Monitoring via subagent.
+- Modified `memory-bank/tasks/T20d.md` - Modified memory-bank/tasks/T20d.md
+- Modified `memory-bank/activeContext.md` - Modified memory-bank/activeContext.md
+- Modified `memory-bank/progress.md` - Modified memory-bank/progress.md
+
+#### 12:41:46 IST - T28: Implemented Plot Gallery with 20 plots (category-filtered), Run Detail Browser with parameters/results/timing, performance scaling chart with Observable Plot, compact summary cards, test run indicators. Fixed key finding word wrap, Results card formatting, Vega-Lite→Observable Plot migration. Deployed 5 commits to GitHub Pages.
+- Modified `numerics/docs/dashboard.qmd` - Modified numerics/docs/dashboard.qmd
+- Modified `numerics/data/registry.schema.json` - Modified numerics/data/registry.schema.json
+- Modified `numerics/src/scripts/collate-data.ts` - Modified numerics/src/scripts/collate-data.ts
+- Modified `memory-bank/tasks/T28.md` - Modified memory-bank/tasks/T28.md
+
+#### 11:12:34 IST - T28: Session end: T20d L=32 still running (~3.7h CPU). T28 dashboard v2 design complete, collate-data.ts v2 in progress. DB workflow fixed. All changes committed and pushed to GitHub.
+- Modified `memory-bank/session_cache.md` - Modified memory-bank/session_cache.md
+
+#### 10:51:10 IST - T28-db-fix: Fixed DB schema drift in timesarrow memory-bank: updated project-local JS files (inserts.js, workflow.js, regenerate.js) to match mb-core v1.1 schema (session_date→date, session_period→period, focus_task→focus). Migrated session_cache table schema. DB-native workflow now fully functional.
+- Modified `memory-bank/database/lib/inserts.js` - Modified memory-bank/database/lib/inserts.js
+- Modified `memory-bank/database/lib/workflow.js` - Modified memory-bank/database/lib/workflow.js
+- Modified `memory-bank/database/lib/regenerate.js` - Modified memory-bank/database/lib/regenerate.js
+
+#### 10:50:58 IST - T28: Design enhanced simulation dashboard v2: integrated within timesarrow (not standalone), adds performance metrics (wall time, CPU time, timestamps), data export (JSON/CSV), plot gallery, live progress monitoring, task pipeline visualization. Architecture: Quarto + OJS + static JSON (GitHub Pages compatible). Design spec written to memory-bank/implementation/dashboard-v2-design.md.
+- Modified `memory-bank/tasks/T28.md` - Modified memory-bank/tasks/T28.md
+- Created `memory-bank/implementation/dashboard-v2-design.md` - Created memory-bank/implementation/dashboard-v2-design.md
+- Modified `memory-bank/tasks.md` - Modified memory-bank/tasks.md
+- Modified `memory-bank/activeContext.md` - Modified memory-bank/activeContext.md
+- Modified `memory-bank/session_cache.md` - Modified memory-bank/session_cache.md
+- Created `memory-bank/edits/2026-06-27/1020-T28-dashboard-v2-design.md` - Created memory-bank/edits/2026-06-27/1020-T28-dashboard-v2-design.md
+
+#### 10:46:33 IST - T28: Test DB workflow after full schema fix
+- Modified `memory-bank/database/lib/inserts.js` - Modified memory-bank/database/lib/inserts.js
+- Modified `memory-bank/database/lib/workflow.js` - Modified memory-bank/database/lib/workflow.js
+- Modified `memory-bank/database/lib/regenerate.js` - Modified memory-bank/database/lib/regenerate.js
+
+
+## ## 2026-06-26
 
 #### 23:50:00 IST - T20/T20d: Memory-bank schema fix plan — diagnosed v1.0→v1.1 column name mismatch, committed rename files, planned database recreation from text
-- Diagnosed `memory-bank/database/schema.sql` mismatch: `sessions` table has `session_date`, `session_period`, `focus_task` but mb-cli v1.1 expects `date`, `period`, `focus`
-- Committed 4 staged rename files to git: `edit_history.md`, `edits/2026-06-25-t20-phase1-t27-rust-complete.md`, `edits/2026-06-26/003000-T20-gap-analysis.md`, `implementation-details/t20-phase3b-requirements.md`
-- Created `memory-bank/edits/2026-06-26/235000-T20-schema-fix-plan.md` — Full Option A plan: backup → init → populate → verify
-- Modified `memory-bank/session_cache.md` — Updated with schema fix status
 
 #### 11:33:34 IST - T20: Rust checkpointing, data collation fix, and simulation dashboard deployment
 - Modified `rust-lattice/src/main.rs` - Added --checkpoint flag, mpsc streaming, atomic writes, resume support
@@ -36,26 +70,18 @@
 - Modified `memory-bank/activeContext.md` - Added T20d status and next steps
 
 #### 00:50:02 IST - T20: Gap analysis: identified missing Wilson loops, critical exponents, and Phase 2 plots across all T20 phases
-- Identified `memory-bank/implementation-details/t20-missing-observables.md` - Documented all missing observables: Wilson loops (all phases), critical exponents (2D & 3D), Phase 2 scaling plots
-- To-Do `numerics/src/scripts/wilson-loop-measurement.ts` - Wilson loop measurement for all phases (area vs perimeter law)
-- To-Do `numerics/src/scripts/critical-exponent-extraction.ts` - Critical exponent extraction (nu, gamma, beta) for 2D and 3D
-- To-Do `numerics/src/scripts/phase2-scaling-plots.ts` - Phase 2 finite-size scaling plots (chi scaling collapse, Binder crossing)
 
 #### 00:43:21 IST - T20: Gap analysis: identified missing Wilson loops, critical exponents, and Phase 2 plots across all T20 phases. See implementation-details/t20-missing-observables.md for full details.
-- Identified `memory-bank/implementation-details/t20-missing-observables.md` - Documented all missing observables: Wilson loops (all phases), critical exponents (2D & 3D), Phase 2 scaling plots
-- To-Do `numerics/src/scripts/wilson-loop-measurement.ts` - Wilson loop measurement for all phases (area vs perimeter law)
-- To-Do `numerics/src/scripts/critical-exponent-extraction.ts` - Critical exponent extraction (nu, gamma, beta) for 2D and 3D
-- To-Do `numerics/src/scripts/phase2-scaling-plots.ts` - Phase 2 finite-size scaling plots (chi scaling collapse, Binder crossing)
 
 #### 00:30:00 IST - T20: Gap analysis: identified missing Wilson loops, critical exponents, and Phase 2 plots across all T20 phases
 
 
-## 2026-06-24
+## ## 2026-06-24
 
 #### 09:30:00 IST - T20–T26: Numerical simulation tasks created
 
 
-## 2026-05-20
+## ## 2026-05-20
 
 #### 09:30:55 IST - T18: Reviewer-safety calibration recorded
 - Modified `timesarrow.tex` - Clarified that the paper targets coherent cosmological time orientation rather than a complete thermodynamic-arrow derivation
@@ -77,7 +103,7 @@
 - Updated `memory-bank/edit_history.md` - Prepended the generated-view entry for the T18 calibration update
 
 
-## 2026-05-12
+## ## 2026-05-12
 
 #### 13:36:57 IST - T18: Z2 link-field origin integrated
 - Modified `timesarrow.tex` - Identified `sigma_e` as the shared binary bond index on a `j=1/2` spin-network edge
@@ -95,7 +121,7 @@
 - Updated `memory-bank/edit_history.md` - Prepended the generated-view entry for the T18 integration
 
 
-## 2026-05-09
+## ## 2026-05-09
 
 #### 12:03:05 IST - T19: Markdown-first Z2 pilot recorded
 - Modified `.gitignore` - Ignored `markdown-pilot/build/` artifacts for the standalone pilot workflow
@@ -118,7 +144,7 @@
 - Updated `memory-bank/edit_history.md` - Prepended the generated-view entry for the T19 update
 
 
-## 2026-05-06
+## ## 2026-05-06
 
 #### 18:34:13 IST - T18: Second-opinion feasibility discussion recorded
 - Updated `memory-bank/tasks/T18.md` - Added Sonnet 4.6 and GPT 5.5 model provenance, refined `Z_2` bond-index claim, and progress update
@@ -139,7 +165,7 @@
 - Updated `memory-bank/edit_history.md` - Regenerated generated-view entry for the T18 update
 
 
-## 2026-05-05
+## ## 2026-05-05
 
 #### 02:42:04 IST - T17: arXiv Submission Uploaded
 - Modified `arxiv_submission_v1/timesarrow.tex` - Restored full AI addendum (84 lines) accidentally stripped during peer-review fixes
@@ -183,7 +209,7 @@
 - Created `memory-bank/sessions/2026-05-05-early.md` - Session log
 
 
-## 2026-04-29
+## ## 2026-04-29
 
 #### 22:27:33 IST - T16: Submission Documentation
 - Created `cover-letter.md` - SciPost Physics submission cover letter with manuscript summary, original contributions, relation to literature, suitability justification, AI assistance note, and suggested referees from LQG, topological phases, and quantum information communities
@@ -213,7 +239,7 @@
 - Created `memory-bank/edits/2026-04-29/221409-T14.md` - edit chunk
 
 
-## 2026-04-20
+## ## 2026-04-20
 
 #### 12:36:54 IST - T15: 3D SPT Survey Completion and Manuscript Finalization
 - Modified `timesarrow.tex` - M9 refinement: replaced "exponentially more states" with defensible arguments (thermal Boltzmann suppression β > 2/κ, Bekenstein-Hawking black hole entropy); SciPost template cleanup: updated affiliation to "Independent Researcher", removed TODO comments; acknowledgements rewrite to reflect 2018 Visiting Associateship; gapless/gapped terminology resolution throughout (abstract, introduction, contributions, Sec 7.3, future directions); Sec 7.3 dimensional paragraph: added explicit 3D SPT classification H⁴(Z₂ᵀ, U(1)_𝒯) ≅ ℤ₂
@@ -251,7 +277,7 @@
 - Created `memory-bank/edits/2026-04-20/025000-T15-T12-sync.md` - Edit chunk for T12 completion and T15 creation
 
 
-## 2026-04-18
+## ## 2026-04-18
 
 #### 04:30:37 IST - T10: BibTeX Mismatches Fixed; T12: Reference Cleanup Partial
 - Modified `timesarrow.tex` - Fixed 11 BibTeX key mismatches (Zeh, Goold, Barbour, Vaid, Christodoulou, Perez, Kogut, Mildenberger, Ashtekar), fixed index notation (We->I, we->I), added new citations
@@ -294,7 +320,12 @@
 - Created `memory-bank/edits/2026-04-18/021239-T10T11T12.md` - Edit chunk for audit tasks
 
 
-## 2026-04-17
+## ## 2026-04-17
+
+#### 02:29:00 IST - T9: Create missing figure for Sec 3.5
+- Created `figures/tns-matrix-insertion-2d.tex` - TikZ 4×4 TNS grid showing M/M⁻¹ insertion on subregion bonds with interior cancellation and boundary survival labels
+- Created `figures/tns-matrix-insertion-2d.pdf` - Compiled standalone figure
+- Modified `timesarrow.tex` - Replaced \todo{Insert figure...} with figure environment, \autoref, and caption in Sec 3.5
 
 #### 02:29:00 IST - T8: Fix typos and structural errors
 - Modified `timesarrow.tex` - Moved \label{fig:czx-entangled} inside figure float; changed \captionof to \caption
@@ -309,13 +340,8 @@
 - Modified `memory-bank/session_cache.md` - Populated with current session and history
 - Created `memory-bank/edits/2026-04-17/022900-T8-T9.md` - Edit chunk for T8 and T9
 
-#### 02:29:00 IST - T9: Create missing figure for Sec 3.5
-- Created `figures/tns-matrix-insertion-2d.tex` - TikZ 4×4 TNS grid showing M/M⁻¹ insertion on subregion bonds with interior cancellation and boundary survival labels
-- Created `figures/tns-matrix-insertion-2d.pdf` - Compiled standalone figure
-- Modified `timesarrow.tex` - Replaced \todo{Insert figure...} with figure environment, \autoref, and caption in Sec 3.5
 
-
-## 2026-04-16
+## ## 2026-04-16
 
 #### 23:25:00 IST - T3, T4, T5, T6: Major Manuscript Rewrite and Expansion
 

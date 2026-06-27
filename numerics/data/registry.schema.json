@@ -1,39 +1,175 @@
 {
-  "schemaVersion": "1.0.0",
-  "project": "timesarrow",
-  "description": "Registry of all numerical simulation runs for TimesArrow project",
-  "lastUpdated": "",
-  "runs": [],
-  "tasks": {
-    "T20": {
-      "name": "Z₂ Lattice Gauge Theory Monte Carlo",
-      "status": "in-progress",
-      "phases": {
-        "phase1": {
-          "status": "complete",
-          "description": "2D square lattice, single L=8, critical β identification",
-          "runs": []
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TimesArrow Simulation Registry",
+  "description": "Registry of all numerical simulation runs with performance metrics and provenance",
+  "type": "object",
+  "required": ["schemaVersion", "project", "lastUpdated", "runs", "tasks"],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "2.0.0"
+    },
+    "project": {
+      "type": "string",
+      "const": "timesarrow"
+    },
+    "description": {
+      "type": "string"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "runs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/simulationRun"
+      }
+    },
+    "tasks": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/task"
+      }
+    }
+  },
+  "definitions": {
+    "simulationRun": {
+      "type": "object",
+      "required": ["runId", "task", "phase", "status", "timestamp"],
+      "properties": {
+        "runId": {
+          "type": "string",
+          "description": "Unique run identifier"
         },
-        "phase2": {
-          "status": "in-progress",
-          "description": "Finite-size scaling with L=8,12,16,20,24",
-          "runs": []
+        "task": {
+          "type": "string",
+          "description": "Task code (e.g., T20, T27)"
         },
-        "phase3": {
-          "status": "pending",
-          "description": "3D cubic lattice",
-          "runs": []
+        "phase": {
+          "type": "string",
+          "description": "Phase within task (e.g., phase1, phase2)"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["complete", "running", "failed", "pending"]
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "description": {
+          "type": "string"
+        },
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "latticeSize": { "type": "integer" },
+            "dimension": { "type": "integer" },
+            "betaValues": {
+              "type": "array",
+              "items": { "type": "number" }
+            },
+            "thermalizationSweeps": { "type": "integer" },
+            "measurementSweeps": { "type": "integer" },
+            "measureEvery": { "type": "integer" },
+            "binSize": { "type": "integer" },
+            "workers": { "type": "integer" },
+            "loopSizes": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "r": { "type": "integer" },
+                  "c": { "type": "integer" }
+                }
+              }
+            },
+            "polyakov": { "type": "boolean" }
+          }
+        },
+        "results": {
+          "type": "object",
+          "description": "Summary results (key findings, estimates)"
+        },
+        "outputFiles": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "page": {
+          "type": "string",
+          "description": "Link to task documentation page"
+        },
+        "dataUrl": {
+          "type": "string",
+          "description": "Path to raw JSON data file"
+        },
+        "wallTimeMs": {
+          "type": "number",
+          "description": "Total wall-clock time in milliseconds"
+        },
+        "cpuTimeMs": {
+          "type": "number",
+          "description": "Total CPU time in milliseconds (if available)"
+        },
+        "startTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Run start timestamp"
+        },
+        "endTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Run completion timestamp"
+        },
+        "betasCompleted": {
+          "type": "integer",
+          "description": "Number of β values completed"
+        },
+        "totalBetas": {
+          "type": "integer",
+          "description": "Total number of β values in the run"
+        },
+        "sweepsPerSecond": {
+          "type": "number",
+          "description": "Performance metric: measurement sweeps per second"
+        },
+        "figures": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Generated plot filenames"
         }
       }
     },
-    "T22": {
-      "name": "2D Spin Foam Amplitudes",
-      "status": "ready",
-      "phases": {
-        "phase1": {
-          "status": "pending",
-          "description": "Single vertex (L=1) amplitude computation",
-          "runs": []
+    "task": {
+      "type": "object",
+      "required": ["name", "status"],
+      "properties": {
+        "name": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": ["complete", "in-progress", "pending", "ready"]
+        },
+        "phases": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/phase"
+          }
+        }
+      }
+    },
+    "phase": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["complete", "in-progress", "pending"]
+        },
+        "description": { "type": "string" },
+        "runs": {
+          "type": "array",
+          "items": { "type": "string" }
         }
       }
     }

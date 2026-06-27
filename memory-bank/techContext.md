@@ -1,14 +1,61 @@
 # Technical Context
 *Last Updated: 2026-04-16 20:15:00 IST*
 
-## Tech Stack
-- **Document Preparation**: LaTeX
+## Dashboard Architecture (v2)
+
+*Added: 2026-06-27*
+
+### Old Dashboard
+- **Stack**: Quarto + OJS (Observable JS) + Vega-Lite
+- **File**: `numerics/docs/dashboard.qmd` → rendered to `dashboard.html`
+- **Status**: Preserved, functional, but UX issues (overlapping sections, unclear filters)
+
+### New Dashboard (v2)
+- **Stack**: Vanilla JS + static HTML (no build step, no dependencies)
+- **File**: `dashboard-v2.html` (target, not yet built)
+- **Prototype**: `dashboard-prototype-static.html` (layout only, not functional)
+- **Data**: Embedded JSON blob or fetched from `data-registry.json`
+- **Deployment**: Copy single HTML file to `space-cadet.github.io`
+
+### Why the Switch
+- OJS runtime failed to render on GitHub Pages (cells showed raw code)
+- Quarto build step is slow and fragile
+- Single HTML file is easier to debug, extend, and eventually extract to standalone app
+
+### Data Flow (v2)
+```
+Simulation Output (.json)
+    ↓
+collate-data.ts (extracts timing, performance, figures)
+    ↓
+registry.json (canonical, v1.0 schema)
+    ↓
+Dashboard loads registry.json (fetch or inline)
+    ↓
+Vanilla JS renders table, filters, detail panel, figure gallery
+```
+
+## Extensible Schema Design (T29)
+
+*Added: 2026-06-27*
+
+**Goal**: Generalize registry schema for any numerics (LGT, DMRG, tensor networks, etc.)
+
+**Approach**: Base + Extension namespaces
+- Base schema: runId, task, status, timestamp, description, outputs (physics-agnostic)
+- Extensions: `lgt`, `dmrg`, etc. in `extensions.{name}` block
+- Observable definitions: Global registry with formula, units, visualization type
+- Analysis recipes: Declarative, reproducible, with data lineage
+
+**See**: `implementation/extensible-schema-design.md`
+
+## Tech Stack (Updated 2026-06-27)
+- **Document Preparation**: LaTeX (for paper), Quarto (for docs)
+- **Dashboard**: Vanilla JS + static HTML (v2), Quarto + OJS (v1, preserved)
+- **Numerics**: Rust (lattice-gauge), Python (analysis, plotting)
+- **Data**: JSON (simulation output), SQLite (memory-bank), CSV (export)
+- **Deployment**: GitHub Pages (static hosting)
 - **Journal Template**: SciPost (via `SciPost.cls`)
-- **Bibliography Management**: BibLaTeX with Biber backend (`timesarrow.bib`)
-- **Graphics**: 
-  - `graphicx` for external figures.
-  - TikZ (via `pytikz.py` script) for programmatic diagrams.
-  - Draw.io (`tensor networks.drawio`) for conceptual diagrams.
 
 ## Core Concepts
 - **Loop Quantum Gravity (LQG)**: Spin networks, volume operator, tetrad/connection formalism, ADM splitting.

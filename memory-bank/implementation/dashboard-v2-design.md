@@ -118,49 +118,28 @@ Quarto render → HTML → GitHub Pages
 - Arrows show dependencies
 - Click node → filter runs to that task
 
-## Implementation Plan
+## Session 2026-06-27: Prototype & Design Decisions
 
-### Phase 1: Data Model (30 min)
-1. Update `collate-data.ts` to extract timing from output JSON
-2. Update `registry.schema.json` with new fields
-3. Regenerate `data/registry.json` with enhanced fields
-4. Sync to `docs/data-registry.json`
+### What Was Built
+1. **Static HTML Prototype** — `dashboard-prototype-static.html`
+   - Unified "Runs & Results" section (table + detail panel in one place)
+   - Figure Archive with orthogonal checkbox filters (Task × Dimension × Type)
+   - Figure cards grouped by type (FSS/Raw/Analysis) with colored badges
+   - Summary cards including new "Figures" count
+   - No OJS — pure HTML/CSS, single file, works on GitHub Pages
 
-### Phase 2: Dashboard UI (60 min)
-1. Rewrite `dashboard.qmd` with new sections
-2. Create `dashboard-detail.js` OJS module
-3. Implement expandable rows for runs table
-4. Implement performance chart (Vega-Lite)
-5. Add download buttons (JSON/CSV)
-6. Implement plot gallery discovery
+2. **UX Analysis of Old Dashboard**
+   - Three overlapping sections (All Runs, Plot Gallery, Run Detail Browser) confused users
+   - Plot Gallery dropdown options were unclear ("Core" vs "Finite-Size Scaling" — same data, different aggregation)
+   - Run Detail Browser had no direct link to which run you were viewing
+   - Figure Archive was separate from runs — hard to trace provenance
 
-### Phase 3: Polish & Deploy (30 min)
-1. Test with T20d data (L=8, 16, 32)
-2. Quarto render to HTML
-3. Copy to space-cadet.github.io
-4. Commit and push
-5. Verify live deployment
+### Key Design Decisions
+- **Abandoned OJS/Vega-Lite approach** — OJS cells rendered as raw code on GitHub Pages, runtime loading is fragile
+- **Adopted vanilla JS + static HTML** — single file, no build step, no dependencies, reliable
+- **Data embedded as JSON blob** — fetch or inline `data-registry.json`
+- **Old dashboard preserved** — `dashboard.html` untouched, no links to prototype
 
-## File Inventory
+### What Comes Next
+See `dashboard-v2-implementation-plan.md` for full plan.
 
-| File | Purpose | Status |
-|------|---------|--------|
-| `numerics/docs/dashboard.qmd` | Main dashboard | 🔄 Rewrite needed |
-| `numerics/docs/data-registry.json` | Synced data | 🔄 Auto-generated |
-| `numerics/data/registry.json` | Canonical registry | 🔄 Update schema |
-| `numerics/data/registry.schema.json` | Schema validation | 🔄 Add fields |
-| `numerics/src/scripts/collate-data.ts` | Data extraction | 🔄 Add timing |
-| `numerics/src/scripts/figure-discovery.ts` | Plot discovery | ⬜ Create new |
-| `memory-bank/implementation/dashboard-v2-design.md` | This document | ✅ Created |
-
-## Dependencies
-- No new dependencies
-- Uses existing: Quarto, OJS, Vega-Lite, htl
-- Browser-native: Fetch API, Blob for downloads
-
-## Future Extraction Path
-If needed for ts-quantum or other projects:
-1. Extract `dashboard.qmd` → standalone repo
-2. Generalize registry schema (remove physics-specific fields)
-3. Make task pipeline configurable
-4. Keep same OJS + Vega-Lite stack
