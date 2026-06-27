@@ -1,7 +1,7 @@
 # Memory Bank - timesarrow
 
 *Created: 2026-06-26*
-*Last Updated: 2026-06-26*
+*Last Updated: 2026-06-27 10:20:00 IST*
 
 ## Overview
 Memory bank for the timesarrow project — Z₂ lattice gauge theory simulations and related numerics.
@@ -19,6 +19,7 @@ Memory bank for the timesarrow project — Z₂ lattice gauge theory simulations
 | T23 | Entanglement Structure of the Deconfined Phase | 🔄 | MEDIUM | 2026-06-24 | T20 | [Details](tasks/T23.md) |
 | T24 | Domain Wall Dynamics and Surface Topological Order | 🔄 | MEDIUM | 2026-06-24 | T20, T21 | [Details](tasks/T24.md) |
 | T26 | Coupled Spin Network + Matter Field Simulation | 🔄 | LOW | — | T20 | [Details](tasks/T26.md) |
+| T28 | Simulation Dashboard | 🔄 | MEDIUM | 2026-06-26 | — | [Details](tasks/T28.md) |
 
 ## Completed Tasks
 
