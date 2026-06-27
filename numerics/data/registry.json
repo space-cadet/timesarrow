@@ -6504,6 +6504,7 @@
       "endTime": "2026-06-25T21:59:21.617Z",
       "dataUrl": "output/t20-p3-L24-3D-wilson-fine-20250626.json"
     },
+    {
       "runId": "t20-p3b-L32-lean-20260627",
       "task": "T20",
       "phase": "phase3b",

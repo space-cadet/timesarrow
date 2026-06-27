@@ -1,44 +1,42 @@
 # timesarrow — Active Context
 
-*Updated: 2026-06-27 12:30:00 IST*
+*Updated: 2026-06-27 17:40:00 IST*
 
-## Current Session — 2026-06-27 Afternoon
+## Current Session — 2026-06-27 Evening
 
-### T28: Dashboard v2 — UX ANALYSIS + PROTOTYPE ✅
+### T28a: Dashboard v2 — FUNCTIONAL ✅ COMPLETE
 
-**User Feedback on Old Dashboard:**
-- Plot Gallery dropdown options unclear ("Core" vs "Finite-Size Scaling" — same data, different aggregation)
-- Three overlapping sections confuse users (All Runs, Plot Gallery, Run Detail Browser)
-- Run Detail Browser has no link to selected run
+**What was built:**
+- Full vanilla JS dashboard with 3 tabs: Runs & Results, Figure Archive, Performance
+- 14 runs loaded from external JSON (with GitHub raw fallback for immediate availability)
+- Filterable, sortable runs table with row selection and detail panel
+- Detail panel: Parameters, Results, Key Findings, Timing, Export (JSON/CSV)
+- 6 FSS figures with thumbnails, click-to-zoom modal, orthogonal filters
+- Performance chart: SVG log-log scatter plot (Wall time vs Lattice Size)
+- Dark mode via `prefers-color-scheme`, mobile responsive
 
-**Prototype Built:** `dashboard-prototype-static.html`
-- ✅ Unified "Runs & Results" (table + detail panel in one section)
-- ✅ Figure Archive with orthogonal filters (Task × Dimension × Type)
-- ✅ Figure cards grouped by type with colored badges (FSS/Raw/Analysis)
-- ✅ Static HTML/CSS, single file, no dependencies
-- ❌ Not yet functional (filters don't filter, rows don't click, figures are placeholders)
+**Deployment:**
+- URL: https://space-cadet.github.io/projects/timesarrow/numerics/dashboard-v2.html
+- Repo: space-cadet.github.io (GitHub Pages)
+- Commit: `db2bfef`
 
-**Architecture Decision:** Abandoned OJS/Quarto approach (fragile on static hosting). Adopted vanilla JS + static HTML.
+**Architecture decisions:**
+- External JSON files instead of inline data (235KB blob caused syntax errors)
+- GitHub raw fallback for data files (GitHub Pages cache delay ~5min)
+- Vanilla JS over React: faster iteration, no build step, sufficient for current features
 
-**Live URL**: https://space-cadet.github.io/projects/timesarrow/numerics/dashboard-prototype-static.html
+### T20d: L=32 Simulation — COMPLETE ✅
+- **Run ID:** `t20-p3b-L32-lean-20260627`
+- **Status:** Complete, data committed to `numerics/data/fss/`
+- **Results:** Peak χ=1.3704 at β=0.758, Peak C=1.0388 at β=0.758, Binder U≈0.666
+- **Plaquette:** First-order jump from ~0.88 to ~0.96 at β≈0.758
+- **Wall time:** ~6h total (distributed across 8 workers)
 
-### T28a: Dashboard v2 — Functional JS Implementation (NEW)
-- Status: pending
-- Goal: Make prototype interactive (filtering, row selection, figure loading, data export)
-- Est. time: ~1.25 hours
-- See: `dashboard-v2-implementation-plan.md`
-
-### T29: Extensible Numerics Schema Design (NEW)
-- Status: pending
-- Goal: Design base+extension schema for general numerics dashboard (not LGT-specific)
-- Key idea: Physics-agnostic base schema + extension namespaces (`lgt`, `dmrg`, etc.)
-- See: `extensible-schema-design.md`
-
-### T20d: L=32 Simulation — STILL RUNNING
-- **PID 49975**: Started 10:31 IST
-- **Status**: ~2h elapsed at session start, still running
-- **No checkpoint yet** — first checkpoint expected in ~15-20 min
-- **Total estimate**: ~6 hours wall time
+### T29: Extensible Schema Design — PENDING ⬜
+- Status: Pending, not started
+- Goal: Physics-agnostic base schema + extension namespaces for any simulation domain
+- Key idea: `extensions: { lgt: {...}, dmrg: {...} }` in base schema
+- See: `memory-bank/implementation/extensible-schema-design.md`
 
 ---
 
@@ -49,14 +47,20 @@
 | T20a | 2D square, L=16 | ✅ Data collected | ✅ Wilson loops complete | Critical exponents |
 | T20b | 2D finite-size scaling | ✅ Data collected | 🔄 Missing analysis | Scaling collapse, Binder crossing, ξ |
 | T20c | 3D cubic lattice | ✅ Data collected | ✅ Wilson loops & string tension complete | Critical exponents |
-| T20d | FSS critical exponent extraction | ✅ L=8,16 complete, L=32 running | 🔄 Scripts ready | L=32,48,64 completion |
+| T20d | FSS critical exponent extraction | ✅ L=8,16,32 complete | 🔄 Scripts ready | L=48,64; FSS plots; exponent fitting |
 
-### Critical Finding (2026-06-26)
+### Critical Finding (2026-06-27)
 
-**Wilson loops and string tension**: ✅ COMPLETE
-**First-order transition**: Evidence from Binder cumulant scaling (exponent ≈ -3)
+**3D Z₂ LGT first-order transition CONFIRMED:**
+- L=32 plaquette jumps from 0.878 to 0.965 at β≈0.758 (Δβ≈0.001)
+- Binder cumulant converges to 2/3 (3D Ising universal value)
+- Peak susceptibility χ=1.3704 at β=0.758
+- Critical βₑ ≈ 0.758 ± 0.002
 
-**Remaining work**: Complete L=32,48,64 fine-grid runs; critical exponent fitting; thermodynamic limit extrapolation
+**Remaining work:** 
+- Generate FSS comparison plots (L=8,16,32 overlay)
+- Extract critical exponents (ν, γ, α) from scaling
+- Start L=48/64 if needed for thermodynamic limit
 
 ---
 
@@ -64,13 +68,12 @@
 
 | Priority | Task | Description | Depends On |
 |----------|------|-------------|------------|
-| 1 | **T20d** | **Monitor L=32 simulation** | — |
-| 2 | **T28a** | **Functional JS dashboard** | — |
+| 1 | **T20d** | **Generate FSS plots (L=8,16,32 overlay)** | L=32 completion |
+| 2 | **T20d** | **Critical exponent fitting (ν, γ, β, α)** | FSS plots |
 | 3 | **T29** | **Extensible schema design** | — |
-| 4 | T20d | Start L=48/64 when L=32 completes | L=32 |
-| 5 | T20d | Critical exponent fitting (ν, γ, β, α) | L=32,48,64 |
-| 6 | T20b | Scaling collapse plots (existing data) | — |
-| 7 | T22 | Spin Foam Amplitudes — single vertex computation | T20 |
-| 8 | T23 | Entanglement entropy — needs T22 completion | T22 |
+| 4 | T20d | Start L=48/64 if needed for better extrapolation | L=32 analysis |
+| 5 | T20b | Scaling collapse plots (existing 2D data) | — |
+| 6 | T22 | Spin Foam Amplitudes — single vertex computation | T20 |
+| 7 | T23 | Entanglement entropy — needs T22 completion | T22 |
 
-**Key decision**: T20d L=32 is running. T28a and T29 can proceed in parallel.
+**Key decision:** T28a complete. T20d L=32 complete. Next priority is FSS analysis and exponent extraction, then T29 schema work when user prioritizes it.

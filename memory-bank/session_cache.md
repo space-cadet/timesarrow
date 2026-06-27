@@ -1,123 +1,87 @@
 # Session Cache
-
 *Created: 2026-06-27 10:45:51 IST*
-*Last Updated: 2026-06-27 10:45:51 IST*
+*Last Updated: 2026-06-27 17:40:00 IST*
 
-**Started**: 2026-06-27 07:11:46 IST
-**Focus Task**: T28: Simulation Dashboard
-**Session File**: `sessions/2026-06-27-afternoon.md`
-**Status**: 🔄 Active: 13, Paused: 0, Completed: 1
+## Current Session
+**Started**: 2026-06-27 16:47:00 IST
+**Focus Task**: T28a: Dashboard v2 Functional Implementation
+**Session File**: `sessions/2026-06-27-evening.md`
+**Status**: ✅ Session ended: 17:40 IST
 
 ## Overview
+- Active: 8 | Paused: 0 | Completed: 4 (T20a, T20b, T20c, T28a)
+- Last Session: 2026-06-27-evening
+- Current Period: evening
 
-- Active: 13 | Paused: 0 | Completed: 1
-- Last Session: 2026-06-27
-- Current Period: afternoon
+## Task Registry
+- T20: Z₂ LGT — 🔄 (L=32 complete, FSS analysis pending)
+- T20a: 2D Phase 1 — ✅
+- T20b: 2D FSS — ✅
+- T20c: 3D Phase 3 — ✅
+- T20d: Critical Exponents — 🔄 (L=8,16,32 complete; plots + fitting pending)
+- T28: Dashboard v1 — ✅ (superseded by T28a)
+- T28a: Dashboard v2 — ✅ (deployed and live)
+- T29: Extensible Schema — ⬜ (pending user prioritization)
 
 ## Active Tasks
 
 ### T20: Z₂ Lattice Gauge Theory Monte Carlo
-**Status:** 🔄 **IN PROGRESS**
-**Started:** 2026-06-24
-**Context**: [Details](tasks/T20.md)
+**Status:** 🔄 **Priority:** HIGH
+**Started:** 2026-06-24 **Last:** 2026-06-27
+**Context**: All phases complete (2D, 3D, FSS). L=32 finished. Need FSS plots and critical exponent extraction.
+**Files**: `numerics/data/fss/`, `numerics/data/registry.json`
 **Progress**:
-[Details](tasks/T20.md)
+1. ✅ 2D square lattice (L=8, Phase 1)
+2. ✅ 2D multi-lattice FSS (L=8,12,16,20,24, Phase 2)
+3. ✅ 3D cubic lattice coarse (L=4,6,8, Phase 3)
+4. ✅ 3D fine scan (L=8,16,32, Phase 3b)
+5. ⬜ FSS comparison plots and critical exponents (T20d)
 
-### T20a: Phase 1 — 2D Square Lattice
-**Status:** 🔄 **IN PROGRESS**
-**Started:** 2026-06-24
-**Context**: No context
-
-### T20b: Phase 2 — Sharp Phase Transition / Multi-Lattice FSS
-**Status:** 🔄 **IN PROGRESS**
-**Started:** 2026-06-25
-**Context**: [Details](tasks/T20b.md)
+### T20d: Critical Exponent Extraction
+**Status:** 🔄 **Priority:** MEDIUM
+**Started:** 2026-06-26 **Last:** 2026-06-27
+**Context**: L=32 complete. Need FSS plots (L=8,16,32 overlay) and exponent fitting (ν, γ, α).
+**Files**: `numerics/data/fss/t20-p3b-L*-lean-20260627.json`
 **Progress**:
-[Details](tasks/T20b.md)
+1. ✅ L=8 fine scan (25 β values, 0.70–0.82)
+2. ✅ L=16 fine scan (27 β values, 0.72–0.80)
+3. ✅ L=32 fine scan (21 β values, 0.74–0.78)
+4. ⬜ FSS comparison plots
+5. ⬜ Critical exponent extraction
 
-### T20c: Phase 3 — 3D Cubic Lattice
-**Status:** 🔄 **IN PROGRESS**
-**Started:** 2026-06-25
-**Context**: [Details](tasks/T20c.md)
+### T28a: Dashboard v2 — Functional JS
+**Status:** ✅ **Priority:** HIGH
+**Started:** 2026-06-27 **Completed:** 2026-06-27
+**Context**: Fully deployed and working. Vanilla JS, single HTML file, zero dependencies.
+**Files**: `dashboard-v2.html`, `data/dashboard-data.json`, `data/dashboard-figures.json`
+**URL**: https://space-cadet.github.io/projects/timesarrow/numerics/dashboard-v2.html
 **Progress**:
-[Details](tasks/T20c.md)
+1. ✅ External JSON data loading
+2. ✅ Filterable/sortable runs table
+3. ✅ Row selection with detail panel
+4. ✅ Figure archive with thumbnails and modal
+5. ✅ Performance chart (SVG log-log)
+6. ✅ Data export (JSON/CSV)
+7. ✅ Dark mode + mobile responsive
+8. ✅ GitHub raw fallback
 
-### T20d: Critical Exponent Extraction from 3D Z₂ LGT
-**Status:** 🔄 **IN PROGRESS**
-**Started:** 2026-06-26
-**Context**: [Details](tasks/T20d.md)
-**Progress**:
-[Details](tasks/T20d.md)
-L=32 simulation running (PID 49975, ~2h elapsed, 690% CPU). Corrected timing estimate: ~6h total wall time for 21 betas x 2M sweeps. L=8 and L=16 complete. Monitoring via subagent.
+## Pending Tasks
 
-### T21: Worker Threads + Checkpointing
-**Status:** 🔄 **IN PROGRESS**
-**Started:** 2026-06-25
-**Context**: No context
+### T29: Extensible Schema Design
+**Status:** ⬜ **Priority:** MEDIUM
+**Context**: Design spec complete. Implementation pending user prioritization.
+**Files**: `memory-bank/implementation/extensible-schema-design.md`
+**Next**: Create base schema, extension registry, migration script, dashboard v3
 
-### T21a: Performance Optimization — Fast Monte Carlo Kernel
-**Status:** 🔄 **IN PROGRESS**
-**Started:** 2026-06-25
-**Context**: [Details](tasks/T21a.md)
-**Progress**:
-[Details](tasks/T21a.md)
-
-### T22: Spin Foam Amplitudes
-**Status:** 🔄 **IN PROGRESS**
-**Started:** 2026-06-25
-**Context**: [Details](tasks/T22.md)
-**Progress**:
-[Details](tasks/T22.md)
-
-### T23: Entanglement Structure of the Deconfined Phase
-**Status:** 🔄 **IN PROGRESS**
-**Started:** 2026-06-24
-**Context**: [Details](tasks/T23.md)
-**Progress**:
-[Details](tasks/T23.md)
-
-### T24: Domain Wall Dynamics and Surface Topological Order
-**Status:** 🔄 **IN PROGRESS**
-**Started:** 2026-06-24
-**Context**: [Details](tasks/T24.md)
-**Progress**:
-[Details](tasks/T24.md)
-
-### T25: Volume Operator Eigenvalues
-**Status:** 🔄 **IN PROGRESS**
-**Started:** 2026-06-24
-**Context**: No context
-
-### T27: Rust Z₂ LGT Framework
-**Status:** 🔄 **IN PROGRESS**
-**Started:** 2026-06-25
-**Context**: No context
-
-### T28: Simulation Dashboard
-**Status:** 🔄 **IN PROGRESS**
-**Started:** 2026-06-26
-**Context**: No context
-**Progress**:
-Test DB workflow after full schema fix
-Design enhanced simulation dashboard v2: integrated within timesarrow (not standalone), adds performance metrics (wall time, CPU time, timestamps), data export (JSON/CSV), plot gallery, live progress monitoring, task pipeline visualization. Architecture: Quarto + OJS + static JSON (GitHub Pages compatible). Design spec written to memory-bank/implementation/dashboard-v2-design.md.
-Session end: T20d L=32 still running (~3.7h CPU). T28 dashboard v2 design complete, collate-data.ts v2 in progress. DB workflow fixed. All changes committed and pushed to GitHub.
-Implemented Plot Gallery with 20 plots (category-filtered), Run Detail Browser with parameters/results/timing, performance scaling chart with Observable Plot, compact summary cards, test run indicators. Fixed key finding word wrap, Results card formatting, Vega-Lite→Observable Plot migration. Deployed 5 commits to GitHub Pages.
-Created dashboard v2 static HTML prototype with unified Runs & Results + Figure Archive layout. Analyzed old dashboard UX issues (unclear Plot Gallery dropdown, overlapping sections). Proposed extensible schema design with base+extension architecture for general numerics dashboard.
-
-## Completed Tasks
-
-### T28-db-fix: Fixed DB schema drift in timesarrow memory-bank: updated project-local JS files (inserts.js, workflow.js, regenerate.js) to match mb-core v1.1 schema (session_date→date, session_period→period, focus_task→focus). Migrated session_cache table schema. DB-native workflow now fully functional.
-**Status:** ✅ **COMPLETED**
-**Started:** 2026-06-27
-**Completed:** 2026-06-27
-
-## Next Session Focus
-
-1. T20: Z₂ Lattice Gauge Theory Monte Carlo
-1. T20a: Phase 1 — 2D Square Lattice
-1. T20b: Phase 2 — Sharp Phase Transition / Multi-Lattice FSS
+## Session History (Last 5)
+1. `sessions/2026-06-27-evening.md` — T28a dashboard v2 functional + T20d L=32 completion
+2. `sessions/2026-06-27-afternoon.md` — T28 dashboard v2 prototype + T29 schema design
+3. `sessions/2026-06-27-morning.md` — T20d L=32 simulation start + monitoring
+4. `sessions/2026-06-26-evening.md` — T20d L=8,16 completion + T28 deployment
+5. `sessions/2026-06-26-afternoon.md` — T20c 3D analysis + Rust validation
 
 ## System Status
-
-- **Memory Bank**: 🔄 Active
+- **Memory Bank**: ✅ Updated
 - **OpenClaw**: ✅ Operational
+- **GitHub Pages**: ✅ Dashboard v2 live
+- **timesarrow repo**: ✅ L=32 data committed

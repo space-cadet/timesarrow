@@ -1,12 +1,27 @@
 # Edit History
 
-*Last Updated: 2026-06-27 10:45:51 IST*
+*Last Updated: 2026-06-27 17:40:00 IST*
 
 ---
 
 ## 2026-06-27
 
-#### 16:11:58 IST - T28: Created dashboard v2 static HTML prototype with unified Runs & Results + Figure Archive layout. Analyzed old dashboard UX issues (unclear Plot Gallery dropdown, overlapping sections). Proposed extensible schema design with base+extension architecture for general numerics dashboard.
+#### 17:40:00 IST - T20d: L=32 simulation verified complete, registry fixed. T28a: Dashboard v2 functional implementation complete with external JSON loading and GitHub raw fallback. T29: Extensible schema design task created.
+- Modified `numerics/data/registry.json` - Fixed syntax error, added L=32 entry
+- Created `space-cadet.github.io/projects/timesarrow/numerics/dashboard-v2.html` - Vanilla JS single-file dashboard
+- Created `space-cadet.github.io/projects/timesarrow/numerics/data/dashboard-data.json` - 33 runs metadata
+- Created `space-cadet.github.io/projects/timesarrow/numerics/data/dashboard-figures.json` - 6 FSS figure references
+- Modified `memory-bank/tasks/T20.md` - Updated all phases complete, L=32 results
+- Modified `memory-bank/tasks/T20d.md` - Updated L=32 completion status
+- Modified `memory-bank/tasks/T28.md` - Marked complete, superseded by T28a
+- Created `memory-bank/tasks/T28a.md` - Comprehensive task file for dashboard v2
+- Created `memory-bank/tasks/T29.md` - Extensible schema design task
+- Modified `memory-bank/tasks.md` - Updated registry statuses
+- Modified `memory-bank/activeContext.md` - Updated session focus and T20 status
+- Modified `memory-bank/progress.md` - Updated T20d, T28a, T29 progress
+- Created `memory-bank/sessions/2026-06-27-evening.md` - Session record
+- Modified `memory-bank/session_cache.md` - Updated session info
+- Created `memory-bank/edits/2026-06-27/1740-T20-T28a-T29-edit-chunk.md` - Edit chunk Analyzed old dashboard UX issues (unclear Plot Gallery dropdown, overlapping sections). Proposed extensible schema design with base+extension architecture for general numerics dashboard.
 - Created `space-cadet.github.io/projects/timesarrow/numerics/dashboard-prototype-static.html` - Created space-cadet.github.io/projects/timesarrow/numerics/dashboard-prototype-static.html
 - Created `numerics/docs/dashboard-prototype.qmd` - Created numerics/docs/dashboard-prototype.qmd
 - Created `memory-bank/implementation/dashboard-v2-implementation-plan.md` - Created memory-bank/implementation/dashboard-v2-implementation-plan.md
