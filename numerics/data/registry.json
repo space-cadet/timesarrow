@@ -2,7 +2,7 @@
   "schemaVersion": "1.0.0",
   "project": "timesarrow",
   "description": "Registry of all numerical simulation runs for TimesArrow project",
-  "lastUpdated": "2026-06-27T06:07:25.659Z",
+  "lastUpdated": "2026-06-27T16:50:00+05:30",
   "runs": [
     {
       "runId": "t20-p1-L8-20250624",
@@ -6504,8 +6504,42 @@
       "endTime": "2026-06-25T21:59:21.617Z",
       "dataUrl": "output/t20-p3-L24-3D-wilson-fine-20250626.json"
     },
+      "runId": "t20-p3b-L32-lean-20260627",
+      "task": "T20",
+      "phase": "phase3b",
+      "status": "complete",
+      "timestamp": "2026-06-27T15:44:00+05:30",
+      "description": "3D cubic lattice Z₂ LGT, L=32, high-statistics fine scan near critical region (β=0.74-0.78)",
+      "parameters": {
+        "latticeSize": 32,
+        "L": 32,
+        "dimension": 3,
+        "betaValues": [0.74, 0.742, 0.744, 0.746, 0.748, 0.75, 0.752, 0.754, 0.756, 0.758, 0.76, 0.762, 0.764, 0.766, 0.768, 0.77, 0.772, 0.774, 0.776, 0.778, 0.78],
+        "thermalSweeps": 300000,
+        "measureSweeps": 200000,
+        "measureEvery": 10,
+        "binSize": 10,
+        "workers": 3,
+        "loopSizes": [{"r": 1, "c": 1}, {"r": 2, "c": 2}, {"r": 3, "c": 3}]
+      },
+      "results": {
+        "observables": ["plaquette", "plaquetteError", "susceptibility", "specificHeat", "binderCumulant"],
+        "keyFinding": "Susceptibility peak at β=0.758, Binder cumulant converges to ~0.6666, confirming critical region",
+        "peakSusceptibility": {
+          "beta": 0.758,
+          "value": 1.3704
+        },
+        "peakSpecificHeat": {
+          "beta": 0.758,
+          "value": 1.0388
+        }
+      },
+      "outputFiles": [
+        "data/fss/t20-p3b-L32-lean-20260627.json"
+      ],
+      "page": "tasks/t20-z2-lgt.qmd"
+    },
     {
-      "runId": "t20-p3-L32-3D-wilson-fine-20250626",
       "task": "T20",
       "phase": "phase3",
       "status": "complete",
