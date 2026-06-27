@@ -37,7 +37,7 @@ phases = [...new Set(runs.map(r => r.phase))].sort()
 ::: {.callout-note appearance="simple"}
 **Project:** `{ojs} registry.project`  
 **Schema Version:** `{ojs} registry.schemaVersion`  
-**Last Updated:** `{ojs} new Date(registry.lastUpdated).toLocaleString('en-GB')`
+**Last Updated:** `{ojs} new Date(registry.lastUpdated).toLocaleString("en-GB")`
 :::
 
 ::: {.grid}
