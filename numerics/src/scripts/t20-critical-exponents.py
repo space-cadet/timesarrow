@@ -17,54 +17,70 @@ And: shift of critical coupling
   β_c(L) - β_c(∞) ~ L^(-1/ν)
 """
 
-import json
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+
+from src.plotting import (
+    load_run,
+    extract_observables,
+    save_publication,
+    setup_grid,
+    FIG_SIZES,
+    PATHS,
+)
+
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.interpolate import interp1d
-from scipy.optimize import minimize_scalar
-import os
 
-out_dir = '/Users/sage/.openclaw/workspace/code/timesarrow/numerics/docs/assets'
-os.makedirs(out_dir, exist_ok=True)
+# ─────────────────────────────────────────────────────────────
+# Configuration
+# ─────────────────────────────────────────────────────────────
 
-# Load data
-lattices = {
-    'L=4': '/Users/sage/.openclaw/workspace/code/timesarrow/numerics/output/t20-p3-L4-3D-wilson-fine-20250626.json',
-    'L=6': '/Users/sage/.openclaw/workspace/code/timesarrow/numerics/output/t20-p3-L6-3D-wilson-fine-20250626.json',
-    'L=8': '/Users/sage/.openclaw/workspace/code/timesarrow/numerics/output/t20-p3-L8-3D-wilson-fine-20250626.json',
+OUTPUT_DIR = PATHS['docs_assets']
+RUNS = {
+    4:  't20-p3-L4-3D-wilson-fine-20250626',
+    6:  't20-p3-L6-3D-wilson-fine-20250626',
+    8:  't20-p3b-L8-3D-fine-20260627',
+    16: 't20-p3b-L16-3D-fine-20260626',
+    24: 't20-p3-L24-3D-wilson-fine-20250626',
+    32: 't20-p3b-L32-lean-20260627',
 }
 
-colors = {'L=4': '#E94F37', 'L=6': '#2E86AB', 'L=8': '#2ECC40'}
+# Literature values for 3D Ising
+BETA_C_INF = 0.7613
+GAMMA_ISING = 1.237
+NU_ISING = 0.630
+ALPHA_ISING = 2 - 3 * NU_ISING  # = 0.110
 
-# Parse data
+# ─────────────────────────────────────────────────────────────
+# Load data
+# ─────────────────────────────────────────────────────────────
+
 data = {}
-for label, path in lattices.items():
-    with open(path) as f:
-        d = json.load(f)
-    results = d['results']
-    data[label] = {
-        'betas': np.array([r['beta'] for r in results]),
-        'plaquettes': np.array([r['meanPlaquette'] for r in results]),
-        'suscepts': np.array([r['susceptibility'] for r in results]),
-        'specific_heats': np.array([r['specificHeat'] for r in results]),
-    }
+for L, run_id in RUNS.items():
+    d = load_run(run_id)
+    obs = extract_observables(d['results'])
+    data[L] = obs
+    print(f"  Loaded L={L}: {len(obs['betas'])} β values")
 
-# Extract peak values for each L
+# ─────────────────────────────────────────────────────────────
+# Extract peak values
+# ─────────────────────────────────────────────────────────────
+
 results = {}
-for label in ['L=4', 'L=6', 'L=8']:
-    d = data[label]
-    L = int(label.split('=')[1])
-    
-    # Find peak of susceptibility
-    peak_idx = np.argmax(d['suscepts'])
-    beta_peak_chi = d['betas'][peak_idx]
-    chi_max = d['suscepts'][peak_idx]
-    
-    # Find peak of specific heat
-    peak_idx_c = np.argmax(d['specific_heats'])
-    beta_peak_c = d['betas'][peak_idx_c]
-    c_max = d['specific_heats'][peak_idx_c]
-    
+for L, obs in data.items():
+    # Peak of susceptibility
+    peak_idx = np.argmax(obs['susceptibilities'])
+    beta_peak_chi = obs['betas'][peak_idx]
+    chi_max = obs['susceptibilities'][peak_idx]
+
+    # Peak of specific heat
+    peak_idx_c = np.argmax(obs['specific_heats'])
+    beta_peak_c = obs['betas'][peak_idx_c]
+    c_max = obs['specific_heats'][peak_idx_c]
+
     results[L] = {
         'beta_peak_chi': beta_peak_chi,
         'chi_max': chi_max,
@@ -72,77 +88,90 @@ for label in ['L=4', 'L=6', 'L=8']:
         'c_max': c_max,
     }
 
+# ─────────────────────────────────────────────────────────────
+# Print summary table
+# ─────────────────────────────────────────────────────────────
+
 print("=" * 60)
 print("CRITICAL EXPONENT EXTRACTION")
 print("3D Z2 LGT — Finite-size scaling")
 print("=" * 60)
 print(f"\n{'L':<6} {'β_c(χ)':<10} {'χ_max':<12} {'β_c(C)':<10} {'C_max':<12}")
 print("-" * 60)
-for L in [4, 6, 8]:
+for L in sorted(results):
     r = results[L]
     print(f"{L:<6} {r['beta_peak_chi']:<10.4f} {r['chi_max']:<12.4f} {r['beta_peak_c']:<10.4f} {r['c_max']:<12.4f}")
 
-# --- Fit χ_max ~ L^(γ/ν) ---
-L_vals = np.array([4, 6, 8], dtype=float)
-chi_max_vals = np.array([results[L]['chi_max'] for L in [4, 6, 8]])
-c_max_vals = np.array([results[L]['c_max'] for L in [4, 6, 8]])
-beta_c_vals = np.array([results[L]['beta_peak_chi'] for L in [4, 6, 8]])
+# ─────────────────────────────────────────────────────────────
+# Power-law fits
+# ─────────────────────────────────────────────────────────────
+
+L_vals = np.array(sorted(results), dtype=float)
+chi_max_vals = np.array([results[L]['chi_max'] for L in sorted(results)])
+c_max_vals = np.array([results[L]['c_max'] for L in sorted(results)])
+beta_c_vals = np.array([results[L]['beta_peak_chi'] for L in sorted(results)])
 
 log_L = np.log(L_vals)
 log_chi = np.log(chi_max_vals)
 log_c = np.log(c_max_vals)
 
-# Linear fit: log(χ_max) = a + (γ/ν)*log(L)
+# χ_max ~ L^(γ/ν)
 coeffs_chi = np.polyfit(log_L, log_chi, 1)
 gamma_over_nu = coeffs_chi[0]
 chi_prefactor = np.exp(coeffs_chi[1])
 
-# For specific heat: C_max ~ L^(α/ν) where α = 2 - dν
+# C_max ~ L^(α/ν)
 coeffs_c = np.polyfit(log_L, log_c, 1)
 alpha_over_nu = coeffs_c[0]
 c_prefactor = np.exp(coeffs_c[1])
 
 # β_c shift: β_c(L) - β_c(∞) ~ L^(-1/ν)
-# We need β_c(∞) from literature: 0.7613
-beta_c_inf = 0.7613
-delta_beta = beta_c_vals - beta_c_inf
+delta_beta = beta_c_vals - BETA_C_INF
 coeffs_beta = np.polyfit(log_L, np.log(np.abs(delta_beta)), 1)
 minus_one_over_nu = coeffs_beta[0]
 nu_from_shift = -1 / minus_one_over_nu
+
+# ─────────────────────────────────────────────────────────────
+# Print fit results
+# ─────────────────────────────────────────────────────────────
 
 print(f"\n{'='*60}")
 print("FINITE-SIZE SCALING FITS")
 print(f"{'='*60}")
 print(f"\nχ_max scaling: χ_max = {chi_prefactor:.3f} * L^{gamma_over_nu:.3f}")
 print(f"  γ/ν (fitted) = {gamma_over_nu:.3f}")
-print(f"  γ/ν (3D Ising) = {1.237/0.630:.3f}")
-print(f"  Deviation: {gamma_over_nu - 1.237/0.630:+.3f}")
+print(f"  γ/ν (3D Ising) = {GAMMA_ISING/NU_ISING:.3f}")
+print(f"  Deviation: {gamma_over_nu - GAMMA_ISING/NU_ISING:+.3f}")
 
 print(f"\nC_max scaling: C_max = {c_prefactor:.3f} * L^{alpha_over_nu:.3f}")
 print(f"  α/ν (fitted) = {alpha_over_nu:.3f}")
-print(f"  α/ν (3D Ising, α=2-3ν) = {(2-3*0.630)/0.630:.3f}")
-print(f"  Deviation: {alpha_over_nu - (2-3*0.630)/0.630:+.3f}")
+print(f"  α/ν (3D Ising, α=2-3ν) = {ALPHA_ISING/NU_ISING:.3f}")
+print(f"  Deviation: {alpha_over_nu - ALPHA_ISING/NU_ISING:+.3f}")
 
 print(f"\nβ_c shift: β_c(L) - β_c(∞) ~ L^{minus_one_over_nu:.3f}")
 print(f"  -1/ν (fitted) = {minus_one_over_nu:.3f}")
-print(f"  -1/ν (3D Ising, ν=0.630) = {-1/0.630:.3f}")
+print(f"  -1/ν (3D Ising, ν=0.630) = {-1/NU_ISING:.3f}")
 print(f"  ν (from shift) = {nu_from_shift:.3f}")
-print(f"  ν (3D Ising) = 0.630")
-print(f"  Deviation: {nu_from_shift - 0.630:+.3f}")
+print(f"  ν (3D Ising) = {NU_ISING}")
+print(f"  Deviation: {nu_from_shift - NU_ISING:+.3f}")
 
-# --- Plot: Scaling fits ---
-fig, axes = plt.subplots(1, 3, figsize=(14, 4.5))
+# ─────────────────────────────────────────────────────────────
+# Plot: Scaling fits
+# ─────────────────────────────────────────────────────────────
+
+fig, axes = plt.subplots(1, 3, figsize=FIG_SIZES['wide'])
+
+L_fit = np.linspace(3, 20, 100)
 
 # χ_max vs L
 ax = axes[0]
-L_fit = np.linspace(3, 20, 100)
 ax.plot(L_vals, chi_max_vals, 'ko', markersize=10, label='Data')
 ax.plot(L_fit, chi_prefactor * L_fit**gamma_over_nu, 'r--', linewidth=1.5, alpha=0.7,
         label=f'Fit: χ ~ L^{gamma_over_nu:.2f}')
 ax.set_xlabel(r'$L$', fontsize=12)
 ax.set_ylabel(r'$\chi_{\max}(L)$', fontsize=12)
 ax.set_title(r'Susceptibility peak scaling', fontsize=12)
-ax.grid(True, alpha=0.3)
+setup_grid(ax)
 ax.legend(fontsize=9)
 
 # C_max vs L
@@ -153,37 +182,39 @@ ax.plot(L_fit, c_prefactor * L_fit**alpha_over_nu, 'r--', linewidth=1.5, alpha=0
 ax.set_xlabel(r'$L$', fontsize=12)
 ax.set_ylabel(r'$C_{V,\max}(L)$', fontsize=12)
 ax.set_title(r'Specific heat peak scaling', fontsize=12)
-ax.grid(True, alpha=0.3)
+setup_grid(ax)
 ax.legend(fontsize=9)
 
 # β_c(L) vs L
 ax = axes[2]
-ax.plot(L_vals, beta_c_vals, 'ko', markersize=10, label='β_c from χ_peak')
-ax.axhline(beta_c_inf, color='gray', linestyle=':', linewidth=2, alpha=0.7, label='β_c(∞) = 0.7613')
+ax.plot(L_vals, beta_c_vals, 'ko', markersize=10, label=r'$\beta_c$ from $\chi_{peak}$')
+ax.axhline(BETA_C_INF, color='gray', linestyle=':', linewidth=2, alpha=0.7, label=f'β_c(∞) = {BETA_C_INF}')
 ax.set_xlabel(r'$L$', fontsize=12)
 ax.set_ylabel(r'$\beta_c(L)$', fontsize=12)
 ax.set_title(r'Critical coupling shift', fontsize=12)
-ax.grid(True, alpha=0.3)
-ax.legend(fontsize=9)
 ax.set_ylim(0.70, 0.78)
+setup_grid(ax)
+ax.legend(fontsize=9)
 
 plt.tight_layout()
-plt.savefig(f'{out_dir}/t20-critical-exponents.png', dpi=200, bbox_inches='tight')
-plt.savefig(f'{out_dir}/t20-critical-exponents.svg', bbox_inches='tight')
+save_publication(fig, 't20-critical-exponents', output_dir=OUTPUT_DIR)
 plt.close()
 
 print(f"\nFigure saved: t20-critical-exponents.png")
 
-# --- Estimate ν from γ/ν and γ ---
-# If we assume γ = 1.237 (3D Ising), then ν = γ / (γ/ν)
-nu_from_chi = 1.237 / gamma_over_nu
+# ─────────────────────────────────────────────────────────────
+# Consistency check
+# ─────────────────────────────────────────────────────────────
+
+nu_from_chi = GAMMA_ISING / gamma_over_nu
+
 print(f"\n{'='*60}")
 print("CONSISTENCY CHECK")
 print(f"{'='*60}")
-print(f"\nAssuming γ = 1.237 (3D Ising):")
+print(f"\nAssuming γ = {GAMMA_ISING} (3D Ising):")
 print(f"  ν from χ scaling = γ / (γ/ν) = {nu_from_chi:.3f}")
 print(f"  ν from β_c shift = {nu_from_shift:.3f}")
-print(f"  ν (3D Ising) = 0.630")
+print(f"  ν (3D Ising) = {NU_ISING}")
 print(f"  Consistency: |Δν| = {abs(nu_from_chi - nu_from_shift):.3f}")
 
 if abs(nu_from_chi - nu_from_shift) < 0.1:
