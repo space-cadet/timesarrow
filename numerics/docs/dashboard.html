@@ -194,53 +194,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div class="grid">
-<div class="g-col-3">
-<div class="card">
-<div class="card-body text-center">
-<h3 class="card-title anchored">
-{ojs} totalRuns
-</h3>
-<p class="card-text text-muted">
-Total Runs
-</p>
-</div>
-</div>
-</div>
-<div class="g-col-3">
-<div class="card">
-<div class="card-body text-center">
-<h3 class="card-title anchored">
-{ojs} tasks.length
-</h3>
-<p class="card-text text-muted">
-Tasks
-</p>
-</div>
-</div>
-</div>
-<div class="g-col-3">
-<div class="card">
-<div class="card-body text-center">
-<h3 class="card-title anchored">
-{ojs} phases.length
-</h3>
-<p class="card-text text-muted">
-Phases
-</p>
-</div>
-</div>
-</div>
-<div class="g-col-3">
-<div class="card">
-<div class="card-body text-center">
-<h3 class="card-title anchored">
-{ojs} runs.filter(r =&gt; r.status === ‘complete’).length
-</h3>
-<p class="card-text text-muted">
-Complete
-</p>
-</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="44" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 43;"><span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div class="row"&gt;</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="vs">  </span><span class="sc">${</span>[</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>    [totalRuns<span class="op">,</span> <span class="st">"Total Runs"</span>]<span class="op">,</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>    [tasks<span class="op">.</span><span class="at">length</span><span class="op">,</span> <span class="st">"Tasks"</span>]<span class="op">,</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>    [phases<span class="op">.</span><span class="at">length</span><span class="op">,</span> <span class="st">"Phases"</span>]<span class="op">,</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>    [runs<span class="op">.</span><span class="fu">filter</span>(r <span class="kw">=&gt;</span> r<span class="op">.</span><span class="at">status</span> <span class="op">===</span> <span class="st">'complete'</span>)<span class="op">.</span><span class="at">length</span><span class="op">,</span> <span class="st">"Complete"</span>]</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">.</span><span class="fu">map</span>(([value<span class="op">,</span> label]) <span class="kw">=&gt;</span> <span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="col-3"&gt;</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;div class="card"&gt;</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;div class="card-body text-center"&gt;</span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="vs">          &lt;h3 class="card-title"&gt;</span><span class="sc">${</span>value<span class="sc">}</span><span class="vs">&lt;/h3&gt;</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="vs">          &lt;p class="card-text text-muted"&gt;</span><span class="sc">${</span>label<span class="sc">}</span><span class="vs">&lt;/p&gt;</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;/div&gt;</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/div&gt;</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="vs">  `</span>)<span class="sc">}</span></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-2" data-nodetype="expression">
+
 </div>
 </div>
 </div>
@@ -248,106 +222,106 @@ Complete
 <section id="all-runs" class="level2">
 <h2 class="anchored" data-anchor-id="all-runs">All Runs</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="88" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 87;"><span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>viewof taskFilter <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(</span>
-<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>  [<span class="st">"All"</span><span class="op">,</span> <span class="op">...</span>tasks]<span class="op">,</span></span>
-<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">label</span><span class="op">:</span> <span class="st">"Task:"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"All"</span>}</span>
-<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>viewof phaseFilter <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(</span>
-<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>  [<span class="st">"All"</span><span class="op">,</span> <span class="op">...</span>phases]<span class="op">,</span></span>
-<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">label</span><span class="op">:</span> <span class="st">"Phase:"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"All"</span>}</span>
-<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>viewof searchQuery <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>(</span>
-<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">label</span><span class="op">:</span> <span class="st">"Search:"</span><span class="op">,</span> <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"Run ID, description, finding..."</span>}</span>
-<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="70" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 69;"><span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>viewof taskFilter <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(</span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>  [<span class="st">"All"</span><span class="op">,</span> <span class="op">...</span>tasks]<span class="op">,</span></span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">label</span><span class="op">:</span> <span class="st">"Task:"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"All"</span>}</span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>viewof phaseFilter <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(</span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a>  [<span class="st">"All"</span><span class="op">,</span> <span class="op">...</span>phases]<span class="op">,</span></span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">label</span><span class="op">:</span> <span class="st">"Phase:"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"All"</span>}</span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a>viewof searchQuery <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>(</span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">label</span><span class="op">:</span> <span class="st">"Search:"</span><span class="op">,</span> <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"Run ID, description, finding..."</span>}</span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-2-1" data-nodetype="declaration">
+<div id="ojs-cell-3-1" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-2-2" data-nodetype="declaration">
+<div id="ojs-cell-3-2" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-2-3" data-nodetype="declaration">
+<div id="ojs-cell-3-3" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="104" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 103;"><span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a>filteredRuns <span class="op">=</span> runs<span class="op">.</span><span class="fu">filter</span>(r <span class="kw">=&gt;</span> {</span>
-<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> taskMatch <span class="op">=</span> taskFilter <span class="op">===</span> <span class="st">"All"</span> <span class="op">||</span> r<span class="op">.</span><span class="at">task</span> <span class="op">===</span> taskFilter<span class="op">;</span></span>
-<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> phaseMatch <span class="op">=</span> phaseFilter <span class="op">===</span> <span class="st">"All"</span> <span class="op">||</span> r<span class="op">.</span><span class="at">phase</span> <span class="op">===</span> phaseFilter<span class="op">;</span></span>
-<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> searchMatch <span class="op">=</span> <span class="op">!</span>searchQuery <span class="op">||</span> </span>
-<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a>    r<span class="op">.</span><span class="at">runId</span><span class="op">.</span><span class="fu">toLowerCase</span>()<span class="op">.</span><span class="fu">includes</span>(searchQuery<span class="op">.</span><span class="fu">toLowerCase</span>()) <span class="op">||</span></span>
-<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a>    r<span class="op">.</span><span class="at">description</span><span class="op">.</span><span class="fu">toLowerCase</span>()<span class="op">.</span><span class="fu">includes</span>(searchQuery<span class="op">.</span><span class="fu">toLowerCase</span>()) <span class="op">||</span></span>
-<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span>(r<span class="op">.</span><span class="at">keyFinding</span>)<span class="op">.</span><span class="fu">toLowerCase</span>()<span class="op">.</span><span class="fu">includes</span>(searchQuery<span class="op">.</span><span class="fu">toLowerCase</span>())<span class="op">;</span></span>
-<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> taskMatch <span class="op">&amp;&amp;</span> phaseMatch <span class="op">&amp;&amp;</span> searchMatch<span class="op">;</span></span>
-<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="86" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 85;"><span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>filteredRuns <span class="op">=</span> runs<span class="op">.</span><span class="fu">filter</span>(r <span class="kw">=&gt;</span> {</span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> taskMatch <span class="op">=</span> taskFilter <span class="op">===</span> <span class="st">"All"</span> <span class="op">||</span> r<span class="op">.</span><span class="at">task</span> <span class="op">===</span> taskFilter<span class="op">;</span></span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> phaseMatch <span class="op">=</span> phaseFilter <span class="op">===</span> <span class="st">"All"</span> <span class="op">||</span> r<span class="op">.</span><span class="at">phase</span> <span class="op">===</span> phaseFilter<span class="op">;</span></span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> searchMatch <span class="op">=</span> <span class="op">!</span>searchQuery <span class="op">||</span> </span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>    r<span class="op">.</span><span class="at">runId</span><span class="op">.</span><span class="fu">toLowerCase</span>()<span class="op">.</span><span class="fu">includes</span>(searchQuery<span class="op">.</span><span class="fu">toLowerCase</span>()) <span class="op">||</span></span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a>    r<span class="op">.</span><span class="at">description</span><span class="op">.</span><span class="fu">toLowerCase</span>()<span class="op">.</span><span class="fu">includes</span>(searchQuery<span class="op">.</span><span class="fu">toLowerCase</span>()) <span class="op">||</span></span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span>(r<span class="op">.</span><span class="at">keyFinding</span>)<span class="op">.</span><span class="fu">toLowerCase</span>()<span class="op">.</span><span class="fu">includes</span>(searchQuery<span class="op">.</span><span class="fu">toLowerCase</span>())<span class="op">;</span></span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> taskMatch <span class="op">&amp;&amp;</span> phaseMatch <span class="op">&amp;&amp;</span> searchMatch<span class="op">;</span></span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
-<div id="ojs-cell-3" data-nodetype="declaration">
+<div id="ojs-cell-4" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="118" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 117;"><span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(filteredRuns<span class="op">,</span> {</span>
-<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a>  <span class="dt">columns</span><span class="op">:</span> [</span>
-<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a>    <span class="st">"runId"</span><span class="op">,</span></span>
-<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a>    <span class="st">"task"</span><span class="op">,</span></span>
-<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a>    <span class="st">"phase"</span><span class="op">,</span> </span>
-<span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a>    <span class="st">"latticeSize"</span><span class="op">,</span></span>
-<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a>    <span class="st">"betaRange"</span><span class="op">,</span></span>
-<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a>    <span class="st">"date"</span><span class="op">,</span></span>
-<span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a>    <span class="st">"status"</span><span class="op">,</span></span>
-<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a>    <span class="st">"keyFinding"</span><span class="op">,</span></span>
-<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a>    <span class="st">"hasOutput"</span></span>
-<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">,</span></span>
-<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a>  <span class="dt">header</span><span class="op">:</span> {</span>
-<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a>    <span class="dt">runId</span><span class="op">:</span> <span class="st">"Run ID"</span><span class="op">,</span></span>
-<span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a>    <span class="dt">task</span><span class="op">:</span> <span class="st">"Task"</span><span class="op">,</span></span>
-<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a>    <span class="dt">phase</span><span class="op">:</span> <span class="st">"Phase"</span><span class="op">,</span></span>
-<span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a>    <span class="dt">latticeSize</span><span class="op">:</span> <span class="st">"L"</span><span class="op">,</span></span>
-<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a>    <span class="dt">betaRange</span><span class="op">:</span> <span class="st">"β Range"</span><span class="op">,</span></span>
-<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a>    <span class="dt">date</span><span class="op">:</span> <span class="st">"Date"</span><span class="op">,</span></span>
-<span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a>    <span class="dt">status</span><span class="op">:</span> <span class="st">"Status"</span><span class="op">,</span></span>
-<span id="cb4-138"><a href="#cb4-138" aria-hidden="true" tabindex="-1"></a>    <span class="dt">keyFinding</span><span class="op">:</span> <span class="st">"Key Finding"</span><span class="op">,</span></span>
-<span id="cb4-139"><a href="#cb4-139" aria-hidden="true" tabindex="-1"></a>    <span class="dt">hasOutput</span><span class="op">:</span> <span class="st">"Output"</span></span>
-<span id="cb4-140"><a href="#cb4-140" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
-<span id="cb4-141"><a href="#cb4-141" aria-hidden="true" tabindex="-1"></a>  <span class="dt">format</span><span class="op">:</span> {</span>
-<span id="cb4-142"><a href="#cb4-142" aria-hidden="true" tabindex="-1"></a>    <span class="dt">runId</span><span class="op">:</span> id <span class="kw">=&gt;</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`&lt;code&gt;</span><span class="sc">${</span>id<span class="sc">}</span><span class="vs">&lt;/code&gt;`</span><span class="op">,</span></span>
-<span id="cb4-143"><a href="#cb4-143" aria-hidden="true" tabindex="-1"></a>    <span class="dt">status</span><span class="op">:</span> s <span class="kw">=&gt;</span> s <span class="op">===</span> <span class="st">"complete"</span> </span>
-<span id="cb4-144"><a href="#cb4-144" aria-hidden="true" tabindex="-1"></a>      <span class="op">?</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`&lt;span class="badge bg-success"&gt;</span><span class="sc">${</span>s<span class="sc">}</span><span class="vs">&lt;/span&gt;`</span></span>
-<span id="cb4-145"><a href="#cb4-145" aria-hidden="true" tabindex="-1"></a>      <span class="op">:</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`&lt;span class="badge bg-warning"&gt;</span><span class="sc">${</span>s<span class="sc">}</span><span class="vs">&lt;/span&gt;`</span><span class="op">,</span></span>
-<span id="cb4-146"><a href="#cb4-146" aria-hidden="true" tabindex="-1"></a>    <span class="dt">hasOutput</span><span class="op">:</span> h <span class="kw">=&gt;</span> h <span class="op">===</span> <span class="st">"✅"</span></span>
-<span id="cb4-147"><a href="#cb4-147" aria-hidden="true" tabindex="-1"></a>      <span class="op">?</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`&lt;span class="text-success"&gt;</span><span class="sc">${</span>h<span class="sc">}</span><span class="vs">&lt;/span&gt;`</span></span>
-<span id="cb4-148"><a href="#cb4-148" aria-hidden="true" tabindex="-1"></a>      <span class="op">:</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`&lt;span class="text-danger"&gt;</span><span class="sc">${</span>h<span class="sc">}</span><span class="vs">&lt;/span&gt;`</span><span class="op">,</span></span>
-<span id="cb4-149"><a href="#cb4-149" aria-hidden="true" tabindex="-1"></a>    <span class="dt">keyFinding</span><span class="op">:</span> k <span class="kw">=&gt;</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`&lt;span class="text-truncate d-inline-block" style="max-width:300px" title="</span><span class="sc">${</span>k<span class="sc">}</span><span class="vs">"&gt;</span><span class="sc">${</span>k<span class="sc">}</span><span class="vs">&lt;/span&gt;`</span></span>
-<span id="cb4-150"><a href="#cb4-150" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
-<span id="cb4-151"><a href="#cb4-151" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> {</span>
-<span id="cb4-152"><a href="#cb4-152" aria-hidden="true" tabindex="-1"></a>    <span class="dt">runId</span><span class="op">:</span> <span class="dv">200</span><span class="op">,</span></span>
-<span id="cb4-153"><a href="#cb4-153" aria-hidden="true" tabindex="-1"></a>    <span class="dt">task</span><span class="op">:</span> <span class="dv">60</span><span class="op">,</span></span>
-<span id="cb4-154"><a href="#cb4-154" aria-hidden="true" tabindex="-1"></a>    <span class="dt">phase</span><span class="op">:</span> <span class="dv">80</span><span class="op">,</span></span>
-<span id="cb4-155"><a href="#cb4-155" aria-hidden="true" tabindex="-1"></a>    <span class="dt">latticeSize</span><span class="op">:</span> <span class="dv">50</span><span class="op">,</span></span>
-<span id="cb4-156"><a href="#cb4-156" aria-hidden="true" tabindex="-1"></a>    <span class="dt">betaRange</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span></span>
-<span id="cb4-157"><a href="#cb4-157" aria-hidden="true" tabindex="-1"></a>    <span class="dt">date</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span></span>
-<span id="cb4-158"><a href="#cb4-158" aria-hidden="true" tabindex="-1"></a>    <span class="dt">status</span><span class="op">:</span> <span class="dv">80</span><span class="op">,</span></span>
-<span id="cb4-159"><a href="#cb4-159" aria-hidden="true" tabindex="-1"></a>    <span class="dt">keyFinding</span><span class="op">:</span> <span class="dv">300</span><span class="op">,</span></span>
-<span id="cb4-160"><a href="#cb4-160" aria-hidden="true" tabindex="-1"></a>    <span class="dt">hasOutput</span><span class="op">:</span> <span class="dv">60</span></span>
-<span id="cb4-161"><a href="#cb4-161" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
-<span id="cb4-162"><a href="#cb4-162" aria-hidden="true" tabindex="-1"></a>  <span class="dt">rows</span><span class="op">:</span> <span class="dv">15</span></span>
-<span id="cb4-163"><a href="#cb4-163" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="100" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 99;"><span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(filteredRuns<span class="op">,</span> {</span>
+<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a>  <span class="dt">columns</span><span class="op">:</span> [</span>
+<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a>    <span class="st">"runId"</span><span class="op">,</span></span>
+<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a>    <span class="st">"task"</span><span class="op">,</span></span>
+<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a>    <span class="st">"phase"</span><span class="op">,</span> </span>
+<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a>    <span class="st">"latticeSize"</span><span class="op">,</span></span>
+<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a>    <span class="st">"betaRange"</span><span class="op">,</span></span>
+<span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a>    <span class="st">"date"</span><span class="op">,</span></span>
+<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a>    <span class="st">"status"</span><span class="op">,</span></span>
+<span id="cb5-109"><a href="#cb5-109" aria-hidden="true" tabindex="-1"></a>    <span class="st">"keyFinding"</span><span class="op">,</span></span>
+<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a>    <span class="st">"hasOutput"</span></span>
+<span id="cb5-111"><a href="#cb5-111" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">,</span></span>
+<span id="cb5-112"><a href="#cb5-112" aria-hidden="true" tabindex="-1"></a>  <span class="dt">header</span><span class="op">:</span> {</span>
+<span id="cb5-113"><a href="#cb5-113" aria-hidden="true" tabindex="-1"></a>    <span class="dt">runId</span><span class="op">:</span> <span class="st">"Run ID"</span><span class="op">,</span></span>
+<span id="cb5-114"><a href="#cb5-114" aria-hidden="true" tabindex="-1"></a>    <span class="dt">task</span><span class="op">:</span> <span class="st">"Task"</span><span class="op">,</span></span>
+<span id="cb5-115"><a href="#cb5-115" aria-hidden="true" tabindex="-1"></a>    <span class="dt">phase</span><span class="op">:</span> <span class="st">"Phase"</span><span class="op">,</span></span>
+<span id="cb5-116"><a href="#cb5-116" aria-hidden="true" tabindex="-1"></a>    <span class="dt">latticeSize</span><span class="op">:</span> <span class="st">"L"</span><span class="op">,</span></span>
+<span id="cb5-117"><a href="#cb5-117" aria-hidden="true" tabindex="-1"></a>    <span class="dt">betaRange</span><span class="op">:</span> <span class="st">"β Range"</span><span class="op">,</span></span>
+<span id="cb5-118"><a href="#cb5-118" aria-hidden="true" tabindex="-1"></a>    <span class="dt">date</span><span class="op">:</span> <span class="st">"Date"</span><span class="op">,</span></span>
+<span id="cb5-119"><a href="#cb5-119" aria-hidden="true" tabindex="-1"></a>    <span class="dt">status</span><span class="op">:</span> <span class="st">"Status"</span><span class="op">,</span></span>
+<span id="cb5-120"><a href="#cb5-120" aria-hidden="true" tabindex="-1"></a>    <span class="dt">keyFinding</span><span class="op">:</span> <span class="st">"Key Finding"</span><span class="op">,</span></span>
+<span id="cb5-121"><a href="#cb5-121" aria-hidden="true" tabindex="-1"></a>    <span class="dt">hasOutput</span><span class="op">:</span> <span class="st">"Output"</span></span>
+<span id="cb5-122"><a href="#cb5-122" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb5-123"><a href="#cb5-123" aria-hidden="true" tabindex="-1"></a>  <span class="dt">format</span><span class="op">:</span> {</span>
+<span id="cb5-124"><a href="#cb5-124" aria-hidden="true" tabindex="-1"></a>    <span class="dt">runId</span><span class="op">:</span> id <span class="kw">=&gt;</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`&lt;code&gt;</span><span class="sc">${</span>id<span class="sc">}</span><span class="vs">&lt;/code&gt;`</span><span class="op">,</span></span>
+<span id="cb5-125"><a href="#cb5-125" aria-hidden="true" tabindex="-1"></a>    <span class="dt">status</span><span class="op">:</span> s <span class="kw">=&gt;</span> s <span class="op">===</span> <span class="st">"complete"</span> </span>
+<span id="cb5-126"><a href="#cb5-126" aria-hidden="true" tabindex="-1"></a>      <span class="op">?</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`&lt;span class="badge bg-success"&gt;</span><span class="sc">${</span>s<span class="sc">}</span><span class="vs">&lt;/span&gt;`</span></span>
+<span id="cb5-127"><a href="#cb5-127" aria-hidden="true" tabindex="-1"></a>      <span class="op">:</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`&lt;span class="badge bg-warning"&gt;</span><span class="sc">${</span>s<span class="sc">}</span><span class="vs">&lt;/span&gt;`</span><span class="op">,</span></span>
+<span id="cb5-128"><a href="#cb5-128" aria-hidden="true" tabindex="-1"></a>    <span class="dt">hasOutput</span><span class="op">:</span> h <span class="kw">=&gt;</span> h <span class="op">===</span> <span class="st">"✅"</span></span>
+<span id="cb5-129"><a href="#cb5-129" aria-hidden="true" tabindex="-1"></a>      <span class="op">?</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`&lt;span class="text-success"&gt;</span><span class="sc">${</span>h<span class="sc">}</span><span class="vs">&lt;/span&gt;`</span></span>
+<span id="cb5-130"><a href="#cb5-130" aria-hidden="true" tabindex="-1"></a>      <span class="op">:</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`&lt;span class="text-danger"&gt;</span><span class="sc">${</span>h<span class="sc">}</span><span class="vs">&lt;/span&gt;`</span><span class="op">,</span></span>
+<span id="cb5-131"><a href="#cb5-131" aria-hidden="true" tabindex="-1"></a>    <span class="dt">keyFinding</span><span class="op">:</span> k <span class="kw">=&gt;</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`&lt;span class="text-truncate d-inline-block" style="max-width:300px" title="</span><span class="sc">${</span>k<span class="sc">}</span><span class="vs">"&gt;</span><span class="sc">${</span>k<span class="sc">}</span><span class="vs">&lt;/span&gt;`</span></span>
+<span id="cb5-132"><a href="#cb5-132" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb5-133"><a href="#cb5-133" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> {</span>
+<span id="cb5-134"><a href="#cb5-134" aria-hidden="true" tabindex="-1"></a>    <span class="dt">runId</span><span class="op">:</span> <span class="dv">200</span><span class="op">,</span></span>
+<span id="cb5-135"><a href="#cb5-135" aria-hidden="true" tabindex="-1"></a>    <span class="dt">task</span><span class="op">:</span> <span class="dv">60</span><span class="op">,</span></span>
+<span id="cb5-136"><a href="#cb5-136" aria-hidden="true" tabindex="-1"></a>    <span class="dt">phase</span><span class="op">:</span> <span class="dv">80</span><span class="op">,</span></span>
+<span id="cb5-137"><a href="#cb5-137" aria-hidden="true" tabindex="-1"></a>    <span class="dt">latticeSize</span><span class="op">:</span> <span class="dv">50</span><span class="op">,</span></span>
+<span id="cb5-138"><a href="#cb5-138" aria-hidden="true" tabindex="-1"></a>    <span class="dt">betaRange</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span></span>
+<span id="cb5-139"><a href="#cb5-139" aria-hidden="true" tabindex="-1"></a>    <span class="dt">date</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span></span>
+<span id="cb5-140"><a href="#cb5-140" aria-hidden="true" tabindex="-1"></a>    <span class="dt">status</span><span class="op">:</span> <span class="dv">80</span><span class="op">,</span></span>
+<span id="cb5-141"><a href="#cb5-141" aria-hidden="true" tabindex="-1"></a>    <span class="dt">keyFinding</span><span class="op">:</span> <span class="dv">300</span><span class="op">,</span></span>
+<span id="cb5-142"><a href="#cb5-142" aria-hidden="true" tabindex="-1"></a>    <span class="dt">hasOutput</span><span class="op">:</span> <span class="dv">60</span></span>
+<span id="cb5-143"><a href="#cb5-143" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb5-144"><a href="#cb5-144" aria-hidden="true" tabindex="-1"></a>  <span class="dt">rows</span><span class="op">:</span> <span class="dv">15</span></span>
+<span id="cb5-145"><a href="#cb5-145" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
-<div id="ojs-cell-4" data-nodetype="expression">
+<div id="ojs-cell-5" data-nodetype="expression">
 
 </div>
 </div>
@@ -356,71 +330,37 @@ Complete
 <section id="task-breakdown" class="level2">
 <h2 class="anchored" data-anchor-id="task-breakdown">Task Breakdown</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="173" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 172;"><span id="cb5-173"><a href="#cb5-173" aria-hidden="true" tabindex="-1"></a>taskSummary <span class="op">=</span> tasks<span class="op">.</span><span class="fu">map</span>(t <span class="kw">=&gt;</span> {</span>
-<span id="cb5-174"><a href="#cb5-174" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> taskRuns <span class="op">=</span> runs<span class="op">.</span><span class="fu">filter</span>(r <span class="kw">=&gt;</span> r<span class="op">.</span><span class="at">task</span> <span class="op">===</span> t)<span class="op">;</span></span>
-<span id="cb5-175"><a href="#cb5-175" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> taskInfo <span class="op">=</span> registry<span class="op">.</span><span class="at">tasks</span>[t] <span class="op">||</span> {}<span class="op">;</span></span>
-<span id="cb5-176"><a href="#cb5-176" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> {</span>
-<span id="cb5-177"><a href="#cb5-177" aria-hidden="true" tabindex="-1"></a>    <span class="dt">task</span><span class="op">:</span> t<span class="op">,</span></span>
-<span id="cb5-178"><a href="#cb5-178" aria-hidden="true" tabindex="-1"></a>    <span class="dt">name</span><span class="op">:</span> taskInfo<span class="op">.</span><span class="at">name</span> <span class="op">||</span> t<span class="op">,</span></span>
-<span id="cb5-179"><a href="#cb5-179" aria-hidden="true" tabindex="-1"></a>    <span class="dt">status</span><span class="op">:</span> taskInfo<span class="op">.</span><span class="at">status</span> <span class="op">||</span> <span class="st">"unknown"</span><span class="op">,</span></span>
-<span id="cb5-180"><a href="#cb5-180" aria-hidden="true" tabindex="-1"></a>    <span class="dt">total</span><span class="op">:</span> taskRuns<span class="op">.</span><span class="at">length</span><span class="op">,</span></span>
-<span id="cb5-181"><a href="#cb5-181" aria-hidden="true" tabindex="-1"></a>    <span class="dt">complete</span><span class="op">:</span> taskRuns<span class="op">.</span><span class="fu">filter</span>(r <span class="kw">=&gt;</span> r<span class="op">.</span><span class="at">status</span> <span class="op">===</span> <span class="st">"complete"</span>)<span class="op">.</span><span class="at">length</span><span class="op">,</span></span>
-<span id="cb5-182"><a href="#cb5-182" aria-hidden="true" tabindex="-1"></a>    <span class="dt">phases</span><span class="op">:</span> [<span class="op">...</span><span class="kw">new</span> <span class="bu">Set</span>(taskRuns<span class="op">.</span><span class="fu">map</span>(r <span class="kw">=&gt;</span> r<span class="op">.</span><span class="at">phase</span>))]<span class="op">.</span><span class="fu">join</span>(<span class="st">", "</span>)</span>
-<span id="cb5-183"><a href="#cb5-183" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
-<span id="cb5-184"><a href="#cb5-184" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb5-185"><a href="#cb5-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-186"><a href="#cb5-186" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(taskSummary<span class="op">,</span> {</span>
-<span id="cb5-187"><a href="#cb5-187" aria-hidden="true" tabindex="-1"></a>  <span class="dt">columns</span><span class="op">:</span> [<span class="st">"task"</span><span class="op">,</span> <span class="st">"name"</span><span class="op">,</span> <span class="st">"status"</span><span class="op">,</span> <span class="st">"total"</span><span class="op">,</span> <span class="st">"complete"</span><span class="op">,</span> <span class="st">"phases"</span>]<span class="op">,</span></span>
-<span id="cb5-188"><a href="#cb5-188" aria-hidden="true" tabindex="-1"></a>  <span class="dt">header</span><span class="op">:</span> {</span>
-<span id="cb5-189"><a href="#cb5-189" aria-hidden="true" tabindex="-1"></a>    <span class="dt">task</span><span class="op">:</span> <span class="st">"Task ID"</span><span class="op">,</span></span>
-<span id="cb5-190"><a href="#cb5-190" aria-hidden="true" tabindex="-1"></a>    <span class="dt">name</span><span class="op">:</span> <span class="st">"Name"</span><span class="op">,</span></span>
-<span id="cb5-191"><a href="#cb5-191" aria-hidden="true" tabindex="-1"></a>    <span class="dt">status</span><span class="op">:</span> <span class="st">"Status"</span><span class="op">,</span></span>
-<span id="cb5-192"><a href="#cb5-192" aria-hidden="true" tabindex="-1"></a>    <span class="dt">total</span><span class="op">:</span> <span class="st">"Total Runs"</span><span class="op">,</span></span>
-<span id="cb5-193"><a href="#cb5-193" aria-hidden="true" tabindex="-1"></a>    <span class="dt">complete</span><span class="op">:</span> <span class="st">"Complete"</span><span class="op">,</span></span>
-<span id="cb5-194"><a href="#cb5-194" aria-hidden="true" tabindex="-1"></a>    <span class="dt">phases</span><span class="op">:</span> <span class="st">"Phases"</span></span>
-<span id="cb5-195"><a href="#cb5-195" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
-<span id="cb5-196"><a href="#cb5-196" aria-hidden="true" tabindex="-1"></a>  <span class="dt">format</span><span class="op">:</span> {</span>
-<span id="cb5-197"><a href="#cb5-197" aria-hidden="true" tabindex="-1"></a>    <span class="dt">status</span><span class="op">:</span> s <span class="kw">=&gt;</span> s <span class="op">===</span> <span class="st">"complete"</span></span>
-<span id="cb5-198"><a href="#cb5-198" aria-hidden="true" tabindex="-1"></a>      <span class="op">?</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`&lt;span class="badge bg-success"&gt;</span><span class="sc">${</span>s<span class="sc">}</span><span class="vs">&lt;/span&gt;`</span></span>
-<span id="cb5-199"><a href="#cb5-199" aria-hidden="true" tabindex="-1"></a>      <span class="op">:</span> s <span class="op">===</span> <span class="st">"in-progress"</span></span>
-<span id="cb5-200"><a href="#cb5-200" aria-hidden="true" tabindex="-1"></a>      <span class="op">?</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`&lt;span class="badge bg-primary"&gt;</span><span class="sc">${</span>s<span class="sc">}</span><span class="vs">&lt;/span&gt;`</span></span>
-<span id="cb5-201"><a href="#cb5-201" aria-hidden="true" tabindex="-1"></a>      <span class="op">:</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`&lt;span class="badge bg-secondary"&gt;</span><span class="sc">${</span>s<span class="sc">}</span><span class="vs">&lt;/span&gt;`</span></span>
-<span id="cb5-202"><a href="#cb5-202" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb5-203"><a href="#cb5-203" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-5-1" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-5-2" data-nodetype="expression">
-
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="recent-activity" class="level2">
-<h2 class="anchored" data-anchor-id="recent-activity">Recent Activity</h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="211" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 210;"><span id="cb6-211"><a href="#cb6-211" aria-hidden="true" tabindex="-1"></a>recentRuns <span class="op">=</span> runs</span>
-<span id="cb6-212"><a href="#cb6-212" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> <span class="kw">new</span> <span class="bu">Date</span>(b<span class="op">.</span><span class="at">timestamp</span>) <span class="op">-</span> <span class="kw">new</span> <span class="bu">Date</span>(a<span class="op">.</span><span class="at">timestamp</span>))</span>
-<span id="cb6-213"><a href="#cb6-213" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">10</span>)</span>
-<span id="cb6-214"><a href="#cb6-214" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-215"><a href="#cb6-215" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div class="list-group"&gt;</span></span>
-<span id="cb6-216"><a href="#cb6-216" aria-hidden="true" tabindex="-1"></a><span class="vs">  </span><span class="sc">${</span>recentRuns<span class="op">.</span><span class="fu">map</span>(r <span class="kw">=&gt;</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`</span></span>
-<span id="cb6-217"><a href="#cb6-217" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="list-group-item d-flex justify-content-between align-items-start"&gt;</span></span>
-<span id="cb6-218"><a href="#cb6-218" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;div&gt;</span></span>
-<span id="cb6-219"><a href="#cb6-219" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;div class="fw-bold"&gt;</span><span class="sc">${</span>r<span class="op">.</span><span class="at">runId</span><span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
-<span id="cb6-220"><a href="#cb6-220" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;small class="text-muted"&gt;</span><span class="sc">${</span>r<span class="op">.</span><span class="at">description</span><span class="sc">}</span><span class="vs">&lt;/small&gt;</span></span>
-<span id="cb6-221"><a href="#cb6-221" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/div&gt;</span></span>
-<span id="cb6-222"><a href="#cb6-222" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;span class="badge bg-light text-dark"&gt;</span><span class="sc">${</span>r<span class="op">.</span><span class="at">date</span><span class="sc">}</span><span class="vs">&lt;/span&gt;</span></span>
-<span id="cb6-223"><a href="#cb6-223" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
-<span id="cb6-224"><a href="#cb6-224" aria-hidden="true" tabindex="-1"></a><span class="vs">  `</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">''</span>)<span class="sc">}</span></span>
-<span id="cb6-225"><a href="#cb6-225" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="155" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 154;"><span id="cb6-155"><a href="#cb6-155" aria-hidden="true" tabindex="-1"></a>taskSummary <span class="op">=</span> tasks<span class="op">.</span><span class="fu">map</span>(t <span class="kw">=&gt;</span> {</span>
+<span id="cb6-156"><a href="#cb6-156" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> taskRuns <span class="op">=</span> runs<span class="op">.</span><span class="fu">filter</span>(r <span class="kw">=&gt;</span> r<span class="op">.</span><span class="at">task</span> <span class="op">===</span> t)<span class="op">;</span></span>
+<span id="cb6-157"><a href="#cb6-157" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> taskInfo <span class="op">=</span> registry<span class="op">.</span><span class="at">tasks</span>[t] <span class="op">||</span> {}<span class="op">;</span></span>
+<span id="cb6-158"><a href="#cb6-158" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> {</span>
+<span id="cb6-159"><a href="#cb6-159" aria-hidden="true" tabindex="-1"></a>    <span class="dt">task</span><span class="op">:</span> t<span class="op">,</span></span>
+<span id="cb6-160"><a href="#cb6-160" aria-hidden="true" tabindex="-1"></a>    <span class="dt">name</span><span class="op">:</span> taskInfo<span class="op">.</span><span class="at">name</span> <span class="op">||</span> t<span class="op">,</span></span>
+<span id="cb6-161"><a href="#cb6-161" aria-hidden="true" tabindex="-1"></a>    <span class="dt">status</span><span class="op">:</span> taskInfo<span class="op">.</span><span class="at">status</span> <span class="op">||</span> <span class="st">"unknown"</span><span class="op">,</span></span>
+<span id="cb6-162"><a href="#cb6-162" aria-hidden="true" tabindex="-1"></a>    <span class="dt">total</span><span class="op">:</span> taskRuns<span class="op">.</span><span class="at">length</span><span class="op">,</span></span>
+<span id="cb6-163"><a href="#cb6-163" aria-hidden="true" tabindex="-1"></a>    <span class="dt">complete</span><span class="op">:</span> taskRuns<span class="op">.</span><span class="fu">filter</span>(r <span class="kw">=&gt;</span> r<span class="op">.</span><span class="at">status</span> <span class="op">===</span> <span class="st">"complete"</span>)<span class="op">.</span><span class="at">length</span><span class="op">,</span></span>
+<span id="cb6-164"><a href="#cb6-164" aria-hidden="true" tabindex="-1"></a>    <span class="dt">phases</span><span class="op">:</span> [<span class="op">...</span><span class="kw">new</span> <span class="bu">Set</span>(taskRuns<span class="op">.</span><span class="fu">map</span>(r <span class="kw">=&gt;</span> r<span class="op">.</span><span class="at">phase</span>))]<span class="op">.</span><span class="fu">join</span>(<span class="st">", "</span>)</span>
+<span id="cb6-165"><a href="#cb6-165" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb6-166"><a href="#cb6-166" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb6-167"><a href="#cb6-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-168"><a href="#cb6-168" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(taskSummary<span class="op">,</span> {</span>
+<span id="cb6-169"><a href="#cb6-169" aria-hidden="true" tabindex="-1"></a>  <span class="dt">columns</span><span class="op">:</span> [<span class="st">"task"</span><span class="op">,</span> <span class="st">"name"</span><span class="op">,</span> <span class="st">"status"</span><span class="op">,</span> <span class="st">"total"</span><span class="op">,</span> <span class="st">"complete"</span><span class="op">,</span> <span class="st">"phases"</span>]<span class="op">,</span></span>
+<span id="cb6-170"><a href="#cb6-170" aria-hidden="true" tabindex="-1"></a>  <span class="dt">header</span><span class="op">:</span> {</span>
+<span id="cb6-171"><a href="#cb6-171" aria-hidden="true" tabindex="-1"></a>    <span class="dt">task</span><span class="op">:</span> <span class="st">"Task ID"</span><span class="op">,</span></span>
+<span id="cb6-172"><a href="#cb6-172" aria-hidden="true" tabindex="-1"></a>    <span class="dt">name</span><span class="op">:</span> <span class="st">"Name"</span><span class="op">,</span></span>
+<span id="cb6-173"><a href="#cb6-173" aria-hidden="true" tabindex="-1"></a>    <span class="dt">status</span><span class="op">:</span> <span class="st">"Status"</span><span class="op">,</span></span>
+<span id="cb6-174"><a href="#cb6-174" aria-hidden="true" tabindex="-1"></a>    <span class="dt">total</span><span class="op">:</span> <span class="st">"Total Runs"</span><span class="op">,</span></span>
+<span id="cb6-175"><a href="#cb6-175" aria-hidden="true" tabindex="-1"></a>    <span class="dt">complete</span><span class="op">:</span> <span class="st">"Complete"</span><span class="op">,</span></span>
+<span id="cb6-176"><a href="#cb6-176" aria-hidden="true" tabindex="-1"></a>    <span class="dt">phases</span><span class="op">:</span> <span class="st">"Phases"</span></span>
+<span id="cb6-177"><a href="#cb6-177" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb6-178"><a href="#cb6-178" aria-hidden="true" tabindex="-1"></a>  <span class="dt">format</span><span class="op">:</span> {</span>
+<span id="cb6-179"><a href="#cb6-179" aria-hidden="true" tabindex="-1"></a>    <span class="dt">status</span><span class="op">:</span> s <span class="kw">=&gt;</span> s <span class="op">===</span> <span class="st">"complete"</span></span>
+<span id="cb6-180"><a href="#cb6-180" aria-hidden="true" tabindex="-1"></a>      <span class="op">?</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`&lt;span class="badge bg-success"&gt;</span><span class="sc">${</span>s<span class="sc">}</span><span class="vs">&lt;/span&gt;`</span></span>
+<span id="cb6-181"><a href="#cb6-181" aria-hidden="true" tabindex="-1"></a>      <span class="op">:</span> s <span class="op">===</span> <span class="st">"in-progress"</span></span>
+<span id="cb6-182"><a href="#cb6-182" aria-hidden="true" tabindex="-1"></a>      <span class="op">?</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`&lt;span class="badge bg-primary"&gt;</span><span class="sc">${</span>s<span class="sc">}</span><span class="vs">&lt;/span&gt;`</span></span>
+<span id="cb6-183"><a href="#cb6-183" aria-hidden="true" tabindex="-1"></a>      <span class="op">:</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`&lt;span class="badge bg-secondary"&gt;</span><span class="sc">${</span>s<span class="sc">}</span><span class="vs">&lt;/span&gt;`</span></span>
+<span id="cb6-184"><a href="#cb6-184" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb6-185"><a href="#cb6-185" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-6-1" data-nodetype="declaration">
@@ -431,6 +371,40 @@ Complete
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-6-2" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="recent-activity" class="level2">
+<h2 class="anchored" data-anchor-id="recent-activity">Recent Activity</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="193" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 192;"><span id="cb7-193"><a href="#cb7-193" aria-hidden="true" tabindex="-1"></a>recentRuns <span class="op">=</span> runs</span>
+<span id="cb7-194"><a href="#cb7-194" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> <span class="kw">new</span> <span class="bu">Date</span>(b<span class="op">.</span><span class="at">timestamp</span>) <span class="op">-</span> <span class="kw">new</span> <span class="bu">Date</span>(a<span class="op">.</span><span class="at">timestamp</span>))</span>
+<span id="cb7-195"><a href="#cb7-195" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">10</span>)</span>
+<span id="cb7-196"><a href="#cb7-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-197"><a href="#cb7-197" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div class="list-group"&gt;</span></span>
+<span id="cb7-198"><a href="#cb7-198" aria-hidden="true" tabindex="-1"></a><span class="vs">  </span><span class="sc">${</span>recentRuns<span class="op">.</span><span class="fu">map</span>(r <span class="kw">=&gt;</span> <span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb7-199"><a href="#cb7-199" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="list-group-item d-flex justify-content-between align-items-start"&gt;</span></span>
+<span id="cb7-200"><a href="#cb7-200" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;div&gt;</span></span>
+<span id="cb7-201"><a href="#cb7-201" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;div class="fw-bold"&gt;</span><span class="sc">${</span>r<span class="op">.</span><span class="at">runId</span><span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb7-202"><a href="#cb7-202" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;small class="text-muted"&gt;</span><span class="sc">${</span>r<span class="op">.</span><span class="at">description</span><span class="sc">}</span><span class="vs">&lt;/small&gt;</span></span>
+<span id="cb7-203"><a href="#cb7-203" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/div&gt;</span></span>
+<span id="cb7-204"><a href="#cb7-204" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;span class="badge bg-light text-dark"&gt;</span><span class="sc">${</span>r<span class="op">.</span><span class="at">date</span><span class="sc">}</span><span class="vs">&lt;/span&gt;</span></span>
+<span id="cb7-205"><a href="#cb7-205" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb7-206"><a href="#cb7-206" aria-hidden="true" tabindex="-1"></a><span class="vs">  `</span>)<span class="sc">}</span></span>
+<span id="cb7-207"><a href="#cb7-207" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-2" data-nodetype="expression">
 
 </div>
 </div>
@@ -448,7 +422,7 @@ eyJjb250ZW50cyI6WyAgeyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiaW5saW5lIjoidHJ1ZSIsInNv
 </main>
 <!-- /main column -->
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuLy8gTG9hZCByZWdpc3RyeSBkYXRhXG5yZWdpc3RyeSA9IGF3YWl0IEZpbGVBdHRhY2htZW50KFwiZGF0YS1yZWdpc3RyeS5qc29uXCIpLmpzb24oKVxuXG4vLyBFeHRyYWN0IHJ1bnMgd2l0aCBjb21wdXRlZCBmaWVsZHNcbnJ1bnMgPSByZWdpc3RyeS5ydW5zLm1hcChyID0+ICh7XG4gIC4uLnIsXG4gIGxhdHRpY2VTaXplOiByLnBhcmFtZXRlcnM/LmxhdHRpY2VTaXplIHx8IFwi4oCUXCIsXG4gIGJldGFSYW5nZTogci5wYXJhbWV0ZXJzPy5iZXRhVmFsdWVzIFxuICAgID8gYCR7TWF0aC5taW4oLi4uci5wYXJhbWV0ZXJzLmJldGFWYWx1ZXMpfeKAkyR7TWF0aC5tYXgoLi4uci5wYXJhbWV0ZXJzLmJldGFWYWx1ZXMpfWBcbiAgICA6IFwi4oCUXCIsXG4gIGtleUZpbmRpbmc6IHIucmVzdWx0cz8ua2V5RmluZGluZyB8fCByLnJlc3VsdHM/LmNyaXRpY2FsQmV0YUVzdGltYXRlIHx8IFwi4oCUXCIsXG4gIGRhdGU6IG5ldyBEYXRlKHIudGltZXN0YW1wKS50b0xvY2FsZURhdGVTdHJpbmcoJ2VuLUdCJyksXG4gIGhhc091dHB1dDogci5vdXRwdXRGaWxlcz8ubGVuZ3RoID4gMCA/IFwi4pyFXCIgOiBcIuKdjFwiXG59KSlcblxuLy8gU3VtbWFyeSBzdGF0c1xudG90YWxSdW5zID0gcnVucy5sZW5ndGhcbnRhc2tzID0gWy4uLm5ldyBTZXQocnVucy5tYXAociA9PiByLnRhc2spKV0uc29ydCgpXG5waGFzZXMgPSBbLi4ubmV3IFNldChydW5zLm1hcChyID0+IHIucGhhc2UpKV0uc29ydCgpXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJcbnZpZXdvZiB0YXNrRmlsdGVyID0gSW5wdXRzLnNlbGVjdChcbiAgW1wiQWxsXCIsIC4uLnRhc2tzXSxcbiAge2xhYmVsOiBcIlRhc2s6XCIsIHZhbHVlOiBcIkFsbFwifVxuKVxuXG52aWV3b2YgcGhhc2VGaWx0ZXIgPSBJbnB1dHMuc2VsZWN0KFxuICBbXCJBbGxcIiwgLi4ucGhhc2VzXSxcbiAge2xhYmVsOiBcIlBoYXNlOlwiLCB2YWx1ZTogXCJBbGxcIn1cbilcblxudmlld29mIHNlYXJjaFF1ZXJ5ID0gSW5wdXRzLnRleHQoXG4gIHtsYWJlbDogXCJTZWFyY2g6XCIsIHBsYWNlaG9sZGVyOiBcIlJ1biBJRCwgZGVzY3JpcHRpb24sIGZpbmRpbmcuLi5cIn1cbilcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuZmlsdGVyZWRSdW5zID0gcnVucy5maWx0ZXIociA9PiB7XG4gIGNvbnN0IHRhc2tNYXRjaCA9IHRhc2tGaWx0ZXIgPT09IFwiQWxsXCIgfHwgci50YXNrID09PSB0YXNrRmlsdGVyO1xuICBjb25zdCBwaGFzZU1hdGNoID0gcGhhc2VGaWx0ZXIgPT09IFwiQWxsXCIgfHwgci5waGFzZSA9PT0gcGhhc2VGaWx0ZXI7XG4gIGNvbnN0IHNlYXJjaE1hdGNoID0gIXNlYXJjaFF1ZXJ5IHx8IFxuICAgIHIucnVuSWQudG9Mb3dlckNhc2UoKS5pbmNsdWRlcyhzZWFyY2hRdWVyeS50b0xvd2VyQ2FzZSgpKSB8fFxuICAgIHIuZGVzY3JpcHRpb24udG9Mb3dlckNhc2UoKS5pbmNsdWRlcyhzZWFyY2hRdWVyeS50b0xvd2VyQ2FzZSgpKSB8fFxuICAgIFN0cmluZyhyLmtleUZpbmRpbmcpLnRvTG93ZXJDYXNlKCkuaW5jbHVkZXMoc2VhcmNoUXVlcnkudG9Mb3dlckNhc2UoKSk7XG4gIHJldHVybiB0YXNrTWF0Y2ggJiYgcGhhc2VNYXRjaCAmJiBzZWFyY2hNYXRjaDtcbn0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJcbklucHV0cy50YWJsZShmaWx0ZXJlZFJ1bnMsIHtcbiAgY29sdW1uczogW1xuICAgIFwicnVuSWRcIixcbiAgICBcInRhc2tcIixcbiAgICBcInBoYXNlXCIsIFxuICAgIFwibGF0dGljZVNpemVcIixcbiAgICBcImJldGFSYW5nZVwiLFxuICAgIFwiZGF0ZVwiLFxuICAgIFwic3RhdHVzXCIsXG4gICAgXCJrZXlGaW5kaW5nXCIsXG4gICAgXCJoYXNPdXRwdXRcIlxuICBdLFxuICBoZWFkZXI6IHtcbiAgICBydW5JZDogXCJSdW4gSURcIixcbiAgICB0YXNrOiBcIlRhc2tcIixcbiAgICBwaGFzZTogXCJQaGFzZVwiLFxuICAgIGxhdHRpY2VTaXplOiBcIkxcIixcbiAgICBiZXRhUmFuZ2U6IFwizrIgUmFuZ2VcIixcbiAgICBkYXRlOiBcIkRhdGVcIixcbiAgICBzdGF0dXM6IFwiU3RhdHVzXCIsXG4gICAga2V5RmluZGluZzogXCJLZXkgRmluZGluZ1wiLFxuICAgIGhhc091dHB1dDogXCJPdXRwdXRcIlxuICB9LFxuICBmb3JtYXQ6IHtcbiAgICBydW5JZDogaWQgPT4gaHRsLmh0bWxgPGNvZGU+JHtpZH08L2NvZGU+YCxcbiAgICBzdGF0dXM6IHMgPT4gcyA9PT0gXCJjb21wbGV0ZVwiIFxuICAgICAgPyBodGwuaHRtbGA8c3BhbiBjbGFzcz1cImJhZGdlIGJnLXN1Y2Nlc3NcIj4ke3N9PC9zcGFuPmBcbiAgICAgIDogaHRsLmh0bWxgPHNwYW4gY2xhc3M9XCJiYWRnZSBiZy13YXJuaW5nXCI+JHtzfTwvc3Bhbj5gLFxuICAgIGhhc091dHB1dDogaCA9PiBoID09PSBcIuKchVwiXG4gICAgICA/IGh0bC5odG1sYDxzcGFuIGNsYXNzPVwidGV4dC1zdWNjZXNzXCI+JHtofTwvc3Bhbj5gXG4gICAgICA6IGh0bC5odG1sYDxzcGFuIGNsYXNzPVwidGV4dC1kYW5nZXJcIj4ke2h9PC9zcGFuPmAsXG4gICAga2V5RmluZGluZzogayA9PiBodGwuaHRtbGA8c3BhbiBjbGFzcz1cInRleHQtdHJ1bmNhdGUgZC1pbmxpbmUtYmxvY2tcIiBzdHlsZT1cIm1heC13aWR0aDozMDBweFwiIHRpdGxlPVwiJHtrfVwiPiR7a308L3NwYW4+YFxuICB9LFxuICB3aWR0aDoge1xuICAgIHJ1bklkOiAyMDAsXG4gICAgdGFzazogNjAsXG4gICAgcGhhc2U6IDgwLFxuICAgIGxhdHRpY2VTaXplOiA1MCxcbiAgICBiZXRhUmFuZ2U6IDEwMCxcbiAgICBkYXRlOiAxMDAsXG4gICAgc3RhdHVzOiA4MCxcbiAgICBrZXlGaW5kaW5nOiAzMDAsXG4gICAgaGFzT3V0cHV0OiA2MFxuICB9LFxuICByb3dzOiAxNVxufSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxudGFza1N1bW1hcnkgPSB0YXNrcy5tYXAodCA9PiB7XG4gIGNvbnN0IHRhc2tSdW5zID0gcnVucy5maWx0ZXIociA9PiByLnRhc2sgPT09IHQpO1xuICBjb25zdCB0YXNrSW5mbyA9IHJlZ2lzdHJ5LnRhc2tzW3RdIHx8IHt9O1xuICByZXR1cm4ge1xuICAgIHRhc2s6IHQsXG4gICAgbmFtZTogdGFza0luZm8ubmFtZSB8fCB0LFxuICAgIHN0YXR1czogdGFza0luZm8uc3RhdHVzIHx8IFwidW5rbm93blwiLFxuICAgIHRvdGFsOiB0YXNrUnVucy5sZW5ndGgsXG4gICAgY29tcGxldGU6IHRhc2tSdW5zLmZpbHRlcihyID0+IHIuc3RhdHVzID09PSBcImNvbXBsZXRlXCIpLmxlbmd0aCxcbiAgICBwaGFzZXM6IFsuLi5uZXcgU2V0KHRhc2tSdW5zLm1hcChyID0+IHIucGhhc2UpKV0uam9pbihcIiwgXCIpXG4gIH07XG59KVxuXG5JbnB1dHMudGFibGUodGFza1N1bW1hcnksIHtcbiAgY29sdW1uczogW1widGFza1wiLCBcIm5hbWVcIiwgXCJzdGF0dXNcIiwgXCJ0b3RhbFwiLCBcImNvbXBsZXRlXCIsIFwicGhhc2VzXCJdLFxuICBoZWFkZXI6IHtcbiAgICB0YXNrOiBcIlRhc2sgSURcIixcbiAgICBuYW1lOiBcIk5hbWVcIixcbiAgICBzdGF0dXM6IFwiU3RhdHVzXCIsXG4gICAgdG90YWw6IFwiVG90YWwgUnVuc1wiLFxuICAgIGNvbXBsZXRlOiBcIkNvbXBsZXRlXCIsXG4gICAgcGhhc2VzOiBcIlBoYXNlc1wiXG4gIH0sXG4gIGZvcm1hdDoge1xuICAgIHN0YXR1czogcyA9PiBzID09PSBcImNvbXBsZXRlXCJcbiAgICAgID8gaHRsLmh0bWxgPHNwYW4gY2xhc3M9XCJiYWRnZSBiZy1zdWNjZXNzXCI+JHtzfTwvc3Bhbj5gXG4gICAgICA6IHMgPT09IFwiaW4tcHJvZ3Jlc3NcIlxuICAgICAgPyBodGwuaHRtbGA8c3BhbiBjbGFzcz1cImJhZGdlIGJnLXByaW1hcnlcIj4ke3N9PC9zcGFuPmBcbiAgICAgIDogaHRsLmh0bWxgPHNwYW4gY2xhc3M9XCJiYWRnZSBiZy1zZWNvbmRhcnlcIj4ke3N9PC9zcGFuPmBcbiAgfVxufSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxucmVjZW50UnVucyA9IHJ1bnNcbiAgLnNvcnQoKGEsIGIpID0+IG5ldyBEYXRlKGIudGltZXN0YW1wKSAtIG5ldyBEYXRlKGEudGltZXN0YW1wKSlcbiAgLnNsaWNlKDAsIDEwKVxuXG5odG1sYDxkaXYgY2xhc3M9XCJsaXN0LWdyb3VwXCI+XG4gICR7cmVjZW50UnVucy5tYXAociA9PiBodGwuaHRtbGBcbiAgICA8ZGl2IGNsYXNzPVwibGlzdC1ncm91cC1pdGVtIGQtZmxleCBqdXN0aWZ5LWNvbnRlbnQtYmV0d2VlbiBhbGlnbi1pdGVtcy1zdGFydFwiPlxuICAgICAgPGRpdj5cbiAgICAgICAgPGRpdiBjbGFzcz1cImZ3LWJvbGRcIj4ke3IucnVuSWR9PC9kaXY+XG4gICAgICAgIDxzbWFsbCBjbGFzcz1cInRleHQtbXV0ZWRcIj4ke3IuZGVzY3JpcHRpb259PC9zbWFsbD5cbiAgICAgIDwvZGl2PlxuICAgICAgPHNwYW4gY2xhc3M9XCJiYWRnZSBiZy1saWdodCB0ZXh0LWRhcmtcIj4ke3IuZGF0ZX08L3NwYW4+XG4gICAgPC9kaXY+XG4gIGApLmpvaW4oJycpfVxuPC9kaXY+YFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCd0YXNrRmlsdGVyJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3BoYXNlRmlsdGVyJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3NlYXJjaFF1ZXJ5JykifV19
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuLy8gTG9hZCByZWdpc3RyeSBkYXRhXG5yZWdpc3RyeSA9IGF3YWl0IEZpbGVBdHRhY2htZW50KFwiZGF0YS1yZWdpc3RyeS5qc29uXCIpLmpzb24oKVxuXG4vLyBFeHRyYWN0IHJ1bnMgd2l0aCBjb21wdXRlZCBmaWVsZHNcbnJ1bnMgPSByZWdpc3RyeS5ydW5zLm1hcChyID0+ICh7XG4gIC4uLnIsXG4gIGxhdHRpY2VTaXplOiByLnBhcmFtZXRlcnM/LmxhdHRpY2VTaXplIHx8IFwi4oCUXCIsXG4gIGJldGFSYW5nZTogci5wYXJhbWV0ZXJzPy5iZXRhVmFsdWVzIFxuICAgID8gYCR7TWF0aC5taW4oLi4uci5wYXJhbWV0ZXJzLmJldGFWYWx1ZXMpfeKAkyR7TWF0aC5tYXgoLi4uci5wYXJhbWV0ZXJzLmJldGFWYWx1ZXMpfWBcbiAgICA6IFwi4oCUXCIsXG4gIGtleUZpbmRpbmc6IHIucmVzdWx0cz8ua2V5RmluZGluZyB8fCByLnJlc3VsdHM/LmNyaXRpY2FsQmV0YUVzdGltYXRlIHx8IFwi4oCUXCIsXG4gIGRhdGU6IG5ldyBEYXRlKHIudGltZXN0YW1wKS50b0xvY2FsZURhdGVTdHJpbmcoJ2VuLUdCJyksXG4gIGhhc091dHB1dDogci5vdXRwdXRGaWxlcz8ubGVuZ3RoID4gMCA/IFwi4pyFXCIgOiBcIuKdjFwiXG59KSlcblxuLy8gU3VtbWFyeSBzdGF0c1xudG90YWxSdW5zID0gcnVucy5sZW5ndGhcbnRhc2tzID0gWy4uLm5ldyBTZXQocnVucy5tYXAociA9PiByLnRhc2spKV0uc29ydCgpXG5waGFzZXMgPSBbLi4ubmV3IFNldChydW5zLm1hcChyID0+IHIucGhhc2UpKV0uc29ydCgpXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJcbmh0bWxgPGRpdiBjbGFzcz1cInJvd1wiPlxuICAke1tcbiAgICBbdG90YWxSdW5zLCBcIlRvdGFsIFJ1bnNcIl0sXG4gICAgW3Rhc2tzLmxlbmd0aCwgXCJUYXNrc1wiXSxcbiAgICBbcGhhc2VzLmxlbmd0aCwgXCJQaGFzZXNcIl0sXG4gICAgW3J1bnMuZmlsdGVyKHIgPT4gci5zdGF0dXMgPT09ICdjb21wbGV0ZScpLmxlbmd0aCwgXCJDb21wbGV0ZVwiXVxuICBdLm1hcCgoW3ZhbHVlLCBsYWJlbF0pID0+IGh0bWxgXG4gICAgPGRpdiBjbGFzcz1cImNvbC0zXCI+XG4gICAgICA8ZGl2IGNsYXNzPVwiY2FyZFwiPlxuICAgICAgICA8ZGl2IGNsYXNzPVwiY2FyZC1ib2R5IHRleHQtY2VudGVyXCI+XG4gICAgICAgICAgPGgzIGNsYXNzPVwiY2FyZC10aXRsZVwiPiR7dmFsdWV9PC9oMz5cbiAgICAgICAgICA8cCBjbGFzcz1cImNhcmQtdGV4dCB0ZXh0LW11dGVkXCI+JHtsYWJlbH08L3A+XG4gICAgICAgIDwvZGl2PlxuICAgICAgPC9kaXY+XG4gICAgPC9kaXY+XG4gIGApfVxuPC9kaXY+YFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiXG52aWV3b2YgdGFza0ZpbHRlciA9IElucHV0cy5zZWxlY3QoXG4gIFtcIkFsbFwiLCAuLi50YXNrc10sXG4gIHtsYWJlbDogXCJUYXNrOlwiLCB2YWx1ZTogXCJBbGxcIn1cbilcblxudmlld29mIHBoYXNlRmlsdGVyID0gSW5wdXRzLnNlbGVjdChcbiAgW1wiQWxsXCIsIC4uLnBoYXNlc10sXG4gIHtsYWJlbDogXCJQaGFzZTpcIiwgdmFsdWU6IFwiQWxsXCJ9XG4pXG5cbnZpZXdvZiBzZWFyY2hRdWVyeSA9IElucHV0cy50ZXh0KFxuICB7bGFiZWw6IFwiU2VhcmNoOlwiLCBwbGFjZWhvbGRlcjogXCJSdW4gSUQsIGRlc2NyaXB0aW9uLCBmaW5kaW5nLi4uXCJ9XG4pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJcbmZpbHRlcmVkUnVucyA9IHJ1bnMuZmlsdGVyKHIgPT4ge1xuICBjb25zdCB0YXNrTWF0Y2ggPSB0YXNrRmlsdGVyID09PSBcIkFsbFwiIHx8IHIudGFzayA9PT0gdGFza0ZpbHRlcjtcbiAgY29uc3QgcGhhc2VNYXRjaCA9IHBoYXNlRmlsdGVyID09PSBcIkFsbFwiIHx8IHIucGhhc2UgPT09IHBoYXNlRmlsdGVyO1xuICBjb25zdCBzZWFyY2hNYXRjaCA9ICFzZWFyY2hRdWVyeSB8fCBcbiAgICByLnJ1bklkLnRvTG93ZXJDYXNlKCkuaW5jbHVkZXMoc2VhcmNoUXVlcnkudG9Mb3dlckNhc2UoKSkgfHxcbiAgICByLmRlc2NyaXB0aW9uLnRvTG93ZXJDYXNlKCkuaW5jbHVkZXMoc2VhcmNoUXVlcnkudG9Mb3dlckNhc2UoKSkgfHxcbiAgICBTdHJpbmcoci5rZXlGaW5kaW5nKS50b0xvd2VyQ2FzZSgpLmluY2x1ZGVzKHNlYXJjaFF1ZXJ5LnRvTG93ZXJDYXNlKCkpO1xuICByZXR1cm4gdGFza01hdGNoICYmIHBoYXNlTWF0Y2ggJiYgc2VhcmNoTWF0Y2g7XG59KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC01IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiXG5JbnB1dHMudGFibGUoZmlsdGVyZWRSdW5zLCB7XG4gIGNvbHVtbnM6IFtcbiAgICBcInJ1bklkXCIsXG4gICAgXCJ0YXNrXCIsXG4gICAgXCJwaGFzZVwiLCBcbiAgICBcImxhdHRpY2VTaXplXCIsXG4gICAgXCJiZXRhUmFuZ2VcIixcbiAgICBcImRhdGVcIixcbiAgICBcInN0YXR1c1wiLFxuICAgIFwia2V5RmluZGluZ1wiLFxuICAgIFwiaGFzT3V0cHV0XCJcbiAgXSxcbiAgaGVhZGVyOiB7XG4gICAgcnVuSWQ6IFwiUnVuIElEXCIsXG4gICAgdGFzazogXCJUYXNrXCIsXG4gICAgcGhhc2U6IFwiUGhhc2VcIixcbiAgICBsYXR0aWNlU2l6ZTogXCJMXCIsXG4gICAgYmV0YVJhbmdlOiBcIs6yIFJhbmdlXCIsXG4gICAgZGF0ZTogXCJEYXRlXCIsXG4gICAgc3RhdHVzOiBcIlN0YXR1c1wiLFxuICAgIGtleUZpbmRpbmc6IFwiS2V5IEZpbmRpbmdcIixcbiAgICBoYXNPdXRwdXQ6IFwiT3V0cHV0XCJcbiAgfSxcbiAgZm9ybWF0OiB7XG4gICAgcnVuSWQ6IGlkID0+IGh0bC5odG1sYDxjb2RlPiR7aWR9PC9jb2RlPmAsXG4gICAgc3RhdHVzOiBzID0+IHMgPT09IFwiY29tcGxldGVcIiBcbiAgICAgID8gaHRsLmh0bWxgPHNwYW4gY2xhc3M9XCJiYWRnZSBiZy1zdWNjZXNzXCI+JHtzfTwvc3Bhbj5gXG4gICAgICA6IGh0bC5odG1sYDxzcGFuIGNsYXNzPVwiYmFkZ2UgYmctd2FybmluZ1wiPiR7c308L3NwYW4+YCxcbiAgICBoYXNPdXRwdXQ6IGggPT4gaCA9PT0gXCLinIVcIlxuICAgICAgPyBodGwuaHRtbGA8c3BhbiBjbGFzcz1cInRleHQtc3VjY2Vzc1wiPiR7aH08L3NwYW4+YFxuICAgICAgOiBodGwuaHRtbGA8c3BhbiBjbGFzcz1cInRleHQtZGFuZ2VyXCI+JHtofTwvc3Bhbj5gLFxuICAgIGtleUZpbmRpbmc6IGsgPT4gaHRsLmh0bWxgPHNwYW4gY2xhc3M9XCJ0ZXh0LXRydW5jYXRlIGQtaW5saW5lLWJsb2NrXCIgc3R5bGU9XCJtYXgtd2lkdGg6MzAwcHhcIiB0aXRsZT1cIiR7a31cIj4ke2t9PC9zcGFuPmBcbiAgfSxcbiAgd2lkdGg6IHtcbiAgICBydW5JZDogMjAwLFxuICAgIHRhc2s6IDYwLFxuICAgIHBoYXNlOiA4MCxcbiAgICBsYXR0aWNlU2l6ZTogNTAsXG4gICAgYmV0YVJhbmdlOiAxMDAsXG4gICAgZGF0ZTogMTAwLFxuICAgIHN0YXR1czogODAsXG4gICAga2V5RmluZGluZzogMzAwLFxuICAgIGhhc091dHB1dDogNjBcbiAgfSxcbiAgcm93czogMTVcbn0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTYiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJcbnRhc2tTdW1tYXJ5ID0gdGFza3MubWFwKHQgPT4ge1xuICBjb25zdCB0YXNrUnVucyA9IHJ1bnMuZmlsdGVyKHIgPT4gci50YXNrID09PSB0KTtcbiAgY29uc3QgdGFza0luZm8gPSByZWdpc3RyeS50YXNrc1t0XSB8fCB7fTtcbiAgcmV0dXJuIHtcbiAgICB0YXNrOiB0LFxuICAgIG5hbWU6IHRhc2tJbmZvLm5hbWUgfHwgdCxcbiAgICBzdGF0dXM6IHRhc2tJbmZvLnN0YXR1cyB8fCBcInVua25vd25cIixcbiAgICB0b3RhbDogdGFza1J1bnMubGVuZ3RoLFxuICAgIGNvbXBsZXRlOiB0YXNrUnVucy5maWx0ZXIociA9PiByLnN0YXR1cyA9PT0gXCJjb21wbGV0ZVwiKS5sZW5ndGgsXG4gICAgcGhhc2VzOiBbLi4ubmV3IFNldCh0YXNrUnVucy5tYXAociA9PiByLnBoYXNlKSldLmpvaW4oXCIsIFwiKVxuICB9O1xufSlcblxuSW5wdXRzLnRhYmxlKHRhc2tTdW1tYXJ5LCB7XG4gIGNvbHVtbnM6IFtcInRhc2tcIiwgXCJuYW1lXCIsIFwic3RhdHVzXCIsIFwidG90YWxcIiwgXCJjb21wbGV0ZVwiLCBcInBoYXNlc1wiXSxcbiAgaGVhZGVyOiB7XG4gICAgdGFzazogXCJUYXNrIElEXCIsXG4gICAgbmFtZTogXCJOYW1lXCIsXG4gICAgc3RhdHVzOiBcIlN0YXR1c1wiLFxuICAgIHRvdGFsOiBcIlRvdGFsIFJ1bnNcIixcbiAgICBjb21wbGV0ZTogXCJDb21wbGV0ZVwiLFxuICAgIHBoYXNlczogXCJQaGFzZXNcIlxuICB9LFxuICBmb3JtYXQ6IHtcbiAgICBzdGF0dXM6IHMgPT4gcyA9PT0gXCJjb21wbGV0ZVwiXG4gICAgICA/IGh0bC5odG1sYDxzcGFuIGNsYXNzPVwiYmFkZ2UgYmctc3VjY2Vzc1wiPiR7c308L3NwYW4+YFxuICAgICAgOiBzID09PSBcImluLXByb2dyZXNzXCJcbiAgICAgID8gaHRsLmh0bWxgPHNwYW4gY2xhc3M9XCJiYWRnZSBiZy1wcmltYXJ5XCI+JHtzfTwvc3Bhbj5gXG4gICAgICA6IGh0bC5odG1sYDxzcGFuIGNsYXNzPVwiYmFkZ2UgYmctc2Vjb25kYXJ5XCI+JHtzfTwvc3Bhbj5gXG4gIH1cbn0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTciLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJcbnJlY2VudFJ1bnMgPSBydW5zXG4gIC5zb3J0KChhLCBiKSA9PiBuZXcgRGF0ZShiLnRpbWVzdGFtcCkgLSBuZXcgRGF0ZShhLnRpbWVzdGFtcCkpXG4gIC5zbGljZSgwLCAxMClcblxuaHRtbGA8ZGl2IGNsYXNzPVwibGlzdC1ncm91cFwiPlxuICAke3JlY2VudFJ1bnMubWFwKHIgPT4gaHRtbGBcbiAgICA8ZGl2IGNsYXNzPVwibGlzdC1ncm91cC1pdGVtIGQtZmxleCBqdXN0aWZ5LWNvbnRlbnQtYmV0d2VlbiBhbGlnbi1pdGVtcy1zdGFydFwiPlxuICAgICAgPGRpdj5cbiAgICAgICAgPGRpdiBjbGFzcz1cImZ3LWJvbGRcIj4ke3IucnVuSWR9PC9kaXY+XG4gICAgICAgIDxzbWFsbCBjbGFzcz1cInRleHQtbXV0ZWRcIj4ke3IuZGVzY3JpcHRpb259PC9zbWFsbD5cbiAgICAgIDwvZGl2PlxuICAgICAgPHNwYW4gY2xhc3M9XCJiYWRnZSBiZy1saWdodCB0ZXh0LWRhcmtcIj4ke3IuZGF0ZX08L3NwYW4+XG4gICAgPC9kaXY+XG4gIGApfVxuPC9kaXY+YFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCd0YXNrRmlsdGVyJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3BoYXNlRmlsdGVyJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3NlYXJjaFF1ZXJ5JykifV19
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }

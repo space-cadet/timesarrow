@@ -40,45 +40,27 @@ phases = [...new Set(runs.map(r => r.phase))].sort()
 **Last Updated:** `{ojs} new Date(registry.lastUpdated).toLocaleString("en-GB")`
 :::
 
-::: {.grid}
+```{ojs}
+//| echo: false
 
-::: {.g-col-3}
-<div class="card">
-<div class="card-body text-center">
-<h3 class="card-title">{ojs} totalRuns</h3>
-<p class="card-text text-muted">Total Runs</p>
-</div>
-</div>
-:::
-
-::: {.g-col-3}
-<div class="card">
-<div class="card-body text-center">
-<h3 class="card-title">{ojs} tasks.length</h3>
-<p class="card-text text-muted">Tasks</p>
-</div>
-</div>
-:::
-
-::: {.g-col-3}
-<div class="card">
-<div class="card-body text-center">
-<h3 class="card-title">{ojs} phases.length</h3>
-<p class="card-text text-muted">Phases</p>
-</div>
-</div>
-:::
-
-::: {.g-col-3}
-<div class="card">
-<div class="card-body text-center">
-<h3 class="card-title">{ojs} runs.filter(r => r.status === 'complete').length</h3>
-<p class="card-text text-muted">Complete</p>
-</div>
-</div>
-:::
-
-:::
+html`<div class="row">
+  ${[
+    [totalRuns, "Total Runs"],
+    [tasks.length, "Tasks"],
+    [phases.length, "Phases"],
+    [runs.filter(r => r.status === 'complete').length, "Complete"]
+  ].map(([value, label]) => html`
+    <div class="col-3">
+      <div class="card">
+        <div class="card-body text-center">
+          <h3 class="card-title">${value}</h3>
+          <p class="card-text text-muted">${label}</p>
+        </div>
+      </div>
+    </div>
+  `)}
+</div>`
+```
 
 ## All Runs
 
@@ -213,7 +195,7 @@ recentRuns = runs
   .slice(0, 10)
 
 html`<div class="list-group">
-  ${recentRuns.map(r => htl.html`
+  ${recentRuns.map(r => html`
     <div class="list-group-item d-flex justify-content-between align-items-start">
       <div>
         <div class="fw-bold">${r.runId}</div>
@@ -221,7 +203,7 @@ html`<div class="list-group">
       </div>
       <span class="badge bg-light text-dark">${r.date}</span>
     </div>
-  `).join('')}
+  `)}
 </div>`
 ```
 
