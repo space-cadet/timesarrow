@@ -1,7 +1,7 @@
 # Memory Bank - Sage Workspace
 
 *Created: 2026-06-27 10:45:51 IST*
-*Last Updated: 2026-06-27 10:45:51 IST*
+*Last Updated: 2026-06-27 21:15 IST*
 
 ## Overview
 
@@ -24,6 +24,7 @@ This is the Memory Bank for the Sage (灵剑) OpenClaw workspace.
 | T25 | Volume Operator Eigenvalues | 🔄 | HIGH | 2026-06-24 | — | [Details](tasks/T25.md) |
 | T27 | Rust Z₂ LGT Framework | 🔄 | HIGH | 2026-06-25 | — | [Details](tasks/T27.md) |
 | T28 | Simulation Dashboard (v1) | ✅ | MEDIUM | 2026-06-26 | — | [Details](tasks/T28.md) |
+| T30 | Unified Plotting Module | 🔄 | MEDIUM | 2026-06-27 | — | [Details](tasks/T30.md) |
 
 ## Completed Tasks
 
@@ -72,12 +73,13 @@ T28: Simulation Dashboard
 T28-db-fix: Fixed DB schema drift in timesarrow memory-bank: updated project-local JS files (inserts.js, workflow.js, regenerate.js) to match mb-core v1.1 schema (session_date→date, session_period→period, focus_task→focus). Migrated session_cache table schema. DB-native workflow now fully functional.
 T28a: Dashboard v2 — Functional JS Implementation
 T29: Extensible Numerics Schema Design
+T30: Unified Plotting Module for TimesArrow Numerics
 ```
 
 ## Status Summary
 
-- **Active**: 8
+- **Active**: 9
 - **Completed**: 4 (T20a, T20b, T20c, T28-db-fix, T28a)
 - **Paused**: 0
 - **Pending**: 1 (T29)
-- **Total**: 14
+- **Total**: 15

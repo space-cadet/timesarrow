@@ -1,6 +1,6 @@
 # timesarrow — Active Context
 
-*Updated: 2026-06-27 17:40:00 IST*
+*Updated: 2026-06-27 21:15 IST*
 
 ## Current Session — 2026-06-27 Evening
 
@@ -31,6 +31,13 @@
 - **Results:** Peak χ=1.3704 at β=0.758, Peak C=1.0388 at β=0.758, Binder U≈0.666
 - **Plaquette:** First-order jump from ~0.88 to ~0.96 at β≈0.758
 - **Wall time:** ~6h total (distributed across 8 workers)
+
+### T30: Unified Plotting Module — IN PROGRESS 🔄
+- **Status:** Phase 1 complete (core module created)
+- **Module:** `numerics/src/plotting.py` — shared infrastructure for all plotting scripts
+- **Features:** Auto-detected paths, unified color palette (colorblind-friendly), standardized data loading, consistent figure output, annotation helpers
+- **Smoke test:** ✅ Passed (loaded L=32 run, 21 β values, χ_max=1.3704)
+- **Next:** Phase 2 — refactor existing scripts to use the module
 
 ### T29: Extensible Schema Design — PENDING ⬜
 - Status: Pending, not started
@@ -70,10 +77,11 @@
 |----------|------|-------------|------------|
 | 1 | **T20d** | **Generate FSS plots (L=8,16,32 overlay)** | L=32 completion |
 | 2 | **T20d** | **Critical exponent fitting (ν, γ, β, α)** | FSS plots |
-| 3 | **T29** | **Extensible schema design** | — |
-| 4 | T20d | Start L=48/64 if needed for better extrapolation | L=32 analysis |
-| 5 | T20b | Scaling collapse plots (existing 2D data) | — |
-| 6 | T22 | Spin Foam Amplitudes — single vertex computation | T20 |
-| 7 | T23 | Entanglement entropy — needs T22 completion | T22 |
+| 3 | **T30** | **Refactor scripts to use unified plotting module** | Phase 1 complete |
+| 4 | T29 | Extensible schema design | — |
+| 5 | T20d | Start L=48/64 if needed for better extrapolation | L=32 analysis |
+| 6 | T20b | Scaling collapse plots (existing 2D data) | — |
+| 7 | T22 | Spin Foam Amplitudes — single vertex computation | T20 |
+| 8 | T23 | Entanglement entropy — needs T22 completion | T22 |
 
-**Key decision:** T28a complete. T20d L=32 complete. Next priority is FSS analysis and exponent extraction, then T29 schema work when user prioritizes it.
+**Key decision:** T28a complete. T20d L=32 complete. T30 Phase 1 (plotting module) complete. Next priority is T20d FSS analysis, then T30 Phase 2 (script refactoring) or T29 schema work when user prioritizes it.
