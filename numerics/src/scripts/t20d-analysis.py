@@ -15,6 +15,7 @@ References:
 
 import sys
 from pathlib import Path
+import json
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
@@ -41,11 +42,13 @@ from scipy.optimize import brentq, curve_fit
 OUTPUT_DIR = PATHS['docs_assets']
 FIGURES_DIR = PATHS['figures']
 
+DATA_DIR = Path('/Users/sage/.openclaw/workspace/code/timesarrow/numerics/data/fss')
+
 # Fine-scan runs with good statistics
 RUNS = {
     8:  't20-p3b-L8-3D-fine-20260627',
-    16: 't20-p3b-L16-3D-fine-20260626',
-    24: 't20-p3-L24-3D-wilson-fine-20250626',
+    16: 't20-p3b-L16-3D-fine-20260627',
+    24: 't20-p3b-L24-3D-fine-20260627',
     32: 't20-p3b-L32-lean-20260627',
 }
 
