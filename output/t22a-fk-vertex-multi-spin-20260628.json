@@ -1,0 +1,80 @@
+{
+  "taskId": "T22a",
+  "runId": "t22a-fk-vertex-multi-spin-20260628",
+  "description": "FK vertex amplitude |A_v(j)|\u00b2 for spins j=1/2 to 3, 4-valent vertex, simple intertwiners",
+  "timestamp": "2026-06-28T01:58:11.705798+00:00",
+  "model": "FK",
+  "vertex": "4-valent",
+  "intertwiner": "simple",
+  "parameters": {
+    "n_samples": 2000000,
+    "spins": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      2.5,
+      3.0
+    ],
+    "seed": 42
+  },
+  "results": [
+    {
+      "j": 0.5,
+      "amplitude_sq": 0.07967395850778508,
+      "error": 4.874135627633541e-05,
+      "n_samples": 2000000,
+      "seed": 42
+    },
+    {
+      "j": 1.0,
+      "amplitude_sq": 0.03540984798834729,
+      "error": 2.8292194656556925e-05,
+      "n_samples": 2000000,
+      "seed": 42
+    },
+    {
+      "j": 1.5,
+      "amplitude_sq": 0.019899946745486796,
+      "error": 1.926525762374038e-05,
+      "n_samples": 2000000,
+      "seed": 42
+    },
+    {
+      "j": 2.0,
+      "amplitude_sq": 0.012721025291200876,
+      "error": 1.4224598180565817e-05,
+      "n_samples": 2000000,
+      "seed": 42
+    },
+    {
+      "j": 2.5,
+      "amplitude_sq": 0.008825645033128389,
+      "error": 1.1060411806965482e-05,
+      "n_samples": 2000000,
+      "seed": 42
+    },
+    {
+      "j": 3.0,
+      "amplitude_sq": 0.00648010479810876,
+      "error": 8.921229783954385e-06,
+      "n_samples": 2000000,
+      "seed": 42
+    }
+  ],
+  "analysis": {
+    "baseline_j": 0.5,
+    "power_law_fit": {
+      "valid_for": "j >= 1",
+      "exponent_alpha": 1.5453576859033018,
+      "prefactor_log_c": -3.3159840037983264,
+      "formula": "|A_v(j)|\u00b2 ~ 3.6298e-02 * j^(-1.55)"
+    },
+    "key_findings": [
+      "j=1/2 amplitude: 7.9674e-02",
+      "j=1 amplitude: 3.5410e-02",
+      "Suppression j=1 vs j=1/2: 0.4444",
+      "Asymptotic scaling: A_v ~ j^(-1.55)"
+    ]
+  }
+}
