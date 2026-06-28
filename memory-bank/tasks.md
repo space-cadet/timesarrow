@@ -18,7 +18,9 @@ This is the Memory Bank for the Sage (灵剑) OpenClaw workspace.
 | T20d | Critical Exponent Extraction from 3D Z₂ LGT | 🔄 | MEDIUM | 2026-06-26 | — | [Details](tasks/T20d.md) |
 | T21 | Worker Threads + Checkpointing | 🔄 | HIGH | 2026-06-25 | — | [Details](tasks/T21.md) |
 | T21a | Fast Monte Carlo Kernel | 🔄 | HIGH | 2026-06-25 | T20b | [Details](tasks/T21a.md) |
-| T22 | Spin Foam Amplitudes | 🔄 | HIGH | 2026-06-25 | T20c | [Details](tasks/T22.md) |
+| T22 | Spin Foam Amplitudes | 🔄 | HIGH | 2026-06-25 | T20c, T14 | [Details](tasks/T22.md) |
+| T14 | SU(2) Haar + Representation (ts-quantum core) | 🔄 | HIGH | 2026-06-28 | — | [Details](../ts-quantum/memory-bank/tasks/T14.md) |
+| T15 | Spin Foam Package (ts-quantum-spin-foam) | 🔄 | HIGH | 2026-06-28 | T14 | [Details](../ts-quantum-spin-foam/memory-bank/tasks/T1.md) |
 | T23 | Entanglement Structure | 🔄 | HIGH | 2026-06-24 | T20 | [Details](tasks/T23.md) |
 | T24 | Domain Wall Dynamics | 🔄 | HIGH | 2026-06-24 | T20, T21 | [Details](tasks/T24.md) |
 | T25 | Volume Operator Eigenvalues | 🔄 | HIGH | 2026-06-24 | — | [Details](tasks/T25.md) |
@@ -59,6 +61,12 @@ T21a: Performance Optimization — Fast Monte Carlo Kernel
   └── T20b
 T22: Spin Foam Amplitudes
   └── T20c
+  └── T14
+T14: SU(2) Haar + Representation (ts-quantum core)
+  └── [Details](../ts-quantum/memory-bank/tasks/T14.md)
+T15: Spin Foam Package (ts-quantum-spin-foam)
+  └── T14
+  └── [Details](../ts-quantum-spin-foam/memory-bank/tasks/T1.md)
 T23: Entanglement Structure of the Deconfined Phase
   └── T20
 T24: Domain Wall Dynamics and Surface Topological Order

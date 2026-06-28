@@ -71,7 +71,51 @@
 
 ---
 
-## What's Next (Updated 2026-06-27)
+---
+
+## T22: Spin Foam Amplitudes — IN PROGRESS 🔄
+
+**Strategic decision (2026-06-28): Two-path approach**
+
+### Path 1: Quick Estimate (Recommended)
+- **Goal:** Single numerical check: |A_v(j=1)|² / |A_v(j=½)|² with ~10% precision
+- **Effort:** 1-2 days
+- **Value:** Strengthens manuscript by transforming assumption into supported claim
+- **Method:** Monte Carlo over SU(2) for single 4-valent FK vertex
+- **Limitations:** Single vertex, one model, simple intertwiners (conservative bound)
+
+### Path 2: Full Systematic Study
+- **Goal:** Comprehensive validation across spins, models, γ values
+- **Effort:** 1-2 weeks
+- **Value:** Research-grade result suitable for standalone publication
+- **Method:** Cross-repo implementation (ts-quantum → spin-foam → timesarrow)
+
+**Cross-repo architecture:**
+- **ts-quantum core (T14):** SU(2) Haar sampling, Wigner D matrices
+- **ts-quantum-spin-foam (T1-T5):** FK/EPRL vertices, MC integrator, coherent states
+- **timesarrow (T22):** j=1/2 dominance check and manuscript integration
+
+**Recommendation:** Start with Path 1. If suppression is weak (R > 0.1), upgrade to Path 2.
+
+---
+
+## What's Next (Updated 2026-06-28)
+
+| Priority | Task | Description | Depends On |
+|----------|------|-------------|------------|
+| 1 | **T22-P1** | **Quick estimate: FK vertex j=1/2 vs j=1** | — |
+| 2 | **T14** | **Implement SU(2) Haar + representation in ts-quantum** | — |
+| 3 | **T20d** | **Generate FSS plots (L=8,16,32 overlay)** | L=32 completion |
+| 4 | T20d | Critical exponent fitting (ν, γ, β, α) | FSS plots |
+| 5 | T30 | Refactor scripts to use unified plotting module | Phase 1 complete |
+| 6 | T29 | Extensible schema design | — |
+| 7 | T23 | Entanglement entropy — needs T22 completion | T22 |
+
+**Key decision:** T20d is substantially complete (first-order transition confirmed, Binder cumulant converged). T22 is now the highest-priority active task because it addresses the manuscript's deepest theoretical gap.
+
+---
+
+## What's Next (Previous — 2026-06-27)
 
 | Priority | Task | Description | Depends On |
 |----------|------|-------------|------------|

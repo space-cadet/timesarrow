@@ -4,7 +4,18 @@
 
 ---
 
-## 2026-06-27
+## 2026-06-28
+
+#### 05:35:00 IST - T22 Reorganization: Fixed ts-quantum DB workflow, renamed T22-core→T14, T22-ext→T15 for proper sequential naming
+- Modified `memory-bank/tasks.md` - Updated T22 dependencies to reference T14 instead of T22-core
+- Modified `memory-bank/tasks/T22.md` - Updated architecture section: Phase 1 = T14, Phase 2 = T15
+- Modified `memory-bank/activeContext.md` - Updated What's Next table: T14 (implement core), T22 (application)
+- Created `ts-quantum/memory-bank/tasks/T14.md` - SU(2) Haar Measure Sampling (Core) via `mb task create`
+- Created `ts-quantum/memory-bank/tasks/T15.md` - Spin Foam Extension Package Design via `mb task create`
+- Deleted `ts-quantum/memory-bank/tasks/T22-core.md` - Replaced by T14
+- Deleted `ts-quantum/memory-bank/tasks/T22-ext.md` - Replaced by T15
+- Modified `ts-quantum/memory-bank/activeContext.md` - Updated current focus to T14/T15
+- Fixed ts-quantum DB schema: Added `updated` column to task_items table for regenerate compatibility
 
 #### 17:40:00 IST - T20d: L=32 simulation verified complete, registry fixed. T28a: Dashboard v2 functional implementation complete with external JSON loading and GitHub raw fallback. T29: Extensible schema design task created.
 - Modified `numerics/data/registry.json` - Fixed syntax error, added L=32 entry
