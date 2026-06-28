@@ -19,6 +19,8 @@ This is the Memory Bank for the Sage (灵剑) OpenClaw workspace.
 | T21 | Worker Threads + Checkpointing | 🔄 | HIGH | 2026-06-25 | — | [Details](tasks/T21.md) |
 | T21a | Fast Monte Carlo Kernel | 🔄 | HIGH | 2026-06-25 | T20b | [Details](tasks/T21a.md) |
 | T22 | Spin Foam Amplitudes | 🔄 | HIGH | 2026-06-25 | T20c, T14 | [Details](tasks/T22.md) |
+| T22a | Path 1 — Quick Estimate (FK Vertex j=½ vs j=1) | 🔄 | HIGH | 2026-06-28 | — | [Details](tasks/T22a.md) |
+| T22b | Path 2 — Full Systematic Study | ⬜ | MEDIUM | 2026-06-28 | T22a | [Details](tasks/T22b.md) |
 | T14 | SU(2) Haar + Representation (ts-quantum core) | 🔄 | HIGH | 2026-06-28 | — | [Details](../ts-quantum/memory-bank/tasks/T14.md) |
 | T15 | Spin Foam Package (ts-quantum-spin-foam) | 🔄 | HIGH | 2026-06-28 | T14 | [Details](../ts-quantum-spin-foam/memory-bank/tasks/T1.md) |
 | T23 | Entanglement Structure | 🔄 | HIGH | 2026-06-24 | T20 | [Details](tasks/T23.md) |
@@ -62,6 +64,10 @@ T21a: Performance Optimization — Fast Monte Carlo Kernel
 T22: Spin Foam Amplitudes
   └── T20c
   └── T14
+T22a: Path 1 — Quick Estimate (FK Vertex j=½ vs j=1)
+  └── [Details](tasks/T22a.md)
+T22b: Path 2 — Full Systematic Study
+  └── T22a
 T14: SU(2) Haar + Representation (ts-quantum core)
   └── [Details](../ts-quantum/memory-bank/tasks/T14.md)
 T15: Spin Foam Package (ts-quantum-spin-foam)
@@ -86,8 +92,8 @@ T30: Unified Plotting Module for TimesArrow Numerics
 
 ## Status Summary
 
-- **Active**: 9
-- **Completed**: 4 (T20a, T20b, T20c, T28-db-fix, T28a)
+- **Active**: 11 (including T22a)
+- **Completed**: 5 (T20a, T20b, T20c, T28-db-fix, T28a)
 - **Paused**: 0
-- **Pending**: 1 (T29)
-- **Total**: 15
+- **Pending**: 2 (T29, T22b)
+- **Total**: 18
