@@ -2,10 +2,15 @@
 title: "TimesArrow Numerics"
 subtitle: "Numerical simulations for time reversal symmetry in quantum gravity"
 date: "2026-06-25"
-date-modified: "2026-06-26 07:44 IST"
+date-modified: "2026-06-29 10:30 IST"
 ---
 
-*Last updated: 2026-06-26 07:44 IST*
+*Last updated: 2026-06-29 10:30 IST*
+
+::: {.callout-tip}
+## 📊 Live Dashboard
+Explore all simulation runs, results, and figures in the interactive **[TimesArrow Numerics Dashboard →](dashboard.html)**
+:::
 
 ## Overview
 
@@ -18,7 +23,7 @@ All simulations use the **ts-quantum** TypeScript library for SU(2) algebra, int
 | Task | Focus | Status | Priority |
 |---|---|---|---|
 | **[T25](tasks/t25-volume-operator.html)** | Volume Operator Extension | 🟢 Complete | P1 |
-| **[T20](tasks/t20-z2-lgt.html)** | Z₂ LGT Monte Carlo | 🟡 Phase 3b In Progress | P0 |
+| **[T20](tasks/t20-z2-lgt.html)** | Z₂ LGT Monte Carlo | 🟢 Phase 3 Complete | P0 |
 | **T23** | Entanglement Entropy | 🔴 Blocked (T20) | P1 |
 | **[T22](tasks/t22-spin-foam.html)** | Spin Foam Amplitudes | 🟡 Ready | P1 |
 | **T21** | CZX PEPS Ground State | 🔴 Blocked (T22) | P1 |
@@ -36,6 +41,7 @@ All simulations use the **ts-quantum** TypeScript library for SU(2) algebra, int
 
 - [GitHub repo](https://github.com/space-cadet/timesarrow)
 - [ts-quantum library](https://github.com/space-cadet/ts-quantum)
+- [📊 Numerics Dashboard](dashboard.html)
 - [Paper (arXiv)](https://arxiv.org/abs/XXXX.XXXXX)
 
 ## Data Registry

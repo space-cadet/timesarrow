@@ -1,7 +1,16 @@
 ---
 title: "T22 — Spin Foam Amplitudes"
 subtitle: "j=1/2 dominance verification"
+date: "2026-06-29"
+date-modified: "2026-06-29T10:30:00+05:30"
 ---
+
+*Last updated: 2026-06-29 10:30 IST*
+
+::: {.callout-tip}
+## 📊 Live Dashboard
+View all simulation runs and figures: **[TimesArrow Numerics Dashboard →](../dashboard.html)**
+:::
 
 ## Objective
 
@@ -9,7 +18,21 @@ Numerically evaluate EPRL/FK spin foam vertex amplitudes to verify the j=1/2 dom
 
 ## Status
 
-🟡 **Ready to implement**
+✅ **T22a Complete — FK Vertex Estimate Corrected**
+
+*2026-06-29: The original Python estimate was correct. The TypeScript implementation initially had a bug (wrong denominator normalization) but has been fixed.*
+
+## Results (T22a)
+
+FK 4-valent vertex amplitude ratios:
+
+| Ratio | Value | Interpretation |
+|-------|-------|----------------|
+| A_v(j=1) / A_v(j=1/2) | ~0.45 | Moderate suppression |
+| |A_v|²(j=1) / |A_v|²(j=1/2) | ~0.20 | Stronger suppression (~5×) |
+| Power law |A_v|² ~ j^(-α) | α ≈ 2.0 | For j ≥ 1 |
+
+**Conclusion**: j=1/2 dominance is *partially* justified — higher spins are suppressed but not overwhelmingly. Additional arguments (thermal, entropy, boundary conditions) still needed for full justification.
 
 ## Theory
 

@@ -2,10 +2,15 @@
 title: "T20 — Z₂ Lattice Gauge Theory Monte Carlo"
 subtitle: "Confinement-deconfinement transition"
 date: "2026-06-25"
-date-modified: "2026-06-26T07:44:00+05:30"
+date-modified: "2026-06-29T10:30:00+05:30"
 ---
 
-*Last updated: 2026-06-26 07:44 IST*
+*Last updated: 2026-06-29 10:30 IST*
+
+::: {.callout-tip}
+## 📊 Live Dashboard
+View all simulation runs and figures: **[TimesArrow Numerics Dashboard →](../dashboard.html)**
+:::
 
 ## Objective
 
@@ -17,11 +22,11 @@ Classical Monte Carlo simulation of Z₂ gauge theory to demonstrate the confine
 |-------|-------------|--------|------|
 | Phase 1 | 2D square lattice, critical β identification | ✅ Complete | 2026-06-24 |
 | Phase 2 | Finite-size scaling (L = 8–24) | ✅ Complete | 2026-06-25 |
-| Phase 3b | 3D FSS & critical exponents | 🟡 In Progress | 2026-06-26 |
+| Phase 3b | 3D FSS & critical exponents | ✅ Complete | 2026-06-29 |
 | Phase 3 | 3D cubic lattice (L=4,6,8) | ✅ Complete | 2026-06-25 |
 | Phase 3b | 3D Wilson loops & string tension (L=8) | ✅ Complete | 2026-06-26 |
 
-**Key Result**: Critical coupling β_c ≈ 0.44 (2D) and β_c ≈ 0.76 (3D) confirmed.
+**Key Result**: Critical coupling β_c ≈ 0.44 (2D) and β_c ≈ 0.761 (3D, thermodynamic limit) confirmed. First-order transition established by Binder cumulant convergence to U* = 2/3.
 
 ## Theory
 

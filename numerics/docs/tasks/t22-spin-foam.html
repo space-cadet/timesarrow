@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2026-06-29">
 
 <title>T22 — Spin Foam Amplitudes</title>
 <style>
@@ -85,7 +86,19 @@ window.Quarto = {
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 29, 2026</p>
+    </div>
+  </div>
   
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">June 29, 2026</p>
+    </div>
+  </div>
     
   </div>
   
@@ -94,13 +107,59 @@ window.Quarto = {
 </header>
 
 
+<p><em>Last updated: 2026-06-29 10:30 IST</em></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>📊 Live Dashboard
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>View all simulation runs and figures: <strong><a href="../dashboard.html">TimesArrow Numerics Dashboard →</a></strong></p>
+</div>
+</div>
 <section id="objective" class="level2">
 <h2 class="anchored" data-anchor-id="objective">Objective</h2>
 <p>Numerically evaluate EPRL/FK spin foam vertex amplitudes to verify the j=1/2 dominance assumption.</p>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>🟡 <strong>Ready to implement</strong></p>
+<p>✅ <strong>T22a Complete — FK Vertex Estimate Corrected</strong></p>
+<p><em>2026-06-29: The original Python estimate was correct. The TypeScript implementation initially had a bug (wrong denominator normalization) but has been fixed.</em></p>
+</section>
+<section id="results-t22a" class="level2">
+<h2 class="anchored" data-anchor-id="results-t22a">Results (T22a)</h2>
+<p>FK 4-valent vertex amplitude ratios:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Ratio</th>
+<th>Value</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A_v(j=1) / A_v(j=1/2)</td>
+<td>~0.45</td>
+<td>Moderate suppression</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>A_v</td>
+<td>²(j=1) /</td>
+</tr>
+<tr class="odd">
+<td>Power law</td>
+<td>A_v</td>
+<td>² ~ j^(-α)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Conclusion</strong>: j=1/2 dominance is <em>partially</em> justified — higher spins are suppressed but not overwhelmingly. Additional arguments (thermal, entropy, boundary conditions) still needed for full justification.</p>
 </section>
 <section id="theory" class="level2">
 <h2 class="anchored" data-anchor-id="theory">Theory</h2>

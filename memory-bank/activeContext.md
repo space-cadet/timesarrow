@@ -1,53 +1,29 @@
 # timesarrow — Active Context
 
-*Updated: 2026-06-27 21:15 IST*
+*Updated: 2026-06-29 10:45 IST*
 
-## Current Session — 2026-06-27 Evening
+## Current Session — 2026-06-29 Morning
 
-### T28a: Dashboard v2 — FUNCTIONAL ✅ COMPLETE
+### T20d: L=16 + L=24 Fine Scans — COMPLETE ✅
+- **L=16**: 21 β values [0.740, 0.780], peak χ=1.127 at β=0.752, Binder U=0.6664
+- **L=24**: 21 β values [0.740, 0.780], peak χ=1.283 at β=0.756, Binder U=0.6666
+- **Data**: `numerics/data/fss/t20d-L16-fine-20260629.json`, `t20d-L24-fine-20260629.json`
+- **Plots**: 6 new figures (plaquette, susceptibility, binder, combined)
+- **Manuscript**: `t20d-fss-analysis.tex` updated with new tables and β_c(∞)=0.7582±0.0008
 
-**What was built:**
-- Full vanilla JS dashboard with 3 tabs: Runs & Results, Figure Archive, Performance
-- 14 runs loaded from external JSON (with GitHub raw fallback for immediate availability)
-- Filterable, sortable runs table with row selection and detail panel
-- Detail panel: Parameters, Results, Key Findings, Timing, Export (JSON/CSV)
-- 6 FSS figures with thumbnails, click-to-zoom modal, orthogonal filters
-- Performance chart: SVG log-log scatter plot (Wall time vs Lattice Size)
-- Dark mode via `prefers-color-scheme`, mobile responsive
+### T22a: FK Vertex — CORRECTED ✅
+- Original Python estimate was correct (ratio R ≈ 0.45)
+- Bug found in TS: (2j+1)^4 instead of (2j+1)^3 in denominator
+- Fixed: A_v(j=1/2)=0.250, |A_v|² ratio≈0.20, power law α≈2.0
+- ts-quantum-spin-foam package created with tests
 
-**Deployment:**
-- URL: https://space-cadet.github.io/projects/timesarrow/numerics/dashboard-v2.html
-- Repo: space-cadet.github.io (GitHub Pages)
-- Commit: `db2bfef`
+### Dashboard Integration — COMPLETE ✅
+- Replaced old dashboard with v2 (interactive, filterable)
+- Added dashboard links to all task pages (T20, T22, T25)
+- Added timestamps to all pages (2026-06-29)
+- Deployed: https://space-cadet.github.io/projects/timesarrow/numerics/dashboard.html
 
-**Architecture decisions:**
-- External JSON files instead of inline data (235KB blob caused syntax errors)
-- GitHub raw fallback for data files (GitHub Pages cache delay ~5min)
-- Vanilla JS over React: faster iteration, no build step, sufficient for current features
-
-### T20d: L=32 Simulation — COMPLETE ✅
-- **Run ID:** `t20-p3b-L32-lean-20260627`
-- **Status:** Complete, data committed to `numerics/data/fss/`
-- **Results:** Peak χ=1.3704 at β=0.758, Peak C=1.0388 at β=0.758, Binder U≈0.666
-- **Plaquette:** First-order jump from ~0.88 to ~0.96 at β≈0.758
-- **Wall time:** ~6h total (distributed across 8 workers)
-
-### T30: Unified Plotting Module — IN PROGRESS 🔄
-- **Status:** Phase 1 complete (core module created)
-- **Module:** `numerics/src/plotting.py` — shared infrastructure for all plotting scripts
-- **Features:** Auto-detected paths, unified color palette (colorblind-friendly), standardized data loading, consistent figure output, annotation helpers
-- **Smoke test:** ✅ Passed (loaded L=32 run, 21 β values, χ_max=1.3704)
-- **Next:** Phase 2 — refactor existing scripts to use the module
-
-### T29: Extensible Schema Design — PENDING ⬜
-- Status: Pending, not started
-- Goal: Physics-agnostic base schema + extension namespaces for any simulation domain
-- Key idea: `extensions: { lgt: {...}, dmrg: {...} }` in base schema
-- See: `memory-bank/implementation/extensible-schema-design.md`
-
----
-
-## T20 — Status (Updated 2026-06-27)
+### T20 — Status (Updated 2026-06-29)
 
 | Phase | Description | Data Status | Analysis Status | Key Missing |
 |-------|-------------|-------------|-----------------|-------------|

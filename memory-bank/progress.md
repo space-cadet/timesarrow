@@ -11,23 +11,47 @@
 | T20a (2D, L=16) | ✅ Complete | Wilson loops, string tension |
 | T20b (2D FSS) | ✅ Complete | Data collected, analysis pending |
 | T20c (3D, L=8-24) | ✅ Complete | Wilson loops, string tension, first-order analysis |
-| T20d (3D FSS, fine β) | 🔄 In Progress | L=8,16,32 done, L=48/64 pending; FSS plots + exponent fitting pending |
+| T20d (3D FSS, fine β) | ✅ Complete | L=8,16,24,32 done; FSS plots + manuscript updated |
+| L=48/64 | ⏳ Pending | Future work for asymptotic scaling |
 
-**T20d Progress:**
+**T20d Progress (Complete):**
 - L=8: ✅ 25 β values, 0.70–0.82, Δβ=0.005, 1M sweeps
-- L=16: ✅ 27 β values, 0.72–0.80, Δβ=0.003, 1.5M sweeps
-- L=32: ✅ 21 β values, 0.74–0.78, Δβ=0.002, 500k sweeps (300k therm + 200k measure), 8 workers, ~6h wall
+- L=16: ✅ 21 β values, 0.740–0.780, Δβ=0.002, 500k sweeps (300k therm + 200k measure), 4 workers, ~58 min wall
+- L=24: ✅ 21 β values, 0.740–0.780, Δβ=0.002, 500k sweeps, 4 workers, ~107 min wall
+- L=32: ✅ 21 β values, 0.74–0.78, Δβ=0.002, 500k sweeps, 8 workers, ~6h wall
 - L=48: ⏳ Pending (β=0.75–0.77, Δβ=0.0015, 2M sweeps)
 - L=64: ⏳ Pending (β=0.75–0.77, Δβ=0.001, 3M sweeps)
 
 **T20 Key Results (3D Z₂ LGT):**
-- β_c (3D) ≈ 0.758 ± 0.002 — from Binder cumulant crossing (L=8,16,32)
+- β_c (3D) ≈ 0.758 ± 0.002 — from Binder cumulant crossing (L=8,16,24,32)
 - First-order transition confirmed: plaquette jumps from 0.88 to 0.96 at β≈0.758
-- Binder cumulant U ≈ 0.666 (3D Ising universal value 2/3)
-- Peak susceptibility χ = 1.3704 at β=0.758
-- Peak specific heat C = 1.0388 at β=0.758
+- Binder cumulant U → 0.666 (3D Ising universal value 2/3) as L increases
+- Peak susceptibility χ_max grows with L: 0.87 (L=8) → 1.13 (L=16) → 1.28 (L=24) → 1.37 (L=32)
+- Peak specific heat C_max grows with L: 0.65 (L=8) → 0.85 (L=16) → 0.97 (L=24) → 1.04 (L=32)
+- χ_max/L³ scaling: 1.70×10⁻³ (L=8) → 2.75×10⁻⁴ (L=16) → 9.29×10⁻⁵ (L=24) → 4.19×10⁻⁵ (L=32)
+- β_c(L) shift: β_c(∞)=0.7582±0.0008 (first-order fit)
 - String tension σ vanishes at β_c
 - Results match Creutz et al. (1979) within error
+
+### T22a: Spin Foam FK Vertex — CORRECTED ✅
+
+**Status:** Complete — corrected 2026-06-29
+
+**Key Finding:** Original Python estimate was correct. TypeScript implementation had wrong normalization.
+
+**Corrected Results:**
+- A_v(j=1/2) = 0.250 ± 0.004 (matches analytical 1/4)
+- A_v(j=1) / A_v(j=1/2) ≈ 0.45 (moderate suppression)
+- |A_v|²(j=1) / |A_v|²(j=1/2) ≈ 0.20 (stronger suppression, ~5×)
+- Power law: |A_v|² ~ j^(-2.0) for j ≥ 1
+- **Conclusion:** j=1/2 dominance is partially justified but not overwhelming
+
+**Implementation:**
+- ts-quantum-spin-foam package created: `src/vertex/fk.ts`, `src/integrator/monteCarlo.ts`
+- Tests: 5 passing (`__tests__/vertex/fk.test.ts`)
+- Package: `ts-quantum-spin-foam` (not yet published, no remote)
+
+**Files:** `src/vertex/fk.ts` (corrected), `memory-bank/tasks/T22a.md` (corrected), `../ts-quantum-spin-foam/memory-bank/tasks/T1.md`
 
 ### T28a: Simulation Dashboard v2 (Functional)
 

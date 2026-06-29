@@ -1,10 +1,19 @@
 ---
 title: "T25 — Volume Operator Extension"
 subtitle: "Higher-valence intertwiner spectrum and Z₂ structure"
+date: "2026-06-25"
+date-modified: "2026-06-29T10:45:00+05:30"
 execute:
   echo: false
   warning: false
 ---
+
+*Last updated: 2026-06-29 10:45 IST*
+
+::: {.callout-tip}
+## 📊 Live Dashboard
+View all simulation runs and figures: **[TimesArrow Numerics Dashboard →](../dashboard.html)**
+:::
 
 ## Objective
 
