@@ -49,8 +49,8 @@ All simulations use the heat-bath Metropolis algorithm with multi-hit updates ($
 $L$ & $\beta$ range & $N_\beta$ & $N_\text{thermal}$ & $N_\text{measure}$ \\
 \midrule
 8  & $[0.70, 0.82]$ & 25 & $300{,}000$ & $200{,}000$ \\
-16 & $[0.72, 0.79]$ & 15 & $300{,}000$ & $200{,}000$ \\
-24 & $[0.72, 0.79]$ & 15 & $300{,}000$ & $200{,}000$ \\
+16 & $[0.740, 0.780]$ & 21 & $300{,}000$ & $200{,}000$ \\
+24 & $[0.740, 0.780]$ & 21 & $300{,}000$ & $200{,}000$ \\
 32 & $[0.74, 0.78]$ & 21 & $100{,}000$ & $100{,}000$ (lean) \\
 \bottomrule
 \end{tabular}
@@ -87,8 +87,10 @@ where $d=3$ is the spatial dimension. This is in contrast to the second-order sc
 Fitting the peak positions from our four lattice sizes to Eq.~\eqref{eq:bc-shift-first-order} yields:
 %
 \begin{equation}
-\beta_c(\infty) = 0.7560 \pm 0.0016 \quad \text{(first-order fit)}.
+\beta_c(\infty) = 0.7582 \pm 0.0008 \quad \text{(first-order fit, $L=8,16,24,32$)}.
 \end{equation}
+%
+The improved statistics from the $L=16$ and $L=24$ fine scans (21 $\beta$ values each, $300{,}000$ thermalization + $200{,}000$ measurement sweeps) reduce the uncertainty by a factor of two compared to the preliminary analysis.
 %
 For comparison, a second-order fit gives $\beta_c(\infty) = 0.7631$ with $\nu = 0.759$, but this is not the appropriate scaling form for a first-order transition. The literature value from Creutz \etal~\cite{Creutz:1979zg} is $\beta_c = 0.7613$, which our data is consistent with within the expected systematic uncertainties from finite-size corrections. The critical coupling $\beta_c = 0.7613$ is the threshold in the effective theory at which the cosmological arrow of time becomes well-defined.
 
@@ -99,7 +101,7 @@ The Binder cumulant is the most reliable diagnostic for the order of a phase tra
 Our data shows the Binder cumulant minimum converging monotonically:
 %
 \begin{equation}
-U_\text{min}(L=8) = 0.6626 \to U_\text{min}(L=32) = 0.6666.
+U_\text{min}(L=8) = 0.6626 \to U_\text{min}(L=16) = 0.6664 \to U_\text{min}(L=24) = 0.6666 \to U_\text{min}(L=32) = 0.6666.
 \end{equation}
 %
 The approach to $2/3$ follows the first-order scaling form:
@@ -123,9 +125,9 @@ For a second-order transition, the peak susceptibility scales as $\chi_\text{max
 $L$ & $\beta_c(\chi)$ & $\chi_\text{max}$ & $\chi_\text{max}/L^3$ & $C_{V,\text{max}}/L^3$ \\
 \midrule
 8  & 0.730 & 0.869 & $1.70 \times 10^{-3}$ & $1.25 \times 10^{-3}$ \\
-16 & 0.750 & 1.117 & $2.73 \times 10^{-4}$ & $2.05 \times 10^{-4}$ \\
-24 & 0.755 & 1.060 & $7.7 \times 10^{-5}$  & $5.8 \times 10^{-5}$ \\
-32 & 0.758 & 1.370 & $4.2 \times 10^{-5}$  & $3.2 \times 10^{-5}$ \\
+16 & 0.752 & 1.127 & $2.75 \times 10^{-4}$ & $2.07 \times 10^{-4}$ \\
+24 & 0.756 & 1.283 & $9.29 \times 10^{-5}$  & $7.02 \times 10^{-5}$ \\
+32 & 0.758 & 1.370 & $4.19 \times 10^{-5}$  & $3.17 \times 10^{-5}$ \\
 \bottomrule
 \end{tabular}
 \end{table}
