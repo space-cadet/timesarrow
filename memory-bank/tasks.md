@@ -27,6 +27,7 @@ This is the Memory Bank for the Sage (灵剑) OpenClaw workspace.
 | T24 | Domain Wall Dynamics | 🔄 | HIGH | 2026-06-24 | T20, T21 | [Details](tasks/T24.md) |
 | T25 | Volume Operator Eigenvalues | ✅ | HIGH | 2026-06-24 | — | [Details](tasks/T25.md) |
 | T27 | Rust Z₂ LGT Framework | ✅ | HIGH | 2026-06-25 | — | [Details](tasks/T27.md) |
+| T31 | Signed Volume Observable for Z₂ Gauge Theory | 🔄 | HIGH | 2026-07-02 | T20c, T27 | [Details](tasks/T31.md) |
 | T28 | Simulation Dashboard (v1) | ✅ | MEDIUM | 2026-06-26 | — | [Details](tasks/T28.md) |
 | T28a | Dashboard v2 — Functional JS | ✅ | HIGH | 2026-06-27 | T20 | [Details](tasks/T28a.md) |
 | T30 | Unified Plotting Module | ✅ | MEDIUM | 2026-06-27 | — | [Details](tasks/T30.md) |

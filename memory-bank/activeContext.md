@@ -2,7 +2,23 @@
 
 *Updated: 2026-07-02 15:35 IST*
 
-## Current Session — 2026-07-02 Afternoon
+## Current Session — 2026-07-02 Evening
+
+### T31: Signed Volume Observable — IN PROGRESS 🔄
+- **Concept**: Use signed volume operator Q̂ (not positive-definite V̂) for composite systems
+- **Key insight**: Emergence of global time orientation ↔ emergence of macroscopic signed volume
+- **Confined phase**: |Q| ~ √N (random walk cancellation, no arrow of time)
+- **Deconfined phase**: |Q| ~ N (extensive, coherent orientation, arrow of time emerges)
+- **Implementation**:
+  - `signed_volume_3d()` — gauge-fixed vertex sign sum
+  - `measure_signed_volume_3d()` — thermalize + measure with statistics
+  - `signed_area_2d()` — 2D analogue for code validation
+  - `measure_signed_area_2d()` — 2D measurement routine
+- **Test results**:
+  - 2D (L=8): |Q|/N ≈ 0.08–0.11 across all β, consistent with 1/√N ≈ 0.125 (no deconfined phase)
+  - 3D (L=6): |Q|/N grows from ~0.02 (β=0.4) to ~0.29 (β=1.5), transition region β ≈ 0.8–1.0
+- **Files**: `rust-lattice/src/lib.rs` (+241 lines), committed as `84a3fb1`
+- **Memory-bank**: T31 task file, implementation-details doc created
 
 ### T20d: FSS Analysis Published — COMPLETE ✅
 - **T20 Task Page**: Added comprehensive FSS Analysis section
