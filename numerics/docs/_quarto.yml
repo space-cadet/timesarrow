@@ -16,6 +16,8 @@ website:
         text: Dashboard
       - text: Simulations
         menu:
+          - href: tasks/t31-signed-volume.qmd
+            text: T31 — Signed Volume
           - href: tasks/t25-volume-operator.qmd
             text: T25 — Volume Operator
           - href: tasks/t20-z2-lgt.qmd
@@ -38,6 +40,7 @@ website:
         - dashboard.qmd
         - section: "Tasks"
           contents:
+            - tasks/t31-signed-volume.qmd
             - tasks/t25-volume-operator.qmd
             - tasks/t20-z2-lgt.qmd
             - tasks/t23-entanglement.qmd
