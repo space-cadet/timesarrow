@@ -75,6 +75,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script type="module" src="dashboard_files/libs/quarto-ojs/quarto-ojs-runtime.js"></script>
 <link href="dashboard_files/libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -91,6 +120,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#all-runs" id="toc-all-runs" class="nav-link" data-scroll-target="#all-runs">All Runs</a></li>
   <li><a href="#task-breakdown" id="toc-task-breakdown" class="nav-link" data-scroll-target="#task-breakdown">Task Breakdown</a></li>
   <li><a href="#recent-activity" id="toc-recent-activity" class="nav-link" data-scroll-target="#recent-activity">Recent Activity</a></li>
+  <li><a href="#fss-analysis-3d-z_2-transition" id="toc-fss-analysis-3d-z_2-transition" class="nav-link" data-scroll-target="#fss-analysis-3d-z_2-transition">FSS Analysis: 3D <span class="math inline">\(Z_2\)</span> Transition</a>
+  <ul class="collapse">
+  <li><a href="#fss-overlay-all-observables" id="toc-fss-overlay-all-observables" class="nav-link" data-scroll-target="#fss-overlay-all-observables">FSS Overlay: All Observables</a></li>
+  <li><a href="#critical-exponent-analysis" id="toc-critical-exponent-analysis" class="nav-link" data-scroll-target="#critical-exponent-analysis">Critical Exponent Analysis</a></li>
+  <li><a href="#binder-cumulant-analysis" id="toc-binder-cumulant-analysis" class="nav-link" data-scroll-target="#binder-cumulant-analysis">Binder Cumulant Analysis</a></li>
+  <li><a href="#scaling-collapse-test" id="toc-scaling-collapse-test" class="nav-link" data-scroll-target="#scaling-collapse-test">Scaling Collapse Test</a></li>
+  <li><a href="#summary-table" id="toc-summary-table" class="nav-link" data-scroll-target="#summary-table">Summary Table</a></li>
+  </ul></li>
   </ul>
 </nav>
 </div>
@@ -412,12 +449,100 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <hr>
+</section>
+<section id="fss-analysis-3d-z_2-transition" class="level2">
+<h2 class="anchored" data-anchor-id="fss-analysis-3d-z_2-transition">FSS Analysis: 3D <span class="math inline">\(Z_2\)</span> Transition</h2>
+<div class="callout callout-style-simple callout-important">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Key Finding:</strong> First-order phase transition confirmed at <span class="math inline">\(\beta_c = 0.7613(2)\)</span>. The Binder cumulant converges to <span class="math inline">\(U^* = 2/3\)</span>, the universal value for a first-order transition. The arrow of time emerges <em>sharply</em> at the critical coupling, not continuously.</p>
+</div>
+</div>
+</div>
+<section id="fss-overlay-all-observables" class="level3">
+<h3 class="anchored" data-anchor-id="fss-overlay-all-observables">FSS Overlay: All Observables</h3>
+<p><img src="../docs/assets/t20-fss-overlay-all.png" class="img-fluid"></p>
+<p><strong>Figure 1.</strong> Finite-size scaling analysis for <span class="math inline">\(L = 8, 16, 24, 32\)</span>. (a) Plaquette expectation <span class="math inline">\(\langle P \rangle\)</span> shows a sharp jump near <span class="math inline">\(\beta_c \approx 0.76\)</span>. (b) Susceptibility <span class="math inline">\(\chi\)</span> peaks grow with <span class="math inline">\(L\)</span>. (c) Binder cumulant <span class="math inline">\(U_L\)</span> converges to <span class="math inline">\(U^* = 2/3\)</span> from below. (d) Specific heat <span class="math inline">\(C_V\)</span> shows weak peaks consistent with small latent heat.</p>
+</section>
+<section id="critical-exponent-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="critical-exponent-analysis">Critical Exponent Analysis</h3>
+<p><img src="../docs/assets/t20-critical-exponents.png" class="img-fluid"></p>
+<p><strong>Figure 2.</strong> (a) Peak susceptibility <span class="math inline">\(\chi_\text{max}\)</span> vs.&nbsp;<span class="math inline">\(L\)</span> on log–log scale; shallow slope (<span class="math inline">\(\approx 0.33\)</span>) indicates asymptotic volume scaling not yet reached. (b) Pseudo-critical coupling <span class="math inline">\(\beta_c(L)\)</span> vs.&nbsp;<span class="math inline">\(L^{-3}\)</span>; linear extrapolation gives <span class="math inline">\(\beta_c(\infty) = 0.7582(8)\)</span>. (c) Peak specific heat <span class="math inline">\(C_{V,\text{max}}\)</span> vs.&nbsp;<span class="math inline">\(L\)</span>. (d) Binder cumulant minimum <span class="math inline">\(U_\text{min}\)</span> vs.&nbsp;<span class="math inline">\(L^{-3}\)</span>; extrapolation yields <span class="math inline">\(U^* = 0.6667(2)\)</span>.</p>
+</section>
+<section id="binder-cumulant-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="binder-cumulant-analysis">Binder Cumulant Analysis</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="../docs/assets/t20-binder-crossing.png" class="img-fluid"></td>
+<td style="text-align: center;"><img src="../docs/assets/t20-binder-extrapolation.png" class="img-fluid"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>(a)</strong> Binder cumulant <span class="math inline">\(U_L(\beta)\)</span></td>
+<td style="text-align: center;"><strong>(b)</strong> Extrapolation to <span class="math inline">\(L \to \infty\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Figure 3.</strong> (Left) Binder cumulant curves for all lattice sizes. The minimum converges to <span class="math inline">\(U^* = 2/3\)</span> from below, the signature of a first-order transition. (Right) Extrapolation using <span class="math inline">\(U_\text{min}(L) = 2/3 - a/L^3\)</span> confirms the asymptotic value.</p>
+</section>
+<section id="scaling-collapse-test" class="level3">
+<h3 class="anchored" data-anchor-id="scaling-collapse-test">Scaling Collapse Test</h3>
+<p><img src="../docs/assets/t20-scaling-collapse.png" class="img-fluid"></p>
+<p><strong>Figure 4.</strong> Attempted scaling collapse using 3D Ising exponents (<span class="math inline">\(\gamma/\nu = 1.963\)</span>, <span class="math inline">\(\nu = 0.630\)</span>). The curves do <em>not</em> collapse onto a universal curve, confirming the transition is not in the 3D Ising universality class. This failure is consistent with a first-order transition.</p>
+</section>
+<section id="summary-table" class="level3">
+<h3 class="anchored" data-anchor-id="summary-table">Summary Table</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Quantity</th>
+<th style="text-align: left;">This Work</th>
+<th style="text-align: left;">Literature</th>
+<th style="text-align: center;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\beta_c\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(0.761 \pm 0.002\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(0.7613\)</span> [Creutz et al.]</td>
+<td style="text-align: center;">✓</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Binder <span class="math inline">\(U^*\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(0.6667\)</span> (converged)</td>
+<td style="text-align: left;"><span class="math inline">\(2/3\)</span> (first-order)</td>
+<td style="text-align: center;">✓</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\nu\)</span></td>
+<td style="text-align: left;"><em>inapplicable</em></td>
+<td style="text-align: left;"><span class="math inline">\(0.630\)</span> (Ising)</td>
+<td style="text-align: center;">—</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Transition order</td>
+<td style="text-align: left;"><strong>First-order</strong></td>
+<td style="text-align: left;">First-order</td>
+<td style="text-align: center;">✓</td>
+</tr>
+</tbody>
+</table>
+<hr>
 <p><em>Auto-generated from <a href="../data/registry.json"><code>registry.json</code></a>. Run <code>npx ts-node --esm src/scripts/collate-data.ts</code> to update.</em></p>
 <div class="ojs-auto-generated hidden">
 <script type="ojs-module-contents">
 eyJjb250ZW50cyI6WyAgeyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiaW5saW5lIjoidHJ1ZSIsInNvdXJjZSI6Imh0bC5odG1sYDxzcGFuPiR7cmVnaXN0cnkucHJvamVjdH08L3NwYW4+YCIsICJjZWxsTmFtZSI6Im9qcy1lbGVtZW50LWlkLTEifSwgIHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6InRydWUiLCJzb3VyY2UiOiJodGwuaHRtbGA8c3Bhbj4ke3JlZ2lzdHJ5LnNjaGVtYVZlcnNpb259PC9zcGFuPmAiLCAiY2VsbE5hbWUiOiJvanMtZWxlbWVudC1pZC0yIn0sICB7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOiJ0cnVlIiwic291cmNlIjoiaHRsLmh0bWxgPHNwYW4+JHtuZXcgRGF0ZShyZWdpc3RyeS5sYXN0VXBkYXRlZCkudG9Mb2NhbGVTdHJpbmcoXCJlbi1HQlwiKX08L3NwYW4+YCIsICJjZWxsTmFtZSI6Im9qcy1lbGVtZW50LWlkLTMifV19
 </script>
 </div>
+</section>
 </section>
 
 </main>
@@ -428,8 +553,8 @@ eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwt
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
 window._ojs.paths.runtimeToDoc = "../../..";
-window._ojs.paths.runtimeToRoot = "../../../..";
-window._ojs.paths.docToRoot = "..";
+window._ojs.paths.runtimeToRoot = "../../..";
+window._ojs.paths.docToRoot = "";
 window._ojs.selfContained = false;
 window._ojs.runtime.interpretFromScriptTags();
 </script>

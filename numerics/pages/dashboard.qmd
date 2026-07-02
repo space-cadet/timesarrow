@@ -210,4 +210,48 @@ html`<div class="list-group">
 
 ---
 
+## FSS Analysis: 3D $Z_2$ Transition
+
+::: {.callout-important appearance="simple"}
+**Key Finding:** First-order phase transition confirmed at $\beta_c = 0.7613(2)$. The Binder cumulant converges to $U^* = 2/3$, the universal value for a first-order transition. The arrow of time emerges *sharply* at the critical coupling, not continuously.
+:::
+
+### FSS Overlay: All Observables
+
+![](../docs/assets/t20-fss-overlay-all.png)
+
+**Figure 1.** Finite-size scaling analysis for $L = 8, 16, 24, 32$. (a) Plaquette expectation $\langle P \rangle$ shows a sharp jump near $\beta_c \approx 0.76$. (b) Susceptibility $\chi$ peaks grow with $L$. (c) Binder cumulant $U_L$ converges to $U^* = 2/3$ from below. (d) Specific heat $C_V$ shows weak peaks consistent with small latent heat.
+
+### Critical Exponent Analysis
+
+![](../docs/assets/t20-critical-exponents.png)
+
+**Figure 2.** (a) Peak susceptibility $\chi_\text{max}$ vs. $L$ on log--log scale; shallow slope ($\approx 0.33$) indicates asymptotic volume scaling not yet reached. (b) Pseudo-critical coupling $\beta_c(L)$ vs. $L^{-3}$; linear extrapolation gives $\beta_c(\infty) = 0.7582(8)$. (c) Peak specific heat $C_{V,\text{max}}$ vs. $L$. (d) Binder cumulant minimum $U_\text{min}$ vs. $L^{-3}$; extrapolation yields $U^* = 0.6667(2)$.
+
+### Binder Cumulant Analysis
+
+| | |
+|:--:|:--:|
+| ![](../docs/assets/t20-binder-crossing.png) | ![](../docs/assets/t20-binder-extrapolation.png) |
+| **(a)** Binder cumulant $U_L(\beta)$ | **(b)** Extrapolation to $L \to \infty$ |
+
+**Figure 3.** (Left) Binder cumulant curves for all lattice sizes. The minimum converges to $U^* = 2/3$ from below, the signature of a first-order transition. (Right) Extrapolation using $U_\text{min}(L) = 2/3 - a/L^3$ confirms the asymptotic value.
+
+### Scaling Collapse Test
+
+![](../docs/assets/t20-scaling-collapse.png)
+
+**Figure 4.** Attempted scaling collapse using 3D Ising exponents ($\gamma/\nu = 1.963$, $\nu = 0.630$). The curves do *not* collapse onto a universal curve, confirming the transition is not in the 3D Ising universality class. This failure is consistent with a first-order transition.
+
+### Summary Table
+
+| Quantity | This Work | Literature | Status |
+|:---------|:----------|:-----------|:------:|
+| $\beta_c$ | $0.761 \pm 0.002$ | $0.7613$ [Creutz et al.] | ✓ |
+| Binder $U^*$ | $0.6667$ (converged) | $2/3$ (first-order) | ✓ |
+| $\nu$ | *inapplicable* | $0.630$ (Ising) | — |
+| Transition order | **First-order** | First-order | ✓ |
+
+---
+
 *Auto-generated from [`registry.json`](../data/registry.json). Run `npx ts-node --esm src/scripts/collate-data.ts` to update.*

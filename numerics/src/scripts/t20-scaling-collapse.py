@@ -34,11 +34,9 @@ import matplotlib.pyplot as plt
 
 OUTPUT_DIR = PATHS['docs_assets']
 RUNS = {
-    4:  't20-p3-L4-3D-wilson-fine-20250626',
-    6:  't20-p3-L6-3D-wilson-fine-20250626',
     8:  't20-p3b-L8-3D-fine-20260627',
-    16: 't20-p3b-L16-3D-fine-20260626',
-    24: 't20-p3-L24-3D-wilson-fine-20250626',
+    16: 't20d-L16-fine-20260629',
+    24: 't20d-L24-fine-20260629',
     32: 't20-p3b-L32-lean-20260627',
 }
 
