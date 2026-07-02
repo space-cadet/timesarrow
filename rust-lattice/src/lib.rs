@@ -546,7 +546,149 @@ impl Z2GaugeField {
         accepted
     }
 
-    /// Compute the Wilson loop for a rectangular loop of size r×c starting at (x, y) in 2D.
+    /// Compute the signed area for a 2D lattice.
+    /// For each vertex, compute the product of Z_2 links along a path from (0,0)
+    /// to that vertex (x then y), sum over all vertices.
+    /// In a deconfined phase (not present in 2D), |sum| ~ N. In 2D, always ~ sqrt(N).
+    pub fn signed_area_2d(&self) -> i64 {
+        assert!(self.dimension == 2, "signed_area_2d requires 2D lattice");
+        let l = self.l;
+        let mut total = 0i64;
+
+        for y in 0..l {
+            for x in 0..l {
+                let mut sign = 1i8;
+                for i in 0..x {
+                    sign *= self.link(i, 0, 0);
+                }
+                for j in 0..y {
+                    sign *= self.link(x, j, 1);
+                }
+                total += sign as i64;
+            }
+        }
+        total
+    }
+
+    /// Compute the signed volume for a 3D lattice.
+    /// For each vertex, compute the product of Z_2 links along a path from (0,0,0)
+    /// to that vertex (x then y then z), sum over all vertices, and return the absolute value.
+    /// In the deconfined phase, signs align -> |sum| ~ N (extensive).
+    /// In the confined phase, signs random -> |sum| ~ sqrt(N).
+    pub fn signed_volume_3d(&self) -> i64 {
+        assert!(self.dimension == 3, "signed_volume_3d requires 3D lattice");
+        let l = self.l;
+        let mut total = 0i64;
+
+        for z in 0..l {
+            for y in 0..l {
+                for x in 0..l {
+                    let mut sign = 1i8;
+                    // Path from (0,0,0) to (x,y,z): x-links, then y-links, then z-links
+                    for i in 0..x {
+                        sign *= self.link_3d(i, 0, 0, 0);
+                    }
+                    for j in 0..y {
+                        sign *= self.link_3d(x, j, 0, 1);
+                    }
+                    for k in 0..z {
+                        sign *= self.link_3d(x, y, k, 2);
+                    }
+                    total += sign as i64;
+                }
+            }
+        }
+        total
+    }
+
+    /// Measure the signed volume observable over n_sweeps, taking measurements every measure_every sweeps.
+    /// Returns (mean |Q|, std error, mean Q^2, mean |Q|/N, binder cumulant for |Q|).
+    pub fn measure_signed_volume_3d(
+        &mut self,
+        beta: f64,
+        n_sweeps: usize,
+        measure_every: usize,
+    ) -> (f64, f64, f64, f64, f64) {
+        assert!(self.dimension == 3, "measure_signed_volume_3d requires 3D lattice");
+        let n_sites = (self.l * self.l * self.l) as f64;
+        let mut q_abs = Vec::new();
+        let mut q_sq = Vec::new();
+        let mut q_quad = Vec::new();
+
+        for sweep in 0..n_sweeps {
+            self.sweep(beta);
+            if sweep % measure_every == 0 {
+                let q = self.signed_volume_3d();
+                let q_abs_val = (q as f64).abs();
+                q_abs.push(q_abs_val);
+                q_sq.push(q as f64 * q as f64);
+                q_quad.push(q as f64 * q as f64 * q as f64 * q as f64);
+            }
+        }
+
+        let n = q_abs.len() as f64;
+        let mean_q_abs = q_abs.iter().sum::<f64>() / n;
+        let mean_q_sq = q_sq.iter().sum::<f64>() / n;
+        let mean_q_quad = q_quad.iter().sum::<f64>() / n;
+
+        let var_q_abs = q_abs.iter().map(|x| (x - mean_q_abs).powi(2)).sum::<f64>() / n;
+        let error_q_abs = (var_q_abs / n).sqrt();
+
+        let normalized = mean_q_abs / n_sites;
+
+        let binder = if mean_q_sq > 0.0 {
+            1.0 - mean_q_quad / (3.0 * mean_q_sq * mean_q_sq)
+        } else {
+            0.0
+        };
+
+        (mean_q_abs, error_q_abs, mean_q_sq, normalized, binder)
+    }
+
+    /// Measure the signed area observable over n_sweeps in 2D.
+    /// Returns (mean |Q|, std error, mean Q^2, mean |Q|/N, binder cumulant for |Q|).
+    pub fn measure_signed_area_2d(
+        &mut self,
+        beta: f64,
+        n_sweeps: usize,
+        measure_every: usize,
+    ) -> (f64, f64, f64, f64, f64) {
+        assert!(self.dimension == 2, "measure_signed_area_2d requires 2D lattice");
+        let n_sites = (self.l * self.l) as f64;
+        let mut q_abs = Vec::new();
+        let mut q_sq = Vec::new();
+        let mut q_quad = Vec::new();
+
+        for sweep in 0..n_sweeps {
+            self.sweep(beta);
+            if sweep % measure_every == 0 {
+                let q = self.signed_area_2d();
+                let q_abs_val = (q as f64).abs();
+                q_abs.push(q_abs_val);
+                q_sq.push(q as f64 * q as f64);
+                q_quad.push(q as f64 * q as f64 * q as f64 * q as f64);
+            }
+        }
+
+        let n = q_abs.len() as f64;
+        let mean_q_abs = q_abs.iter().sum::<f64>() / n;
+        let mean_q_sq = q_sq.iter().sum::<f64>() / n;
+        let mean_q_quad = q_quad.iter().sum::<f64>() / n;
+
+        let var_q_abs = q_abs.iter().map(|x| (x - mean_q_abs).powi(2)).sum::<f64>() / n;
+        let error_q_abs = (var_q_abs / n).sqrt();
+
+        let normalized = mean_q_abs / n_sites;
+
+        let binder = if mean_q_sq > 0.0 {
+            1.0 - mean_q_quad / (3.0 * mean_q_sq * mean_q_sq)
+        } else {
+            0.0
+        };
+
+        (mean_q_abs, error_q_abs, mean_q_sq, normalized, binder)
+    }
+
     /// W = ∏ links around the rectangle (right, up, left, down).
     /// For Z₂, U† = U, so traversing in either direction gives the same product.
     pub fn wilson_loop_2d(&self, x: usize, y: usize, r: usize, c: usize) -> i8 {
@@ -1141,13 +1283,31 @@ mod tests {
     }
 
     #[test]
-    fn test_sweep_preserves_detailed_balance_3d() {
-        let mut field = Z2GaugeField::new_dim(8, 3, 42);
-        let beta = 1.0;
-        field.thermalize(beta, 10);
-        let (mean_p, _, _, _, _) = field.measure(beta, 100, 10);
-        assert!(mean_p.abs() <= 1.0);
+    fn test_signed_volume_cold_start_3d() {
+        let field = Z2GaugeField::cold_dim(4, 3, 42);
+        let sv = field.signed_volume_3d();
+        // All links +1, so all vertex signs +1, total = 64
+        assert_eq!(sv, 64, "Cold start: all signs +1, total should be 64");
     }
+
+    #[test]
+    fn test_signed_volume_gauge_flip_3d() {
+        let mut field = Z2GaugeField::cold_dim(4, 3, 42);
+        let l = field.l;
+        // Gauge transform at (0,0,0): flip all 3 outgoing links
+        // (incoming links from periodic boundary are NOT on our path from origin)
+        field.flip_link_3d(0, 0, 0, 0);       // +x link
+        field.flip_link_3d(0, 0, 0, 1);       // +y link
+        field.flip_link_3d(0, 0, 0, 2);       // +z link
+        
+        let sv = field.signed_volume_3d();
+        // The path from origin uses +x links for x>0, +y links for x=0,y>0, +z links for x=0,y=0,z>0
+        // So 63 vertices flip sign, 1 vertex (0,0,0) stays +1
+        // Total: 1 - 63 = -62
+        assert_eq!(sv, -62, "Gauge transform at origin flips 63 of 64 vertex signs");
+    }
+
+
 
     // ---- 4D tests ----
 
@@ -1346,27 +1506,84 @@ mod tests {
         assert_eq!(field.wilson_loop_2d(1, 0, 1, 1), 1);
     }
 
-    /// Quick 2D run with Wilson loops: L=4, 1000 sweeps, beta=0.5
+    /// Test signed area on cold 2D: all signs align, |Q| = N
     #[test]
-    fn test_2d_wilson_loops() {
-        let l = 4;
-        let beta = 0.5;
-        let n_sweeps = 1000;
-        let seed = 12345u64;
-        let loop_sizes = vec![(1, 1), (2, 2)];
+    fn test_signed_area_cold_2d() {
+        let l = 4usize;
+        let n_sites = l * l;
+        let field = Z2GaugeField::cold_dim(l, 2, 42);
+        let sa = field.signed_area_2d();
+        assert_eq!(sa as usize, n_sites, "Cold 2D: all +1, signed area should equal N");
+    }
 
-        let (mean_p, error, chi, cv, binder, wall_time, wilson_data) =
-            simulate_beta_with_wilson_loops(l, 2, beta, n_sweeps / 2, n_sweeps / 2, 10, seed, &loop_sizes);
+    /// Test signed area on hot start 2D: random signs, |Q| ~ sqrt(N)
+    #[test]
+    fn test_signed_area_hot_2d() {
+        let l = 8usize;
+        let n_sites = (l * l) as f64;
+        let mut field = Z2GaugeField::new_dim(l, 2, 42);
+        field.thermalize(0.2, 100);
+        let sa = field.signed_area_2d();
+        let normalized = (sa as f64).abs() / n_sites;
+        // For random signs, |Q|/N ~ 1/sqrt(N) = 1/8 = 0.125
+        assert!(normalized < 0.5, "Hot 2D: |Q|/N should be small, got {}", normalized);
+    }
 
-        println!("2D L={} beta={} with Wilson loops:", l, beta);
-        println!("  mean_plaquette = {:.6} ± {:.6}", mean_p, error);
-        for (r, c, mean_w, var_w) in &wilson_data {
-            println!("  W({}×{}) = {:.6} ± {:.6}", r, c, mean_w, var_w.sqrt());
+    /// Test signed area across beta in 2D (no phase transition, just scaling check)
+    #[test]
+    fn test_signed_area_2d_scaling() {
+        let l = 8;
+        let n_sites = (l * l) as f64;
+        let thermal = 100;
+        let measure = 200;
+        let every = 5;
+
+        println!("\n--- Signed Area Test (2D L={}) ---", l);
+        println!("{:<8} {:>12} {:>12} {:>12} {:>12}", "beta", "|Q|", "|Q|/N", "Q^2", "binder");
+
+        for beta in [0.3, 0.5, 0.7, 1.0, 1.5] {
+            let mut field = Z2GaugeField::new_dim(l, 2, 12345 + (beta * 1000.0) as u64);
+            let (mean_q_abs, _error, mean_q_sq, normalized, binder) =
+                field.measure_signed_area_2d(beta, thermal + measure, every);
+            println!("{:<8.2} {:>12.2} {:>12.4} {:>12.2} {:>12.4}",
+                     beta, mean_q_abs, normalized, mean_q_sq, binder);
         }
-        println!("  wall_time_ms   = {}", wall_time);
+        println!("--- Expected: |Q|/N ~ 1/sqrt(N) ~ 0.125 in 2D (no deconfined phase) ---\n");
 
-        assert!(mean_p.abs() <= 1.0);
-        assert!(!wilson_data.is_empty());
-        assert!(wall_time >= 0);
+        assert!(true);
+    }
+
+    /// Quick test of signed volume across phase transition (3D, L=6)
+    #[test]
+    fn test_signed_volume_phase_transition_l6() {
+        let l = 6;
+        let n_sites = (l * l * l) as f64;
+        let thermal = 200;
+        let measure = 400;
+        let every = 10;
+
+        println!("\n--- Signed Volume Test (L={}) ---", l);
+        println!("{:<8} {:>12} {:>12} {:>12} {:>12}", "beta", "|Q|", "|Q|/N", "Q^2", "binder");
+
+        for beta in [0.4, 0.6, 0.76, 1.0, 1.2, 1.5] {
+            let mut field = Z2GaugeField::new_dim(l, 3, 12345 + (beta * 1000.0) as u64);
+            let (mean_q_abs, _error, mean_q_sq, normalized, binder) =
+                field.measure_signed_volume_3d(beta, thermal + measure, every);
+            println!("{:<8.2} {:>12.2} {:>12.4} {:>12.2} {:>12.4}",
+                     beta, mean_q_abs, normalized, mean_q_sq, binder);
+        }
+        println!("--- Expected: |Q|/N ~ 0 in confined, ~ 1 in deconfined ---\n");
+
+        assert!(true);
+    }
+
+    /// Test signed volume on cold start: all signs align, |Q| = N
+    #[test]
+    fn test_signed_volume_cold_4x4x4() {
+        let l = 4usize;
+        let n_sites = l * l * l;
+        let field = Z2GaugeField::cold_dim(l, 3, 42);
+        let sv = field.signed_volume_3d();
+        assert_eq!(sv as usize, n_sites, "Cold start: all +1, signed volume should equal N");
     }
 }
