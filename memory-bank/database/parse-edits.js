@@ -168,8 +168,8 @@ function parseEditHistory(content) {
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
 
-    // Detect date headers: ## 2025-11-11
-    if (line.match(/^##\s+\d{4}-\d{2}-\d{2}$/)) {
+    // Detect date headers: ### 2025-11-11
+    if (line.match(/^###\s+\d{4}-\d{2}-\d{2}$/)) {
       currentDate = line.replace(/^###\s+/, '');
       continue;
     }
@@ -302,8 +302,8 @@ async function main() {
 
     // Clear existing tables
     console.log('Clearing existing database data...\n');
-    await sqlite.exec('DELETE FROM file_modifications');
-    await sqlite.exec('DELETE FROM edit_entries');
+    await sqlite.exec('DROP TABLE IF EXISTS file_modifications');
+    await sqlite.exec('DROP TABLE IF EXISTS edit_entries');
 
     // Initialize schema
     await initDatabase();

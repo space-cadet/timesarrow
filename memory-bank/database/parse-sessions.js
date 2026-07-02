@@ -20,15 +20,15 @@ async function initSchema() {
   await sqlite.exec(`
     CREATE TABLE IF NOT EXISTS sessions (
       id TEXT PRIMARY KEY,         -- Filename (e.g., 2025-11-22-evening.md)
-      date TEXT NOT NULL,           -- YYYY-MM-DD
-      period TEXT,                  -- morning, afternoon, evening, night
-      status TEXT,                  -- In Progress, Complete, etc.
-      focus TEXT,                   -- Main focus of the session
-      active_count INTEGER,         -- From "Active: X"
-      paused_count INTEGER,         -- From "Paused: X"
-      completed_count INTEGER,      -- From "Completed: X"
-      cancelled_count INTEGER,      -- From "Cancelled: X"
-      content TEXT                  -- Full markdown content
+      date TEXT NOT NULL,  -- YYYY-MM-DD (canonical: date)
+      period TEXT,         -- morning, afternoon, evening, night (canonical: period)
+      status TEXT,                 -- In Progress, Complete, etc.
+      focus TEXT,             -- Main focus of the session (canonical: focus)
+      active_count INTEGER,        -- From "Active: X"
+      paused_count INTEGER,        -- From "Paused: X"
+      completed_count INTEGER,     -- From "Completed: X"
+      cancelled_count INTEGER,     -- From "Cancelled: X"
+      content TEXT                 -- Full markdown content
     );
 
     CREATE INDEX IF NOT EXISTS idx_sessions_date ON sessions(date);
@@ -45,16 +45,16 @@ function parseSessionFile(filePath, filename) {
   
   // 1. Extract Date and Period from filename (e.g., 2025-11-22-evening.md)
   const nameMatch = filename.match(/^(\d{4}-\d{2}-\d{2})-(.+)\.md$/);
-  let session_date = null;
-  let session_period = null;
+  let date = null;
+  let period = null;
   
   if (nameMatch) {
-    session_date = nameMatch[1];
-    session_period = nameMatch[2];
+    date = nameMatch[1];
+    period = nameMatch[2];
   } else {
     // Fallback for unusual filenames, use file creation time or content
-    session_date = new Date(stats.mtime).toISOString().split('T')[0];
-    session_period = 'unknown';
+    date = new Date(stats.mtime).toISOString().split('T')[0];
+    period = 'unknown';
   }
 
   // 2. Parse Metadata from Content
@@ -69,7 +69,7 @@ function parseSessionFile(filePath, filename) {
   // Focus (Look for "Focus Task:" or just "Focus:")
   const focusMatch = content.match(/\*\*Focus(?: Task)?\*\*:\s*(.+?)(\n|$)/) || 
                      content.match(/Focus(?: Task)?:\s*(.+?)(\n|$)/);
-  const focus_task = focusMatch ? focusMatch[1].trim() : '';
+  const focus = focusMatch ? focusMatch[1].trim() : '';
 
   // 3. Parse Statistics (Active: 11 | Paused: 0 | ...)
   // Format: "- Active: 11 | Paused: 0 | Completed: 7 | Cancelled: 1"
@@ -89,10 +89,10 @@ function parseSessionFile(filePath, filename) {
 
   return {
     id: filename,
-    session_date,
-    session_period,
+    date,
+    period,
     status,
-    focus_task,
+    focus,
     activeCount,
     pausedCount,
     completedCount,
@@ -151,10 +151,10 @@ async function main() {
 
           insertSession.run(
             session.id,
-            session.session_date,
-            session.session_period,
+            session.date,
+            session.period,
             session.status,
-            session.focus_task,
+            session.focus,
             session.activeCount,
             session.pausedCount,
             session.completedCount,
@@ -163,7 +163,7 @@ async function main() {
           );
 
           successCount++;
-          console.log(`✓ ${session.session_date} (${session.session_period}) - ${session.status}`);
+          console.log(`✓ ${session.date} (${session.period}) - ${session.status}`);
         } catch (error) {
           errorCount++;
           console.error(`✗ Failed to parse ${file}: ${error.message}`);

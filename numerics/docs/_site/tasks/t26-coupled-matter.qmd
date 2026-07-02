@@ -1,0 +1,30 @@
+---
+title: "T26 — Coupled Spin Network + Matter"
+subtitle: "Arrow-of-time emergence"
+---
+
+## Objective
+
+Couple Z₂ gauge field to a scalar field and study symmetry breaking that selects a global arrow of time.
+
+## Status
+
+🔴 **Blocked on T20 + T24**
+
+## Theory
+
+Combined action:
+
+$$
+S = S_{Z_2} + S_\phi + S_{\text{int}}
+$$
+
+where S_int = λ Σ_v φ_v τ_v
+
+## Expected Outcome
+
+⟨φ⟩ ≠ 0 spontaneously breaks remaining Z₂ symmetry, completing "orientability → arrow."
+
+## References
+
+- Paper: Section 6 (Discussion)

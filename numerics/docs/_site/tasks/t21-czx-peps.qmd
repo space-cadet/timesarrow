@@ -1,0 +1,32 @@
+---
+title: "T21 — CZX PEPS Ground State"
+subtitle: "Tensor network verification of SPT order"
+---
+
+## Objective
+
+Construct the CZX plaquette state as a PEPS and verify its properties: area-law entanglement, spectral gap, and topological entanglement entropy.
+
+## Status
+
+🔴 **Blocked on T22** (spin foam amplitudes)
+
+## Theory
+
+The CZX plaquette state (Eq. 64/65):
+
+$$
+|\psi\rangle = \prod_p CZ_p \cdot X_p |+\rangle^{\otimes N}
+$$
+
+Claim: This is a short-range entangled state with Z₂ topological order.
+
+## Verification Criteria
+
+1. Area-law entanglement: S(A) ∝ |∂A|
+2. Spectral gap: Δ > 0
+3. Topological entropy: γ = log(2)
+
+## References
+
+- Paper: Section 5.2, Eqs. (64-65)

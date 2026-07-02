@@ -138,7 +138,7 @@ export async function recordSessionWork({
     const counts = await inserts.getTaskCounts();
     await inserts.updateSessionCache({
       current_session_id: sessionId,
-      current_focus: task_id,
+      current_focus_task: task_id,
       active_tasks_count: counts.active || 0,
       paused_tasks_count: counts.paused || 0,
       completed_tasks_count: counts.completed || 0
@@ -291,7 +291,7 @@ export async function completeSessionWork(sessionId, notes = null, {
     );
     await inserts.updateSessionCache({
       current_session_id: nextActiveSession?.id || null,
-      current_focus: nextActiveSession?.focus || null,
+      current_focus_task: nextActiveSession?.focus_task || null,
       active_tasks_count: counts.active || 0,
       paused_tasks_count: counts.paused || 0,
       completed_tasks_count: counts.completed || 0

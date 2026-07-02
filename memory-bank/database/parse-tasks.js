@@ -76,8 +76,8 @@ function normalizeDate(dateCell) {
 
 function isLikelyTasksRow(cells) {
   if (!cells || cells.length < 3) return false;
-  const id = String(cells[0] || '').trim().replace(/^\*\*|\*\*$/g, '');
-  return /^(T\d+[a-z]?(?:-[a-zA-Z0-9]+)*|META-\d+[a-z]?(?:-[a-zA-Z0-9]+)*)$/i.test(id);
+  const id = String(cells[0] || '').trim();
+  return /^(T\d+[a-z]?|META-\d+[a-z]?)$/i.test(id);
 }
 
 // Parse tasks table line
@@ -92,8 +92,8 @@ function parseTaskLine(line) {
 
   if (!isLikelyTasksRow(cells)) return null;
 
-  const id = String(cells[0]).trim().replace(/^\*\*|\*\*$/g, '');
-  const title = String(cells[1] || '').trim().replace(/^\*\*|\*\*$/g, '');
+  const id = String(cells[0]).trim();
+  const title = String(cells[1] || '').trim();
   const status = normalizeStatus(cells[2]);
   const priority = normalizePriority(cells[3]);
   const started = normalizeDate(cells[4]);

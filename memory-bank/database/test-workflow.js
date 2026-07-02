@@ -271,7 +271,7 @@ async function testWorkflow() {
       { action: 'Created', path: 'memory-bank/database/lib/workflow.js', description: 'Workflow wrapper' }
     ],
     task_status: 'in_progress',
-    session_period: 'morning',
+    period: 'morning',
     output_dir: join(__dirname, 'test_output')
   });
 

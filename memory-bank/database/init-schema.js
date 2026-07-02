@@ -27,8 +27,32 @@ async function initializeDatabase() {
 
     // Read and execute schema
     const schema = readFileSync(schemaPath, 'utf-8');
-    await sqlite.exec(schema);
-    console.log('✅ Schema executed successfully');
+    const statements = schema
+      .split(';')
+      .map(s => s.trim())
+      .filter(s => s.length > 0 && !s.startsWith('--'));
+
+    let tableCount = 0;
+    let indexCount = 0;
+
+    for (const statement of statements) {
+      try {
+        await sqlite.exec(statement);
+        
+        if (statement.toUpperCase().startsWith('CREATE TABLE')) {
+          tableCount++;
+          const tableName = statement.match(/CREATE TABLE (\w+)/i)?.[1] || 'unknown';
+          console.log(`  📋 Created table: ${tableName}`);
+        } else if (statement.toUpperCase().startsWith('CREATE INDEX')) {
+          indexCount++;
+          const indexName = statement.match(/CREATE INDEX (\w+)/i)?.[1] || 'unknown';
+          console.log(`  🔑 Created index: ${indexName}`);
+        }
+      } catch (err) {
+        console.error(`❌ Error executing statement:\n${statement}\n${err.message}`);
+        throw err;
+      }
+    }
 
     // Verify schema
     console.log('\n✅ Schema verification:\n');
