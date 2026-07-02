@@ -1,0 +1,14 @@
+[checkpoint] Running 12 remaining betas...
+[checkpoint] β=1.2000 done — 1/12 complete
+[checkpoint] β=0.9000 done — 2/12 complete
+[checkpoint] β=1.5000 done — 3/12 complete
+[checkpoint] β=0.8500 done — 4/12 complete
+[checkpoint] β=1.1000 done — 5/12 complete
+[checkpoint] β=0.7000 done — 6/12 complete
+[checkpoint] β=0.5000 done — 7/12 complete
+[checkpoint] β=0.4000 done — 8/12 complete
+[checkpoint] β=1.0000 done — 9/12 complete
+[checkpoint] β=0.8000 done — 10/12 complete
+[checkpoint] β=0.7600 done — 11/12 complete
+[checkpoint] β=0.6000 done — 12/12 complete
+[checkpoint] Final checkpoint saved to /Users/sage/.openclaw/workspace/code/timesarrow/numerics/data/signed-volume/sv-L12.json

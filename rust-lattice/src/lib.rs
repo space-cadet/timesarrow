@@ -1191,6 +1191,120 @@ pub fn simulate_beta_with_polyakov_3d(
     (mean_p, error, chi, cv, binder_p, mean_poly, error_poly, chi_poly, binder_poly, thermal_time + measure_time)
 }
 
+/// Run a simulation at a single β value with Wilson loops and signed volume measurements.
+/// Returns (mean_p, error, chi, cv, binder, wall_time, wilson_data, signed_volume_data).
+/// signed_volume_data is (mean_q_abs, error_q_abs, mean_q_sq, normalized, binder_q).
+pub fn simulate_beta_with_wilson_and_signed_volume(
+    l: usize,
+    dimension: usize,
+    beta: f64,
+    thermal_sweeps: usize,
+    measure_sweeps: usize,
+    measure_every: usize,
+    seed: u64,
+    loop_sizes: &[(usize, usize)],
+) -> (f64, f64, f64, f64, f64, u64, Vec<(usize, usize, f64, f64)>, (f64, f64, f64, f64, f64)) {
+    assert!(dimension == 2 || dimension == 3,
+        "simulate_beta_with_wilson_and_signed_volume only supports 2D and 3D");
+
+    let mut field = Z2GaugeField::new_dim(l, dimension, seed);
+
+    let thermal_start = std::time::Instant::now();
+    field.thermalize(beta, thermal_sweeps);
+    let thermal_time = thermal_start.elapsed().as_millis() as u64;
+
+    let measure_start = std::time::Instant::now();
+
+    // Manual measurement loop to capture both observables
+    let mut measurements = Vec::new();
+    let mut measurements_sq = Vec::new();
+    let mut measurements_quad = Vec::new();
+    let mut q_abs = Vec::new();
+    let mut q_sq = Vec::new();
+    let mut q_quad = Vec::new();
+    let n_loop_sizes = loop_sizes.len();
+    let mut wilson_sums = vec![0.0f64; n_loop_sizes];
+    let mut wilson_sums_sq = vec![0.0f64; n_loop_sizes];
+    let mut n_measurements = 0usize;
+
+    for sweep in 0..measure_sweeps {
+        field.sweep(beta);
+        if sweep % measure_every == 0 {
+            let (mean_plaq, _, _) = field.plaquette_stats();
+            measurements.push(mean_plaq);
+            measurements_sq.push(mean_plaq * mean_plaq);
+            measurements_quad.push(mean_plaq * mean_plaq * mean_plaq * mean_plaq);
+
+            // Measure Wilson loops
+            for (idx, &(r, c)) in loop_sizes.iter().enumerate() {
+                let w = if dimension == 2 {
+                    field.average_wilson_loop_2d(r, c)
+                } else {
+                    field.average_wilson_loop_xy_3d(r, c)
+                };
+                wilson_sums[idx] += w;
+                wilson_sums_sq[idx] += w * w;
+            }
+
+            // Measure signed volume/area
+            let q = if dimension == 3 {
+                field.signed_volume_3d()
+            } else {
+                field.signed_area_2d()
+            };
+            let q_abs_val = (q as f64).abs();
+            q_abs.push(q_abs_val);
+            q_sq.push(q as f64 * q as f64);
+            q_quad.push(q as f64 * q as f64 * q as f64 * q as f64);
+
+            n_measurements += 1;
+        }
+    }
+
+    let n = n_measurements as f64;
+    let vol = if dimension == 2 {
+        (l * l) as f64
+    } else {
+        (l * l * l) as f64
+    };
+
+    // Plaquette stats
+    let mean_p = measurements.iter().sum::<f64>() / n;
+    let mean_p2 = measurements_sq.iter().sum::<f64>() / n;
+    let mean_p4 = measurements_quad.iter().sum::<f64>() / n;
+    let p_variance = measurements.iter().map(|x| (x - mean_p).powi(2)).sum::<f64>() / n;
+    let error = (p_variance / n).sqrt();
+    let chi = vol * beta * (mean_p2 - mean_p * mean_p);
+    let cv = vol * beta * beta * (mean_p2 - mean_p * mean_p);
+    let binder = if mean_p2 > 0.0 { 1.0 - mean_p4 / (3.0 * mean_p2 * mean_p2) } else { 0.0 };
+
+    // Wilson loop stats
+    let wilson_data: Vec<(usize, usize, f64, f64)> = loop_sizes.iter().enumerate().map(|(idx, &(r, c))| {
+        let mean_w = wilson_sums[idx] / n;
+        let mean_w2 = wilson_sums_sq[idx] / n;
+        let var_w = mean_w2 - mean_w * mean_w;
+        (r, c, mean_w, var_w)
+    }).collect();
+
+    // Signed volume stats
+    let mean_q_abs = q_abs.iter().sum::<f64>() / n;
+    let mean_q_sq = q_sq.iter().sum::<f64>() / n;
+    let mean_q_quad = q_quad.iter().sum::<f64>() / n;
+    let var_q_abs = q_abs.iter().map(|x| (x - mean_q_abs).powi(2)).sum::<f64>() / n;
+    let error_q_abs = (var_q_abs / n).sqrt();
+    let normalized = mean_q_abs / vol;
+    let binder_q = if mean_q_sq > 0.0 {
+        1.0 - mean_q_quad / (3.0 * mean_q_sq * mean_q_sq)
+    } else {
+        0.0
+    };
+
+    let measure_time = measure_start.elapsed().as_millis() as u64;
+
+    (mean_p, error, chi, cv, binder, thermal_time + measure_time, wilson_data,
+     (mean_q_abs, error_q_abs, mean_q_sq, normalized, binder_q))
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

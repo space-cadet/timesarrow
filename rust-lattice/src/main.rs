@@ -21,6 +21,12 @@ struct BetaResult {
     error_polyakov: Option<f64>,
     polyakov_susceptibility: Option<f64>,
     polyakov_binder: Option<f64>,
+    // Signed volume fields (optional, only with --signed-volume)
+    mean_signed_volume: Option<f64>,
+    error_signed_volume: Option<f64>,
+    mean_signed_volume_sq: Option<f64>,
+    normalized_signed_volume: Option<f64>,
+    signed_volume_binder: Option<f64>,
 }
 
 /// Read existing checkpoint and return completed beta values + saved results.
@@ -78,6 +84,14 @@ fn result_to_json(res: &BetaResult) -> Value {
         obj["polyakovBinder"] = json!(res.polyakov_binder.unwrap());
     }
 
+    if let Some(msv) = res.mean_signed_volume {
+        obj["meanSignedVolume"] = json!(msv);
+        obj["errorSignedVolume"] = json!(res.error_signed_volume.unwrap());
+        obj["meanSignedVolumeSq"] = json!(res.mean_signed_volume_sq.unwrap());
+        obj["normalizedSignedVolume"] = json!(res.normalized_signed_volume.unwrap());
+        obj["signedVolumeBinder"] = json!(res.signed_volume_binder.unwrap());
+    }
+
     let wilson_json: Vec<Value> = res.wilson_loops.iter().map(|(r, c, mean_w, var_w)| {
         json!({"r": r, "c": c, "meanW": mean_w, "varW": var_w})
     }).collect();
@@ -92,6 +106,7 @@ fn main() {
     // Parse flags
     let mut base_seed: u64 = 42;
     let mut use_polyakov = false;
+    let mut use_signed_volume = false;
     let mut raw_output = false;
     let mut checkpoint_path: Option<String> = None;
     let mut i = 1;
@@ -102,6 +117,9 @@ fn main() {
             args.remove(i);     // remove value
         } else if args[i] == "--polyakov" {
             use_polyakov = true;
+            args.remove(i);
+        } else if args[i] == "--signed-volume" {
+            use_signed_volume = true;
             args.remove(i);
         } else if args[i] == "--raw-output" {
             raw_output = true;
@@ -116,8 +134,9 @@ fn main() {
     }
 
     if args.len() < 8 {
-        eprintln!("Usage: {} [--polyakov] [--raw-output] [--checkpoint <path>] <L> <dimension> <measure_sweeps> <thermal_sweeps> <workers> <loop_sizes> <beta_values...> [--seed <value>]", args[0]);
+        eprintln!("Usage: {} [--polyakov] [--signed-volume] [--raw-output] [--checkpoint <path>] <L> <dimension> <measure_sweeps> <thermal_sweeps> <workers> <loop_sizes> <beta_values...> [--seed <value>]", args[0]);
         eprintln!("  --polyakov: measure Polyakov loop (3D only)");
+        eprintln!("  --signed-volume: measure signed volume/area (3D/2D)");
         eprintln!("  --raw-output: output raw time series (plaquette values) for autocorrelation analysis");
         eprintln!("  --checkpoint <path>: write incremental checkpoint after each beta completes");
         eprintln!("  L: lattice size (e.g., 16)");
@@ -156,10 +175,14 @@ fn main() {
         .map(|s| s.parse().expect("beta values must be floats"))
         .collect();
 
-    // Validate --polyakov flag
+    // Validate flags
     if use_polyakov && dimension != 3 {
         eprintln!("Warning: --polyakov is only supported for 3D lattices. Ignoring flag.");
         use_polyakov = false;
+    }
+    if use_signed_volume && dimension != 3 && dimension != 2 {
+        eprintln!("Warning: --signed-volume is only supported for 2D and 3D lattices. Ignoring flag.");
+        use_signed_volume = false;
     }
 
     // Build parameters JSON for checkpoint
@@ -172,6 +195,7 @@ fn main() {
         "binSize": 10,
         "workers": workers,
         "polyakov": use_polyakov,
+        "signedVolume": use_signed_volume,
         "loopSizes": loop_sizes.iter().map(|(r, c)| json!({"r": r, "c": c})).collect::<Vec<_>>(),
     });
 
@@ -210,6 +234,7 @@ fn main() {
     println!("    \"binSize\": 10,");
     println!("    \"workers\": {},", workers);
     println!("    \"polyakov\": {},", use_polyakov);
+    println!("    \"signedVolume\": {},", use_signed_volume);
     println!("    \"loopSizes\": [",);
     for (i, (r, c)) in loop_sizes.iter().enumerate() {
         let comma = if i < loop_sizes.len() - 1 { "," } else { "" };
@@ -290,6 +315,36 @@ fn main() {
                     error_polyakov: Some(error_poly),
                     polyakov_susceptibility: Some(chi_poly),
                     polyakov_binder: Some(binder_poly),
+                    mean_signed_volume: None,
+                    error_signed_volume: None,
+                    mean_signed_volume_sq: None,
+                    normalized_signed_volume: None,
+                    signed_volume_binder: None,
+                }
+            } else if use_signed_volume {
+                let (mean_p, error, chi, cv, binder, wall_time, wilson_data, sv_data) =
+                    simulate_beta_with_wilson_and_signed_volume(
+                        l, dimension, *beta, thermal_sweeps, measure_sweeps, 10, seed, &loop_sizes
+                    );
+                BetaResult {
+                    beta: *beta,
+                    mean_plaquette: mean_p,
+                    error_plaquette: error,
+                    susceptibility: chi,
+                    specific_heat: cv,
+                    binder_cumulant: binder,
+                    num_measurements: measure_sweeps / 10,
+                    wall_time_ms: wall_time,
+                    wilson_loops: wilson_data,
+                    mean_polyakov: None,
+                    error_polyakov: None,
+                    polyakov_susceptibility: None,
+                    polyakov_binder: None,
+                    mean_signed_volume: Some(sv_data.0),
+                    error_signed_volume: Some(sv_data.1),
+                    mean_signed_volume_sq: Some(sv_data.2),
+                    normalized_signed_volume: Some(sv_data.3),
+                    signed_volume_binder: Some(sv_data.4),
                 }
             } else {
                 let (mean_p, error, chi, cv, binder, wall_time, wilson_data) = simulate_beta_with_wilson_loops(
@@ -309,6 +364,11 @@ fn main() {
                     error_polyakov: None,
                     polyakov_susceptibility: None,
                     polyakov_binder: None,
+                    mean_signed_volume: None,
+                    error_signed_volume: None,
+                    mean_signed_volume_sq: None,
+                    normalized_signed_volume: None,
+                    signed_volume_binder: None,
                 }
             };
             tx.send(res).unwrap();

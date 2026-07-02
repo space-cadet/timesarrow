@@ -2,7 +2,7 @@
   "schemaVersion": "1.0.0",
   "project": "timesarrow",
   "description": "Registry of all numerical simulation runs for TimesArrow project",
-  "lastUpdated": "2026-06-28T02:00:39.721605+00:00",
+  "lastUpdated": "2026-07-02T20:56:00.000000+05:30",
   "runs": [
     {
       "runId": "t20-p1-L8-20250624",
@@ -13291,6 +13291,93 @@
         "figures/t22a-fk-vertex-vs-spin.svg"
       ],
       "page": "tasks/t22-spin-foam.qmd"
+    },
+    {
+      "runId": "t31-p2-L8-3D-20250702",
+      "task": "T31",
+      "phase": "phase2",
+      "status": "complete",
+      "timestamp": "2026-07-02T20:32:43+05:30",
+      "description": "3D signed volume, L=8, 5000 thermal + 20000 measure sweeps",
+      "parameters": {
+        "latticeSize": 8,
+        "dimension": 3,
+        "betaValues": [0.4, 0.5, 0.6, 0.7, 0.76, 0.8, 0.85, 0.9, 1.0, 1.1, 1.2, 1.5],
+        "thermalizationSweeps": 5000,
+        "measurementSweeps": 20000,
+        "measureEvery": 10,
+        "workers": 4,
+        "signedVolume": true
+      },
+      "results": {
+        "signedVolumeRange": [0.0265, 0.0899],
+        "plaquetteRange": [0.395, 1.0],
+        "keyFinding": "|Q|/N increases from 0.034 to 0.090 in deconfined phase",
+        "gaugeIssue": "Signed volume gauge-dependent, needs fixing for ordered phase"
+      },
+      "outputFiles": [
+        "data/signed-volume/sv-L8-20260702-203243.json"
+      ],
+      "page": "tasks/t31-signed-volume.qmd",
+      "dataUrl": "data/signed-volume/sv-L8-20260702-203243.json"
+    },
+    {
+      "runId": "t31-p2-L10-3D-20250702",
+      "task": "T31",
+      "phase": "phase2",
+      "status": "complete",
+      "timestamp": "2026-07-02T20:33:25+05:30",
+      "description": "3D signed volume, L=10, 5000 thermal + 20000 measure sweeps",
+      "parameters": {
+        "latticeSize": 10,
+        "dimension": 3,
+        "betaValues": [0.4, 0.5, 0.6, 0.7, 0.76, 0.8, 0.85, 0.9, 1.0, 1.1, 1.2, 1.5],
+        "thermalizationSweeps": 5000,
+        "measurementSweeps": 20000,
+        "measureEvery": 10,
+        "workers": 4,
+        "signedVolume": true
+      },
+      "results": {
+        "signedVolumeRange": [0.0075, 0.0472],
+        "plaquetteRange": [0.394, 1.0],
+        "keyFinding": "Anomalous L=10 result at β=1.5 (gauge sector issue)",
+        "gaugeIssue": "Signed volume gauge-dependent, needs fixing for ordered phase"
+      },
+      "outputFiles": [
+        "data/signed-volume/sv-L10-20260702-203325.json"
+      ],
+      "page": "tasks/t31-signed-volume.qmd",
+      "dataUrl": "data/signed-volume/sv-L10-20260702-203325.json"
+    },
+    {
+      "runId": "t31-p2-L12-3D-20250702",
+      "task": "T31",
+      "phase": "phase2",
+      "status": "complete",
+      "timestamp": "2026-07-02T20:32:43+05:30",
+      "description": "3D signed volume, L=12, 5000 thermal + 20000 measure sweeps",
+      "parameters": {
+        "latticeSize": 12,
+        "dimension": 3,
+        "betaValues": [0.4, 0.5, 0.6, 0.7, 0.76, 0.8, 0.85, 0.9, 1.0, 1.1, 1.2, 1.5],
+        "thermalizationSweeps": 5000,
+        "measurementSweeps": 20000,
+        "measureEvery": 10,
+        "workers": 4,
+        "signedVolume": true
+      },
+      "results": {
+        "signedVolumeRange": [0.0112, 0.0628],
+        "plaquetteRange": [0.395, 1.0],
+        "keyFinding": "|Q|/N rises to 0.063 at β=1.5, non-monotonic approach",
+        "gaugeIssue": "Signed volume gauge-dependent, needs fixing for ordered phase"
+      },
+      "outputFiles": [
+        "data/signed-volume/sv-L12-20260702-203243.json"
+      ],
+      "page": "tasks/t31-signed-volume.qmd",
+      "dataUrl": "data/signed-volume/sv-L12-20260702-203243.json"
     }
   ],
   "tasks": {
@@ -13339,14 +13426,25 @@
         }
       }
     },
-    "T22": {
-      "name": "2D Spin Foam Amplitudes",
-      "status": "ready",
+    "T31": {
+      "name": "Signed Volume Observable for Z₂ Gauge Theory",
+      "status": "in-progress",
       "phases": {
         "phase1": {
-          "status": "pending",
-          "description": "Single vertex (L=1) amplitude computation",
-          "runs": []
+          "status": "complete",
+          "description": "2D square lattice validation (no deconfined phase)",
+          "runs": [
+            "t31-p1-L8-2D-20250702"
+          ]
+        },
+        "phase2": {
+          "status": "complete",
+          "description": "3D cubic lattice L=8,10,12 signed volume measurements",
+          "runs": [
+            "t31-p2-L8-3D-20250702",
+            "t31-p2-L10-3D-20250702",
+            "t31-p2-L12-3D-20250702"
+          ]
         }
       }
     }
