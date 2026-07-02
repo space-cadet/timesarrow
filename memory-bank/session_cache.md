@@ -1,43 +1,131 @@
 # Session Cache
-*Created: 2026-06-27 10:45:51 IST*
-*Last Updated: 2026-07-02 21:40 IST*
 
-## Current Session
-**Started**: 2026-07-02 21:34 IST
-**Focus Task**: T31 — Signed Volume Observable (gauge-dependence fix)
+*Created: 2026-07-02 16:40:46 IST*
+*Last Updated: 2026-07-02 16:40:46 IST*
+
+**Started**: 2026-07-02 15:59:17 IST
+**Focus Task**: T31: Signed Volume Observable
 **Session File**: `sessions/2026-07-02-evening.md`
-**Status**: 🔄 Active
+**Status**: 🔄 Active: 3, Paused: 0, Completed: 16
 
 ## Overview
-- Active: 1 | Paused: 0 | Completed: 11 (T20a-d, T21, T21a, T22a, T25, T27, T28a, T30)
-- Last Session: 2026-07-02-afternoon (T20d FSS publication)
+
+- Active: 3 | Paused: 0 | Completed: 16
+- Last Session: 2026-07-02
 - Current Period: evening
 
-## Task Registry
-- T20: Z₂ LGT — ✅ ALL PHASES COMPLETE (L=16, L=24 fine scans done, dashboard updated, manuscript updated)
-- T20a: 2D Phase 1 — ✅
-- T20b: 2D FSS — ✅
-- T20c: 3D Phase 3 — ✅
-- T20d: Critical Exponents — ✅ (FSS analysis published to T20 page; dashboard teaser added)
-- T22: Spin Foam Amplitudes — ✅ (T22a corrected, T22b pending)
-- T22a: FK Vertex — ✅ (corrected, ratio=0.45, ts-quantum-spin-foam package created)
-- T22b: Full Systematic — ⬜ (pending)
-- T14: SU(2) Haar Core (ts-quantum) — ✅ (complete for T22a needs)
-- T15: Spin Foam Extension (ts-quantum-spin-foam) — ✅ (repo created, tests passing)
-- T25: Volume Operator — ✅
-- T28a: Dashboard v2 — ✅ (deployed, integrated with all pages)
-- T29: Extensible Schema — ⬜ (pending)
-- T30: Unified Plotting — ✅ (complete)
-- T31: Signed Volume — 🔄 (implementation done, gauge-dependence issue identified)
+## Active Tasks
 
-## Open Items
-- T31: Fix gauge-dependence in signed volume (iterative gauge-fixing)
-- T22b: Full systematic spin foam study (pending user prioritization)
-- T20d-ext: L=48/64 fine scans (future work)
-- T29: Extensible schema design (pending)
+### T23: Entanglement Structure
+**Status:** 🔄 **IN PROGRESS**
+**Started:** 2026-06-24
+**Context**: [Details](tasks/T23.md)
+**Progress**:
+[Details](tasks/T23.md)
 
-## Notes
-- ts-numerics module deferred until second consumer
-- Dashboard integration complete across all pages
-- All numerics pages have timestamps and dashboard links
-- GitHub Pages deployed: https://space-cadet.github.io/projects/timesarrow/numerics/
+### T24: Domain Wall Dynamics
+**Status:** 🔄 **IN PROGRESS**
+**Started:** 2026-06-24
+**Context**: [Details](tasks/T24.md)
+**Progress**:
+[Details](tasks/T24.md)
+
+### T31: Signed Volume Observable
+**Status:** 🔄 **IN PROGRESS**
+**Started:** 2026-07-02
+**Context**: [Details](tasks/T31.md)
+**Progress**:
+[Details](tasks/T31.md)
+
+## Completed Tasks
+
+### T14: SU(2) Haar + Representation (ts-quantum core)
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-06-28
+**Completed:** 2026-06-28
+
+### T15: Spin Foam Package (ts-quantum-spin-foam)
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-06-28
+**Completed:** 2026-06-28
+
+### T20: Z₂ Lattice Gauge Theory Monte Carlo
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-06-24
+**Completed:** 2026-06-24
+
+### T20a: Phase 1 — 2D Square Lattice
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-06-24
+**Completed:** 2026-06-24
+
+### T20b: Phase 2 — Multi-Lattice FSS
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-06-25
+**Completed:** 2026-06-25
+
+### T20c: Phase 3 — 3D Cubic Lattice
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-06-25
+**Completed:** 2026-06-25
+
+### T20d: Critical Exponent Extraction from 3D Z₂ LGT
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-06-26
+**Completed:** 2026-06-26
+
+### T21: Worker Threads + Checkpointing
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-06-25
+**Completed:** 2026-06-25
+
+### T21a: Fast Monte Carlo Kernel
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-06-25
+**Completed:** 2026-06-25
+
+### T22: Spin Foam Amplitudes
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-06-25
+**Completed:** 2026-06-25
+
+### T22a: Path 1 — Quick Estimate (FK Vertex j=½ vs j=1)
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-06-28
+**Completed:** 2026-06-28
+
+### T25: Volume Operator Eigenvalues
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-06-24
+**Completed:** 2026-06-24
+
+### T27: Rust Z₂ LGT Framework
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-06-25
+**Completed:** 2026-06-25
+
+### T28: Simulation Dashboard (v1)
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-06-26
+**Completed:** 2026-06-26
+
+### T28a: Dashboard v2 — Functional JS
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-06-27
+**Completed:** 2026-06-27
+
+### T30: Unified Plotting Module
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-06-27
+**Completed:** 2026-06-27
+
+## Next Session Focus
+
+1. T23: Entanglement Structure
+1. T24: Domain Wall Dynamics
+1. T31: Signed Volume Observable
+
+## System Status
+
+- **Memory Bank**: 🔄 Active
+- **OpenClaw**: ✅ Operational
