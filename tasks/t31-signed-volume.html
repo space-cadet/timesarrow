@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-06-25">
+<meta name="dcterms.date" content="2026-07-02">
 
-<title>T25 — Volume Operator Extension</title>
+<title>T31 — Signed Volume Observable for Z₂ Gauge Theory</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,18 +59,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="t25-volume-operator_files/libs/clipboard/clipboard.min.js"></script>
-<script src="t25-volume-operator_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="t25-volume-operator_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="t25-volume-operator_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="t25-volume-operator_files/libs/quarto-html/popper.min.js"></script>
-<script src="t25-volume-operator_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="t25-volume-operator_files/libs/quarto-html/anchor.min.js"></script>
-<link href="t25-volume-operator_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="t25-volume-operator_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="t25-volume-operator_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="t25-volume-operator_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="t25-volume-operator_files/libs/bootstrap/bootstrap-d6a003b94517c951b2d65075d42fb01b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="t31-signed-volume_files/libs/clipboard/clipboard.min.js"></script>
+<script src="t31-signed-volume_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="t31-signed-volume_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="t31-signed-volume_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="t31-signed-volume_files/libs/quarto-html/popper.min.js"></script>
+<script src="t31-signed-volume_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="t31-signed-volume_files/libs/quarto-html/anchor.min.js"></script>
+<link href="t31-signed-volume_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="t31-signed-volume_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="t31-signed-volume_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="t31-signed-volume_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="t31-signed-volume_files/libs/bootstrap/bootstrap-d6a003b94517c951b2d65075d42fb01b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -104,16 +104,47 @@ window.Quarto = {
 
 </head>
 
-<body class="fullcontent quarto-light">
+<body class="quarto-light">
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#objective" id="toc-objective" class="nav-link active" data-scroll-target="#objective">Objective</a></li>
+  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#theory" id="toc-theory" class="nav-link" data-scroll-target="#theory">Theory</a>
+  <ul class="collapse">
+  <li><a href="#the-signed-volume-operator" id="toc-the-signed-volume-operator" class="nav-link" data-scroll-target="#the-signed-volume-operator">The Signed Volume Operator</a></li>
+  <li><a href="#gauge-fixing" id="toc-gauge-fixing" class="nav-link" data-scroll-target="#gauge-fixing">Gauge Fixing</a></li>
+  </ul></li>
+  <li><a href="#implementation" id="toc-implementation" class="nav-link" data-scroll-target="#implementation">Implementation</a>
+  <ul class="collapse">
+  <li><a href="#rust-functions-rust-lattice" id="toc-rust-functions-rust-lattice" class="nav-link" data-scroll-target="#rust-functions-rust-lattice">Rust Functions (rust-lattice)</a></li>
+  </ul></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
+  <ul class="collapse">
+  <li><a href="#d-signed-area-l8-validation" id="toc-d-signed-area-l8-validation" class="nav-link" data-scroll-target="#d-signed-area-l8-validation">2D Signed Area (L=8) — Validation</a></li>
+  <li><a href="#d-signed-volume-production-runs" id="toc-d-signed-volume-production-runs" class="nav-link" data-scroll-target="#d-signed-volume-production-runs">3D Signed Volume — Production Runs</a></li>
+  </ul></li>
+  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a>
+  <ul class="collapse">
+  <li><a href="#key-observations" id="toc-key-observations" class="nav-link" data-scroll-target="#key-observations">Key Observations</a></li>
+  <li><a href="#the-gauge-problem" id="toc-the-gauge-problem" class="nav-link" data-scroll-target="#the-gauge-problem">The Gauge Problem</a></li>
+  </ul></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next Steps</a></li>
+  <li><a href="#data-files" id="toc-data-files" class="nav-link" data-scroll-target="#data-files">Data Files</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+</div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">T25 — Volume Operator Extension</h1>
-<p class="subtitle lead">Higher-valence intertwiner spectrum and Z₂ structure</p>
+<h1 class="title">T31 — Signed Volume Observable for Z₂ Gauge Theory</h1>
+<p class="subtitle lead">Arrow of time from oriented geometry</p>
 </div>
 
 
@@ -124,14 +155,14 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 25, 2026</p>
+      <p class="date">July 2, 2026</p>
     </div>
   </div>
   
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">June 29, 2026</p>
+      <p class="date-modified">Invalid Date</p>
     </div>
   </div>
     
@@ -142,7 +173,7 @@ window.Quarto = {
 </header>
 
 
-<p><em>Last updated: 2026-06-29 10:45 IST</em></p>
+<p><em>Last updated: 2026-07-02 20:56 IST</em></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -158,147 +189,495 @@ window.Quarto = {
 </div>
 <section id="objective" class="level2">
 <h2 class="anchored" data-anchor-id="objective">Objective</h2>
-<p>Extend the volume operator <span class="math inline">\(\hat{Q}\)</span> diagonalization from 4-valent to 5-valent and 6-valent intertwiners. Verify whether the Z₂ sign-flip structure (±q₀ degeneracy) persists.</p>
+<p>Implement and measure a <strong>signed volume observable</strong> for the Z₂ lattice gauge theory simulations. The key insight from the paper is that the signed volume operator <span class="math inline">\(\hat{Q}_v\)</span> (not the positive-definite <span class="math inline">\(\hat{V}_v = \sqrt{|\hat{Q}_v|}\)</span>) should be used for composite systems. The emergence of a global time orientation is then tied to the emergence of a macroscopic geometry with non-vanishing, extensive signed volume.</p>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>🟢 <strong>Complete</strong> — 4-valent, 5-valent, and 6-valent implemented with Z₂ structure verified.</p>
-</section>
-<section id="theory" class="level2">
-<h2 class="anchored" data-anchor-id="theory">Theory</h2>
-<p>The volume operator for an n-valent vertex is:</p>
-<p><span class="math display">\[
-\hat{Q} = \sum_{i&lt;j&lt;k} \epsilon_{ijk} \, \hat{J}_i \cdot (\hat{J}_j \times \hat{J}_k)
-\]</span></p>
-<p>For j=1/2: <span class="math inline">\(\hat{J}_i = \frac{1}{2}\sigma_i\)</span> (Pauli matrices)</p>
-<section id="valent-j12-complete" class="level3">
-<h3 class="anchored" data-anchor-id="valent-j12-complete">4-valent j=1/2 (Complete)</h3>
-<p>The intertwiner space is 2-dimensional with basis states <span class="math inline">\(|Φ_1⟩, |Φ_2⟩\)</span>. The volume operator matrix in this basis is:</p>
-<p><span class="math display">\[
-\hat{Q} = \frac{8\sqrt{3}}{9} \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}
-\]</span></p>
-<p>Eigenvalues: <span class="math inline">\(\pm \frac{8\sqrt{3}}{9} \approx \pm 1.5396\)</span></p>
-<p>This shows the <strong>Z₂ structure</strong>: eigenvalues come in ± pairs, reflecting the time-orientation flip symmetry.</p>
-</section>
-<section id="valent-j12-trivially-excluded" class="level3">
-<h3 class="anchored" data-anchor-id="valent-j12-trivially-excluded">5-valent j=1/2 (Trivially excluded)</h3>
-<p>An <strong>odd number of half-integer spins cannot couple to total J=0</strong>. Therefore:</p>
-<ul>
-<li>Intertwiner dimension: <strong>0</strong></li>
-<li>No volume operator spectrum exists</li>
-<li>This is a <strong>selection rule</strong>, not a bug</li>
-</ul>
-</section>
-<section id="valent-j12-complete-with-geometric-embedding" class="level3">
-<h3 class="anchored" data-anchor-id="valent-j12-complete-with-geometric-embedding">6-valent j=1/2 (Complete with geometric embedding)</h3>
-<p>The singlet subspace has dimension 5. For a <strong>generic geometric embedding</strong> (edges forming a triangular prism in 3D), the volume operator is a 5×5 matrix with eigenvalues:</p>
-<p><span class="math display">\[
-\hat{Q} \text{ eigenvalues: } \pm 2.2913, \pm 0.8660, 0
-\]</span></p>
-<p>This shows the <strong>Z₂ structure persists</strong>: eigenvalues come in ± pairs, with one zero mode. The zero eigenvalue corresponds to a state with no “oriented volume” under the chosen geometric embedding.</p>
-<p><strong>Key insight:</strong> With trivial embedding (all <span class="math inline">\(\epsilon_{ijk} = +1\)</span>), the volume operator vanishes identically on the 6-valent singlet subspace due to symmetry. Non-zero eigenvalues require a <strong>non-coplanar geometric embedding</strong> where edge triples have mixed signs.</p>
-</section>
-</section>
-<section id="results" class="level2">
-<h2 class="anchored" data-anchor-id="results">Results</h2>
-<section id="spectrum-comparison" class="level3">
-<h3 class="anchored" data-anchor-id="spectrum-comparison">Spectrum Comparison</h3>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th>Valence</th>
-<th>j</th>
-<th>Dimension</th>
-<th>Eigenvalues</th>
-<th>Z₂ Structure</th>
+<th>Phase</th>
+<th>Description</th>
+<th>Status</th>
+<th>Date</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>4</td>
-<td>1/2</td>
-<td>2</td>
-<td>±1.5396</td>
-<td>✅ Confirmed</td>
+<td>Phase 1</td>
+<td>2D square lattice validation</td>
+<td>✅ Complete</td>
+<td>2026-07-02</td>
 </tr>
 <tr class="even">
-<td>5</td>
-<td>1/2</td>
-<td>0</td>
-<td>—</td>
-<td>N/A (no singlet)</td>
+<td>Phase 2</td>
+<td>3D cubic lattice (L=8,10,12)</td>
+<td>✅ Complete</td>
+<td>2026-07-02</td>
 </tr>
 <tr class="odd">
-<td>6</td>
-<td>1/2</td>
-<td>5</td>
-<td>±2.2913, ±0.8660, 0</td>
-<td>✅ Confirmed</td>
+<td>Phase 3</td>
+<td>Gauge-fixing for ordered phase</td>
+<td>⏳ Pending</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>Phase 4</td>
+<td>Finite-size scaling &amp; exponents</td>
+<td>⏳ Pending</td>
+<td>—</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Data file</strong>: <a href="https://github.com/space-cadet/timesarrow/blob/main/numerics/output/t25-volume-operator-spectrum.json"><code>t25-volume-operator-spectrum.json</code></a></p>
 </section>
-<section id="z₂-diagnostic" class="level3">
-<h3 class="anchored" data-anchor-id="z₂-diagnostic">Z₂ Diagnostic</h3>
-<p>The <code>checkZ2Structure()</code> function validates that eigenvalues come in ±q pairs (with optional zeros). This is the key numerical diagnostic for the paper’s central claim about time-orientation symmetry.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode typescript code-with-copy"><code class="sourceCode typescript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Examples:</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">checkZ2Structure</span>([<span class="op">-</span><span class="fl">1.5</span><span class="op">,</span> <span class="fl">1.5</span>])        <span class="co">// ✅ true  (± pair)</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">checkZ2Structure</span>([<span class="op">-</span><span class="dv">2</span><span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">2</span>])     <span class="co">// ✅ true  (two ± pairs)</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">checkZ2Structure</span>([<span class="dv">0</span><span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="dv">1</span>])         <span class="co">// ✅ true  (zero + ± pair)</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">checkZ2Structure</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span>])          <span class="co">// ❌ false (no symmetry)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="theory" class="level2">
+<h2 class="anchored" data-anchor-id="theory">Theory</h2>
+<section id="the-signed-volume-operator" class="level3">
+<h3 class="anchored" data-anchor-id="the-signed-volume-operator">The Signed Volume Operator</h3>
+<p>In standard LQG, the volume operator is always positive: <span class="math inline">\(\hat{V} = \sqrt{|\hat{Q}|}\)</span>. This discards orientation information. The paper’s framework uses the signed operator <span class="math inline">\(\hat{Q}\)</span> to distinguish the two time-orientation sectors.</p>
+<p>For a composite system:</p>
+<p><span class="math display">\[\hat{Q}_{\text{total}} = \sum_{v \in S} \hat{Q}_v\]</span></p>
+<ul>
+<li><strong>Confined phase</strong> (random Z₂ orientations): Signs cancel. <span class="math inline">\(\langle |\hat{Q}_{\text{total}}| \rangle \sim \sqrt{N}\)</span> (random walk).</li>
+<li><strong>Deconfined phase</strong> (ordered Z₂): Signs align. <span class="math inline">\(\langle |\hat{Q}_{\text{total}}| \rangle \sim N\)</span> (extensive).</li>
+</ul>
+<p>This means the confinement-deconfinement transition is simultaneously: 1. The emergence of a global arrow of time 2. The emergence of a macroscopic geometry with non-vanishing, extensive signed volume</p>
+</section>
+<section id="gauge-fixing" class="level3">
+<h3 class="anchored" data-anchor-id="gauge-fixing">Gauge Fixing</h3>
+<p>The signed volume at individual vertices is gauge-dependent. To measure it, we fix a gauge by choosing a <strong>maximal spanning tree</strong> from the origin.</p>
+<p>For a vertex at <span class="math inline">\((x,y,z)\)</span>, the sign is: <span class="math display">\[\text{sign}(x,y,z) = \prod_{i=0}^{x-1} \sigma_{(i,0,0),x} \times \prod_{j=0}^{y-1} \sigma_{(x,j,0),y} \times \prod_{k=0}^{z-1} \sigma_{(x,y,k),z}\]</span></p>
 </section>
 </section>
-<section id="code" class="level2">
-<h2 class="anchored" data-anchor-id="code">Code</h2>
-<section id="ts-quantum-library" class="level3">
-<h3 class="anchored" data-anchor-id="ts-quantum-library">ts-quantum Library</h3>
-<p>The general-purpose intertwiner and volume operator code lives in <code>ts-quantum</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode typescript code-with-copy"><code class="sourceCode typescript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  constructNValentBasis<span class="op">,</span> </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  computeVolumeSpectrum<span class="op">,</span> </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  checkZ2Structure<span class="op">,</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  buildGeneric6ValentEmbedding</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>} <span class="im">from</span> <span class="st">'ts-quantum'</span><span class="op">;</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">// 4-valent j=1/2</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> space4 <span class="op">=</span> <span class="fu">constructNValentBasis</span>(<span class="dv">4</span><span class="op">,</span> <span class="fl">0.5</span>)<span class="op">;</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> spec4 <span class="op">=</span> <span class="fu">computeVolumeSpectrum</span>(space4)<span class="op">;</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(spec4<span class="op">.</span><span class="at">eigenvalues</span>)<span class="op">;</span>     <span class="co">// [ -1.5396, 1.5396 ]</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(spec4<span class="op">.</span><span class="at">hasZ2Structure</span>)<span class="op">;</span>  <span class="co">// true</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">// 6-valent j=1/2 with geometric embedding</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> embedding <span class="op">=</span> <span class="fu">buildGeneric6ValentEmbedding</span>()<span class="op">;</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> space6 <span class="op">=</span> <span class="fu">constructNValentBasis</span>(<span class="dv">6</span><span class="op">,</span> <span class="fl">0.5</span>)<span class="op">;</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> spec6 <span class="op">=</span> <span class="fu">computeVolumeSpectrum</span>(space6<span class="op">,</span> embedding)<span class="op">;</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(spec6<span class="op">.</span><span class="at">eigenvalues</span>)<span class="op">;</span>     <span class="co">// [ -2.2913, -0.8660, 0, 0.8660, 2.2913 ]</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(spec6<span class="op">.</span><span class="at">hasZ2Structure</span>)<span class="op">;</span>  <span class="co">// true</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="implementation" class="level2">
+<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
+<section id="rust-functions-rust-lattice" class="level3">
+<h3 class="anchored" data-anchor-id="rust-functions-rust-lattice">Rust Functions (rust-lattice)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// 3D Signed Volume</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> signed_volume_3d(<span class="op">&amp;</span><span class="kw">self</span>) <span class="op">-&gt;</span> <span class="dt">i64</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> measure_signed_volume_3d(<span class="op">&amp;</span><span class="kw">mut</span> <span class="kw">self</span><span class="op">,</span> beta<span class="op">,</span> n_sweeps<span class="op">,</span> measure_every) <span class="op">-&gt;</span> (<span class="dt">f64</span><span class="op">,</span> <span class="dt">f64</span><span class="op">,</span> <span class="dt">f64</span><span class="op">,</span> <span class="dt">f64</span><span class="op">,</span> <span class="dt">f64</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">// 2D Signed Area (for validation)</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> signed_area_2d(<span class="op">&amp;</span><span class="kw">self</span>) <span class="op">-&gt;</span> <span class="dt">i64</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> measure_signed_area_2d(<span class="op">&amp;</span><span class="kw">mut</span> <span class="kw">self</span><span class="op">,</span> beta<span class="op">,</span> n_sweeps<span class="op">,</span> measure_every) <span class="op">-&gt;</span> (<span class="dt">f64</span><span class="op">,</span> <span class="dt">f64</span><span class="op">,</span> <span class="dt">f64</span><span class="op">,</span> <span class="dt">f64</span><span class="op">,</span> <span class="dt">f64</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Returns: <code>(mean |Q|, error, mean Q², mean |Q|/N, binder)</code></p>
 </section>
-<section id="timesarrow-specific-wrappers" class="level3">
-<h3 class="anchored" data-anchor-id="timesarrow-specific-wrappers">TimesArrow-Specific Wrappers</h3>
-<p>Domain-specific utilities for the paper live in <code>timesarrow-numerics</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode typescript code-with-copy"><code class="sourceCode typescript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { analyzeVolumeSpectrum } <span class="im">from</span> <span class="st">'timesarrow-numerics'</span><span class="op">;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> result <span class="op">=</span> <span class="fu">analyzeVolumeSpectrum</span>(<span class="dv">4</span><span class="op">,</span> <span class="fl">0.5</span>)<span class="op">;</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">// { eigenvalues: [...], hasZ2Structure: true, dimension: 2 }</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<section id="d-signed-area-l8-validation" class="level3">
+<h3 class="anchored" data-anchor-id="d-signed-area-l8-validation">2D Signed Area (L=8) — Validation</h3>
+<p><strong>Expected:</strong> |Q|/N ~ 1/√N = 0.125 across all β (no deconfined phase in 2D).</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>β</th>
+<th></th>
+<th>Q</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.3</td>
+<td>5.20</td>
+<td>0.0813</td>
+<td>43.87</td>
+<td>-0.0398</td>
+</tr>
+<tr class="even">
+<td>0.5</td>
+<td>6.73</td>
+<td>0.1052</td>
+<td>73.07</td>
+<td>0.1278</td>
+</tr>
+<tr class="odd">
+<td>0.7</td>
+<td>5.30</td>
+<td>0.0828</td>
+<td>46.87</td>
+<td>0.0848</td>
+</tr>
+<tr class="even">
+<td>1.0</td>
+<td>7.20</td>
+<td>0.1125</td>
+<td>85.60</td>
+<td>-0.0161</td>
+</tr>
+<tr class="odd">
+<td>1.5</td>
+<td>4.80</td>
+<td>0.0750</td>
+<td>35.73</td>
+<td>0.1357</td>
+</tr>
+</tbody>
+</table>
+<p>✅ <strong>Consistent with random-walk scaling</strong> across all β. Confirms no deconfined phase in 2D.</p>
+</section>
+<section id="d-signed-volume-production-runs" class="level3">
+<h3 class="anchored" data-anchor-id="d-signed-volume-production-runs">3D Signed Volume — Production Runs</h3>
+<section id="l8-n512-1n-0.044" class="level4">
+<h4 class="anchored" data-anchor-id="l8-n512-1n-0.044">L=8 (N=512) — 1/√N = 0.044</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>β</th>
+<th></th>
+<th>Q</th>
+<th>/N</th>
+<th>Error</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.40</td>
+<td>0.0340</td>
+<td>0.298</td>
+<td>0.395</td>
+<td>0.001</td>
+</tr>
+<tr class="even">
+<td>0.50</td>
+<td>0.0346</td>
+<td>0.298</td>
+<td>0.502</td>
+<td>0.047</td>
+</tr>
+<tr class="odd">
+<td>0.60</td>
+<td>0.0352</td>
+<td>0.314</td>
+<td>0.627</td>
+<td>-0.017</td>
+</tr>
+<tr class="even">
+<td>0.70</td>
+<td>0.0354</td>
+<td>0.307</td>
+<td>0.790</td>
+<td>0.012</td>
+</tr>
+<tr class="odd">
+<td>0.76</td>
+<td>0.0355</td>
+<td>0.302</td>
+<td>0.949</td>
+<td>0.050</td>
+</tr>
+<tr class="even">
+<td>0.80</td>
+<td>0.0362</td>
+<td>0.305</td>
+<td>0.974</td>
+<td>0.079</td>
+</tr>
+<tr class="odd">
+<td>0.85</td>
+<td>0.0307</td>
+<td>0.267</td>
+<td>0.986</td>
+<td>-0.008</td>
+</tr>
+<tr class="even">
+<td>0.90</td>
+<td>0.0370</td>
+<td>0.349</td>
+<td>0.991</td>
+<td>-0.055</td>
+</tr>
+<tr class="odd">
+<td><strong>1.00</strong></td>
+<td><strong>0.0505</strong></td>
+<td><strong>0.258</strong></td>
+<td><strong>0.997</strong></td>
+<td><strong>0.465</strong></td>
+</tr>
+<tr class="even">
+<td>1.10</td>
+<td>0.0265</td>
+<td>0.156</td>
+<td>0.999</td>
+<td>0.410</td>
+</tr>
+<tr class="odd">
+<td><strong>1.20</strong></td>
+<td><strong>0.0675</strong></td>
+<td><strong>0.138</strong></td>
+<td><strong>0.999</strong></td>
+<td><strong>0.629</strong></td>
+</tr>
+<tr class="even">
+<td><strong>1.50</strong></td>
+<td><strong>0.0899</strong></td>
+<td><strong>0.010</strong></td>
+<td><strong>1.000</strong></td>
+<td><strong>0.667</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="l10-n1000-1n-0.032" class="level4">
+<h4 class="anchored" data-anchor-id="l10-n1000-1n-0.032">L=10 (N=1000) — 1/√N = 0.032</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>β</th>
+<th></th>
+<th>Q</th>
+<th>/N</th>
+<th>Error</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.40</td>
+<td>0.0257</td>
+<td>0.436</td>
+<td>0.394</td>
+<td>-0.028</td>
+</tr>
+<tr class="even">
+<td>0.50</td>
+<td>0.0256</td>
+<td>0.433</td>
+<td>0.502</td>
+<td>-0.006</td>
+</tr>
+<tr class="odd">
+<td>0.60</td>
+<td>0.0256</td>
+<td>0.440</td>
+<td>0.628</td>
+<td>-0.081</td>
+</tr>
+<tr class="even">
+<td>0.70</td>
+<td>0.0250</td>
+<td>0.427</td>
+<td>0.789</td>
+<td>-0.057</td>
+</tr>
+<tr class="odd">
+<td>0.76</td>
+<td>0.0244</td>
+<td>0.417</td>
+<td>0.949</td>
+<td>-0.004</td>
+</tr>
+<tr class="even">
+<td>0.80</td>
+<td>0.0267</td>
+<td>0.437</td>
+<td>0.973</td>
+<td>0.052</td>
+</tr>
+<tr class="odd">
+<td>0.85</td>
+<td>0.0277</td>
+<td>0.469</td>
+<td>0.985</td>
+<td>0.038</td>
+</tr>
+<tr class="even">
+<td>0.90</td>
+<td>0.0270</td>
+<td>0.445</td>
+<td>0.991</td>
+<td>0.032</td>
+</tr>
+<tr class="odd">
+<td>1.00</td>
+<td>0.0157</td>
+<td>0.281</td>
+<td>0.997</td>
+<td>0.056</td>
+</tr>
+<tr class="even">
+<td>1.10</td>
+<td>0.0230</td>
+<td>0.199</td>
+<td>0.999</td>
+<td>0.503</td>
+</tr>
+<tr class="odd">
+<td><strong>1.20</strong></td>
+<td><strong>0.0472</strong></td>
+<td><strong>0.134</strong></td>
+<td><strong>0.999</strong></td>
+<td><strong>0.647</strong></td>
+</tr>
+<tr class="even">
+<td>1.50</td>
+<td><strong>0.0075</strong></td>
+<td><strong>0.021</strong></td>
+<td><strong>1.000</strong></td>
+<td><strong>0.645</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="l12-n1728-1n-0.024" class="level4">
+<h4 class="anchored" data-anchor-id="l12-n1728-1n-0.024">L=12 (N=1728) — 1/√N = 0.024</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>β</th>
+<th></th>
+<th>Q</th>
+<th>/N</th>
+<th>Error</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.40</td>
+<td>0.0189</td>
+<td>0.550</td>
+<td>0.395</td>
+<td>0.028</td>
+</tr>
+<tr class="even">
+<td>0.50</td>
+<td>0.0189</td>
+<td>0.553</td>
+<td>0.502</td>
+<td>-0.037</td>
+</tr>
+<tr class="odd">
+<td>0.60</td>
+<td>0.0192</td>
+<td>0.556</td>
+<td>0.628</td>
+<td>0.019</td>
+</tr>
+<tr class="even">
+<td>0.70</td>
+<td>0.0193</td>
+<td>0.573</td>
+<td>0.789</td>
+<td>-0.014</td>
+</tr>
+<tr class="odd">
+<td>0.76</td>
+<td>0.0185</td>
+<td>0.533</td>
+<td>0.948</td>
+<td>0.018</td>
+</tr>
+<tr class="even">
+<td>0.80</td>
+<td>0.0195</td>
+<td>0.547</td>
+<td>0.974</td>
+<td>0.093</td>
+</tr>
+<tr class="odd">
+<td>0.85</td>
+<td>0.0218</td>
+<td>0.595</td>
+<td>0.985</td>
+<td>0.095</td>
+</tr>
+<tr class="even">
+<td>0.90</td>
+<td>0.0213</td>
+<td>0.566</td>
+<td>0.992</td>
+<td>0.133</td>
+</tr>
+<tr class="odd">
+<td>1.00</td>
+<td>0.0181</td>
+<td>0.418</td>
+<td>0.997</td>
+<td>0.310</td>
+</tr>
+<tr class="even">
+<td>1.10</td>
+<td>0.0145</td>
+<td>0.399</td>
+<td>0.999</td>
+<td>0.111</td>
+</tr>
+<tr class="odd">
+<td>1.20</td>
+<td>0.0112</td>
+<td>0.213</td>
+<td>0.999</td>
+<td>0.415</td>
+</tr>
+<tr class="even">
+<td><strong>1.50</strong></td>
+<td><strong>0.0628</strong></td>
+<td><strong>0.046</strong></td>
+<td><strong>1.000</strong></td>
+<td><strong>0.666</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+<section id="analysis" class="level2">
+<h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
+<section id="key-observations" class="level3">
+<h3 class="anchored" data-anchor-id="key-observations">Key Observations</h3>
+<ol type="1">
+<li><p><strong>L=8 shows clearest signal</strong>: |Q|/N rises from ~0.034 (confined) to ~0.090 (deconfined), a 2.6× increase. Binder cumulant approaches 2/3 at β=1.5.</p></li>
+<li><p><strong>L=10 anomalous at β=1.5</strong>: |Q|/N = 0.0075, below confined-phase value. This is a “bad” gauge sector where the simulation got stuck in the σ_e = -1 ground state.</p></li>
+<li><p><strong>L=12 shows non-monotonic approach</strong>: |Q|/N drops at intermediate β before jumping to 0.063 at β=1.5. System fluctuates between degenerate ground states.</p></li>
+</ol>
+</section>
+<section id="the-gauge-problem" class="level3">
+<h3 class="anchored" data-anchor-id="the-gauge-problem">The Gauge Problem</h3>
+<p>The signed volume is <strong>gauge-dependent</strong>. In the deconfined phase, two gauge-equivalent ground states exist: - All σ_e = +1 → |Q| = N - All σ_e = -1 → |Q| ≈ 0 (checkerboard)</p>
+<p>At finite β, tunneling between sectors causes |Q|/N to fluctuate between ~1 and ~0.</p>
 </section>
 </section>
 <section id="next-steps" class="level2">
 <h2 class="anchored" data-anchor-id="next-steps">Next Steps</h2>
 <ol type="1">
-<li><strong>Higher spins</strong> — Test j=1 for 4-valent (check if Z₂ breaks)</li>
-<li><strong>Mixed valence</strong> — Two j=1/2 and two j=1 edges</li>
-<li><strong>Visualization</strong> — Spectrum plots comparing n=4,5,6</li>
-<li><strong>Lattice applications</strong> — 3D square lattice (8-valent) and 2D triangular lattice (6-valent)</li>
+<li><strong>Implement iterative gauge-fixing</strong> (greedy algorithm) to always measure in the “aligned” sector</li>
+<li><strong>Re-run L=10,12</strong> with gauge-fixing to get clean |Q|/N → 1 signal</li>
+<li><strong>Binder cumulant analysis</strong> for precise β_c determination</li>
+<li><strong>Exponent extraction</strong> — fit |Q|/N ~ (β - β_c)^β near critical point</li>
 </ol>
+</section>
+<section id="data-files" class="level2">
+<h2 class="anchored" data-anchor-id="data-files">Data Files</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="../../data/signed-volume/sv-L8-20260702-203243.json"><code>sv-L8-20260702-203243.json</code></a></td>
+<td>L=8 raw results</td>
+</tr>
+<tr class="even">
+<td><a href="../../data/signed-volume/sv-L10-20260702-203325.json"><code>sv-L10-20260702-203325.json</code></a></td>
+<td>L=10 raw results</td>
+</tr>
+<tr class="odd">
+<td><a href="../../data/signed-volume/sv-L12-20260702-203243.json"><code>sv-L12-20260702-203243.json</code></a></td>
+<td>L=12 raw results</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <ul>
-<li>Paper: Section 3.2, Eq. (24)</li>
-<li>Supplementary: Corrected basis states <span class="math inline">\(|Φ_1⟩, |Φ_2⟩\)</span> (T11/C3)</li>
-<li>Brunnemann &amp; Thiemann (2006): <em>Simplification of the Spectral Analysis of the Volume Operator in Loop Quantum Gravity</em></li>
-<li>Borissenko &amp; Ivanov (2021): <em>Volume operator in loop quantum gravity</em></li>
+<li>Paper: Section on Z₂ gauge field emergence</li>
+<li>T20: Z₂ Lattice Gauge Theory Monte Carlo (base implementation)</li>
+<li>T25: Volume Operator Extension (intertwiner spectrum)</li>
 </ul>
 </section>
 
