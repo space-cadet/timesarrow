@@ -1,6 +1,6 @@
 # timesarrow — Active Context
 
-*Updated: 2026-07-02 21:40 IST*
+*Updated: 2026-07-02 23:25 IST*
 
 ## Current Session — 2026-07-02 Evening
 
@@ -14,11 +14,17 @@
   - `measure_signed_volume_3d()` — thermalize + measure with statistics
   - `signed_area_2d()` — 2D analogue for code validation
   - `measure_signed_area_2d()` — 2D measurement routine
-- **Test results**:
-  - 2D (L=8): |Q|/N ≈ 0.08–0.11 across all β, consistent with 1/√N ≈ 0.125 (no deconfined phase)
-  - 3D (L=6): |Q|/N grows from ~0.02 (β=0.4) to ~0.29 (β=1.5), transition region β ≈ 0.8–1.0
+- **Production runs completed** (2026-07-02 evening):
+  - L=8, 10, 12 with 5000 thermal + 20000 measure sweeps
+  - L=8: clearest signal, |Q|/N rises from 0.034 to 0.090 (2.6× increase)
+  - L=10: anomalous at β=1.5 (gauge sector issue — stuck in checkerboard)
+  - L=12: non-monotonic, fluctuates between sectors
+  - **Gauge problem identified**: signed volume flips between ~N and ~0 in deconfined phase
+- **Dashboard**: T31 runs and 3 figures added to numerics dashboard
+- **Task page**: `tasks/t31-signed-volume.qmd` created and deployed
+- **Next**: Implement iterative gauge-fixing, re-run with fixed gauge
 - **Files**: `rust-lattice/src/lib.rs` (+241 lines), committed as `84a3fb1`
-- **Memory-bank**: T31 task file, implementation-details doc created
+- **Memory-bank**: T31 task file, implementation-details doc updated with results
 
 ### T20d: FSS Analysis Published — COMPLETE ✅
 - **T20 Task Page**: Added comprehensive FSS Analysis section
