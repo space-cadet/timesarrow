@@ -1,6 +1,6 @@
 # timesarrow — Progress Tracker
 
-*Updated: 2026-06-27 17:40:00 IST*
+*Updated: 2026-07-02 15:35 IST*
 
 ## Active Tasks
 
@@ -14,13 +14,15 @@
 | T20d (3D FSS, fine β) | ✅ Complete | L=8,16,24,32 done; FSS plots + manuscript updated |
 | L=48/64 | ⏳ Pending | Future work for asymptotic scaling |
 
-**T20d Progress (Complete):**
+**T20d Progress (Complete — Published 2026-07-02):**
 - L=8: ✅ 25 β values, 0.70–0.82, Δβ=0.005, 1M sweeps
 - L=16: ✅ 21 β values, 0.740–0.780, Δβ=0.002, 500k sweeps (300k therm + 200k measure), 4 workers, ~58 min wall
 - L=24: ✅ 21 β values, 0.740–0.780, Δβ=0.002, 500k sweeps, 4 workers, ~107 min wall
 - L=32: ✅ 21 β values, 0.74–0.78, Δβ=0.002, 500k sweeps, 8 workers, ~6h wall
 - L=48: ⏳ Pending (β=0.75–0.77, Δβ=0.0015, 2M sweeps)
 - L=64: ⏳ Pending (β=0.75–0.77, Δβ=0.001, 3M sweeps)
+- FSS Analysis: ✅ Published to T20 task page with 4 figures, summary table, ToC
+- Dashboard: ✅ Updated with teaser linking to full analysis
 
 **T20 Key Results (3D Z₂ LGT):**
 - β_c (3D) ≈ 0.758 ± 0.002 — from Binder cumulant crossing (L=8,16,24,32)

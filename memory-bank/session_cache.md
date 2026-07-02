@@ -1,12 +1,12 @@
 # Session Cache
 *Created: 2026-06-27 10:45:51 IST*
-*Last Updated: 2026-06-29 10:45 IST*
+*Last Updated: 2026-07-02 15:35 IST*
 
 ## Current Session
-**Started**: 2026-06-29 08:58 IST
-**Focus Task**: T20d (L=16/L=24 fine scans) + T22a (FK vertex correction) + Dashboard integration
-**Session File**: `memory/2026-06-29.md`
-**Status**: ✅ Session ended: 10:45 IST
+**Started**: 2026-07-02 14:31 IST
+**Focus Task**: T20d FSS Analysis publication (move to T20 page, dashboard teaser, ToC)
+**Session File**: `memory/2026-07-02.md`
+**Status**: ✅ Session ended: 15:35 IST
 **End Reason**: User requested /end
 
 ## Overview
@@ -19,7 +19,7 @@
 - T20a: 2D Phase 1 — ✅
 - T20b: 2D FSS — ✅
 - T20c: 3D Phase 3 — ✅
-- T20d: Critical Exponents — ✅ (L=8,16,24,32 complete; FSS plots generated, manuscript updated)
+- T20d: Critical Exponents — ✅ (L=8,16,24,32 complete; FSS analysis published to T20 page; dashboard teaser added)
 - T22: Spin Foam Amplitudes — ✅ (T22a corrected, T22b pending)
 - T22a: FK Vertex — ✅ (corrected, ratio=0.45, ts-quantum-spin-foam package created)
 - T22b: Full Systematic — ⬜ (pending)

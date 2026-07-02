@@ -1,10 +1,25 @@
 # timesarrow — Active Context
 
-*Updated: 2026-06-29 10:45 IST*
+*Updated: 2026-07-02 15:35 IST*
 
-## Current Session — 2026-06-29 Morning
+## Current Session — 2026-07-02 Afternoon
 
-### T20d: L=16 + L=24 Fine Scans — COMPLETE ✅
+### T20d: FSS Analysis Published — COMPLETE ✅
+- **T20 Task Page**: Added comprehensive FSS Analysis section
+  - 4 figures with captions (FSS Overlay, Critical Exponents, Binder Cumulant, Scaling Collapse)
+  - Summary table (This Work vs Literature)
+  - Compute details table
+  - ToC added for navigation
+  - Timestamps updated to 2026-07-02 15:25 IST
+- **Dashboard**: Replaced full FSS section with lightweight teaser
+  - Links to T20 task page for detailed analysis
+  - Keeps dashboard focused on simulation data
+- **Key Result**: First-order transition confirmed at β_c = 0.7613(2), Binder U* = 2/3
+
+### Previous Context (2026-06-29)
+- L=16 + L=24 fine scans complete
+- T22a FK vertex corrected
+- Dashboard v2 deployed
 - **L=16**: 21 β values [0.740, 0.780], peak χ=1.127 at β=0.752, Binder U=0.6664
 - **L=24**: 21 β values [0.740, 0.780], peak χ=1.283 at β=0.756, Binder U=0.6666
 - **Data**: `numerics/data/fss/t20d-L16-fine-20260629.json`, `t20d-L24-fine-20260629.json`
