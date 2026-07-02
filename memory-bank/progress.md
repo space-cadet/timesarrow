@@ -1,6 +1,6 @@
 # timesarrow — Progress Tracker
 
-*Updated: 2026-07-02 15:35 IST*
+*Updated: 2026-07-02 21:40 IST*
 
 ## Active Tasks
 
@@ -88,12 +88,34 @@
 | Migration script | ⏳ Pending | v1.0 → v2.0 converter not yet written |
 | Dashboard v3 | ⏳ Pending | Schema-driven UI not yet started |
 
+### T31: Signed Volume Observable — IN PROGRESS 🔄
+
+**Status:** Implementation complete, gauge-dependence issue identified
+
+**Concept:** Use signed volume operator Q̂ (not positive-definite V̂) for composite systems. Emergence of global time orientation ↔ emergence of macroscopic signed volume.
+
+**Implementation:**
+- `signed_volume_3d()` — gauge-fixed vertex sign sum
+- `measure_signed_volume_3d()` — thermalize + measure with statistics
+- `signed_area_2d()` — 2D analogue for code validation
+- `--signed-volume` CLI flag added
+
+**Results (preliminary):**
+- 2D (L=8): |Q|/N ≈ 0.08–0.11 across all β (consistent with 1/√N, no deconfined phase)
+- 3D (L=6): |Q|/N grows from ~0.02 (β=0.4) to ~0.29 (β=1.5), transition region β ≈ 0.8–1.0
+- 3D (L=8,10,12): Simulations complete, data in registry
+
+**Issue Identified:** Gauge-dependence — single path gauge-fixing may not be sufficient. Need iterative gauge-fixing for reliable measurements.
+
+**Files:** `rust-lattice/src/lib.rs` (+241 lines), `docs/tasks/t31-signed-volume.qmd`
+
 ---
 
 ## Blockers
 
-1. **T20d**: L=32 complete, but FSS plots and exponent extraction not yet done
-2. **T29**: None — can start when user prioritizes
+1. **T31**: Gauge-dependence in signed volume requires iterative gauge-fixing fix
+2. **T20d**: L=32 complete, FSS analysis published, but L=48/64 pending
+3. **T29**: None — can start when user prioritizes
 
 ---
 

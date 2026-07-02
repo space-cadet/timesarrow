@@ -1,6 +1,6 @@
 # timesarrow — Active Context
 
-*Updated: 2026-07-02 15:35 IST*
+*Updated: 2026-07-02 21:40 IST*
 
 ## Current Session — 2026-07-02 Evening
 
@@ -54,14 +54,16 @@
 - Added timestamps to all pages (2026-06-29)
 - Deployed: https://space-cadet.github.io/projects/timesarrow/numerics/dashboard.html
 
-### T20 — Status (Updated 2026-06-29)
+### T20 — Status (All Phases Complete — Published 2026-07-02)
 
-| Phase | Description | Data Status | Analysis Status | Key Missing |
-|-------|-------------|-------------|-----------------|-------------|
-| T20a | 2D square, L=16 | ✅ Data collected | ✅ Wilson loops complete | Critical exponents |
-| T20b | 2D finite-size scaling | ✅ Data collected | 🔄 Missing analysis | Scaling collapse, Binder crossing, ξ |
-| T20c | 3D cubic lattice | ✅ Data collected | ✅ Wilson loops & string tension complete | Critical exponents |
-| T20d | FSS critical exponent extraction | ✅ L=8,16,32 complete | 🔄 Scripts ready | L=48,64; FSS plots; exponent fitting |
+| Phase | Status | Key Results |
+|-------|--------|-------------|
+| T20a | ✅ Complete | 2D Wilson loops, string tension |
+| T20b | ✅ Complete | BKT behavior confirmed |
+| T20c | ✅ Complete | 3D first-order transition at β≈0.758 |
+| T20d | ✅ Complete | FSS analysis published, β_c=0.7613(2) |
+
+**Published:** https://space-cadet.github.io/projects/timesarrow/numerics/tasks/t20-z2-lgt.html
 
 ### Critical Finding (2026-06-27)
 
@@ -71,10 +73,8 @@
 - Peak susceptibility χ=1.3704 at β=0.758
 - Critical βₑ ≈ 0.758 ± 0.002
 
-**Remaining work:** 
-- Generate FSS comparison plots (L=8,16,32 overlay)
-- Extract critical exponents (ν, γ, α) from scaling
-- Start L=48/64 if needed for thermodynamic limit
+**Remaining work (T20d):** 
+- L=48/64 fine scans for asymptotic scaling (future work)
 
 ---
 
@@ -106,33 +106,15 @@
 
 ---
 
-## What's Next (Updated 2026-06-28)
+## What's Next (Updated 2026-07-02)
 
 | Priority | Task | Description | Depends On |
 |----------|------|-------------|------------|
-| 1 | **T22-P1** | **Quick estimate: FK vertex j=1/2 vs j=1** | — |
-| 2 | **T14** | **Implement SU(2) Haar + representation in ts-quantum** | — |
-| 3 | **T20d** | **Generate FSS plots (L=8,16,32 overlay)** | L=32 completion |
-| 4 | T20d | Critical exponent fitting (ν, γ, β, α) | FSS plots |
-| 5 | T30 | Refactor scripts to use unified plotting module | Phase 1 complete |
-| 6 | T29 | Extensible schema design | — |
-| 7 | T23 | Entanglement entropy — needs T22 completion | T22 |
-
-**Key decision:** T20d is substantially complete (first-order transition confirmed, Binder cumulant converged). T22 is now the highest-priority active task because it addresses the manuscript's deepest theoretical gap.
-
----
-
-## What's Next (Previous — 2026-06-27)
-
-| Priority | Task | Description | Depends On |
-|----------|------|-------------|------------|
-| 1 | **T20d** | **Generate FSS plots (L=8,16,32 overlay)** | L=32 completion |
-| 2 | **T20d** | **Critical exponent fitting (ν, γ, β, α)** | FSS plots |
-| 3 | **T30** | **Refactor scripts to use unified plotting module** | Phase 1 complete |
+| 1 | **T31** | **Fix gauge-dependence in signed volume** | — |
+| 2 | **T22b** | **Full systematic spin foam study** | T22a |
+| 3 | **T20d-ext** | **L=48/64 fine scans** | T20d |
 | 4 | T29 | Extensible schema design | — |
-| 5 | T20d | Start L=48/64 if needed for better extrapolation | L=32 analysis |
-| 6 | T20b | Scaling collapse plots (existing 2D data) | — |
-| 7 | T22 | Spin Foam Amplitudes — single vertex computation | T20 |
-| 8 | T23 | Entanglement entropy — needs T22 completion | T22 |
+| 5 | T23 | Entanglement entropy | T22 |
+| 6 | T24 | Domain wall dynamics | T20, T21 |
 
-**Key decision:** T28a complete. T20d L=32 complete. T30 Phase 1 (plotting module) complete. Next priority is T20d FSS analysis, then T30 Phase 2 (script refactoring) or T29 schema work when user prioritizes it.
+**Key decision:** T20d FSS analysis is published. T22a is complete. Current priority is T31 (fix gauge-dependence), then T22b if user wants deeper spin foam validation.
