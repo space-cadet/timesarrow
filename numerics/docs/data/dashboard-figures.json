@@ -1,0 +1,200 @@
+[
+  {
+    "title": "Plaquette vs \u03b2 (FSS)",
+    "description": "Plaquette expectation across \u03b2 for all L values",
+    "path": "figures/t20-p3-fss-plaquette.png",
+    "task": "T20",
+    "dimension": "3D",
+    "type": "fss",
+    "tags": [
+      "T20",
+      "3D",
+      "phase3b",
+      "FSS"
+    ],
+    "runIds": [
+      "t20-p3b-L8-3D-fine-20260626",
+      "t20-p3b-L16-3D-fine-20260626",
+      "t20-p3b-L32-lean-20260627"
+    ],
+    "sourceRuns": 3
+  },
+  {
+    "title": "Susceptibility (FSS)",
+    "description": "Magnetic susceptibility peak sharpening with L",
+    "path": "figures/t20-p3-fss-susceptibility.png",
+    "task": "T20",
+    "dimension": "3D",
+    "type": "fss",
+    "tags": [
+      "T20",
+      "3D",
+      "phase3b",
+      "FSS"
+    ],
+    "runIds": [
+      "t20-p3b-L8-3D-fine-20260626",
+      "t20-p3b-L16-3D-fine-20260626",
+      "t20-p3b-L32-lean-20260627"
+    ],
+    "sourceRuns": 3
+  },
+  {
+    "title": "Binder Cumulant (FSS)",
+    "description": "Binder cumulant convergence to 2/3 universal value",
+    "path": "figures/t20-p3-fss-binder.png",
+    "task": "T20",
+    "dimension": "3D",
+    "type": "fss",
+    "tags": [
+      "T20",
+      "3D",
+      "phase3b",
+      "FSS"
+    ],
+    "runIds": [
+      "t20-p3b-L8-3D-fine-20260626",
+      "t20-p3b-L16-3D-fine-20260626",
+      "t20-p3b-L32-lean-20260627"
+    ],
+    "sourceRuns": 3
+  },
+  {
+    "title": "Specific Heat (FSS)",
+    "description": "Specific heat peak sharpening with L",
+    "path": "figures/t20-p3-fss-specific-heat.png",
+    "task": "T20",
+    "dimension": "3D",
+    "type": "fss",
+    "tags": [
+      "T20",
+      "3D",
+      "phase3b",
+      "FSS"
+    ],
+    "runIds": [
+      "t20-p3b-L8-3D-fine-20260626",
+      "t20-p3b-L16-3D-fine-20260626",
+      "t20-p3b-L32-lean-20260627"
+    ],
+    "sourceRuns": 3
+  },
+  {
+    "title": "Polyakov Loop (FSS)",
+    "description": "Polyakov loop order parameter across \u03b2",
+    "path": "figures/t20-p3-fss-polyakov.png",
+    "task": "T20",
+    "dimension": "3D",
+    "type": "fss",
+    "tags": [
+      "T20",
+      "3D",
+      "phase3b",
+      "FSS"
+    ],
+    "runIds": [
+      "t20-p3b-L8-3D-fine-20260626",
+      "t20-p3b-L16-3D-fine-20260626",
+      "t20-p3b-L32-lean-20260627"
+    ],
+    "sourceRuns": 3
+  },
+  {
+    "title": "Critical Region Zoom",
+    "description": "All observables near \u03b2\u22480.76 (2\u00d72 panel)",
+    "path": "figures/t20-p3-fss-critical-zoom.png",
+    "task": "T20",
+    "dimension": "3D",
+    "type": "fss",
+    "tags": [
+      "T20",
+      "3D",
+      "phase3b",
+      "FSS"
+    ],
+    "runIds": [
+      "t20-p3b-L8-3D-fine-20260626",
+      "t20-p3b-L16-3D-fine-20260626",
+      "t20-p3b-L32-lean-20260627"
+    ],
+    "sourceRuns": 3
+  },
+  {
+    "title": "FK Vertex Amplitude vs Spin",
+    "description": "Vertex amplitude |A_v(j)|\u00b2 for j=1/2 to 3, showing weak power-law suppression ~j^-1.55",
+    "path": "figures/t22a-fk-vertex-vs-spin.png",
+    "task": "T22a",
+    "dimension": "N/A",
+    "type": "analysis",
+    "tags": [
+      "T22a",
+      "FK",
+      "spin-foam",
+      "vertex-amplitude"
+    ],
+    "runIds": [
+      "t22a-fk-vertex-multi-spin-20260628"
+    ],
+    "sourceRuns": 1
+  },
+  {
+    "title": "Signed Volume vs \u03b2 (T31)",
+    "description": "Signed volume |Q|/N across \u03b2 for L=8,10,12 showing deconfinement transition",
+    "path": "figures/t31-signed-volume-vs-beta.png",
+    "task": "T31",
+    "dimension": "3D",
+    "type": "analysis",
+    "tags": [
+      "T31",
+      "3D",
+      "signed-volume",
+      "deconfinement"
+    ],
+    "runIds": [
+      "t31-p2-L8-3D-20250702",
+      "t31-p2-L10-3D-20250702",
+      "t31-p2-L12-3D-20250702"
+    ],
+    "sourceRuns": 3
+  },
+  {
+    "title": "Binder Cumulant \u2014 Signed Volume",
+    "description": "Signed volume Binder cumulant converging toward U* = 2/3",
+    "path": "figures/t31-binder-cumulant.png",
+    "task": "T31",
+    "dimension": "3D",
+    "type": "analysis",
+    "tags": [
+      "T31",
+      "3D",
+      "signed-volume",
+      "binder"
+    ],
+    "runIds": [
+      "t31-p2-L8-3D-20250702",
+      "t31-p2-L10-3D-20250702",
+      "t31-p2-L12-3D-20250702"
+    ],
+    "sourceRuns": 3
+  },
+  {
+    "title": "Plaquette vs \u03b2 (T31)",
+    "description": "Standard plaquette order parameter for comparison with signed volume",
+    "path": "figures/t31-plaquette-vs-beta.png",
+    "task": "T31",
+    "dimension": "3D",
+    "type": "analysis",
+    "tags": [
+      "T31",
+      "3D",
+      "plaquette",
+      "order-parameter"
+    ],
+    "runIds": [
+      "t31-p2-L8-3D-20250702",
+      "t31-p2-L10-3D-20250702",
+      "t31-p2-L12-3D-20250702"
+    ],
+    "sourceRuns": 3
+  }
+]
