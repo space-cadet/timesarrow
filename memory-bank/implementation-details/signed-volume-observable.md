@@ -1,7 +1,12 @@
 # Signed Volume Observable — Implementation Details
 
 *Created: 2026-07-02*
+*Last Updated: 2026-07-05 22:24:10 IST*
 *Task: T31*
+
+## Correction Notice
+
+The path-based signed-volume results below are gauge-dependent exploratory data. The proposed iterative gauge fixing that maximizes $|Q|$ is withdrawn: spanning-tree alignment can force $|Q|=N$ in any phase and would destroy the observable's diagnostic value. T31 must use a gauge-invariant replacement specified under T32 before new production runs.
 
 ## Problem Statement
 
@@ -178,7 +183,7 @@ At finite β, the simulation can tunnel between these sectors, causing |Q|/N to 
 - L=12 at β=1.0–1.2: fluctuating between sectors
 - L=8: relatively stable because smaller system has fewer tunneling paths
 
-### Solution: Iterative Gauge-Fixing
+### Superseded Proposal: Iterative Gauge-Fixing
 
 To get clean measurements, we need to **fix the gauge** before measuring. The approach:
 
@@ -186,7 +191,7 @@ To get clean measurements, we need to **fix the gauge** before measuring. The ap
 2. Iteratively flip gauge transformations to maximize |Q| (greedy algorithm)
 3. Measure signed volume in the "aligned" gauge
 
-This is analogous to gauge-fixing in lattice QCD before measuring observables.
+This proposal is retained for provenance but must not be implemented. See `post-may-numerics-correction-plan.md`.
 
 ## Dashboard Integration
 

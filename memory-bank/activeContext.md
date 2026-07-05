@@ -1,8 +1,24 @@
 # timesarrow — Active Context
 
-*Updated: 2026-07-02 23:25 IST*
+*Updated: 2026-07-05 22:24:10 IST*
 
-## Current Session — 2026-07-02 Evening
+## Current Session — 2026-07-05 Night
+
+### T32: Post-May Numerics Correction and Reproducibility Pass — IN PROGRESS 🔄
+
+- T20d's first-order conclusion is superseded; existing data must be reanalysed using continuous 3D Ising-universality scaling.
+- The plaquette Binder value near $2/3$ is not accepted evidence of first-order behavior, and schematic histograms are not numerical evidence.
+- T22a is a normalized SU(2) four-leg group average, not a complete FK/EPRL vertex amplitude; the extra squaring to $0.20$ must be removed.
+- T31 must not use greedy gauge alignment because spanning-tree alignment can force $|Q|=N$ in any phase.
+- T25 spectral pairing remains useful but does not alone establish a physical time-orientation symmetry.
+- TypeScript/Rust build and test reproducibility must be restored before manuscript promotion.
+- `timesarrow.tex` remains gated from post-May numerical claims until T32 is complete.
+
+**Plan:** `implementation-details/post-may-numerics-correction-plan.md`
+
+## Previous Session — 2026-07-02 Evening
+
+> Superseded on 2026-07-05: the T20d, T22a, and T31 interpretations below are retained as historical session context, not current guidance.
 
 ### T31: Signed Volume Observable — IN PROGRESS 🔄
 - **Concept**: Use signed volume operator Q̂ (not positive-definite V̂) for composite systems
@@ -112,15 +128,15 @@
 
 ---
 
-## What's Next (Updated 2026-07-02)
+## What's Next (Updated 2026-07-05)
 
 | Priority | Task | Description | Depends On |
 |----------|------|-------------|------------|
-| 1 | **T31** | **Fix gauge-dependence in signed volume** | — |
-| 2 | **T22b** | **Full systematic spin foam study** | T22a |
-| 3 | **T20d-ext** | **L=48/64 fine scans** | T20d |
-| 4 | T29 | Extensible schema design | — |
-| 5 | T23 | Entanglement entropy | T22 |
-| 6 | T24 | Domain wall dynamics | T20, T21 |
+| 1 | **T32/T20d** | **Correct transition-order interpretation and published text** | T20d |
+| 2 | **T32/T22a** | **Reclassify group-average toy result and remove squaring error** | T22a |
+| 3 | **T32/T31** | **Design and validate a gauge-invariant replacement observable** | T31 |
+| 4 | **T32** | **Calibrate T25 wording and restore reproducible builds/tests** | T25, T27 |
+| 5 | T29 | Extensible schema design | T32 |
+| 6 | T23/T24 | Resume exploratory numerics after correction gate | T32 |
 
-**Key decision:** T20d FSS analysis is published. T22a is complete. Current priority is T31 (fix gauge-dependence), then T22b if user wants deeper spin foam validation.
+**Key decision:** Correct and verify the post-May numerical claims before further production runs or manuscript integration. T22b and new T31 runs are blocked by T32.

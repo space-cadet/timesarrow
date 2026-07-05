@@ -1,20 +1,26 @@
 # Session Cache
 
 *Created: 2026-07-02 16:48:02 IST*
-*Last Updated: 2026-07-02 23:25 IST*
+*Last Updated: 2026-07-05 22:29:27 IST*
 
-**Started**: 2026-07-02 15:59:17 IST
-**Focus Task**: T31: Signed Volume Observable
-**Session File**: `sessions/2026-07-02-evening.md`
+**Started**: 2026-07-05 22:24:10 IST
+**Focus Task**: T32: Post-May Numerics Correction and Reproducibility Pass
+**Session File**: `sessions/2026-07-05-night.md`
 **Status**: ✅ Complete
 
 ## Overview
 
-- Active: 3 | Paused: 0 | Completed: 16
-- Last Session: 2026-07-02
-- Current Period: evening
+- Active: 4 | Paused: 0 | Completed: 16
+- Last Session: 2026-07-05
+- Current Period: night
 
 ## Active Tasks
+
+### T32: Post-May Numerics Correction and Reproducibility Pass
+**Status:** 🔄 **IN PROGRESS**
+**Started:** 2026-07-05
+**Context**: [Details](tasks/T32.md)
+**Progress**: Correction plan recorded; implementation not yet started.
 
 ### T23: Entanglement Structure
 **Status:** 🔄 **IN PROGRESS**
@@ -121,11 +127,17 @@
 
 ## Next Session Focus
 
-1. T23: Entanglement Structure
-1. T24: Domain Wall Dynamics
-1. T31: Signed Volume Observable
+1. T32/T20d: Correct the transition-order interpretation and published analysis
+1. T32/T22a: Reclassify the toy group-average result
+1. T32/T31: Specify a gauge-invariant replacement observable
+1. T32: Restore reproducible build and test workflows
 
 ## System Status
 
 - **Memory Bank**: 🔄 Active
 - **OpenClaw**: ✅ Operational
+
+## Session History
+
+- `sessions/2026-07-05-night.md`: Post-May numerical review and T32 correction plan.
+- `sessions/2026-07-02-evening.md`: T31 signed-volume production session; interpretations superseded where noted by T32.

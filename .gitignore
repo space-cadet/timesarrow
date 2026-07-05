@@ -5,3 +5,32 @@ node_modules/
 rust-lattice/target/debug/
 rust-lattice/target/release/
 *.bak.*
+
+# Local editor and drawing backups
+.texpadtmp/
+*.drawio.bkp
+
+# Root LaTeX build products
+/timesarrow.aux
+/timesarrow.bcf
+/timesarrow.blg
+/timesarrow.dep
+/timesarrow.fdb_latexmk
+/timesarrow.fls
+/timesarrow.log
+/timesarrow.out
+/timesarrow.run.xml
+/timesarrow.toc
+
+# Figure-level LaTeX build products
+/figures/*.aux
+/figures/*.log
+/figures/*.out
+/figures/*.synctex.gz
+
+# Generated pilot output
+/markdown-pilot/build/
+
+# External reference material kept outside version control
+/bridgeman-chubbs/
+/Takato Mori_Tensor network, entanglement and holography, Mar 1, 2021.pdf

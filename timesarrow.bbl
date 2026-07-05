@@ -1,0 +1,3437 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global/global}
+    \entry{Chen2015Gauging}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=40324c5235c456ad5ecea8effce19bd0}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Xie},
+           giveni={X\bibinitperiod}}}%
+        {{hash=8a894f8e0a89a2d488e10197dc7237eb}{%
+           family={Vishwanath},
+           familyi={V\bibinitperiod},
+           given={Ashvin},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{7b4e901f885cc7c4b45d284923d114f8}
+      \strng{fullhash}{7b4e901f885cc7c4b45d284923d114f8}
+      \strng{fullhashraw}{7b4e901f885cc7c4b45d284923d114f8}
+      \strng{bibnamehash}{7b4e901f885cc7c4b45d284923d114f8}
+      \strng{authorbibnamehash}{7b4e901f885cc7c4b45d284923d114f8}
+      \strng{authornamehash}{7b4e901f885cc7c4b45d284923d114f8}
+      \strng{authorfullhash}{7b4e901f885cc7c4b45d284923d114f8}
+      \strng{authorfullhashraw}{7b4e901f885cc7c4b45d284923d114f8}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{It is well known that unitary symmetries can be `gauged', i.e. defined to act in a local way, which leads to a corresponding gauge field. Gauging, for example, the charge conservation symmetry leads to electromagnetic gauge fields. It is an open question whether an analogous process is possible for time reversal which is an anti-unitary symmetry. Here we discuss a route to gauging time reversal symmetry which applies to gapped quantum ground states that admit a tensor network representation. The tensor network representation of quantum states provides a notion of locality for the wave function coefficient and hence a notion of locality for the action of complex conjugation in anti-unitary symmetries. Based on that, we show how time reversal can be applied locally and also describe time reversal symmetry twists which act as gauge fluxes through nontrivial loops in the system. As with unitary symmetries, gauging time reversal provides useful access to the physical properties of the system. We show how topological invariants of certain time reversal symmetric topological phases in \$D=1,2\$ are readily extracted using these ideas.}
+      \field{eprinttype}{arXiv}
+      \field{issn}{2160-3308}
+      \field{journaltitle}{Physical Review X}
+      \field{month}{4}
+      \field{number}{4}
+      \field{title}{`Gauging' time reversal symmetry in tensor network states}
+      \field{volume}{5}
+      \field{year}{2015}
+      \verb{doi}
+      \verb 10.1103/physrevx.5.041034
+      \endverb
+      \verb{eprint}
+      \verb 1401.3736
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1103/physrevx.5.041034
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1103/physrevx.5.041034
+      \endverb
+      \keyw{anti-unitary,chen\_xie,complex\_conjugation,condensed\_matter,gapped\_system,gauge\_theory,manybody,tensor\_networks,time\_reversal,topological\_order}
+    \endentry
+    \entry{Qi2013Exact}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=7590f816b469f3b799af95bbe5747030}{%
+           family={Qi},
+           familyi={Q\bibinitperiod},
+           given={Xiao-Liang},
+           giveni={X\bibinithyphendelim L\bibinitperiod}}}%
+      }
+      \strng{namehash}{7590f816b469f3b799af95bbe5747030}
+      \strng{fullhash}{7590f816b469f3b799af95bbe5747030}
+      \strng{fullhashraw}{7590f816b469f3b799af95bbe5747030}
+      \strng{bibnamehash}{7590f816b469f3b799af95bbe5747030}
+      \strng{authorbibnamehash}{7590f816b469f3b799af95bbe5747030}
+      \strng{authornamehash}{7590f816b469f3b799af95bbe5747030}
+      \strng{authorfullhash}{7590f816b469f3b799af95bbe5747030}
+      \strng{authorfullhashraw}{7590f816b469f3b799af95bbe5747030}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In this paper, we propose an {\it exact holographic mapping} which is a unitary mapping from the Hilbert space of a lattice system in flat space (boundary) to that of another lattice system in one higher dimension (bulk). By defining the distance in the bulk system from two-point correlation functions, we obtain an emergent bulk space-time geometry that is determined by the boundary state and the mapping. As a specific example, we study the exact holographic mapping for \$(1+1)\$-dimensional lattice Dirac fermions and explore the emergent bulk geometry corresponding to different boundary states including massless and massive states at zero temperature, and the massless system at finite temperature. We also study two entangled one-dimensional chains and show that the corresponding bulk geometry consists of two asymptotic regions connected by a worm-hole. The quantum quench of the coupled chains is mapped to dynamics of the worm-hole. In the end we discuss the general procedure of applying this approach to interacting systems, and other open questions.}
+      \field{eprinttype}{arXiv}
+      \field{month}{9}
+      \field{title}{Exact holographic mapping and emergent space-time geometry}
+      \field{year}{2013}
+      \verb{eprint}
+      \verb 1309.6282
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1309.6282
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1309.6282
+      \endverb
+      \keyw{condensed\_matter,dirac\_fermions,emergent\_gravity,entanglement,holography,lattice\_models,manybody,qi\_xiao-liang,quantum\_gravity,ryu\_takayanagi\_formula,wormholes}
+    \endentry
+    \entry{Han2016Loop}{misc}{}{}
+      \name{author}{2}{}{%
+        {{hash=1a7ce28689ea8f3f21c786d3ce68102d}{%
+           family={Han},
+           familyi={H\bibinitperiod},
+           given={Muxin},
+           giveni={M\bibinitperiod}}}%
+        {{hash=cef1a854a04f4ed5ba88ac2027005639}{%
+           family={Hung},
+           familyi={H\bibinitperiod},
+           given={Ling-Yan},
+           giveni={L\bibinithyphendelim Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{70fea30317535851ca7f8212da9a7fd9}
+      \strng{fullhash}{70fea30317535851ca7f8212da9a7fd9}
+      \strng{fullhashraw}{70fea30317535851ca7f8212da9a7fd9}
+      \strng{bibnamehash}{70fea30317535851ca7f8212da9a7fd9}
+      \strng{authorbibnamehash}{70fea30317535851ca7f8212da9a7fd9}
+      \strng{authornamehash}{70fea30317535851ca7f8212da9a7fd9}
+      \strng{authorfullhash}{70fea30317535851ca7f8212da9a7fd9}
+      \strng{authorfullhashraw}{70fea30317535851ca7f8212da9a7fd9}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The relation between Loop Quantum Gravity (LQG) and tensor network is explored from the perspectives of bulk-boundary duality and holographic entanglement entropy. We find that the LQG spin-network states in a space \$\Sigma\$ with boundary \$\partial\Sigma\$ is an exact holographic mapping similar to the proposal in <a href="/abs/1309.6282">arXiv:1309.6282</a>. The tensor network, understood as the boundary quantum state, is the output of the exact holographic mapping emerging from a coarse graining procedure of spin-networks. Furthermore, when a region \$A\$ and its complement \$\bar{A}\$ are specified on the boundary \$\partial\Sigma\$, we show that the boundary entanglement entropy \$S(A)\$ of the emergent tensor network satisfies the Ryu-Takayanagi formula in the semiclassical regime, i.e. \$S(A)\$ is proportional to the minimal area of the bulk surface attached to the boundary of \$A\$ in \$\partial\Sigma\$.}
+      \field{eprinttype}{arXiv}
+      \field{month}{10}
+      \field{title}{Loop Quantum Gravity, Exact Holographic Mapping, and Holographic Entanglement Entropy}
+      \field{year}{2016}
+      \verb{eprint}
+      \verb 1610.02134
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1610.02134
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1610.02134
+      \endverb
+      \keyw{bulk-boundary\_correspondence,coarse\_graining,entanglement,han\_muxin,holography,hung\_ling-yan,quantum\_gravity,renormalization,ryu\_takayanagi\_formula,spin\_networks,tensor\_networks}
+    \endentry
+    \entry{Zeh1989The-Physical}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=ff2bc135b9b3d0b4e7727c10fca11b5b}{%
+           family={Zeh},
+           familyi={Z\bibinitperiod},
+           given={H.-Dieter},
+           giveni={H\bibinithyphendelim D\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Berlin, Heidelberg}%
+      }
+      \list{publisher}{1}{%
+        {Springer Berlin Heidelberg}%
+      }
+      \strng{namehash}{ff2bc135b9b3d0b4e7727c10fca11b5b}
+      \strng{fullhash}{ff2bc135b9b3d0b4e7727c10fca11b5b}
+      \strng{fullhashraw}{ff2bc135b9b3d0b4e7727c10fca11b5b}
+      \strng{bibnamehash}{ff2bc135b9b3d0b4e7727c10fca11b5b}
+      \strng{authorbibnamehash}{ff2bc135b9b3d0b4e7727c10fca11b5b}
+      \strng{authornamehash}{ff2bc135b9b3d0b4e7727c10fca11b5b}
+      \strng{authorfullhash}{ff2bc135b9b3d0b4e7727c10fca11b5b}
+      \strng{authorfullhashraw}{ff2bc135b9b3d0b4e7727c10fca11b5b}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{5th ed. This thoroughly revised 5th edition of Zeh's classic text investigates irreversible phenomena and their foundation in classical, quantum and cosmological settings. It includes new sections on the meaning of probabilities in a cosmological context, irreversible aspects of quantum computers, and various consequences of the expansion of the Universe. Many other sections have been rewritten. In particular, the book contains an analysis of the physical concept of time, a detailed treatment of radiation damping as well as extended sections on quantum entanglement and decoherence, arrows of time hidden in various interpretations of quantum theory, and the emergence of time in quantum gravity. Both physicists and philosophers of science will find in this book a magnificent survey and a concise, technically sophisticated, up-to-date discussion which shows fine sensitivity to crucial conceptual subtleties. "The discussion is lucid and intuitive without glossing over the important details." Max Tegmark, MIT. The physical concept of time -- The time arrow of radiation -- The thermodynamical arrow of time -- The quantum mechanical arrow of time -- The time arrow of spacetime geometry -- The time arrow in quantum cosmology.}
+      \field{eprintclass}{arXiv:gr-qc}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{978-3-540-50930-1}
+      \field{issn}{0717-6163}
+      \field{series}{The Frontiers Collection}
+      \field{title}{{The Physical Basis of the Direction of Time}}
+      \field{year}{1989}
+      \verb{doi}
+      \verb 10.1007/978-3-662-02595-6
+      \endverb
+      \verb{eprint}
+      \verb 9809069v1
+      \endverb
+      \verb{urlraw}
+      \verb http://link.springer.com/10.1007/978-3-540-68001-7 http://link.springer.com/10.1007/978-3-662-02595-6
+      \endverb
+      \verb{url}
+      \verb http://link.springer.com/10.1007/978-3-540-68001-7%20http://link.springer.com/10.1007/978-3-662-02595-6
+      \endverb
+    \endentry
+    \entry{Land2005Examination}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=981a642785d0763ff614b0c9c4ff98c6}{%
+           family={Land},
+           familyi={L\bibinitperiod},
+           given={Kate},
+           giveni={K\bibinitperiod}}}%
+        {{hash=b55ebcd1c02ed73c577dd8348542db60}{%
+           family={Magueijo},
+           familyi={M\bibinitperiod},
+           given={Joao},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {APS}%
+      }
+      \strng{namehash}{ca7aa04a9fa9e4677c9fcdc4d39dbb97}
+      \strng{fullhash}{ca7aa04a9fa9e4677c9fcdc4d39dbb97}
+      \strng{fullhashraw}{ca7aa04a9fa9e4677c9fcdc4d39dbb97}
+      \strng{bibnamehash}{ca7aa04a9fa9e4677c9fcdc4d39dbb97}
+      \strng{authorbibnamehash}{ca7aa04a9fa9e4677c9fcdc4d39dbb97}
+      \strng{authornamehash}{ca7aa04a9fa9e4677c9fcdc4d39dbb97}
+      \strng{authorfullhash}{ca7aa04a9fa9e4677c9fcdc4d39dbb97}
+      \strng{authorfullhashraw}{ca7aa04a9fa9e4677c9fcdc4d39dbb97}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review Letters}
+      \field{number}{7}
+      \field{title}{Examination of evidence for a preferred axis in the cosmic radiation anisotropy}
+      \field{volume}{95}
+      \field{year}{2005}
+      \field{pages}{071301}
+      \range{pages}{1}
+    \endentry
+    \entry{Ardakani2018Time}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=d40478e6a4f566736b9cd7b062222f60}{%
+           family={Ardakani},
+           familyi={A\bibinitperiod},
+           given={Reza\bibnamedelima Moulavi},
+           giveni={R\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{d40478e6a4f566736b9cd7b062222f60}
+      \strng{fullhash}{d40478e6a4f566736b9cd7b062222f60}
+      \strng{fullhashraw}{d40478e6a4f566736b9cd7b062222f60}
+      \strng{bibnamehash}{d40478e6a4f566736b9cd7b062222f60}
+      \strng{authorbibnamehash}{d40478e6a4f566736b9cd7b062222f60}
+      \strng{authornamehash}{d40478e6a4f566736b9cd7b062222f60}
+      \strng{authorfullhash}{d40478e6a4f566736b9cd7b062222f60}
+      \strng{authorfullhashraw}{d40478e6a4f566736b9cd7b062222f60}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Symmetries have a crucial role in today's physics. In this thesis, we are mostly concerned with time reversal invariance (T-symmetry). A physical system is time reversal invariant if its underlying laws are not sensitive to the direction of time. There are various accounts of time reversal transformation resulting in different views on whether or not a given theory in physics is time reversal invariant. With a focus on quantum mechanics, I describe the standard account of time reversal and compare it with my alternative account, arguing why it deserves serious attention. Then, I review three known ways to T-violation in quantum mechanics, and explain two unique experiments made to detect it in the neutral K and B mesons.}
+      \field{eprinttype}{arXiv}
+      \field{month}{2}
+      \field{title}{{Time Reversal Invariance in Quantum Mechanics}}
+      \field{year}{2018}
+      \verb{eprint}
+      \verb 1802.10169
+      \endverb
+      \verb{file}
+      \verb :Users/deepak/mendeley/Ardakani{\_}Time Reversal Invariance in Quantum Mechanics{\_}2018.pdf:pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1802.10169
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1802.10169
+      \endverb
+      \keyw{antiunitary transformations,arrow of time,quantum gravity,quantum mechanics,roberts{\_}bryan{\_}w,symmetry,thesis,time{\_}reversal,wigners theorem}
+    \endentry
+    \entry{Roberts2012Time}{thesis}{}{}
+      \name{author}{1}{}{%
+        {{hash=239321910cbd85a34e7aaf5beab4d79d}{%
+           family={Roberts},
+           familyi={R\bibinitperiod},
+           given={Bryan\bibnamedelima W.},
+           giveni={B\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{239321910cbd85a34e7aaf5beab4d79d}
+      \strng{fullhash}{239321910cbd85a34e7aaf5beab4d79d}
+      \strng{fullhashraw}{239321910cbd85a34e7aaf5beab4d79d}
+      \strng{bibnamehash}{239321910cbd85a34e7aaf5beab4d79d}
+      \strng{authorbibnamehash}{239321910cbd85a34e7aaf5beab4d79d}
+      \strng{authornamehash}{239321910cbd85a34e7aaf5beab4d79d}
+      \strng{authorfullhash}{239321910cbd85a34e7aaf5beab4d79d}
+      \strng{authorfullhashraw}{239321910cbd85a34e7aaf5beab4d79d}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This dissertation is about the sense in which the laws of quantum theory distinguish between the past and the future. I begin with an account of what it means for quantum theory to make such a distinction, by providing a novel derivation of the meaning of "time reversal." I then show that if Galilei invariant quantum theory does distinguish a preferred direction in time, then this has consequences for the ontology of the theory. In particular, it requires matter to admit "internal" degrees of freedom, in that the position observable generates a maximal abelian algebra. I proceed to show that this is not a purely quantum phenomenon, but can be expressed in classical mechanics as well. I then illustrate three routes for generating quantum systems that distinguish a preferred temporal direction in this way.}
+      \field{title}{{Time, symmetry and structure: a study in the foundations of quantum theory}}
+      \field{type}{phdthesis}
+      \field{year}{2012}
+      \field{pages}{112}
+      \range{pages}{1}
+      \verb{file}
+      \verb :Users/deepak/mendeley/Roberts{\_}Time, symmetry and structure a study in the foundations of quantum theory{\_}2012.pdf:pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://philpapers.org/rec/ROBTSA-6
+      \endverb
+      \verb{url}
+      \verb https://philpapers.org/rec/ROBTSA-6
+      \endverb
+      \keyw{antiunitary transformations,arrow of time,quantum gravity,quantum mechanics,roberts{\_}bryan{\_}w,symmetry,thesis,time{\_}reversal,wigners theorem}
+    \endentry
+    \entry{Popescu2006Entanglement}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=28ae4bcdd2e77ce917e14be1896c9d90}{%
+           family={{Popescu}},
+           familyi={P\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=b67e543c487e0f4766fe9fa0af9f13a1}{%
+           family={{Short}},
+           familyi={S\bibinitperiod},
+           given={A.\bibnamedelimi J.},
+           giveni={A\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=e4f3228bfa518da7f7d01940b0e40ca3}{%
+           family={{Winter}},
+           familyi={W\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Nature Publishing Group}%
+      }
+      \strng{namehash}{a2df29e5b1eb846edfb9092132fb2ca6}
+      \strng{fullhash}{a2df29e5b1eb846edfb9092132fb2ca6}
+      \strng{fullhashraw}{a2df29e5b1eb846edfb9092132fb2ca6}
+      \strng{bibnamehash}{a2df29e5b1eb846edfb9092132fb2ca6}
+      \strng{authorbibnamehash}{a2df29e5b1eb846edfb9092132fb2ca6}
+      \strng{authornamehash}{a2df29e5b1eb846edfb9092132fb2ca6}
+      \strng{authorfullhash}{a2df29e5b1eb846edfb9092132fb2ca6}
+      \strng{authorfullhashraw}{a2df29e5b1eb846edfb9092132fb2ca6}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Statistical mechanics is one of the most successful areas of physics. Yet, almost 150 years since its inception, its foundations and basic postulates are still the subject of debate. Here we suggest that the main postulate of statistical mechanics, the equal a priori probability postulate, should be abandoned as misleading and unnecessary. We argue that it should be replaced by a general canonical principle, whose physical content is fundamentally different from the postulate it replaces: it refers to individual states, rather than to ensemble or time averages. Furthermore, whereas the original postulate is an unprovable assumption, the principle we propose is mathematically proven. The key element in this proof is the quantum entanglement between the system and its environment. Our approach separates the issue of finding the canonical state from finding out how close a system is to it, allowing us to go even beyond the usual boltzmannian situation.}
+      \field{issn}{1745-2473}
+      \field{journaltitle}{Nature Physics}
+      \field{month}{11}
+      \field{number}{11}
+      \field{title}{Entanglement and the foundations of statistical mechanics}
+      \field{volume}{2}
+      \field{year}{2006}
+      \field{pages}{754\bibrangedash 758}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1038/nphys444
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1038/nphys444
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1038/nphys444
+      \endverb
+      \keyw{boltzmann\_weights,canonical\_ensemble,entanglement,foundations,pedagogical,quantum\_mechanics,statistical\_mechanics}
+    \endentry
+    \entry{Linden2009Quantum}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=01673730c1ac13af872783b3b59b86fb}{%
+           family={Linden},
+           familyi={L\bibinitperiod},
+           given={Noah},
+           giveni={N\bibinitperiod}}}%
+        {{hash=7e3d741bd6b9b760e9ff6df26cf0f263}{%
+           family={Popescu},
+           familyi={P\bibinitperiod},
+           given={Sandu},
+           giveni={S\bibinitperiod}}}%
+        {{hash=05b24c8071e0fa504b4513e1315d8d03}{%
+           family={Short},
+           familyi={S\bibinitperiod},
+           given={Anthony\bibnamedelima J.},
+           giveni={A\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=5c89b6062e88d9d71cbcf213a288a5b4}{%
+           family={Winter},
+           familyi={W\bibinitperiod},
+           given={Andreas},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{58c5e4becf73dfe746f94c01eda84a82}
+      \strng{fullhash}{a2c202363fee35ef509bf1160d4188b8}
+      \strng{fullhashraw}{a2c202363fee35ef509bf1160d4188b8}
+      \strng{bibnamehash}{58c5e4becf73dfe746f94c01eda84a82}
+      \strng{authorbibnamehash}{58c5e4becf73dfe746f94c01eda84a82}
+      \strng{authornamehash}{58c5e4becf73dfe746f94c01eda84a82}
+      \strng{authorfullhash}{a2c202363fee35ef509bf1160d4188b8}
+      \strng{authorfullhashraw}{a2c202363fee35ef509bf1160d4188b8}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The circumstances under which a system reaches thermal equilibrium, and how to derive this from basic dynamical laws, has been a major question from the very beginning of thermodynamics and statistical mechanics. Despite considerable progress, it remains an open problem. Motivated by this issue, we address the more general question of equilibration. We prove, with virtually full generality, that reaching equilibrium is a universal property of quantum systems: almost any subsystem in interaction with a large enough bath will reach an equilibrium state and remain close to it for almost all times. We also prove several general results about other aspects of thermalization besides equilibration, for example, that the equilibrium state does not depend on the detailed microstate of the bath.}
+      \field{eprinttype}{arXiv}
+      \field{issn}{15393755}
+      \field{journaltitle}{Physical Review E - Statistical, Nonlinear, and Soft Matter Physics}
+      \field{number}{6}
+      \field{title}{{Quantum mechanical evolution towards thermal equilibrium}}
+      \field{volume}{79}
+      \field{year}{2009}
+      \field{pages}{061103}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/PhysRevE.79.061103
+      \endverb
+      \verb{eprint}
+      \verb 0812.2385
+      \endverb
+      \verb{file}
+      \verb :Users/deepak/mendeley/files/Linden{\_}Quantum mechanical evolution towards thermal equilibrium{\_}2009.pdf:pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://journals.aps.org/pre/abstract/10.1103/PhysRevE.79.061103 https://link.aps.org/doi/10.1103/PhysRevE.79.061103
+      \endverb
+      \verb{url}
+      \verb https://journals.aps.org/pre/abstract/10.1103/PhysRevE.79.061103%20https://link.aps.org/doi/10.1103/PhysRevE.79.061103
+      \endverb
+    \endentry
+    \entry{Nandkishore2015Many-Body}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=f374451df61007f10886f754fa6699cb}{%
+           family={Nandkishore},
+           familyi={N\bibinitperiod},
+           given={Rahul},
+           giveni={R\bibinitperiod}}}%
+        {{hash=afc2feebd8732fd639f4590f45eb781b}{%
+           family={Huse},
+           familyi={H\bibinitperiod},
+           given={David\bibnamedelima A.},
+           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{9290d11df7a26f422bcab4367a1084b9}
+      \strng{fullhash}{9290d11df7a26f422bcab4367a1084b9}
+      \strng{fullhashraw}{9290d11df7a26f422bcab4367a1084b9}
+      \strng{bibnamehash}{9290d11df7a26f422bcab4367a1084b9}
+      \strng{authorbibnamehash}{9290d11df7a26f422bcab4367a1084b9}
+      \strng{authornamehash}{9290d11df7a26f422bcab4367a1084b9}
+      \strng{authorfullhash}{9290d11df7a26f422bcab4367a1084b9}
+      \strng{authorfullhashraw}{9290d11df7a26f422bcab4367a1084b9}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We review some recent developments in the statistical mechanics of isolated quantum systems. We provide a brief introduction to quantum thermalization, paying particular attention to the `Eigenstate Thermalization Hypothesis' (ETH), and the resulting `single-eigenstate statistical mechanics'. We then focus on a class of systems which fail to quantum thermalize and whose eigenstates violate the ETH: These are the many-body Anderson localized systems; their long-time properties are not captured by the conventional ensembles of quantum statistical mechanics. These systems can locally remember forever information about their local initial conditions, and are thus of interest for possibilities of storing quantum information. We discuss key features of many-body localization (MBL), and review a phenomenology of the MBL phase. Single-eigenstate statistical mechanics within the MBL phase reveals dynamically-stable ordered phases, and phase transitions among them, that are invisible to equilibrium statistical mechanics and can occur at high energy and low spatial dimensionality where equilibrium ordering is forbidden.}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{1947-5454 978-0-8243-5006-2}
+      \field{issn}{1947-5454}
+      \field{journaltitle}{Annual Review of Condensed Matter Physics}
+      \field{month}{3}
+      \field{number}{1}
+      \field{title}{{Many-Body Localization and Thermalization in Quantum Statistical Mechanics}}
+      \field{volume}{6}
+      \field{year}{2015}
+      \field{pages}{15\bibrangedash 38}
+      \range{pages}{24}
+      \verb{doi}
+      \verb 10.1146/annurev-conmatphys-031214-014726
+      \endverb
+      \verb{eprint}
+      \verb 1404.0686
+      \endverb
+      \verb{file}
+      \verb :Users/deepak/mendeley/files/Nandkishore, Huse{\_}Many-Body Localization and Thermalization in Quantum Statistical Mechanics{\_}2015.pdf:pdf;:Users/deepak/mendeley/files/Nandkishore, Huse{\_}Many-Body Localization and Thermalization in Quantum Statistical Mechanics{\_}2015(2).pdf:pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1404.0686 http://dx.doi.org/10.1146/annurev-conmatphys-031214-014726 http://arxiv.org/abs/1404.0686{\%}0Ahttp://dx.doi.org/10.1146/annurev-conmatphys-031214-014726 http://www.annualreviews.org/doi/10.1146/annurev-conmatphys-031214-014726
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1404.0686%20http://dx.doi.org/10.1146/annurev-conmatphys-031214-014726%20http://arxiv.org/abs/1404.0686%7B%5C%%7D0Ahttp://dx.doi.org/10.1146/annurev-conmatphys-031214-014726%20http://www.annualreviews.org/doi/10.1146/annurev-conmatphys-031214-014726
+      \endverb
+    \endentry
+    \entry{Goold2016The-role}{misc}{}{}
+      \name{author}{5}{}{%
+        {{hash=ec9263f7cd8ba40acca81c385aea7660}{%
+           family={Goold},
+           familyi={G\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=93d146cf476e422f1aaaf5815edef308}{%
+           family={Huber},
+           familyi={H\bibinitperiod},
+           given={Marcus},
+           giveni={M\bibinitperiod}}}%
+        {{hash=c22fc42d0031a8b48701c22f9a6900b5}{%
+           family={Riera},
+           familyi={R\bibinitperiod},
+           given={Arnau},
+           giveni={A\bibinitperiod}}}%
+        {{hash=77cc643423eddbea28ae463b4729f182}{%
+           family={{Del Rio}},
+           familyi={D\bibinitperiod},
+           given={Lídia},
+           giveni={L\bibinitperiod}}}%
+        {{hash=2eff1f345705f63d1a1541daa3c9ec11}{%
+           family={Skrzypczyk},
+           familyi={S\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IOP Publishing}%
+      }
+      \strng{namehash}{e47719af3fbc6c733896b28616f6d3ce}
+      \strng{fullhash}{babdb4054ca150642dc90180ebb28a05}
+      \strng{fullhashraw}{babdb4054ca150642dc90180ebb28a05}
+      \strng{bibnamehash}{e47719af3fbc6c733896b28616f6d3ce}
+      \strng{authorbibnamehash}{e47719af3fbc6c733896b28616f6d3ce}
+      \strng{authornamehash}{e47719af3fbc6c733896b28616f6d3ce}
+      \strng{authorfullhash}{babdb4054ca150642dc90180ebb28a05}
+      \strng{authorfullhashraw}{babdb4054ca150642dc90180ebb28a05}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This topical review article gives an overview of the interplay between quantum information theory and thermodynamics of quantum systems. We focus on several trending topics including the foundations of statistical mechanics, resource theories, entanglement in thermodynamic settings, fluctuation theorems and thermal machines. This is not a comprehensive review of the diverse field of quantum thermodynamics; rather, it is a convenient entry point for the thermo-curious information theorist. Furthermore this review should facilitate the unification and understanding of different interdisciplinary approaches emerging in research groups around the world.}
+      \field{booktitle}{Journal of Physics A: Mathematical and Theoretical}
+      \field{eprinttype}{arXiv}
+      \field{issn}{17518121}
+      \field{month}{4}
+      \field{number}{14}
+      \field{title}{{The role of quantum information in thermodynamics - A topical review}}
+      \field{volume}{49}
+      \field{year}{2016}
+      \field{pages}{143001}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1088/1751-8113/49/14/143001
+      \endverb
+      \verb{eprint}
+      \verb 1505.07835
+      \endverb
+      \verb{file}
+      \verb :Users/deepak/mendeley/Goold et al.{\_}The role of quantum information in thermodynamics - A topical review{\_}2016.pdf:pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://stacks.iop.org/1751-8121/49/i=14/a=143001?key=crossref.ce80cac2171964cc6d6c51ed12d1e014
+      \endverb
+      \verb{url}
+      \verb http://stacks.iop.org/1751-8121/49/i=14/a=143001?key=crossref.ce80cac2171964cc6d6c51ed12d1e014
+      \endverb
+      \keyw{efficiency,entanglement,fluctuation theorems,fluctuations,heat engines,information theory,pedagogical,quantum information,quantum thermodynamics,resource theories,review,thermalization,thermodynamics}
+    \endentry
+    \entry{Maccone2009Quantum}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=f37f709832bd576552b54dc18d6a251a}{%
+           family={Maccone},
+           familyi={M\bibinitperiod},
+           given={Lorenzo},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {APS}%
+      }
+      \strng{namehash}{f37f709832bd576552b54dc18d6a251a}
+      \strng{fullhash}{f37f709832bd576552b54dc18d6a251a}
+      \strng{fullhashraw}{f37f709832bd576552b54dc18d6a251a}
+      \strng{bibnamehash}{f37f709832bd576552b54dc18d6a251a}
+      \strng{authorbibnamehash}{f37f709832bd576552b54dc18d6a251a}
+      \strng{authornamehash}{f37f709832bd576552b54dc18d6a251a}
+      \strng{authorfullhash}{f37f709832bd576552b54dc18d6a251a}
+      \strng{authorfullhashraw}{f37f709832bd576552b54dc18d6a251a}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review Letters}
+      \field{number}{8}
+      \field{title}{Quantum Solution to the Arrow-of-Time Dilemma}
+      \field{volume}{103}
+      \field{year}{2009}
+      \field{pages}{080401+}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1103/PhysRevLett.103.080401
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1103/PhysRevLett.103.080401
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1103/PhysRevLett.103.080401
+      \endverb
+      \keyw{arrow-of-time,computation,entropy,file-import-09-12-27,irreversibility,law,second,thermodynamics}
+    \endentry
+    \entry{Barbour2014The-Solution}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=2cfbf8115b853d76094e6b8dbfcd3f56}{%
+           family={Barbour},
+           familyi={B\bibinitperiod},
+           given={Julian},
+           giveni={J\bibinitperiod}}}%
+        {{hash=c1e677c906c774bea36a86b472407e0e}{%
+           family={Koslowski},
+           familyi={K\bibinitperiod},
+           given={Tim},
+           giveni={T\bibinitperiod}}}%
+        {{hash=41a306bcb3b08628f1263d0ed1751f84}{%
+           family={Mercati},
+           familyi={M\bibinitperiod},
+           given={Flavio},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{7d970b14eb5b4c0cfa34020a68396046}
+      \strng{fullhash}{7d970b14eb5b4c0cfa34020a68396046}
+      \strng{fullhashraw}{7d970b14eb5b4c0cfa34020a68396046}
+      \strng{bibnamehash}{7d970b14eb5b4c0cfa34020a68396046}
+      \strng{authorbibnamehash}{7d970b14eb5b4c0cfa34020a68396046}
+      \strng{authornamehash}{7d970b14eb5b4c0cfa34020a68396046}
+      \strng{authorfullhash}{7d970b14eb5b4c0cfa34020a68396046}
+      \strng{authorfullhashraw}{7d970b14eb5b4c0cfa34020a68396046}
+      \field{extraname}{1}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The absence of unique time evolution in Einstein's spacetime description of gravity leads to the hitherto unresolved `problem of time' in quantum gravity. Shape Dynamics is an objectively equivalent representation of gravity that trades spacetime refoliation invariance for three-dimensional conformal invariance. Its logical completion presented here gives a dimensionless description of gravitational dynamics. We show that in this framework the classical problem of time is completely solved. Since a comparable definitive solution is impossible within the spacetime description, we believe Shape Dynamics provides a key ingredient for the creation of quantum gravity.}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{Classical and Quantum Gravity}
+      \field{month}{8}
+      \field{title}{The Solution to the Problem of Time in Shape Dynamics}
+      \field{volume}{31}
+      \field{year}{2014}
+      \field{pages}{155001}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1088/0264-9381/31/15/155001
+      \endverb
+      \verb{eprint}
+      \verb 1302.6264
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1302.6264
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1302.6264
+      \endverb
+      \keyw{2013,conformal,julian\_barbour,koslowski,mercati\_f,problem\_of\_time,quantum\_gravity,shape\_dynamics,time\_evolution,arrow of time}
+    \endentry
+    \entry{Barbour2013A-Gravitational}{misc}{}{}
+      \name{author}{3}{}{%
+        {{hash=2cfbf8115b853d76094e6b8dbfcd3f56}{%
+           family={Barbour},
+           familyi={B\bibinitperiod},
+           given={Julian},
+           giveni={J\bibinitperiod}}}%
+        {{hash=c1e677c906c774bea36a86b472407e0e}{%
+           family={Koslowski},
+           familyi={K\bibinitperiod},
+           given={Tim},
+           giveni={T\bibinitperiod}}}%
+        {{hash=41a306bcb3b08628f1263d0ed1751f84}{%
+           family={Mercati},
+           familyi={M\bibinitperiod},
+           given={Flavio},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{7d970b14eb5b4c0cfa34020a68396046}
+      \strng{fullhash}{7d970b14eb5b4c0cfa34020a68396046}
+      \strng{fullhashraw}{7d970b14eb5b4c0cfa34020a68396046}
+      \strng{bibnamehash}{7d970b14eb5b4c0cfa34020a68396046}
+      \strng{authorbibnamehash}{7d970b14eb5b4c0cfa34020a68396046}
+      \strng{authornamehash}{7d970b14eb5b4c0cfa34020a68396046}
+      \strng{authorfullhash}{7d970b14eb5b4c0cfa34020a68396046}
+      \strng{authorfullhashraw}{7d970b14eb5b4c0cfa34020a68396046}
+      \field{extraname}{2}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The only widely accepted explanation for the various arrows of time that everywhere and at all epochs point in the same direction is the `past hypothesis': the Universe had a very special low-entropy initial state. We present the first evidence for an alternative conjecture: the arrows exist in all solutions of the gravitational law that governs the Universe and arise because the space of its true degrees of freedom (shape space) is asymmetric. We prove our conjecture for arrows of complexity and information in the Newtonian N-body problem. Except for a set of measure zero, all of its solutions for non-negative energy divide at a uniquely defined point into two halves. In each a well-defined measure of complexity fluctuates but grows irreversibly between rising bounds from that point. Structures that store dynamical information are created as the complexity grows. Recognition of the division is a key novelty of our approach. Each solution can be viewed as having a single past and two distinct futures emerging from it. Any internal observer must be in one half of the solution and will only be aware of one past and one future. The `paradox' of a time-symmetric law that leads to observationally irreversible behaviour is fully resolved. General Relativity shares enough architectonic structure with the N-body problem for us to prove the existence of analogous complexity arrows in the vacuum Bianchi IX model. In the absence of non-trivial solutions with matter we cannot prove that arrows of dynamical information will arise in GR, though they have in our Universe. Finally, we indicate how the other arrows of time could arise.}
+      \field{eprinttype}{arXiv}
+      \field{month}{10}
+      \field{title}{{A Gravitational Origin of the Arrows of Time}}
+      \field{year}{2013}
+      \verb{eprint}
+      \verb 1310.5167
+      \endverb
+      \verb{file}
+      \verb :Users/deepak/mendeley/Barbour, Koslowski, Mercati{\_}A Gravitational Origin of the Arrows of Time{\_}2013.pdf:pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1310.5167
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1310.5167
+      \endverb
+    \endentry
+    \entry{Barbour2014Identification}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=2cfbf8115b853d76094e6b8dbfcd3f56}{%
+           family={Barbour},
+           familyi={B\bibinitperiod},
+           given={Julian},
+           giveni={J\bibinitperiod}}}%
+        {{hash=c1e677c906c774bea36a86b472407e0e}{%
+           family={Koslowski},
+           familyi={K\bibinitperiod},
+           given={Tim},
+           giveni={T\bibinitperiod}}}%
+        {{hash=41a306bcb3b08628f1263d0ed1751f84}{%
+           family={Mercati},
+           familyi={M\bibinitperiod},
+           given={Flavio},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{7d970b14eb5b4c0cfa34020a68396046}
+      \strng{fullhash}{7d970b14eb5b4c0cfa34020a68396046}
+      \strng{fullhashraw}{7d970b14eb5b4c0cfa34020a68396046}
+      \strng{bibnamehash}{7d970b14eb5b4c0cfa34020a68396046}
+      \strng{authorbibnamehash}{7d970b14eb5b4c0cfa34020a68396046}
+      \strng{authornamehash}{7d970b14eb5b4c0cfa34020a68396046}
+      \strng{authorfullhash}{7d970b14eb5b4c0cfa34020a68396046}
+      \strng{authorfullhashraw}{7d970b14eb5b4c0cfa34020a68396046}
+      \field{extraname}{3}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{It is widely believed that special initial conditions must be imposed on any time-symmetric law if its solutions are to exhibit behavior of any kind that defines an `arrow of time'. We show that this is not so. The simplest non-trivial time-symmetric law that can be used to model a dynamically closed universe is the Newtonian {\$}N{\$}-body problem with vanishing total energy and angular momentum. Because of special properties of this system (likely to be shared by any law of the Universe), its typical solutions all divide at a uniquely defined point into two halves. In each a well-defined measure of shape complexity fluctuates but grows irreversibly between rising bounds from that point. Structures that store dynamical information are created as the complexity grows and act as `records'. Each solution can be viewed as having a single past and two distinct futures emerging from it. Any internal observer must be in one half of the solution and will only be aware of the records of one branch and deduce a unique past and future direction from inspection of the available records.}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{0031-9007$\backslash$n1079-7114}
+      \field{issn}{10797114}
+      \field{journaltitle}{Physical Review Letters}
+      \field{month}{9}
+      \field{number}{18}
+      \field{title}{{Identification of a gravitational arrow of time}}
+      \field{volume}{113}
+      \field{year}{2014}
+      \verb{doi}
+      \verb 10.1103/PhysRevLett.113.181101
+      \endverb
+      \verb{eprint}
+      \verb 1409.0917
+      \endverb
+      \verb{file}
+      \verb :Users/deepak/mendeley/Barbour, Koslowski, Mercati{\_}Identification of a gravitational arrow of time{\_}2014.pdf:pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1409.0917 http://dx.doi.org/10.1103/PhysRevLett.113.181101
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1409.0917%20http://dx.doi.org/10.1103/PhysRevLett.113.181101
+      \endverb
+    \endentry
+    \entry{Jennings2010Entanglement}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=902333c7c6ef95187367dddc4e3b20c4}{%
+           family={Jennings},
+           familyi={J\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=f852534d75dba3d1f7fb5aa40200e37b}{%
+           family={Rudolph},
+           familyi={R\bibinitperiod},
+           given={Terry},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{5b87bbb0cc496f8744223bdf47f70dd8}
+      \strng{fullhash}{5b87bbb0cc496f8744223bdf47f70dd8}
+      \strng{fullhashraw}{5b87bbb0cc496f8744223bdf47f70dd8}
+      \strng{bibnamehash}{5b87bbb0cc496f8744223bdf47f70dd8}
+      \strng{authorbibnamehash}{5b87bbb0cc496f8744223bdf47f70dd8}
+      \strng{authornamehash}{5b87bbb0cc496f8744223bdf47f70dd8}
+      \strng{authorfullhash}{5b87bbb0cc496f8744223bdf47f70dd8}
+      \strng{authorfullhashraw}{5b87bbb0cc496f8744223bdf47f70dd8}
+      \field{extraname}{1}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We discuss quantum entanglement in the context of the thermodynamic arrow of time. We review the role of correlations in entropy-decreasing events and prove that the occurrence of a transformation between two thermodynamic states constitutes a new type of entanglement witness, one not defined as a separating plane in state space between separable and entangled states, but as a physical process dependent on the local initial properties of the states. Extending work by Partovi, we consider a general entangled multipartite system that allows large reversals of the thermodynamic arrow of time. We describe a hierarchy of arrows that arises from the different correlations allowed in a quantum state and examine these features in the context of Maxwell's Demon. We examine in detail the case of three qubits, and also propose some simple experimental demonstrations possible with small numbers of qubits.}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{1550-2376 (Electronic)$\backslash$r1539-3755 (Linking)}
+      \field{issn}{15393755}
+      \field{journaltitle}{Physical Review E - Statistical, Nonlinear, and Soft Matter Physics}
+      \field{month}{2}
+      \field{number}{6}
+      \field{title}{{Entanglement and the thermodynamic arrow of time}}
+      \field{volume}{81}
+      \field{year}{2010}
+      \verb{doi}
+      \verb 10.1103/PhysRevE.81.061130
+      \endverb
+      \verb{eprint}
+      \verb 1002.0314
+      \endverb
+      \verb{file}
+      \verb :Users/deepak/mendeley/Jennings, Rudolph{\_}Entanglement and the Thermodynamic Arrow of Time{\_}2010.pdf:pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1002.0314 http://dx.doi.org/10.1103/PhysRevE.81.061130
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1002.0314%20http://dx.doi.org/10.1103/PhysRevE.81.061130
+      \endverb
+    \endentry
+    \entry{Jennings2009Comment}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=902333c7c6ef95187367dddc4e3b20c4}{%
+           family={Jennings},
+           familyi={J\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=f852534d75dba3d1f7fb5aa40200e37b}{%
+           family={Rudolph},
+           familyi={R\bibinitperiod},
+           given={Terry},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{5b87bbb0cc496f8744223bdf47f70dd8}
+      \strng{fullhash}{5b87bbb0cc496f8744223bdf47f70dd8}
+      \strng{fullhashraw}{5b87bbb0cc496f8744223bdf47f70dd8}
+      \strng{bibnamehash}{5b87bbb0cc496f8744223bdf47f70dd8}
+      \strng{authorbibnamehash}{5b87bbb0cc496f8744223bdf47f70dd8}
+      \strng{authornamehash}{5b87bbb0cc496f8744223bdf47f70dd8}
+      \strng{authorfullhash}{5b87bbb0cc496f8744223bdf47f70dd8}
+      \strng{authorfullhashraw}{5b87bbb0cc496f8744223bdf47f70dd8}
+      \field{extraname}{2}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Recently, a substantial amount of debate has grown up around a proposed quantum resolution to the `arrow of time dilemma' that is based on the role of classical memory records of entropy-decreasing events. In this note we show that the argument is incomplete and furthermore, by providing a counter-example, argue that it is incorrect. Instead of quantum mechanics providing a resolution in the manner suggested, it allows enhanced classical memory records of entropy-decreasing events.}
+      \field{eprinttype}{arXiv}
+      \field{month}{9}
+      \field{title}{{Comment on `Quantum resolution to the arrow of time dilemma'}}
+      \field{year}{2009}
+      \verb{doi}
+      \verb 10.1103/PhysRevLett.104.148901
+      \endverb
+      \verb{eprint}
+      \verb 0909.1726
+      \endverb
+      \verb{file}
+      \verb :Users/deepak/mendeley/Jennings, Rudolph{\_}Comment on `Quantum resolution to the arrow of time dilemma'{\_}2009.pdf:pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/0909.1726 http://dx.doi.org/10.1103/PhysRevLett.104.148901
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/0909.1726%20http://dx.doi.org/10.1103/PhysRevLett.104.148901
+      \endverb
+    \endentry
+    \entry{England2012Statistical}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=23fe0abcd34dca04455256928db5734f}{%
+           family={England},
+           familyi={E\bibinitperiod},
+           given={Jeremy\bibnamedelima L.},
+           giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \strng{namehash}{23fe0abcd34dca04455256928db5734f}
+      \strng{fullhash}{23fe0abcd34dca04455256928db5734f}
+      \strng{fullhashraw}{23fe0abcd34dca04455256928db5734f}
+      \strng{bibnamehash}{23fe0abcd34dca04455256928db5734f}
+      \strng{authorbibnamehash}{23fe0abcd34dca04455256928db5734f}
+      \strng{authornamehash}{23fe0abcd34dca04455256928db5734f}
+      \strng{authorfullhash}{23fe0abcd34dca04455256928db5734f}
+      \strng{authorfullhashraw}{23fe0abcd34dca04455256928db5734f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Self-replication is a capacity common to every species of living thing, and simple physical intuition dictates that such a process must invariably be fueled by the production of entropy. Here, we undertake to make this intuition rigorous and quantitative by deriving a lower bound for the amount of heat that is produced during a process of self-replication in a system coupled to a thermal bath. We find that the minimum value for the physically allowed rate of heat production is determined by the growth rate, internal entropy, and durability of the replicator, and we discuss the implications of this finding for bacterial cell division, as well as for the pre-biotic emergence of self-replicating nucleic acids.}
+      \field{eprinttype}{arXiv}
+      \field{month}{9}
+      \field{title}{Statistical Physics of {Self-Replication}}
+      \field{year}{2012}
+      \verb{eprint}
+      \verb 1209.1179
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1209.1179
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1209.1179
+      \endverb
+      \keyw{biology,england\_jeremy,entropy\_production,evolution,life,nucleic\_acids,self\_replicating,statistical\_mechanics}
+    \endentry
+    \entry{Vaid2016LQG-for-the-Bewildered}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=5cb9a4050ee806ef7d915efa6a9ddaa6}{%
+           family={Vaid},
+           familyi={V\bibinitperiod},
+           given={Deepak},
+           giveni={D\bibinitperiod}}}%
+        {{hash=1f81e890d15623fa75a7cbe81f5b2c2c}{%
+           family={{Bilson-Thompson}},
+           familyi={B\bibinitperiod},
+           given={Sundance},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Nature}%
+      }
+      \strng{namehash}{9c9eb6470eafaec783e535106d85005f}
+      \strng{fullhash}{9c9eb6470eafaec783e535106d85005f}
+      \strng{fullhashraw}{9c9eb6470eafaec783e535106d85005f}
+      \strng{bibnamehash}{9c9eb6470eafaec783e535106d85005f}
+      \strng{authorbibnamehash}{9c9eb6470eafaec783e535106d85005f}
+      \strng{authornamehash}{9c9eb6470eafaec783e535106d85005f}
+      \strng{authorfullhash}{9c9eb6470eafaec783e535106d85005f}
+      \strng{authorfullhashraw}{9c9eb6470eafaec783e535106d85005f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This primer offers a concise introduction to Loop Quantum Gravity (LQG) - a theoretical framework for uniting Quantum Mechanics (QM) with General Relativity (GR). The emphasis is on the physical aspects of the framework and its historical development in terms of self-dual variables, still most suited for a first, pedagogical encounter with LQG. The text starts by reviewing GR and the very basics of Quantum Field Theory (QFT), and then explains in a concise and clear manner the steps leading from the Einstein-Hilbert action for gravity to the construction of the quantum states of geometry, known as spin-networks, and which provide the basis for the kinematical Hilbert space of quantum general relativity. Along the way the various associated concepts of tetrads, spin-connection and holonomies are introduced. Having thus provided a minimal introduction to the LQG framework, some applications to the problems of black hole entropy and of quantum cosmology are briefly surveyed. Last but not least, a list of the most common criticisms of LQG is presented, which are then tackled one by one in order to convince the reader of the physical viability of the theory. A set of appendices provides accessible introductions to several key notions such as the Peter-Weyl theorem, duality of differential forms and Regge calculus, among others. The presentation is aimed at graduate students and researchers who have some familiarity with the tools of QM and GR, but are intimidated by the technicalities required to browse through the existing LQG literature. This primer aims at making the formalism appear a little less bewildering to the uninitiated and helps lower the barrier for entry into the field.}
+      \field{isbn}{978-3-319-43184-0}
+      \field{journaltitle}{LQG for the Bewildered: The Self-Dual Approach Revisited}
+      \field{month}{2}
+      \field{title}{{{LQG}} for the Bewildered - {{The}} Self-Dual Approach Revisited}
+      \field{year}{2016}
+      \verb{doi}
+      \verb 10.1007/978-3-319-43184-0
+      \endverb
+      \verb{file}
+      \verb /Volumes/Data/owncloud/root/research/zotero_pdfs/Vaid;Bilson-Thompson_LQG for the bewildered - The self-dual approach revisited_2016.pdf
+      \endverb
+      \keyw{adm_formulation,area-operator,arxiv,ashtekar_variables,bilson-thompson,connection_dynamics,differential_forms,introductory,lqg,lqgbewil,peter_weyl_theorem,quantum_gravity,regge_calculus,vaid_d}
+    \endentry
+    \entry{Christodoulou2012How-to-detect}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=965ccfd19dc17c790c120d7fd3165e5f}{%
+           family={Christodoulou},
+           familyi={C\bibinitperiod},
+           given={Marios},
+           giveni={M\bibinitperiod}}}%
+        {{hash=6a36355a7ce3670992ebc48059fa8b9a}{%
+           family={Riello},
+           familyi={R\bibinitperiod},
+           given={Aldo},
+           giveni={A\bibinitperiod}}}%
+        {{hash=b32ab73e85caa26365ad2176347b9515}{%
+           family={Rovelli},
+           familyi={R\bibinitperiod},
+           given={Carlo},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{f17f9585fecd51d20e1e9f5d634f0dd6}
+      \strng{fullhash}{f17f9585fecd51d20e1e9f5d634f0dd6}
+      \strng{fullhashraw}{f17f9585fecd51d20e1e9f5d634f0dd6}
+      \strng{bibnamehash}{f17f9585fecd51d20e1e9f5d634f0dd6}
+      \strng{authorbibnamehash}{f17f9585fecd51d20e1e9f5d634f0dd6}
+      \strng{authornamehash}{f17f9585fecd51d20e1e9f5d634f0dd6}
+      \strng{authorfullhash}{f17f9585fecd51d20e1e9f5d634f0dd6}
+      \strng{authorfullhashraw}{f17f9585fecd51d20e1e9f5d634f0dd6}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Is it possible, in principle, to measure the sign of the Lapse? We show that fermion dynamics distinguishes spacetimes having the same metric but different tetrads, for instance a Lapse with opposite sign. This sign might be a physical quantity not captured by the metric. We discuss its possible role in quantum gravity.}
+      \field{eprinttype}{arXiv}
+      \field{month}{6}
+      \field{title}{How to detect an anti-spacetime}
+      \field{year}{2012}
+      \verb{eprint}
+      \verb 1206.3903
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1206.3903
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1206.3903
+      \endverb
+      \keyw{anti-spacetime,fermions,lapse\_function,parity,quantum\_gravity,rovelli,tetrad,time\_reversal}
+    \endentry
+    \entry{Rovelli2012Discrete}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=b32ab73e85caa26365ad2176347b9515}{%
+           family={Rovelli},
+           familyi={R\bibinitperiod},
+           given={Carlo},
+           giveni={C\bibinitperiod}}}%
+        {{hash=d1c84af17d651e04e9f0c89cdea671ef}{%
+           family={Wilson-Ewing},
+           familyi={W\bibinithyphendelim E\bibinitperiod},
+           given={Edward},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{ad9b353f0268f58a1db6068810ab28c4}
+      \strng{fullhash}{ad9b353f0268f58a1db6068810ab28c4}
+      \strng{fullhashraw}{ad9b353f0268f58a1db6068810ab28c4}
+      \strng{bibnamehash}{ad9b353f0268f58a1db6068810ab28c4}
+      \strng{authorbibnamehash}{ad9b353f0268f58a1db6068810ab28c4}
+      \strng{authornamehash}{ad9b353f0268f58a1db6068810ab28c4}
+      \strng{authorfullhash}{ad9b353f0268f58a1db6068810ab28c4}
+      \strng{authorfullhashraw}{ad9b353f0268f58a1db6068810ab28c4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We study time-reversal and parity ---on the physical manifold and in internal space--- in covariant loop gravity. We consider a minor modification of the Holst action which makes it transform coherently under such transformations. The classical theory is not affected but the quantum theory is slightly different. In particular, the simplicity constraints are slightly modified and this restricts orientation flips in a spinfoam to occur only across degenerate regions, thus reducing the sources of potential divergences.}
+      \field{eprinttype}{arXiv}
+      \field{month}{5}
+      \field{title}{Discrete Symmetries in Covariant {LQG}}
+      \field{year}{2012}
+      \verb{eprint}
+      \verb 1205.0733
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1205.0733
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1205.0733
+      \endverb
+      \keyw{discrete-symmetries,holst\_action,lqg,parity,quantum\_gravity,rovelli,simplicity\_constraints,time\_reversal,wilson-ewing}
+    \endentry
+    \entry{Chirco2018Group}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=fed50937d569191c6802ddd6cf0ba19c}{%
+           family={Chirco},
+           familyi={C\bibinitperiod},
+           given={Goffredo},
+           giveni={G\bibinitperiod}}}%
+        {{hash=dd6a9fbebfd40e838f227d4e565e5fda}{%
+           family={Oriti},
+           familyi={O\bibinitperiod},
+           given={Daniele},
+           giveni={D\bibinitperiod}}}%
+        {{hash=c9df1eb35e76af80baab97700c757ca4}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Mingyi},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{53b3c006b91d7c1e51d579164ce03b01}
+      \strng{fullhash}{53b3c006b91d7c1e51d579164ce03b01}
+      \strng{fullhashraw}{53b3c006b91d7c1e51d579164ce03b01}
+      \strng{bibnamehash}{53b3c006b91d7c1e51d579164ce03b01}
+      \strng{authorbibnamehash}{53b3c006b91d7c1e51d579164ce03b01}
+      \strng{authornamehash}{53b3c006b91d7c1e51d579164ce03b01}
+      \strng{authorfullhash}{53b3c006b91d7c1e51d579164ce03b01}
+      \strng{authorfullhashraw}{53b3c006b91d7c1e51d579164ce03b01}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We establish a dictionary between group field theory (thus, spin networks and random tensors) states and generalized random tensor networks. Then, we use this dictionary to compute the R$\backslash$'{\{}e{\}}nyi entropy of such states and recover the Ryu-Takayanagi formula, in three different cases corresponding to three different truncations/approximations, suggested by the established correspondence.}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{Classical and Quantum Gravity}
+      \field{month}{5}
+      \field{number}{11}
+      \field{title}{{Group Field theory and Tensor Networks: towards a Ryu-Takayanagi formula in full quantum gravity}}
+      \field{volume}{35}
+      \field{year}{2018}
+      \field{pages}{115011}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1088/1361-6382/aabd50
+      \endverb
+      \verb{eprint}
+      \verb 1701.01383
+      \endverb
+      \verb{file}
+      \verb :Users/deepak/mendeley/files/Chirco, Oriti, Zhang{\_}Group Field theory and Tensor Networks towards a Ryu-Takayanagi formula in full quantum gravity{\_}2017.pdf:pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1701.01383
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1701.01383
+      \endverb
+    \endentry
+    \entry{Colafranceschi2021Holographic}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=38556c7638929de63a69f0ce531c8e59}{%
+           family={Colafranceschi},
+           familyi={C\bibinitperiod},
+           given={E.},
+           giveni={E\bibinitperiod}}}%
+        {{hash=8f788cea4931d64f54de32dba2e4645f}{%
+           family={Chirco},
+           familyi={C\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod}}}%
+        {{hash=c56f97e9eaec650c5d61eb2036a2f7a6}{%
+           family={Oriti},
+           familyi={O\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{a3c440d281433ce20d6622a0c46c47b4}
+      \strng{fullhash}{a3c440d281433ce20d6622a0c46c47b4}
+      \strng{fullhashraw}{a3c440d281433ce20d6622a0c46c47b4}
+      \strng{bibnamehash}{a3c440d281433ce20d6622a0c46c47b4}
+      \strng{authorbibnamehash}{a3c440d281433ce20d6622a0c46c47b4}
+      \strng{authornamehash}{a3c440d281433ce20d6622a0c46c47b4}
+      \strng{authorfullhash}{a3c440d281433ce20d6622a0c46c47b4}
+      \strng{authorfullhashraw}{a3c440d281433ce20d6622a0c46c47b4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of High Energy Physics}
+      \field{number}{9}
+      \field{title}{Holographic maps from spin networks to tensor networks}
+      \field{volume}{2021}
+      \field{year}{2021}
+      \field{pages}{1\bibrangedash 45}
+      \range{pages}{45}
+      \verb{doi}
+      \verb 10.1007/JHEP09(2021)010
+      \endverb
+      \verb{eprint}
+      \verb 2105.06454
+      \endverb
+    \endentry
+    \entry{Chirco2022Quantum}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=8f788cea4931d64f54de32dba2e4645f}{%
+           family={Chirco},
+           familyi={C\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod}}}%
+        {{hash=38556c7638929de63a69f0ce531c8e59}{%
+           family={Colafranceschi},
+           familyi={C\bibinitperiod},
+           given={E.},
+           giveni={E\bibinitperiod}}}%
+        {{hash=c56f97e9eaec650c5d61eb2036a2f7a6}{%
+           family={Oriti},
+           familyi={O\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{88a6f2eb75074c8fdb7edb6f58845da3}
+      \strng{fullhash}{88a6f2eb75074c8fdb7edb6f58845da3}
+      \strng{fullhashraw}{88a6f2eb75074c8fdb7edb6f58845da3}
+      \strng{bibnamehash}{88a6f2eb75074c8fdb7edb6f58845da3}
+      \strng{authorbibnamehash}{88a6f2eb75074c8fdb7edb6f58845da3}
+      \strng{authornamehash}{88a6f2eb75074c8fdb7edb6f58845da3}
+      \strng{authorfullhash}{88a6f2eb75074c8fdb7edb6f58845da3}
+      \strng{authorfullhashraw}{88a6f2eb75074c8fdb7edb6f58845da3}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review D}
+      \field{number}{4}
+      \field{title}{Quantum geometry from superposed spin networks}
+      \field{volume}{105}
+      \field{year}{2022}
+      \field{pages}{046007}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/PhysRevD.105.046007
+      \endverb
+      \verb{eprint}
+      \verb 2207.07625
+      \endverb
+    \endentry
+    \entry{Senthil2015Symmetry-Protected}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=ae4814e277dcb3f10e9513de11278f5e}{%
+           family={Senthil},
+           familyi={S\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{ae4814e277dcb3f10e9513de11278f5e}
+      \strng{fullhash}{ae4814e277dcb3f10e9513de11278f5e}
+      \strng{fullhashraw}{ae4814e277dcb3f10e9513de11278f5e}
+      \strng{bibnamehash}{ae4814e277dcb3f10e9513de11278f5e}
+      \strng{authorbibnamehash}{ae4814e277dcb3f10e9513de11278f5e}
+      \strng{authornamehash}{ae4814e277dcb3f10e9513de11278f5e}
+      \strng{authorfullhash}{ae4814e277dcb3f10e9513de11278f5e}
+      \strng{authorfullhashraw}{ae4814e277dcb3f10e9513de11278f5e}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We describe recent progress in our understanding of the interplay between interactions, symmetry, and topology in states of quantum matter. We focus on a minimal generalization of the celebrated topological band insulators to interacting many particle systems, known as Symmetry Protected Topological (SPT) phases. In common with the topological band insulators these states have a bulk gap and no exotic excitations but have non-trivial surface states that are protected by symmetry. We describe the various possible such phases and their properties in three dimensional systems with realistic symmetries. We develop many key ideas of the theory of these states using simple examples. The emphasis is on physical rather than mathematical properties. We survey insights obtained from the study of SPT phases for a number of other theoretical problems.}
+      \field{eprinttype}{arXiv}
+      \field{issn}{1947-5454}
+      \field{journaltitle}{Annual Review of Condensed Matter Physics}
+      \field{month}{3}
+      \field{number}{1}
+      \field{title}{{Symmetry-Protected Topological Phases of Quantum Matter}}
+      \field{volume}{6}
+      \field{year}{2015}
+      \field{pages}{299\bibrangedash 324}
+      \range{pages}{26}
+      \verb{doi}
+      \verb 10.1146/annurev-conmatphys-031214-014740
+      \endverb
+      \verb{eprint}
+      \verb 1405.4015
+      \endverb
+      \verb{file}
+      \verb :Users/deepak/mendeley/Senthil{\_}Symmetry Protected Topological phases of Quantum Matter{\_}2014.pdf:pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1405.4015 http://dx.doi.org/10.1146/annurev-conmatphys-031214-014740 http://arxiv.org/abs/1405.4015{\%}0Ahttp://dx.doi.org/10.1146/annurev-conmatphys-031214-014740 http://www.annualreviews.org/doi/10.1146/annurev-conmatphys-031214-014740
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1405.4015%20http://dx.doi.org/10.1146/annurev-conmatphys-031214-014740%20http://arxiv.org/abs/1405.4015%7B%5C%%7D0Ahttp://dx.doi.org/10.1146/annurev-conmatphys-031214-014740%20http://www.annualreviews.org/doi/10.1146/annurev-conmatphys-031214-014740
+      \endverb
+    \endentry
+    \entry{Kapustin2014Symmetry}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=83cd64767b94ab11ba933548f7fb70ce}{%
+           family={Kapustin},
+           familyi={K\bibinitperiod},
+           given={Anton},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{83cd64767b94ab11ba933548f7fb70ce}
+      \strng{fullhash}{83cd64767b94ab11ba933548f7fb70ce}
+      \strng{fullhashraw}{83cd64767b94ab11ba933548f7fb70ce}
+      \strng{bibnamehash}{83cd64767b94ab11ba933548f7fb70ce}
+      \strng{authorbibnamehash}{83cd64767b94ab11ba933548f7fb70ce}
+      \strng{authornamehash}{83cd64767b94ab11ba933548f7fb70ce}
+      \strng{authorfullhash}{83cd64767b94ab11ba933548f7fb70ce}
+      \strng{authorfullhashraw}{83cd64767b94ab11ba933548f7fb70ce}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We propose that Symmetry Protected Topological Phases with a finite symmetry group G are classified by cobordism groups of the classifying space of G. This provides an explanation for the recent discovery of bosonic SPT phases which do not fit into the group cohomology classification. We discuss the connection of the cobordism classification of SPT phases to gauge and gravitational anomalies in various dimensions.}
+      \field{eprinttype}{arXiv}
+      \field{month}{3}
+      \field{title}{{Symmetry Protected Topological Phases, Anomalies, and Cobordisms: Beyond Group Cohomology}}
+      \field{year}{2014}
+      \verb{eprint}
+      \verb 1403.1467
+      \endverb
+      \verb{file}
+      \verb :Users/deepak/mendeley/Kapustin{\_}Symmetry Protected Topological Phases, Anomalies, and Cobordisms Beyond Group Cohomology{\_}2014.pdf:pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1403.1467
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1403.1467
+      \endverb
+    \endentry
+    \entry{Freed2021Reflection}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=fe9ff8deaffced420e1b155c083b3d37}{%
+           family={Freed},
+           familyi={F\bibinitperiod},
+           given={Daniel\bibnamedelima S.},
+           giveni={D\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=b0d11472e9bb092317f71e67e46d1f55}{%
+           family={Hopkins},
+           familyi={H\bibinitperiod},
+           given={Michael\bibnamedelima J.},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{be3d0eb214303e3e853ece723eda23ad}
+      \strng{fullhash}{be3d0eb214303e3e853ece723eda23ad}
+      \strng{fullhashraw}{be3d0eb214303e3e853ece723eda23ad}
+      \strng{bibnamehash}{be3d0eb214303e3e853ece723eda23ad}
+      \strng{authorbibnamehash}{be3d0eb214303e3e853ece723eda23ad}
+      \strng{authornamehash}{be3d0eb214303e3e853ece723eda23ad}
+      \strng{authorfullhash}{be3d0eb214303e3e853ece723eda23ad}
+      \strng{authorfullhashraw}{be3d0eb214303e3e853ece723eda23ad}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{math-ph}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{Geometry \& Topology}
+      \field{title}{Reflection positivity and invertible topological phases}
+      \field{volume}{25}
+      \field{year}{2021}
+      \field{pages}{1165\bibrangedash 1330}
+      \range{pages}{166}
+      \verb{doi}
+      \verb 10.2140/gt.2021.25.1165
+      \endverb
+      \verb{eprint}
+      \verb 1604.06527
+      \endverb
+    \endentry
+    \entry{Van-Raamsdonk2010Building}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=d396f6dcb93baa4f3ff3bab7eec5addf}{%
+           family={Van\bibnamedelima Raamsdonk},
+           familyi={V\bibinitperiod\bibinitdelim R\bibinitperiod},
+           given={Mark},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{d396f6dcb93baa4f3ff3bab7eec5addf}
+      \strng{fullhash}{d396f6dcb93baa4f3ff3bab7eec5addf}
+      \strng{fullhashraw}{d396f6dcb93baa4f3ff3bab7eec5addf}
+      \strng{bibnamehash}{d396f6dcb93baa4f3ff3bab7eec5addf}
+      \strng{authorbibnamehash}{d396f6dcb93baa4f3ff3bab7eec5addf}
+      \strng{authornamehash}{d396f6dcb93baa4f3ff3bab7eec5addf}
+      \strng{authorfullhash}{d396f6dcb93baa4f3ff3bab7eec5addf}
+      \strng{authorfullhashraw}{d396f6dcb93baa4f3ff3bab7eec5addf}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In this essay, we argue that the emergence of classically connected spacetimes is intimately related to the quantum entanglement of degrees of freedom in a non-perturbative description of quantum gravity. Disentangling the degrees of freedom associated with two regions of spacetime results in these regions pulling apart and pinching off from each other in a way that can be quantified by standard measures of entanglement.}
+      \field{eprinttype}{arXiv}
+      \field{month}{5}
+      \field{title}{Building up spacetime with quantum entanglement}
+      \field{year}{2010}
+      \verb{eprint}
+      \verb 1005.3035
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1005.3035
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1005.3035
+      \endverb
+      \keyw{emergent\_gravity,entanglement,entanglement\_entropy,essay,geometry,holography,mera}
+    \endentry
+    \entry{Swingle2012Constructing}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=9069021ff25fea1f37622b0751c0f899}{%
+           family={Swingle},
+           familyi={S\bibinitperiod},
+           given={Brian},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{9069021ff25fea1f37622b0751c0f899}
+      \strng{fullhash}{9069021ff25fea1f37622b0751c0f899}
+      \strng{fullhashraw}{9069021ff25fea1f37622b0751c0f899}
+      \strng{bibnamehash}{9069021ff25fea1f37622b0751c0f899}
+      \strng{authorbibnamehash}{9069021ff25fea1f37622b0751c0f899}
+      \strng{authornamehash}{9069021ff25fea1f37622b0751c0f899}
+      \strng{authorfullhash}{9069021ff25fea1f37622b0751c0f899}
+      \strng{authorfullhashraw}{9069021ff25fea1f37622b0751c0f899}
+      \field{extraname}{1}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We elaborate on our earlier proposal connecting entanglement renormalization and holographic duality in which we argued that a tensor network can be reinterpreted as a kind of skeleton for an emergent holographic space. Here we address the question of the large \$N\$ limit where on the holographic side the gravity theory becomes classical and a non-fluctuating smooth spacetime description emerges. We show how a number of features of holographic duality in the large \$N\$ limit emerge naturally from entanglement renormalization, including a classical spacetime generated by entanglement, a sparse spectrum of operator dimensions, and phase transitions in mutual information. We also address questions related to bulk locality below the {AdS} radius, holographic duals of weakly coupled large \$N\$ theories, Fermi surfaces in holography, and the holographic interpretation of branching {MERA}. Some of our considerations are inspired by the idea of quantum expanders which are generalized quantum transformations that add a definite amount of entropy to most states. Since we identify entanglement with geometry, we thus argue that classical spacetime may be built from quantum expanders (or something like them).}
+      \field{eprinttype}{arXiv}
+      \field{month}{9}
+      \field{title}{Constructing holographic spacetimes using entanglement renormalization}
+      \field{year}{2012}
+      \verb{eprint}
+      \verb 1209.3304
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1209.3304
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1209.3304
+      \endverb
+      \keyw{duality,entanglement\_renormalization,entropy,holography,locality,mera,quantum\_expanders,quantum\_gravity,swingle\_brian,tensor\_networks}
+    \endentry
+    \entry{Swingle2009Entanglement}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=9069021ff25fea1f37622b0751c0f899}{%
+           family={Swingle},
+           familyi={S\bibinitperiod},
+           given={Brian},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{9069021ff25fea1f37622b0751c0f899}
+      \strng{fullhash}{9069021ff25fea1f37622b0751c0f899}
+      \strng{fullhashraw}{9069021ff25fea1f37622b0751c0f899}
+      \strng{bibnamehash}{9069021ff25fea1f37622b0751c0f899}
+      \strng{authorbibnamehash}{9069021ff25fea1f37622b0751c0f899}
+      \strng{authornamehash}{9069021ff25fea1f37622b0751c0f899}
+      \strng{authorfullhash}{9069021ff25fea1f37622b0751c0f899}
+      \strng{authorfullhashraw}{9069021ff25fea1f37622b0751c0f899}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{I show how recent progress in real space renormalization group methods can be used to define a generalized notion of holography inspired by holographic dualities in quantum gravity. The generalization is based upon organizing information in a quantum state in terms of scale and defining a higher dimensional geometry from this structure. While states with a finite correlation length typically give simple geometries, the state at a quantum critical point gives a discrete version of anti de Sitter space. Some finite temperature quantum states include black hole-like objects. The gross features of equal time correlation functions are also reproduced in this geometric framework. The relationship between this framework and better understood versions of holography is discussed.}
+      \field{eprinttype}{arXiv}
+      \field{month}{5}
+      \field{title}{Entanglement Renormalization and Holography}
+      \field{year}{2009}
+      \verb{eprint}
+      \verb 0905.1317
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/0905.1317
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/0905.1317
+      \endverb
+      \keyw{antidesitter,condensed\_matter,critical-point,entanglement,holography,manybody,quantum\_gravity,renormalization,mera}
+    \endentry
+    \entry{Ryu2006Holographic}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=e98e80616d8c35e9d2fbbb928838ec72}{%
+           family={Ryu},
+           familyi={R\bibinitperiod},
+           given={Shinsei},
+           giveni={S\bibinitperiod}}}%
+        {{hash=01d3ce6cd1e1b3aa26952eb5001ae008}{%
+           family={Takayanagi},
+           familyi={T\bibinitperiod},
+           given={Tadashi},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{3906d29d8aaa3ec212e84697c258ff45}
+      \strng{fullhash}{3906d29d8aaa3ec212e84697c258ff45}
+      \strng{fullhashraw}{3906d29d8aaa3ec212e84697c258ff45}
+      \strng{bibnamehash}{3906d29d8aaa3ec212e84697c258ff45}
+      \strng{authorbibnamehash}{3906d29d8aaa3ec212e84697c258ff45}
+      \strng{authornamehash}{3906d29d8aaa3ec212e84697c258ff45}
+      \strng{authorfullhash}{3906d29d8aaa3ec212e84697c258ff45}
+      \strng{authorfullhashraw}{3906d29d8aaa3ec212e84697c258ff45}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A holographic derivation of the entanglement entropy in quantum (conformal) field theories is proposed from AdS/CFT correspondence. We argue that the entanglement entropy in d+1 dimensional conformal field theories can be obtained from the area of d dimensional minimal surfaces in AdS\_{d+2}, analogous to the Bekenstein-Hawking formula for black hole entropy. We show that our proposal perfectly reproduces the correct entanglement entropy in 2D CFT when applied to AdS\_3. We also compare the entropy computed in AdS\_5 \times S^5 with that of the free N=4 super Yang-Mills.}
+      \field{eprinttype}{arXiv}
+      \field{month}{3}
+      \field{title}{Holographic Derivation of Entanglement Entropy from {AdS}/{CFT}}
+      \field{year}{2006}
+      \verb{eprint}
+      \verb hep-th/0603001
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/hep-th/0603001
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/hep-th/0603001
+      \endverb
+      \keyw{adscft,bekenstein\_bound,duality,entanglement\_entropy,entropy,holography,minimal\_surface}
+    \endentry
+    \entry{Ryu2006Aspects}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=e98e80616d8c35e9d2fbbb928838ec72}{%
+           family={Ryu},
+           familyi={R\bibinitperiod},
+           given={Shinsei},
+           giveni={S\bibinitperiod}}}%
+        {{hash=01d3ce6cd1e1b3aa26952eb5001ae008}{%
+           family={Takayanagi},
+           familyi={T\bibinitperiod},
+           given={Tadashi},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Institute of Physics Publishing}%
+      }
+      \strng{namehash}{3906d29d8aaa3ec212e84697c258ff45}
+      \strng{fullhash}{3906d29d8aaa3ec212e84697c258ff45}
+      \strng{fullhashraw}{3906d29d8aaa3ec212e84697c258ff45}
+      \strng{bibnamehash}{3906d29d8aaa3ec212e84697c258ff45}
+      \strng{authorbibnamehash}{3906d29d8aaa3ec212e84697c258ff45}
+      \strng{authornamehash}{3906d29d8aaa3ec212e84697c258ff45}
+      \strng{authorfullhash}{3906d29d8aaa3ec212e84697c258ff45}
+      \strng{authorfullhashraw}{3906d29d8aaa3ec212e84697c258ff45}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This is an extended version of our short report <a href="/abs/hep-th/0603001">hep-th/0603001</a>, where a holographic interpretation of entanglement entropy in conformal field theories is proposed from {AdS}/{CFT} correspondence. In addition to a concise review of relevant recent progresses of entanglement entropy and details omitted in the earlier letter, this paper includes the following several new results : We give a more direct derivation of our claim which relates the entanglement entropy with the minimal area surfaces in the {AdS\_3}/{CFT\_2} case as well as some further discussions on higher dimensional cases. Also the relation between the entanglement entropy and central charges in {4D} conformal field theories is examined. We check that the logarithmic part of the {4D} entanglement entropy computed in the {CFT} side agrees with the {AdS\_5} result at least under a specific condition. Finally we estimate the entanglement entropy of massive theories in generic dimensions by making use of our proposal.}
+      \field{eprinttype}{arXiv}
+      \field{issn}{1029-8479}
+      \field{journaltitle}{Journal of High Energy Physics}
+      \field{month}{6}
+      \field{number}{08}
+      \field{title}{Aspects of Holographic Entanglement Entropy}
+      \field{volume}{2006}
+      \field{year}{2006}
+      \field{pages}{045}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1088/1126-6708/2006/08/045
+      \endverb
+      \verb{eprint}
+      \verb hep-th/0605073
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1088/1126-6708/2006/08/045
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1088/1126-6708/2006/08/045
+      \endverb
+      \keyw{adscft,entanglement\_entropy,high\_energy,holography,minimal\_surface,quantum\_gravity,ryu\_shinsei,takayanagi\_tadashi}
+    \endentry
+    \entry{Colafranceschi2022Holographic}{article}{}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{hash=38556c7638929de63a69f0ce531c8e59}{%
+           family={Colafranceschi},
+           familyi={C\bibinitperiod},
+           given={E.},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{8baff11c42dd0a16bec4acadbe704674}
+      \strng{fullhash}{8baff11c42dd0a16bec4acadbe704674}
+      \strng{fullhashraw}{8baff11c42dd0a16bec4acadbe704674}
+      \strng{bibnamehash}{8baff11c42dd0a16bec4acadbe704674}
+      \strng{authorbibnamehash}{8baff11c42dd0a16bec4acadbe704674}
+      \strng{authornamehash}{8baff11c42dd0a16bec4acadbe704674}
+      \strng{authorfullhash}{8baff11c42dd0a16bec4acadbe704674}
+      \strng{authorfullhashraw}{8baff11c42dd0a16bec4acadbe704674}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Frontiers in Physics}
+      \field{title}{Holographic entanglement in spin networks: a review}
+      \field{volume}{10}
+      \field{year}{2022}
+      \field{pages}{101234}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3389/fphy.2022.101234
+      \endverb
+      \verb{eprint}
+      \verb 2202.05116
+      \endverb
+    \endentry
+    \entry{Livine2018Intertwiner}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=bf5b162b2514b51c002ca9c76ea0125e}{%
+           family={Livine},
+           familyi={L\bibinitperiod},
+           given={Etera\bibnamedelima R.},
+           giveni={E\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \strng{namehash}{bf5b162b2514b51c002ca9c76ea0125e}
+      \strng{fullhash}{bf5b162b2514b51c002ca9c76ea0125e}
+      \strng{fullhashraw}{bf5b162b2514b51c002ca9c76ea0125e}
+      \strng{bibnamehash}{bf5b162b2514b51c002ca9c76ea0125e}
+      \strng{authorbibnamehash}{bf5b162b2514b51c002ca9c76ea0125e}
+      \strng{authornamehash}{bf5b162b2514b51c002ca9c76ea0125e}
+      \strng{authorfullhash}{bf5b162b2514b51c002ca9c76ea0125e}
+      \strng{authorfullhashraw}{bf5b162b2514b51c002ca9c76ea0125e}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{gr-qc}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{Physical Review D}
+      \field{title}{Intertwiner Entanglement on Spin Networks}
+      \field{volume}{97}
+      \field{year}{2018}
+      \field{pages}{026009}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/PhysRevD.97.026009
+      \endverb
+      \verb{eprint}
+      \verb 1709.08511
+      \endverb
+    \endentry
+    \entry{Baytas2018Gluing}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=607d32f74d208cab029d34511b9c4e8c}{%
+           family={Baytaş},
+           familyi={B\bibinitperiod},
+           given={Bekir},
+           giveni={B\bibinitperiod}}}%
+        {{hash=2321d3b116612f733350f8c739b709d8}{%
+           family={Bianchi},
+           familyi={B\bibinitperiod},
+           given={Eugenio},
+           giveni={E\bibinitperiod}}}%
+        {{hash=d062fb36026c47e04d72840bddf4c12a}{%
+           family={Yokomizo},
+           familyi={Y\bibinitperiod},
+           given={Nelson},
+           giveni={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{caee4f122a93cd97cb3bb594b5401a2a}
+      \strng{fullhash}{caee4f122a93cd97cb3bb594b5401a2a}
+      \strng{fullhashraw}{caee4f122a93cd97cb3bb594b5401a2a}
+      \strng{bibnamehash}{caee4f122a93cd97cb3bb594b5401a2a}
+      \strng{authorbibnamehash}{caee4f122a93cd97cb3bb594b5401a2a}
+      \strng{authornamehash}{caee4f122a93cd97cb3bb594b5401a2a}
+      \strng{authorfullhash}{caee4f122a93cd97cb3bb594b5401a2a}
+      \strng{authorfullhashraw}{caee4f122a93cd97cb3bb594b5401a2a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{gr-qc}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{Physical Review D}
+      \field{title}{Gluing polyhedra with entanglement in loop quantum gravity}
+      \field{volume}{98}
+      \field{year}{2018}
+      \field{pages}{026001}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/PhysRevD.98.026001
+      \endverb
+      \verb{eprint}
+      \verb 1805.05856
+      \endverb
+    \endentry
+    \entry{Bridgeman2016Hand-waving}{misc}{}{}
+      \name{author}{2}{}{%
+        {{hash=9c8033f78b99b1ae1c4f21fb174b3722}{%
+           family={Bridgeman},
+           familyi={B\bibinitperiod},
+           given={Jacob\bibnamedelima C.},
+           giveni={J\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=cc9a21f633e6f07bfceb0f4f1f2954d5}{%
+           family={Chubb},
+           familyi={C\bibinitperiod},
+           given={Christopher\bibnamedelima T.},
+           giveni={C\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+      }
+      \strng{namehash}{7e3bbafad13f0c0a596f718854580541}
+      \strng{fullhash}{7e3bbafad13f0c0a596f718854580541}
+      \strng{fullhashraw}{7e3bbafad13f0c0a596f718854580541}
+      \strng{bibnamehash}{7e3bbafad13f0c0a596f718854580541}
+      \strng{authorbibnamehash}{7e3bbafad13f0c0a596f718854580541}
+      \strng{authornamehash}{7e3bbafad13f0c0a596f718854580541}
+      \strng{authorfullhash}{7e3bbafad13f0c0a596f718854580541}
+      \strng{authorfullhashraw}{7e3bbafad13f0c0a596f718854580541}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The curse of dimensionality associated with the Hilbert space of spin systems provides a significant obstruction to the study of condensed matter systems. Tensor networks have proven an important tool in attempting to overcome this difficulty in both the numerical and analytic regimes. These notes form the basis for a seven lecture course, introducing the basics of a range of common tensor networks and algorithms. In particular, we cover: introductory tensor network notation, applications to quantum information, basic properties of matrix product states, a classification of quantum phases using tensor networks, algorithms for finding matrix product states, basic properties of projected entangled pair states, and multiscale entanglement renormalisation ansatz states. The lectures are intended to be generally accessible, although the relevance of many of the examples may be lost on students without a background in many-body physics/quantum information. For each lecture, several problems are given, with worked solutions in an ancillary file.}
+      \field{eprinttype}{arXiv}
+      \field{month}{4}
+      \field{title}{Hand-waving and Interpretive Dance: An Introductory Course on Tensor Networks}
+      \field{year}{2016}
+      \verb{eprint}
+      \verb 1603.03039
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1603.03039
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1603.03039
+      \endverb
+      \keyw{condensed\_matter,lecture\_notes,manybody,matrix\_product\_states,mera,pedagogical,peps,quantum\_gravity,quantum\_information,quantum\_mechanics,quantum\_phase\_transitions,tensor\_networks}
+    \endentry
+    \entry{Greenberger1990Bells}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=2b8f55fc2323595cb5dcea31c228d9ed}{%
+           family={Greenberger},
+           familyi={G\bibinitperiod},
+           given={Daniel\bibnamedelima M.},
+           giveni={D\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=20dfaecae0b6e07694031e773dc00794}{%
+           family={Horne},
+           familyi={H\bibinitperiod},
+           given={Michael\bibnamedelima A.},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=5c4fd084ae2e5fc521e035996f280d20}{%
+           family={Shimony},
+           familyi={S\bibinitperiod},
+           given={Abner},
+           giveni={A\bibinitperiod}}}%
+        {{hash=a961661d22885d8f3bcba104deec38f0}{%
+           family={Zeilinger},
+           familyi={Z\bibinitperiod},
+           given={Anton},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {AAPT}%
+      }
+      \strng{namehash}{2157eb1fe6755bc53af5a57d7489d242}
+      \strng{fullhash}{1dd6113cca6bf3b9a550f539f2118cd1}
+      \strng{fullhashraw}{1dd6113cca6bf3b9a550f539f2118cd1}
+      \strng{bibnamehash}{2157eb1fe6755bc53af5a57d7489d242}
+      \strng{authorbibnamehash}{2157eb1fe6755bc53af5a57d7489d242}
+      \strng{authornamehash}{2157eb1fe6755bc53af5a57d7489d242}
+      \strng{authorfullhash}{1dd6113cca6bf3b9a550f539f2118cd1}
+      \strng{authorfullhashraw}{1dd6113cca6bf3b9a550f539f2118cd1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{It is demonstrated that the premisses of the Einstein\&\#150;Podolsky\&\#150;Rosen paper are inconsistent when applied to quantum systems consisting of at least three particles. The demonstration reveals that the EPR program contradicts quantum mechanics even for the cases of perfect correlations. By perfect correlations is meant arrangements by which the result of the measurement on one particle can be predicted with certainty given the outcomes of measurements on the other particles of the system. This incompatibility with quantum mechanics is stronger than the one previously revealed for two-particle systems by Bell's inequality, where no contradiction arises at the level of perfect correlations. Both spin-correlation and multiparticle interferometry examples are given of suitable three- and four-particle arrangements, both at the gedanken and at the real experiment level. \&copy;1990 American Association of Physics Teachers}
+      \field{journaltitle}{American Journal of Physics}
+      \field{number}{12}
+      \field{title}{Bell's theorem without inequalities}
+      \field{volume}{58}
+      \field{year}{1990}
+      \field{pages}{1131\bibrangedash 1143}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1119/1.16243
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1119/1.16243
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1119/1.16243
+      \endverb
+      \keyw{bells\_inequalities,entanglement,epr,ghz\_state,locality,quantum\_foundations,reality}
+    \endentry
+    \entry{Vidal2004Efficient}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=f62d54d12f1933af26fb09ba7084c940}{%
+           family={Vidal},
+           familyi={V\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{f62d54d12f1933af26fb09ba7084c940}
+      \strng{fullhash}{f62d54d12f1933af26fb09ba7084c940}
+      \strng{fullhashraw}{f62d54d12f1933af26fb09ba7084c940}
+      \strng{bibnamehash}{f62d54d12f1933af26fb09ba7084c940}
+      \strng{authorbibnamehash}{f62d54d12f1933af26fb09ba7084c940}
+      \strng{authornamehash}{f62d54d12f1933af26fb09ba7084c940}
+      \strng{authorfullhash}{f62d54d12f1933af26fb09ba7084c940}
+      \strng{authorfullhashraw}{f62d54d12f1933af26fb09ba7084c940}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We present a numerical method to simulate the time evolution, according to a Hamiltonian made of local interactions, of quantum spin chains and systems alike. The efficiency of the scheme depends on the amount of the entanglement involved in the simulated evolution. Numerical analysis indicate that this method can be used, for instance, to efficiently compute time-dependent properties of low-energy dynamics of sufficiently regular but otherwise arbitrary one-dimensional quantum many-body systems.}
+      \field{eprintclass}{quant-ph}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{Physical Review Letters}
+      \field{month}{10}
+      \field{number}{14}
+      \field{title}{{Efficient simulation of one-dimensional quantum many-body systems}}
+      \field{volume}{91}
+      \field{year}{2004}
+      \field{pages}{147902}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/PhysRevLett.91.147902
+      \endverb
+      \verb{eprint}
+      \verb quant-ph/0310089
+      \endverb
+      \verb{file}
+      \verb :Users/deepak/mendeley/Vidal{\_}Efficient simulation of one-dimensional quantum many-body systems{\_}2003.pdf:pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/quant-ph/0310089
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/quant-ph/0310089
+      \endverb
+    \endentry
+    \entry{Pollmann2010Entanglement}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=fb4c86c0948ce1f16f8d42001263c071}{%
+           family={Pollmann},
+           familyi={P\bibinitperiod},
+           given={Frank},
+           giveni={F\bibinitperiod}}}%
+        {{hash=e206a64eef8c16141ea8fb77a46ef5f4}{%
+           family={Turner},
+           familyi={T\bibinitperiod},
+           given={Ari\bibnamedelima M.},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=bc43d7a0dc0e940896045dd1750d73be}{%
+           family={Berg},
+           familyi={B\bibinitperiod},
+           given={Erez},
+           giveni={E\bibinitperiod}}}%
+        {{hash=7b605da98c1badd6bb9ec0d9c6d6f5af}{%
+           family={Oshikawa},
+           familyi={O\bibinitperiod},
+           given={Masaki},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{82c4377330f965e39718905290e0b9a6}
+      \strng{fullhash}{4e369a07cf25974261ed344f81b8247b}
+      \strng{fullhashraw}{4e369a07cf25974261ed344f81b8247b}
+      \strng{bibnamehash}{82c4377330f965e39718905290e0b9a6}
+      \strng{authorbibnamehash}{82c4377330f965e39718905290e0b9a6}
+      \strng{authornamehash}{82c4377330f965e39718905290e0b9a6}
+      \strng{authorfullhash}{4e369a07cf25974261ed344f81b8247b}
+      \strng{authorfullhashraw}{4e369a07cf25974261ed344f81b8247b}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We show that the Haldane phase of S=1 chains is characterized by a double degeneracy of the entanglement spectrum. The degeneracy is protected by a set of symmetries (either the dihedral group of {\$}\backslashpi{\$}-rotations about two orthogonal axes, time-reversal symmetry, or bond centered inversion symmetry), and cannot be lifted unless either a phase boundary to another, "topologically trivial", phase is crossed, or the symmetry is broken. More generally, these results offer a scheme to classify gapped phases of one dimensional systems. Physically, the degeneracy of the entanglement spectrum can be observed by adiabatically weakening a bond to zero, which leaves the two disconnected halves of the system in a finitely entangled state.}
+      \field{eprinttype}{arXiv}
+      \field{issn}{10980121}
+      \field{journaltitle}{Physical Review B - Condensed Matter and Materials Physics}
+      \field{number}{6}
+      \field{title}{{Entanglement spectrum of a topological phase in one dimension}}
+      \field{volume}{81}
+      \field{year}{2010}
+      \verb{doi}
+      \verb 10.1103/PhysRevB.81.064439
+      \endverb
+      \verb{eprint}
+      \verb 0910.1811
+      \endverb
+      \verb{file}
+      \verb :Users/deepak/ownCloud/root/research/mendeley/Pollmann et al.{\_}Entanglement spectrum of a topological phase in one dimension{\_}2009.pdf:pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/0910.1811
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/0910.1811
+      \endverb
+    \endentry
+    \entry{Levin2004String-net}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=3c96420744348a421199e361b0366e4f}{%
+           family={Levin},
+           familyi={L\bibinitperiod},
+           given={Michael\bibnamedelima A.},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=0e5cbbaef3f573fe1ff3232bf52b70a6}{%
+           family={Wen},
+           familyi={W\bibinitperiod},
+           given={Xiao-Gang},
+           giveni={X\bibinithyphendelim G\bibinitperiod}}}%
+      }
+      \strng{namehash}{c3799bf40f0ea511ff4df6774a4fb0b7}
+      \strng{fullhash}{c3799bf40f0ea511ff4df6774a4fb0b7}
+      \strng{fullhashraw}{c3799bf40f0ea511ff4df6774a4fb0b7}
+      \strng{bibnamehash}{c3799bf40f0ea511ff4df6774a4fb0b7}
+      \strng{authorbibnamehash}{c3799bf40f0ea511ff4df6774a4fb0b7}
+      \strng{authornamehash}{c3799bf40f0ea511ff4df6774a4fb0b7}
+      \strng{authorfullhash}{c3799bf40f0ea511ff4df6774a4fb0b7}
+      \strng{authorfullhashraw}{c3799bf40f0ea511ff4df6774a4fb0b7}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We show that quantum systems of extended objects naturally give rise to a large class of exotic phases - namely topological phases. These phases occur when the extended objects, called ``string-nets'', become highly fluctuating and condense. We derive exactly soluble Hamiltonians for {2D} local bosonic models whose ground states are string-net condensed states. Those ground states correspond to {2D} parity invariant topological phases. These models reveal the mathematical framework underlying topological phases: tensor category theory. One of the Hamiltonians - a spin-1/2 system on the honeycomb lattice - is a simple theoretical realization of a fault tolerant quantum computer. The higher dimensional case also yields an interesting result: we find that {3D} string-net condensation naturally gives rise to both emergent gauge bosons and emergent fermions. Thus, string-net condensation provides a mechanism for unifying gauge bosons and fermions in 3 and higher dimensions.}
+      \field{eprinttype}{arXiv}
+      \field{month}{4}
+      \field{title}{String-net condensation: A physical mechanism for topological phases}
+      \field{year}{2004}
+      \verb{eprint}
+      \verb cond-mat/0404617
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/cond-mat/0404617
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/cond-mat/0404617
+      \endverb
+      \keyw{condensation,fermions,gauge\_boson,hexagonal,honeycomb\_lattice,string\_net,topological\_order}
+    \endentry
+    \entry{Rovelli1994Discreteness}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=b32ab73e85caa26365ad2176347b9515}{%
+           family={Rovelli},
+           familyi={R\bibinitperiod},
+           given={Carlo},
+           giveni={C\bibinitperiod}}}%
+        {{hash=c24d0f59d1d858e451780649dc05cde3}{%
+           family={Smolin},
+           familyi={S\bibinitperiod},
+           given={Lee},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{5d68a4d1c733f1faa43d59e5378a1d37}
+      \strng{fullhash}{5d68a4d1c733f1faa43d59e5378a1d37}
+      \strng{fullhashraw}{5d68a4d1c733f1faa43d59e5378a1d37}
+      \strng{bibnamehash}{5d68a4d1c733f1faa43d59e5378a1d37}
+      \strng{authorbibnamehash}{5d68a4d1c733f1faa43d59e5378a1d37}
+      \strng{authornamehash}{5d68a4d1c733f1faa43d59e5378a1d37}
+      \strng{authorfullhash}{5d68a4d1c733f1faa43d59e5378a1d37}
+      \strng{authorfullhashraw}{5d68a4d1c733f1faa43d59e5378a1d37}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We study the operator that corresponds to the measurement of volume, in non-perturbative quantum gravity, and we compute its spectrum. The operator is constructed in the loop representation, via a regularization procedure; it is finite, background independent, and diffeomorphism-invariant, and therefore well defined on the space of diffeomorphism invariant states (knot states). We find that the spectrum of the volume of any physical region is discrete. A family of eigenstates are in one to one correspondence with the spin networks, which were introduced by Penrose in a different context. We compute the corresponding component of the spectrum, and exhibit the eigenvalues explicitly. The other eigenstates are related to a generalization of the spin networks, and their eigenvalues can be computed by diagonalizing finite dimensional matrices. Furthermore, we show that the eigenstates of the volume diagonalize also the area operator. We argue that the spectra of volume and area determined here can be considered as predictions of the loop-representation formulation of quantum gravity on the outcomes of (hypothetical) Planck-scale sensitive measurements of the geometry of space.}
+      \field{eprinttype}{arXiv}
+      \field{month}{11}
+      \field{title}{Discreteness of area and volume in quantum gravity}
+      \field{year}{1994}
+      \verb{eprint}
+      \verb gr-qc/9411005
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/gr-qc/9411005
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/gr-qc/9411005
+      \endverb
+      \keyw{classic,discrete\_symmetries,eigenstates,lqg,quantum\_geometry,spectrum,spin\_networks,volume\_operator}
+    \endentry
+    \entry{Ashtekar1996Quantum}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=e28cc3e6f7f6ef55fcce6814f02de871}{%
+           family={Ashtekar},
+           familyi={A\bibinitperiod},
+           given={Abhay},
+           giveni={A\bibinitperiod}}}%
+        {{hash=cb5ea41dec39060bcbfd953ead8b22d6}{%
+           family={Lewandowski},
+           familyi={L\bibinitperiod},
+           given={Jerzy},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{75dfddce30c25b3977f8fb1acc538bae}
+      \strng{fullhash}{75dfddce30c25b3977f8fb1acc538bae}
+      \strng{fullhashraw}{75dfddce30c25b3977f8fb1acc538bae}
+      \strng{bibnamehash}{75dfddce30c25b3977f8fb1acc538bae}
+      \strng{authorbibnamehash}{75dfddce30c25b3977f8fb1acc538bae}
+      \strng{authornamehash}{75dfddce30c25b3977f8fb1acc538bae}
+      \strng{authorfullhash}{75dfddce30c25b3977f8fb1acc538bae}
+      \strng{authorfullhashraw}{75dfddce30c25b3977f8fb1acc538bae}
+      \field{extraname}{1}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A new functional calculus, developed recently for a fully non-perturbative treatment of quantum gravity, is used to begin a systematic construction of a quantum theory of geometry. Regulated operators corresponding to areas of 2-surfaces are introduced and shown to be self-adjoint on the underlying (kinematical) Hilbert space of states. It is shown that their spectra are {\it purely} discrete indicating that the underlying quantum geometry is far from what the continuum picture might suggest. Indeed, the fundamental excitations of quantum geometry are 1-dimensional, rather like polymers, and the 3-dimensional continuum geometry emerges only on coarse graining. The full Hilbert space admits an orthonormal decomposition into finite dimensional sub-spaces which can be interpreted as the spaces of states of spin systems. Using this property, the complete spectrum of the area operators is evaluated. The general framework constructed here will be used in a subsequent paper to discuss 3-dimensional geometric operators, e.g., the ones corresponding to volumes of regions.}
+      \field{eprinttype}{arXiv}
+      \field{month}{8}
+      \field{title}{Quantum Theory of Gravity I: Area Operators}
+      \field{year}{1996}
+      \verb{eprint}
+      \verb gr-qc/9602046
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/gr-qc/9602046
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/gr-qc/9602046
+      \endverb
+      \keyw{area-operator,ashtekar,classic,hilbert\_space,lqg,quantum\_geometry}
+    \endentry
+    \entry{Ashtekar1997Quantum}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=e28cc3e6f7f6ef55fcce6814f02de871}{%
+           family={Ashtekar},
+           familyi={A\bibinitperiod},
+           given={Abhay},
+           giveni={A\bibinitperiod}}}%
+        {{hash=cb5ea41dec39060bcbfd953ead8b22d6}{%
+           family={Lewandowski},
+           familyi={L\bibinitperiod},
+           given={Jerzy},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{75dfddce30c25b3977f8fb1acc538bae}
+      \strng{fullhash}{75dfddce30c25b3977f8fb1acc538bae}
+      \strng{fullhashraw}{75dfddce30c25b3977f8fb1acc538bae}
+      \strng{bibnamehash}{75dfddce30c25b3977f8fb1acc538bae}
+      \strng{authorbibnamehash}{75dfddce30c25b3977f8fb1acc538bae}
+      \strng{authornamehash}{75dfddce30c25b3977f8fb1acc538bae}
+      \strng{authorfullhash}{75dfddce30c25b3977f8fb1acc538bae}
+      \strng{authorfullhashraw}{75dfddce30c25b3977f8fb1acc538bae}
+      \field{extraname}{2}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A functional calculus on the space of (generalized) connections was recently introduced without any reference to a background metric. It is used to continue the exploration of the quantum Riemannian geometry. Operators corresponding to volume of three-dimensional regions are regularized rigorously. It is shown that there are two natural regularization schemes, each of which leads to a well-defined operator. Both operators can be completely specified by giving their action on states labelled by graphs. The two final results are closely related but differ from one another in that one of the operators is sensitive to the differential structure of graphs at their vertices while the second is sensitive only to the topological characteristics. (The second operator was first introduced by Rovelli and Smolin and De Pietri and Rovelli using a somewhat different framework.) The difference between the two operators can be attributed directly to the standard quantization ambiguity. Underlying assumptions and subtleties of regularization procedures are discussed in detail in both cases because volume operators play an important role in the current discussions of quantum dynamics.}
+      \field{eprinttype}{arXiv}
+      \field{month}{11}
+      \field{title}{Quantum Theory of Geometry {II}: Volume operators}
+      \field{year}{1997}
+      \verb{eprint}
+      \verb gr-qc/9711031
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/gr-qc/9711031
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/gr-qc/9711031
+      \endverb
+      \keyw{area-operator,ashtekar\_variables,lqg,quantum\_geometry,spin\_networks,volume\_operator}
+    \endentry
+    \entry{Chen2010Local}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=40324c5235c456ad5ecea8effce19bd0}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Xie},
+           giveni={X\bibinitperiod}}}%
+        {{hash=dbc618121dd4fee7a970b27d72234453}{%
+           family={Gu},
+           familyi={G\bibinitperiod},
+           given={Zheng\bibnamedelima Cheng},
+           giveni={Z\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=a7bd98ac679842dbb96db5b05dad2f72}{%
+           family={Wen},
+           familyi={W\bibinitperiod},
+           given={Xiao\bibnamedelima Gang},
+           giveni={X\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \strng{namehash}{336326f84b1c755a41e94bf01447a7e8}
+      \strng{fullhash}{336326f84b1c755a41e94bf01447a7e8}
+      \strng{fullhashraw}{336326f84b1c755a41e94bf01447a7e8}
+      \strng{bibnamehash}{336326f84b1c755a41e94bf01447a7e8}
+      \strng{authorbibnamehash}{336326f84b1c755a41e94bf01447a7e8}
+      \strng{authornamehash}{336326f84b1c755a41e94bf01447a7e8}
+      \strng{authorfullhash}{336326f84b1c755a41e94bf01447a7e8}
+      \strng{authorfullhashraw}{336326f84b1c755a41e94bf01447a7e8}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Two gapped quantum ground states in the same phase are connected by an adiabatic evolution which gives rise to a local unitary transformation that maps between the states. On the other hand, gapped ground states remain within the same phase under local unitary transformations. Therefore, local unitary transformations define an equivalence relation and the equivalence classes are the universality classes that define the different phases for gapped quantum systems. Since local unitary transformations can remove local entanglement, the above equivalence/universality classes correspond to pattern of long range entanglement, which is the essence of topological order. The local unitary transformation also allows us to define a wave function renormalization scheme, under which a wave function can flow to a simpler one within the same equivalence/universality class. Using such a setup, we find conditions on the possible fixed-point wave functions where the local unitary transformations have $\backslash$emph{\{}finite{\}} dimensions. The solutions of the conditions allow us to classify this type of topological orders, which generalize the string-net classification of topological orders. We also describe an algorithm of wave function renormalization induced by local unitary transformations. The algorithm allows us to calculate the flow of tensor-product wave functions which are not at the fixed points. This will allow us to calculate topological orders as well as symmetry breaking orders in a generic tensor-product state.}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{1550-235X}
+      \field{issn}{10980121}
+      \field{journaltitle}{Physical Review B - Condensed Matter and Materials Physics}
+      \field{number}{15}
+      \field{title}{{Local unitary transformation, long-range quantum entanglement, wave function renormalization, and topological order}}
+      \field{volume}{82}
+      \field{year}{2010}
+      \field{pages}{155138}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/PhysRevB.82.155138
+      \endverb
+      \verb{eprint}
+      \verb 1004.3835
+      \endverb
+      \verb{file}
+      \verb :Users/deepak/mendeley/Chen, Gu, Wen{\_}Local unitary transformation, long-range quantum entanglement, wave function renormalization, and topological order{\_}2010.pdf:pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/1004.3835 https://link.aps.org/doi/10.1103/PhysRevB.82.155138
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/1004.3835%20https://link.aps.org/doi/10.1103/PhysRevB.82.155138
+      \endverb
+      \keyw{entanglement,fixed\_point,lattice\_model,locality,long\_range\_order,manybody,renormalization,topological\_order,unitary\_transformations}
+    \endentry
+    \entry{Chen2011Symmetry}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=40324c5235c456ad5ecea8effce19bd0}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Xie},
+           giveni={X\bibinitperiod}}}%
+        {{hash=3e4082cb49fa8aa3c6899ebc4c74ca14}{%
+           family={Gu},
+           familyi={G\bibinitperiod},
+           given={Zheng-Cheng},
+           giveni={Z\bibinithyphendelim C\bibinitperiod}}}%
+        {{hash=a6105c743887552bed4062b237fc9afe}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Zheng-Xin},
+           giveni={Z\bibinithyphendelim X\bibinitperiod}}}%
+        {{hash=0e5cbbaef3f573fe1ff3232bf52b70a6}{%
+           family={Wen},
+           familyi={W\bibinitperiod},
+           given={Xiao-Gang},
+           giveni={X\bibinithyphendelim G\bibinitperiod}}}%
+      }
+      \strng{namehash}{b2206f4042f9a68a018f30202d90a55e}
+      \strng{fullhash}{6da3f6a46bf1763152e2e5bbc154df55}
+      \strng{fullhashraw}{6da3f6a46bf1763152e2e5bbc154df55}
+      \strng{bibnamehash}{b2206f4042f9a68a018f30202d90a55e}
+      \strng{authorbibnamehash}{b2206f4042f9a68a018f30202d90a55e}
+      \strng{authornamehash}{b2206f4042f9a68a018f30202d90a55e}
+      \strng{authorfullhash}{6da3f6a46bf1763152e2e5bbc154df55}
+      \strng{authorfullhashraw}{6da3f6a46bf1763152e2e5bbc154df55}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Symmetry protected topological (SPT) phases are gapped short-range-entangled quantum phases with a symmetry G. They can all be smoothly connected to the same trivial product state if we break the symmetry. The Haldane phase of spin-1 chain is the first example of SPT phase which is protected by SO(3) spin rotation symmetry. The topological insulator is another exam- ple of SPT phase which is protected by U(1) and time reversal symmetries. It has been shown that free fermion SPT phases can be systematically described by the K-theory. In this paper, we show that interacting bosonic SPT phases can be systematically described by group cohomology theory: distinct d-dimensional bosonic SPT phases with on-site symmetry G (which may contain anti-unitary time reversal symmetry) can be labeled by the elements in H{\^}{\{}1+d{\}}[G, U{\_}T(1)] - the Borel (1 + d)-group-cohomology classes of G over the G-module U{\_}T(1). The boundary excitations of the non-trivial SPT phases are gapless or degenerate. Even more generally, we find that the different bosonic symmetry breaking short-range-entangled phases are labeled by the following three mathematical objects: (G{\_}H, G{\_}{\{}$\backslash$Psi{\}}, H{\^}{\{}1+d{\}}[G{\_}{\{}$\backslash$Psi{\}}, U{\_}T(1)], where G{\_}H is the symmetry group of the Hamiltonian and G{\_}{\{}$\backslash$Psi{\}} the symmetry group of the ground states.}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{1095-9203 (Electronic) 0036-8075 (Linking)}
+      \field{issn}{10980121}
+      \field{journaltitle}{Physical Review B - Condensed Matter and Materials Physics}
+      \field{month}{6}
+      \field{number}{15}
+      \field{title}{{Symmetry protected topological orders and the group cohomology of their symmetry group}}
+      \field{volume}{87}
+      \field{year}{2011}
+      \field{pages}{155114}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/PhysRevB.87.155114
+      \endverb
+      \verb{eprint}
+      \verb http://arxiv.org/abs/1106.4772
+      \endverb
+      \verb{file}
+      \verb :Users/deepak/mendeley/Chen et al.{\_}Symmetry protected topological orders and the group cohomology of their symmetry group{\_}2011.pdf:pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://link.aps.org/doi/10.1103/PhysRevB.87.155114
+      \endverb
+      \verb{url}
+      \verb https://link.aps.org/doi/10.1103/PhysRevB.87.155114
+      \endverb
+    \endentry
+    \entry{Kay2018Tutorial}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=f3b476741fc2ff8ad79adc1200f514ec}{%
+           family={Kay},
+           familyi={K\bibinitperiod},
+           given={Alastair},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{f3b476741fc2ff8ad79adc1200f514ec}
+      \strng{fullhash}{f3b476741fc2ff8ad79adc1200f514ec}
+      \strng{fullhashraw}{f3b476741fc2ff8ad79adc1200f514ec}
+      \strng{bibnamehash}{f3b476741fc2ff8ad79adc1200f514ec}
+      \strng{authorbibnamehash}{f3b476741fc2ff8ad79adc1200f514ec}
+      \strng{authornamehash}{f3b476741fc2ff8ad79adc1200f514ec}
+      \strng{authorfullhash}{f3b476741fc2ff8ad79adc1200f514ec}
+      \strng{authorfullhashraw}{f3b476741fc2ff8ad79adc1200f514ec}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This tutorial introduces (and provides, via the document source) the Quantikz LaTeX package for typesetting quantum circuit diagrams. This takes advantage of tikz to give greater control over the circuit options. Those familiar with the excellent QCircuit package will recognise much of the notation, although it has evolved a bit (hopefully simplified!).}
+      \field{eprinttype}{arXiv}
+      \field{month}{9}
+      \field{title}{{Tutorial on the Quantikz Package}}
+      \field{year}{2018}
+      \verb{doi}
+      \verb 10.17637/rh.7000520
+      \endverb
+      \verb{eprint}
+      \verb 1809.03842
+      \endverb
+      \verb{file}
+      \verb :Users/deepak/ownCloud/root/research/mendeley/Kay{\_}Tutorial on the Quantikz Package{\_}2018.pdf:pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1809.03842 http://dx.doi.org/10.17637/rh.7000520 http://arxiv.org/abs/1809.03842{\%}0Ahttp://dx.doi.org/10.17637/rh.7000520
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1809.03842%20http://dx.doi.org/10.17637/rh.7000520%20http://arxiv.org/abs/1809.03842%7B%5C%%7D0Ahttp://dx.doi.org/10.17637/rh.7000520
+      \endverb
+    \endentry
+    \entry{Dona2020Numerical}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=66763e3712858e79c865a6ffc1885056}{%
+           family={Don`{a}},
+           familyi={D\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod}}}%
+        {{hash=7ba23c325027aa4723299602ebba596a}{%
+           family={Gozzini},
+           familyi={G\bibinitperiod},
+           given={F.},
+           giveni={F\bibinitperiod}}}%
+        {{hash=770c9588e6189b936c59f3d51e8d11ae}{%
+           family={Sarno},
+           familyi={S\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{1966df9f8ed162c2d2083132780fba34}
+      \strng{fullhash}{1966df9f8ed162c2d2083132780fba34}
+      \strng{fullhashraw}{1966df9f8ed162c2d2083132780fba34}
+      \strng{bibnamehash}{1966df9f8ed162c2d2083132780fba34}
+      \strng{authorbibnamehash}{1966df9f8ed162c2d2083132780fba34}
+      \strng{authornamehash}{1966df9f8ed162c2d2083132780fba34}
+      \strng{authorfullhash}{1966df9f8ed162c2d2083132780fba34}
+      \strng{authorfullhashraw}{1966df9f8ed162c2d2083132780fba34}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review D}
+      \field{number}{10}
+      \field{title}{Numerical analysis of spin foam vertex amplitudes with large spins}
+      \field{volume}{101}
+      \field{year}{2020}
+      \field{pages}{106003}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/PhysRevD.101.106003
+      \endverb
+      \verb{eprint}
+      \verb 1807.03066
+      \endverb
+    \endentry
+    \entry{Dona2022Asymptotics}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=66763e3712858e79c865a6ffc1885056}{%
+           family={Don`{a}},
+           familyi={D\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod}}}%
+        {{hash=770c9588e6189b936c59f3d51e8d11ae}{%
+           family={Sarno},
+           familyi={S\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{892bcaf1424c8f30f55ce2e592af5db6}
+      \strng{fullhash}{892bcaf1424c8f30f55ce2e592af5db6}
+      \strng{fullhashraw}{892bcaf1424c8f30f55ce2e592af5db6}
+      \strng{bibnamehash}{892bcaf1424c8f30f55ce2e592af5db6}
+      \strng{authorbibnamehash}{892bcaf1424c8f30f55ce2e592af5db6}
+      \strng{authornamehash}{892bcaf1424c8f30f55ce2e592af5db6}
+      \strng{authorfullhash}{892bcaf1424c8f30f55ce2e592af5db6}
+      \strng{authorfullhashraw}{892bcaf1424c8f30f55ce2e592af5db6}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review D}
+      \field{number}{12}
+      \field{title}{Asymptotics of spin foam vertex amplitudes}
+      \field{volume}{105}
+      \field{year}{2022}
+      \field{pages}{126023}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/PhysRevD.105.126023
+      \endverb
+      \verb{eprint}
+      \verb 2206.10273
+      \endverb
+    \endentry
+    \entry{Perez2013The-Spin-Foam}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=c14cad67b904a9ac12b4626c43394f91}{%
+           family={Perez},
+           familyi={P\bibinitperiod},
+           given={Alejandro},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{c14cad67b904a9ac12b4626c43394f91}
+      \strng{fullhash}{c14cad67b904a9ac12b4626c43394f91}
+      \strng{fullhashraw}{c14cad67b904a9ac12b4626c43394f91}
+      \strng{bibnamehash}{c14cad67b904a9ac12b4626c43394f91}
+      \strng{authorbibnamehash}{c14cad67b904a9ac12b4626c43394f91}
+      \strng{authornamehash}{c14cad67b904a9ac12b4626c43394f91}
+      \strng{authorfullhash}{c14cad67b904a9ac12b4626c43394f91}
+      \strng{authorfullhashraw}{c14cad67b904a9ac12b4626c43394f91}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Living Reviews in Relativity}
+      \field{title}{The Spin-Foam Approach to Quantum Gravity}
+      \field{volume}{16}
+      \field{year}{2013}
+      \field{pages}{3}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.12942/lrr-2013-3
+      \endverb
+      \verb{eprint}
+      \verb 1205.2019
+      \endverb
+    \endentry
+    \entry{Domagala2004Black-hole}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=39f601812a501a68cf4ebe86356d45f0}{%
+           family={Domagala},
+           familyi={D\bibinitperiod},
+           given={Marcin},
+           giveni={M\bibinitperiod}}}%
+        {{hash=cb5ea41dec39060bcbfd953ead8b22d6}{%
+           family={Lewandowski},
+           familyi={L\bibinitperiod},
+           given={Jerzy},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{c263583b9dd377159a74d86885bf678a}
+      \strng{fullhash}{c263583b9dd377159a74d86885bf678a}
+      \strng{fullhashraw}{c263583b9dd377159a74d86885bf678a}
+      \strng{bibnamehash}{c263583b9dd377159a74d86885bf678a}
+      \strng{authorbibnamehash}{c263583b9dd377159a74d86885bf678a}
+      \strng{authornamehash}{c263583b9dd377159a74d86885bf678a}
+      \strng{authorfullhash}{c263583b9dd377159a74d86885bf678a}
+      \strng{authorfullhashraw}{c263583b9dd377159a74d86885bf678a}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{Classical and Quantum Gravity}
+      \field{title}{Black-hole entropy from quantum geometry}
+      \field{volume}{21}
+      \field{year}{2004}
+      \field{pages}{5233\bibrangedash 5243}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1088/0264-9381/21/22/014
+      \endverb
+      \verb{eprint}
+      \verb gr-qc/0407051
+      \endverb
+    \endentry
+    \entry{Meissner2004Black-hole}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=f28a4865f12e036c29e26d1782bda88b}{%
+           family={Meissner},
+           familyi={M\bibinitperiod},
+           given={Krzysztof\bibnamedelima A.},
+           giveni={K\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{f28a4865f12e036c29e26d1782bda88b}
+      \strng{fullhash}{f28a4865f12e036c29e26d1782bda88b}
+      \strng{fullhashraw}{f28a4865f12e036c29e26d1782bda88b}
+      \strng{bibnamehash}{f28a4865f12e036c29e26d1782bda88b}
+      \strng{authorbibnamehash}{f28a4865f12e036c29e26d1782bda88b}
+      \strng{authornamehash}{f28a4865f12e036c29e26d1782bda88b}
+      \strng{authorfullhash}{f28a4865f12e036c29e26d1782bda88b}
+      \strng{authorfullhashraw}{f28a4865f12e036c29e26d1782bda88b}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{Classical and Quantum Gravity}
+      \field{title}{Black-hole entropy in loop quantum gravity}
+      \field{volume}{21}
+      \field{year}{2004}
+      \field{pages}{5245\bibrangedash 5251}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1088/0264-9381/21/22/015
+      \endverb
+      \verb{eprint}
+      \verb gr-qc/0407052
+      \endverb
+    \endentry
+    \entry{Levin2012Braiding}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=b894ed954a34072e79a8714d134644ba}{%
+           family={Levin},
+           familyi={L\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=3e4082cb49fa8aa3c6899ebc4c74ca14}{%
+           family={Gu},
+           familyi={G\bibinitperiod},
+           given={Zheng-Cheng},
+           giveni={Z\bibinithyphendelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{6eaca72842f6479cba0127043ab44d68}
+      \strng{fullhash}{6eaca72842f6479cba0127043ab44d68}
+      \strng{fullhashraw}{6eaca72842f6479cba0127043ab44d68}
+      \strng{bibnamehash}{6eaca72842f6479cba0127043ab44d68}
+      \strng{authorbibnamehash}{6eaca72842f6479cba0127043ab44d68}
+      \strng{authornamehash}{6eaca72842f6479cba0127043ab44d68}
+      \strng{authorfullhash}{6eaca72842f6479cba0127043ab44d68}
+      \strng{authorfullhashraw}{6eaca72842f6479cba0127043ab44d68}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cond-mat.str-el}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{Physical Review B}
+      \field{title}{Braiding statistics approach to symmetry-protected topological phases}
+      \field{volume}{86}
+      \field{year}{2012}
+      \field{pages}{115109}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/PhysRevB.86.115109
+      \endverb
+      \verb{eprint}
+      \verb 1202.3120
+      \endverb
+    \endentry
+    \entry{Haegeman2015Gauging}{article}{}{}
+      \name{author}{5}{}{%
+        {{hash=9531e7c6006adecb622581097ff2d509}{%
+           family={Haegeman},
+           familyi={H\bibinitperiod},
+           given={Jutho},
+           giveni={J\bibinitperiod}}}%
+        {{hash=ef8123064ca11886ffd0aaf0692e3fff}{%
+           family={{Van Acoleyen}},
+           familyi={V\bibinitperiod},
+           given={Karel},
+           giveni={K\bibinitperiod}}}%
+        {{hash=d6ad7cbe797863db505ad2d0b9cc77ce}{%
+           family={Schuch},
+           familyi={S\bibinitperiod},
+           given={Norbert},
+           giveni={N\bibinitperiod}}}%
+        {{hash=095bf643b4d7b61ecd57c403cfdddf1c}{%
+           family={{Ignacio Cirac}},
+           familyi={I\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=1003ae5f362d7f74a9671760817ebb1a}{%
+           family={Verstraete},
+           familyi={V\bibinitperiod},
+           given={Frank},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{1d2bd47bada416779c900020f2866a24}
+      \strng{fullhash}{3da55038497a4163d4109cef5c3d4db4}
+      \strng{fullhashraw}{3da55038497a4163d4109cef5c3d4db4}
+      \strng{bibnamehash}{1d2bd47bada416779c900020f2866a24}
+      \strng{authorbibnamehash}{1d2bd47bada416779c900020f2866a24}
+      \strng{authornamehash}{1d2bd47bada416779c900020f2866a24}
+      \strng{authorfullhash}{3da55038497a4163d4109cef5c3d4db4}
+      \strng{authorfullhashraw}{3da55038497a4163d4109cef5c3d4db4}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We present an operational procedure to transform global symmetries into local symmetries at the level of individual quantum states, as opposed to typical gauging prescriptions for Hamiltonians or Lagrangians. We then construct a compatible gauging map for operators, which preserves locality and reproduces the minimal coupling scheme for simple operators. By combining this construction with the formalism of projected entangled-pair states (PEPS), we can show that an injective PEPS for the matter fields is gauged into a G-injective PEPS for the combined gauge-matter system, which potentially has topological order. We derive the corresponding parent Hamiltonian, which is a frustration free gauge theory Hamiltonian closely related to the Kogut-Susskind Hamiltonian at zero coupling constant. We can then introduce gauge dynamics at finite values of the coupling constant by applying a local filtering operation. This scheme results in a low-parameter family of gauge invariant states of which we can accurately probe the phase diagram, as we illustrate by studying a Z2 gauge theory with Higgs matter.}
+      \field{eprinttype}{arXiv}
+      \field{issn}{21603308}
+      \field{journaltitle}{Physical Review X}
+      \field{number}{1}
+      \field{title}{{Gauging quantum states: From global to local symmetries in many-body systems}}
+      \field{volume}{5}
+      \field{year}{2015}
+      \verb{doi}
+      \verb 10.1103/PhysRevX.5.011024
+      \endverb
+      \verb{eprint}
+      \verb 1407.1025
+      \endverb
+      \verb{file}
+      \verb :Users/deepak/mendeley/Haegeman et al.{\_}Gauging quantum states From global to local symmetries in many-body systems{\_}2015.pdf:pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1407.1025 http://dx.doi.org/10.1103/PhysRevX.5.011024 https://arxiv.org/abs/1407.1025
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1407.1025%20http://dx.doi.org/10.1103/PhysRevX.5.011024%20https://arxiv.org/abs/1407.1025
+      \endverb
+      \keyw{Particles and fields,Quantum physics,Strongly correlated materials}
+    \endentry
+    \entry{Vishwanath2013Physics}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=8a894f8e0a89a2d488e10197dc7237eb}{%
+           family={Vishwanath},
+           familyi={V\bibinitperiod},
+           given={Ashvin},
+           giveni={A\bibinitperiod}}}%
+        {{hash=ae4814e277dcb3f10e9513de11278f5e}{%
+           family={Senthil},
+           familyi={S\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{9d8581486f2cdf3be5c0231359e8f960}
+      \strng{fullhash}{9d8581486f2cdf3be5c0231359e8f960}
+      \strng{fullhashraw}{9d8581486f2cdf3be5c0231359e8f960}
+      \strng{bibnamehash}{9d8581486f2cdf3be5c0231359e8f960}
+      \strng{authorbibnamehash}{9d8581486f2cdf3be5c0231359e8f960}
+      \strng{authornamehash}{9d8581486f2cdf3be5c0231359e8f960}
+      \strng{authorfullhash}{9d8581486f2cdf3be5c0231359e8f960}
+      \strng{authorfullhashraw}{9d8581486f2cdf3be5c0231359e8f960}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cond-mat.str-el}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{Physical Review X}
+      \field{title}{Physics of Three-Dimensional Bosonic Topological Insulators: Surface-Deconfined Criticality and Quantized Magnetoelectric Effect}
+      \field{volume}{3}
+      \field{year}{2013}
+      \field{pages}{011016}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/PhysRevX.3.011016
+      \endverb
+      \verb{eprint}
+      \verb 1209.3003
+      \endverb
+    \endentry
+    \entry{Wen2002aQuantum}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=0e5cbbaef3f573fe1ff3232bf52b70a6}{%
+           family={Wen},
+           familyi={W\bibinitperiod},
+           given={Xiao-Gang},
+           giveni={X\bibinithyphendelim G\bibinitperiod}}}%
+      }
+      \strng{namehash}{0e5cbbaef3f573fe1ff3232bf52b70a6}
+      \strng{fullhash}{0e5cbbaef3f573fe1ff3232bf52b70a6}
+      \strng{fullhashraw}{0e5cbbaef3f573fe1ff3232bf52b70a6}
+      \strng{bibnamehash}{0e5cbbaef3f573fe1ff3232bf52b70a6}
+      \strng{authorbibnamehash}{0e5cbbaef3f573fe1ff3232bf52b70a6}
+      \strng{authornamehash}{0e5cbbaef3f573fe1ff3232bf52b70a6}
+      \strng{authorfullhash}{0e5cbbaef3f573fe1ff3232bf52b70a6}
+      \strng{authorfullhashraw}{0e5cbbaef3f573fe1ff3232bf52b70a6}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A concept -- quantum order -- is introduced to describe a new kind of orders that generally appear in quantum states at zero temperature. Quantum orders that characterize universality classes of quantum states (described by {\em complex} ground state wave-functions) is much richer then classical orders that characterize universality classes of finite temperature classical states (described by {\em positive} probability distribution functions). The Landau's theory for orders and phase transitions does not apply to quantum orders since they cannot be described by broken symmetries and the associated order parameters. We find projective representations of symmetry groups (which will be called projective symmetry groups) can be used to characterize quantum orders. With the help of quantum orders and the projective symmetry groups, we construct hundreds of symmetric spin liquids, which have SU(2), U(1) or \$Z\_2\$ gauge structures at low energies. Remarkably, some of the stable quantum phases support gapless excitations even without any spontaneous symmetry breaking. We propose that it is the quantum orders (instead of symmetries) that protect the gapless excitations and make algebraic spin liquids and Fermi spin liquids stable. Since high \$T\_c\$ superconductors are likely to be described by a gapless spin liquid, the quantum orders and their projective symmetry group descriptions lay the foundation for spin liquid approach to high \$T\_c\$ superconductors.}
+      \field{eprinttype}{arXiv}
+      \field{month}{1}
+      \field{title}{{Quantum Orders and Symmetric Spin Liquids}}
+      \field{year}{2002}
+      \verb{eprint}
+      \verb cond-mat/0107071
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/cond-mat/0107071
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/cond-mat/0107071
+      \endverb
+      \keyw{discrete\_symmetries,emergence,gauge\_boson,lattice\_models,manybody,projective\_representations,quantum\_order,spin\_liquid,strongly\_correlated,universality\_classes}
+    \endentry
+    \entry{Wegner1971Duality}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=068649ef5b0b9a4bfc324c64cbfb6723}{%
+           family={Wegner},
+           familyi={W\bibinitperiod},
+           given={Franz\bibnamedelima J.},
+           giveni={F\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{068649ef5b0b9a4bfc324c64cbfb6723}
+      \strng{fullhash}{068649ef5b0b9a4bfc324c64cbfb6723}
+      \strng{fullhashraw}{068649ef5b0b9a4bfc324c64cbfb6723}
+      \strng{bibnamehash}{068649ef5b0b9a4bfc324c64cbfb6723}
+      \strng{authorbibnamehash}{068649ef5b0b9a4bfc324c64cbfb6723}
+      \strng{authornamehash}{068649ef5b0b9a4bfc324c64cbfb6723}
+      \strng{authorfullhash}{068649ef5b0b9a4bfc324c64cbfb6723}
+      \strng{authorfullhashraw}{068649ef5b0b9a4bfc324c64cbfb6723}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Mathematical Physics}
+      \field{number}{10}
+      \field{title}{Duality in Generalized {I}sing Models and Phase Transitions without Local Order Parameters}
+      \field{volume}{12}
+      \field{year}{1971}
+      \field{pages}{2259\bibrangedash 2272}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.1063/1.1665530
+      \endverb
+    \endentry
+    \entry{Kogut1979An-introduction}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=e83a67dad588bb5ce85b4c77cb62a743}{%
+           family={Kogut},
+           familyi={K\bibinitperiod},
+           given={John\bibnamedelima B.},
+           giveni={J\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \strng{namehash}{e83a67dad588bb5ce85b4c77cb62a743}
+      \strng{fullhash}{e83a67dad588bb5ce85b4c77cb62a743}
+      \strng{fullhashraw}{e83a67dad588bb5ce85b4c77cb62a743}
+      \strng{bibnamehash}{e83a67dad588bb5ce85b4c77cb62a743}
+      \strng{authorbibnamehash}{e83a67dad588bb5ce85b4c77cb62a743}
+      \strng{authornamehash}{e83a67dad588bb5ce85b4c77cb62a743}
+      \strng{authorfullhash}{e83a67dad588bb5ce85b4c77cb62a743}
+      \strng{authorfullhashraw}{e83a67dad588bb5ce85b4c77cb62a743}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Reviews of Modern Physics}
+      \field{number}{4}
+      \field{title}{An introduction to lattice gauge theory and spin systems}
+      \field{volume}{51}
+      \field{year}{1979}
+      \field{pages}{659\bibrangedash 713}
+      \range{pages}{55}
+      \verb{doi}
+      \verb 10.1103/RevModPhys.51.659
+      \endverb
+    \endentry
+    \entry{Fradkin1979Phase}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=f46f8dae1eed9992780e47d69f653b51}{%
+           family={Fradkin},
+           familyi={F\bibinitperiod},
+           given={Eduardo},
+           giveni={E\bibinitperiod}}}%
+        {{hash=cfef3ddb9d98edc5b538dd94a8db6bc0}{%
+           family={Shenker},
+           familyi={S\bibinitperiod},
+           given={Stephen\bibnamedelima H.},
+           giveni={S\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \strng{namehash}{2b02b44618b9819dc3d26b4a902619b4}
+      \strng{fullhash}{2b02b44618b9819dc3d26b4a902619b4}
+      \strng{fullhashraw}{2b02b44618b9819dc3d26b4a902619b4}
+      \strng{bibnamehash}{2b02b44618b9819dc3d26b4a902619b4}
+      \strng{authorbibnamehash}{2b02b44618b9819dc3d26b4a902619b4}
+      \strng{authornamehash}{2b02b44618b9819dc3d26b4a902619b4}
+      \strng{authorfullhash}{2b02b44618b9819dc3d26b4a902619b4}
+      \strng{authorfullhashraw}{2b02b44618b9819dc3d26b4a902619b4}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review D}
+      \field{number}{12}
+      \field{title}{Phase diagrams of lattice gauge theories with {H}iggs fields}
+      \field{volume}{19}
+      \field{year}{1979}
+      \field{pages}{3682\bibrangedash 3697}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.1103/PhysRevD.19.3682
+      \endverb
+    \endentry
+    \entry{Elitzur1975Impossibility}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=b2e38618a8372d88d6b35e790aa61130}{%
+           family={Elitzur},
+           familyi={E\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{b2e38618a8372d88d6b35e790aa61130}
+      \strng{fullhash}{b2e38618a8372d88d6b35e790aa61130}
+      \strng{fullhashraw}{b2e38618a8372d88d6b35e790aa61130}
+      \strng{bibnamehash}{b2e38618a8372d88d6b35e790aa61130}
+      \strng{authorbibnamehash}{b2e38618a8372d88d6b35e790aa61130}
+      \strng{authornamehash}{b2e38618a8372d88d6b35e790aa61130}
+      \strng{authorfullhash}{b2e38618a8372d88d6b35e790aa61130}
+      \strng{authorfullhashraw}{b2e38618a8372d88d6b35e790aa61130}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review D}
+      \field{number}{12}
+      \field{title}{Impossibility of spontaneously breaking local symmetries}
+      \field{volume}{12}
+      \field{year}{1975}
+      \field{pages}{3978\bibrangedash 3982}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1103/PhysRevD.12.3978
+      \endverb
+    \endentry
+    \entry{Propitius1996Discrete}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=c0e228357768bb845e09cbdee3ae8462}{%
+           family={Propitius},
+           familyi={P\bibinitperiod},
+           given={Mark\bibnamedelimb de\bibnamedelima Wild},
+           giveni={M\bibinitperiod\bibinitdelim d\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=65110d886de14c67caa3b318e16f38a5}{%
+           family={Bais},
+           familyi={B\bibinitperiod},
+           given={F.\bibnamedelimi Alexander},
+           giveni={F\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{2bb040c45968d885f16c2a4a3083d2e2}
+      \strng{fullhash}{2bb040c45968d885f16c2a4a3083d2e2}
+      \strng{fullhashraw}{2bb040c45968d885f16c2a4a3083d2e2}
+      \strng{bibnamehash}{2bb040c45968d885f16c2a4a3083d2e2}
+      \strng{authorbibnamehash}{2bb040c45968d885f16c2a4a3083d2e2}
+      \strng{authornamehash}{2bb040c45968d885f16c2a4a3083d2e2}
+      \strng{authorfullhash}{2bb040c45968d885f16c2a4a3083d2e2}
+      \strng{authorfullhashraw}{2bb040c45968d885f16c2a4a3083d2e2}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In these lecture notes, we present a self-contained discussion of planar gauge theories broken down to some finite residual gauge group H via the Higgs mechanism. The main focus is on the discrete H gauge theory describing the long distance physics of such a model. The spectrum features global H charges, magnetic vortices and dyonic combinations. Due to the Aharonov-Bohm effect, these particles exhibit topological interactions. Among other things, we review the Hopf algebra related to this discrete H gauge theory, which provides an unified description of the spin, braid and fusion properties of the particles in this model. Exotic phenomena such as flux metamorphosis, Alice fluxes, Cheshire charge, (non)abelian braid statistics, the generalized spin-statistics connection and nonabelian Aharonov-Bohm scattering are explained and illustrated by representative examples. Preface: Broken symmetry revisited, 1 Basics: 1.1 Introduction, 1.2 Braid groups, 1.3 Z\_N gauge theory, 1.3.1 Coulomb screening, 1.3.2 Survival of the Aharonov-Bohm effect, 1.3.3 Braid and fusion properties of the spectrum, 1.4 Nonabelian discrete gauge theories, 1.4.1 Classification of stable magnetic vortices, 1.4.2 Flux metamorphosis, 1.4.3 Including matter, 2 Algebraic structure: 2.1 Quantum double, 2.2 Truncated braid groups, 2.3 Fusion, spin, braid statistics and all that..., 3 \bar{D}\_2 gauge theory: 3.1 Alice in physics, 3.2 Scattering doublet charges off Alice fluxes, 3.3 Nonabelian braid statistics, 3.A Aharonov-Bohm scattering, 3.B B(3,4) and P(3,4), Concluding remarks and outlook}
+      \field{eprinttype}{arXiv}
+      \field{month}{3}
+      \field{title}{Discrete gauge theories}
+      \field{year}{1996}
+      \verb{eprint}
+      \verb hep-th/9511201
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/hep-th/9511201
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/hep-th/9511201
+      \endverb
+      \keyw{aharonov\_bohm,braid\_statistics,discrete-symmetries,gauge\_theory,higgs,hopf\_algebra,lecture\_notes,non\_abelian}
+    \endentry
+    \entry{Markopoulou1997Dual}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=a0497fa8180de4a2c715ecdc6c044106}{%
+           family={Markopoulou},
+           familyi={M\bibinitperiod},
+           given={Fotini},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{a0497fa8180de4a2c715ecdc6c044106}
+      \strng{fullhash}{a0497fa8180de4a2c715ecdc6c044106}
+      \strng{fullhashraw}{a0497fa8180de4a2c715ecdc6c044106}
+      \strng{bibnamehash}{a0497fa8180de4a2c715ecdc6c044106}
+      \strng{authorbibnamehash}{a0497fa8180de4a2c715ecdc6c044106}
+      \strng{authornamehash}{a0497fa8180de4a2c715ecdc6c044106}
+      \strng{authorfullhash}{a0497fa8180de4a2c715ecdc6c044106}
+      \strng{authorfullhashraw}{a0497fa8180de4a2c715ecdc6c044106}
+      \field{extraname}{1}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Advances in Theoretical and Mathematical Physics}
+      \field{title}{Dual formulation of spin network evolution}
+      \field{volume}{1}
+      \field{year}{1997}
+      \field{pages}{294\bibrangedash 314}
+      \range{pages}{21}
+      \verb{eprint}
+      \verb gr-qc/9704013
+      \endverb
+    \endentry
+    \entry{Markopoulou2000Quantum}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=a0497fa8180de4a2c715ecdc6c044106}{%
+           family={Markopoulou},
+           familyi={M\bibinitperiod},
+           given={Fotini},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{a0497fa8180de4a2c715ecdc6c044106}
+      \strng{fullhash}{a0497fa8180de4a2c715ecdc6c044106}
+      \strng{fullhashraw}{a0497fa8180de4a2c715ecdc6c044106}
+      \strng{bibnamehash}{a0497fa8180de4a2c715ecdc6c044106}
+      \strng{authorbibnamehash}{a0497fa8180de4a2c715ecdc6c044106}
+      \strng{authornamehash}{a0497fa8180de4a2c715ecdc6c044106}
+      \strng{authorfullhash}{a0497fa8180de4a2c715ecdc6c044106}
+      \strng{authorfullhashraw}{a0497fa8180de4a2c715ecdc6c044106}
+      \field{extraname}{2}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Classical and Quantum Gravity}
+      \field{number}{10}
+      \field{title}{Quantum causal histories}
+      \field{volume}{17}
+      \field{year}{2000}
+      \field{pages}{2059\bibrangedash 2072}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.1088/0264-9381/17/10/302
+      \endverb
+      \verb{eprint}
+      \verb hep-th/9904009
+      \endverb
+    \endentry
+    \entry{Dennis2002Topological}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=dced92add8fb8ae4e0ad5c9ec0441dd3}{%
+           family={Dennis},
+           familyi={D\bibinitperiod},
+           given={Eric},
+           giveni={E\bibinitperiod}}}%
+        {{hash=59949d44a3903dfabb88bff3220ff2e0}{%
+           family={Kitaev},
+           familyi={K\bibinitperiod},
+           given={Alexei},
+           giveni={A\bibinitperiod}}}%
+        {{hash=d2328e05dce09da171f880475d169708}{%
+           family={Landahl},
+           familyi={L\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod}}}%
+        {{hash=fbe61da8813855105d0c727fa93b4b4d}{%
+           family={Preskill},
+           familyi={P\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{894d9e7842dead2ca68c4a717b5ea22a}
+      \strng{fullhash}{282ea8a0ad5aa187ef091b089dad9ab1}
+      \strng{fullhashraw}{282ea8a0ad5aa187ef091b089dad9ab1}
+      \strng{bibnamehash}{894d9e7842dead2ca68c4a717b5ea22a}
+      \strng{authorbibnamehash}{894d9e7842dead2ca68c4a717b5ea22a}
+      \strng{authornamehash}{894d9e7842dead2ca68c4a717b5ea22a}
+      \strng{authorfullhash}{282ea8a0ad5aa187ef091b089dad9ab1}
+      \strng{authorfullhashraw}{282ea8a0ad5aa187ef091b089dad9ab1}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Mathematical Physics}
+      \field{number}{9}
+      \field{title}{Topological quantum memory}
+      \field{volume}{43}
+      \field{year}{2002}
+      \field{pages}{4452\bibrangedash 4505}
+      \range{pages}{54}
+      \verb{doi}
+      \verb 10.1063/1.1499754
+      \endverb
+      \verb{eprint}
+      \verb quant-ph/0110143
+      \endverb
+    \endentry
+    \entry{Greensite2020The-Higgs}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=86d36f2ed1eafce19dbcfef02b1060b6}{%
+           family={Greensite},
+           familyi={G\bibinitperiod},
+           given={Jeff},
+           giveni={J\bibinitperiod}}}%
+        {{hash=8d855ee692a25476f17d41fe217c10e4}{%
+           family={Matsuyama},
+           familyi={M\bibinitperiod},
+           given={Kazue},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{06021db36ad03fa39c688f1e212f47a6}
+      \strng{fullhash}{06021db36ad03fa39c688f1e212f47a6}
+      \strng{fullhashraw}{06021db36ad03fa39c688f1e212f47a6}
+      \strng{bibnamehash}{06021db36ad03fa39c688f1e212f47a6}
+      \strng{authorbibnamehash}{06021db36ad03fa39c688f1e212f47a6}
+      \strng{authornamehash}{06021db36ad03fa39c688f1e212f47a6}
+      \strng{authorfullhash}{06021db36ad03fa39c688f1e212f47a6}
+      \strng{authorfullhashraw}{06021db36ad03fa39c688f1e212f47a6}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{hep-lat}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{Physical Review D}
+      \field{title}{The Higgs phase as a spin glass, and the transition between varieties of confinement}
+      \field{volume}{101}
+      \field{year}{2020}
+      \field{pages}{054508}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/PhysRevD.101.054508
+      \endverb
+      \verb{eprint}
+      \verb 2001.03068
+      \endverb
+    \endentry
+    \entry{Mildenberger2024Probing}{article}{}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{hash=3cf76d653b2fe520783923febd4d7e99}{%
+           family={Mildenberger},
+           familyi={M\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{80d3f217d78e2d1463517d96b2d5dd05}
+      \strng{fullhash}{80d3f217d78e2d1463517d96b2d5dd05}
+      \strng{fullhashraw}{80d3f217d78e2d1463517d96b2d5dd05}
+      \strng{bibnamehash}{80d3f217d78e2d1463517d96b2d5dd05}
+      \strng{authorbibnamehash}{80d3f217d78e2d1463517d96b2d5dd05}
+      \strng{authornamehash}{80d3f217d78e2d1463517d96b2d5dd05}
+      \strng{authorfullhash}{80d3f217d78e2d1463517d96b2d5dd05}
+      \strng{authorfullhashraw}{80d3f217d78e2d1463517d96b2d5dd05}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:2203.08905}
+      \field{title}{Probing Z2 lattice gauge theories on quantum computers}
+      \field{year}{2024}
+      \verb{eprint}
+      \verb 2203.08905
+      \endverb
+    \endentry
+    \entry{Homeier2023Quantum}{article}{}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{hash=a829910c1e5d04eaaf0bf6c36dcf5122}{%
+           family={Homeier},
+           familyi={H\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{d582337705155871ce5f5061a15062eb}
+      \strng{fullhash}{d582337705155871ce5f5061a15062eb}
+      \strng{fullhashraw}{d582337705155871ce5f5061a15062eb}
+      \strng{bibnamehash}{d582337705155871ce5f5061a15062eb}
+      \strng{authorbibnamehash}{d582337705155871ce5f5061a15062eb}
+      \strng{authornamehash}{d582337705155871ce5f5061a15062eb}
+      \strng{authorfullhash}{d582337705155871ce5f5061a15062eb}
+      \strng{authorfullhashraw}{d582337705155871ce5f5061a15062eb}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Communications in Physics}
+      \field{title}{Quantum simulation of Z2 lattice gauge theory}
+      \field{year}{2023}
+      \verb{eprint}
+      \verb 2205.08541
+      \endverb
+    \endentry
+    \entry{Jahn2021Holographic}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=b5984d3177db860c4197a24cd36ead28}{%
+           family={Jahn},
+           familyi={J\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod}}}%
+        {{hash=878172bfd75f93a96d3646d7b66c3e48}{%
+           family={Eisert},
+           familyi={E\bibinitperiod},
+           given={Jens},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{82ff7eeb01be39b184ffe0cf2698040a}
+      \strng{fullhash}{82ff7eeb01be39b184ffe0cf2698040a}
+      \strng{fullhashraw}{82ff7eeb01be39b184ffe0cf2698040a}
+      \strng{bibnamehash}{82ff7eeb01be39b184ffe0cf2698040a}
+      \strng{authorbibnamehash}{82ff7eeb01be39b184ffe0cf2698040a}
+      \strng{authornamehash}{82ff7eeb01be39b184ffe0cf2698040a}
+      \strng{authorfullhash}{82ff7eeb01be39b184ffe0cf2698040a}
+      \strng{authorfullhashraw}{82ff7eeb01be39b184ffe0cf2698040a}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{quant-ph}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{Quantum Science and Technology}
+      \field{title}{Holographic tensor network models and quantum error correction: A topical review}
+      \field{volume}{6}
+      \field{year}{2021}
+      \field{pages}{033002}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1088/2058-9565/ac0293
+      \endverb
+      \verb{eprint}
+      \verb 2102.02619
+      \endverb
+    \endentry
+    \entry{Steinberg2023Holographic}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=273b7f24fc1b26d0123df021e77ed416}{%
+           family={Steinberg},
+           familyi={S\bibinitperiod},
+           given={Matthew},
+           giveni={M\bibinitperiod}}}%
+        {{hash=8c006ae6db079bc0fa5bd9d4addfed13}{%
+           family={Feld},
+           familyi={F\bibinitperiod},
+           given={Sebastian},
+           giveni={S\bibinitperiod}}}%
+        {{hash=b5984d3177db860c4197a24cd36ead28}{%
+           family={Jahn},
+           familyi={J\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{af6814f0189e9318a47e58a70fcc5218}
+      \strng{fullhash}{af6814f0189e9318a47e58a70fcc5218}
+      \strng{fullhashraw}{af6814f0189e9318a47e58a70fcc5218}
+      \strng{bibnamehash}{af6814f0189e9318a47e58a70fcc5218}
+      \strng{authorbibnamehash}{af6814f0189e9318a47e58a70fcc5218}
+      \strng{authornamehash}{af6814f0189e9318a47e58a70fcc5218}
+      \strng{authorfullhash}{af6814f0189e9318a47e58a70fcc5218}
+      \strng{authorfullhashraw}{af6814f0189e9318a47e58a70fcc5218}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{quant-ph}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{Nature Communications}
+      \field{title}{Holographic Codes from Hyperinvariant Tensor Networks}
+      \field{volume}{14}
+      \field{year}{2023}
+      \field{pages}{7314}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1038/s41467-023-42743-z
+      \endverb
+      \verb{eprint}
+      \verb 2304.02732
+      \endverb
+    \endentry
+    \entry{Dittrich2016Coarse}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=4237f0639510152ab2a1102a6a4a6226}{%
+           family={Dittrich},
+           familyi={D\bibinitperiod},
+           given={Bianca},
+           giveni={B\bibinitperiod}}}%
+        {{hash=937549ffa2de880ce4feb55ddff1bf68}{%
+           family={Schnetter},
+           familyi={S\bibinitperiod},
+           given={Erik},
+           giveni={E\bibinitperiod}}}%
+        {{hash=69408624b2e8581939fc111a21cf181e}{%
+           family={Seth},
+           familyi={S\bibinitperiod},
+           given={Cameron\bibnamedelima J.},
+           giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=498c2f4105ff659af94250453c370f0e}{%
+           family={Steinhaus},
+           familyi={S\bibinitperiod},
+           given={Sebastian},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{e3c3a4d8a59f0cbce68117e32d2998e7}
+      \strng{fullhash}{4942323b7e19f20d13ad27e1beb6c27f}
+      \strng{fullhashraw}{4942323b7e19f20d13ad27e1beb6c27f}
+      \strng{bibnamehash}{e3c3a4d8a59f0cbce68117e32d2998e7}
+      \strng{authorbibnamehash}{e3c3a4d8a59f0cbce68117e32d2998e7}
+      \strng{authornamehash}{e3c3a4d8a59f0cbce68117e32d2998e7}
+      \strng{authorfullhash}{4942323b7e19f20d13ad27e1beb6c27f}
+      \strng{authorfullhashraw}{4942323b7e19f20d13ad27e1beb6c27f}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{gr-qc}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{Physical Review D}
+      \field{title}{Coarse graining flow of spin foam intertwiners}
+      \field{volume}{94}
+      \field{year}{2016}
+      \field{pages}{124050}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/PhysRevD.94.124050
+      \endverb
+      \verb{eprint}
+      \verb 1609.02429
+      \endverb
+    \endentry
+    \entry{Cao2018Bulk}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=2ee1528296a5cd521dc7a80999c2ae94}{%
+           family={Cao},
+           familyi={C\bibinitperiod},
+           given={ChunJun},
+           giveni={C\bibinitperiod}}}%
+        {{hash=a21efd7d6f43a778b4bd8bd5cf50c950}{%
+           family={Carroll},
+           familyi={C\bibinitperiod},
+           given={Sean\bibnamedelima M.},
+           giveni={S\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{7b86718099716f1a6689aa4b19b82878}
+      \strng{fullhash}{7b86718099716f1a6689aa4b19b82878}
+      \strng{fullhashraw}{7b86718099716f1a6689aa4b19b82878}
+      \strng{bibnamehash}{7b86718099716f1a6689aa4b19b82878}
+      \strng{authorbibnamehash}{7b86718099716f1a6689aa4b19b82878}
+      \strng{authornamehash}{7b86718099716f1a6689aa4b19b82878}
+      \strng{authorfullhash}{7b86718099716f1a6689aa4b19b82878}
+      \strng{authorfullhashraw}{7b86718099716f1a6689aa4b19b82878}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{gr-qc}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{Physical Review D}
+      \field{title}{Bulk Entanglement Gravity without a Boundary: Towards Finding Einstein's Equation in {Hilbert} Space}
+      \field{volume}{97}
+      \field{year}{2018}
+      \field{pages}{086003}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/PhysRevD.97.086003
+      \endverb
+      \verb{eprint}
+      \verb 1712.02803
+      \endverb
+    \endentry
+    \entry{Hohn2021The-Trinity}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=637edca174d058ecd87569642ed40d99}{%
+           family={Höhn},
+           familyi={H\bibinitperiod},
+           given={Philipp\bibnamedelima A.},
+           giveni={P\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=b54b40faaeba4675082d53221a92a48b}{%
+           family={Smith},
+           familyi={S\bibinitperiod},
+           given={Alexander\bibnamedelimb R.\bibnamedelimi H.},
+           giveni={A\bibinitperiod\bibinitdelim R\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=c899e64ffaae07a77670f53193d041e3}{%
+           family={Lock},
+           familyi={L\bibinitperiod},
+           given={Maximilian\bibnamedelimb P.\bibnamedelimi E.},
+           giveni={M\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \strng{namehash}{99b8aeee4ee0a45fb2e1a1384f140ae9}
+      \strng{fullhash}{99b8aeee4ee0a45fb2e1a1384f140ae9}
+      \strng{fullhashraw}{99b8aeee4ee0a45fb2e1a1384f140ae9}
+      \strng{bibnamehash}{99b8aeee4ee0a45fb2e1a1384f140ae9}
+      \strng{authorbibnamehash}{99b8aeee4ee0a45fb2e1a1384f140ae9}
+      \strng{authornamehash}{99b8aeee4ee0a45fb2e1a1384f140ae9}
+      \strng{authorfullhash}{99b8aeee4ee0a45fb2e1a1384f140ae9}
+      \strng{authorfullhashraw}{99b8aeee4ee0a45fb2e1a1384f140ae9}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{gr-qc}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{Physical Review D}
+      \field{title}{The Trinity of Relational Quantum Dynamics}
+      \field{volume}{104}
+      \field{year}{2021}
+      \field{pages}{066001}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/PhysRevD.104.066001
+      \endverb
+      \verb{eprint}
+      \verb 1912.00033
+      \endverb
+    \endentry
+    \entry{Rovelli2014Covariant}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=b32ab73e85caa26365ad2176347b9515}{%
+           family={Rovelli},
+           familyi={R\bibinitperiod},
+           given={Carlo},
+           giveni={C\bibinitperiod}}}%
+        {{hash=e6bfc2467740dfc4f10dded2494d2d65}{%
+           family={Vidotto},
+           familyi={V\bibinitperiod},
+           given={Francesca},
+           giveni={F\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Cambridge}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{d20b3b56fd32fc0a20bcf9df9bb93b98}
+      \strng{fullhash}{d20b3b56fd32fc0a20bcf9df9bb93b98}
+      \strng{fullhashraw}{d20b3b56fd32fc0a20bcf9df9bb93b98}
+      \strng{bibnamehash}{d20b3b56fd32fc0a20bcf9df9bb93b98}
+      \strng{authorbibnamehash}{d20b3b56fd32fc0a20bcf9df9bb93b98}
+      \strng{authornamehash}{d20b3b56fd32fc0a20bcf9df9bb93b98}
+      \strng{authorfullhash}{d20b3b56fd32fc0a20bcf9df9bb93b98}
+      \strng{authorfullhashraw}{d20b3b56fd32fc0a20bcf9df9bb93b98}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Quantum gravity is among the most fascinating problems in physics. It modifies our understanding of time, space and matter. The recent development of the loop approach has allowed us to explore domains ranging from black hole thermodynamics to the early Universe. This book provides readers with a simple introduction to loop quantum gravity, centred on its covariant approach. It focuses on the physical and conceptual aspects of the problem and includes the background material needed to enter this lively domain of research, making it ideal for researchers and graduate students. Topics covered include quanta of space; classical and quantum physics without time; tetrad formalism; Holst action; lattice QCD; Regge calculus; ADM and Ashtekar variables; Ponzano-Regge and Turaev-Viro amplitudes; kinematics and dynamics of 4D Lorentzian quantum gravity; spectrum of area and volume; coherent states; classical limit; matter couplings; graviton propagator; spinfoam cosmology and black hole thermodynamics.}
+      \field{isbn}{9781107706910}
+      \field{title}{{Covariant Loop Quantum Gravity}}
+      \field{year}{2014}
+      \verb{doi}
+      \verb 10.1017/CBO9781107706910
+      \endverb
+      \verb{urlraw}
+      \verb http://www.cpt.univ-mrs.fr/{~}rovelli/IntroductionLQG.pdf http://ebooks.cambridge.org/ref/id/CBO9781107706910
+      \endverb
+      \verb{url}
+      \verb http://www.cpt.univ-mrs.fr/%7B~%7Drovelli/IntroductionLQG.pdf%20http://ebooks.cambridge.org/ref/id/CBO9781107706910
+      \endverb
+      \keyw{area operator,arrow of time,ashtekar{\_}variables,black holes,black-hole-entropy,book,cosmology,introductionl,loop{\_}quantum{\_}gravity,pedagogical,quantum gravity,rovelli{\_}carlo,tetrad formalism,vidotto{\_}francesca,volume operator}
+    \endentry
+    \entry{Ashtekar1986New-Variables}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=e28cc3e6f7f6ef55fcce6814f02de871}{%
+           family={Ashtekar},
+           familyi={A\bibinitperiod},
+           given={Abhay},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society}%
+      }
+      \strng{namehash}{e28cc3e6f7f6ef55fcce6814f02de871}
+      \strng{fullhash}{e28cc3e6f7f6ef55fcce6814f02de871}
+      \strng{fullhashraw}{e28cc3e6f7f6ef55fcce6814f02de871}
+      \strng{bibnamehash}{e28cc3e6f7f6ef55fcce6814f02de871}
+      \strng{authorbibnamehash}{e28cc3e6f7f6ef55fcce6814f02de871}
+      \strng{authornamehash}{e28cc3e6f7f6ef55fcce6814f02de871}
+      \strng{authorfullhash}{e28cc3e6f7f6ef55fcce6814f02de871}
+      \strng{authorfullhashraw}{e28cc3e6f7f6ef55fcce6814f02de871}
+      \field{extraname}{1}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Phys. Rev. Lett.}
+      \field{month}{11}
+      \field{number}{18}
+      \field{title}{New Variables for Classical and Quantum Gravity}
+      \field{volume}{57}
+      \field{year}{1986}
+      \field{pages}{2244\bibrangedash 2247}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1103/PhysRevLett.57.2244
+      \endverb
+    \endentry
+    \entry{Ashtekar1987New-Hamiltonian}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=e28cc3e6f7f6ef55fcce6814f02de871}{%
+           family={Ashtekar},
+           familyi={A\bibinitperiod},
+           given={Abhay},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society}%
+      }
+      \strng{namehash}{e28cc3e6f7f6ef55fcce6814f02de871}
+      \strng{fullhash}{e28cc3e6f7f6ef55fcce6814f02de871}
+      \strng{fullhashraw}{e28cc3e6f7f6ef55fcce6814f02de871}
+      \strng{bibnamehash}{e28cc3e6f7f6ef55fcce6814f02de871}
+      \strng{authorbibnamehash}{e28cc3e6f7f6ef55fcce6814f02de871}
+      \strng{authornamehash}{e28cc3e6f7f6ef55fcce6814f02de871}
+      \strng{authorfullhash}{e28cc3e6f7f6ef55fcce6814f02de871}
+      \strng{authorfullhashraw}{e28cc3e6f7f6ef55fcce6814f02de871}
+      \field{extraname}{2}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Phys. Rev. D}
+      \field{month}{9}
+      \field{number}{6}
+      \field{title}{New Hamiltonian formulation of general relativity}
+      \field{volume}{36}
+      \field{year}{1987}
+      \field{pages}{1587\bibrangedash 1602}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.1103/PhysRevD.36.1587
+      \endverb
+    \endentry
+    \entry{Ashtekar2004Background}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=e28cc3e6f7f6ef55fcce6814f02de871}{%
+           family={Ashtekar},
+           familyi={A\bibinitperiod},
+           given={Abhay},
+           giveni={A\bibinitperiod}}}%
+        {{hash=cb5ea41dec39060bcbfd953ead8b22d6}{%
+           family={Lewandowski},
+           familyi={L\bibinitperiod},
+           given={Jerzy},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{75dfddce30c25b3977f8fb1acc538bae}
+      \strng{fullhash}{75dfddce30c25b3977f8fb1acc538bae}
+      \strng{fullhashraw}{75dfddce30c25b3977f8fb1acc538bae}
+      \strng{bibnamehash}{75dfddce30c25b3977f8fb1acc538bae}
+      \strng{authorbibnamehash}{75dfddce30c25b3977f8fb1acc538bae}
+      \strng{authornamehash}{75dfddce30c25b3977f8fb1acc538bae}
+      \strng{authorfullhash}{75dfddce30c25b3977f8fb1acc538bae}
+      \strng{authorfullhashraw}{75dfddce30c25b3977f8fb1acc538bae}
+      \field{extraname}{3}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The goal of this review is to present an introduction to loop quantum gravity--a background-independent, non-perturbative approach to the problem of unification of general relativity and quantum physics, based on a quantum theory of geometry. Our presentation is pedagogical. Thus, in addition to providing a bird's eye view of the present status of the subject, the review should also serve as a vehicle to enter the field and explore it in detail. To aid non-experts, very little is assumed beyond elements of general relativity, gauge theories and quantum field theory. While the review is essentially self-contained, the emphasis is on communicating the underlying ideas and the significance of results rather than on presenting systematic derivations and detailed proofs. (These can be found in the listed references.) The subject can be approached in different ways. We have chosen one which is deeply rooted in well-established physics and also has sufficient mathematical precision to ensure that there are no hidden infinities. In order to keep the review to a reasonable size, and to avoid overwhelming non-experts, we have had to leave out several interesting topics, results and viewpoints; this is meant to be an introduction to the subject rather than an exhaustive review of it.}
+      \field{journaltitle}{Classical and Quantum Gravity}
+      \field{number}{15}
+      \field{title}{Background independent quantum gravity: a status report}
+      \field{volume}{21}
+      \field{year}{2004}
+      \field{pages}{R53\bibrangedash R152}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1088/0264-9381/21/15/R01
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1088/0264-9381/21/15/R01
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1088/0264-9381/21/15/R01
+      \endverb
+      \keyw{geometry,lecture-notes,lqg,quantum-gravity,review}
+    \endentry
+    \entry{Ashtekar1994A-Manifestly}{incollection}{}{}
+      \name{author}{5}{}{%
+        {{hash=2f06fe4ddbb47261f30de59aa7259369}{%
+           family={Ashtekar},
+           familyi={A\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=2a6637281d28108fe05806663f8053f1}{%
+           family={Lewandowski},
+           familyi={L\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=237a760b47fdd0d88c962c870f77a503}{%
+           family={Marolf},
+           familyi={M\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+        {{hash=8f210a7dd7517a6c524fbf1f193cc895}{%
+           family={Mourao},
+           familyi={M\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=e2500e447e52b94fac488fed039609c2}{%
+           family={Thiemann},
+           familyi={T\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{58313601eb3bd5492541f3562572e9c3}
+      \strng{fullhash}{0c25710a29bf7093637580e00a27c94d}
+      \strng{fullhashraw}{0c25710a29bf7093637580e00a27c94d}
+      \strng{bibnamehash}{58313601eb3bd5492541f3562572e9c3}
+      \strng{authorbibnamehash}{58313601eb3bd5492541f3562572e9c3}
+      \strng{authornamehash}{58313601eb3bd5492541f3562572e9c3}
+      \strng{authorfullhash}{0c25710a29bf7093637580e00a27c94d}
+      \strng{authorfullhashraw}{0c25710a29bf7093637580e00a27c94d}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In gauge theories, physical histories are represented by space-time connections modulo gauge transformations. The space of histories is thus intrinsically non-linear. The standard framework of constructive quantum field theory has to be extended to face these {\{}$\backslash$it kinematical{\}} non-linearities squarely. We first present a pedagogical account of this problem and then suggest an avenue for its resolution.}
+      \field{booktitle}{Geometry of Constrained Dynamical Systems}
+      \field{eprintclass}{hep-th}
+      \field{eprinttype}{arXiv}
+      \field{month}{8}
+      \field{title}{{A Manifestly Gauge-Invariant Approach to Quantum Theories of Gauge Fields}}
+      \field{year}{1994}
+      \verb{eprint}
+      \verb 9408108
+      \endverb
+      \verb{file}
+      \verb :Users/deepak/ownCloud/root/research/mendeley/Ashtekar et al.{\_}A Manifestly Gauge-Invariant Approach to Quantum Theories of Gauge Fields{\_}1994.pdf:pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/hep-th/9408108
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/hep-th/9408108
+      \endverb
+    \endentry
+    \entry{Li2017Invariant}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=043a334331ea8fb1a87ae51c3fdb3094}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Youning},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=1a7ce28689ea8f3f21c786d3ce68102d}{%
+           family={Han},
+           familyi={H\bibinitperiod},
+           given={Muxin},
+           giveni={M\bibinitperiod}}}%
+        {{hash=8523b32e36050f6b515f732c5002e0d8}{%
+           family={Grassl},
+           familyi={G\bibinitperiod},
+           given={Markus},
+           giveni={M\bibinitperiod}}}%
+        {{hash=07ba683130d88cf9a99c773c6dfd862d}{%
+           family={Zeng},
+           familyi={Z\bibinitperiod},
+           given={Bei},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{ff4a5bf8437d19f04530602f5f1e72f6}
+      \strng{fullhash}{0e3bc5d5696d15896674e0af4b210d6f}
+      \strng{fullhashraw}{0e3bc5d5696d15896674e0af4b210d6f}
+      \strng{bibnamehash}{ff4a5bf8437d19f04530602f5f1e72f6}
+      \strng{authorbibnamehash}{ff4a5bf8437d19f04530602f5f1e72f6}
+      \strng{authornamehash}{ff4a5bf8437d19f04530602f5f1e72f6}
+      \strng{authorfullhash}{0e3bc5d5696d15896674e0af4b210d6f}
+      \strng{authorfullhashraw}{0e3bc5d5696d15896674e0af4b210d6f}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Invariant tensors are states in the SU(2) tensor product representation that are invariant under the SU(2) action. They play an important role in the study of loop quantum gravity. On the other hand, perfect tensors are highly entangled many-body quantum states with local density matrices maximally mixed. Recently, the notion of perfect tensors recently has attracted a lot of attention in the fields of quantum information theory, condensed matter theory, and quantum gravity. In this work, we introduce the concept of an invariant perfect tensor (IPT), which is a {\$}n{\$}-valent tensor that is both invariant and perfect. We discuss the existence and construction of IPT. For bivalent tensors, the invariant perfect tensor is the unique singlet state for each local dimension. The trivalent invariant perfect tensor also exists and is uniquely given by Wigner's {\$}3j{\$} symbol. However, we show that, surprisingly, there does not exist four-valent invariant perfect tensors for any dimension. On the contrary, when the dimension is large, almost all invariant tensors are perfect asymptotically, which is a consequence of the phenomenon of concentration of measure for multipartite quantum states.}
+      \field{eprinttype}{arXiv}
+      \field{issn}{13672630}
+      \field{journaltitle}{New Journal of Physics}
+      \field{month}{12}
+      \field{number}{6}
+      \field{title}{{Invariant perfect tensors}}
+      \field{volume}{19}
+      \field{year}{2017}
+      \verb{doi}
+      \verb 10.1088/1367-2630/aa7235
+      \endverb
+      \verb{eprint}
+      \verb 1612.04504
+      \endverb
+      \verb{file}
+      \verb :Users/deepak/mendeley/Li et al.{\_}Invariant perfect tensors{\_}2017.pdf:pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1612.04504 http://dx.doi.org/10.1088/1367-2630/aa7235
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1612.04504%20http://dx.doi.org/10.1088/1367-2630/aa7235
+      \endverb
+      \keyw{perfect invariant tensor,quantum code,quantum gravity}
+    \endentry
+    \entry{Verlinde1988Fusion}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=bb173e9b623b7737a79f22558b0becc4}{%
+           family={Verlinde},
+           familyi={V\bibinitperiod},
+           given={Erik},
+           giveni={E\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {North-Holland}%
+      }
+      \strng{namehash}{bb173e9b623b7737a79f22558b0becc4}
+      \strng{fullhash}{bb173e9b623b7737a79f22558b0becc4}
+      \strng{fullhashraw}{bb173e9b623b7737a79f22558b0becc4}
+      \strng{bibnamehash}{bb173e9b623b7737a79f22558b0becc4}
+      \strng{authorbibnamehash}{bb173e9b623b7737a79f22558b0becc4}
+      \strng{authornamehash}{bb173e9b623b7737a79f22558b0becc4}
+      \strng{authorfullhash}{bb173e9b623b7737a79f22558b0becc4}
+      \strng{authorfullhashraw}{bb173e9b623b7737a79f22558b0becc4}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We study conformal field theories with a finite number of primary fields with respect to some chiral algebra. It is shown that the fusion rules are completely determined by the behavior of the characters under the modular group. We illustrate with some examples that conversely the modular properties of the characters can be derived from the fusion rules. We propose how these results can be used to find restrictions on the values of the central charge and conformal dimensions.}
+      \field{issn}{0550-3213}
+      \field{journaltitle}{Nuclear Physics B}
+      \field{month}{1}
+      \field{title}{{Fusion rules and modular transformations in 2D conformal field theory}}
+      \field{volume}{300}
+      \field{year}{1988}
+      \field{pages}{360\bibrangedash 376}
+      \range{pages}{17}
+      \verb{doi}
+      \verb 10.1016/0550-3213(88)90603-7
+      \endverb
+      \verb{file}
+      \verb :Users/deepak/mendeley/Verlinde{\_}Fusion rules and modular transformations in 2D conformal field theory{\_}1988.pdf:pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/0550321388906037?via{\%}3Dihub
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/0550321388906037?via%7B%5C%%7D3Dihub
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

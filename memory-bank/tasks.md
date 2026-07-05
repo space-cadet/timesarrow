@@ -1,7 +1,7 @@
 # Memory Bank - Sage Workspace
 
 *Created: 2026-07-02 16:48:02 IST*
-*Last Updated: 2026-07-02 16:48:02 IST*
+*Last Updated: 2026-07-05 22:24:10 IST*
 
 ## Overview
 
@@ -14,6 +14,7 @@ This is the Memory Bank for the Sage (灵剑) OpenClaw workspace.
 | T23 | Entanglement Structure | 🔄 | HIGH | 2026-06-24 | T20 | [Details](tasks/T23.md) |
 | T24 | Domain Wall Dynamics | 🔄 | HIGH | 2026-06-24 | T20, T21 | [Details](tasks/T24.md) |
 | T31 | Signed Volume Observable | 🔄 | MEDIUM | 2026-07-02 | — | [Details](tasks/T31.md) |
+| T32 | Post-May Numerics Correction and Reproducibility Pass | 🔄 | HIGH | 2026-07-05 | T20d, T22a, T25, T27, T31 | [Details](tasks/T32.md) |
 
 ## Completed Tasks
 
@@ -29,7 +30,7 @@ This is the Memory Bank for the Sage (灵剑) OpenClaw workspace.
 | T21 | Worker Threads + Checkpointing | ✅ | HIGH | 2026-06-25 | 2026-06-25 | — | [Details](tasks/T21.md) |
 | T21a | Fast Monte Carlo Kernel | ✅ | HIGH | 2026-06-25 | 2026-06-25 | T20b | [Details](tasks/T21a.md) |
 | T22 | Spin Foam Amplitudes | ✅ | HIGH | 2026-06-25 | 2026-06-25 | T14, T20c | [Details](tasks/T22.md) |
-| T22a | Path 1 — Quick Estimate (FK Vertex j=½ vs j=1) | ✅ | HIGH | 2026-06-28 | 2026-06-28 | 2026-06-29, — | [Details](tasks/T22a.md) |
+| T22a | Path 1 — SU(2) Four-Leg Group-Average Estimate | ✅ | HIGH | 2026-06-28 | 2026-06-28 | T32 | [Details](tasks/T22a.md) |
 | T25 | Volume Operator Eigenvalues | ✅ | HIGH | 2026-06-24 | 2026-06-24 | — | [Details](tasks/T25.md) |
 | T27 | Rust Z₂ LGT Framework | ✅ | HIGH | 2026-06-25 | 2026-06-25 | — | [Details](tasks/T27.md) |
 | T28 | Simulation Dashboard (v1) | ✅ | MEDIUM | 2026-06-26 | 2026-06-26 | — | [Details](tasks/T28.md) |
@@ -95,11 +96,17 @@ T30: Unified Plotting Module
   └── —
 T31: Signed Volume Observable
   └── —
+T32: Post-May Numerics Correction and Reproducibility Pass
+  ├── T20d
+  ├── T22a
+  ├── T25
+  ├── T27
+  └── T31
 ```
 
 ## Status Summary
 
-- **Active**: 3
+- **Active**: 4
 - **Completed**: 16
 - **Paused**: 0
-- **Total**: 21
+- **Total**: 22

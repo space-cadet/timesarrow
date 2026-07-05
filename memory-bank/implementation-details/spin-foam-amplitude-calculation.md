@@ -1,8 +1,12 @@
 # Calculation Plan: Spin Foam Amplitude for j=1/2 Dominance
 
 *Created: 2026-06-24*
-*Updated: 2026-06-28*
+*Updated: 2026-07-05 22:24:10 IST*
 *Task: T22*
+
+## Correction Notice
+
+The T22a implementation evaluates a normalized SU(2) four-character group average. It is not a complete FK/EPRL vertex amplitude and does not establish $j=1/2$ dominance. The reported ratio near $0.45$ must not be squared again and relabeled as a $0.20$ probability ratio. See T32 before using this plan for manuscript claims.
 
 ## Overview
 
