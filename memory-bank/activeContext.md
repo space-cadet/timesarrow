@@ -1,6 +1,6 @@
 # timesarrow — Active Context
 
-*Updated: 2026-07-05 22:24:10 IST*
+*Updated: 2026-07-05 23:12:09 IST*
 
 ## Current Session — 2026-07-05 Night
 
@@ -13,6 +13,13 @@
 - T25 spectral pairing remains useful but does not alone establish a physical time-orientation symmetry.
 - TypeScript/Rust build and test reproducibility must be restored before manuscript promotion.
 - `timesarrow.tex` remains gated from post-May numerical claims until T32 is complete.
+
+**T20d correction progress (2026-07-05 23:12 IST):**
+
+- Rewrote `t20d-fss-analysis.tex` around continuous 3D Ising universality.
+- Corrected and rebuilt the canonical T20 Quarto task page and both tracked HTML outputs.
+- Removed the first-order, latent-heat, synthetic-histogram, and failed-collapse claims from rendered publication text.
+- Preserved raw data; numerical reanalysis, dashboard correction, and figure retirement/replacement remain open.
 
 **Plan:** `implementation-details/post-may-numerics-correction-plan.md`
 

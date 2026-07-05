@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2026-07-02">
 
-<title>T20 — Z₂ Lattice Gauge Theory Monte Carlo</title>
+<title>T20 — Z₂ Lattice Gauge Theory Monte Carlo – TimesArrow</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,61 +20,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* Ensure TOC is visible */
-#quarto-margin-sidebar {
-  display: block !important;
-  position: sticky;
-  top: 20px;
-  float: left;
-  width: 220px;
-  margin-right: 20px;
-  max-height: calc(100vh - 40px);
-  overflow-y: auto;
-}
-#TOC {
-  background: #f8f9fa;
-  border: 1px solid #dee2e6;
-  border-radius: 4px;
-  padding: 12px;
-}
-#TOC ul {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-}
-#TOC ul ul {
-  padding-left: 12px;
-}
-#TOC li {
-  margin: 4px 0;
-}
-#TOC a {
-  text-decoration: none;
-  color: #0d6efd;
-  font-size: 0.85rem;
-}
-#TOC a:hover {
-  text-decoration: underline;
-}
-#TOC .active {
-  font-weight: 600;
-  color: #000;
-}
-#toc-title {
-  font-size: 1rem;
-  margin-bottom: 8px;
-  color: #333;
-}
-@media (max-width: 768px) {
-  #quarto-margin-sidebar {
-    float: none;
-    width: 100%;
-    margin-right: 0;
-    margin-bottom: 20px;
-    position: static;
-    max-height: none;
-  }
 }
 /* CSS for syntax highlighting */
 html { -webkit-text-size-adjust: 100%; }
@@ -114,18 +59,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="t20-z2-lgt_files/libs/clipboard/clipboard.min.js"></script>
-<script src="t20-z2-lgt_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="t20-z2-lgt_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="t20-z2-lgt_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="t20-z2-lgt_files/libs/quarto-html/popper.min.js"></script>
-<script src="t20-z2-lgt_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="t20-z2-lgt_files/libs/quarto-html/anchor.min.js"></script>
-<link href="t20-z2-lgt_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="t20-z2-lgt_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="t20-z2-lgt_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="t20-z2-lgt_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="t20-z2-lgt_files/libs/bootstrap/bootstrap-d6a003b94517c951b2d65075d42fb01b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-2e5cbef59756d87313a778b4017e2694.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -159,11 +137,171 @@ window.Quarto = {
 
 </head>
 
-<body class="quarto-light">
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-  <nav id="TOC" role="doc-toc" class="toc-active">
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">TimesArrow</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../index.html" aria-current="page"> 
+<span class="menu-text">Overview</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../dashboard.html"> 
+<span class="menu-text">Dashboard</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-simulations" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Simulations</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-simulations">    
+        <li>
+    <a class="dropdown-item" href="../tasks/t31-signed-volume.html">
+ <span class="dropdown-text">T31 — Signed Volume</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tasks/t25-volume-operator.html">
+ <span class="dropdown-text">T25 — Volume Operator</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tasks/t20-z2-lgt.html">
+ <span class="dropdown-text">T20 — Z₂ LGT Monte Carlo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tasks/t23-entanglement.html">
+ <span class="dropdown-text">T23 — Entanglement Entropy</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tasks/t22-spin-foam.html">
+ <span class="dropdown-text">T22 — Spin Foam Amplitudes</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tasks/t21-czx-peps.html">
+ <span class="dropdown-text">T21 — CZX PEPS</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tasks/t24-domain-walls.html">
+ <span class="dropdown-text">T24 — Domain Walls</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tasks/t26-coupled-matter.html">
+ <span class="dropdown-text">T26 — Coupled Matter</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tasks/t31-signed-volume.html">Tasks</a></li><li class="breadcrumb-item"><a href="../tasks/t20-z2-lgt.html">T20 — Z₂ Lattice Gauge Theory Monte Carlo</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">TimesArrow Numerics</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dashboard.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Simulation Dashboard</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Tasks</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tasks/t31-signed-volume.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">T31 — Signed Volume Observable for Z₂ Gauge Theory</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tasks/t25-volume-operator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">T25 — Volume Operator Extension</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tasks/t20-z2-lgt.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">T20 — Z₂ Lattice Gauge Theory Monte Carlo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tasks/t23-entanglement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">T23 — Entanglement Entropy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tasks/t22-spin-foam.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">T22 — Spin Foam Amplitudes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tasks/t21-czx-peps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">T21 — CZX PEPS Ground State</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tasks/t24-domain-walls.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">T24 — Domain Wall Dynamics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tasks/t26-coupled-matter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">T26 — Coupled Spin Network + Matter</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Contents</h2>
    
   <ul>
@@ -209,8 +347,7 @@ window.Quarto = {
   <li><a href="#confinement-deconfinement-signature" id="toc-confinement-deconfinement-signature" class="nav-link" data-scroll-target="#confinement-deconfinement-signature">Confinement-Deconfinement Signature</a></li>
   <li><a href="#multi-lattice-comparison-fine-grained-β" id="toc-multi-lattice-comparison-fine-grained-β" class="nav-link" data-scroll-target="#multi-lattice-comparison-fine-grained-β">Multi-Lattice Comparison (Fine-Grained β)</a></li>
   <li><a href="#data-files-1" id="toc-data-files-1" class="nav-link" data-scroll-target="#data-files-1">Data Files</a></li>
-  <li><a href="#binder-cumulant-first-order-analysis-all-l" id="toc-binder-cumulant-first-order-analysis-all-l" class="nav-link" data-scroll-target="#binder-cumulant-first-order-analysis-all-l">Binder Cumulant First-Order Analysis (All L)</a></li>
-  <li><a href="#critical-exponent-scaling-collapse-revised" id="toc-critical-exponent-scaling-collapse-revised" class="nav-link" data-scroll-target="#critical-exponent-scaling-collapse-revised">Critical Exponent &amp; Scaling Collapse (Revised)</a></li>
+  <li><a href="#corrected-3d-interpretation" id="toc-corrected-3d-interpretation" class="nav-link" data-scroll-target="#corrected-3d-interpretation">Corrected 3D Interpretation</a></li>
   </ul></li>
   <li><a href="#implementation-details" id="toc-implementation-details" class="nav-link" data-scroll-target="#implementation-details">Implementation Details</a></li>
   <li><a href="#implementation-details-1" id="toc-implementation-details-1" class="nav-link" data-scroll-target="#implementation-details-1">Implementation Details</a>
@@ -218,28 +355,20 @@ window.Quarto = {
   <li><a href="#rust-framework-t27" id="toc-rust-framework-t27" class="nav-link" data-scroll-target="#rust-framework-t27">Rust Framework (T27)</a></li>
   <li><a href="#code-example" id="toc-code-example" class="nav-link" data-scroll-target="#code-example">Code Example</a></li>
   </ul></li>
-  <li><a href="#phase-3b-finite-size-scaling-critical-exponents-complete" id="toc-phase-3b-finite-size-scaling-critical-exponents-complete" class="nav-link" data-scroll-target="#phase-3b-finite-size-scaling-critical-exponents-complete">Phase 3b: Finite-Size Scaling &amp; Critical Exponents (Complete)</a></li>
-  <li><a href="#fss-analysis-3d-z₂-transition" id="toc-fss-analysis-3d-z₂-transition" class="nav-link" data-scroll-target="#fss-analysis-3d-z₂-transition">FSS Analysis: 3D Z₂ Transition</a>
+  <li><a href="#phase-3b-corrected-finite-size-scaling-status" id="toc-phase-3b-corrected-finite-size-scaling-status" class="nav-link" data-scroll-target="#phase-3b-corrected-finite-size-scaling-status">Phase 3b: Corrected Finite-Size Scaling Status</a>
   <ul class="collapse">
-  <li><a href="#fss-overlay-all-observables" id="toc-fss-overlay-all-observables" class="nav-link" data-scroll-target="#fss-overlay-all-observables">FSS Overlay: All Observables</a></li>
-  <li><a href="#critical-exponent-analysis" id="toc-critical-exponent-analysis" class="nav-link" data-scroll-target="#critical-exponent-analysis">Critical Exponent Analysis</a></li>
-  <li><a href="#binder-cumulant-analysis-1" id="toc-binder-cumulant-analysis-1" class="nav-link" data-scroll-target="#binder-cumulant-analysis-1">Binder Cumulant Analysis</a></li>
-  <li><a href="#scaling-collapse-test" id="toc-scaling-collapse-test" class="nav-link" data-scroll-target="#scaling-collapse-test">Scaling Collapse Test</a></li>
-  <li><a href="#summary-table" id="toc-summary-table" class="nav-link" data-scroll-target="#summary-table">Summary Table</a></li>
-  <li><a href="#compute-details" id="toc-compute-details" class="nav-link" data-scroll-target="#compute-details">Compute Details</a></li>
-  <li><a href="#scripts-created" id="toc-scripts-created" class="nav-link" data-scroll-target="#scripts-created">Scripts Created</a></li>
-  <li><a href="#analysis-methods" id="toc-analysis-methods" class="nav-link" data-scroll-target="#analysis-methods">Analysis Methods</a></li>
-  <li><a href="#results-first-order-transition-confirmed" id="toc-results-first-order-transition-confirmed" class="nav-link" data-scroll-target="#results-first-order-transition-confirmed">Results: First-Order Transition Confirmed</a></li>
-  <li><a href="#compute-plan" id="toc-compute-plan" class="nav-link" data-scroll-target="#compute-plan">Compute Plan</a></li>
+  <li><a href="#retained-data" id="toc-retained-data" class="nav-link" data-scroll-target="#retained-data">Retained Data</a></li>
+  <li><a href="#reanalysis-requirements" id="toc-reanalysis-requirements" class="nav-link" data-scroll-target="#reanalysis-requirements">Reanalysis Requirements</a></li>
   <li><a href="#key-files" id="toc-key-files" class="nav-link" data-scroll-target="#key-files">Key Files</a></li>
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
-</div>
+    </div>
+<!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tasks/t31-signed-volume.html">Tasks</a></li><li class="breadcrumb-item"><a href="../tasks/t20-z2-lgt.html">T20 — Z₂ Lattice Gauge Theory Monte Carlo</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">T20 — Z₂ Lattice Gauge Theory Monte Carlo</h1>
 <p class="subtitle lead">Confinement-deconfinement transition</p>
@@ -271,7 +400,7 @@ window.Quarto = {
 </header>
 
 
-<p><em>Last updated: 2026-07-02 15:25 IST</em></p>
+<p><em>Last updated: 2026-07-05 23:15 IST</em></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -327,9 +456,9 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td>Phase 3b</td>
-<td>3D FSS &amp; critical exponents</td>
-<td>✅ Complete</td>
-<td>2026-07-02</td>
+<td>3D FSS correction and reanalysis</td>
+<td>🔄 In progress</td>
+<td>2026-07-05</td>
 </tr>
 <tr class="odd">
 <td>Phase 3b</td>
@@ -339,7 +468,20 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
-<p><strong>Key Result</strong>: Critical coupling β_c ≈ 0.44 (2D) and β_c ≈ 0.761 (3D, thermodynamic limit) confirmed. First-order transition established by Binder cumulant convergence to U* = 2/3. The arrow of time emerges <em>sharply</em> at β_c, not continuously.</p>
+<p><strong>Corrected status</strong>: The 3D pure Z₂ gauge transition is continuous and belongs to the 3D Ising universality class. Existing simulations resolve the established critical region near β ≈ 0.76, but the previous first-order interpretation and claimed precision determination are withdrawn pending a controlled reanalysis.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Correction notice
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The plaquette Binder limit near <span class="math inline">\(2/3\)</span> is not evidence for a first-order transition, and the earlier double-peaked histograms were synthetic illustrations rather than sampled distributions. The raw simulation data are retained; the superseded interpretation is not used in the manuscript.</p>
+</div>
+</div>
 </section>
 <section id="theory" class="level2">
 <h2 class="anchored" data-anchor-id="theory">Theory</h2>
@@ -1057,7 +1199,7 @@ S = -\beta \sum_{\square} \prod_{e \in \square} \sigma_e
 <p><strong>Date</strong>: 2026-06-25</p>
 <section id="overview-1" class="level3">
 <h3 class="anchored" data-anchor-id="overview-1">Overview</h3>
-<p>3D cubic lattice Z₂ LGT with L = 4, 6, 8. The 3D transition is first-order (stronger than 2D), with critical β_c ≈ 0.76 (known from literature).</p>
+<p>3D cubic lattice Z₂ LGT with L = 4, 6, 8. The simulations probe the continuous confinement-deconfinement transition in the 3D Ising universality class, whose critical region is near β ≈ 0.76.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 13%">
@@ -1293,7 +1435,7 @@ S = -\beta \sum_{\square} \prod_{e \in \square} \sigma_e
 <ol type="1">
 <li><strong>Sharp transition</strong>: 3D shows much sharper transition than 2D (plaquette jumps from ~0.5 to ~0.95 in Δβ ≈ 0.05)</li>
 <li><strong>Critical β</strong>: Consistent with β_c ≈ 0.76, shifting from β=0.70 (L=4) to β=0.75 (L=8) with finite-size effects</li>
-<li><strong>First-order nature</strong>: Susceptibility peak is narrow and intense, characteristic of first-order transition in 3D</li>
+<li><strong>Finite-size behavior</strong>: The susceptibility peak narrows and grows near the continuous critical point; a controlled scaling analysis requires autocorrelation-aware uncertainties and corrections to scaling</li>
 <li><strong>Binder cumulant</strong>: Stabilizes near ~0.666 in ordered phase, consistent with 3D Ising universal value</li>
 </ol>
 </section>
@@ -1533,35 +1675,35 @@ S = -\beta \sum_{\square} \prod_{e \in \square} \sigma_e
 <figcaption>3D Plaquette vs β (all lattice sizes)</figcaption>
 </figure>
 </div>
-<p><em>Figure 3: Plaquette expectation value vs coupling β for L = 4, 6, 8, 16, 24, 32 (3D cubic, 21 β values). The dashed vertical line marks the critical point β_c ≈ 0.7613. Curves steepen with increasing L, approaching a step function in the thermodynamic limit — the hallmark of a first-order transition.</em></p>
+<p><em>Figure 3: Plaquette expectation value vs coupling β for L = 4, 6, 8, 16, 24, 32 (3D cubic, 21 β values). The dashed vertical line marks the established critical region. The plaquette is a local energy-like observable.</em></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../assets/t20-p3-specific-heat-vs-beta-all-L.png" class="img-fluid figure-img"></p>
 <figcaption>3D Specific Heat vs β (all lattice sizes)</figcaption>
 </figure>
 </div>
-<p><em>Figure 4: Specific heat C_V vs β (all L). The peak height approaches a constant (~0.52) for L ≥ 16, consistent with a first-order transition where the latent heat is finite and volume-independent.</em></p>
+<p><em>Figure 4: Specific heat C_V vs β (all L). Quantitative exponent extraction requires autocorrelation-aware uncertainties and a controlled continuous-transition fit.</em></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../assets/t20-p3-susceptibility-vs-beta-all-L.png" class="img-fluid figure-img"></p>
 <figcaption>3D Susceptibility vs β (all lattice sizes)</figcaption>
 </figure>
 </div>
-<p><em>Figure 5: Susceptibility χ vs β (all L). The peak height approaches a constant (~0.70) for L ≥ 16, as expected for a first-order transition where the volume-scaled variance saturates.</em></p>
+<p><em>Figure 5: Plaquette fluctuation susceptibility χ vs β (all L). The available peak estimates are exploratory and are not yet a controlled critical-exponent measurement.</em></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../assets/t20-p3-binder-vs-beta-all-L.png" class="img-fluid figure-img"></p>
 <figcaption>3D Binder Cumulant vs β (all lattice sizes)</figcaption>
 </figure>
 </div>
-<p><em>Figure 6: Binder cumulant U vs β (all L). The minimum deepens with increasing L, while the high-β plateau approaches U = 2/3 (dotted line). This is the definitive signature of a first-order transition in 3D.</em></p>
+<p><em>Figure 6: Plaquette Binder ratio U vs β (all L). Because the plaquette has a nonzero mean, a narrow distribution generically approaches U = 2/3; this limit does not diagnose transition order.</em></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../assets/t20-p3-combined-all-L.png" class="img-fluid figure-img"></p>
 <figcaption>3D Combined Overview (all lattice sizes)</figcaption>
 </figure>
 </div>
-<p><em>Figure 7: Combined overview of all four observables for 3D Z₂ LGT (all L, 21 β values). The critical region β ≈ 0.70–0.80 shows strong signals across all observables, with the first-order nature clearly visible in the steepening plaquette curves and deepening binder minima.</em></p>
+<p><em>Figure 7: Combined overview of four observables for 3D Z₂ LGT (all L, 21 β values). The plots locate strong finite-size variation in the critical region but do not independently determine the universality class.</em></p>
 </section>
 <section id="data-files-1" class="level3">
 <h3 class="anchored" data-anchor-id="data-files-1">Data Files</h3>
@@ -1608,153 +1750,11 @@ S = -\beta \sum_{\square} \prod_{e \in \square} \sigma_e
 </tbody>
 </table>
 </section>
-<section id="binder-cumulant-first-order-analysis-all-l" class="level3">
-<h3 class="anchored" data-anchor-id="binder-cumulant-first-order-analysis-all-l">Binder Cumulant First-Order Analysis (All L)</h3>
-<p><strong>Date</strong>: 2026-06-26</p>
-<p>The 3D Z₂ LGT transition is definitively <strong>first-order</strong> (distinct from the continuous 2D transition). This is established by the Binder cumulant behavior across all lattice sizes L = 4, 6, 8, 16, 24, 32.</p>
-<section id="minimum-scaling" class="level4">
-<h4 class="anchored" data-anchor-id="minimum-scaling">Minimum Scaling</h4>
-<p>For a first-order transition in <span class="math inline">\(d\)</span> dimensions, the deviation from the thermodynamic limit scales as:</p>
-<p><span class="math display">\[
-U_{\min}(L) = \frac{2}{3} - c \cdot L^{-d}
-\]</span></p>
-<p>Fitting the minimum depth versus <span class="math inline">\(L\)</span> gives:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>L</th>
-<th>β_min</th>
-<th>U_min</th>
-<th>2/3 − U_min</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>4</td>
-<td>0.643</td>
-<td>0.634</td>
-<td>0.033</td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td>0.706</td>
-<td>0.657</td>
-<td>0.009</td>
-</tr>
-<tr class="odd">
-<td>8</td>
-<td>0.726</td>
-<td>0.663</td>
-<td>0.004</td>
-</tr>
-<tr class="even">
-<td>16</td>
-<td>0.699</td>
-<td>0.666</td>
-<td>0.0003</td>
-</tr>
-<tr class="odd">
-<td>24</td>
-<td>0.697</td>
-<td>0.667</td>
-<td>0.0001</td>
-</tr>
-<tr class="even">
-<td>32</td>
-<td>0.600</td>
-<td>0.667</td>
-<td>0.0000</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Fit result</strong>: <span class="math inline">\(U_{\min}(L) = 2/3 - 2.81 \cdot L^{-3.198}\)</span>, with exponent <span class="math inline">\(-3.198\)</span> within 7% of the expected <span class="math inline">\(-3\)</span> for a first-order transition in 3D. The extrapolation to <span class="math inline">\(L \to \infty\)</span> gives <span class="math inline">\(U_{\infty} = 0.6667\)</span>, matching <span class="math inline">\(2/3\)</span> to four decimal places.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/t20-p3-binder-vs-beta-all-L.png" class="img-fluid figure-img"></p>
-<figcaption>Binder cumulant first-order signature (all L)</figcaption>
-</figure>
-</div>
-<p><em>Figure 10: Binder cumulant <span class="math inline">\(U_L(\beta)\)</span> for all L = 4, 6, 8, 16, 24, 32 (3D cubic). The minimum deepens with increasing L, while the high-β plateau approaches <span class="math inline">\(U = 2/3\)</span> (dotted line). This is the definitive signature of a first-order transition.</em></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/t20-binder-first-order-scaling-all-L.png" class="img-fluid figure-img"></p>
-<figcaption>Binder cumulant scaling analysis (all L)</figcaption>
-</figure>
-</div>
-<p><em>Figure 11: Log-log plot of <span class="math inline">\(2/3 - U_{\min}(L)\)</span> versus <span class="math inline">\(L\)</span>, confirming <span class="math inline">\(U_{\min}(L) \sim L^{-d}\)</span> scaling with fitted exponent <span class="math inline">\(-3.198 \approx -3\)</span> (dashed line). The data points for L = 16, 24, 32 sit on the asymptotic line, confirming the first-order nature.</em></p>
-</section>
-<section id="first-order-scaling-summary" class="level4">
-<h4 class="anchored" data-anchor-id="first-order-scaling-summary">First-Order Scaling Summary</h4>
-<p>The following figure summarizes the first-order scaling across all observables:</p>
-<ul>
-<li><strong>Top-left</strong>: Binder cumulant minimum approaches <span class="math inline">\(2/3\)</span> as <span class="math inline">\(L^{-d}\)</span></li>
-<li><strong>Top-right</strong>: Peak heights of <span class="math inline">\(\chi\)</span> and <span class="math inline">\(C_V\)</span> approach constants (not diverging)</li>
-<li><strong>Bottom-left</strong>: Peak widths limited by grid resolution (<span class="math inline">\(\Delta\beta = 0.02\)</span>)</li>
-<li><strong>Bottom-right</strong>: Critical coupling <span class="math inline">\(\beta_c(L)\)</span> converges to 0.7613, limited by grid resolution</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/t20-first-order-scaling-summary.png" class="img-fluid figure-img"></p>
-<figcaption>First-order scaling summary</figcaption>
-</figure>
-</div>
-<p><em>Figure 12: First-order transition scaling summary. Top-left: binder minimum depth <span class="math inline">\(2/3 - U_{\min}\)</span> versus <span class="math inline">\(L\)</span> (log-log). Top-right: peak heights of susceptibility and specific heat versus <span class="math inline">\(L\)</span> — approaching constants. Bottom-left: peak FWHM versus <span class="math inline">\(L\)</span> — grid-resolution limited. Bottom-right: <span class="math inline">\(\beta_c(L)\)</span> versus <span class="math inline">\(L\)</span> — converging to 0.7613.</em></p>
-</section>
-</section>
-<section id="critical-exponent-scaling-collapse-revised" class="level3">
-<h3 class="anchored" data-anchor-id="critical-exponent-scaling-collapse-revised">Critical Exponent &amp; Scaling Collapse (Revised)</h3>
-<p><strong>Important</strong>: The 3D Z₂ LGT transition is <strong>first-order</strong>, not continuous. Standard critical exponent extraction (via <span class="math inline">\(\chi_{\max} \sim L^{\gamma/\nu}\)</span>) does not apply. Instead, the relevant finite-size scaling is:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 29%">
-<col style="width: 51%">
-<col style="width: 19%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Observable</th>
-<th>First-order scaling</th>
-<th>Result</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Binder minimum</td>
-<td><span class="math inline">\(U_{\min} = 2/3 - c \cdot L^{-d}\)</span></td>
-<td>✓ Exponent = <span class="math inline">\(-3.198 \approx -3\)</span></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(\chi_{\max}\)</span></td>
-<td>Constant (volume-scaled)</td>
-<td>✓ Approaches ~0.70 for <span class="math inline">\(L \geq 16\)</span></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(C_{V,\max}\)</span></td>
-<td>Constant (volume-scaled)</td>
-<td>✓ Approaches ~0.52 for <span class="math inline">\(L \geq 16\)</span></td>
-</tr>
-<tr class="even">
-<td>FWHM</td>
-<td><span class="math inline">\(\sim L^{-d}\)</span></td>
-<td>⚠ Grid resolution limited (<span class="math inline">\(\Delta\beta = 0.02\)</span>)</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(\beta_c\)</span> shift</td>
-<td><span class="math inline">\(\sim L^{-d}\)</span></td>
-<td>⚠ Grid resolution limited</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Scaling collapse test</strong> (using 3D Ising exponents for reference):</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/t20-scaling-collapse-all-L.png" class="img-fluid figure-img"></p>
-<figcaption>Scaling collapse test (all L)</figcaption>
-</figure>
-</div>
-<p><em>Figure 13: Scaling collapse test using literature 3D Ising exponents (<span class="math inline">\(\nu = 0.630\)</span>, <span class="math inline">\(\gamma = 1.237\)</span>). Left: susceptibility rescaled as <span class="math inline">\(L^{-\gamma/\nu} \chi\)</span> versus <span class="math inline">\(L^{1/\nu}(\beta - \beta_c)\)</span>. Right: order parameter rescaled as <span class="math inline">\(L^{\beta/\nu} \langle P \rangle\)</span>. The curves do not collapse, confirming that the 3D Z₂ LGT transition is <strong>not</strong> in the 3D Ising universality class — it is first-order.</em></p>
-<section id="benchmarks-rust-8-workers-100k-sweeps-21-β-values" class="level4">
-<h4 class="anchored" data-anchor-id="benchmarks-rust-8-workers-100k-sweeps-21-β-values">Benchmarks (Rust, 8 workers, 100k sweeps, 21 β values)</h4>
+<section id="corrected-3d-interpretation" class="level3">
+<h3 class="anchored" data-anchor-id="corrected-3d-interpretation">Corrected 3D Interpretation</h3>
+<p>The pure 3D Z₂ lattice gauge theory is dual to the 3D Ising model, so its transition is continuous and has 3D Ising critical behavior. The earlier first-order analysis used the local plaquette Binder ratio as though it were a universal order-parameter cumulant. That inference is invalid: for a narrowly distributed variable with nonzero mean, the ratio approaches <span class="math inline">\(2/3\)</span> generically.</p>
+<p>The earlier scaling-collapse plot is also inconclusive. A visual failure to collapse data collected on unequal grids and without propagated autocorrelation errors cannot exclude the expected universality class. The synthetic double-peaked histograms have been removed from the evidence chain because they were not sampled distributions.</p>
+<p>The existing data are retained as exploratory measurements near the critical region. A corrected analysis must use blocked or jackknife errors, integrated autocorrelation times, continuous-transition finite-size scaling with corrections, and a separate analysis of extended Wilson loops.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1805,7 +1805,6 @@ U_{\min}(L) = \frac{2}{3} - c \cdot L^{-d}
 </table>
 <p><strong>Scaling</strong>: Time <span class="math inline">\(\sim L^{3.2}\)</span>, slightly faster than <span class="math inline">\(L^4\)</span> (full volume × sweep time) due to cache efficiency and parallelization.</p>
 <hr>
-</section>
 </section>
 </section>
 <section id="implementation-details" class="level2">
@@ -1880,279 +1879,72 @@ U_{\min}(L) = \frac{2}{3} - c \cdot L^{-d}
 <span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`⟨P⟩ = </span><span class="sc">${</span>mean<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">4</span>)<span class="sc">}</span><span class="vs"> ± </span><span class="sc">${</span>error<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">4</span>)<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
-<section id="phase-3b-finite-size-scaling-critical-exponents-complete" class="level2">
-<h2 class="anchored" data-anchor-id="phase-3b-finite-size-scaling-critical-exponents-complete">Phase 3b: Finite-Size Scaling &amp; Critical Exponents (Complete)</h2>
-<p><strong>Status</strong>: ✅ Complete (2026-07-02)</p>
-<p>Following the identification of a critical contradiction in early analysis (claiming α = −3.084, a first-order 2D value, for a 3D second-order transition), a rigorous finite-size scaling study was designed and executed. The analysis confirms the 3D Z₂ LGT transition is <strong>first-order</strong> with critical coupling β_c(∞) = 0.7613(2).</p>
-<hr>
-</section>
-<section id="fss-analysis-3d-z₂-transition" class="level2">
-<h2 class="anchored" data-anchor-id="fss-analysis-3d-z₂-transition">FSS Analysis: 3D Z₂ Transition</h2>
-<div class="callout callout-style-simple callout-important">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p><strong>Key Finding:</strong> First-order phase transition confirmed at β_c = 0.7613(2). The Binder cumulant converges to U* = 2/3, the universal value for a first-order transition. The arrow of time emerges <em>sharply</em> at the critical coupling, not continuously.</p>
-</div>
-</div>
-</div>
-<section id="fss-overlay-all-observables" class="level3">
-<h3 class="anchored" data-anchor-id="fss-overlay-all-observables">FSS Overlay: All Observables</h3>
-<p><img src="../assets/t20-fss-overlay-all.png" class="img-fluid"></p>
-<p><strong>Figure 14.</strong> Finite-size scaling analysis for L = 8, 16, 24, 32. (a) Plaquette expectation ⟨P⟩ shows a sharp jump near β_c ≈ 0.76. (b) Susceptibility χ peaks grow with L. (c) Binder cumulant U_L converges to U* = 2/3 from below. (d) Specific heat C_V shows weak peaks consistent with small latent heat.</p>
-</section>
-<section id="critical-exponent-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="critical-exponent-analysis">Critical Exponent Analysis</h3>
-<p><img src="../assets/t20-critical-exponents.png" class="img-fluid"></p>
-<p><strong>Figure 15.</strong> (a) Peak susceptibility χ_max vs.&nbsp;L on log–log scale; shallow slope (≈ 0.33) indicates asymptotic volume scaling not yet reached. (b) Pseudo-critical coupling β_c(L) vs.&nbsp;L⁻³; linear extrapolation gives β_c(∞) = 0.7582(8). (c) Peak specific heat C_{V,max} vs.&nbsp;L. (d) Binder cumulant minimum U_min vs.&nbsp;L⁻³; extrapolation yields U* = 0.6667(2).</p>
-</section>
-<section id="binder-cumulant-analysis-1" class="level3">
-<h3 class="anchored" data-anchor-id="binder-cumulant-analysis-1">Binder Cumulant Analysis</h3>
+<section id="phase-3b-corrected-finite-size-scaling-status" class="level2">
+<h2 class="anchored" data-anchor-id="phase-3b-corrected-finite-size-scaling-status">Phase 3b: Corrected Finite-Size Scaling Status</h2>
+<p><strong>Status:</strong> Reanalysis in progress under T32.</p>
+<p>The completed L = 8, 16, 24, and 32 datasets are preserved. They show rapid finite-size variation near the known critical region, but the present analysis does not provide a new precision value of <span class="math inline">\(\beta_c\)</span> or reliable critical exponents. In particular:</p>
+<ul>
+<li>the elementary plaquette is a local energy-like observable, not a substitute for an extended Wilson-loop confinement diagnostic;</li>
+<li>the plaquette Binder ratio tending to <span class="math inline">\(2/3\)</span> does not establish first-order behavior;</li>
+<li>the previous synthetic histograms are not numerical evidence of phase coexistence;</li>
+<li>a failed visual collapse without autocorrelation-aware uncertainties is inconclusive.</li>
+</ul>
+<p>The reanalysis will assume continuous 3D Ising-universality scaling, estimate autocorrelation and blocked errors, include corrections to scaling, and assess extended Wilson loops separately. No T20d conclusion is promoted into <code>timesarrow.tex</code> until those checks pass.</p>
+<section id="retained-data" class="level3">
+<h3 class="anchored" data-anchor-id="retained-data">Retained Data</h3>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><img src="../assets/t20-binder-crossing.png" class="img-fluid"></td>
-<td style="text-align: center;"><img src="../assets/t20-binder-extrapolation.png" class="img-fluid"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><strong>(a)</strong> Binder cumulant U_L(β)</td>
-<td style="text-align: center;"><strong>(b)</strong> Extrapolation to L → ∞</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Figure 16.</strong> (Left) Binder cumulant curves for all lattice sizes. The minimum converges to U* = 2/3 from below, the signature of a first-order transition. (Right) Extrapolation using U_min(L) = 2/3 − a/L³ confirms the asymptotic value.</p>
-</section>
-<section id="scaling-collapse-test" class="level3">
-<h3 class="anchored" data-anchor-id="scaling-collapse-test">Scaling Collapse Test</h3>
-<p><img src="../assets/t20-scaling-collapse.png" class="img-fluid"></p>
-<p><strong>Figure 17.</strong> Attempted scaling collapse using 3D Ising exponents (γ/ν = 1.963, ν = 0.630). The curves do <em>not</em> collapse onto a universal curve, confirming the transition is not in the 3D Ising universality class. This failure is consistent with a first-order transition.</p>
-</section>
-<section id="summary-table" class="level3">
-<h3 class="anchored" data-anchor-id="summary-table">Summary Table</h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Quantity</th>
-<th style="text-align: left;">This Work</th>
-<th style="text-align: left;">Literature</th>
-<th style="text-align: center;">Status</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">β_c</td>
-<td style="text-align: left;">0.761 ± 0.002</td>
-<td style="text-align: left;">0.7613 (Creutz et al.)</td>
-<td style="text-align: center;">✓</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Binder U*</td>
-<td style="text-align: left;">0.6667 (converged)</td>
-<td style="text-align: left;">2/3 (first-order)</td>
-<td style="text-align: center;">✓</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">ν</td>
-<td style="text-align: left;"><em>inapplicable</em></td>
-<td style="text-align: left;">0.630 (Ising)</td>
-<td style="text-align: center;">—</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Transition order</td>
-<td style="text-align: left;"><strong>First-order</strong></td>
-<td style="text-align: left;">First-order</td>
-<td style="text-align: center;">✓</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="compute-details" class="level3">
-<h3 class="anchored" data-anchor-id="compute-details">Compute Details</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 4%">
-<col style="width: 22%">
-<col style="width: 23%">
-<col style="width: 19%">
-<col style="width: 13%">
-<col style="width: 16%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>L</th>
-<th>Fine β Values</th>
-<th>Thermalization</th>
-<th>Measurement</th>
-<th>Workers</th>
-<th>Wall Time</th>
+<th>β range</th>
+<th>Grid</th>
+<th>Status</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>8</td>
-<td>21</td>
-<td>300,000</td>
-<td>200,000</td>
-<td>8</td>
-<td>~5 min</td>
+<td>0.70–0.82</td>
+<td>25 points</td>
+<td>Retained exploratory data</td>
 </tr>
 <tr class="even">
 <td>16</td>
-<td>21</td>
-<td>300,000</td>
-<td>200,000</td>
-<td>8</td>
-<td>~20 min</td>
+<td>0.740–0.780</td>
+<td>21 points</td>
+<td>Retained fine scan</td>
 </tr>
 <tr class="odd">
 <td>24</td>
-<td>21</td>
-<td>300,000</td>
-<td>200,000</td>
-<td>8</td>
-<td>~1.5 h</td>
+<td>0.740–0.780</td>
+<td>21 points</td>
+<td>Retained fine scan</td>
 </tr>
 <tr class="even">
 <td>32</td>
-<td>21</td>
-<td>300,000</td>
-<td>200,000</td>
-<td>8</td>
-<td>~4 h</td>
-</tr>
-</tbody>
-</table>
-<hr>
-</section>
-<section id="scripts-created" class="level3">
-<h3 class="anchored" data-anchor-id="scripts-created">Scripts Created</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 32%">
-<col style="width: 36%">
-<col style="width: 32%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Script</th>
-<th>Purpose</th>
-<th>Status</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>t20-sim-3d-fss-v2.py</code></td>
-<td>Fine β grid simulations (batched β parallelization)</td>
-<td>✅ Complete</td>
-</tr>
-<tr class="even">
-<td><code>t20-multi-run.py</code></td>
-<td>Multiple independent runs per (L,β)</td>
-<td>✅ Complete</td>
-</tr>
-<tr class="odd">
-<td><code>t20-autocorr-v2.py</code></td>
-<td>Autocorrelation time τ_int measurement</td>
-<td>✅ Complete</td>
-</tr>
-<tr class="even">
-<td><code>t20-fss-analysis.py</code></td>
-<td>4 FSS methods + corrections-to-scaling</td>
-<td>✅ Complete</td>
+<td>0.740–0.780</td>
+<td>21 points</td>
+<td>Retained lean scan; lower statistics</td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="analysis-methods" class="level3">
-<h3 class="anchored" data-anchor-id="analysis-methods">Analysis Methods</h3>
+<section id="reanalysis-requirements" class="level3">
+<h3 class="anchored" data-anchor-id="reanalysis-requirements">Reanalysis Requirements</h3>
 <ol type="1">
-<li><strong>Binder cumulant crossing</strong> — U(β, L) curves cross at β_c; minimum converges to U* = 2/3</li>
-<li><strong>Scaling collapse</strong> — Test for second-order universality (fails for first-order)</li>
-<li><strong>Peak height scaling</strong> — χ_max ∝ L^d for first-order (not L^{γ/ν})</li>
-<li><strong>β_c shift</strong> — β_c(L) = β_c(∞) + aL^{-d} for first-order (not L^{-1/ν})</li>
+<li>Preserve or regenerate measurement time series.</li>
+<li>Estimate integrated autocorrelation times and blocked or jackknife errors.</li>
+<li>Fit pseudo-critical shifts and peak scaling with 3D Ising exponents plus corrections to scaling.</li>
+<li>Test extended Wilson-loop area/perimeter behavior independently of the plaquette.</li>
+<li>Report sensitivity to lattice selection, interpolation, and coupling-grid resolution.</li>
 </ol>
-</section>
-<section id="results-first-order-transition-confirmed" class="level3">
-<h3 class="anchored" data-anchor-id="results-first-order-transition-confirmed">Results: First-Order Transition Confirmed</h3>
-<p>The 3D Z₂ LGT transition is definitively <strong>first-order</strong>, not in the 3D Ising universality class:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Observable</th>
-<th>First-order scaling</th>
-<th>Result</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Binder minimum</td>
-<td>U_min = 2/3 − c·L^{-d}</td>
-<td>✓ Exponent = −3.198 ≈ −3</td>
-</tr>
-<tr class="even">
-<td>χ_max</td>
-<td>∝ L^d (volume-scaled)</td>
-<td>✓ Approaches ~0.70 for L ≥ 16</td>
-</tr>
-<tr class="odd">
-<td>C_{V,max}</td>
-<td>Constant (volume-scaled)</td>
-<td>✓ Approaches ~0.52 for L ≥ 16</td>
-</tr>
-<tr class="even">
-<td>β_c shift</td>
-<td>∝ L^{-d}</td>
-<td>✓ β_c(∞) = 0.7582(8)</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Scaling collapse test</strong> (using 3D Ising exponents for reference): The curves do not collapse, confirming the transition is <strong>not</strong> in the 3D Ising universality class.</p>
-</section>
-<section id="compute-plan" class="level3">
-<h3 class="anchored" data-anchor-id="compute-plan">Compute Plan</h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Run Set</th>
-<th>Description</th>
-<th>Status</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1a</td>
-<td>L=8 validation</td>
-<td>✅ Complete</td>
-</tr>
-<tr class="even">
-<td>1b</td>
-<td>L=16,24,32 fine β grid</td>
-<td>✅ Complete</td>
-</tr>
-<tr class="odd">
-<td>2</td>
-<td>Multiple independent runs</td>
-<td>✅ Complete</td>
-</tr>
-<tr class="even">
-<td>3</td>
-<td>FSS analysis &amp; exponent extraction</td>
-<td>✅ Complete</td>
-</tr>
-</tbody>
-</table>
 </section>
 <section id="key-files" class="level3">
 <h3 class="anchored" data-anchor-id="key-files">Key Files</h3>
 <ul>
-<li><code>implementation-details/t20-phase3b-requirements.md</code> — Full specifications</li>
-<li><code>numerics/data/fss/</code> — Simulation outputs</li>
+<li><code>implementation-details/t20-phase3b-requirements.md</code> — Original simulation specifications</li>
+<li><code>numerics/data/fss/</code> — Preserved simulation outputs</li>
+<li><code>t20d-fss-analysis.tex</code> — Corrected standalone status note</li>
 </ul>
 <hr>
 </section>
@@ -2164,10 +1956,12 @@ U_{\min}(L) = \frac{2}{3} - c \cdot L^{-d}
 <li><code>timesarrow/numerics/docs/implementation/t20-z2-lgt.md</code> — Full architecture doc</li>
 <li><code>timesarrow/numerics/data/registry.json</code> — Data registry</li>
 </ul>
+
+
+
 </section>
 
-</main>
-<!-- /main column -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -2241,7 +2035,7 @@ U_{\min}(L) = \frac{2}{3} - c \cdot L^{-d}
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/quantumofgravity\.com\/timesarrow");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

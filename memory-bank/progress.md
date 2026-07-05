@@ -1,6 +1,6 @@
 # timesarrow — Progress Tracker
 
-*Updated: 2026-07-05 22:24:10 IST*
+*Updated: 2026-07-05 23:12:09 IST*
 
 ## T32 Correction Gate
 
@@ -14,6 +14,14 @@ The post-May simulation infrastructure and raw datasets are preserved, but the f
 - T25: promotion of spectral $± q$ pairing to a physical time-orientation symmetry without an explicit transformation operator.
 
 TypeScript and Rust build/test reproducibility and repository artifact policy are also part of T32. Post-May numerical claims are blocked from the main manuscript until T32 is complete.
+
+### T20d Correction Progress — 2026-07-05
+
+- ✅ Standalone annexure rewritten around the continuous 3D Ising-universality transition.
+- ✅ Canonical Quarto task page corrected and rebuilt successfully.
+- ✅ Unsupported first-order, latent-heat, schematic-histogram, and failed-collapse conclusions removed from rendered text.
+- 🔄 Autocorrelation-aware numerical reanalysis remains pending.
+- 🔄 Dashboard correction and misleading-figure retirement or replacement remain pending.
 
 > Sections below preserve the 2026-07-02 progress snapshot and may contain claims superseded by T32.
 

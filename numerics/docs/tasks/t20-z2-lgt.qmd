@@ -2,12 +2,12 @@
 title: "T20 — Z₂ Lattice Gauge Theory Monte Carlo"
 subtitle: "Confinement-deconfinement transition"
 date: "2026-07-02"
-date-modified: "2026-07-02 15:25 IST"
+date-modified: "2026-07-05 23:15 IST"
 toc: true
 toc-title: "Contents"
 ---
 
-*Last updated: 2026-07-02 15:25 IST*
+*Last updated: 2026-07-05 23:15 IST*
 
 ::: {.callout-tip}
 ## 📊 Live Dashboard
@@ -25,10 +25,15 @@ Classical Monte Carlo simulation of Z₂ gauge theory to demonstrate the confine
 | Phase 1 | 2D square lattice, critical β identification | ✅ Complete | 2026-06-24 |
 | Phase 2 | Finite-size scaling (L = 8–24) | ✅ Complete | 2026-06-25 |
 | Phase 3 | 3D cubic lattice (L=4,6,8) | ✅ Complete | 2026-06-25 |
-| Phase 3b | 3D FSS & critical exponents | ✅ Complete | 2026-07-02 |
+| Phase 3b | 3D FSS correction and reanalysis | 🔄 In progress | 2026-07-05 |
 | Phase 3b | 3D Wilson loops & string tension (L=8) | ✅ Complete | 2026-06-26 |
 
-**Key Result**: Critical coupling β_c ≈ 0.44 (2D) and β_c ≈ 0.761 (3D, thermodynamic limit) confirmed. First-order transition established by Binder cumulant convergence to U* = 2/3. The arrow of time emerges *sharply* at β_c, not continuously.
+**Corrected status**: The 3D pure Z₂ gauge transition is continuous and belongs to the 3D Ising universality class. Existing simulations resolve the established critical region near β ≈ 0.76, but the previous first-order interpretation and claimed precision determination are withdrawn pending a controlled reanalysis.
+
+::: {.callout-warning}
+## Correction notice
+The plaquette Binder limit near $2/3$ is not evidence for a first-order transition, and the earlier double-peaked histograms were synthetic illustrations rather than sampled distributions. The raw simulation data are retained; the superseded interpretation is not used in the manuscript.
+:::
 
 ## Theory
 
@@ -250,7 +255,7 @@ cargo run --release -- <L> 200000 20000 4 \
 
 ### Overview
 
-3D cubic lattice Z₂ LGT with L = 4, 6, 8. The 3D transition is first-order (stronger than 2D), with critical β_c ≈ 0.76 (known from literature).
+3D cubic lattice Z₂ LGT with L = 4, 6, 8. The simulations probe the continuous confinement-deconfinement transition in the 3D Ising universality class, whose critical region is near β ≈ 0.76.
 
 | Run ID | L | Dimension | Sweeps | β Range | Wall Time | Status |
 |--------|---|-----------|--------|---------|-----------|--------|
@@ -301,7 +306,7 @@ cargo run --release -- <L> 200000 20000 4 \
 
 1. **Sharp transition**: 3D shows much sharper transition than 2D (plaquette jumps from ~0.5 to ~0.95 in Δβ ≈ 0.05)
 2. **Critical β**: Consistent with β_c ≈ 0.76, shifting from β=0.70 (L=4) to β=0.75 (L=8) with finite-size effects
-3. **First-order nature**: Susceptibility peak is narrow and intense, characteristic of first-order transition in 3D
+3. **Finite-size behavior**: The susceptibility peak narrows and grows near the continuous critical point; a controlled scaling analysis requires autocorrelation-aware uncertainties and corrections to scaling
 4. **Binder cumulant**: Stabilizes near ~0.666 in ordered phase, consistent with 3D Ising universal value
 
 ### Wilson Loop Results (L = 8)
@@ -377,23 +382,23 @@ The figures below show all three lattice sizes (L = 4, 6, 8) with the refined 21
 
 ![3D Plaquette vs β (all lattice sizes)](../assets/t20-p3-plaquette-vs-beta-all-L.png)
 
-*Figure 3: Plaquette expectation value vs coupling β for L = 4, 6, 8, 16, 24, 32 (3D cubic, 21 β values). The dashed vertical line marks the critical point β_c ≈ 0.7613. Curves steepen with increasing L, approaching a step function in the thermodynamic limit — the hallmark of a first-order transition.*
+*Figure 3: Plaquette expectation value vs coupling β for L = 4, 6, 8, 16, 24, 32 (3D cubic, 21 β values). The dashed vertical line marks the established critical region. The plaquette is a local energy-like observable.*
 
 ![3D Specific Heat vs β (all lattice sizes)](../assets/t20-p3-specific-heat-vs-beta-all-L.png)
 
-*Figure 4: Specific heat C_V vs β (all L). The peak height approaches a constant (~0.52) for L ≥ 16, consistent with a first-order transition where the latent heat is finite and volume-independent.*
+*Figure 4: Specific heat C_V vs β (all L). Quantitative exponent extraction requires autocorrelation-aware uncertainties and a controlled continuous-transition fit.*
 
 ![3D Susceptibility vs β (all lattice sizes)](../assets/t20-p3-susceptibility-vs-beta-all-L.png)
 
-*Figure 5: Susceptibility χ vs β (all L). The peak height approaches a constant (~0.70) for L ≥ 16, as expected for a first-order transition where the volume-scaled variance saturates.*
+*Figure 5: Plaquette fluctuation susceptibility χ vs β (all L). The available peak estimates are exploratory and are not yet a controlled critical-exponent measurement.*
 
 ![3D Binder Cumulant vs β (all lattice sizes)](../assets/t20-p3-binder-vs-beta-all-L.png)
 
-*Figure 6: Binder cumulant U vs β (all L). The minimum deepens with increasing L, while the high-β plateau approaches U = 2/3 (dotted line). This is the definitive signature of a first-order transition in 3D.*
+*Figure 6: Plaquette Binder ratio U vs β (all L). Because the plaquette has a nonzero mean, a narrow distribution generically approaches U = 2/3; this limit does not diagnose transition order.*
 
 ![3D Combined Overview (all lattice sizes)](../assets/t20-p3-combined-all-L.png)
 
-*Figure 7: Combined overview of all four observables for 3D Z₂ LGT (all L, 21 β values). The critical region β ≈ 0.70–0.80 shows strong signals across all observables, with the first-order nature clearly visible in the steepening plaquette curves and deepening binder minima.*
+*Figure 7: Combined overview of four observables for 3D Z₂ LGT (all L, 21 β values). The plots locate strong finite-size variation in the critical region but do not independently determine the universality class.*
 
 ### Data Files
 
@@ -407,73 +412,14 @@ The figures below show all three lattice sizes (L = 4, 6, 8) with the refined 21
 | `output/t20-p3-L32-3D-wilson-fine-20250626.json` | L=32 raw data (new) |
 | `output/benchmark-lattice-sizes-20250626.json` | Run time benchmarks |
 
-### Binder Cumulant First-Order Analysis (All L)
 
-**Date**: 2026-06-26
+### Corrected 3D Interpretation
 
-The 3D Z₂ LGT transition is definitively **first-order** (distinct from the continuous 2D transition). This is established by the Binder cumulant behavior across all lattice sizes L = 4, 6, 8, 16, 24, 32.
+The pure 3D Z₂ lattice gauge theory is dual to the 3D Ising model, so its transition is continuous and has 3D Ising critical behavior. The earlier first-order analysis used the local plaquette Binder ratio as though it were a universal order-parameter cumulant. That inference is invalid: for a narrowly distributed variable with nonzero mean, the ratio approaches $2/3$ generically.
 
-#### Minimum Scaling
+The earlier scaling-collapse plot is also inconclusive. A visual failure to collapse data collected on unequal grids and without propagated autocorrelation errors cannot exclude the expected universality class. The synthetic double-peaked histograms have been removed from the evidence chain because they were not sampled distributions.
 
-For a first-order transition in $d$ dimensions, the deviation from the thermodynamic limit scales as:
-
-$$
-U_{\min}(L) = \frac{2}{3} - c \cdot L^{-d}
-$$
-
-Fitting the minimum depth versus $L$ gives:
-
-| L | β_min | U_min | 2/3 − U_min |
-|---|-------|-------|-------------|
-| 4 | 0.643 | 0.634 | 0.033 |
-| 6 | 0.706 | 0.657 | 0.009 |
-| 8 | 0.726 | 0.663 | 0.004 |
-| 16 | 0.699 | 0.666 | 0.0003 |
-| 24 | 0.697 | 0.667 | 0.0001 |
-| 32 | 0.600 | 0.667 | 0.0000 |
-
-**Fit result**: $U_{\min}(L) = 2/3 - 2.81 \cdot L^{-3.198}$, with exponent $-3.198$ within 7% of the expected $-3$ for a first-order transition in 3D. The extrapolation to $L \to \infty$ gives $U_{\infty} = 0.6667$, matching $2/3$ to four decimal places.
-
-![Binder cumulant first-order signature (all L)](../assets/t20-p3-binder-vs-beta-all-L.png)
-
-*Figure 10: Binder cumulant $U_L(\beta)$ for all L = 4, 6, 8, 16, 24, 32 (3D cubic). The minimum deepens with increasing L, while the high-β plateau approaches $U = 2/3$ (dotted line). This is the definitive signature of a first-order transition.*
-
-![Binder cumulant scaling analysis (all L)](../assets/t20-binder-first-order-scaling-all-L.png)
-
-*Figure 11: Log-log plot of $2/3 - U_{\min}(L)$ versus $L$, confirming $U_{\min}(L) \sim L^{-d}$ scaling with fitted exponent $-3.198 \approx -3$ (dashed line). The data points for L = 16, 24, 32 sit on the asymptotic line, confirming the first-order nature.*
-
-#### First-Order Scaling Summary
-
-The following figure summarizes the first-order scaling across all observables:
-
-- **Top-left**: Binder cumulant minimum approaches $2/3$ as $L^{-d}$
-- **Top-right**: Peak heights of $\chi$ and $C_V$ approach constants (not diverging)
-- **Bottom-left**: Peak widths limited by grid resolution ($\Delta\beta = 0.02$)
-- **Bottom-right**: Critical coupling $\beta_c(L)$ converges to 0.7613, limited by grid resolution
-
-![First-order scaling summary](../assets/t20-first-order-scaling-summary.png)
-
-*Figure 12: First-order transition scaling summary. Top-left: binder minimum depth $2/3 - U_{\min}$ versus $L$ (log-log). Top-right: peak heights of susceptibility and specific heat versus $L$ — approaching constants. Bottom-left: peak FWHM versus $L$ — grid-resolution limited. Bottom-right: $\beta_c(L)$ versus $L$ — converging to 0.7613.*
-
-### Critical Exponent & Scaling Collapse (Revised)
-
-**Important**: The 3D Z₂ LGT transition is **first-order**, not continuous. Standard critical exponent extraction (via $\chi_{\max} \sim L^{\gamma/\nu}$) does not apply. Instead, the relevant finite-size scaling is:
-
-| Observable | First-order scaling | Result |
-|------------|---------------------|--------|
-| Binder minimum | $U_{\min} = 2/3 - c \cdot L^{-d}$ | ✓ Exponent = $-3.198 \approx -3$ |
-| $\chi_{\max}$ | Constant (volume-scaled) | ✓ Approaches ~0.70 for $L \geq 16$ |
-| $C_{V,\max}$ | Constant (volume-scaled) | ✓ Approaches ~0.52 for $L \geq 16$ |
-| FWHM | $\sim L^{-d}$ | ⚠ Grid resolution limited ($\Delta\beta = 0.02$) |
-| $\beta_c$ shift | $\sim L^{-d}$ | ⚠ Grid resolution limited |
-
-**Scaling collapse test** (using 3D Ising exponents for reference):
-
-![Scaling collapse test (all L)](../assets/t20-scaling-collapse-all-L.png)
-
-*Figure 13: Scaling collapse test using literature 3D Ising exponents ($\nu = 0.630$, $\gamma = 1.237$). Left: susceptibility rescaled as $L^{-\gamma/\nu} \chi$ versus $L^{1/\nu}(\beta - \beta_c)$. Right: order parameter rescaled as $L^{\beta/\nu} \langle P \rangle$. The curves do not collapse, confirming that the 3D Z₂ LGT transition is **not** in the 3D Ising universality class — it is first-order.*
-
-#### Benchmarks (Rust, 8 workers, 100k sweeps, 21 β values)
+The existing data are retained as exploratory measurements near the critical region. A corrected analysis must use blocked or jackknife errors, integrated autocorrelation times, continuous-transition finite-size scaling with corrections, and a separate analysis of extended Wilson loops.
 
 | L | Volume | Time | Avg per β |
 |---|--------|------|-----------|
@@ -545,109 +491,41 @@ const error = jackknifeError(binned);
 console.log(`⟨P⟩ = ${mean.toFixed(4)} ± ${error.toFixed(4)}`);
 ```
 
-## Phase 3b: Finite-Size Scaling & Critical Exponents (Complete)
+## Phase 3b: Corrected Finite-Size Scaling Status
 
-**Status**: ✅ Complete (2026-07-02)
+**Status:** Reanalysis in progress under T32.
 
-Following the identification of a critical contradiction in early analysis (claiming α = −3.084, a first-order 2D value, for a 3D second-order transition), a rigorous finite-size scaling study was designed and executed. The analysis confirms the 3D Z₂ LGT transition is **first-order** with critical coupling β_c(∞) = 0.7613(2).
+The completed L = 8, 16, 24, and 32 datasets are preserved. They show rapid finite-size variation near the known critical region, but the present analysis does not provide a new precision value of $\beta_c$ or reliable critical exponents. In particular:
 
----
+- the elementary plaquette is a local energy-like observable, not a substitute for an extended Wilson-loop confinement diagnostic;
+- the plaquette Binder ratio tending to $2/3$ does not establish first-order behavior;
+- the previous synthetic histograms are not numerical evidence of phase coexistence;
+- a failed visual collapse without autocorrelation-aware uncertainties is inconclusive.
 
-## FSS Analysis: 3D Z₂ Transition
+The reanalysis will assume continuous 3D Ising-universality scaling, estimate autocorrelation and blocked errors, include corrections to scaling, and assess extended Wilson loops separately. No T20d conclusion is promoted into `timesarrow.tex` until those checks pass.
 
-::: {.callout-important appearance="simple"}
-**Key Finding:** First-order phase transition confirmed at β_c = 0.7613(2). The Binder cumulant converges to U* = 2/3, the universal value for a first-order transition. The arrow of time emerges *sharply* at the critical coupling, not continuously.
-:::
+### Retained Data
 
-### FSS Overlay: All Observables
+| L | β range | Grid | Status |
+|---|---------|------|--------|
+| 8 | 0.70–0.82 | 25 points | Retained exploratory data |
+| 16 | 0.740–0.780 | 21 points | Retained fine scan |
+| 24 | 0.740–0.780 | 21 points | Retained fine scan |
+| 32 | 0.740–0.780 | 21 points | Retained lean scan; lower statistics |
 
-![](../assets/t20-fss-overlay-all.png)
+### Reanalysis Requirements
 
-**Figure 14.** Finite-size scaling analysis for L = 8, 16, 24, 32. (a) Plaquette expectation ⟨P⟩ shows a sharp jump near β_c ≈ 0.76. (b) Susceptibility χ peaks grow with L. (c) Binder cumulant U_L converges to U* = 2/3 from below. (d) Specific heat C_V shows weak peaks consistent with small latent heat.
-
-### Critical Exponent Analysis
-
-![](../assets/t20-critical-exponents.png)
-
-**Figure 15.** (a) Peak susceptibility χ_max vs. L on log–log scale; shallow slope (≈ 0.33) indicates asymptotic volume scaling not yet reached. (b) Pseudo-critical coupling β_c(L) vs. L⁻³; linear extrapolation gives β_c(∞) = 0.7582(8). (c) Peak specific heat C_{V,max} vs. L. (d) Binder cumulant minimum U_min vs. L⁻³; extrapolation yields U* = 0.6667(2).
-
-### Binder Cumulant Analysis
-
-| | |
-|:--:|:--:|
-| ![](../assets/t20-binder-crossing.png) | ![](../assets/t20-binder-extrapolation.png) |
-| **(a)** Binder cumulant U_L(β) | **(b)** Extrapolation to L → ∞ |
-
-**Figure 16.** (Left) Binder cumulant curves for all lattice sizes. The minimum converges to U* = 2/3 from below, the signature of a first-order transition. (Right) Extrapolation using U_min(L) = 2/3 − a/L³ confirms the asymptotic value.
-
-### Scaling Collapse Test
-
-![](../assets/t20-scaling-collapse.png)
-
-**Figure 17.** Attempted scaling collapse using 3D Ising exponents (γ/ν = 1.963, ν = 0.630). The curves do *not* collapse onto a universal curve, confirming the transition is not in the 3D Ising universality class. This failure is consistent with a first-order transition.
-
-### Summary Table
-
-| Quantity | This Work | Literature | Status |
-|:---------|:----------|:-----------|:------:|
-| β_c | 0.761 ± 0.002 | 0.7613 (Creutz et al.) | ✓ |
-| Binder U* | 0.6667 (converged) | 2/3 (first-order) | ✓ |
-| ν | *inapplicable* | 0.630 (Ising) | — |
-| Transition order | **First-order** | First-order | ✓ |
-
-### Compute Details
-
-| L | Fine β Values | Thermalization | Measurement | Workers | Wall Time |
-|---|---------------|----------------|-------------|---------|-----------|
-| 8 | 21 | 300,000 | 200,000 | 8 | ~5 min |
-| 16 | 21 | 300,000 | 200,000 | 8 | ~20 min |
-| 24 | 21 | 300,000 | 200,000 | 8 | ~1.5 h |
-| 32 | 21 | 300,000 | 200,000 | 8 | ~4 h |
-
----
-
-### Scripts Created
-
-| Script | Purpose | Status |
-|--------|---------|--------|
-| `t20-sim-3d-fss-v2.py` | Fine β grid simulations (batched β parallelization) | ✅ Complete |
-| `t20-multi-run.py` | Multiple independent runs per (L,β) | ✅ Complete |
-| `t20-autocorr-v2.py` | Autocorrelation time τ_int measurement | ✅ Complete |
-| `t20-fss-analysis.py` | 4 FSS methods + corrections-to-scaling | ✅ Complete |
-
-### Analysis Methods
-
-1. **Binder cumulant crossing** — U(β, L) curves cross at β_c; minimum converges to U* = 2/3
-2. **Scaling collapse** — Test for second-order universality (fails for first-order)
-3. **Peak height scaling** — χ_max ∝ L^d for first-order (not L^{γ/ν})
-4. **β_c shift** — β_c(L) = β_c(∞) + aL^{-d} for first-order (not L^{-1/ν})
-
-### Results: First-Order Transition Confirmed
-
-The 3D Z₂ LGT transition is definitively **first-order**, not in the 3D Ising universality class:
-
-| Observable | First-order scaling | Result |
-|------------|---------------------|--------|
-| Binder minimum | U_min = 2/3 − c·L^{-d} | ✓ Exponent = −3.198 ≈ −3 |
-| χ_max | ∝ L^d (volume-scaled) | ✓ Approaches ~0.70 for L ≥ 16 |
-| C_{V,max} | Constant (volume-scaled) | ✓ Approaches ~0.52 for L ≥ 16 |
-| β_c shift | ∝ L^{-d} | ✓ β_c(∞) = 0.7582(8) |
-
-**Scaling collapse test** (using 3D Ising exponents for reference): The curves do not collapse, confirming the transition is **not** in the 3D Ising universality class.
-
-### Compute Plan
-
-| Run Set | Description | Status |
-|---------|-------------|--------|
-| 1a | L=8 validation | ✅ Complete |
-| 1b | L=16,24,32 fine β grid | ✅ Complete |
-| 2 | Multiple independent runs | ✅ Complete |
-| 3 | FSS analysis & exponent extraction | ✅ Complete |
+1. Preserve or regenerate measurement time series.
+2. Estimate integrated autocorrelation times and blocked or jackknife errors.
+3. Fit pseudo-critical shifts and peak scaling with 3D Ising exponents plus corrections to scaling.
+4. Test extended Wilson-loop area/perimeter behavior independently of the plaquette.
+5. Report sensitivity to lattice selection, interpolation, and coupling-grid resolution.
 
 ### Key Files
 
-- `implementation-details/t20-phase3b-requirements.md` — Full specifications
-- `numerics/data/fss/` — Simulation outputs
+- `implementation-details/t20-phase3b-requirements.md` — Original simulation specifications
+- `numerics/data/fss/` — Preserved simulation outputs
+- `t20d-fss-analysis.tex` — Corrected standalone status note
 
 ---
 

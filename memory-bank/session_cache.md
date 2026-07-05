@@ -1,16 +1,16 @@
 # Session Cache
 
 *Created: 2026-07-02 16:48:02 IST*
-*Last Updated: 2026-07-05 22:29:27 IST*
+*Last Updated: 2026-07-05 23:12:09 IST*
 
 **Started**: 2026-07-05 22:24:10 IST
 **Focus Task**: T32: Post-May Numerics Correction and Reproducibility Pass
 **Session File**: `sessions/2026-07-05-night.md`
-**Status**: ✅ Complete
+**Status**: 🔄 Active
 
 ## Overview
 
-- Active: 4 | Paused: 0 | Completed: 16
+- Active: 5 | Paused: 0 | Completed: 15
 - Last Session: 2026-07-05
 - Current Period: night
 
@@ -20,7 +20,13 @@
 **Status:** 🔄 **IN PROGRESS**
 **Started:** 2026-07-05
 **Context**: [Details](tasks/T32.md)
-**Progress**: Correction plan recorded; implementation not yet started.
+**Progress**: T20d annexure and task page corrected and rebuilt; numerical reanalysis and dashboard/figure cleanup remain.
+
+### T20d: Critical Exponent Extraction from 3D Z₂ LGT
+**Status:** 🔄 **IN PROGRESS**
+**Started:** 2026-06-26
+**Context**: [Details](tasks/T20d.md)
+**Progress**: Source documentation corrected; controlled continuous-transition reanalysis remains pending.
 
 ### T23: Entanglement Structure
 **Status:** 🔄 **IN PROGRESS**
@@ -75,11 +81,6 @@
 **Started:** 2026-06-25
 **Completed:** 2026-06-25
 
-### T20d: Critical Exponent Extraction from 3D Z₂ LGT
-**Status:** ✅ **COMPLETED**
-**Started:** 2026-06-26
-**Completed:** 2026-06-26
-
 ### T21: Worker Threads + Checkpointing
 **Status:** ✅ **COMPLETED**
 **Started:** 2026-06-25
@@ -127,7 +128,8 @@
 
 ## Next Session Focus
 
-1. T32/T20d: Correct the transition-order interpretation and published analysis
+1. T32/T20d: Reanalyse existing data with autocorrelation-aware continuous-transition scaling
+1. T32/T20d: Correct dashboard text and retire or replace misleading figures
 1. T32/T22a: Reclassify the toy group-average result
 1. T32/T31: Specify a gauge-invariant replacement observable
 1. T32: Restore reproducible build and test workflows

@@ -1,7 +1,7 @@
 # Memory Bank - Sage Workspace
 
 *Created: 2026-07-02 16:48:02 IST*
-*Last Updated: 2026-07-05 22:24:10 IST*
+*Last Updated: 2026-07-05 23:12:09 IST*
 
 ## Overview
 
@@ -15,6 +15,7 @@ This is the Memory Bank for the Sage (灵剑) OpenClaw workspace.
 | T24 | Domain Wall Dynamics | 🔄 | HIGH | 2026-06-24 | T20, T21 | [Details](tasks/T24.md) |
 | T31 | Signed Volume Observable | 🔄 | MEDIUM | 2026-07-02 | — | [Details](tasks/T31.md) |
 | T32 | Post-May Numerics Correction and Reproducibility Pass | 🔄 | HIGH | 2026-07-05 | T20d, T22a, T25, T27, T31 | [Details](tasks/T32.md) |
+| T20d | Critical Exponent Extraction from 3D Z₂ LGT | 🔄 | MEDIUM | 2026-06-26 | T32 | [Details](tasks/T20d.md) |
 
 ## Completed Tasks
 
@@ -26,7 +27,6 @@ This is the Memory Bank for the Sage (灵剑) OpenClaw workspace.
 | T20a | Phase 1 — 2D Square Lattice | ✅ | HIGH | 2026-06-24 | 2026-06-24 | — | [Details](tasks/T20a.md) |
 | T20b | Phase 2 — Multi-Lattice FSS | ✅ | HIGH | 2026-06-25 | 2026-06-25 | T20a | [Details](tasks/T20b.md) |
 | T20c | Phase 3 — 3D Cubic Lattice | ✅ | HIGH | 2026-06-25 | 2026-06-25 | T20a | [Details](tasks/T20c.md) |
-| T20d | Critical Exponent Extraction from 3D Z₂ LGT | ✅ | MEDIUM | 2026-06-26 | 2026-06-26 | 2026-06-29, — | [Details](tasks/T20d.md) |
 | T21 | Worker Threads + Checkpointing | ✅ | HIGH | 2026-06-25 | 2026-06-25 | — | [Details](tasks/T21.md) |
 | T21a | Fast Monte Carlo Kernel | ✅ | HIGH | 2026-06-25 | 2026-06-25 | T20b | [Details](tasks/T21a.md) |
 | T22 | Spin Foam Amplitudes | ✅ | HIGH | 2026-06-25 | 2026-06-25 | T14, T20c | [Details](tasks/T22.md) |
@@ -106,7 +106,7 @@ T32: Post-May Numerics Correction and Reproducibility Pass
 
 ## Status Summary
 
-- **Active**: 4
-- **Completed**: 16
+- **Active**: 5
+- **Completed**: 15
 - **Paused**: 0
 - **Total**: 22
