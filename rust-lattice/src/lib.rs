@@ -547,6 +547,12 @@ impl Z2GaugeField {
     }
 
     /// Compute the signed area for a 2D lattice.
+    ///
+    /// ⚠️  WARNING: THIS OBSERVABLE IS GAUGE-DEPENDENT AND EXPLORATORY.
+    /// See `signed_volume_3d()` for a detailed explanation of the gauge-dependence issue.
+    /// In 2D there is no deconfined phase, so this observable is primarily for
+    /// pedagogical/testing purposes.
+    ///
     /// For each vertex, compute the product of Z_2 links along a path from (0,0)
     /// to that vertex (x then y), sum over all vertices.
     /// In a deconfined phase (not present in 2D), |sum| ~ N. In 2D, always ~ sqrt(N).
@@ -571,6 +577,22 @@ impl Z2GaugeField {
     }
 
     /// Compute the signed volume for a 3D lattice.
+    /// 
+    /// ⚠️  WARNING: THIS OBSERVABLE IS GAUGE-DEPENDENT AND EXPLORATORY.
+    /// 
+    /// The signed volume depends on an arbitrary choice of reference point (the origin)
+    /// and path convention (x-then-y-then-z). Under a local gauge transformation,
+    /// this observable changes value, making it unsuitable for production physics
+    /// analysis without careful validation.
+    /// 
+    /// A valid local gauge transformation at site r flips ALL 6 links incident to r
+    /// (3 outgoing + 3 incoming with periodic boundaries), not just the 3 outgoing links.
+    /// The existing `test_signed_volume_gauge_flip_3d` test was incorrect in this regard.
+    /// 
+    /// For a gauge-invariant replacement, see `gauge_invariant_signed_volume_3d()`.
+    /// Do NOT promote results from this observable to production without cross-checking
+    /// against the gauge-invariant version.
+    /// 
     /// For each vertex, compute the product of Z_2 links along a path from (0,0,0)
     /// to that vertex (x then y then z), sum over all vertices, and return the absolute value.
     /// In the deconfined phase, signs align -> |sum| ~ N (extensive).
@@ -599,6 +621,244 @@ impl Z2GaugeField {
             }
         }
         total
+    }
+
+    // ========================================================================
+    // GAUGE-INVARIANT SIGNED VOLUME OBSERVABLE
+    // ========================================================================
+
+    /// Apply a local Z₂ gauge transformation at site (x, y, z) in 3D.
+    ///
+    /// A valid local gauge transformation flips ALL links incident to the site,
+    /// not just the outgoing ones. For a site in 3D with periodic boundaries,
+    /// this means 6 links total: 3 outgoing (Uₓ, Uᵧ, Uᵧ at the site) and
+    /// 3 incoming (Uₓ from x-1, Uᵧ from y-1, Uᵧ from z-1).
+    ///
+    /// Under this transformation, plaquettes (and all Wilson loops) are invariant,
+    /// but path-dependent quantities like `signed_volume_3d()` are not.
+    pub fn local_gauge_transform_3d(&mut self, x: usize, y: usize, z: usize) {
+        assert!(self.dimension == 3, "local_gauge_transform_3d requires 3D lattice");
+        let l = self.l;
+
+        // Outgoing links
+        self.flip_link_3d(x, y, z, 0);
+        self.flip_link_3d(x, y, z, 1);
+        self.flip_link_3d(x, y, z, 2);
+
+        // Incoming links (from periodic boundaries)
+        let xm1 = (x + l - 1) % l;
+        let ym1 = (y + l - 1) % l;
+        let zm1 = (z + l - 1) % l;
+        self.flip_link_3d(xm1, y, z, 0);
+        self.flip_link_3d(x, ym1, z, 1);
+        self.flip_link_3d(x, y, zm1, 2);
+    }
+
+    /// Compute the product of links along the "x-then-y-then-z" path from
+    /// (x0, y0, z0) to (x1, y1, z1) in 3D.
+    ///
+    /// Path convention: move in x-direction first, then y, then z.
+    /// All coordinates are taken modulo L (periodic boundary conditions).
+    /// For Z₂, the number of steps in each direction is (target - source + L) % L.
+    pub fn path_product_xyz_3d(&self, x0: usize, y0: usize, z0: usize, x1: usize, y1: usize, z1: usize) -> i8 {
+        assert!(self.dimension == 3, "path_product_xyz_3d requires 3D lattice");
+        let l = self.l;
+        let mut sign = 1i8;
+
+        // x-links from x0 to x1
+        let dx = (x1 + l - x0) % l;
+        for i in 0..dx {
+            sign *= self.link_3d((x0 + i) % l, y0, z0, 0);
+        }
+
+        // y-links from y0 to y1 (at x = x1)
+        let dy = (y1 + l - y0) % l;
+        for j in 0..dy {
+            sign *= self.link_3d(x1, (y0 + j) % l, z0, 1);
+        }
+
+        // z-links from z0 to z1 (at x = x1, y = y1)
+        let dz = (z1 + l - z0) % l;
+        for k in 0..dz {
+            sign *= self.link_3d(x1, y1, (z0 + k) % l, 2);
+        }
+
+        sign
+    }
+
+    /// Compute the product of links along the "z-then-y-then-x" path from
+    /// (x0, y0, z0) to (x1, y1, z1) in 3D.
+    ///
+    /// Path convention: move in z-direction first, then y, then x.
+    /// This is the "reverse" path ordering relative to `path_product_xyz_3d`.
+    pub fn path_product_zyx_3d(&self, x0: usize, y0: usize, z0: usize, x1: usize, y1: usize, z1: usize) -> i8 {
+        assert!(self.dimension == 3, "path_product_zyx_3d requires 3D lattice");
+        let l = self.l;
+        let mut sign = 1i8;
+
+        // z-links from z0 to z1
+        let dz = (z1 + l - z0) % l;
+        for k in 0..dz {
+            sign *= self.link_3d(x0, y0, (z0 + k) % l, 2);
+        }
+
+        // y-links from y0 to y1 (at z = z1)
+        let dy = (y1 + l - y0) % l;
+        for j in 0..dy {
+            sign *= self.link_3d(x0, (y0 + j) % l, z1, 1);
+        }
+
+        // x-links from x0 to x1 (at y = y1, z = z1)
+        let dx = (x1 + l - x0) % l;
+        for i in 0..dx {
+            sign *= self.link_3d((x0 + i) % l, y1, z1, 0);
+        }
+
+        sign
+    }
+
+    /// Compute the gauge-invariant signed volume for a 3D lattice.
+    ///
+    /// # Design: Dressed Orientation Correlator
+    ///
+    /// The original `signed_volume_3d()` is gauge-dependent because it computes
+    /// path-ordered products from a fixed origin using a fixed path convention.
+    /// A local gauge transformation at any site on the path changes the result.
+    ///
+    /// The gauge-invariant replacement is constructed as follows:
+    ///
+    /// 1. For each site r, define the "gauge-fixed sign":
+    ///    s(r) = ∏(links along x-y-z path from origin to r)
+    ///
+    /// 2. For each pair of sites (r₁, r₂), define the dressed correlator:
+    ///    C(r₁, r₂) = s(r₁) · W(r₁→r₂) · s(r₂)
+    ///
+    ///    where W(r₁→r₂) is the Wilson line (product of links) along the
+    ///    z-y-x path from r₁ to r₂. The KEY is that W uses the OPPOSITE
+    ///    path ordering from s, so that W(r₁→r₂) ≠ s(r₁)⁻¹ · s(r₂).
+    ///
+    /// 3. The gauge-invariant signed volume is the average over all pairs:
+    ///    Q_GI = (1/N²) Σ_{r₁,r₂} C(r₁, r₂)
+    ///
+    /// # Gauge-Invariance Proof
+    ///
+    /// Consider a local gauge transformation at site g (flip all 6 incident links):
+    ///
+    /// - **g = origin**: s(r₁) → −s(r₁) and s(r₂) → −s(r₂). The product s(r₁)·s(r₂)
+    ///   is unchanged. W(r₁→r₂) is unchanged (either doesn't include origin, or
+    ///   includes two links that both flip). Thus C → C.
+    ///
+    /// - **g = r₁**: s(r₁) → −s(r₁). W(r₁→r₂) starts at r₁, so exactly one link
+    ///   in W is flipped → W → −W. Thus C → (−s(r₁))·(−W)·s(r₂) = C.
+    ///
+    /// - **g = r₂**: s(r₂) → −s(r₂). W(r₁→r₂) ends at r₂, so exactly one link
+    ///   in W is flipped → W → −W. Thus C → s(r₁)·(−W)·(−s(r₂)) = C.
+    ///
+    /// - **g on W path (not endpoint)**: W contains two links incident to g
+    ///   (one incoming, one outgoing), so W → (+1)·W. s(r₁) and s(r₂) unchanged.
+    ///   Thus C → C.
+    ///
+    /// - **g elsewhere**: Nothing changes. C → C.
+    ///
+    /// Therefore C(r₁, r₂) is invariant under ALL local gauge transformations.
+    ///
+    /// # Physical Interpretation
+    ///
+    /// In the deconfined phase, the gauge field exhibits long-range order:
+    /// large Wilson loops have expectation value ~1 (perimeter law).
+    /// Consequently, C(r₁, r₂) ≈ +1 for all pairs, giving Q_GI ≈ +1.
+    ///
+    /// In the confined phase, Wilson loops follow area law and decay exponentially
+    /// with loop size. The dressed correlator averages to ~0, giving Q_GI ≈ 0.
+    ///
+    /// Thus Q_GI serves as an order parameter for the deconfinement transition,
+    /// analogous to the original signed volume but with rigorous gauge invariance.
+    ///
+    /// # Computational Note
+    ///
+    /// Complexity is O(N² · L) = O(L⁷) for lattice size L (N = L³ sites).
+    /// This is manageable for small L (L ≤ 8) but may need optimization
+    /// (e.g., parallelization or sampling over pairs) for production runs
+    /// on larger lattices.
+    pub fn gauge_invariant_signed_volume_3d(&self) -> f64 {
+        assert!(self.dimension == 3, "gauge_invariant_signed_volume_3d requires 3D lattice");
+        let l = self.l;
+        let n_sites = l * l * l;
+
+        // Precompute s(r) = path product from origin along x-y-z for all sites
+        let mut s = vec![1i8; n_sites];
+        for z in 0..l {
+            for y in 0..l {
+                for x in 0..l {
+                    let idx = z * l * l + y * l + x;
+                    s[idx] = self.path_product_xyz_3d(0, 0, 0, x, y, z);
+                }
+            }
+        }
+
+        let mut total = 0i64;
+        for z2 in 0..l {
+            for y2 in 0..l {
+                for x2 in 0..l {
+                    let idx2 = z2 * l * l + y2 * l + x2;
+                    for z1 in 0..l {
+                        for y1 in 0..l {
+                            for x1 in 0..l {
+                                let idx1 = z1 * l * l + y1 * l + x1;
+                                let w = self.path_product_zyx_3d(x1, y1, z1, x2, y2, z2);
+                                total += (s[idx1] * w * s[idx2]) as i64;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        total as f64 / (n_sites * n_sites) as f64
+    }
+
+    /// Measure the gauge-invariant signed volume observable over n_sweeps,
+    /// taking measurements every measure_every sweeps.
+    ///
+    /// Returns (mean Q_GI, std error, mean Q_GI², mean Q_GI, binder cumulant).
+    /// Note: mean |Q| is replaced by mean Q since the gauge-invariant observable
+    /// is naturally bounded in [−1, +1] and its sign is physically meaningful.
+    pub fn measure_gauge_invariant_signed_volume_3d(
+        &mut self,
+        beta: f64,
+        n_sweeps: usize,
+        measure_every: usize,
+    ) -> (f64, f64, f64, f64, f64) {
+        assert!(self.dimension == 3, "measure_gauge_invariant_signed_volume_3d requires 3D lattice");
+        let mut q_values = Vec::new();
+        let mut q_sq = Vec::new();
+        let mut q_quad = Vec::new();
+
+        for sweep in 0..n_sweeps {
+            self.sweep(beta);
+            if sweep % measure_every == 0 {
+                let q = self.gauge_invariant_signed_volume_3d();
+                q_values.push(q);
+                q_sq.push(q * q);
+                q_quad.push(q * q * q * q);
+            }
+        }
+
+        let n = q_values.len() as f64;
+        let mean_q = q_values.iter().sum::<f64>() / n;
+        let mean_q_sq = q_sq.iter().sum::<f64>() / n;
+        let mean_q_quad = q_quad.iter().sum::<f64>() / n;
+
+        let var_q = q_values.iter().map(|x| (x - mean_q).powi(2)).sum::<f64>() / n;
+        let error_q = (var_q / n).sqrt();
+
+        let binder = if mean_q_sq > 0.0 {
+            1.0 - mean_q_quad / (3.0 * mean_q_sq * mean_q_sq)
+        } else {
+            0.0
+        };
+
+        (mean_q, error_q, mean_q_sq, mean_q, binder)
     }
 
     /// Measure the signed volume observable over n_sweeps, taking measurements every measure_every sweeps.
@@ -1192,6 +1452,12 @@ pub fn simulate_beta_with_polyakov_3d(
 }
 
 /// Run a simulation at a single β value with Wilson loops and signed volume measurements.
+///
+/// ⚠️  WARNING: The signed volume component of this simulation uses the
+/// GAUGE-DEPENDENT `signed_volume_3d()` / `signed_area_2d()` observables.
+/// Results from the signed volume should NOT be promoted to production physics
+/// analysis without validation against `gauge_invariant_signed_volume_3d()`.
+///
 /// Returns (mean_p, error, chi, cv, binder, wall_time, wilson_data, signed_volume_data).
 /// signed_volume_data is (mean_q_abs, error_q_abs, mean_q_sq, normalized, binder_q).
 pub fn simulate_beta_with_wilson_and_signed_volume(
@@ -1406,22 +1672,124 @@ mod tests {
 
     #[test]
     fn test_signed_volume_gauge_flip_3d() {
+        // This test demonstrates that signed_volume_3d() IS gauge-dependent.
+        // A valid local gauge transformation flips ALL 6 links incident to a site
+        // (3 outgoing + 3 incoming with periodic boundaries), not just 3 outgoing.
+        //
+        // The old test incorrectly flipped only outgoing links, which is not a
+        // valid gauge transformation. A proper gauge transform must leave
+        // plaquettes invariant while changing path-dependent quantities.
         let mut field = Z2GaugeField::cold_dim(4, 3, 42);
-        let l = field.l;
-        // Gauge transform at (0,0,0): flip all 3 outgoing links
-        // (incoming links from periodic boundary are NOT on our path from origin)
-        field.flip_link_3d(0, 0, 0, 0);       // +x link
-        field.flip_link_3d(0, 0, 0, 1);       // +y link
-        field.flip_link_3d(0, 0, 0, 2);       // +z link
-        
-        let sv = field.signed_volume_3d();
-        // The path from origin uses +x links for x>0, +y links for x=0,y>0, +z links for x=0,y=0,z>0
-        // So 63 vertices flip sign, 1 vertex (0,0,0) stays +1
-        // Total: 1 - 63 = -62
-        assert_eq!(sv, -62, "Gauge transform at origin flips 63 of 64 vertex signs");
+        let sv_before = field.signed_volume_3d();
+        assert_eq!(sv_before, 64, "Cold start signed volume should be 64");
+
+        // Apply a PROPER local gauge transformation at (0,0,0)
+        // This flips all 6 incident links: 3 outgoing + 3 incoming
+        field.local_gauge_transform_3d(0, 0, 0);
+
+        let sv_after = field.signed_volume_3d();
+
+        // Verify plaquettes are still +1 (gauge invariance of physical observables)
+        for z in 0..4 {
+            for y in 0..4 {
+                for x in 0..4 {
+                    assert_eq!(field.plaquette_xy(x, y, z), 1,
+                        "Plaquette xy at ({},{},{}) should be invariant under gauge transform", x, y, z);
+                }
+            }
+        }
+
+        // signed_volume_3d should CHANGE because it is gauge-dependent
+        assert_ne!(sv_after, sv_before,
+            "signed_volume_3d must change under local gauge transform (it is gauge-dependent)");
     }
 
+    /// Test that plaquettes are invariant under local gauge transformations.
+    #[test]
+    fn test_plaquette_gauge_invariance_3d() {
+        let mut field = Z2GaugeField::cold_dim(4, 3, 42);
 
+        // Apply gauge transformations at multiple sites
+        field.local_gauge_transform_3d(0, 0, 0);
+        field.local_gauge_transform_3d(1, 2, 3);
+        field.local_gauge_transform_3d(2, 2, 2);
+
+        // All plaquettes should still be +1 on cold start
+        for z in 0..4 {
+            for y in 0..4 {
+                for x in 0..4 {
+                    assert_eq!(field.plaquette_xy(x, y, z), 1,
+                        "xy plaq at ({},{},{}) not invariant", x, y, z);
+                    assert_eq!(field.plaquette_yz(x, y, z), 1,
+                        "yz plaq at ({},{},{}) not invariant", x, y, z);
+                    assert_eq!(field.plaquette_xz(x, y, z), 1,
+                        "xz plaq at ({},{},{}) not invariant", x, y, z);
+                }
+            }
+        }
+    }
+
+    /// Test that the gauge-invariant signed volume is invariant under local gauge transforms.
+    #[test]
+    fn test_gauge_invariant_signed_volume_gauge_invariance_single_site() {
+        let mut field = Z2GaugeField::cold_dim(4, 3, 42);
+        let q_before = field.gauge_invariant_signed_volume_3d();
+
+        // Apply a local gauge transformation at (1, 2, 3)
+        field.local_gauge_transform_3d(1, 2, 3);
+
+        let q_after = field.gauge_invariant_signed_volume_3d();
+
+        assert!((q_before - q_after).abs() < 1e-10,
+            "Gauge-invariant signed volume changed under local gauge transform at (1,2,3): {} -> {}",
+            q_before, q_after);
+    }
+
+    /// Test gauge invariance under multiple random gauge transformations.
+    #[test]
+    fn test_gauge_invariant_signed_volume_gauge_invariance_multiple() {
+        let mut field = Z2GaugeField::new_dim(4, 3, 42);
+        let q_before = field.gauge_invariant_signed_volume_3d();
+
+        // Apply multiple local gauge transformations
+        field.local_gauge_transform_3d(0, 0, 0);
+        field.local_gauge_transform_3d(1, 1, 1);
+        field.local_gauge_transform_3d(2, 3, 0);
+        field.local_gauge_transform_3d(3, 0, 2);
+
+        let q_after = field.gauge_invariant_signed_volume_3d();
+
+        assert!((q_before - q_after).abs() < 1e-10,
+            "Gauge-invariant signed volume changed under multiple local gauge transforms: {} -> {}",
+            q_before, q_after);
+    }
+
+    /// Test that gauge-invariant signed volume equals 1.0 on cold start.
+    /// On cold start, all links are +1, so all Wilson loops are +1, giving Q_GI = 1.
+    #[test]
+    fn test_gauge_invariant_signed_volume_cold_start() {
+        let field = Z2GaugeField::cold_dim(4, 3, 42);
+        let q = field.gauge_invariant_signed_volume_3d();
+        assert!((q - 1.0).abs() < 1e-10,
+            "Cold start: all links +1, gauge-invariant signed volume should be 1.0, got {}", q);
+    }
+
+    /// Test path_product_xyz_3d on cold start.
+    #[test]
+    fn test_path_product_xyz_cold_3d() {
+        let field = Z2GaugeField::cold_dim(4, 3, 42);
+        // From (0,0,0) to (2,3,1): all links +1, product should be +1
+        let p = field.path_product_xyz_3d(0, 0, 0, 2, 3, 1);
+        assert_eq!(p, 1, "Path product on cold start should be +1");
+    }
+
+    /// Test path_product_zyx_3d on cold start.
+    #[test]
+    fn test_path_product_zyx_cold_3d() {
+        let field = Z2GaugeField::cold_dim(4, 3, 42);
+        let p = field.path_product_zyx_3d(0, 0, 0, 2, 3, 1);
+        assert_eq!(p, 1, "Path product on cold start should be +1");
+    }
 
     // ---- 4D tests ----
 
@@ -1563,7 +1931,7 @@ mod tests {
         let seed = 12345u64;
         let loop_sizes = vec![(1, 1), (2, 2)];
 
-        let (mean_p, error, chi, cv, binder, wall_time, wilson_data) =
+        let (mean_p, error, _chi, _cv, _binder, wall_time, wilson_data) =
             simulate_beta_with_wilson_loops(l, 3, beta, n_sweeps / 2, n_sweeps / 2, 10, seed, &loop_sizes);
 
         println!("3D L={} beta={} with Wilson loops:", l, beta);
@@ -1647,7 +2015,7 @@ mod tests {
     #[test]
     fn test_signed_area_2d_scaling() {
         let l = 8;
-        let n_sites = (l * l) as f64;
+        let _n_sites = (l * l) as f64;
         let thermal = 100;
         let measure = 200;
         let every = 5;
@@ -1671,7 +2039,7 @@ mod tests {
     #[test]
     fn test_signed_volume_phase_transition_l6() {
         let l = 6;
-        let n_sites = (l * l * l) as f64;
+        let _n_sites = (l * l * l) as f64;
         let thermal = 200;
         let measure = 400;
         let every = 10;

@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2026-06-25">
 
-<title>T25 — Volume Operator Extension</title>
+<title>T25 - Volume Operator Extension</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -18,7 +18,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
@@ -112,31 +112,31 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">T25 — Volume Operator Extension</h1>
-<p class="subtitle lead">Higher-valence intertwiner spectrum and Z₂ structure</p>
+<h1 class="title">T25 - Volume Operator Extension</h1>
+<p class="subtitle lead">Higher-valence intertwiner spectrum and algebraic spectral symmetry</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    
+
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
       <p class="date">June 25, 2026</p>
     </div>
   </div>
-  
+
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
       <p class="date-modified">June 29, 2026</p>
     </div>
   </div>
-    
+
   </div>
-  
+
 
 
 </header>
@@ -158,11 +158,11 @@ window.Quarto = {
 </div>
 <section id="objective" class="level2">
 <h2 class="anchored" data-anchor-id="objective">Objective</h2>
-<p>Extend the volume operator <span class="math inline">\(\hat{Q}\)</span> diagonalization from 4-valent to 5-valent and 6-valent intertwiners. Verify whether the Z₂ sign-flip structure (±q₀ degeneracy) persists.</p>
+<p>Extend the volume operator <span class="math inline">\(\hat{Q}\)</span> diagonalization from 4-valent to 5-valent and 6-valent intertwiners. Verify whether the Z2 sign-flip structure (±q0 degeneracy) persists.</p>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>🟢 <strong>Complete</strong> — 4-valent, 5-valent, and 6-valent implemented with Z₂ structure verified.</p>
+<p>🟢 <strong>Complete</strong> — 4-valent, 5-valent, and 6-valent implemented with algebraic spectral reflection symmetry verified.</p>
 </section>
 <section id="theory" class="level2">
 <h2 class="anchored" data-anchor-id="theory">Theory</h2>
@@ -178,7 +178,7 @@ window.Quarto = {
 \hat{Q} = \frac{8\sqrt{3}}{9} \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}
 \]</span></p>
 <p>Eigenvalues: <span class="math inline">\(\pm \frac{8\sqrt{3}}{9} \approx \pm 1.5396\)</span></p>
-<p>This shows the <strong>Z₂ structure</strong>: eigenvalues come in ± pairs, reflecting the time-orientation flip symmetry.</p>
+<p>This shows the <strong>algebraic spectral reflection symmetry</strong>: eigenvalues come in ± pairs, reflecting the operator's algebraic symmetry under sign reversal. Note that this spectral pairing is an <strong>algebraic property</strong> of the volume operator; demonstrating that it corresponds to a <strong>physical</strong> <span class="math inline">\(Z_2\)</span> time-orientation symmetry would require an explicit symmetry generator and its action on the relevant states.</p>
 </section>
 <section id="valent-j12-trivially-excluded" class="level3">
 <h3 class="anchored" data-anchor-id="valent-j12-trivially-excluded">5-valent j=1/2 (Trivially excluded)</h3>
@@ -195,7 +195,7 @@ window.Quarto = {
 <p><span class="math display">\[
 \hat{Q} \text{ eigenvalues: } \pm 2.2913, \pm 0.8660, 0
 \]</span></p>
-<p>This shows the <strong>Z₂ structure persists</strong>: eigenvalues come in ± pairs, with one zero mode. The zero eigenvalue corresponds to a state with no “oriented volume” under the chosen geometric embedding.</p>
+<p>This shows the <strong>algebraic spectral reflection symmetry persists</strong>: eigenvalues come in ± pairs, with one zero mode. The zero eigenvalue corresponds to a state with no "oriented volume" under the chosen geometric embedding. As with the 4-valent case, this spectral pairing is an algebraic property of the operator; a physical <span class="math inline">\(Z_2\)</span> dynamical symmetry would require construction and testing of the corresponding symmetry generator.</p>
 <p><strong>Key insight:</strong> With trivial embedding (all <span class="math inline">\(\epsilon_{ijk} = +1\)</span>), the volume operator vanishes identically on the 6-valent singlet subspace due to symmetry. Non-zero eigenvalues require a <strong>non-coplanar geometric embedding</strong> where edge triples have mixed signs.</p>
 </section>
 </section>
@@ -210,7 +210,7 @@ window.Quarto = {
 <th>j</th>
 <th>Dimension</th>
 <th>Eigenvalues</th>
-<th>Z₂ Structure</th>
+<th>Z2 Structure</th>
 </tr>
 </thead>
 <tbody>
@@ -225,7 +225,7 @@ window.Quarto = {
 <td>5</td>
 <td>1/2</td>
 <td>0</td>
-<td>—</td>
+<td>-</td>
 <td>N/A (no singlet)</td>
 </tr>
 <tr class="odd">
@@ -239,9 +239,9 @@ window.Quarto = {
 </table>
 <p><strong>Data file</strong>: <a href="https://github.com/space-cadet/timesarrow/blob/main/numerics/output/t25-volume-operator-spectrum.json"><code>t25-volume-operator-spectrum.json</code></a></p>
 </section>
-<section id="z₂-diagnostic" class="level3">
-<h3 class="anchored" data-anchor-id="z₂-diagnostic">Z₂ Diagnostic</h3>
-<p>The <code>checkZ2Structure()</code> function validates that eigenvalues come in ±q pairs (with optional zeros). This is the key numerical diagnostic for the paper’s central claim about time-orientation symmetry.</p>
+<section id="z2-diagnostic" class="level3">
+<h3 class="anchored" data-anchor-id="z₂-diagnostic">Algebraic Spectral Reflection Diagnostic</h3>
+<p>The <code>checkZ2Structure()</code> function validates that eigenvalues come in ±q pairs (with optional zeros). This is a <strong>numerical diagnostic for algebraic spectral reflection symmetry</strong> of the volume operator. It does not, by itself, establish a physical dynamical <span class="math inline">\(Z_2\)</span> time-orientation symmetry — that would require an explicit symmetry generator and its action on the relevant states.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode typescript code-with-copy"><code class="sourceCode typescript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Examples:</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">checkZ2Structure</span>([<span class="op">-</span><span class="fl">1.5</span><span class="op">,</span> <span class="fl">1.5</span>])        <span class="co">// ✅ true  (± pair)</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">checkZ2Structure</span>([<span class="op">-</span><span class="dv">2</span><span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">2</span>])     <span class="co">// ✅ true  (two ± pairs)</span></span>
@@ -265,14 +265,14 @@ window.Quarto = {
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> space4 <span class="op">=</span> <span class="fu">constructNValentBasis</span>(<span class="dv">4</span><span class="op">,</span> <span class="fl">0.5</span>)<span class="op">;</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> spec4 <span class="op">=</span> <span class="fu">computeVolumeSpectrum</span>(space4)<span class="op">;</span></span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(spec4<span class="op">.</span><span class="at">eigenvalues</span>)<span class="op">;</span>     <span class="co">// [ -1.5396, 1.5396 ]</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(spec4<span class="op">.</span><span class="at">hasZ2Structure</span>)<span class="op">;</span>  <span class="co">// true</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(spec4<span class="op">.</span><span class="at">hasZ2Structure</span>)<span class="op">;</span>  <span class="co">// true  (algebraic spectral reflection symmetry)</span></span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">// 6-valent j=1/2 with geometric embedding</span></span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> embedding <span class="op">=</span> <span class="fu">buildGeneric6ValentEmbedding</span>()<span class="op">;</span></span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> space6 <span class="op">=</span> <span class="fu">constructNValentBasis</span>(<span class="dv">6</span><span class="op">,</span> <span class="fl">0.5</span>)<span class="op">;</span></span>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> spec6 <span class="op">=</span> <span class="fu">computeVolumeSpectrum</span>(space6<span class="op">,</span> embedding)<span class="op">;</span></span>
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(spec6<span class="op">.</span><span class="at">eigenvalues</span>)<span class="op">;</span>     <span class="co">// [ -2.2913, -0.8660, 0, 0.8660, 2.2913 ]</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(spec6<span class="op">.</span><span class="at">hasZ2Structure</span>)<span class="op">;</span>  <span class="co">// true</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(spec6<span class="op">.</span><span class="at">hasZ2Structure</span>)<span class="op">;</span>  <span class="co">// true  (algebraic spectral reflection symmetry, incl. zero mode)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="timesarrow-specific-wrappers" class="level3">
 <h3 class="anchored" data-anchor-id="timesarrow-specific-wrappers">TimesArrow-Specific Wrappers</h3>
@@ -286,10 +286,10 @@ window.Quarto = {
 <section id="next-steps" class="level2">
 <h2 class="anchored" data-anchor-id="next-steps">Next Steps</h2>
 <ol type="1">
-<li><strong>Higher spins</strong> — Test j=1 for 4-valent (check if Z₂ breaks)</li>
-<li><strong>Mixed valence</strong> — Two j=1/2 and two j=1 edges</li>
-<li><strong>Visualization</strong> — Spectrum plots comparing n=4,5,6</li>
-<li><strong>Lattice applications</strong> — 3D square lattice (8-valent) and 2D triangular lattice (6-valent)</li>
+<li><strong>Higher spins</strong> - Test j=1 for 4-valent (check if Z2 breaks)</li>
+<li><strong>Mixed valence</strong> - Two j=1/2 and two j=1 edges</li>
+<li><strong>Visualization</strong> - Spectrum plots comparing n=4,5,6</li>
+<li><strong>Lattice applications</strong> - 3D square lattice (8-valent) and 2D triangular lattice (6-valent)</li>
 </ol>
 </section>
 <section id="references" class="level2">
@@ -315,7 +315,7 @@ window.Quarto = {
     anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
+        if (clz.startsWith('code-annotation-')) {
           return true;
         }
       }
@@ -335,11 +335,11 @@ window.Quarto = {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
         button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
+        tooltip = new bootstrap.Tooltip(button,
+          { trigger: "manual",
             customClass: "code-copy-button-tooltip",
             offset: [0, -8]});
-        tooltip.show();    
+        tooltip.show();
       }
       setTimeout(function() {
         if (tooltip) {
@@ -416,7 +416,7 @@ window.Quarto = {
       if (onUntriggerFn) {
         config.onUntrigger = onUntriggerFn;
       }
-      window.tippy(el, config); 
+      window.tippy(el, config);
     }
     const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
     for (var i=0; i<noterefs.length; i++) {
@@ -491,7 +491,7 @@ window.Quarto = {
       tippyHover(xref, undefined, function(instance) {
         instance.disable();
         let url = xref.getAttribute('href');
-        let hash = undefined; 
+        let hash = undefined;
         if (url.startsWith('#')) {
           hash = url;
         } else {
@@ -519,7 +519,7 @@ window.Quarto = {
               if (note !== null) {
                 const html = processXRef(id, note);
                 instance.setContent(html);
-              } 
+              }
             }).finally(() => {
               instance.enable();
               instance.show();
@@ -543,7 +543,7 @@ window.Quarto = {
               }
               const html = processXRef(null, note);
               instance.setContent(html);
-            } 
+            }
           }).finally(() => {
             instance.enable();
             instance.show();
@@ -583,7 +583,7 @@ window.Quarto = {
               height = bottom - top;
             }
             if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
+              // cook up a div (if necessary) and position it
               let div = window.document.getElementById("code-annotation-line-highlight");
               if (div === null) {
                 div = window.document.createElement("div");

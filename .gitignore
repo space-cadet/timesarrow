@@ -1,36 +1,42 @@
+# Build artifacts
 node_modules/
 *.js.map
 .DS_Store
 *_files/
-rust-lattice/target/debug/
-rust-lattice/target/release/
 *.bak.*
 
-# Local editor and drawing backups
-.texpadtmp/
-*.drawio.bkp
+# Rust build artifacts
+rust-lattice/target/debug/
+rust-lattice/target/release/
 
-# Root LaTeX build products
-/timesarrow.aux
-/timesarrow.bcf
-/timesarrow.blg
-/timesarrow.dep
-/timesarrow.fdb_latexmk
-/timesarrow.fls
-/timesarrow.log
-/timesarrow.out
-/timesarrow.run.xml
-/timesarrow.toc
+# Sage's local learning system (not project-specific)
+.learnings/
+
+# Generated t20d figures and scripts
+numerics/figures/t20d-ising/
+numerics/scripts/t20d-ising-fss-reanalysis.py
+
+# Root-level t20d LaTeX build products (keep .tex sources, ignore artifacts)
+/t20d-fss-*.aux
+/t20d-fss-*.log
+/t20d-fss-*.out
+/t20d-fss-*.pdf
+
+# General LaTeX build products at root
+/texput.log
+*.synctex.gz*
+*.ocTransferId*.part
+
+# External reference PDFs (not part of the project)
+/bridgeman-chubbs/
+/Takato Mori_Tensor network, entanglement and holography, Mar 1, 2021.pdf
+/takato-mori-review-mar1-2021.pdf
+
+# Generated pilot output
+/markdown-pilot/build/
 
 # Figure-level LaTeX build products
 /figures/*.aux
 /figures/*.log
 /figures/*.out
 /figures/*.synctex.gz
-
-# Generated pilot output
-/markdown-pilot/build/
-
-# External reference material kept outside version control
-/bridgeman-chubbs/
-/Takato Mori_Tensor network, entanglement and holography, Mar 1, 2021.pdf

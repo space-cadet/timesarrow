@@ -1,6 +1,6 @@
 ---
 title: "T25 — Volume Operator Extension"
-subtitle: "Higher-valence intertwiner spectrum and Z₂ structure"
+subtitle: "Higher-valence intertwiner spectrum and algebraic spectral symmetry"
 date: "2026-06-25"
 date-modified: "2026-06-29T10:45:00+05:30"
 execute:
@@ -17,11 +17,11 @@ View all simulation runs and figures: **[TimesArrow Numerics Dashboard →](../d
 
 ## Objective
 
-Extend the volume operator $\hat{Q}$ diagonalization from 4-valent to 5-valent and 6-valent intertwiners. Verify whether the Z₂ sign-flip structure (±q₀ degeneracy) persists.
+Extend the volume operator $\hat{Q}$ diagonalization from 4-valent to 5-valent and 6-valent intertwiners. Verify whether the ± degeneracy (spectral reflection symmetry) persists.
 
 ## Status
 
-🟢 **Complete** — 4-valent, 5-valent, and 6-valent implemented with Z₂ structure verified.
+🟢 **Complete** — 4-valent, 5-valent, and 6-valent implemented with algebraic spectral reflection symmetry verified.
 
 ## Theory
 
@@ -43,7 +43,7 @@ $$
 
 Eigenvalues: $\pm \frac{8\sqrt{3}}{9} \approx \pm 1.5396$
 
-This shows the **Z₂ structure**: eigenvalues come in ± pairs, reflecting the time-orientation flip symmetry.
+This shows the **algebraic spectral reflection symmetry**: eigenvalues come in ± pairs, reflecting the operator's algebraic symmetry under sign reversal. Note that this spectral pairing is an **algebraic property** of the volume operator; demonstrating that it corresponds to a **physical** $Z_2$ time-orientation symmetry would require an explicit symmetry generator and its action on the relevant states.
 
 ### 5-valent j=1/2 (Trivially excluded)
 
@@ -61,7 +61,7 @@ $$
 \hat{Q} \text{ eigenvalues: } \pm 2.2913, \pm 0.8660, 0
 $$
 
-This shows the **Z₂ structure persists**: eigenvalues come in ± pairs, with one zero mode. The zero eigenvalue corresponds to a state with no "oriented volume" under the chosen geometric embedding.
+This shows the **algebraic spectral reflection symmetry persists**: eigenvalues come in ± pairs, with one zero mode. The zero eigenvalue corresponds to a state with no "oriented volume" under the chosen geometric embedding. As with the 4-valent case, this spectral pairing is an algebraic property of the operator; a physical $Z_2$ dynamical symmetry would require construction and testing of the corresponding symmetry generator.
 
 **Key insight:** With trivial embedding (all $\epsilon_{ijk} = +1$), the volume operator vanishes identically on the 6-valent singlet subspace due to symmetry. Non-zero eigenvalues require a **non-coplanar geometric embedding** where edge triples have mixed signs.
 
@@ -69,17 +69,17 @@ This shows the **Z₂ structure persists**: eigenvalues come in ± pairs, with o
 
 ### Spectrum Comparison
 
-| Valence | j | Dimension | Eigenvalues | Z₂ Structure |
-|---------|---|-----------|-------------|--------------|
-| 4 | 1/2 | 2 | ±1.5396 | ✅ Confirmed |
+| Valence | j | Dimension | Eigenvalues | Algebraic Spectral Symmetry |
+|---------|---|-----------|-------------|-----------------------------|
+| 4 | 1/2 | 2 | ±1.5396 | ✅ Confirmed (spectral reflection) |
 | 5 | 1/2 | 0 | — | N/A (no singlet) |
-| 6 | 1/2 | 5 | ±2.2913, ±0.8660, 0 | ✅ Confirmed |
+| 6 | 1/2 | 5 | ±2.2913, ±0.8660, 0 | ✅ Confirmed (spectral reflection) |
 
 **Data file**: [`t25-volume-operator-spectrum.json`](https://github.com/space-cadet/timesarrow/blob/main/numerics/output/t25-volume-operator-spectrum.json)
 
 ### Z₂ Diagnostic
 
-The `checkZ2Structure()` function validates that eigenvalues come in ±q pairs (with optional zeros). This is the key numerical diagnostic for the paper's central claim about time-orientation symmetry.
+The `checkZ2Structure()` function validates that eigenvalues come in ±q pairs (with optional zeros). This is a **numerical diagnostic for algebraic spectral reflection symmetry** of the volume operator. It does not, by itself, establish a physical dynamical $Z_2$ time-orientation symmetry — that would require an explicit symmetry generator and its action on the relevant states.
 
 ```typescript
 // Examples:
@@ -107,14 +107,14 @@ import {
 const space4 = constructNValentBasis(4, 0.5);
 const spec4 = computeVolumeSpectrum(space4);
 console.log(spec4.eigenvalues);     // [ -1.5396, 1.5396 ]
-console.log(spec4.hasZ2Structure);  // true
+console.log(spec4.hasZ2Structure);  // true  (algebraic spectral reflection symmetry)
 
 // 6-valent j=1/2 with geometric embedding
 const embedding = buildGeneric6ValentEmbedding();
 const space6 = constructNValentBasis(6, 0.5);
 const spec6 = computeVolumeSpectrum(space6, embedding);
 console.log(spec6.eigenvalues);     // [ -2.2913, -0.8660, 0, 0.8660, 2.2913 ]
-console.log(spec6.hasZ2Structure);  // true
+console.log(spec6.hasZ2Structure);  // true  (algebraic spectral reflection symmetry, incl. zero mode)
 ```
 
 ### TimesArrow-Specific Wrappers

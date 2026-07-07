@@ -40,7 +40,7 @@ For 4-valent j=1/2, the singlet subspace is 2-dimensional, spanned by |Φ₁⟩,
 
 ### Case 5: Mixed j
 - Example: two j=1/2 edges, two j=1 edges
-- Tests whether Z₂ structure requires uniform j
+- Tests whether algebraic ± spectral reflection symmetry requires uniform j
 
 ## Method
 
@@ -100,9 +100,10 @@ for n in [4, 5, 6]:
 
 ## Expected Outcomes
 
-### Scenario A: Universal ± Structure
-- All cases show two-fold degeneracy with ± eigenvalues
-- Strong support for Z₂ time-orientation as fundamental
+### Scenario A: Universal ± Structure (Algebraic)
+- All cases show two-fold degeneracy with ± eigenvalues.
+- This establishes an **algebraic spectral reflection symmetry** of the volume operator.
+- Demonstrating that this algebraic symmetry corresponds to a **physical $Z_2$ time-orientation symmetry** would require constructing an explicit symmetry generator and verifying it commutes with the Hamiltonian while acting as $q \to -q$ on eigenstates.
 
 ### Scenario B: j=1/2 is Special
 - Only j=1/2 shows ± structure

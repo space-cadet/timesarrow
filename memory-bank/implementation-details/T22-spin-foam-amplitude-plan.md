@@ -1,7 +1,20 @@
 # T22: Spin Foam Amplitude Calculation — Implementation Plan
 
 *Created: 2026-06-28*
+*Updated: 2026-07-08 02:50 IST*
 *Task: T22*
+
+## ⚠️ CORRECTION NOTICE (2026-07-08)
+
+**The T22a implementation is a normalized SU(2) four-character group average, NOT a complete FK/EPRL spin-foam vertex amplitude.**
+
+- The reported ratio is **R = 4/9 ≈ 0.444**, not a ~0.20 "probability ratio."
+- The original code incorrectly applied an extra squaring step (0.45 → 0.20). **That squaring was an error and has been removed.**
+- The **analytic result** is primary: G(j) = 1/(2j+1)².
+- Monte Carlo is used only as validation.
+- This calculation **does NOT establish j=1/2 dominance** for any physical model.
+
+See T32 and the corrected T22a task page for details.
 
 ## Strategic Decision: Two-Path Approach
 

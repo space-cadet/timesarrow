@@ -54,6 +54,35 @@ pdflatex timesarrow.tex
 
 ---
 
+## Numerics & Simulation Code
+
+This repository includes two numerical components for reproducing the paper's lattice gauge theory results:
+
+### TypeScript (`numerics/`)
+- **Purpose:** Spin-network utilities, intertwiner computations, Z₂ lattice gauge theory configuration tools
+- **Requirements:** Node.js 18+ (tested on Node.js 22.x)
+- **Build:**
+  ```bash
+  cd numerics
+  npm ci
+  npx tsc --strict --noEmit
+  ```
+
+### Rust (`rust-lattice/`)
+- **Purpose:** High-performance Monte Carlo simulations of Z₂ lattice gauge theory (2D–4D)
+- **Requirements:** Rust stable 1.85+ (tested on Rust 1.96.0, edition 2024)
+- **Build & test:**
+  ```bash
+  cd rust-lattice
+  cargo check
+  cargo test
+  ```
+
+### Full validation
+Run `./scripts/validate.sh` from the repository root to check both TypeScript and Rust builds, plus all Rust unit tests. The script exits with a non-zero status if any step fails.
+
+---
+
 ## Key Results
 
 1. **Local $Z_2$ gauge field on spin networks** as the microscopic representation of time-reversal symmetry in LQG, with a derived $Z_2$ lattice gauge theory effective action.

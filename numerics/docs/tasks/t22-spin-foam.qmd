@@ -18,21 +18,34 @@ Numerically evaluate EPRL/FK spin foam vertex amplitudes to verify the j=1/2 dom
 
 ## Status
 
-✅ **T22a Complete — FK Vertex Estimate Corrected**
+✅ **T22a Complete — Reclassified as SU(2) Group-Average Toy Calculation**
 
-*2026-06-29: The original Python estimate was correct. The TypeScript implementation initially had a bug (wrong denominator normalization) but has been fixed.*
+*2026-07-08: The T22a implementation has been reclassified. It computes a normalized SU(2) four-leg group average, NOT a complete FK/EPRL spin-foam vertex amplitude. The analytic result is exact; Monte Carlo is used only for validation.*
+
+::: {.callout-warning}
+## ⚠️ Important Correction
+The original T22a code mislabeled the result as an "FK vertex amplitude" and incorrectly applied an extra squaring step, converting the ratio ~0.45 into an unsupported ~0.20 "suppression factor." This extra squaring was an error. The correct ratio is **R = 4/9 ≈ 0.444**. See T32 for the full correction record.
+:::
 
 ## Results (T22a)
 
-FK 4-valent vertex amplitude ratios:
+Normalized SU(2) four-leg group average:
 
-| Ratio | Value | Interpretation |
-|-------|-------|----------------|
-| A_v(j=1) / A_v(j=1/2) | ~0.45 | Moderate suppression |
-| |A_v|²(j=1) / |A_v|²(j=1/2) | ~0.20 | Stronger suppression (~5×) |
-| Power law |A_v|² ~ j^(-α) | α ≈ 2.0 | For j ≥ 1 |
+| Quantity | Exact Value | MC Validation (2M samples) |
+|----------|-------------|---------------------------|
+| G(j=1/2) | 1/4 = 0.250000 | 0.250303 ± 1.5×10⁻⁴ |
+| G(j=1) | 1/9 ≈ 0.111111 | 0.111243 ± 8.9×10⁻⁵ |
+| G(j=1) / G(j=1/2) | **4/9 ≈ 0.444444** | 0.444474 ± 6.3×10⁻⁴ |
+| Power law G(j) ~ j^(-α) | α = 2 (asymptotic) | α ≈ 1.54 (fit j≥1) |
 
-**Conclusion**: j=1/2 dominance is *partially* justified — higher spins are suppressed but not overwhelmingly. Additional arguments (thermal, entropy, boundary conditions) still needed for full justification.
+**Analytic derivation:** Using the Clebsch–Gordan decomposition χ^j(h)² = Σ_{J=0}^{2j} χ^J(h) and orthogonality of characters, the exact result is G(j) = 1/(2j+1)².
+
+**What this is NOT:**
+- A complete FK or EPRL spin-foam vertex amplitude
+- Evidence for j=1/2 dominance in any physical model
+- A substitute for the full intertwiner, Immirzi, and face-amplitude structure
+
+**Conclusion:** This is a useful analytic exercise and code check, but it does not by itself justify j=1/2 truncation. The ~0.45 ratio is exact for this toy integral; there is no additional ~0.20 suppression factor.
 
 ## Theory
 

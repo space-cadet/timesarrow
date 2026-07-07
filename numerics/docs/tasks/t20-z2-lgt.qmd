@@ -2,7 +2,7 @@
 title: "T20 — Z₂ Lattice Gauge Theory Monte Carlo"
 subtitle: "Confinement-deconfinement transition"
 date: "2026-07-02"
-date-modified: "2026-07-05 23:15 IST"
+date-modified: "2026-07-08 02:55 IST"
 toc: true
 toc-title: "Contents"
 ---
@@ -490,6 +490,80 @@ const error = jackknifeError(binned);
 
 console.log(`⟨P⟩ = ${mean.toFixed(4)} ± ${error.toFixed(4)}`);
 ```
+
+## Phase 3b: Ising FSS Reanalysis (T32-T20d)
+
+**Date**: 2026-07-08
+
+### Summary
+
+The L=16 and L=24 fine-scan data have been reanalysed using **continuous 3D Ising universality scaling** (ν ≈ 0.6299, γ ≈ 1.236, α ≈ 0.11). The key finding is that the pseudo-critical couplings extrapolate to the established literature value β_c ≈ 0.761, supporting the continuous-transition interpretation.
+
+### Analysis Script
+
+- **Script**: `numerics/scripts/t20d-ising-fss-reanalysis.py`
+- **Reproducible**: Run from repo root with `python3 numerics/scripts/t20d-ising-fss-reanalysis.py`
+- **Figures**: `numerics/figures/t20d-ising/`
+
+### Pseudo-Critical Couplings
+
+| L | β_c(L) from χ_peak | χ_max |
+|---|-------------------|-------|
+| 16 | 0.75167 | 1.1297 |
+| 24 | 0.75606 | 1.2833 |
+
+### Thermodynamic Extrapolation
+
+Using the Ising scaling form β_c(L) = β_c(∞) + A·L^(−1/ν):
+
+| Quantity | Value |
+|----------|-------|
+| Extrapolated β_c(∞) | **0.76092** |
+| Literature β_c (3D Z₂ / 3D Ising dual) | 0.76141 |
+| Deviation | −0.00049 (−0.06%) |
+| Shift amplitude A | −0.75469 |
+
+**Conclusion**: The extrapolated β_c agrees with the known literature value to within 0.06%, well within the expected uncertainty from a two-point extrapolation.
+
+### Scaling Collapse
+
+When plotted against the scaling variable x = L^(1/ν)(β − β_c^lit), the susceptibility data from L=16 and L=24 show **reasonable data collapse** onto a single universal curve. The Binder cumulant curves cross near x ≈ 0, consistent with the expected critical behavior. Collapse plots are saved as:
+
+- `t20d-chi-collapse-lit.png` — χ collapse using literature β_c
+- `t20d-chi-collapse-fit.png` — χ collapse using fitted β_c(∞)
+- `t20d-binder-collapse.png` — Binder cumulant collapse
+- `t20d-plaquette-collapse.png` — Plaquette collapse
+
+### Caveats and Limitations
+
+1. **Two lattice sizes only**: The L=16 and L=24 data provide only two points for the β_c extrapolation and the χ_max scaling. The fitted γ/ν = 0.314 is **not reliable** — proper exponent extraction requires at least 3–4 lattice sizes.
+2. **No autocorrelation analysis**: The present analysis uses the reported error bars but does not recompute integrated autocorrelation times or blocked jackknife errors from raw time series.
+3. **Corrections to scaling**: Not included. With only two lattice sizes, distinguishing leading scaling from corrections is impossible.
+4. **Binder cumulant**: The plaquette Binder cumulant approaches ~2/3 in the ordered phase, which is the generic limit for a narrowly distributed variable with nonzero mean. It is **not evidence** of first-order behavior.
+
+### Figures
+
+![Susceptibility — raw data](../figures/t20d-ising/t20d-chi-raw.png)
+
+*Figure: Susceptibility χ vs β for L=16 and L=24. The vertical lines mark the literature critical point (red dashed) and the fitted β_c(∞) (green dash-dot). The L=24 peak is higher and shifted to larger β, consistent with finite-size scaling.*
+
+![β_c extrapolation](../figures/t20d-ising/t20d-bc-extrapolation.png)
+
+*Figure: Extrapolation of pseudo-critical β_c(L) to the thermodynamic limit using the Ising scaling form β_c(L) = β_c(∞) + A·L^(−1/ν). The red dotted line is the literature value β_c = 0.76141.*
+
+![Susceptibility FSS collapse](../figures/t20d-ising/t20d-chi-collapse-lit.png)
+
+*Figure: Scaling collapse of susceptibility using 3D Ising exponents and the literature β_c. The data from L=16 and L=24 fall onto a single curve, consistent with the continuous-transition hypothesis.*
+
+![Binder cumulant FSS collapse](../figures/t20d-ising/t20d-binder-collapse.png)
+
+*Figure: Binder cumulant vs scaling variable. The curves cross near x = 0, consistent with the universal critical behavior expected for a continuous transition.*
+
+![Combined overview](../figures/t20d-ising/t20d-overview.png)
+
+*Figure: Combined overview of plaquette, susceptibility, specific heat, and Binder cumulant for the L=16 and L=24 fine scans. The dashed red line marks the literature critical point β_c ≈ 0.761.*
+
+---
 
 ## Phase 3b: Corrected Finite-Size Scaling Status
 

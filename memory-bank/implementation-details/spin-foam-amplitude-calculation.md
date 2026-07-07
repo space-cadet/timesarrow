@@ -1,12 +1,22 @@
 # Calculation Plan: Spin Foam Amplitude for j=1/2 Dominance
 
 *Created: 2026-06-24*
-*Updated: 2026-07-05 22:24:10 IST*
+*Updated: 2026-07-08 02:50 IST*
 *Task: T22*
 
-## Correction Notice
+## ⚠️ CORRECTION NOTICE (2026-07-08)
 
-The T22a implementation evaluates a normalized SU(2) four-character group average. It is not a complete FK/EPRL vertex amplitude and does not establish $j=1/2$ dominance. The reported ratio near $0.45$ must not be squared again and relabeled as a $0.20$ probability ratio. See T32 before using this plan for manuscript claims.
+**The T22a implementation is a normalized SU(2) four-character group average, NOT a complete FK/EPRL spin-foam vertex amplitude.**
+
+- The reported ratio is **R = 4/9 ≈ 0.444**, not a ~0.20 "probability ratio."
+- The original code incorrectly applied an extra squaring step (0.45 → 0.20). **That squaring was an error and has been removed.**
+- Monte Carlo was used as a numerical check; the **analytic result** is primary.
+- This calculation **does NOT establish j=1/2 dominance** for any physical spin-foam model.
+- The full FK/EPRL vertex requires intertwiners, the Immirzi parameter, face amplitudes, and coherent-state boundary conditions — none of which are included here.
+
+See T32 and the corrected T22a task page before using this plan for any manuscript claims.
+
+---
 
 ## Overview
 
@@ -108,6 +118,8 @@ Even a single-vertex computation provides:
 
 **When sufficient:** If the manuscript presents the Wilson action as an approximation ("in the j=1/2 sector...")
 
+**ACTUAL STATUS (2026-07-08):** The T22a implementation computed a **normalized SU(2) group average**, not a full FK vertex. The exact ratio is **R = 4/9 ≈ 0.444**, not a ~0.20 suppression. This is a useful toy calculation but **does not establish j=1/2 dominance** for any physical model.
+
 ### Path 2: Full Systematic Study (1-2 weeks)
 
 **Scope:** Multiple spins, both models, γ-dependence, asymptotic verification
@@ -146,6 +158,29 @@ A_v ~ j^{-α} exp(i S_{Regge}[j])
 ```
 
 where α depends on the model and vertex geometry.
+
+## What T22a Actually Computed
+
+The T22a script evaluates:
+
+$$G(j) = \\frac{1}{(2j+1)^3} \\int_{SU(2)} dh \\,[\\chi^j(h)]^4$$
+
+Using the Clebsch–Gordan decomposition $\\chi^j(h)^2 = \\sum_{J=0}^{2j} \\chi^J(h)$ and orthogonality of characters, the exact result is:
+
+$$G(j) = \\frac{1}{(2j+1)^2}$$
+
+**Key values:**
+- $G(j=\\tfrac{1}{2}) = \\frac{1}{4} = 0.25$
+- $G(j=1) = \\frac{1}{9} \\approx 0.111$
+- Exact ratio: $G(1)/G(\\tfrac{1}{2}) = \\frac{4}{9} \\approx 0.444$
+
+This is **not** a complete FK/EPRL vertex because it omits:
+- Intertwiner contractions (the $(2j+1)^{-3}$ factor is a toy normalization, not the full intertwiner)
+- The Immirzi parameter γ
+- Face amplitudes and combinatorial factors
+- Coherent-state boundary conditions
+- The δ(∏_i h_i) gauge constraint
+- SL(2,C) → SU(2) embedding (EPRL)
 
 ## Implementation
 
@@ -198,6 +233,22 @@ code/simulations/spin-foam/
 ├── run_calculation.py
 └── analysis/
 ```
+
+## T22a Corrected Files
+
+- `numerics/scripts/su2-four-leg-group-average.py` — main script with analytic derivation
+- `numerics/scripts/su2-four-leg-group-average-multi-spin.py` — multi-spin scan
+- `numerics/scripts/su2-four-leg-group-average-plot.py` — figure generation
+- `output/su2-four-leg-group-average-multi-spin-20260708.json` — data
+- `figures/su2-four-leg-group-average-vs-spin.{png,svg}` — plots
+
+## Superseded T22a Files (Preserved for Provenance)
+
+- `numerics/scripts/t22a-fk-vertex-estimate.py` — old version (mislabeled, extra squaring)
+- `numerics/scripts/t22a-fk-vertex-multi-spin.py` — old version (mislabeled)
+- `numerics/scripts/t22a-generate-plot.py` — old version (mislabeled)
+- `output/t22a-fk-vertex-multi-spin-20260628.json` — old data
+- `figures/t22a-fk-vertex-vs-spin.{png,svg}` — old figures
 
 ## Validation
 1. Reproduce known results from Donà et al. (2020, 2022)

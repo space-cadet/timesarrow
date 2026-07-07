@@ -11,7 +11,7 @@ The post-May simulation infrastructure and raw datasets are preserved, but the f
 - T20d: first-order classification, plaquette-Binder argument, and schematic histogram evidence.
 - T22a: FK-vertex labeling and the extra squaring from approximately $0.45$ to $0.20$.
 - T31: iterative gauge alignment and phase-scaling claims based on the gauge-dependent path sum.
-- T25: promotion of spectral $± q$ pairing to a physical time-orientation symmetry without an explicit transformation operator.
+- T25: spectral $± q$ pairing overinterpreted as a physical time-orientation symmetry without an explicit transformation operator. **Calibrated under T32 (2026-07-08): now described as algebraic spectral reflection symmetry with physical-transformation test deferred.**
 
 TypeScript and Rust build/test reproducibility and repository artifact policy are also part of T32. Post-May numerical claims are blocked from the main manuscript until T32 is complete.
 

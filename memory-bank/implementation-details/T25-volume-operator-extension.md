@@ -38,8 +38,8 @@ projects/timesarrow/
 
 ## Results
 
-| Valence | j | Dimension | Eigenvalues | Z₂ Structure | Status |
-|---------|---|-----------|-------------|--------------|--------|
-| 4 | 1/2 | 2 | ±8√3/9 ≈ ±1.5396 | ✅ Confirmed | Complete |
-| 5 | 1/2 | 0 | N/A | N/A | Excluded by parity |
+| Valence | j | Dimension | Eigenvalues | Algebraic Spectral Symmetry | Status |
+|---------|---|-----------|-------------|-----------------------------|--------|
+| 4 | 1/2 | 2 | ±8√3/9 ≈ ±1.5396 | ✅ Confirmed (spectral reflection) | Complete |
+| 5 | 1/2 | 0 | N/A | N/A (no singlet) | Excluded by parity |
 | 6 | 1/2 | 5 | [pending] | [pending] | Framework ready |

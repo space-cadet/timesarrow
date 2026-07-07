@@ -252,6 +252,22 @@ figureFiles = [
   // T20 Phase 2 (2D) plots
   {id: "t20-plaquette-vs-beta", title: "Plaquette vs β (2D)", desc: "2D plaquette expectation"},
   {id: "t20-susceptibility", title: "Susceptibility (2D)", desc: "2D magnetic susceptibility"},
+  // T20d Ising FSS Reanalysis (T32-T20d, 2026-07-08)
+  {id: "t20d-overview", title: "T20d: Combined Overview", desc: "Combined overview of L=16 and L=24 fine scans (3D Ising FSS)"},
+  {id: "t20d-chi-raw", title: "T20d: Susceptibility (Raw)", desc: "Susceptibility χ vs β for L=16 and L=24"},
+  {id: "t20d-bc-extrapolation", title: "T20d: β_c Extrapolation", desc: "Extrapolation of pseudo-critical β_c(L) to thermodynamic limit"},
+  {id: "t20d-chi-collapse-lit", title: "T20d: χ Collapse (lit β_c)", desc: "Scaling collapse using literature β_c = 0.76141"},
+  {id: "t20d-chi-collapse-fit", title: "T20d: χ Collapse (fit β_c)", desc: "Scaling collapse using fitted β_c(∞) = 0.76092"},
+  {id: "t20d-binder-collapse", title: "T20d: Binder Collapse", desc: "Binder cumulant vs scaling variable"},
+  {id: "t20d-plaquette-collapse", title: "T20d: Plaquette Collapse", desc: "Plaquette expectation scaling collapse"},
+  {id: "t20d-chi-max-scaling", title: "T20d: χ_max Scaling", desc: "Peak susceptibility scaling with L"},
+  // Old first-order figures (SUPERSEDED — see T32-T20d correction)
+  {id: "t20-binder-first-order-scaling", title: "❌ First-Order Scaling (SUPERSEDED)", desc: "INVALID — synthetic illustration, not sampled data"},
+  {id: "t20-binder-first-order-scaling-all-L", title: "❌ First-Order All L (SUPERSEDED)", desc: "INVALID — superseded by T20d Ising FSS reanalysis"},
+  {id: "t20-scaling-collapse", title: "❌ Scaling Collapse (SUPERSEDED)", desc: "INVALID — inconclusive without autocorrelation-aware errors"},
+  {id: "t20-scaling-collapse-all-L", title: "❌ Scaling Collapse All L (SUPERSEDED)", desc: "INVALID — superseded by T20d Ising FSS reanalysis"},
+  {id: "t20-critical-exponents", title: "❌ Critical Exponents (SUPERSEDED)", desc: "INVALID — unreliable with only 2 lattice sizes"},
+  {id: "t20-first-order-scaling-summary", title: "❌ First-Order Summary (SUPERSEDED)", desc: "INVALID — withdrawn first-order interpretation"},
   // Scaling analysis
   {id: "t20-binder-first-order-scaling", title: "First-Order Scaling", desc: "Binder cumulant first-order scaling"},
   {id: "t20-binder-first-order-scaling-all-L", title: "First-Order All L", desc: "First-order scaling across all L"},
@@ -266,13 +282,14 @@ figureFiles = [
 
 // Group by category
 figureCategories = [
+  {name: "T20d Ising FSS Reanalysis", filter: f => f.id && f.id.startsWith("t20d-")},
   {name: "3D Phase 3 (Core)", filter: f => f.id && f.id.includes("p3-") && !f.id.includes("all-L") && !f.id.includes("multi")},
   {name: "3D Finite-Size Scaling", filter: f => f.id && f.id.includes("p3-") && (f.id.includes("all-L") || f.id.includes("multi"))},
   {name: "2D Phase 2", filter: f => f.id && f.id.includes("t20-") && !f.id.includes("p3-") && !f.id.includes("all-L") && !f.id.includes("multi") && !f.id.includes("scaling") && !f.id.includes("critical") && !f.id.includes("first-order") && !f.id.includes("convergence") && !f.id.includes("error")},
   {name: "Scaling Analysis", filter: f => f.id && (f.id.includes("scaling") || f.id.includes("collapse") || f.id.includes("critical") || f.id.includes("first-order") || f.id.includes("convergence") || f.id.includes("error"))}
 ]
 
-viewof galleryCategory = Inputs.select(figureCategories.map(c => c.name), {label: "Category:", value: "3D Phase 3 (Core)"})
+viewof galleryCategory = Inputs.select(figureCategories.map(c => c.name), {label: "Category:", value: "T20d Ising FSS Reanalysis"})
 
 activeCategory = figureCategories.find(c => c.name === galleryCategory)
 selectedFigures = activeCategory ? figureFiles.filter(activeCategory.filter) : figureFiles
