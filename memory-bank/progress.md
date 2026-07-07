@@ -1,6 +1,6 @@
 # timesarrow — Progress Tracker
 
-*Updated: 2026-07-05 23:12:09 IST*
+*Updated: 2026-07-08 00:54:22 IST*
 
 ## T32 Correction Gate
 
@@ -14,6 +14,12 @@ The post-May simulation infrastructure and raw datasets are preserved, but the f
 - T25: promotion of spectral $± q$ pairing to a physical time-orientation symmetry without an explicit transformation operator.
 
 TypeScript and Rust build/test reproducibility and repository artifact policy are also part of T32. Post-May numerical claims are blocked from the main manuscript until T32 is complete.
+
+### T32 Error Inventory — 2026-07-08
+
+- ✅ `post-may-numerics-correction-plan.md` now records a dedicated identified-error inventory.
+- ✅ The inventory separates the actual errors from the correction workstreams.
+- 🔄 File-level corrections and reproducible validation remain pending under T32.
 
 ### T20d Correction Progress — 2026-07-05
 

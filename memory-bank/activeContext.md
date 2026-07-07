@@ -1,8 +1,8 @@
 # timesarrow — Active Context
 
-*Updated: 2026-07-05 23:12:09 IST*
+*Updated: 2026-07-08 00:54:22 IST*
 
-## Current Session — 2026-07-05 Night
+## Current Session — 2026-07-08 Night
 
 ### T32: Post-May Numerics Correction and Reproducibility Pass — IN PROGRESS 🔄
 
@@ -13,6 +13,7 @@
 - T25 spectral pairing remains useful but does not alone establish a physical time-orientation symmetry.
 - TypeScript/Rust build and test reproducibility must be restored before manuscript promotion.
 - `timesarrow.tex` remains gated from post-May numerical claims until T32 is complete.
+- The correction plan now includes an explicit error inventory, not only a task list, covering T20d, T22a, T31, T25, reproducibility, and the manuscript gate.
 
 **T20d correction progress (2026-07-05 23:12 IST):**
 
@@ -22,6 +23,11 @@
 - Preserved raw data; numerical reanalysis, dashboard correction, and figure retirement/replacement remain open.
 
 **Plan:** `implementation-details/post-may-numerics-correction-plan.md`
+
+**Memory-bank update (2026-07-08 00:54 IST):**
+
+- Expanded the plan with a forensic inventory of the identified post-May errors.
+- Preserved the existing correction workstreams and T32 gate; no new task or implementation file was created beyond the required edit chunk.
 
 ## Previous Session — 2026-07-02 Evening
 

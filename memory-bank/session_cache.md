@@ -1,9 +1,9 @@
 # Session Cache
 
 *Created: 2026-07-02 16:48:02 IST*
-*Last Updated: 2026-07-05 23:12:09 IST*
+*Last Updated: 2026-07-08 00:54:22 IST*
 
-**Started**: 2026-07-05 22:24:10 IST
+**Started**: 2026-07-08 00:54:22 IST
 **Focus Task**: T32: Post-May Numerics Correction and Reproducibility Pass
 **Session File**: `sessions/2026-07-05-night.md`
 **Status**: 🔄 Active
@@ -11,7 +11,7 @@
 ## Overview
 
 - Active: 5 | Paused: 0 | Completed: 15
-- Last Session: 2026-07-05
+- Last Session: 2026-07-08
 - Current Period: night
 
 ## Active Tasks
@@ -20,7 +20,7 @@
 **Status:** 🔄 **IN PROGRESS**
 **Started:** 2026-07-05
 **Context**: [Details](tasks/T32.md)
-**Progress**: T20d annexure and task page corrected and rebuilt; numerical reanalysis and dashboard/figure cleanup remain.
+**Progress**: Correction plan now includes an explicit identified-error inventory; T20d reanalysis, dashboard cleanup, T22a/T31/T25 corrections, and reproducibility remain open.
 
 ### T20d: Critical Exponent Extraction from 3D Z₂ LGT
 **Status:** 🔄 **IN PROGRESS**
@@ -142,4 +142,5 @@
 ## Session History
 
 - `sessions/2026-07-05-night.md`: Post-May numerical review and T32 correction plan.
+- `sessions/2026-07-05-night.md`: 2026-07-08 continuation added explicit T32 error inventory to the correction plan.
 - `sessions/2026-07-02-evening.md`: T31 signed-volume production session; interpretations superseded where noted by T32.
