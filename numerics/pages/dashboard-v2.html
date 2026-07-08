@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TimesArrow Numerics Dashboard v2</title>
+  <style>
+    :root {
+      --bg: #f8f9fa; --card: #ffffff; --text: #212529; --muted: #6c757d;
+      --border: #dee2e6; --primary: #0d6efd; --success: #198754; --warning: #ffc107;
+      --danger: #dc3545; --info: #0dcaf0; --hover: #f8f9fa; --selected: #e7f1ff;
+      --shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1d21; --card: #22262b; --text: #e9ecef; --muted: #adb5bd;
+        --border: #343a40; --hover: #2a2f35; --selected: #1a3a5c;
+        --shadow: 0 1px 3px rgba(0,0,0,0.3);
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.5; color: var(--text); background: var(--bg); padding: 20px; }
+    .container { max-width: 1400px; margin: 0 auto; background: var(--card); border-radius: 8px; box-shadow: var(--shadow); padding: 24px; }
+    h1 { font-size: 1.5rem; margin-bottom: 4px; }
+    .subtitle { color: var(--muted); font-size: 0.9rem; margin-bottom: 20px; }
+
+    .summary { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
+    .summary-card { flex: 1 1 100px; min-width: 90px; max-width: 140px; border: 2px solid; border-radius: 6px; padding: 10px; text-align: center; background: var(--card); }
+    .summary-card .value { font-size: 1.5rem; font-weight: 600; line-height: 1.2; }
+    .summary-card .label { font-size: 0.7rem; color: var(--muted); margin-top: 2px; }
+
+    h2 { font-size: 1.1rem; margin: 24px 0 12px; padding-bottom: 6px; border-bottom: 2px solid var(--border); }
+
+    .tabs { display: flex; gap: 4px; margin-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .tab { padding: 8px 16px; border: none; background: none; cursor: pointer; font-size: 0.9rem; border-bottom: 2px solid transparent; color: var(--muted); }
+    .tab.active { border-bottom-color: var(--primary); color: var(--primary); font-weight: 500; }
+    .tab:hover { background: var(--hover); }
+
+    .filters { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; padding: 12px; background: var(--bg); border-radius: 6px; }
+    .filter-group { display: flex; align-items: center; gap: 6px; }
+    .filter-group label { font-size: 0.8rem; font-weight: 500; color: var(--muted); }
+    select, input[type="text"] { padding: 4px 8px; border: 1px solid var(--border); border-radius: 4px; font-size: 0.85rem; background: var(--card); color: var(--text); }
+    .btn { padding: 4px 12px; border: 1px solid var(--border); border-radius: 4px; background: var(--card); cursor: pointer; font-size: 0.8rem; color: var(--text); }
+    .btn:hover { background: var(--hover); }
+    .btn-primary { border-color: var(--primary); color: var(--primary); }
+
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-bottom: 12px; }
+    th { text-align: left; padding: 8px; border-bottom: 2px solid var(--border); background: var(--bg); font-weight: 600; cursor: pointer; user-select: none; }
+    th:hover { background: var(--hover); }
+    th .sort-arrow { margin-left: 4px; opacity: 0.5; }
+    th.sort-asc .sort-arrow::after { content: '▲'; opacity: 1; }
+    th.sort-desc .sort-arrow::after { content: '▼'; opacity: 1; }
+    td { padding: 6px 8px; border-bottom: 1px solid var(--border); }
+    tr:hover { background: var(--hover); cursor: pointer; }
+    tr.selected { background: var(--selected) !important; }
+    .mono { font-family: 'SF Mono', Monaco, monospace; font-size: 0.8rem; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 500; }
+    .badge-success { background: #d1e7dd; color: #0f5132; }
+    .badge-warning { background: #fff3cd; color: #856404; }
+    .badge-danger { background: #f8d7da; color: #721c24; }
+    .badge-test { background: #f8d7da; color: #721c24; }
+    @media (prefers-color-scheme: dark) {
+      .badge-success { background: #0f3d25; color: #75b798; }
+      .badge-warning { background: #4d3a0a; color: #ffc107; }
+      .badge-danger { background: #4a1515; color: #f5c2c7; }
+    }
+
+    .detail-panel { background: var(--bg); border-radius: 6px; padding: 16px; margin-top: 12px; display: none; }
+    .detail-panel.visible { display: block; }
+    .detail-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
+    .detail-grid { display: flex; gap: 12px; flex-wrap: wrap; }
+    .detail-card { flex: 1 1 280px; min-width: 260px; background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 12px; }
+    .detail-card h4 { font-size: 0.85rem; color: var(--muted); margin-bottom: 8px; }
+    .param-row { display: flex; justify-content: space-between; padding: 3px 0; border-bottom: 1px solid var(--border); font-size: 0.8rem; }
+    .param-key { color: var(--muted); }
+    .param-value { font-family: monospace; word-break: break-all; max-width: 200px; text-align: right; }
+    .detail-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+    .detail-actions .btn { font-size: 0.8rem; padding: 6px 12px; text-decoration: none; display: inline-block; }
+
+    .fig-filters { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; padding: 12px; background: var(--bg); border-radius: 6px; }
+    .checkbox-group { display: flex; flex-direction: column; gap: 4px; }
+    .checkbox-group label { font-size: 0.8rem; font-weight: 500; color: var(--muted); }
+    .checkbox-group div { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; }
+    .checkbox-group input[type="checkbox"] { cursor: pointer; }
+
+    .figure-grid { display: flex; flex-wrap: wrap; gap: 16px; }
+    .figure-card { flex: 1 1 260px; max-width: 320px; min-width: 220px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--card); }
+    .figure-img { background: var(--bg); padding: 12px; text-align: center; min-height: 160px; display: flex; align-items: center; justify-content: center; }
+    .figure-img img { max-width: 100%; max-height: 150px; object-fit: contain; cursor: pointer; }
+    .figure-img .placeholder { color: var(--muted); font-size: 0.85rem; }
+    .figure-info { padding: 12px; }
+    .figure-title { font-weight: 600; font-size: 0.85rem; margin-bottom: 4px; }
+    .figure-desc { font-size: 0.75rem; color: var(--muted); margin-bottom: 8px; }
+    .figure-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 6px; }
+    .tag { font-size: 0.7rem; background: var(--bg); color: var(--muted); padding: 2px 8px; border-radius: 3px; }
+    .type-badge { display: inline-block; font-size: 0.75rem; padding: 2px 8px; border-radius: 4px; margin-right: 8px; }
+    .type-fss { background: #d1e7dd; color: #0f5132; }
+    .type-raw { background: #cfe2ff; color: #084298; }
+    .type-analysis { background: #fff3cd; color: #856404; }
+    @media (prefers-color-scheme: dark) {
+      .type-fss { background: #0f3d25; color: #75b798; }
+      .type-raw { background: #0a2a4a; color: #6ea8fe; }
+      .type-analysis { background: #4d3a0a; color: #ffc107; }
+    }
+    .section-header { display: flex; align-items: center; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 2px solid var(--border); }
+
+    .hint { font-size: 0.75rem; color: var(--muted); margin-top: 6px; }
+    .loading { text-align: center; padding: 40px; color: var(--muted); }
+    .error { background: #f8d7da; color: #721c24; padding: 12px; border-radius: 6px; margin-bottom: 12px; }
+    @media (prefers-color-scheme: dark) { .error { background: #4a1515; color: #f5c2c7; } }
+
+    .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); align-items: center; justify-content: center; }
+    .modal.visible { display: flex; }
+    .modal-content { max-width: 90%; max-height: 90%; }
+    .modal-content img { max-width: 100%; max-height: 90vh; border-radius: 4px; }
+    .modal-close { position: absolute; top: 20px; right: 30px; color: white; font-size: 2rem; cursor: pointer; }
+
+    .chart-container { background: var(--bg); border-radius: 6px; padding: 16px; margin-top: 12px; }
+    .chart-container svg { width: 100%; height: 300px; }
+
+    .data-status { padding: 8px 12px; border-radius: 4px; font-size: 0.85rem; margin-bottom: 12px; display: none; }
+    .data-status.info { background: #cff4fc; color: #055160; display: block; }
+    .data-status.error { background: #f8d7da; color: #721c24; display: block; }
+    @media (prefers-color-scheme: dark) {
+      .data-status.info { background: #0a3a42; color: #6edff6; }
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 12px; }
+      .summary-card { flex: 1 1 80px; min-width: 80px; }
+      .filters { flex-direction: column; }
+      .fig-filters { flex-direction: column; }
+      .detail-grid { flex-direction: column; }
+    }
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>TimesArrow Numerics Dashboard</h1>
+    <p class="subtitle">Explore simulation runs, results, and figures</p>
+
+    <div id="dataStatus" class="data-status info">Loading data...</div>
+
+    <div class="summary" id="summaryCards">
+      <div class="summary-card" style="border-color: var(--primary);">
+        <div class="value" id="totalRuns">—</div><div class="label">Total Runs</div>
+      </div>
+      <div class="summary-card" style="border-color: var(--info);">
+        <div class="value" id="totalTasks">—</div><div class="label">Tasks</div>
+      </div>
+      <div class="summary-card" style="border-color: var(--success);">
+        <div class="value" id="completeRuns">—</div><div class="label">Complete</div>
+      </div>
+      <div class="summary-card" style="border-color: var(--warning);">
+        <div class="value" id="timedRuns">—</div><div class="label">With Timing</div>
+      </div>
+      <div class="summary-card" style="border-color: #212529;">
+        <div class="value" id="totalCompute">—</div><div class="label">Compute (min)</div>
+      </div>
+      <div class="summary-card" style="border-color: var(--danger);">
+        <div class="value" id="avgPerf">—</div><div class="label">Avg sw/s</div>
+      </div>
+      <div class="summary-card" style="border-color: #6610f2;">
+        <div class="value" id="totalFigures">—</div><div class="label">Figures</div>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('runs')">Runs & Results</button>
+      <button class="tab" onclick="switchTab('figures')">Figure Archive</button>
+      <button class="tab" onclick="switchTab('performance')">Performance</button>
+    </div>
+
+    <div id="runsTab" class="tab-content">
+      <h2>Runs Table</h2>
+      <div class="filters">
+        <div class="filter-group"><label>Task:</label><select id="filterTask" onchange="filterRuns()"><option>All</option></select></div>
+        <div class="filter-group"><label>Phase:</label><select id="filterPhase" onchange="filterRuns()"><option>All</option></select></div>
+        <div class="filter-group"><label>Status:</label><select id="filterStatus" onchange="filterRuns()"><option>All</option><option>complete</option><option>in-progress</option><option>failed</option></select></div>
+        <div class="filter-group"><label>Dimension:</label><select id="filterDim" onchange="filterRuns()"><option>All</option><option>2D</option><option>3D</option></select></div>
+        <div class="filter-group"><label>Search:</label><input type="text" id="filterSearch" placeholder="Run ID, description, finding..." oninput="filterRuns()" style="width: 200px;"></div>
+        <div class="filter-group"><button class="btn" onclick="resetFilters()">Reset</button></div>
+      </div>
+
+      <div class="table-wrap">
+        <table id="runsTable">
+          <thead>
+            <tr>
+              <th onclick="sortRuns('runId')">Run ID <span class="sort-arrow">▲▼</span></th>
+              <th onclick="sortRuns('task')">Task <span class="sort-arrow">▲▼</span></th>
+              <th onclick="sortRuns('phase')">Phase <span class="sort-arrow">▲▼</span></th>
+              <th onclick="sortRuns('latticeSize')">L <span class="sort-arrow">▲▼</span></th>
+              <th onclick="sortRuns('dimension')">D <span class="sort-arrow">▲▼</span></th>
+              <th onclick="sortRuns('betaRange')">β Range <span class="sort-arrow">▲▼</span></th>
+              <th onclick="sortRuns('wallTime')">Wall <span class="sort-arrow">▲▼</span></th>
+              <th onclick="sortRuns('perf')">Perf <span class="sort-arrow">▲▼</span></th>
+              <th onclick="sortRuns('betaCount')">βs <span class="sort-arrow">▲▼</span></th>
+              <th onclick="sortRuns('date')">Date <span class="sort-arrow">▲▼</span></th>
+              <th onclick="sortRuns('status')">Status <span class="sort-arrow">▲▼</span></th>
+            </tr>
+          </thead>
+          <tbody id="runsTableBody"><tr><td colspan="11" class="loading">Loading data...</td></tr></tbody>
+        </table>
+      </div>
+      <p class="hint" id="runsHint">Loading data...</p>
+
+      <div id="detailPanel" class="detail-panel">
+        <div class="detail-header">
+          <div><span style="font-weight: 600;" id="detailTitle">Select a run</span><span id="detailBadge"></span></div>
+          <div class="detail-actions" id="detailActions"></div>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 12px;" id="detailDesc"></p>
+        <div class="detail-grid" id="detailGrid"></div>
+        <div id="detailFigures" style="margin-top: 16px;"></div>
+      </div>
+    </div>
+
+    <!-- ===================== FSS ANALYSIS TEASER ===================== -->
+    <div id="fssTeaser" style="margin-top: 32px; padding: 16px 20px; background: #e7f1ff; border-left: 4px solid var(--primary); border-radius: 4px;">
+      <h3 style="margin: 0 0 8px 0; font-size: 1.1rem;">📊 T20: FSS Analysis Complete</h3>
+      <p style="margin: 0; font-size: 0.9rem; color: var(--text);">
+        First-order phase transition confirmed at <strong>β_c = 0.7613(2)</strong>. 
+        Binder cumulant converges to <strong>U* = 2/3</strong>. 
+        The arrow of time emerges <em>sharply</em> at the critical coupling.
+        <a href="tasks/t20-z2-lgt.html#fss-analysis-3d-z_2-transition" style="color: var(--primary); text-decoration: none; font-weight: 600;">View full analysis →</a>
+      </p>
+    </div>
+
+    <div id="figuresTab" class="tab-content hidden">
+      <h2>Figure Archive</h2>
+      <div class="fig-filters">
+        <div class="checkbox-group"><label>Task</label><div id="figFilterTask"></div></div>
+        <div class="checkbox-group"><label>Dimension</label><div id="figFilterDim"></div></div>
+        <div class="checkbox-group"><label>Type</label><div id="figFilterType"></div></div>
+        <div class="filter-group" style="align-self: flex-end;"><label>Search:</label><input type="text" id="figSearch" placeholder="Figure title..." oninput="filterFigures()" style="width: 180px;"></div>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 12px;" id="figuresCount">Loading...</p>
+      <div id="figuresContainer"></div>
+    </div>
+
+    <div id="performanceTab" class="tab-content hidden">
+      <h2>Performance</h2>
+      <div class="chart-container">
+        <svg id="perfChart" viewBox="0 0 800 300"></svg>
+        <p class="hint">Wall time vs lattice size (log-log). Color = dimension.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="imageModal" class="modal" onclick="closeModal()">
+    <span class="modal-close">&times;</span>
+    <div class="modal-content"><img id="modalImg" src="" alt=""></div>
+  </div>
+
+<script>
+// ===================== DATA LOADING =====================
+let runs = [];
+let figures = [];
+let selectedRun = null;
+let sortCol = 'date';
+let sortAsc = false;
+let dataLoaded = false;
+
+const DATA_URL = 'data/dashboard-data.json';
+const FIGS_URL = 'data/dashboard-figures.json';
+const DATA_FALLBACK = 'https://raw.githubusercontent.com/space-cadet/space-cadet.github.io/main/projects/timesarrow/numerics/data/dashboard-data.json';
+const FIGS_FALLBACK = 'https://raw.githubusercontent.com/space-cadet/space-cadet.github.io/main/projects/timesarrow/numerics/data/dashboard-figures.json';
+
+async function init() {
+  const statusEl = document.getElementById('dataStatus');
+  try {
+    let dataRes = await fetch(DATA_URL).catch(() => null);
+    let figRes = await fetch(FIGS_URL).catch(() => null);
+
+    if (!dataRes || !dataRes.ok) {
+      statusEl.textContent = 'Local data not found, trying GitHub raw...';
+      dataRes = await fetch(DATA_FALLBACK).catch(() => null);
+    }
+    if (!figRes || !figRes.ok) {
+      figRes = await fetch(FIGS_FALLBACK).catch(() => null);
+    }
+
+    let dataJson = null;
+    let figsJson = null;
+
+    if (dataRes && dataRes.ok) dataJson = await dataRes.json();
+    if (figRes && figRes.ok) figsJson = await figRes.json();
+
+    if (dataJson && dataJson.runs) {
+      runs = processRuns(dataJson.runs);
+      statusEl.textContent = `Loaded ${runs.length} runs`;
+      statusEl.className = 'data-status info';
+    } else {
+      throw new Error('No runs data found');
+    }
+
+    if (figsJson && Array.isArray(figsJson)) {
+      figures = figsJson;
+    } else {
+      figures = [];
+    }
+
+    dataLoaded = true;
+    populateFilters();
+    renderSummary();
+    filterRuns();
+    renderFigures();
+    renderPerformanceChart();
+  } catch (e) {
+    console.error('Failed to load data:', e);
+    statusEl.textContent = `Error loading data: ${e.message}. Make sure data files are available.`;
+    statusEl.className = 'data-status error';
+    document.getElementById('runsTableBody').innerHTML = `<tr><td colspan="11" class="error">Failed to load data. <button class="btn" onclick="init()">Retry</button></td></tr>`;
+  }
+}
+
+function processRuns(rawRuns) {
+  return rawRuns.map(run => {
+    const params = run.parameters || {};
+    const results = run.results || {};
+    const betas = params.betaValues || [];
+
+    let betaMin = null, betaMax = null, betaCount = 0;
+    if (Array.isArray(betas) && betas.length > 0) {
+      betaMin = Math.min(...betas);
+      betaMax = Math.max(...betas);
+      betaCount = betas.length;
+    } else if (Array.isArray(results) && results.length > 0 && results[0].beta !== undefined) {
+      const b = results.map(r => r.beta);
+      betaMin = Math.min(...b);
+      betaMax = Math.max(...b);
+      betaCount = results.length;
+    }
+
+    const wallMs = run.wallTimeMs || 0;
+    const wallMin = wallMs > 0 ? (wallMs / 60000).toFixed(1) : null;
+    const perf = run.sweepsPerSecond || 0;
+    const ts = run.timestamp || '';
+    const date = ts ? new Date(ts).toLocaleDateString('en-GB', {day:'2-digit',month:'2-digit',year:'2-digit'}) : '';
+
+    let keyFinding = '';
+    if (results.keyFinding) keyFinding = results.keyFinding;
+    else if (results.peakSusceptibility) keyFinding = `Peak χ=${results.peakSusceptibility.value?.toFixed?.(2) || results.peakSusceptibility.value} at β=${results.peakSusceptibility.beta}`;
+
+    return {
+      ...run,
+      latticeSize: params.latticeSize || params.L || '-',
+      dimension: params.dimension || '-',
+      betaMin, betaMax, betaCount,
+      wallMin, wallMs, perf,
+      date, ts,
+      keyFinding,
+      isTest: (run.description || '').includes('[TEST]') || (run.runId || '').includes('test')
+    };
+  }).filter(r => r.betaCount > 0 || r.status === 'in-progress' || r.keyFinding);
+}
+
+function populateFilters() {
+  const tasks = [...new Set(runs.map(r => r.task).filter(Boolean))];
+  const phases = [...new Set(runs.map(r => r.phase).filter(Boolean))];
+
+  const taskSelect = document.getElementById('filterTask');
+  tasks.sort().forEach(t => { const opt = document.createElement('option'); opt.value = t; opt.textContent = t; taskSelect.appendChild(opt); });
+
+  const phaseSelect = document.getElementById('filterPhase');
+  phases.sort().forEach(p => { const opt = document.createElement('option'); opt.value = p; opt.textContent = p; phaseSelect.appendChild(opt); });
+
+  const figTasks = [...new Set(figures.map(f => f.task))];
+  const figDims = [...new Set(figures.map(f => f.dimension))];
+  const figTypes = [...new Set(figures.map(f => f.type))];
+
+  const makeCheckbox = (id, items, fn) => {
+    const container = document.getElementById(id);
+    items.sort().forEach(item => {
+      const div = document.createElement('div');
+      div.innerHTML = `<input type="checkbox" checked value="${item}" onchange="${fn}()"> ${item}`;
+      container.appendChild(div);
+    });
+  };
+
+  makeCheckbox('figFilterTask', figTasks, 'filterFigures');
+  makeCheckbox('figFilterDim', figDims, 'filterFigures');
+  makeCheckbox('figFilterType', figTypes, 'filterFigures');
+}
+
+function renderSummary() {
+  const total = runs.length;
+  const tasks = new Set(runs.map(r => r.task)).size;
+  const complete = runs.filter(r => r.status === 'complete').length;
+  const timed = runs.filter(r => r.wallMs > 0).length;
+  const totalMin = runs.reduce((s, r) => s + (r.wallMs || 0), 0) / 60000;
+  const perfs = runs.filter(r => r.perf > 0).map(r => r.perf);
+  const avgPerf = perfs.length > 0 ? Math.round(perfs.reduce((a,b) => a+b, 0) / perfs.length) : 0;
+
+  document.getElementById('totalRuns').textContent = total;
+  document.getElementById('totalTasks').textContent = tasks;
+  document.getElementById('completeRuns').textContent = complete;
+  document.getElementById('timedRuns').textContent = timed;
+  document.getElementById('totalCompute').textContent = Math.round(totalMin).toLocaleString();
+  document.getElementById('avgPerf').textContent = avgPerf > 0 ? (avgPerf/1000).toFixed(1) + 'K' : '—';
+  document.getElementById('totalFigures').textContent = figures.length;
+}
+
+function filterRuns() {
+  if (!dataLoaded) return;
+  const task = document.getElementById('filterTask').value;
+  const phase = document.getElementById('filterPhase').value;
+  const status = document.getElementById('filterStatus').value;
+  const dim = document.getElementById('filterDim').value;
+  const search = document.getElementById('filterSearch').value.toLowerCase();
+
+  let filtered = runs.filter(r => {
+    if (task !== 'All' && r.task !== task) return false;
+    if (phase !== 'All' && r.phase !== phase) return false;
+    if (status !== 'All' && r.status !== status) return false;
+    if (dim !== 'All') {
+      const d = r.dimension === 2 ? '2D' : r.dimension === 3 ? '3D' : String(r.dimension);
+      if (d !== dim) return false;
+    }
+    if (search) {
+      const hay = `${r.runId} ${r.description} ${r.keyFinding} ${r.task} ${r.phase}`.toLowerCase();
+      if (!hay.includes(search)) return false;
+    }
+    return true;
+  });
+
+  filtered.sort((a, b) => {
+    let av = a[sortCol], bv = b[sortCol];
+    if (sortCol === 'betaRange') { av = a.betaMin || 0; bv = b.betaMin || 0; }
+    if (sortCol === 'wallTime') { av = a.wallMs || 0; bv = b.wallMs || 0; }
+    if (sortCol === 'perf') { av = a.perf || 0; bv = b.perf || 0; }
+    if (sortCol === 'latticeSize') { av = parseInt(a.latticeSize) || 0; bv = parseInt(b.latticeSize) || 0; }
+    if (sortCol === 'dimension') { av = parseInt(a.dimension) || 0; bv = parseInt(b.dimension) || 0; }
+    if (sortCol === 'betaCount') { av = a.betaCount || 0; bv = b.betaCount || 0; }
+    if (sortCol === 'date') { av = a.ts || ''; bv = b.ts || ''; }
+    if (typeof av === 'string') av = av.toLowerCase();
+    if (typeof bv === 'string') bv = bv.toLowerCase();
+    if (av < bv) return sortAsc ? -1 : 1;
+    if (av > bv) return sortAsc ? 1 : -1;
+    return 0;
+  });
+
+  renderTable(filtered);
+}
+
+function sortRuns(col) {
+  if (sortCol === col) { sortAsc = !sortAsc; } else { sortCol = col; sortAsc = true; }
+  document.querySelectorAll('th').forEach(th => th.classList.remove('sort-asc', 'sort-desc'));
+  const th = document.querySelector(`th[onclick="sortRuns('${col}')"]`);
+  if (th) th.classList.add(sortAsc ? 'sort-asc' : 'sort-desc');
+  filterRuns();
+}
+
+function renderTable(filtered) {
+  const tbody = document.getElementById('runsTableBody');
+  tbody.innerHTML = '';
+
+  if (filtered.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="11" style="text-align:center;color:var(--muted);padding:20px;">No runs match filters</td></tr>';
+    return;
+  }
+
+  filtered.forEach(run => {
+    const tr = document.createElement('tr');
+    if (selectedRun && selectedRun.runId === run.runId) tr.classList.add('selected');
+
+    const betaRange = (run.betaMin !== null && run.betaMax !== null) ? `${run.betaMin.toFixed(2)}–${run.betaMax.toFixed(2)}` : '—';
+    const statusBadge = run.status === 'complete' ? 'badge-success' : run.status === 'in-progress' ? 'badge-warning' : 'badge-danger';
+    const testBadge = run.isTest ? '<span class="badge badge-test" style="margin-left:4px;">TEST</span>' : '';
+
+    tr.innerHTML = `
+      <td class="mono">${run.runId}${testBadge}</td>
+      <td>${run.task || '—'}</td>
+      <td>${run.phase || '—'}</td>
+      <td>${run.latticeSize}</td>
+      <td>${run.dimension}</td>
+      <td>${betaRange}</td>
+      <td>${run.wallMin ? run.wallMin + 'm' : '—'}</td>
+      <td>${run.perf ? Math.round(run.perf/1000) + 'K' : '—'}</td>
+      <td>${run.betaCount || '—'}</td>
+      <td>${run.date}</td>
+      <td><span class="badge ${statusBadge}">${run.status}</span></td>
+    `;
+    tr.onclick = () => selectRun(run);
+    tbody.appendChild(tr);
+  });
+
+  document.getElementById('runsHint').textContent = `Showing ${filtered.length} of ${runs.length} runs. Click any row for details.`;
+}
+
+function selectRun(run) {
+  selectedRun = run;
+  filterRuns();
+
+  const panel = document.getElementById('detailPanel');
+  panel.classList.add('visible');
+
+  document.getElementById('detailTitle').textContent = `${run.runId}`;
+  const statusBadge = run.status === 'complete' ? 'badge-success' : run.status === 'in-progress' ? 'badge-warning' : 'badge-danger';
+  document.getElementById('detailBadge').innerHTML = ` <span class="badge ${statusBadge}">${run.status}</span>`;
+  document.getElementById('detailDesc').textContent = run.description || '';
+
+  const params = run.parameters || {};
+  const paramsHtml = Object.entries(params).map(([k, v]) => {
+    let display = v;
+    if (Array.isArray(v)) {
+      if (v.length > 5) display = `[${v.slice(0,3).join(', ')}...${v.length} items]`;
+      else display = JSON.stringify(v);
+    } else if (typeof v === 'object') display = JSON.stringify(v);
+    return `<div class="param-row"><span class="param-key">${k}</span><span class="param-value">${display}</span></div>`;
+  }).join('');
+
+  const results = run.results || {};
+  let resultsHtml = '';
+  if (run.keyFinding) resultsHtml += `<div class="param-row"><span class="param-key">Key Finding</span><span class="param-value">${run.keyFinding}</span></div>`;
+  if (results.criticalBetaEstimate) resultsHtml += `<div class="param-row"><span class="param-key">Critical β</span><span class="param-value">${results.criticalBetaEstimate}</span></div>`;
+  if (results.peakSusceptibility) {
+    const ps = results.peakSusceptibility;
+    resultsHtml += `<div class="param-row"><span class="param-key">Peak χ</span><span class="param-value">${ps.value?.toFixed?.(4) || ps.value} at β=${ps.beta}</span></div>`;
+  }
+  if (results.peakSpecificHeat) {
+    const pc = results.peakSpecificHeat;
+    resultsHtml += `<div class="param-row"><span class="param-key">Peak C</span><span class="param-value">${pc.value?.toFixed?.(4) || pc.value} at β=${pc.beta}</span></div>`;
+  }
+  if (run.wallMin) resultsHtml += `<div class="param-row"><span class="param-key">Wall Time</span><span class="param-value">${run.wallMin} min</span></div>`;
+  if (run.perf) resultsHtml += `<div class="param-row"><span class="param-key">Sweeps/sec</span><span class="param-value">${Math.round(run.perf).toLocaleString()}</span></div>`;
+
+  document.getElementById('detailGrid').innerHTML = `
+    <div class="detail-card">
+      <h4>📋 Parameters</h4>
+      ${paramsHtml || '<p style="color:var(--muted);font-size:0.8rem;">No parameters</p>'}
+    </div>
+    <div class="detail-card">
+      <h4>📊 Results</h4>
+      ${resultsHtml || '<p style="color:var(--muted);font-size:0.8rem;">No results</p>'}
+    </div>
+  `;
+
+  const actions = document.getElementById('detailActions');
+  let actionHtml = '';
+  if (run.outputFiles && run.outputFiles.length > 0) actionHtml += `<a class="btn btn-primary" href="${run.outputFiles[0]}" download>🔽 Download JSON</a>`;
+  if (run.dataUrl) actionHtml += `<a class="btn" href="${run.dataUrl}" download>🔽 Raw Data</a>`;
+  actionHtml += `<button class="btn" onclick="exportRunCSV('${run.runId}')">📄 Export CSV</button>`;
+  actions.innerHTML = actionHtml;
+
+  const runFigs = figures.filter(f => f.runIds && f.runIds.includes(run.runId));
+  const figContainer = document.getElementById('detailFigures');
+  if (runFigs.length > 0) {
+    figContainer.innerHTML = `
+      <div style="font-weight: 600; font-size: 0.85rem; margin-bottom: 8px;">📁 Generated Figures (${runFigs.length})</div>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+        ${runFigs.map(f => `<a href="#" class="btn" onclick="openModal('${f.path}'); return false;" title="${f.description}">${f.title}</a>`).join('')}
+      </div>
+    `;
+  } else { figContainer.innerHTML = ''; }
+
+  panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function resetFilters() {
+  document.getElementById('filterTask').value = 'All';
+  document.getElementById('filterPhase').value = 'All';
+  document.getElementById('filterStatus').value = 'All';
+  document.getElementById('filterDim').value = 'All';
+  document.getElementById('filterSearch').value = '';
+  filterRuns();
+}
+
+function switchTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
+  if (tab === 'runs') { document.querySelector('.tab:nth-child(1)').classList.add('active'); document.getElementById('runsTab').classList.remove('hidden'); }
+  else if (tab === 'figures') { document.querySelector('.tab:nth-child(2)').classList.add('active'); document.getElementById('figuresTab').classList.remove('hidden'); }
+  else if (tab === 'performance') { document.querySelector('.tab:nth-child(3)').classList.add('active'); document.getElementById('performanceTab').classList.remove('hidden'); }
+}
+
+function filterFigures() {
+  const search = document.getElementById('figSearch').value.toLowerCase();
+  const selectedTasks = [...document.querySelectorAll('#figFilterTask input:checked')].map(cb => cb.value);
+  const selectedDims = [...document.querySelectorAll('#figFilterDim input:checked')].map(cb => cb.value);
+  const selectedTypes = [...document.querySelectorAll('#figFilterType input:checked')].map(cb => cb.value);
+
+  let filtered = figures.filter(f => {
+    if (!selectedTasks.includes(f.task)) return false;
+    if (!selectedDims.includes(f.dimension)) return false;
+    if (!selectedTypes.includes(f.type)) return false;
+    if (search) {
+      const hay = `${f.title} ${f.description} ${f.tags.join(' ')}`.toLowerCase();
+      if (!hay.includes(search)) return false;
+    }
+    return true;
+  });
+
+  renderFigures(filtered);
+}
+
+function renderFigures(filtered) {
+  if (!filtered) filtered = figures;
+  document.getElementById('figuresCount').textContent = `Showing ${filtered.length} of ${figures.length} figures`;
+  const container = document.getElementById('figuresContainer');
+
+  const byType = {};
+  filtered.forEach(f => { if (!byType[f.type]) byType[f.type] = []; byType[f.type].push(f); });
+
+  const typeLabels = { fss: 'FSS', raw: 'Raw', analysis: 'Analysis' };
+  const typeClasses = { fss: 'type-fss', raw: 'type-raw', analysis: 'type-analysis' };
+
+  let html = '';
+  Object.entries(byType).forEach(([type, figs]) => {
+    html += `
+      <div class="section-header">
+        <span class="type-badge ${typeClasses[type] || ''}">${typeLabels[type] || type}</span>
+        <span>${figs.length} figure${figs.length !== 1 ? 's' : ''}</span>
+      </div>
+      <div class="figure-grid">
+        ${figs.map(f => `
+          <div class="figure-card">
+            <div class="figure-img">
+              <img src="${f.path}" alt="${f.title}" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=placeholder>📊 ${f.title}</span>';" onclick="openModal('${f.path}')" title="Click to zoom">
+            </div>
+            <div class="figure-info">
+              <div class="figure-title">${f.title}</div>
+              <div class="figure-desc">${f.description}</div>
+              <div class="figure-tags">${f.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+              <div style="font-size: 0.7rem; color: var(--muted);">Source: ${f.sourceRuns} run${f.sourceRuns !== 1 ? 's' : ''}</div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  });
+
+  container.innerHTML = html || '<p style="color:var(--muted);text-align:center;padding:20px;">No figures match filters</p>';
+}
+
+function openModal(src) { document.getElementById('modalImg').src = src; document.getElementById('imageModal').classList.add('visible'); }
+function closeModal() { document.getElementById('imageModal').classList.remove('visible'); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+function exportRunCSV(runId) {
+  const run = runs.find(r => r.runId === runId);
+  if (!run) return;
+  let csv = 'Run ID,Task,Phase,Status,Date,Description\n';
+  csv += `"${run.runId}","${run.task}","${run.phase}","${run.status}","${run.date}","${run.description || ''}"\n\n`;
+  if (run.betaCount > 0) {
+    csv += 'Beta Range,Count,Wall Time (min),Performance (sw/s)\n';
+    csv += `"${run.betaMin?.toFixed(3) || ''}-${run.betaMax?.toFixed(3) || ''}",${run.betaCount},${run.wallMin || ''},${run.perf || ''}\n`;
+  }
+  downloadFile(csv, `${runId}.csv`, 'text/csv');
+}
+
+function downloadFile(content, filename, mime) {
+  const blob = new Blob([content], { type: mime });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+}
+
+function renderPerformanceChart() {
+  if (!dataLoaded) return;
+  const timedRuns = runs.filter(r => r.wallMs > 0 && parseInt(r.latticeSize) > 0);
+  if (timedRuns.length === 0) {
+    document.getElementById('perfChart').innerHTML = '<text x="400" y="150" text-anchor="middle" fill="#6c757d">No timing data available</text>';
+    return;
+  }
+
+  const svg = document.getElementById('perfChart');
+  const width = 800, height = 300;
+  const padding = { top: 30, right: 40, bottom: 50, left: 60 };
+  const chartW = width - padding.left - padding.right;
+  const chartH = height - padding.top - padding.bottom;
+
+  const xs = timedRuns.map(r => parseInt(r.latticeSize));
+  const ys = timedRuns.map(r => r.wallMs / 60000);
+  const logMinX = Math.log10(Math.min(...xs));
+  const logMaxX = Math.log10(Math.max(...xs));
+  const logMinY = Math.log10(Math.max(0.1, Math.min(...ys)));
+  const logMaxY = Math.log10(Math.max(...ys));
+
+  const scaleX = v => padding.left + (Math.log10(v) - logMinX) / (logMaxX - logMinX) * chartW;
+  const scaleY = v => padding.top + chartH - (Math.log10(v) - logMinY) / (logMaxY - logMinY) * chartH;
+  const colors = { 2: '#0d6efd', 3: '#198754' };
+
+  let html = '';
+  for (let i = 0; i <= 5; i++) { const x = padding.left + (i / 5) * chartW; html += `<line x1="${x}" y1="${padding.top}" x2="${x}" y2="${height - padding.bottom}" stroke="#dee2e6" stroke-width="1"/>`; }
+  for (let i = 0; i <= 5; i++) { const y = padding.top + (i / 5) * chartH; html += `<line x1="${padding.left}" y1="${y}" x2="${width - padding.right}" y2="${y}" stroke="#dee2e6" stroke-width="1"/>`; }
+
+  timedRuns.forEach(r => {
+    const x = scaleX(parseInt(r.latticeSize));
+    const y = scaleY(r.wallMs / 60000);
+    const color = colors[r.dimension] || '#6c757d';
+    html += `<circle cx="${x}" cy="${y}" r="6" fill="${color}" opacity="0.7" stroke="white" stroke-width="2"><title>${r.runId}: L=${r.latticeSize}, ${(r.wallMs/60000).toFixed(1)} min</title></circle>`;
+  });
+
+  html += `<text x="${width/2}" y="${height - 10}" text-anchor="middle" fill="#6c757d" font-size="14">Lattice Size L (log scale)</text>`;
+  html += `<text x="15" y="${height/2}" text-anchor="middle" transform="rotate(-90,15,${height/2})" fill="#6c757d" font-size="14">Wall Time (minutes, log scale)</text>`;
+
+  const tickXs = [2, 4, 8, 16, 24, 32];
+  tickXs.forEach(t => {
+    if (t >= Math.min(...xs) && t <= Math.max(...xs)) { const x = scaleX(t); html += `<text x="${x}" y="${height - padding.bottom + 20}" text-anchor="middle" fill="#6c757d" font-size="12">${t}</text>`; }
+  });
+
+  const tickYs = [0.1, 1, 10, 100];
+  tickYs.forEach(t => {
+    if (t >= Math.max(0.1, Math.min(...ys)) && t <= Math.max(...ys)) { const y = scaleY(t); html += `<text x="${padding.left - 10}" y="${y + 4}" text-anchor="end" fill="#6c757d" font-size="12">${t}m</text>`; }
+  });
+
+  html += `<rect x="${width - 130}" y="10" width="120" height="50" fill="white" stroke="#dee2e6" rx="4"/>`;
+  html += `<circle cx="${width - 115}" cy="28" r="5" fill="#0d6efd"/>`;
+  html += `<text x="${width - 100}" y="32" fill="#6c757d" font-size="12">2D</text>`;
+  html += `<circle cx="${width - 115}" cy="48" r="5" fill="#198754"/>`;
+  html += `<text x="${width - 100}" y="52" fill="#6c757d" font-size="12">3D</text>`;
+
+  svg.innerHTML = html;
+}
+
+init();
+</script>
+</body>
+</html>
