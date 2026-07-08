@@ -1,32 +1,27 @@
 # Session Cache
 
-*Created: 2026-07-02 16:48:02 IST*
-*Last Updated: 2026-07-08 17:42 IST*
+*Created: 2026-07-08 10:21:16 IST*
+*Last Updated: 2026-07-08 10:21:16 IST*
 
-**Started**: 2026-07-08 00:54:22 IST
-**Focus Task**: T32: Post-May Numerics Correction and Reproducibility Pass
-**Session File**: `sessions/2026-07-05-night.md`
-**Status**: 🔄 Active
+**Started**: 2026-07-02 15:59:17 IST
+**Focus Task**: T31: Signed Volume Observable
+**Session File**: `sessions/2026-07-02-evening.md`
+**Status**: 🔄 Active: 5, Paused: 0, Completed: 15
 
 ## Overview
 
 - Active: 5 | Paused: 0 | Completed: 15
-- Last Session: 2026-07-08
-- Current Period: night
+- Last Session: 2026-07-02
+- Current Period: evening
 
 ## Active Tasks
-
-### T32: Post-May Numerics Correction and Reproducibility Pass
-**Status:** 🔄 **IN PROGRESS**
-**Started:** 2026-07-05
-**Context**: [Details](tasks/T32.md)
-**Progress**: Error inventory now records resolved-vs-remaining status. T22a and T25 source corrections are complete; dashboard source and T31 docs are aligned with T32; T20d reanalysis, Rust 2024-compatible validation, new T31 production runs, and artifact-policy cleanup remain open.
 
 ### T20d: Critical Exponent Extraction from 3D Z₂ LGT
 **Status:** 🔄 **IN PROGRESS**
 **Started:** 2026-06-26
 **Context**: [Details](tasks/T20d.md)
-**Progress**: Source documentation corrected; controlled continuous-transition reanalysis remains pending.
+**Progress**:
+[Details](tasks/T20d.md)
 
 ### T23: Entanglement Structure
 **Status:** 🔄 **IN PROGRESS**
@@ -46,7 +41,16 @@
 **Status:** 🔄 **IN PROGRESS**
 **Started:** 2026-07-02
 **Context**: [Details](tasks/T31.md)
-**Progress**: Old $|Q|/N$ runs marked exploratory; greedy gauge fixing withdrawn; candidate gauge-invariant dressed correlator and gauge-invariance tests recorded. New production runs remain blocked until Rust 2024-compatible tests and physical validation pass.
+**Progress**:
+[Details](tasks/T31.md)
+
+### T32: Post-May Numerics Correction and Reproducibility Pass
+**Status:** 🔄 **IN PROGRESS**
+**Started:** 2026-07-05
+**Context**: [Details](tasks/T32.md)
+**Progress**:
+[Details](tasks/T32.md)
+Deployed updated task pages and figures to GitHub Pages. Deleted stale gh-pages branch. Updated space-cadet.github.io repo from origin (5 commits). Copied v2 dashboard source to timesarrow repo. Synced 54 files (task pages + figures) from timesarrow main to .github.io repo. Fixed timestamps on index, T20, T31 pages. All changes pushed to origin/main.
 
 ## Completed Tasks
 
@@ -127,19 +131,11 @@
 
 ## Next Session Focus
 
-1. T32/T20d: Reanalyse existing data with autocorrelation-aware continuous-transition scaling
-1. T32/T31: Run Rust 2024-compatible tests for the gauge-invariant dressed correlator
-1. T32/T31: Review the replacement observable physically before new production runs
-1. T32: Restore reproducible build and test workflows
+1. T20d: Critical Exponent Extraction from 3D Z₂ LGT
+1. T23: Entanglement Structure
+1. T24: Domain Wall Dynamics
 
 ## System Status
 
 - **Memory Bank**: 🔄 Active
 - **OpenClaw**: ✅ Operational
-
-## Session History
-
-- `sessions/2026-07-05-night.md`: Post-May numerical review and T32 correction plan.
-- `sessions/2026-07-05-night.md`: 2026-07-08 continuation added explicit T32 error inventory to the correction plan.
-- `sessions/2026-07-05-night.md`: 2026-07-08 continuation synchronized docs and memory with resolved-vs-remaining T32 state.
-- `sessions/2026-07-02-evening.md`: T31 signed-volume production session; interpretations superseded where noted by T32.
