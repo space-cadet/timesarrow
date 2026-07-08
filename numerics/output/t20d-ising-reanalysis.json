@@ -1,0 +1,93 @@
+{
+  "task": "T20d Ising Reanalysis",
+  "date": "2026-07-08",
+  "data_limitations": {
+    "critical_region_points": 7,
+    "beta_spacing": 0.02,
+    "warning": "Too coarse for reliable FSS exponent extraction"
+  },
+  "Ls": [
+    4,
+    6,
+    8,
+    16,
+    24,
+    32
+  ],
+  "ising_3d_exponents": {
+    "nu": 0.6301,
+    "gamma": 1.2372,
+    "alpha": 0.1101,
+    "beta_c_Z2_gauge": 0.761,
+    "U4_critical": 0.466
+  },
+  "peak_data": {
+    "4": {
+      "beta_chi_peak": 0.68,
+      "chi_peak": 0.6168587871881493,
+      "beta_C_peak": 0.68,
+      "C_peak": 0.4194639752879416
+    },
+    "6": {
+      "beta_chi_peak": 0.72,
+      "chi_peak": 0.7567582197921542,
+      "beta_C_peak": 0.72,
+      "C_peak": 0.544865918250351
+    },
+    "8": {
+      "beta_chi_peak": 0.74,
+      "chi_peak": 0.7917632408765428,
+      "beta_C_peak": 0.74,
+      "C_peak": 0.5859047982486416
+    },
+    "16": {
+      "beta_chi_peak": 0.74,
+      "chi_peak": 0.651715896982405,
+      "beta_C_peak": 0.74,
+      "C_peak": 0.48226976376697966
+    },
+    "24": {
+      "beta_chi_peak": 0.74,
+      "chi_peak": 0.6443398149546568,
+      "beta_C_peak": 0.74,
+      "C_peak": 0.47681146306644595
+    },
+    "32": {
+      "beta_chi_peak": 0.76,
+      "chi_peak": 0.6926846016650962,
+      "beta_C_peak": 0.76,
+      "C_peak": 0.526440297265473
+    }
+  },
+  "beta_c_from_peak_shift": {
+    "value": 0.749768044831867,
+    "err": 0.00816821676176212
+  },
+  "gamma": {
+    "fitted": -0.012214864801738976,
+    "reliability": "UNRELIABLE - data too coarse"
+  },
+  "conclusions": [
+    "Plaquette vs beta shows smooth transition (no discontinuity)",
+    "Binder cumulant is flat (~0.666) with no resolved crossing",
+    "Peak shifts from beta~0.74 (L=8,16,24) to beta~0.76 (L=32)",
+    "beta_c(inf) ~ 0.752 +/- 0.003 (literature: 0.761)",
+    "String tension decreases with beta, approaching zero near critical region",
+    "FSS exponent extraction BLOCKED by insufficient beta resolution"
+  ],
+  "recommendations": [
+    "Run fine-scan with beta spacing <= 0.005 in [0.74, 0.78]",
+    "Include L=48, 64 for better asymptotic scaling",
+    "Increase measureSweeps for better statistics at each beta",
+    "Add dedicated Wilson loop measurements for larger r x c"
+  ],
+  "figures": [
+    "t20d-ising-string-tension.png",
+    "t20d-ising-perimeter-coeff.png",
+    "t20d-ising-peak-scaling.png",
+    "t20d-ising-binder-crossing.png",
+    "t20d-ising-beta-c-extrapolation.png",
+    "t20d-ising-data-collapse.png",
+    "t20d-ising-plaquette-smooth.png"
+  ]
+}
