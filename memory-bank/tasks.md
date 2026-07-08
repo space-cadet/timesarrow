@@ -1,7 +1,7 @@
 # Memory Bank - Sage Workspace
 
 *Created: 2026-07-02 16:48:02 IST*
-*Last Updated: 2026-07-05 23:12:09 IST*
+*Last Updated: 2026-07-08 17:42 IST*
 
 ## Overview
 
@@ -71,7 +71,7 @@ T21a: Fast Monte Carlo Kernel
 T22: Spin Foam Amplitudes
   └── T14
   └── T20c
-T22a: Path 1 — Quick Estimate (FK Vertex j=½ vs j=1)
+T22a: Path 1 — SU(2) Four-Leg Group-Average Estimate
   └── 2026-06-29
   └── —
 T22b: Path 2 — Full Systematic Study

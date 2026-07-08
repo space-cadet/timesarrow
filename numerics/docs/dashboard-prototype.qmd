@@ -87,7 +87,7 @@ figureCatalog = [
   {id: "t20-susceptibility", title: "Susceptibility (2D)", task: "T20", phase: "phase2", dimension: 2, type: "Raw", runs: ["t20-p2-L8-20250625"], desc: "2D magnetic susceptibility"},
   
   // Scaling Analysis
-  {id: "t20-binder-first-order-scaling", title: "First-Order Scaling", task: "T20", phase: "phase3", dimension: 3, type: "Analysis", runs: ["t20-p3-L8-3D-20250625"], desc: "Binder cumulant first-order scaling"},
+  {id: "t20d-overview", title: "T20d Ising FSS Overview", task: "T20d", phase: "phase3", dimension: 3, type: "Analysis", runs: ["t20-p3-L8-3D-20250625"], desc: "Continuous 3D Ising-universality correction overview"},
   {id: "t20-scaling-collapse", title: "Scaling Collapse", task: "T20", phase: "phase3", dimension: 3, type: "Analysis", runs: ["t20-p3-L8-3D-20250625"], desc: "Finite-size scaling collapse"},
 ]
 

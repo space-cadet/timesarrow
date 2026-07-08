@@ -1,6 +1,6 @@
 # timesarrow — Active Context
 
-*Updated: 2026-07-08 00:54:22 IST*
+*Updated: 2026-07-08 17:42 IST*
 
 ## Current Session — 2026-07-08 Night
 
@@ -8,10 +8,10 @@
 
 - T20d's first-order conclusion is superseded; existing data must be reanalysed using continuous 3D Ising-universality scaling.
 - The plaquette Binder value near $2/3$ is not accepted evidence of first-order behavior, and schematic histograms are not numerical evidence.
-- T22a is a normalized SU(2) four-leg group average, not a complete FK/EPRL vertex amplitude; the extra squaring to $0.20$ must be removed.
-- T31 must not use greedy gauge alignment because spanning-tree alignment can force $|Q|=N$ in any phase.
-- T25 spectral pairing remains useful but does not alone establish a physical time-orientation symmetry.
-- TypeScript/Rust build and test reproducibility must be restored before manuscript promotion.
+- T22a is now corrected as a normalized SU(2) four-leg group average, not a complete FK/EPRL vertex amplitude; the extra squaring to $0.20$ is removed in canonical source and regenerated `_site` output.
+- T31 must not use greedy gauge alignment because spanning-tree alignment can force $|Q|=N$ in any phase; the Rust source now has a candidate gauge-invariant dressed orientation correlator and gauge-invariance tests, but no new production runs are accepted until those tests run under a Rust 2024-compatible toolchain.
+- T25 spectral pairing is now calibrated as algebraic spectral reflection symmetry; the physical time-orientation transformation test is deferred.
+- TypeScript/Rust build and test reproducibility are documented but not verified in the current shell because local Cargo cannot parse Rust edition 2024.
 - `timesarrow.tex` remains gated from post-May numerical claims until T32 is complete.
 - The correction plan now includes an explicit error inventory, not only a task list, covering T20d, T22a, T31, T25, reproducibility, and the manuscript gate.
 
@@ -28,6 +28,13 @@
 
 - Expanded the plan with a forensic inventory of the identified post-May errors.
 - Preserved the existing correction workstreams and T32 gate; no new task or implementation file was created beyond the required edit chunk.
+
+**Docs/memory synchronization (2026-07-08 17:42 IST):**
+
+- Updated the correction plan's error inventory with resolved-vs-remaining status for T20d, T22a, T31, T25, reproducibility, and the manuscript gate.
+- Cleaned the dashboard source so superseded first-order T20 figures are omitted instead of duplicated under unmarked titles.
+- Updated the T31 task page to mark old $|Q|/N$ data as exploratory, withdraw greedy gauge fixing, and document the candidate gauge-invariant dressed correlator.
+- Rebuilt the Quarto site into `_site`; root-level rendered HTML artifacts were removed by the current `output-dir: _site` configuration.
 
 ## Previous Session — 2026-07-02 Evening
 
@@ -51,7 +58,7 @@
   - **Gauge problem identified**: signed volume flips between ~N and ~0 in deconfined phase
 - **Dashboard**: T31 runs and 3 figures added to numerics dashboard
 - **Task page**: `tasks/t31-signed-volume.qmd` created and deployed
-- **Next**: Implement iterative gauge-fixing, re-run with fixed gauge
+- **Superseded next step**: The earlier plan to implement iterative gauge fixing is withdrawn by T32; new production runs require the gauge-invariant dressed correlator to pass validation.
 - **Files**: `rust-lattice/src/lib.rs` (+241 lines), committed as `84a3fb1`
 - **Memory-bank**: T31 task file, implementation-details doc updated with results
 
@@ -77,11 +84,11 @@
 - **Plots**: 6 new figures (plaquette, susceptibility, binder, combined)
 - **Manuscript**: `t20d-fss-analysis.tex` updated with new tables and β_c(∞)=0.7582±0.0008
 
-### T22a: FK Vertex — CORRECTED ✅
-- Original Python estimate was correct (ratio R ≈ 0.45)
-- Bug found in TS: (2j+1)^4 instead of (2j+1)^3 in denominator
-- Fixed: A_v(j=1/2)=0.250, |A_v|² ratio≈0.20, power law α≈2.0
-- ts-quantum-spin-foam package created with tests
+### T22a: SU(2) Four-Leg Group Average — CORRECTED ✅
+- Supersedes the older FK-vertex framing retained in pre-T32 history.
+- Correct current interpretation: normalized SU(2) four-leg group average with $G(1)/G(1/2)=4/9 \approx 0.444$.
+- The extra squaring to approximately $0.20$ was an error; the result does not establish physical $j=1/2$ dominance.
+- Superseded `t22a-fk-vertex-*` scripts are retained only as provenance.
 
 ### Dashboard Integration — COMPLETE ✅
 - Replaced old dashboard with v2 (interactive, filterable)
@@ -146,9 +153,9 @@
 | Priority | Task | Description | Depends On |
 |----------|------|-------------|------------|
 | 1 | **T32/T20d** | **Correct transition-order interpretation and published text** | T20d |
-| 2 | **T32/T22a** | **Reclassify group-average toy result and remove squaring error** | T22a |
-| 3 | **T32/T31** | **Design and validate a gauge-invariant replacement observable** | T31 |
-| 4 | **T32** | **Calibrate T25 wording and restore reproducible builds/tests** | T25, T27 |
+| 2 | **T32/T31** | **Run and validate the gauge-invariant replacement observable** | T31 |
+| 3 | **T32/T20d** | **Finish controlled reanalysis and artifact cleanup** | T20d |
+| 4 | **T32** | **Verify reproducible builds/tests with Rust 2024 toolchain** | T25, T27 |
 | 5 | T29 | Extensible schema design | T32 |
 | 6 | T23/T24 | Resume exploratory numerics after correction gate | T32 |
 

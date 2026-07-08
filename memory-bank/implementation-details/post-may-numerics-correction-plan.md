@@ -1,7 +1,7 @@
 # Post-May Numerics Correction Plan
 
 *Created: 2026-07-05 22:24:10 IST*
-*Last Updated: 2026-07-08 IST*
+*Last Updated: 2026-07-08 17:42 IST*
 *Task: T32*
 
 ## Purpose
@@ -27,7 +27,17 @@ This section records the actual errors identified in the post-May numerical work
 
 **Why it matters:** This error directly changes the scientific conclusion of the T20d analysis. It could lead the manuscript to cite a false transition-order result and to overstate the evidential value of the retained simulations.
 
-**Current status:** The standalone annexure and canonical Quarto task page have been corrected, but the numerical reanalysis, dashboard text, and misleading figure retirement/replacement remain incomplete.
+**Resolved so far:**
+
+- The standalone annexure and canonical Quarto task page have been rewritten around continuous 3D Ising-universality scaling.
+- First-order, latent-heat, synthetic-histogram, and failed-collapse claims have been withdrawn from the canonical T20 task text.
+- The dashboard source now omits the superseded first-order figure entries rather than duplicating them under unmarked titles.
+
+**Still remaining:**
+
+- The underlying numerical reanalysis still needs autocorrelation-aware uncertainties, controlled finite-size scaling, and Wilson-loop diagnostics.
+- Generated or deployed dashboard outputs need to be rebuilt and checked so `_site` no longer contains stale dashboard entries.
+- Superseded figure files and old analysis scripts remain present for provenance and need an intentional artifact policy before final cleanup.
 
 ### Error 2: T22a Was Mislabeled as a Spin-Foam Vertex Calculation
 
@@ -42,7 +52,17 @@ This section records the actual errors identified in the post-May numerical work
 
 **Why it matters:** This error overstates what the calculation establishes. It turns a useful toy normalization/code-check result into apparent evidence for a physical spin-foam amplitude hierarchy.
 
-**Current status:** The memory-bank task and implementation notes now flag the issue, but the code names, published wording, analytic derivation, and any downstream rendered text still need a complete pass.
+**Resolved so far:**
+
+- T22a has been reclassified as a normalized SU(2) four-leg group average.
+- New `su2-four-leg-group-average` scripts record the analytic character-integral result as primary and use Monte Carlo as validation.
+- The unsupported extra squaring from approximately $0.45$ to approximately $0.20$ has been removed from the corrected source text.
+- The canonical T22 task source states that the calculation is not a complete FK/EPRL vertex and does not establish $j=1/2$ dominance.
+
+**Still remaining:**
+
+- The deployed `_site` T22 page is stale and still contains older FK-vertex and $j=1/2$ dominance wording until the docs are rebuilt.
+- Old `t22a-fk-vertex-*` scripts, output, and figures are preserved for provenance and should stay clearly marked as superseded.
 
 ### Error 3: T31 Used a Gauge-Dependent Signed-Volume Diagnostic
 
@@ -58,7 +78,20 @@ This section records the actual errors identified in the post-May numerical work
 
 **Why it matters:** A gauge-dependent quantity can reflect the chosen representative rather than physics. Claims about time orientation or phase structure based on this diagnostic cannot be promoted until a gauge-invariant replacement is specified and tested.
 
-**Current status:** The memory bank marks existing runs as exploratory and withdraws greedy gauge alignment, but the replacement observable, corrected tests, and new validated runs remain open.
+**Resolved so far:**
+
+- Existing $|Q|/N$ runs are now marked as gauge-dependent exploratory data.
+- Greedy/iterative gauge alignment has been withdrawn.
+- `rust-lattice/src/lib.rs` includes a corrected local gauge transformation that flips all six incident 3D links.
+- The Rust source now contains a candidate gauge-invariant dressed orientation correlator, `gauge_invariant_signed_volume_3d()`.
+- Source-level tests cover plaquette gauge invariance, gauge dependence of the old signed volume, and gauge invariance of the candidate replacement under single and multiple local transformations.
+- The canonical T31 task page now records the correction and no longer recommends greedy gauge fixing.
+
+**Still remaining:**
+
+- The Rust tests still need to be run with a Rust 2024-compatible toolchain; the local Cargo available during the audit was too old.
+- The dressed correlator needs physical review and production-scale validation before it can replace the old observable in conclusions.
+- New simulations and finite-size scaling remain blocked until that validation is complete.
 
 ### Error 4: T25 Overinterpreted Spectral Pairing
 
@@ -72,7 +105,14 @@ This section records the actual errors identified in the post-May numerical work
 
 **Why it matters:** The spectra remain useful, but they cannot by themselves carry the physical interpretation assigned to them. The manuscript needs the distinction between "paired eigenvalues exist" and "a physical time-orientation symmetry has been demonstrated."
 
-**Current status:** T25 is marked complete as a computation, but T32 must add or defer the physical-transformation test before manuscript promotion.
+**Resolved so far:**
+
+- T25 source and rendered task text now describe the result as algebraic spectral reflection symmetry.
+- The physical $Z_2$ time-orientation interpretation is explicitly deferred until an operator implementing the transformation is constructed and tested.
+
+**Still remaining:**
+
+- The physical-transformation test itself remains future work, likely T33 or later.
 
 ### Error 5: Reproducibility Was Not Established Before Claims Were Promoted
 
@@ -87,7 +127,16 @@ This section records the actual errors identified in the post-May numerical work
 
 **Why it matters:** Without a reproducible validation path, it is too easy for corrected text, raw data, rendered dashboards, and generated figures to drift out of sync.
 
-**Current status:** Markdown records are the canonical audit trail. A reproducible validation command and artifact policy remain part of T32.
+**Resolved so far:**
+
+- `README.md` documents the TypeScript and Rust requirements.
+- `scripts/validate.sh` provides a single validation command for TypeScript build checking, Rust build checking, and Rust unit tests.
+- Markdown remains the canonical memory-bank audit trail while SQLite regeneration dependencies are absent.
+
+**Still remaining:**
+
+- The validation path has not been verified in the current shell because the available Cargo cannot parse Rust edition 2024.
+- The artifact policy for generated outputs, checkpoints, databases, logs, and rendered pages still needs a final pass.
 
 ### Error 6: Manuscript Gate Was Too Weak
 
@@ -101,7 +150,14 @@ This section records the actual errors identified in the post-May numerical work
 
 **Why it matters:** The useful work should be preserved, but unsupported conclusions must not leak into the main paper as established results.
 
-**Current status:** The gate is now recorded in T32, `activeContext.md`, and `progress.md`; it should remain in force until every T32 acceptance criterion is checked.
+**Resolved so far:**
+
+- The manuscript gate is recorded in T32, `activeContext.md`, and `progress.md`.
+- `timesarrow.tex` inspection did not find the withdrawn T20d first-order result or the erroneous T22a $0.20$ claim.
+
+**Still remaining:**
+
+- The gate remains active until T20d reanalysis, T31 validation, reproducibility verification, and rendered-artifact synchronization are complete.
 
 ## Workstream 1: T20 Transition Interpretation
 

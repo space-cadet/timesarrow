@@ -24,6 +24,16 @@ numerics/scripts/t20d-ising-fss-reanalysis.py
 
 # General LaTeX build products at root
 /texput.log
+/timesarrow.aux
+/timesarrow.bcf
+/timesarrow.blg
+/timesarrow.dep
+/timesarrow.fdb_latexmk
+/timesarrow.fls
+/timesarrow.log
+/timesarrow.out
+/timesarrow.run.xml
+/timesarrow.toc
 *.synctex.gz*
 *.ocTransferId*.part
 
@@ -40,3 +50,8 @@ numerics/scripts/t20d-ising-fss-reanalysis.py
 /figures/*.log
 /figures/*.out
 /figures/*.synctex.gz
+
+/.texpadtmp/*
+
+# Local editor / diagram backups
+*.drawio.bkp

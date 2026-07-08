@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>T23 — Entanglement Entropy</title>
+<title>T23 — Entanglement Entropy – TimesArrow</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,18 +23,51 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="t23-entanglement_files/libs/clipboard/clipboard.min.js"></script>
-<script src="t23-entanglement_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="t23-entanglement_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="t23-entanglement_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="t23-entanglement_files/libs/quarto-html/popper.min.js"></script>
-<script src="t23-entanglement_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="t23-entanglement_files/libs/quarto-html/anchor.min.js"></script>
-<link href="t23-entanglement_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="t23-entanglement_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="t23-entanglement_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="t23-entanglement_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="t23-entanglement_files/libs/bootstrap/bootstrap-d6a003b94517c951b2d65075d42fb01b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-2e5cbef59756d87313a778b4017e2694.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -68,13 +101,186 @@ window.Quarto = {
 
 </head>
 
-<body class="fullcontent quarto-light">
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">TimesArrow</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../index.html" aria-current="page"> 
+<span class="menu-text">Overview</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../dashboard.html"> 
+<span class="menu-text">Dashboard</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-simulations" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Simulations</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-simulations">    
+        <li>
+    <a class="dropdown-item" href="../tasks/t31-signed-volume.html">
+ <span class="dropdown-text">T31 — Signed Volume</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tasks/t25-volume-operator.html">
+ <span class="dropdown-text">T25 — Volume Operator</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tasks/t20-z2-lgt.html">
+ <span class="dropdown-text">T20 — Z₂ LGT Monte Carlo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tasks/t23-entanglement.html">
+ <span class="dropdown-text">T23 — Entanglement Entropy</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tasks/t22-spin-foam.html">
+ <span class="dropdown-text">T22 — Spin Foam Amplitudes</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tasks/t21-czx-peps.html">
+ <span class="dropdown-text">T21 — CZX PEPS</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tasks/t24-domain-walls.html">
+ <span class="dropdown-text">T24 — Domain Walls</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../tasks/t26-coupled-matter.html">
+ <span class="dropdown-text">T26 — Coupled Matter</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tasks/t31-signed-volume.html">Tasks</a></li><li class="breadcrumb-item"><a href="../tasks/t23-entanglement.html">T23 — Entanglement Entropy</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">TimesArrow Numerics</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dashboard.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Simulation Dashboard</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Tasks</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tasks/t31-signed-volume.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">T31 — Signed Volume Observable for Z₂ Gauge Theory</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tasks/t25-volume-operator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">T25 — Volume Operator Extension</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tasks/t20-z2-lgt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">T20 — Z₂ Lattice Gauge Theory Monte Carlo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tasks/t23-entanglement.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">T23 — Entanglement Entropy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tasks/t22-spin-foam.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">T22 — Spin Foam Amplitudes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tasks/t21-czx-peps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">T21 — CZX PEPS Ground State</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tasks/t24-domain-walls.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">T24 — Domain Wall Dynamics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tasks/t26-coupled-matter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">T26 — Coupled Spin Network + Matter</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#objective" id="toc-objective" class="nav-link active" data-scroll-target="#objective">Objective</a></li>
+  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#theory" id="toc-theory" class="nav-link" data-scroll-target="#theory">Theory</a></li>
+  <li><a href="#method" id="toc-method" class="nav-link" data-scroll-target="#method">Method</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tasks/t31-signed-volume.html">Tasks</a></li><li class="breadcrumb-item"><a href="../tasks/t23-entanglement.html">T23 — Entanglement Entropy</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">T23 — Entanglement Entropy</h1>
 <p class="subtitle lead">Topological order in the deconfined phase</p>
@@ -127,10 +333,12 @@ S(A) = \alpha |\partial A| - \gamma + \dots
 <ul>
 <li>Paper: Section 4.3</li>
 </ul>
+
+
+
 </section>
 
-</main>
-<!-- /main column -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -204,7 +412,7 @@ S(A) = \alpha |\partial A| - \gamma + \dots
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/quantumofgravity\.com\/timesarrow");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

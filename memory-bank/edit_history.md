@@ -1,10 +1,22 @@
 # Edit History
 
-*Last Updated: 2026-07-08 00:54:22 IST*
+*Last Updated: 2026-07-08 17:42 IST*
 
 ---
 
 ## 2026-07-08
+
+#### 17:42 IST - T32: Synchronized resolved correction state
+- Modified `memory-bank/implementation-details/post-may-numerics-correction-plan.md` - Added resolved-vs-remaining status for each identified T32 error.
+- Modified `memory-bank/tasks/T31.md` and `memory-bank/tasks/T32.md` - Marked T31 design/test corrections completed while leaving production validation open.
+- Modified `memory-bank/progress.md`, `memory-bank/tasks.md`, `memory-bank/activeContext.md`, and `memory-bank/implementation-details/signed-volume-observable.md` - Cleaned stale historical T22a/T31 wording so searches no longer surface superseded guidance as current.
+- Modified `memory-bank/sessions/2026-07-02-evening.md` - Marked old iterative-gauge-fixing next steps as superseded by T32.
+- Modified `numerics/docs/tasks/t31-signed-volume.qmd` - Replaced stale greedy gauge-fixing guidance with exploratory-data and dressed-correlator wording.
+- Modified `numerics/docs/dashboard.qmd` - Removed duplicated unmarked first-order T20 dashboard entries.
+- Modified `numerics/docs/dashboard-prototype.qmd` - Replaced the stale first-order prototype entry with a T20d Ising correction entry.
+- Rebuilt `numerics/docs/_site/` with Quarto - Refreshed rendered task pages and dashboard under the current `_site` output configuration.
+- Updated `memory-bank/activeContext.md`, `memory-bank/progress.md`, `memory-bank/session_cache.md`, and `memory-bank/sessions/2026-07-05-night.md` - Synchronized the current T32 state.
+- Created `memory-bank/edits/2026-07-08/174245-t32-docs-mb-sync.md` - Added the edit chunk for this documentation and memory update.
 
 #### 00:54:22 IST - T32: Clarified post-May error inventory
 - Modified `memory-bank/implementation-details/post-may-numerics-correction-plan.md` - Added an explicit identified-error inventory for T20d, T22a, T31, T25, reproducibility, and the manuscript gate.

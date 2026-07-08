@@ -261,20 +261,8 @@ figureFiles = [
   {id: "t20d-binder-collapse", title: "T20d: Binder Collapse", desc: "Binder cumulant vs scaling variable"},
   {id: "t20d-plaquette-collapse", title: "T20d: Plaquette Collapse", desc: "Plaquette expectation scaling collapse"},
   {id: "t20d-chi-max-scaling", title: "T20d: χ_max Scaling", desc: "Peak susceptibility scaling with L"},
-  // Old first-order figures (SUPERSEDED — see T32-T20d correction)
-  {id: "t20-binder-first-order-scaling", title: "❌ First-Order Scaling (SUPERSEDED)", desc: "INVALID — synthetic illustration, not sampled data"},
-  {id: "t20-binder-first-order-scaling-all-L", title: "❌ First-Order All L (SUPERSEDED)", desc: "INVALID — superseded by T20d Ising FSS reanalysis"},
-  {id: "t20-scaling-collapse", title: "❌ Scaling Collapse (SUPERSEDED)", desc: "INVALID — inconclusive without autocorrelation-aware errors"},
-  {id: "t20-scaling-collapse-all-L", title: "❌ Scaling Collapse All L (SUPERSEDED)", desc: "INVALID — superseded by T20d Ising FSS reanalysis"},
-  {id: "t20-critical-exponents", title: "❌ Critical Exponents (SUPERSEDED)", desc: "INVALID — unreliable with only 2 lattice sizes"},
-  {id: "t20-first-order-scaling-summary", title: "❌ First-Order Summary (SUPERSEDED)", desc: "INVALID — withdrawn first-order interpretation"},
-  // Scaling analysis
-  {id: "t20-binder-first-order-scaling", title: "First-Order Scaling", desc: "Binder cumulant first-order scaling"},
-  {id: "t20-binder-first-order-scaling-all-L", title: "First-Order All L", desc: "First-order scaling across all L"},
-  {id: "t20-scaling-collapse", title: "Scaling Collapse", desc: "Finite-size scaling collapse"},
-  {id: "t20-scaling-collapse-all-L", title: "Scaling Collapse All L", desc: "Scaling collapse all L sizes"},
-  {id: "t20-critical-exponents", title: "Critical Exponents", desc: "Critical exponent extraction"},
-  {id: "t20-first-order-scaling-summary", title: "First-Order Summary", desc: "Summary of first-order evidence"},
+  // Superseded T20 first-order figures are intentionally omitted from the dashboard.
+  // They remain in git history and old artifacts only for provenance; see T32.
   {id: "t20-convergence-L16", title: "Convergence L16", desc: "Convergence at L=16"},
   {id: "t20-error-bars", title: "Error Bars", desc: "Error bar analysis"},
   {id: "t20-error-comparison-L16", title: "Error Comparison", desc: "Error comparison at L=16"}

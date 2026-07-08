@@ -202,8 +202,8 @@ T31 runs and figures added to the numerics dashboard:
 
 ## Future Work
 
-1. **Implement iterative gauge-fixing** — greedy algorithm to always measure in aligned sector
-2. **Re-run L=10, 12** with gauge-fixing to get clean |Q|/N → 1 signal
-3. **Binder cumulant crossing** — U_L(β) for different L should cross at β_c
-4. **Extract critical exponents** — fit |Q|/N ~ (β - β_c)^β near critical point
-5. **Paper update** — integrate into Section 4.3 (Z₂ effective action)
+1. **Run Rust 2024-compatible tests** for the corrected local gauge transformation and candidate `gauge_invariant_signed_volume_3d()` observable.
+2. **Physically review the dressed correlator** before treating it as the replacement orientation diagnostic.
+3. **Run new production simulations** only after the replacement observable passes gauge-invariance and physical sanity checks.
+4. **Perform scaling analysis** only on validated gauge-invariant data.
+5. **Paper update** — integrate only validated gauge-invariant conclusions into Section 4.3 or keep the manuscript gate closed.

@@ -7,7 +7,7 @@ toc: true
 toc-title: "Contents"
 ---
 
-*Last updated: 2026-07-02 20:56 IST*
+*Last updated: 2026-07-08 17:42 IST*
 
 ::: {.callout-tip}
 ## 📊 Live Dashboard
@@ -23,9 +23,9 @@ Implement and measure a **signed volume observable** for the Z₂ lattice gauge 
 | Phase | Description | Status | Date |
 |-------|-------------|--------|------|
 | Phase 1 | 2D square lattice validation | ✅ Complete | 2026-07-02 |
-| Phase 2 | 3D cubic lattice (L=8,10,12) | ✅ Complete | 2026-07-02 |
-| Phase 3 | Gauge-fixing for ordered phase | ⏳ Pending | — |
-| Phase 4 | Finite-size scaling & exponents | ⏳ Pending | — |
+| Phase 2 | 3D cubic lattice (L=8,10,12) | ⚠️ Exploratory only | 2026-07-02 |
+| Phase 3 | Gauge-invariant dressed correlator | ✅ Implemented, awaiting full validation | 2026-07-08 |
+| Phase 4 | New production runs and scaling | ⏳ Pending | — |
 
 ## Theory
 
@@ -40,16 +40,25 @@ $$\hat{Q}_{\text{total}} = \sum_{v \in S} \hat{Q}_v$$
 - **Confined phase** (random Z₂ orientations): Signs cancel. $\langle |\hat{Q}_{\text{total}}| \rangle \sim \sqrt{N}$ (random walk).
 - **Deconfined phase** (ordered Z₂): Signs align. $\langle |\hat{Q}_{\text{total}}| \rangle \sim N$ (extensive).
 
-This means the confinement-deconfinement transition is simultaneously:
+This motivates the search for a gauge-invariant orientation diagnostic. The original path-based signed-volume measurements below are retained as exploratory data, not as production evidence for a phase transition or arrow-of-time scaling.
+
+This means the confinement-deconfinement transition would be tested through:
 1. The emergence of a global arrow of time
 2. The emergence of a macroscopic geometry with non-vanishing, extensive signed volume
 
-### Gauge Fixing
+### Gauge-Dependence Correction
 
-The signed volume at individual vertices is gauge-dependent. To measure it, we fix a gauge by choosing a **maximal spanning tree** from the origin.
+The signed volume at individual vertices is gauge-dependent. The earlier maximal-spanning-tree path convention chooses one representative of each gauge orbit, but it is not itself a gauge-invariant observable. Greedy or iterative gauge alignment is also withdrawn because it can force $|Q|=N$ in any phase by choosing an aligned representative.
 
 For a vertex at $(x,y,z)$, the sign is:
 $$\text{sign}(x,y,z) = \prod_{i=0}^{x-1} \sigma_{(i,0,0),x} \times \prod_{j=0}^{y-1} \sigma_{(x,j,0),y} \times \prod_{k=0}^{z-1} \sigma_{(x,y,k),z}$$
+
+The replacement implemented in `rust-lattice` is a dressed orientation correlator:
+$$C(r_1,r_2) = s(r_1) W(r_1 \to r_2) s(r_2)$$
+
+where $s(r)$ is the path-dressed sign from the origin and $W(r_1 \to r_2)$ is a Wilson line between the two sites using the opposite path ordering. The averaged observable
+$$Q_{\mathrm{GI}} = \frac{1}{N^2}\sum_{r_1,r_2} C(r_1,r_2)$$
+is designed to be invariant under local Z₂ gauge transformations.
 
 ## Implementation
 
@@ -60,12 +69,17 @@ $$\text{sign}(x,y,z) = \prod_{i=0}^{x-1} \sigma_{(i,0,0),x} \times \prod_{j=0}^{
 pub fn signed_volume_3d(&self) -> i64
 pub fn measure_signed_volume_3d(&mut self, beta, n_sweeps, measure_every) -> (f64, f64, f64, f64, f64)
 
+// Gauge-invariant dressed orientation correlator
+pub fn local_gauge_transform_3d(&mut self, x, y, z)
+pub fn gauge_invariant_signed_volume_3d(&self) -> f64
+pub fn measure_gauge_invariant_signed_volume_3d(&mut self, beta, n_sweeps, measure_every) -> (f64, f64, f64, f64, f64)
+
 // 2D Signed Area (for validation)
 pub fn signed_area_2d(&self) -> i64
 pub fn measure_signed_area_2d(&mut self, beta, n_sweeps, measure_every) -> (f64, f64, f64, f64, f64)
 ```
 
-Returns: `(mean |Q|, error, mean Q², mean |Q|/N, binder)`
+The original signed-volume measurement returns `(mean |Q|, error, mean Q², mean |Q|/N, binder)`. The gauge-invariant replacement returns `(mean Q_GI, error, mean Q_GI², mean Q_GI, binder)`.
 
 ## Results
 
@@ -83,7 +97,9 @@ Returns: `(mean |Q|, error, mean Q², mean |Q|/N, binder)`
 
 ✅ **Consistent with random-walk scaling** across all β. Confirms no deconfined phase in 2D.
 
-### 3D Signed Volume — Production Runs
+### 3D Signed Volume — Exploratory Gauge-Dependent Runs
+
+The following runs were made before the T32 gauge-dependence correction. They are useful diagnostics for the old observable and data pipeline, but their $|Q|/N$ values must not be promoted as gauge-invariant physics.
 
 #### L=8 (N=512) — 1/√N = 0.044
 
@@ -140,7 +156,7 @@ Returns: `(mean |Q|, error, mean Q², mean |Q|/N, binder)`
 
 ### Key Observations
 
-1. **L=8 shows clearest signal**: |Q|/N rises from ~0.034 (confined) to ~0.090 (deconfined), a 2.6× increase. Binder cumulant approaches 2/3 at β=1.5.
+1. **L=8 shows the clearest exploratory trend**: |Q|/N rises from ~0.034 to ~0.090. Because the observable is gauge-dependent, this is not production evidence for deconfinement or arrow-of-time scaling.
 
 2. **L=10 anomalous at β=1.5**: |Q|/N = 0.0075, below confined-phase value. This is a "bad" gauge sector where the simulation got stuck in the σ_e = -1 ground state.
 
@@ -154,12 +170,23 @@ The signed volume is **gauge-dependent**. In the deconfined phase, two gauge-equ
 
 At finite β, tunneling between sectors causes |Q|/N to fluctuate between ~1 and ~0.
 
+### Gauge-Invariant Replacement
+
+`rust-lattice/src/lib.rs` now includes:
+
+1. A corrected local gauge transformation that flips all six incident 3D links at a site.
+2. Tests showing plaquettes remain invariant under valid local gauge transformations.
+3. Tests showing the original `signed_volume_3d()` changes under gauge transformations.
+4. A candidate `gauge_invariant_signed_volume_3d()` dressed correlator with single-site and multi-site gauge-invariance tests.
+
+These tests were identified in source inspection, but the local Cargo available in this shell is older than Rust edition 2024, so the full Rust test suite still needs to be run with the documented Rust 1.85+ toolchain before new production results are trusted.
+
 ## Next Steps
 
-1. **Implement iterative gauge-fixing** (greedy algorithm) to always measure in the "aligned" sector
-2. **Re-run L=10,12** with gauge-fixing to get clean |Q|/N → 1 signal
-3. **Binder cumulant analysis** for precise β_c determination
-4. **Exponent extraction** — fit |Q|/N ~ (β - β_c)^β near critical point
+1. Run the Rust gauge-invariance tests with a Rust 2024-compatible toolchain.
+2. Review whether the dressed correlator has the desired physical normalization and finite-size behavior.
+3. Run new production simulations only with the validated gauge-invariant observable.
+4. Perform Binder or scaling analysis only after the replacement observable is validated.
 
 ## Data Files
 
