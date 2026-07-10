@@ -1,17 +1,17 @@
 # Session Cache
 
 *Created: 2026-07-08 10:21:16 IST*
-*Last Updated: 2026-07-08 10:21:16 IST*
+*Last Updated: 2026-07-10 19:05:00 IST*
 
-**Started**: 2026-07-02 15:59:17 IST
-**Focus Task**: T31: Signed Volume Observable
-**Session File**: `sessions/2026-07-02-evening.md`
+**Started**: 2026-07-10 18:40:44 IST
+**Focus Task**: T32: Post-May Numerics Correction and Reproducibility Pass
+**Session File**: `sessions/2026-07-10-evening.md`
 **Status**: 🔄 Active: 5, Paused: 0, Completed: 15
 
 ## Overview
 
 - Active: 5 | Paused: 0 | Completed: 15
-- Last Session: 2026-07-02
+- Last Session: 2026-07-10
 - Current Period: evening
 
 ## Active Tasks
@@ -50,7 +50,7 @@
 **Context**: [Details](tasks/T32.md)
 **Progress**:
 [Details](tasks/T32.md)
-Deployed updated task pages and figures to GitHub Pages. Deleted stale gh-pages branch. Updated space-cadet.github.io repo from origin (5 commits). Copied v2 dashboard source to timesarrow repo. Synced 54 files (task pages + figures) from timesarrow main to .github.io repo. Fixed timestamps on index, T20, T31 pages. All changes pushed to origin/main.
+Audited the published numerics deployment against the corrected local Quarto render. Synced the corrected `_site` output to `space-cadet.github.io` and pushed deploy commit `92d05cc`. Repaired missing dashboard asset publishing, fixed T20 Phase 3b figure paths, normalized page timestamps, added a `Last Updated` column on the numerics index, and redeployed the refreshed site via `21a496e` and `efe6780`.
 
 ## Completed Tasks
 
