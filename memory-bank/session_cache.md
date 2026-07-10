@@ -1,7 +1,7 @@
 # Session Cache
 
 *Created: 2026-07-08 10:21:16 IST*
-*Last Updated: 2026-07-10 19:05:00 IST*
+*Last Updated: 2026-07-10 19:31:24 IST*
 
 **Started**: 2026-07-10 18:40:44 IST
 **Focus Task**: T32: Post-May Numerics Correction and Reproducibility Pass
@@ -50,7 +50,7 @@
 **Context**: [Details](tasks/T32.md)
 **Progress**:
 [Details](tasks/T32.md)
-Audited the published numerics deployment against the corrected local Quarto render. Synced the corrected `_site` output to `space-cadet.github.io` and pushed deploy commit `92d05cc`. Repaired missing dashboard asset publishing, fixed T20 Phase 3b figure paths, normalized page timestamps, added a `Last Updated` column on the numerics index, and redeployed the refreshed site via `21a496e` and `efe6780`.
+Audited the published numerics deployment against the corrected local Quarto render. Synced the corrected `_site` output to `space-cadet.github.io` and pushed deploy commit `92d05cc`. Repaired missing dashboard asset publishing, fixed T20 Phase 3b figure paths, normalized page timestamps, added a `Last Updated` column on the numerics index, redeployed the refreshed site via `21a496e` and `efe6780`, then validated the T31 Rust tests under a Rust 2024-compatible toolchain, measured T20d rerun timing calibrations, completed a fresh local `L=8` fine-scan rerun, and handed the long remaining reruns to Kimi.
 
 ## Completed Tasks
 

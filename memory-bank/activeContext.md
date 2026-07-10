@@ -1,6 +1,6 @@
 # timesarrow — Active Context
 
-*Updated: 2026-07-10 19:05 IST*
+*Updated: 2026-07-10 19:31 IST*
 
 ## Current Session — 2026-07-10 Evening
 
@@ -55,6 +55,15 @@
 - Corrected the T20 Phase 3b Ising FSS figure paths from the old `../figures/t20d-ising/` location to the published `../assets/` location.
 - Added a `Last Updated` column to the main numerics `Simulation Tasks` table.
 - Redeployed the refreshed numerics site twice: `21a496e` restored the missing dashboard assets and timestamp refresh, and `efe6780` fixed the T20 Phase 3b figure references plus the main-page task table.
+
+**Validation and rerun calibration (2026-07-10 19:31 IST):**
+
+- Ran the `T31` Rust unit tests successfully using `rustup` toolchain `1.92.0-aarch64-apple-darwin`; the default local `cargo 1.73.0` is too old for edition 2024.
+- Confirmed the gauge-invariance tests around `gauge_invariant_signed_volume_3d()` pass in the Rust 2024-compatible environment.
+- Measured short `T20d` rerun calibrations: `L=16` at `30k` thermal + `20k` measurement sweeps took about `11.2 s` per β, and `L=32` at `20k` thermal + `10k` measurement sweeps took about `44.8 s` per β.
+- Completed a full local `L=8` fine-scan rerun as `numerics/data/fss/t20-p3b-L8-3D-fine-20260710.json` with `25/25` β values.
+- Estimated production runtimes for the remaining larger reruns are now roughly: `L=16` about `20–25 minutes` and `L=32` about `2.5–3 hours`; `L=48/64` remain multi-hour jobs.
+- The long remaining reruns are being handed off to Kimi.
 
 ## Previous Session — 2026-07-02 Evening
 

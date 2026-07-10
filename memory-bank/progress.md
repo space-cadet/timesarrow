@@ -1,6 +1,6 @@
 # timesarrow — Progress Tracker
 
-*Updated: 2026-07-10 19:05 IST*
+*Updated: 2026-07-10 19:31 IST*
 
 ## T32 Correction Gate
 
@@ -10,7 +10,7 @@ The post-May simulation infrastructure and raw datasets are preserved, but the f
 
 - T20d: first-order classification, plaquette-Binder argument, and schematic histogram evidence.
 - T22a: FK-vertex labeling and the extra squaring from approximately $0.45$ to $0.20$. **Resolved in canonical source and regenerated `_site` output (2026-07-08): now a normalized SU(2) four-leg group average with analytic result primary.**
-- T31: iterative gauge alignment and phase-scaling claims based on the gauge-dependent path sum. **Partially resolved (2026-07-08): old runs are exploratory and greedy gauge fixing is withdrawn; Rust source contains a candidate gauge-invariant dressed correlator and tests, but production validation remains pending.**
+- T31: iterative gauge alignment and phase-scaling claims based on the gauge-dependent path sum. **Further resolved (2026-07-10): Rust 2024-compatible unit tests were run successfully with `rustup` toolchain `1.92.0-aarch64-apple-darwin`; physical review and replacement-observable production runs still remain.**
 - T25: spectral $± q$ pairing overinterpreted as a physical time-orientation symmetry without an explicit transformation operator. **Calibrated under T32 (2026-07-08): now described as algebraic spectral reflection symmetry with physical-transformation test deferred.**
 
 TypeScript and Rust build/test reproducibility and repository artifact policy are also part of T32. Post-May numerical claims are blocked from the main manuscript until T32 is complete.
@@ -22,7 +22,15 @@ TypeScript and Rust build/test reproducibility and repository artifact policy ar
 - ✅ The inventory now records resolved-vs-remaining status for each error class.
 - ✅ Dashboard source no longer duplicates superseded T20 first-order figures under unmarked titles.
 - ✅ T31 docs now mark old signed-volume runs as gauge-dependent exploratory data and document the replacement observable.
-- 🔄 T20d numerical reanalysis, Rust 2024-compatible validation, new T31 production runs, and artifact-policy cleanup remain pending under T32.
+- 🔄 T20d numerical reanalysis, new T31 production runs, and artifact-policy cleanup remain pending under T32.
+
+### T20d Rerun Calibration — 2026-07-10
+
+- Short timing calibrations were completed before launching the new fine-scan campaign.
+- Measured today on this machine: `L=16` at `30k` thermal + `20k` measurement sweeps took about `11.2 s` per β; `L=32` at `20k` thermal + `10k` measurement sweeps took about `44.8 s` per β.
+- A full new `L=8` fine-scan rerun completed locally as `numerics/data/fss/t20-p3b-L8-3D-fine-20260710.json` with `25/25` β values.
+- Extrapolated wall-clock estimates for the remaining production settings are: `L=16` about `20–25 minutes`, `L=32` about `2.5–3 hours`, with `L=48/64` substantially longer.
+- The large remaining T20d reruns are being handed off to Kimi after this calibration pass.
 
 ### T32 Deployment Audit — 2026-07-10
 

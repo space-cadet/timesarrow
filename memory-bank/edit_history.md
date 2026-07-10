@@ -1,10 +1,20 @@
 # Edit History
 
-*Last Updated: 2026-07-10 19:05 IST*
+*Last Updated: 2026-07-10 19:31 IST*
 
 ---
 
 ## 2026-07-10
+
+#### 19:31:24 IST - T32: Recorded Rust 2024 validation, T20d timing calibrations, completed L8 rerun, and Kimi handoff for larger reruns.
+- Modified `memory-bank/tasks/T31.md` - Marked Rust 2024-compatible test execution complete and recorded the passing toolchain details.
+- Modified `memory-bank/tasks/T32.md` - Marked the T31 Rust validation gate complete under T32.
+- Modified `memory-bank/tasks/T20d.md` - Added rerun timing calibration results, completed L8 rerun status, and estimated production runtimes.
+- Modified `memory-bank/progress.md` - Recorded successful T31 validation and T20d calibration/handoff status.
+- Modified `memory-bank/activeContext.md` - Added the Rust validation result, rerun timing estimates, and Kimi handoff note.
+- Modified `memory-bank/session_cache.md` - Updated the active-session summary with validation and calibration work.
+- Modified `memory-bank/sessions/2026-07-10-evening.md` - Appended the validation and rerun-calibration follow-up to the session record.
+- Modified `memory-bank/tasks.md` - Refreshed the task registry timestamp after the July 10 validation/calibration update.
 
 #### 19:05:00 IST - T32: Repaired summary-layer memory-bank bookkeeping for the July 10 numerics deployment follow-up.
 - Created `memory-bank/sessions/2026-07-10-evening.md` - Recorded the July 10 evening T32 deployment and dashboard repair session.
