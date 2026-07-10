@@ -1,6 +1,6 @@
 # timesarrow — Progress Tracker
 
-*Updated: 2026-07-08 17:42 IST*
+*Updated: 2026-07-10 19:05 IST*
 
 ## T32 Correction Gate
 
@@ -23,6 +23,29 @@ TypeScript and Rust build/test reproducibility and repository artifact policy ar
 - ✅ Dashboard source no longer duplicates superseded T20 first-order figures under unmarked titles.
 - ✅ T31 docs now mark old signed-volume runs as gauge-dependent exploratory data and document the replacement observable.
 - 🔄 T20d numerical reanalysis, Rust 2024-compatible validation, new T31 production runs, and artifact-policy cleanup remain pending under T32.
+
+### T32 Deployment Audit — 2026-07-10
+
+- Local corrected Quarto output in `numerics/docs/_site` includes the T20d continuous-transition correction, the T22a SU(2) four-leg group-average correction, and the T31 gauge-dependence correction.
+- The local `space-cadet.github.io` checkout is clean at commit `bf552ea`, but `projects/timesarrow/numerics/` is stale relative to `_site`.
+- Deployed `/tasks/` T20, T22, and T31 pages still contain withdrawn first-order, spin-foam dominance, and greedy-gauge language.
+- The deployed dashboard HTML differs from the corrected `_site` render; an older project-local deployment copy also still lists superseded first-order dashboard figure entries.
+- Deployment synchronization is now an explicit T32 acceptance criterion before the manuscript gate can close.
+
+### T32 Deployment Sync — 2026-07-10
+
+- Corrected `numerics/docs/_site/` output was mirrored into `/Users/deepak/code/space-cadet.github.io/projects/timesarrow/numerics/`.
+- Stale deploy-only files and old first-order figure artifacts were removed from the published numerics subtree.
+- Deployment commit `92d05cc` (`docs: deploy corrected timesarrow numerics`) was pushed to `space-cadet.github.io` `main`.
+- T32 deployment synchronization is now complete; Rust validation, T20d fine-scan reanalysis, artifact policy, and the manuscript gate remain open.
+
+### T32 Dashboard Repair — 2026-07-10
+
+- Dashboard gallery figures were missing because the page referenced dynamically constructed asset paths that Quarto was not copying into `_site`.
+- `numerics/docs/_quarto.yml` now includes `assets/**` as project resources, so the rendered site carries the full figure set.
+- T20 Phase 3b Ising FSS figures now point at published `../assets/` files instead of the obsolete `../figures/t20d-ising/` path.
+- The main numerics overview page now includes a `Last Updated` column in the `Simulation Tasks` table.
+- Follow-up deploy commits `21a496e` and `efe6780` pushed the repaired render to `space-cadet.github.io`.
 
 ### T20d Correction Progress — 2026-07-05
 

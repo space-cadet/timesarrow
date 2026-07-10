@@ -2,12 +2,12 @@
 title: "T20 — Z₂ Lattice Gauge Theory Monte Carlo"
 subtitle: "Confinement-deconfinement transition"
 date: "2026-07-02"
-date-modified: "2026-07-08 03:18 IST"
+date-modified: "2026-07-10T18:45:00+05:30"
 toc: true
 toc-title: "Contents"
 ---
 
-*Last updated: 2026-07-05 23:15 IST*
+*Last updated: 2026-07-10 18:45 IST*
 
 ::: {.callout-tip}
 ## 📊 Live Dashboard
@@ -543,23 +543,23 @@ When plotted against the scaling variable x = L^(1/ν)(β − β_c^lit), the sus
 
 ### Figures
 
-![Susceptibility — raw data](../figures/t20d-ising/t20d-chi-raw.png)
+![Susceptibility — raw data](../assets/t20d-chi-raw.png)
 
 *Figure: Susceptibility χ vs β for L=16 and L=24. The vertical lines mark the literature critical point (red dashed) and the fitted β_c(∞) (green dash-dot). The L=24 peak is higher and shifted to larger β, consistent with finite-size scaling.*
 
-![β_c extrapolation](../figures/t20d-ising/t20d-bc-extrapolation.png)
+![β_c extrapolation](../assets/t20d-bc-extrapolation.png)
 
 *Figure: Extrapolation of pseudo-critical β_c(L) to the thermodynamic limit using the Ising scaling form β_c(L) = β_c(∞) + A·L^(−1/ν). The red dotted line is the literature value β_c = 0.76141.*
 
-![Susceptibility FSS collapse](../figures/t20d-ising/t20d-chi-collapse-lit.png)
+![Susceptibility FSS collapse](../assets/t20d-chi-collapse-lit.png)
 
 *Figure: Scaling collapse of susceptibility using 3D Ising exponents and the literature β_c. The data from L=16 and L=24 fall onto a single curve, consistent with the continuous-transition hypothesis.*
 
-![Binder cumulant FSS collapse](../figures/t20d-ising/t20d-binder-collapse.png)
+![Binder cumulant FSS collapse](../assets/t20d-binder-collapse.png)
 
 *Figure: Binder cumulant vs scaling variable. The curves cross near x = 0, consistent with the universal critical behavior expected for a continuous transition.*
 
-![Combined overview](../figures/t20d-ising/t20d-overview.png)
+![Combined overview](../assets/t20d-overview.png)
 
 *Figure: Combined overview of plaquette, susceptibility, specific heat, and Binder cumulant for the L=16 and L=24 fine scans. The dashed red line marks the literature critical point β_c ≈ 0.761.*
 

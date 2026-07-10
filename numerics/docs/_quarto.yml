@@ -2,6 +2,8 @@ project:
   type: website
   title: "TimesArrow Numerics"
   output-dir: _site
+  resources:
+    - assets/**
 
 website:
   title: "TimesArrow"

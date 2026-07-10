@@ -2,10 +2,10 @@
 title: "TimesArrow Numerics"
 subtitle: "Numerical simulations for time reversal symmetry in quantum gravity"
 date: "2026-07-02"
-date-modified: "2026-07-02 22:43 IST"
+date-modified: "2026-07-10T18:45:00+05:30"
 ---
 
-*Last updated: 2026-07-02 14:55 IST*
+*Last updated: 2026-07-10 18:45 IST*
 
 ::: {.callout-tip}
 ## 📊 Live Dashboard
@@ -20,16 +20,16 @@ All simulations use the **ts-quantum** TypeScript library for SU(2) algebra, int
 
 ## Simulation Tasks
 
-| Task | Focus | Status | Priority |
-|---|---|---|---|
-| **[T31](tasks/t31-signed-volume.html)** | Signed Volume Observable | 🟢 Phase 2 Complete | P1 |
-| **[T25](tasks/t25-volume-operator.html)** | Volume Operator Extension | 🟢 Complete | P1 |
-| **[T20](tasks/t20-z2-lgt.html)** | Z₂ LGT Monte Carlo | 🟢 Phase 3 Complete | P0 |
-| **T23** | Entanglement Entropy | 🔴 Blocked (T20) | P1 |
-| **[T22](tasks/t22-spin-foam.html)** | Spin Foam Amplitudes | 🟡 Ready | P1 |
-| **T21** | CZX PEPS Ground State | 🔴 Blocked (T22) | P1 |
-| **T24** | Domain Wall Dynamics | 🔴 Blocked (T20+T21) | P2 |
-| **T26** | Coupled Matter | 🔴 Blocked (T20+T24) | P2 |
+| Task | Focus | Status | Priority | Last Updated |
+|---|---|---|---|---|
+| **[T31](tasks/t31-signed-volume.html)** | Signed Volume Observable | 🟢 Phase 2 Complete | P1 | 2026-07-10 |
+| **[T25](tasks/t25-volume-operator.html)** | Volume Operator Extension | 🟢 Complete | P1 | 2026-06-29 |
+| **[T20](tasks/t20-z2-lgt.html)** | Z₂ LGT Monte Carlo | 🟢 Phase 3 Complete | P0 | 2026-07-10 |
+| **T23** | Entanglement Entropy | 🔴 Blocked (T20) | P1 | — |
+| **[T22](tasks/t22-spin-foam.html)** | Spin Foam Amplitudes | 🟡 Ready | P1 | 2026-07-10 |
+| **T21** | CZX PEPS Ground State | 🔴 Blocked (T22) | P1 | — |
+| **T24** | Domain Wall Dynamics | 🔴 Blocked (T20+T21) | P2 | — |
+| **T26** | Coupled Matter | 🔴 Blocked (T20+T24) | P2 | — |
 
 ## Philosophy
 

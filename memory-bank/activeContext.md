@@ -1,6 +1,6 @@
 # timesarrow — Active Context
 
-*Updated: 2026-07-08 17:42 IST*
+*Updated: 2026-07-10 19:05 IST*
 
 ## Current Session — 2026-07-08 Night
 
@@ -35,6 +35,26 @@
 - Cleaned the dashboard source so superseded first-order T20 figures are omitted instead of duplicated under unmarked titles.
 - Updated the T31 task page to mark old $|Q|/N$ data as exploratory, withdraw greedy gauge fixing, and document the candidate gauge-invariant dressed correlator.
 - Rebuilt the Quarto site into `_site`; root-level rendered HTML artifacts were removed by the current `output-dir: _site` configuration.
+
+**Deployment audit (2026-07-10 18:40 IST):**
+
+- The local corrected render in `numerics/docs/_site` contains the T20d continuous-transition correction, the T22a four-leg group-average correction, and the T31 gauge-dependence correction.
+- The local `space-cadet.github.io` checkout is clean but stale for `projects/timesarrow/numerics/`: deployed `/tasks/` T20, T22, and T31 pages still contain withdrawn first-order, spin-foam dominance, and greedy-gauge language. The dashboard HTML also differs from the corrected `_site` render.
+- T32 now explicitly tracks deployment synchronization as an open acceptance criterion.
+
+**Deployment sync (2026-07-10 18:45 IST):**
+
+- Mirrored `numerics/docs/_site/` into `/Users/deepak/code/space-cadet.github.io/projects/timesarrow/numerics/` with stale files removed.
+- Committed and pushed the deployment as `92d05cc` on `space-cadet.github.io` `main`.
+- T32 deployment synchronization is now complete; remaining blockers are Rust 2024 validation, T20d fine-scan reanalysis, artifact policy, and the manuscript gate.
+
+**Dashboard follow-up (2026-07-10 19:05 IST):**
+
+- Added `assets/**` to `numerics/docs/_quarto.yml` resources so Quarto copies the dashboard gallery figures into `_site/assets/`.
+- Normalized dashboard, index, T20, T22, and T31 page timestamps so `date-modified` and visible "Last updated" text agree.
+- Corrected the T20 Phase 3b Ising FSS figure paths from the old `../figures/t20d-ising/` location to the published `../assets/` location.
+- Added a `Last Updated` column to the main numerics `Simulation Tasks` table.
+- Redeployed the refreshed numerics site twice: `21a496e` restored the missing dashboard assets and timestamp refresh, and `efe6780` fixed the T20 Phase 3b figure references plus the main-page task table.
 
 ## Previous Session — 2026-07-02 Evening
 
@@ -156,7 +176,8 @@
 | 2 | **T32/T31** | **Run and validate the gauge-invariant replacement observable** | T31 |
 | 3 | **T32/T20d** | **Finish controlled reanalysis and artifact cleanup** | T20d |
 | 4 | **T32** | **Verify reproducible builds/tests with Rust 2024 toolchain** | T25, T27 |
-| 5 | T29 | Extensible schema design | T32 |
-| 6 | T23/T24 | Resume exploratory numerics after correction gate | T32 |
+| 5 | **T32** | **Verify reproducible builds/tests with Rust 2024 toolchain and finish artifact policy** | T25, T27 |
+| 6 | T29 | Extensible schema design | T32 |
+| 7 | T23/T24 | Resume exploratory numerics after correction gate | T32 |
 
 **Key decision:** Correct and verify the post-May numerical claims before further production runs or manuscript integration. T22b and new T31 runs are blocked by T32.
