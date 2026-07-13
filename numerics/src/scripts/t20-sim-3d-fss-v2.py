@@ -6,7 +6,7 @@ FIX: Passes ALL beta values to Rust in a single call, allowing rayon to
 parallelize across all beta points. Achieves ~8× speedup on 8-core systems.
 
 Usage:
-  python3 t20-sim-3d-fss-v2.py [--test] [--L 8] [--resume]
+  python3 t20-sim-3d-fss-v2.py [--test] [--plan] [--L 8] [--resume]
 
 Output:
   numerics/data/fss/t20-p3b-L{L}-3D-fine-YYYYMMDD.json
@@ -30,7 +30,9 @@ OUTPUT_DIR = REPO_ROOT / "numerics" / "data" / "fss"
 SIM_CONFIGS = [
     {"L": 8,  "beta_min": 0.70, "beta_max": 0.82, "delta_beta": 0.005,
      "thermal": 500_000, "sweeps": 1_000_000, "workers": 8},
-    {"L": 16, "beta_min": 0.72, "beta_max": 0.80, "delta_beta": 0.003,
+    {"L": 16, "beta_min": 0.74, "beta_max": 0.78, "delta_beta": 0.002,
+     "thermal": 500_000, "sweeps": 1_000_000, "workers": 8},
+    {"L": 24, "beta_min": 0.74, "beta_max": 0.78, "delta_beta": 0.002,
      "thermal": 500_000, "sweeps": 1_000_000, "workers": 8},
     {"L": 32, "beta_min": 0.74, "beta_max": 0.78, "delta_beta": 0.002,
      "thermal": 500_000, "sweeps": 1_500_000, "workers": 8},
@@ -39,6 +41,13 @@ SIM_CONFIGS = [
     {"L": 64, "beta_min": 0.75, "beta_max": 0.77, "delta_beta": 0.001,
      "thermal": 1_000_000, "sweeps": 3_000_000, "workers": 8},
 ]
+
+# July 10, 2026 calibration anchors recorded in T20d/T32 notes.
+# Values are rough wall-clock totals for the full production-style fine scans.
+RUNTIME_ANCHORS = {
+    16: {"betas": 21, "thermal": 500_000, "sweeps": 1_000_000, "seconds": 22.5 * 60},
+    32: {"betas": 21, "thermal": 500_000, "sweeps": 1_500_000, "seconds": 2.75 * 3600},
+}
 
 TEST_CONFIG = {"L": 8, "beta": 0.76, "thermal": 5_000, "sweeps": 10_000, "workers": 8}
 LOOP_SIZES = "1x1,2x2,3x3"
@@ -113,6 +122,78 @@ def save_results(filepath, data):
     tmp.rename(filepath)
 
 
+def estimate_runtime_seconds(cfg):
+    """Return a rough runtime estimate based on recorded July 10 anchors."""
+    anchor_L = 16 if cfg["L"] <= 24 else 32
+    anchor = RUNTIME_ANCHORS[anchor_L]
+    anchor_work = anchor["betas"] * (anchor["thermal"] + anchor["sweeps"])
+    cfg_betas = len(build_beta_grid(cfg["beta_min"], cfg["beta_max"], cfg["delta_beta"]))
+    cfg_work = cfg_betas * (cfg["thermal"] + cfg["sweeps"])
+    scale = (cfg["L"] / anchor_L) ** 3 * (cfg_work / anchor_work)
+    return anchor["seconds"] * scale
+
+
+def format_duration(seconds):
+    if seconds < 90:
+        return f"{seconds:.0f}s"
+    minutes = seconds / 60
+    if minutes < 90:
+        return f"{minutes:.1f} min"
+    hours = minutes / 60
+    return f"{hours:.2f} h"
+
+
+def find_existing_outputs(L):
+    patterns = [
+        f"t20-p3b-L{L}-3D-fine-*.json",
+        f"t20d-L{L}-fine-*.json",
+        f"t20-p3b-L{L}-lean-*.json",
+    ]
+    matches = []
+    for pattern in patterns:
+        matches.extend(sorted(OUTPUT_DIR.glob(pattern)))
+    seen = set()
+    unique = []
+    for match in matches:
+        if match.name not in seen:
+            unique.append(match)
+            seen.add(match.name)
+    return unique
+
+
+def print_plan(only_L=None, workers_override=None):
+    print("═" * 78)
+    print("T20 Phase 3b — Fine Scan Plan")
+    print("═" * 78)
+    configs = [c for c in SIM_CONFIGS if only_L is None or c["L"] == only_L]
+    for cfg in configs:
+        cfg = dict(cfg)
+        if workers_override is not None:
+            cfg["workers"] = workers_override
+        betas = build_beta_grid(cfg["beta_min"], cfg["beta_max"], cfg["delta_beta"])
+        existing = find_existing_outputs(cfg["L"])
+        estimate = estimate_runtime_seconds(cfg)
+        print(
+            f"L={cfg['L']:>2} | β count={len(betas):>2} | "
+            f"range=[{cfg['beta_min']:.3f}, {cfg['beta_max']:.3f}] | "
+            f"Δβ={cfg['delta_beta']:.4f} | est={format_duration(estimate)}"
+        )
+        print(
+            f"      sweeps={cfg['sweeps']:,} measure, {cfg['thermal']:,} thermal, "
+            f"workers={cfg['workers']}"
+        )
+        if existing:
+            print("      existing:")
+            for path in existing:
+                print(f"        - {path.name}")
+        else:
+            print("      existing: none")
+    print("═" * 78)
+    print("Estimates are rough and derived from the July 10 calibration anchors.")
+    print("═" * 78)
+    return True
+
+
 # ─── MAIN ────────────────────────────────────────────────────────────────────
 
 def run_test():
@@ -149,7 +230,7 @@ def run_test():
     return True
 
 
-def run_full(resume=False, only_L=None):
+def run_full(resume=False, only_L=None, workers_override=None):
     print("═" * 70)
     print("T20 Phase 3b — 3D Z₂ LGT FSS (V2 Batched, Parallel Beta)")
     print("═" * 70)
@@ -161,6 +242,9 @@ def run_full(resume=False, only_L=None):
     configs = [c for c in SIM_CONFIGS if only_L is None or c["L"] == only_L]
 
     for cfg in configs:
+        cfg = dict(cfg)
+        if workers_override is not None:
+            cfg["workers"] = workers_override
         L = cfg["L"]
         betas = build_beta_grid(cfg["beta_min"], cfg["beta_max"], cfg["delta_beta"])
         
@@ -247,8 +331,10 @@ def run_full(resume=False, only_L=None):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--test", action="store_true")
+    parser.add_argument("--plan", action="store_true")
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--L", type=int, default=None)
+    parser.add_argument("--workers", type=int, default=None)
     args = parser.parse_args()
 
     if not BINARY.exists():
@@ -260,9 +346,12 @@ def main():
     if args.test:
         success = run_test()
         sys.exit(0 if success else 1)
-    else:
-        success = run_full(resume=args.resume, only_L=args.L)
+    if args.plan:
+        success = print_plan(only_L=args.L, workers_override=args.workers)
         sys.exit(0 if success else 1)
+
+    success = run_full(resume=args.resume, only_L=args.L, workers_override=args.workers)
+    sys.exit(0 if success else 1)
 
 
 if __name__ == "__main__":
