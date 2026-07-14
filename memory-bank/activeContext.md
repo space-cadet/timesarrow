@@ -1,8 +1,8 @@
 # timesarrow — Active Context
 
-*Updated: 2026-07-10 19:31 IST*
+*Updated: 2026-07-14 04:55 IST*
 
-## Current Session — 2026-07-10 Evening
+## Current Session — 2026-07-14 Night
 
 ### T32: Post-May Numerics Correction and Reproducibility Pass — IN PROGRESS 🔄
 
@@ -11,7 +11,7 @@
 - T22a is now corrected as a normalized SU(2) four-leg group average, not a complete FK/EPRL vertex amplitude; the extra squaring to $0.20$ is removed in canonical source and regenerated `_site` output.
 - T31 must not use greedy gauge alignment because spanning-tree alignment can force $|Q|=N$ in any phase; the Rust source now has a candidate gauge-invariant dressed orientation correlator and gauge-invariance tests, but no new production runs are accepted until those tests run under a Rust 2024-compatible toolchain.
 - T25 spectral pairing is now calibrated as algebraic spectral reflection symmetry; the physical time-orientation transformation test is deferred.
-- TypeScript/Rust build and test reproducibility are documented but not verified in the current shell because local Cargo cannot parse Rust edition 2024.
+- TypeScript/Rust build and test reproducibility are now verified in this checkout via the updated `scripts/validate.sh` workflow, including the Rust 2024-compatible toolchain path.
 - `timesarrow.tex` remains gated from post-May numerical claims until T32 is complete.
 - The correction plan now includes an explicit error inventory, not only a task list, covering T20d, T22a, T31, T25, reproducibility, and the manuscript gate.
 
@@ -64,6 +64,14 @@
 - Completed a full local `L=8` fine-scan rerun as `numerics/data/fss/t20-p3b-L8-3D-fine-20260710.json` with `25/25` β values.
 - Estimated production runtimes for the remaining larger reruns are now roughly: `L=16` about `20–25 minutes` and `L=32` about `2.5–3 hours`; `L=48/64` remain multi-hour jobs.
 - The long remaining reruns are being handed off to Kimi.
+
+**Proof-of-principle rerun update (2026-07-14 04:55 IST):**
+
+- Completed fresh production fine scans for `L=16` and `L=32` with the updated runner and recorded the new artifacts under `numerics/data/fss/`.
+- `L=16` shows `χ` and `C_V` peaks at `β≈0.752`; `L=32` shifts both peaks to `β≈0.758` and sharpens them further.
+- Updated `numerics/src/scripts/t20d-ising-reanalysis.py` now consumes the current fine-scan artifacts and treats the result as proof-of-principle support for the corrected continuous-transition interpretation rather than a precision critical-exponent measurement.
+- A simple peak-drift guide now gives `β_c(∞)≈0.7618±0.0005`, close to the literature value `0.761`, but this is recorded as consistency support only.
+- Given the current project priorities, `T20d` is now good enough as supporting numerics; the more central volume-operator and related calculations should take precedence over further exponent-chasing.
 
 ## Previous Session — 2026-07-02 Evening
 

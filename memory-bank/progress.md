@@ -1,6 +1,6 @@
 # timesarrow — Progress Tracker
 
-*Updated: 2026-07-10 19:31 IST*
+*Updated: 2026-07-14 04:55 IST*
 
 ## T32 Correction Gate
 
@@ -13,7 +13,7 @@ The post-May simulation infrastructure and raw datasets are preserved, but the f
 - T31: iterative gauge alignment and phase-scaling claims based on the gauge-dependent path sum. **Further resolved (2026-07-10): Rust 2024-compatible unit tests were run successfully with `rustup` toolchain `1.92.0-aarch64-apple-darwin`; physical review and replacement-observable production runs still remain.**
 - T25: spectral $± q$ pairing overinterpreted as a physical time-orientation symmetry without an explicit transformation operator. **Calibrated under T32 (2026-07-08): now described as algebraic spectral reflection symmetry with physical-transformation test deferred.**
 
-TypeScript and Rust build/test reproducibility and repository artifact policy are also part of T32. Post-May numerical claims are blocked from the main manuscript until T32 is complete.
+TypeScript and Rust build/test reproducibility and repository artifact policy are also part of T32. The local validation workflow now passes in this checkout. Post-May numerical claims are blocked from the main manuscript until T32 is complete.
 
 ### T32 Error Inventory — 2026-07-08
 
@@ -22,7 +22,16 @@ TypeScript and Rust build/test reproducibility and repository artifact policy ar
 - ✅ The inventory now records resolved-vs-remaining status for each error class.
 - ✅ Dashboard source no longer duplicates superseded T20 first-order figures under unmarked titles.
 - ✅ T31 docs now mark old signed-volume runs as gauge-dependent exploratory data and document the replacement observable.
-- 🔄 T20d numerical reanalysis, new T31 production runs, and artifact-policy cleanup remain pending under T32.
+- 🔄 T20d proof-of-principle reanalysis is now in place, while T31 production runs and artifact-policy cleanup remain pending under T32.
+
+### T20d Proof-of-Principle Update — 2026-07-14
+
+- Fresh `L=16` and `L=32` production reruns have now completed and are saved under `numerics/data/fss/`.
+- The updated `L=16` rerun peaks at `β≈0.752`; the updated `L=32` rerun peaks at `β≈0.758`.
+- Peak heights sharpen with lattice size, and the simple peak-drift guide lands near `β_c(∞)≈0.7618±0.0005`, close to the literature value `0.761`.
+- Binder remains close to `2/3`, so this is still not a dramatic cumulant story.
+- Current conclusion: `T20d` is now sufficient as proof-of-principle support for the corrected continuous-transition interpretation, but not as a precision critical-exponent result.
+- Recommendation: treat further `L=48/64` runs and autocorrelation-aware exponent work as optional follow-ons, and move priority back to the more central volume-operator and related calculations.
 
 ### T20d Rerun Calibration — 2026-07-10
 

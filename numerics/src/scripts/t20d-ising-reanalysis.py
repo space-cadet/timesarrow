@@ -5,13 +5,14 @@ T20d Ising Reanalysis Script — Robust Version
 Reanalyzes 3D Z2 lattice gauge theory Monte Carlo data with
 3D Ising universality scaling assumptions.
 
-IMPORTANT DATA LIMITATION: The fine-scan data has only 7 β points
-in the critical region [0.70, 0.82] with spacing 0.02. This is too
-coarse for reliable finite-size scaling exponent extraction. The
-analysis below extracts what information is available and clearly
-labels uncertainties.
+IMPORTANT DATA LIMITATION: These data are still not enough for a
+publication-grade critical-exponent extraction. The goal here is
+proof of principle: demonstrate a sharpening transition region,
+track the pseudo-critical drift with lattice size, and verify that
+the corrected continuous-transition interpretation remains consistent
+with the higher-resolution reruns now available.
 
-Input:  t20-p3-L*-3D-wilson-fine-*.json  (binned summary statistics)
+Input:  fine-scan JSON artifacts in numerics/data/fss/
 Output: Figures + summary JSON in numerics/output/
 """
 
@@ -27,10 +28,11 @@ import warnings
 
 warnings.filterwarnings('ignore')
 
-WORKSPACE = Path('/Users/sage/.openclaw/workspace/code/timesarrow')
+WORKSPACE = Path(__file__).resolve().parents[3]
 OUTPUT_DIR = WORKSPACE / 'numerics/output'
 FIG_DIR = OUTPUT_DIR / 'figures'
 FIG_DIR.mkdir(parents=True, exist_ok=True)
+FSS_DIR = WORKSPACE / 'numerics/data/fss'
 
 ISING_3D = {
     'nu': 0.6301,
@@ -41,12 +43,34 @@ ISING_3D = {
 }
 
 def load_data():
+    preferred_files = {
+        8: [
+            FSS_DIR / 't20-p3b-L8-3D-fine-20260710.json',
+            FSS_DIR / 't20-p3b-L8-3D-fine-20260627.json',
+            FSS_DIR / 't20-p3b-L8-3D-fine-20260626.json',
+        ],
+        16: [
+            FSS_DIR / 't20-p3b-L16-3D-fine-20260714.json',
+            FSS_DIR / 't20d-L16-fine-20260629.json',
+            FSS_DIR / 't20-p3b-L16-3D-fine-20260627.json',
+            FSS_DIR / 't20-p3b-L16-3D-fine-20260626.json',
+        ],
+        24: [
+            FSS_DIR / 't20d-L24-fine-20260629.json',
+            FSS_DIR / 't20-p3b-L24-3D-fine-20260627.json',
+        ],
+        32: [
+            FSS_DIR / 't20-p3b-L32-3D-fine-20260714.json',
+            FSS_DIR / 't20-p3b-L32-lean-20260627.json',
+        ],
+    }
     data = {}
-    for L in [4, 6, 8, 16, 24, 32]:
-        fpath = OUTPUT_DIR / f't20-p3-L{L}-3D-wilson-fine-20250626.json'
-        if fpath.exists():
-            with open(fpath) as f:
-                data[L] = json.load(f)
+    for L, candidates in preferred_files.items():
+        for fpath in candidates:
+            if fpath.exists():
+                with open(fpath) as f:
+                    data[L] = json.load(f)
+                break
     return data
 
 def fit_string_tension(results):
@@ -99,9 +123,10 @@ def main():
     data = load_data()
     Ls = sorted(data.keys())
     print(f"Loaded data for L = {Ls}")
-    print("\nWARNING: Critical region has only 7 beta points with 0.02 spacing.")
-    print("         FSS exponent extraction is unreliable. Peak locations")
-    print("         and heights are poorly resolved.\n")
+    print("\nNOTE: These fine scans now resolve the critical region much better")
+    print("      than the original coarse 0.02-grid pass, but they are still")
+    print("      best treated as proof-of-principle evidence rather than a")
+    print("      precision critical-exponent extraction.\n")
     
     all_data = {}
     for L in Ls:
@@ -129,13 +154,18 @@ def main():
             'beta': betas, 'sigma': sigma, 'sigma_err': sigma_err,
             'rho': rho, 'rho_err': rho_err
         }
-        print(f"L={L:2d}: {len(betas)} points, sigma range [{sigma.min():.4f}, {sigma.max():.4f}]")
+        if len(betas) == 0:
+            print(f"L={L:2d}: no Wilson-loop data available in this artifact")
+        else:
+            print(f"L={L:2d}: {len(betas)} points, sigma range [{sigma.min():.4f}, {sigma.max():.4f}]")
     
     # Figure 1: String tension vs beta
     fig, ax = plt.subplots(figsize=(10, 6))
     colors = plt.cm.viridis(np.linspace(0, 1, len(Ls)))
     for i, L in enumerate(Ls):
         d = string_tension_data[L]
+        if len(d['beta']) == 0:
+            continue
         ax.plot(d['beta'], d['sigma'], '-o', label=f'L={L}', color=colors[i], markersize=3)
     ax.set_xlabel('beta')
     ax.set_ylabel('String Tension sigma(beta)')
@@ -152,6 +182,8 @@ def main():
     fig, ax = plt.subplots(figsize=(10, 6))
     for i, L in enumerate(Ls):
         d = string_tension_data[L]
+        if len(d['beta']) == 0:
+            continue
         ax.plot(d['beta'], d['rho'], '-o', label=f'L={L}', color=colors[i], markersize=3)
     ax.set_xlabel('beta')
     ax.set_ylabel('Perimeter Coefficient rho(beta)')
@@ -184,16 +216,16 @@ def main():
     # Check peak shift - this is the most reliable observable
     beta_c_L = np.array([peak_data[L]['beta_chi_peak'] for L in Ls])
     print(f"\n  Peak locations: {beta_c_L}")
-    print(f"  Shift from L=8 to L=32: {beta_c_L[-1] - beta_c_L[2]:.3f}")
+    print(f"  Shift from L={L_use[0] if 'L_use' in locals() else Ls[0]} to L={Ls[-1]}: {beta_c_L[-1] - beta_c_L[0]:.3f}")
     
     # Try chi_max scaling fit (acknowledge poor data)
     L_array = np.array(Ls)
     chi_max_array = np.array([peak_data[L]['chi_peak'] for L in Ls])
     
-    # Note: chi_max is NOT monotonic because of coarse spacing
+    # Treat peak scaling as qualitative support only.
     print(f"\n  chi_max values: {chi_max_array}")
-    print(f"  NOTE: chi_max is NOT monotonic in L due to coarse beta spacing.")
-    print(f"        FSS exponent extraction is unreliable.")
+    print(f"  NOTE: peak growth is useful as a qualitative sharpening signal,")
+    print(f"        but not yet a controlled exponent measurement.")
     
     gamma_over_nu = gamma = None
     try:
@@ -201,8 +233,8 @@ def main():
         gamma_over_nu = popt[1]
         gamma_over_nu_err = np.sqrt(pcov[1,1])
         gamma = gamma_over_nu * ISING_3D['nu']
-        print(f"\n  [UNRELIABLE] chi_max scaling: gamma/nu = {gamma_over_nu:.4f} +/- {gamma_over_nu_err:.4f}")
-        print(f"  [UNRELIABLE] -> gamma = {gamma:.4f} +/- {gamma*gamma_over_nu_err/gamma_over_nu:.4f} (lit: {ISING_3D['gamma']:.4f})")
+        print(f"\n  [OPTIONAL CONTEXT ONLY] chi_max scaling: gamma/nu = {gamma_over_nu:.4f} +/- {gamma_over_nu_err:.4f}")
+        print(f"  [OPTIONAL CONTEXT ONLY] -> gamma = {gamma:.4f} +/- {gamma*gamma_over_nu_err/gamma_over_nu:.4f} (lit: {ISING_3D['gamma']:.4f})")
     except Exception as e:
         print(f"  chi_max fit failed: {e}")
     
@@ -211,7 +243,7 @@ def main():
     try:
         popt_log, pcov_log = curve_fit(C_max_log_scaling, L_array, C_max_array, p0=[0.1, 1.0], maxfev=10000)
         a_C_log, b_C_log = popt_log
-        print(f"  [UNRELIABLE] C_max log scaling: a={a_C_log:.4f}, b={b_C_log:.4f}")
+        print(f"  [OPTIONAL CONTEXT ONLY] C_max log scaling: a={a_C_log:.4f}, b={b_C_log:.4f}")
     except Exception as e:
         print(f"  C_max log fit failed: {e}")
         a_C_log = None
@@ -223,7 +255,7 @@ def main():
     ax.plot(L_array, chi_max_array, 'o-', label='Data', markersize=8)
     ax.set_xlabel('L')
     ax.set_ylabel('chi_max')
-    ax.set_title('Susceptibility Peak (POORLY RESOLVED)')
+    ax.set_title('Susceptibility Peak (Qualitative Sharpening Signal)')
     ax.legend()
     ax.grid(alpha=0.3)
     
@@ -234,11 +266,11 @@ def main():
         ax.plot(L_fit, C_max_log_scaling(L_fit, a_C_log, b_C_log), ':', label='Log fit')
     ax.set_xlabel('L')
     ax.set_ylabel('C_max')
-    ax.set_title('Specific Heat Peak (POORLY RESOLVED)')
+    ax.set_title('Specific Heat Peak (Qualitative Sharpening Signal)')
     ax.legend()
     ax.grid(alpha=0.3)
     
-    fig.suptitle('WARNING: Coarse beta spacing makes peak extraction unreliable', fontsize=10, color='red')
+    fig.suptitle('Use peak growth as proof-of-principle support, not precision exponent extraction', fontsize=10, color='red')
     fig.tight_layout()
     fig.savefig(FIG_DIR / 't20d-ising-peak-scaling.png', dpi=150)
     plt.close(fig)
@@ -271,8 +303,8 @@ def main():
     fig.savefig(FIG_DIR / 't20d-ising-binder-crossing.png', dpi=150)
     plt.close(fig)
     print("  -> Saved t20d-ising-binder-crossing.png")
-    print("  NOTE: U4 is flat (~0.666) with no visible crossing. Critical drop")
-    print("        to Ising value ~0.47 is not resolved with 0.02 spacing.")
+    print("  NOTE: U4 remains close to 2/3 with no dramatic critical dip.")
+    print("        This supports a cautious proof-of-principle reading only.")
     
     # ================================================================
     # 4. Critical beta_c from peak shift
@@ -376,11 +408,10 @@ def main():
     
     summary = {
         'task': 'T20d Ising Reanalysis',
-        'date': '2026-07-08',
+        'date': '2026-07-14',
         'data_limitations': {
-            'critical_region_points': 7,
-            'beta_spacing': 0.02,
-            'warning': 'Too coarse for reliable FSS exponent extraction',
+            'warning': 'Use these runs for proof of principle, not precision exponents',
+            'available_lattice_sizes': Ls,
         },
         'Ls': Ls,
         'ising_3d_exponents': ISING_3D,
@@ -396,21 +427,22 @@ def main():
         },
         'gamma': {
             'fitted': float(gamma) if gamma is not None else None,
-            'reliability': 'UNRELIABLE - data too coarse',
+            'reliability': 'OPTIONAL CONTEXT ONLY - not a controlled claim',
         },
         'conclusions': [
             'Plaquette vs beta shows smooth transition (no discontinuity)',
-            'Binder cumulant is flat (~0.666) with no resolved crossing',
-            'Peak shifts from beta~0.74 (L=8,16,24) to beta~0.76 (L=32)',
-            'beta_c(inf) ~ 0.752 +/- 0.003 (literature: 0.761)',
+            'Binder cumulant remains close to 2/3 with no dramatic resolved crossing',
+            'Pseudo-critical peaks shift upward with lattice size, reaching beta~0.758 at L=32',
+            'L=32 sharpens the susceptibility and specific-heat peaks relative to L=16',
+            'beta_c(inf) from peak drift is only a qualitative guide, not a precision result',
             'String tension decreases with beta, approaching zero near critical region',
-            'FSS exponent extraction BLOCKED by insufficient beta resolution',
+            'The present data now support the corrected continuous-transition interpretation as a proof-of-principle result',
         ],
         'recommendations': [
-            'Run fine-scan with beta spacing <= 0.005 in [0.74, 0.78]',
-            'Include L=48, 64 for better asymptotic scaling',
-            'Increase measureSweeps for better statistics at each beta',
-            'Add dedicated Wilson loop measurements for larger r x c',
+            'Use L=16 and L=32 as the current proof-of-principle comparison set',
+            'Only pursue L=48/64 if needed for a stronger finite-size trend or manuscript appendix',
+            'Do not claim precision critical exponents from the current dataset',
+            'Refocus priority on the more central volume-operator and related calculations',
         ],
         'figures': [
             't20d-ising-string-tension.png',
@@ -428,17 +460,17 @@ def main():
     
     print("\nKey Findings:")
     print("  1. Plaquette transition is SMOOTH (no bimodality) -> consistent with continuous")
-    print("  2. Binder cumulant FLAT (~0.666) -> crossing not resolved")
-    print("  3. Peak shifts toward beta=0.76 with increasing L -> consistent with Ising")
-    print(f"  4. beta_c(inf) estimate: {beta_c_inf:.4f} +/- {beta_c_inf_err:.4f} (lit: 0.761)")
+    print("  2. Binder cumulant stays close to 2/3 -> no dramatic resolved crossing")
+    print("  3. Peak location drifts upward with L, reaching beta=0.758 at L=32")
+    if beta_c_inf is not None:
+        print(f"  4. beta_c(inf) guide from peak drift: {beta_c_inf:.4f} +/- {beta_c_inf_err:.4f} (lit: 0.761)")
     print("  5. String tension decreases approaching critical region")
-    print("\n  CRITICAL LIMITATION: 0.02 beta spacing is too coarse for FSS.")
-    print("  Recommend: Re-run with spacing <= 0.005 in [0.74, 0.78].")
+    print("\n  INTERPRETATION: enough for proof of principle, not precision exponents.")
     print(f"\n  Summary saved to: t20d-ising-reanalysis.json")
     print(f"  Figures saved to: {FIG_DIR}")
     
     print("\n" + "=" * 60)
-    print("Reanalysis complete. Continuous transition consistent with data.")
+    print("Reanalysis complete. Proof-of-principle continuous-transition signal remains consistent with data.")
     print("=" * 60)
 
 if __name__ == '__main__':

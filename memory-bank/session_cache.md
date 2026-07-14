@@ -1,18 +1,18 @@
 # Session Cache
 
 *Created: 2026-07-08 10:21:16 IST*
-*Last Updated: 2026-07-10 19:31:24 IST*
+*Last Updated: 2026-07-14 04:55:00 IST*
 
-**Started**: 2026-07-10 18:40:44 IST
+**Started**: 2026-07-14 04:55:00 IST
 **Focus Task**: T32: Post-May Numerics Correction and Reproducibility Pass
-**Session File**: `sessions/2026-07-10-evening.md`
+**Session File**: `sessions/2026-07-14-night.md`
 **Status**: 🔄 Active: 5, Paused: 0, Completed: 15
 
 ## Overview
 
 - Active: 5 | Paused: 0 | Completed: 15
-- Last Session: 2026-07-10
-- Current Period: evening
+- Last Session: 2026-07-14
+- Current Period: night
 
 ## Active Tasks
 
@@ -51,6 +51,8 @@
 **Progress**:
 [Details](tasks/T32.md)
 Audited the published numerics deployment against the corrected local Quarto render. Synced the corrected `_site` output to `space-cadet.github.io` and pushed deploy commit `92d05cc`. Repaired missing dashboard asset publishing, fixed T20 Phase 3b figure paths, normalized page timestamps, added a `Last Updated` column on the numerics index, redeployed the refreshed site via `21a496e` and `efe6780`, then validated the T31 Rust tests under a Rust 2024-compatible toolchain, measured T20d rerun timing calibrations, completed a fresh local `L=8` fine-scan rerun, and handed the long remaining reruns to Kimi.
+
+Follow-up: repaired the local validation workflow so `scripts/validate.sh` now passes in this checkout, completed fresh `T20d` production reruns for `L=16` and `L=32`, and updated the `T20d` reanalysis to treat the result as proof-of-principle support for the corrected continuous-transition interpretation rather than a precision critical-exponent measurement. The new comparison set now shows the susceptibility/specific-heat peak drifting from `β≈0.752` at `L=16` to `β≈0.758` at `L=32`, with a simple peak-drift guide near the literature value `β_c≈0.761`.
 
 ## Completed Tasks
 

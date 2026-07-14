@@ -1,14 +1,16 @@
 {
   "task": "T20d Ising Reanalysis",
-  "date": "2026-07-08",
+  "date": "2026-07-14",
   "data_limitations": {
-    "critical_region_points": 7,
-    "beta_spacing": 0.02,
-    "warning": "Too coarse for reliable FSS exponent extraction"
+    "warning": "Use these runs for proof of principle, not precision exponents",
+    "available_lattice_sizes": [
+      8,
+      16,
+      24,
+      32
+    ]
   },
   "Ls": [
-    4,
-    6,
     8,
     16,
     24,
@@ -22,64 +24,53 @@
     "U4_critical": 0.466
   },
   "peak_data": {
-    "4": {
-      "beta_chi_peak": 0.68,
-      "chi_peak": 0.6168587871881493,
-      "beta_C_peak": 0.68,
-      "C_peak": 0.4194639752879416
-    },
-    "6": {
-      "beta_chi_peak": 0.72,
-      "chi_peak": 0.7567582197921542,
-      "beta_C_peak": 0.72,
-      "C_peak": 0.544865918250351
-    },
     "8": {
-      "beta_chi_peak": 0.74,
-      "chi_peak": 0.7917632408765428,
-      "beta_C_peak": 0.74,
-      "C_peak": 0.5859047982486416
+      "beta_chi_peak": 0.73,
+      "chi_peak": 0.8689372173577646,
+      "beta_C_peak": 0.735,
+      "C_peak": 0.6372373993278676
     },
     "16": {
-      "beta_chi_peak": 0.74,
-      "chi_peak": 0.651715896982405,
-      "beta_C_peak": 0.74,
-      "C_peak": 0.48226976376697966
+      "beta_chi_peak": 0.752,
+      "chi_peak": 1.1285719516621684,
+      "beta_C_peak": 0.752,
+      "C_peak": 0.8486861076499507
     },
     "24": {
-      "beta_chi_peak": 0.74,
-      "chi_peak": 0.6443398149546568,
-      "beta_C_peak": 0.74,
-      "C_peak": 0.47681146306644595
+      "beta_chi_peak": 0.756,
+      "chi_peak": 1.2828815827506452,
+      "beta_C_peak": 0.756,
+      "C_peak": 0.9698584765594878
     },
     "32": {
-      "beta_chi_peak": 0.76,
-      "chi_peak": 0.6926846016650962,
-      "beta_C_peak": 0.76,
-      "C_peak": 0.526440297265473
+      "beta_chi_peak": 0.758,
+      "chi_peak": 1.3517946622588133,
+      "beta_C_peak": 0.758,
+      "C_peak": 1.0246603539921804
     }
   },
   "beta_c_from_peak_shift": {
-    "value": 0.749768044831867,
-    "err": 0.00816821676176212
+    "value": 0.7618026743394604,
+    "err": 0.0004557052726039646
   },
   "gamma": {
-    "fitted": -0.012214864801738976,
-    "reliability": "UNRELIABLE - data too coarse"
+    "fitted": 0.1990150956172865,
+    "reliability": "OPTIONAL CONTEXT ONLY - not a controlled claim"
   },
   "conclusions": [
     "Plaquette vs beta shows smooth transition (no discontinuity)",
-    "Binder cumulant is flat (~0.666) with no resolved crossing",
-    "Peak shifts from beta~0.74 (L=8,16,24) to beta~0.76 (L=32)",
-    "beta_c(inf) ~ 0.752 +/- 0.003 (literature: 0.761)",
+    "Binder cumulant remains close to 2/3 with no dramatic resolved crossing",
+    "Pseudo-critical peaks shift upward with lattice size, reaching beta~0.758 at L=32",
+    "L=32 sharpens the susceptibility and specific-heat peaks relative to L=16",
+    "beta_c(inf) from peak drift is only a qualitative guide, not a precision result",
     "String tension decreases with beta, approaching zero near critical region",
-    "FSS exponent extraction BLOCKED by insufficient beta resolution"
+    "The present data now support the corrected continuous-transition interpretation as a proof-of-principle result"
   ],
   "recommendations": [
-    "Run fine-scan with beta spacing <= 0.005 in [0.74, 0.78]",
-    "Include L=48, 64 for better asymptotic scaling",
-    "Increase measureSweeps for better statistics at each beta",
-    "Add dedicated Wilson loop measurements for larger r x c"
+    "Use L=16 and L=32 as the current proof-of-principle comparison set",
+    "Only pursue L=48/64 if needed for a stronger finite-size trend or manuscript appendix",
+    "Do not claim precision critical exponents from the current dataset",
+    "Refocus priority on the more central volume-operator and related calculations"
   ],
   "figures": [
     "t20d-ising-string-tension.png",

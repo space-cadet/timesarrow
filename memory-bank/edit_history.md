@@ -1,6 +1,21 @@
 # Edit History
 
-*Last Updated: 2026-07-10 19:31 IST*
+*Last Updated: 2026-07-14 04:55 IST*
+
+---
+
+## 2026-07-10
+## 2026-07-14
+
+#### 04:55:00 IST - T32: Recorded completed L16/L32 reruns and reframed T20d as proof-of-principle support rather than precision exponent extraction.
+- Modified `memory-bank/tasks/T20d.md` - Added the completed `L=16` and `L=32` reruns, updated the key numerical takeaways, and reframed the task status around proof of principle.
+- Modified `memory-bank/tasks/T32.md` - Marked the local reproducibility workflow complete and clarified that only proof-of-principle `T20d` support is now required under the correction gate.
+- Modified `memory-bank/tasks.md` - Refreshed the master task registry timestamp for the July 14 update.
+- Modified `memory-bank/activeContext.md` - Added the July 14 rerun/reanalysis update and new prioritization away from exponent-chasing.
+- Modified `memory-bank/progress.md` - Recorded the completed `L=16`/`L=32` reruns and the updated proof-of-principle interpretation.
+- Modified `memory-bank/session_cache.md` - Pointed the active cache at the July 14 night session and summarized the rerun/reanalysis outcome.
+- Created `memory-bank/sessions/2026-07-14-night.md` - Recorded the July 14 night T32 validation and rerun/reanalysis session.
+- Created `memory-bank/edits/2026-07-14/045500-t32-proof-principle-reanalysis.md` - Added the edit chunk for this memory-bank synchronization pass.
 
 ---
 
@@ -47,8 +62,6 @@
 - Deployed `space-cadet.github.io` commit `21a496e` - Restored dashboard assets and refreshed timestamps.
 - Deployed `space-cadet.github.io` commit `efe6780` - Fixed T20 Phase 3b figure references and main numerics task table.
 - Created `memory-bank/edits/2026-07-10/190500-t32-dashboard-asset-fix.md` - Added edit chunk for the dashboard/timestamp repair.
-
----
 
 ## 2026-07-08
 
