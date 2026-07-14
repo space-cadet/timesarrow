@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
 """
+⚠️  SUPERCEDED — This script computes an FK/EPRL vertex amplitude estimate that was
+mislabeled. The calculation is actually a normalized SU(2) four-leg group average.
+
+See: numerics/scripts/su2-four-leg-group-average-multi-spin.py
+     for the corrected implementation.
+
+Original description (retained for provenance):
 T22a Quick Estimate: FK Vertex Amplitude Suppression
 
 Compute |A_v(j=1)|² / |A_v(j=½)|² for a single 4-valent FK vertex

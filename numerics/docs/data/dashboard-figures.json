@@ -120,20 +120,20 @@
     "sourceRuns": 3
   },
   {
-    "title": "FK Vertex Amplitude vs Spin",
-    "description": "Vertex amplitude |A_v(j)|\u00b2 for j=1/2 to 3, showing weak power-law suppression ~j^-1.55",
-    "path": "figures/t22a-fk-vertex-vs-spin.png",
+    "title": "SU(2) Four-Leg Group Average vs Spin",
+    "description": "Normalized SU(2) group average G(j) for j=1/2 to 3. Exact result G(j)=1/(2j+1)²; Monte Carlo validation.",
+    "path": "figures/su2-four-leg-group-average-vs-spin.png",
     "task": "T22a",
     "dimension": "N/A",
     "type": "analysis",
     "tags": [
       "T22a",
-      "FK",
-      "spin-foam",
-      "vertex-amplitude"
+      "SU(2)",
+      "group-average",
+      "analytic"
     ],
     "runIds": [
-      "t22a-fk-vertex-multi-spin-20260628"
+      "su2-four-leg-group-average-multi-spin-20260708"
     ],
     "sourceRuns": 1
   },

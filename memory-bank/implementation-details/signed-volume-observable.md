@@ -200,10 +200,76 @@ T31 runs and figures added to the numerics dashboard:
 - **Figures**: Signed Volume vs β, Binder Cumulant, Plaquette comparison
 - **Task page**: `tasks/t31-signed-volume.html` (deployed to space-cadet.github.io)
 
-## Future Work
+## Gauge-Invariant Dressed Correlator — Validation Failure (2026-07-14)
 
-1. **Run Rust 2024-compatible tests** for the corrected local gauge transformation and candidate `gauge_invariant_signed_volume_3d()` observable.
-2. **Physically review the dressed correlator** before treating it as the replacement orientation diagnostic.
-3. **Run new production simulations** only after the replacement observable passes gauge-invariance and physical sanity checks.
-4. **Perform scaling analysis** only on validated gauge-invariant data.
-5. **Paper update** — integrate only validated gauge-invariant conclusions into Section 4.3 or keep the manuscript gate closed.
+### Implementation
+
+A gauge-invariant replacement was implemented as a dressed correlator:
+
+```rust
+pub fn gauge_invariant_signed_volume_3d(&self) -> f64 {
+    let l = self.l;
+    let vol = (l * l * l) as f64;
+    let mut total = 0.0f64;
+    for z1 in 0..l {
+        for y1 in 0..l {
+            for x1 in 0..l {
+                let s1 = self.path_product_xyz_3d(0, 0, 0, x1, y1, z1);
+                for z2 in 0..l {
+                    for y2 in 0..l {
+                        for x2 in 0..l {
+                            let s2 = self.path_product_xyz_3d(0, 0, 0, x2, y2, z2);
+                            let w = self.path_product_xyz_3d(x1, y1, z1, x2, y2, z2);
+                            total += (s1 as f64) * w * (s2 as f64);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    total / (vol * vol)
+}
+```
+
+Where `path_product_xyz_3d(x1, y1, z1, x2, y2, z2)` computes the product of link variables along the path (+x, +y, +z) from (x1, y1, z1) to (x2, y2, z2).
+
+**Gauge invariance:** Verified by unit tests. Local Z₂ gauge transformations leave Q_GI unchanged.
+
+### Validation Results
+
+| Test | L | β range | Sweeps | Result |
+|------|---|---------|--------|--------|
+| Cold start | — | — | — | Q_GI = 1.000 ✓ |
+| Thermalized | 6 | 0.5–0.85 | 5k + 5k | Q_GI ≈ 0.02–0.08 (weak trend) |
+| Thermalized | 8 | 0.5–0.85 | 10k + 10k | Q_GI ≈ 0.01 (flat, no signal) |
+
+### Root Cause: Elitzur's Theorem
+
+The dressed correlator fails for a fundamental reason:
+
+1. In any thermalized state, individual link variables are random ±1 (Elitzur's theorem — local gauge symmetry cannot be spontaneously broken).
+2. The path product `P(0→r)` involves O(L) links, so it's ±1 with roughly equal probability even in the ordered phase.
+3. The triple product `s(r₁)·W·s(r₂)` then averages to ~0 because the signs are uncorrelated.
+
+The cold-start test passes (Q_GI = 1) only because all links are artificially set to +1, which never occurs in thermal equilibrium.
+
+**Conclusion:** The gauge-invariant signed volume is a valid gauge-invariant observable but is **not a useful order parameter** — it cannot distinguish the confined and deconfined phases.
+
+### Decision: Pivot to Polyakov Loop
+
+The Polyakov loop is:
+- Gauge-invariant by construction (closed temporal loop)
+- The standard deconfinement order parameter in lattice gauge theory
+- Already implemented in the codebase (`--polyakov` flag)
+- Physically interpretable: measures the free energy of a static charge pair
+
+Future T31 work will use the Polyakov loop instead of the signed volume.
+
+## Future Work (Updated 2026-07-14)
+
+1. **~~Run Rust 2024-compatible tests~~** ✅ Completed 2026-07-10
+2. **~~Physically review the dressed correlator~~** ✅ Completed 2026-07-14 — FAILED, pivoting to Polyakov loop
+3. **Run Polyakov loop measurements** across L=8,10,12,16 at the transition region
+4. **Extract Polyakov loop susceptibility and Binder cumulant**
+5. **Update T31 task page** with Polyakov loop results and document the negative result
+6. **Paper update** — integrate Polyakov loop as the deconfinement diagnostic

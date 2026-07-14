@@ -805,7 +805,7 @@ impl Z2GaugeField {
                         for y1 in 0..l {
                             for x1 in 0..l {
                                 let idx1 = z1 * l * l + y1 * l + x1;
-                                let w = self.path_product_zyx_3d(x1, y1, z1, x2, y2, z2);
+                                let w = self.path_product_xyz_3d(x1, y1, z1, x2, y2, z2);
                                 total += (s[idx1] * w * s[idx2]) as i64;
                             }
                         }
@@ -1079,14 +1079,16 @@ impl Z2GaugeField {
         product as f64
     }
 
-    /// Compute the average magnitude of the Polyakov loop over all spatial sites in 3D.
-    /// ⟨|P|⟩ = (1/L²) Σ_{x,y} |P(x,y)|
-    pub fn average_polyakov_3d(&self) -> f64 {
-        assert!(self.dimension == 3, "average_polyakov_3d requires 3D lattice");
+    /// Compute the average of the signed Polyakov loop over all spatial sites in 3D.
+    /// P̄ = (1/L²) Σ_{x,y} P(x,y)
+    /// Note: returns the SIGNED average, not the absolute value.
+    /// For Z₂, this is what enters the susceptibility and Binder cumulant.
+    pub fn average_polyakov_signed_3d(&self) -> f64 {
+        assert!(self.dimension == 3, "average_polyakov_signed_3d requires 3D lattice");
         let mut sum = 0.0;
         for x in 0..self.l {
             for y in 0..self.l {
-                sum += self.polyakov_loop_3d(x, y).abs();
+                sum += self.polyakov_loop_3d(x, y);
             }
         }
         sum / (self.l * self.l) as f64
@@ -1128,7 +1130,7 @@ impl Z2GaugeField {
                 p_measurements_sq.push(mean_plaq * mean_plaq);
                 p_measurements_quad.push(mean_plaq * mean_plaq * mean_plaq * mean_plaq);
 
-                let poly = self.average_polyakov_3d();
+                let poly = self.average_polyakov_signed_3d();
                 poly_measurements.push(poly);
                 poly_measurements_sq.push(poly * poly);
                 poly_measurements_quad.push(poly * poly * poly * poly);
@@ -1569,6 +1571,102 @@ pub fn simulate_beta_with_wilson_and_signed_volume(
 
     (mean_p, error, chi, cv, binder, thermal_time + measure_time, wilson_data,
      (mean_q_abs, error_q_abs, mean_q_sq, normalized, binder_q))
+}
+
+/// Simulate with Wilson loops and gauge-invariant signed volume (3D only).
+/// Returns same tuple as simulate_beta_with_wilson_and_signed_volume but uses
+/// gauge_invariant_signed_volume_3d() instead of signed_volume_3d().
+pub fn simulate_beta_with_wilson_and_gauge_invariant_signed_volume(
+    l: usize,
+    dimension: usize,
+    beta: f64,
+    thermal_sweeps: usize,
+    measure_sweeps: usize,
+    measure_every: usize,
+    seed: u64,
+    loop_sizes: &[(usize, usize)],
+) -> (f64, f64, f64, f64, f64, u64, Vec<(usize, usize, f64, f64)>, (f64, f64, f64, f64, f64)) {
+    assert!(dimension == 3,
+        "simulate_beta_with_wilson_and_gauge_invariant_signed_volume only supports 3D");
+
+    let mut field = Z2GaugeField::new_dim(l, dimension, seed);
+
+    let thermal_start = std::time::Instant::now();
+    field.thermalize(beta, thermal_sweeps);
+    let thermal_time = thermal_start.elapsed().as_millis() as u64;
+
+    let measure_start = std::time::Instant::now();
+
+    let mut measurements = Vec::new();
+    let mut measurements_sq = Vec::new();
+    let mut measurements_quad = Vec::new();
+    let mut q_values = Vec::new();
+    let mut q_sq = Vec::new();
+    let mut q_quad = Vec::new();
+    let n_loop_sizes = loop_sizes.len();
+    let mut wilson_sums = vec![0.0f64; n_loop_sizes];
+    let mut wilson_sums_sq = vec![0.0f64; n_loop_sizes];
+    let mut n_measurements = 0usize;
+
+    let vol = (l * l * l) as f64;
+
+    for sweep in 0..measure_sweeps {
+        field.sweep(beta);
+        if sweep % measure_every == 0 {
+            let (mean_plaq, _, _) = field.plaquette_stats();
+            measurements.push(mean_plaq);
+            measurements_sq.push(mean_plaq * mean_plaq);
+            measurements_quad.push(mean_plaq * mean_plaq * mean_plaq * mean_plaq);
+
+            for (idx, &(r, c)) in loop_sizes.iter().enumerate() {
+                let w = field.average_wilson_loop_xy_3d(r, c);
+                wilson_sums[idx] += w;
+                wilson_sums_sq[idx] += w * w;
+            }
+
+            let q = field.gauge_invariant_signed_volume_3d();
+            q_values.push(q);
+            q_sq.push(q * q);
+            q_quad.push(q * q * q * q);
+
+            n_measurements += 1;
+        }
+    }
+
+    let n = n_measurements as f64;
+
+    let mean_p = measurements.iter().sum::<f64>() / n;
+    let mean_p2 = measurements_sq.iter().sum::<f64>() / n;
+    let mean_p4 = measurements_quad.iter().sum::<f64>() / n;
+    let p_variance = measurements.iter().map(|x| (x - mean_p).powi(2)).sum::<f64>() / n;
+    let error = (p_variance / n).sqrt();
+    let chi = vol * beta * (mean_p2 - mean_p * mean_p);
+    let cv = vol * beta * beta * (mean_p2 - mean_p * mean_p);
+    let binder = if mean_p2 > 0.0 { 1.0 - mean_p4 / (3.0 * mean_p2 * mean_p2) } else { 0.0 };
+
+    let wilson_data: Vec<(usize, usize, f64, f64)> = loop_sizes.iter().enumerate().map(|(idx, &(r, c))| {
+        let mean_w = wilson_sums[idx] / n;
+        let mean_w2 = wilson_sums_sq[idx] / n;
+        let var_w = mean_w2 - mean_w * mean_w;
+        (r, c, mean_w, var_w)
+    }).collect();
+
+    let mean_q = q_values.iter().sum::<f64>() / n;
+    let mean_q_sq = q_sq.iter().sum::<f64>() / n;
+    let mean_q_quad = q_quad.iter().sum::<f64>() / n;
+    let var_q = q_values.iter().map(|x| (x - mean_q).powi(2)).sum::<f64>() / n;
+    let error_q = (var_q / n).sqrt();
+    let normalized = mean_q.abs() / vol;  // |⟨Q⟩|/N — small in confined, should grow in deconfined
+    let binder_q = if mean_q_sq > 0.0 {
+        1.0 - mean_q_quad / (3.0 * mean_q_sq * mean_q_sq)
+    } else {
+        0.0
+    };
+
+    let measure_time = measure_start.elapsed().as_millis() as u64;
+
+    (mean_p, error, chi, cv, binder, thermal_time + measure_time, wilson_data,
+     (mean_q.abs(), error_q, mean_q_sq, normalized, binder_q))
 }
 
 #[cfg(test)]

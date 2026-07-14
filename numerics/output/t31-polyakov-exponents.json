@@ -1,0 +1,80 @@
+{
+  "description": "Critical exponent extraction from Polyakov loop susceptibility (proof-of-principle)",
+  "date": "2026-07-14",
+  "input_file": "/Users/sage/.openclaw/workspace/code/timesarrow/numerics/data/t31-polyakov-proof-of-principle-20260714.json",
+  "peak_susceptibility": {
+    "8": {
+      "beta_peak": 0.76,
+      "chi_max": 355.3
+    },
+    "10": {
+      "beta_peak": 0.76,
+      "chi_max": 620.5
+    },
+    "12": {
+      "beta_peak": 0.76,
+      "chi_max": 886.0
+    }
+  },
+  "scaling_fit": {
+    "model": "chi_P^max = A * L^(gamma/nu)",
+    "method": "log-log linear regression",
+    "L_used": [
+      8,
+      10,
+      12
+    ],
+    "A": 3.2684605315511535,
+    "gamma_over_nu": 2.262618136635163,
+    "gamma_over_nu_err": 0.08961492066129562,
+    "nonlinear_fit": {
+      "A": 4.008043660953453,
+      "gamma_over_nu": 2.175783112570929,
+      "gamma_over_nu_err": 0.1676212483087559
+    },
+    "reduced_chi2": null
+  },
+  "reference_3d_ising": {
+    "gamma": 1.2372,
+    "nu": 0.6301,
+    "gamma_over_nu": 1.9634978574829394
+  },
+  "comparison": {
+    "measured_gamma_over_nu": 2.262618136635163,
+    "ising_gamma_over_nu": 1.9634978574829394,
+    "relative_difference": 0.15234051721129654,
+    "agreement": "Within ~20% of 3D Ising (limited statistics, Lmax=12)"
+  },
+  "critical_beta": {
+    "from_peak_position": {
+      "beta_c": 0.7600000000000001,
+      "note": "All peaks at \u03b2=0.76; no finite-size shift visible at this precision"
+    },
+    "from_binder_crossing": {
+      "estimates": [
+        {
+          "L_pair": "8-10",
+          "beta_cross": 0.78,
+          "binder_diff": 0.0
+        },
+        {
+          "L_pair": "10-12",
+          "beta_cross": 0.85,
+          "binder_diff": 0.0
+        }
+      ],
+      "note": "Coarse \u03b2 grid and only 3 L values; crossing estimate is unreliable. Binder values at \u03b2=0.76: 0.634 (L=8), 0.640 (L=10), 0.614 (L=12). No clear crossing."
+    }
+  },
+  "caveats": [
+    "Proof-of-principle with only L=8,10,12 and 10k thermal + 10k measure sweeps.",
+    "\u03b2 grid is coarse (\u0394\u03b2=0.02 near peak); peak position may shift with finer grid.",
+    "No jackknife or bootstrap error bars on \u03c7_P \u2014 fit errors are formal only.",
+    "Binder cumulant does not show clean crossing; L=12 binder at \u03b2=0.74 is anomalously low (0.094).",
+    "3D Ising universality is expected for 3D Z\u2082 gauge theory; this scan is consistent but not conclusive."
+  ],
+  "plots": {
+    "chi_vs_beta": "/Users/sage/.openclaw/workspace/code/timesarrow/numerics/output/figures/t31-polyakov-chi-vs-beta.pdf",
+    "loglog_fit": "/Users/sage/.openclaw/workspace/code/timesarrow/numerics/output/figures/t31-polyakov-loglog-fit.pdf"
+  }
+}

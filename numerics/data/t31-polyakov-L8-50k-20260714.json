@@ -1,0 +1,25 @@
+{
+  "parameters": {
+    "L": 8,
+    "dimension": 3,
+    "thermalSweeps": 50000,
+    "measureSweeps": 50000,
+    "measureEvery": 10,
+    "binSize": 10,
+    "workers": 10,
+    "polyakov": true,
+    "signedVolume": false,
+    "loopSizes": [
+      {"r": 1, "c": 1}
+    ]
+  },
+  "results": [
+    {"beta":0.8,"binderCumulant":0.6663623515286118,"errorPlaquette":0.00020940148036838248,"errorPolyakov":0.011305022223275384,"meanPlaquette":0.9741151041666665,"meanPolyakov":0.4813875,"numMeasurements":5000,"polyakovBinder":0.6611406667816919,"polyakovSusceptibility":327.17703032,"specificHeat":0.07184216880195891,"susceptibility":0.08980271100244863,"wallTimeMs":3407,"wilsonLoops":[]},
+    {"beta":0.78,"binderCumulant":0.6661703763038442,"errorPlaquette":0.0002657007521680925,"errorPolyakov":0.01269103965894829,"meanPlaquette":0.9651682291666661,"meanPolyakov":0.105175,"numMeasurements":5000,"polyakovBinder":0.655943317486231,"polyakovSusceptibility":412.31996832000004,"specificHeat":0.10995493810155597,"susceptibility":0.1409678693609692,"wallTimeMs":3441,"wilsonLoops":[]},
+    {"beta":0.76,"binderCumulant":0.6655025857041397,"errorPlaquette":0.0004026091121947218,"errorPolyakov":0.011506794867598985,"meanPlaquette":0.9471562500000024,"meanPolyakov":0.209375,"numMeasurements":5000,"polyakovBinder":0.6360920451987173,"polyakovSusceptibility":338.9602,"specificHeat":0.239681409422893,"susceptibility":0.31537027555643815,"wallTimeMs":3472,"wilsonLoops":[]},
+    {"beta":0.74,"binderCumulant":0.6633832193265808,"errorPlaquette":0.000644090898647455,"errorPolyakov":0.009507113801977418,"meanPlaquette":0.905790624999999,"meanPolyakov":0.0233375,"numMeasurements":5000,"polyakovBinder":0.526558620142324,"polyakovSusceptibility":231.38614488,"specificHeat":0.58156428733983,"susceptibility":0.7858976855943649,"wallTimeMs":3549,"wilsonLoops":[]},
+    {"beta":0.72,"binderCumulant":0.6631353029453146,"errorPlaquette":0.000605265763509714,"errorPolyakov":0.005330925235565366,"meanPlaquette":0.8366369791666668,"meanPolyakov":-0.01946875,"numMeasurements":5000,"polyakovBinder":0.15152952300242006,"polyakovSusceptibility":72.7520355,"specificHeat":0.4861800972741119,"susceptibility":0.6752501351029332,"wallTimeMs":3667,"wilsonLoops":[]},
+    {"beta":0.7,"binderCumulant":0.6638206712203935,"errorPlaquette":0.0005154302418382046,"errorPolyakov":0.00340571963646266,"meanPlaquette":0.7907333333333326,"meanPolyakov":0.00638125,"numMeasurements":5000,"polyakovBinder":-0.0056158742919130145,"polyakovSusceptibility":29.693251179999997,"specificHeat":0.33325435842374984,"susceptibility":0.4760776548910712,"wallTimeMs":3738,"wilsonLoops":[]}
+  ],
+  "totalWallTimeMs": 3739
+}

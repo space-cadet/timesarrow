@@ -1,0 +1,45 @@
+{
+  "description": "T31 Polyakov loop measurements — proof-of-principle scan after pivot from signed volume",
+  "date": "2026-07-14",
+  "observable": "polyakov_loop_3d",
+  "parameters": {
+    "thermalSweeps": 10000,
+    "measureSweeps": 10000,
+    "measureEvery": 10,
+    "dimension": 3,
+    "betaValues": [0.60, 0.65, 0.70, 0.72, 0.74, 0.76, 0.78, 0.80, 0.85]
+  },
+  "results": {
+    "L8": {
+      "beta": [0.60, 0.65, 0.70, 0.72, 0.74, 0.76, 0.78, 0.80, 0.85],
+      "meanPlaquette": [0.626, 0.703, 0.790, 0.835, 0.908, 0.948, 0.966, 0.974, 0.985],
+      "meanPolyakov": [-0.005, -0.000, 0.003, -0.001, 0.019, 0.075, -0.904, -0.930, 0.964],
+      "polyakovSusceptibility": [9.5, 12.1, 27.5, 64.8, 240.0, 355.3, 3.7, 2.3, 0.7],
+      "polyakovBinder": [-0.020, 0.038, 0.060, 0.121, 0.536, 0.634, 0.657, 0.661, 0.665]
+    },
+    "L10": {
+      "beta": [0.60, 0.65, 0.70, 0.72, 0.74, 0.76, 0.78, 0.80, 0.85],
+      "meanPlaquette": [0.627, 0.702, 0.790, 0.832, 0.890, 0.950, 0.965, 0.974, 0.986],
+      "meanPolyakov": [0.002, 0.005, -0.003, 0.012, -0.034, -0.201, 0.873, 0.913, 0.956],
+      "polyakovSusceptibility": [11.2, 11.9, 22.2, 56.6, 230.4, 620.5, 7.4, 3.3, 1.3],
+      "polyakovBinder": [0.056, 0.010, 0.010, -0.119, 0.336, 0.640, 0.657, 0.662, 0.665]
+    },
+    "L12": {
+      "beta": [0.60, 0.65, 0.70, 0.72, 0.74, 0.76, 0.78, 0.80, 0.85],
+      "meanPlaquette": [0.627, 0.701, 0.789, 0.830, 0.882, 0.944, 0.965, 0.974, 0.985],
+      "meanPolyakov": [0.000, 0.002, -0.004, 0.001, 0.050, -0.159, 0.851, -0.894, -0.946],
+      "polyakovSusceptibility": [11.9, 13.9, 20.6, 34.8, 178.9, 886.0, 9.1, 4.4, 1.7],
+      "polyakovBinder": [0.074, -0.110, 0.015, -0.113, 0.094, 0.614, 0.658, 0.663, 0.665]
+    }
+  },
+  "analysis": {
+    "peakBeta": 0.76,
+    "peakSusceptibilityScaling": {
+      "L8": 355,
+      "L10": 621,
+      "L12": 886,
+      "growthRate": "~2.5× from L=8 to L=12"
+    },
+    "conclusion": "Polyakov loop susceptibility shows clear peak at β=0.76 with growing peak height, consistent with deconfinement transition. Binder cumulant approaches ~0.66 in ordered phase."
+  }
+}

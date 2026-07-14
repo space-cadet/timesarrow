@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
 """
+⚠️  SUPERCEDED — This script generates plots from the old t22a-fk-vertex data.
+The calculation was mislabeled as an FK/EPRL vertex amplitude.
+
+See: numerics/scripts/su2-four-leg-group-average-plot.py
+     for the corrected plot generation.
+
+Original description (retained for provenance):
 T22a: Generate plot for FK vertex amplitude vs spin j
 """
 

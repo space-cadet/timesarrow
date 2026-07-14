@@ -77,27 +77,37 @@
 
 > Superseded on 2026-07-05: the T20d, T22a, and T31 interpretations below are retained as historical session context, not current guidance.
 
-### T31: Signed Volume Observable — IN PROGRESS 🔄
-- **Concept**: Use signed volume operator Q̂ (not positive-definite V̂) for composite systems
-- **Key insight**: Emergence of global time orientation ↔ emergence of macroscopic signed volume
-- **Confined phase**: |Q| ~ √N (random walk cancellation, no arrow of time)
-- **Deconfined phase**: |Q| ~ N (extensive, coherent orientation, arrow of time emerges)
-- **Implementation**:
-  - `signed_volume_3d()` — gauge-fixed vertex sign sum
-  - `measure_signed_volume_3d()` — thermalize + measure with statistics
-  - `signed_area_2d()` — 2D analogue for code validation
-  - `measure_signed_area_2d()` — 2D measurement routine
-- **Production runs completed** (2026-07-02 evening):
-  - L=8, 10, 12 with 5000 thermal + 20000 measure sweeps
-  - L=8: clearest signal, |Q|/N rises from 0.034 to 0.090 (2.6× increase)
-  - L=10: anomalous at β=1.5 (gauge sector issue — stuck in checkerboard)
-  - L=12: non-monotonic, fluctuates between sectors
-  - **Gauge problem identified**: signed volume flips between ~N and ~0 in deconfined phase
-- **Dashboard**: T31 runs and 3 figures added to numerics dashboard
-- **Task page**: `tasks/t31-signed-volume.qmd` created and deployed
-- **Superseded next step**: The earlier plan to implement iterative gauge fixing is withdrawn by T32; new production runs require the gauge-invariant dressed correlator to pass validation.
-- **Files**: `rust-lattice/src/lib.rs` (+241 lines), committed as `84a3fb1`
-- **Memory-bank**: T31 task file, implementation-details doc updated with results
+### T31: Signed Volume Observable — PIVOTED to Polyakov Loop (2026-07-14)
+
+**Status:** IN PROGRESS — Polyakov loop proof-of-principle scan complete
+
+**Negative result recorded:** The gauge-invariant dressed correlator `gauge_invariant_signed_volume_3d()` was implemented and validated. It passes gauge-invariance tests and gives Q_GI = 1 for cold-start (all links +1). However, on thermalized configurations:
+- L=6: Q_GI ≈ 0.02–0.08 across β = 0.5–0.85 (weak trend, wrong magnitude)
+- L=8: Q_GI ≈ 0.01 across all β (flat, no phase discrimination)
+
+**Root cause:** Elitzur's theorem — individual link variables are random ±1 in any thermalized state, so path products are ±1 with equal probability. The triple product `s(r₁)·W·s(r₂)` averages to ~0 regardless of phase.
+
+**Decision:** Abandon signed volume as a deconfinement order parameter. Use the Polyakov loop (already implemented, `--polyakov` flag) as the standard gauge-invariant order parameter.
+
+**Polyakov loop results (2026-07-14):**
+- Fixed measurement bug: was averaging |P| (always 1 for Z₂), now correctly averages signed P̄
+- Proof-of-principle scans for L=8, 10, 12 across β = 0.60–0.85 (10k thermal + 10k measure sweeps)
+- Susceptibility χ_P peaks at β = 0.76 for all L, with growing peak height: 355 (L=8) → 621 (L=10) → 886 (L=12)
+- Mean Polyakov loop |⟨P̄⟩| → 1 in ordered phase, ≈ 0 in disordered phase
+- Binder cumulant U_P → 0.665 in deep ordered phase (close to 2/3)
+- Data saved to `numerics/data/t31-polyakov-proof-of-principle-20260714.json`
+
+**Next steps:**
+1. Extract critical exponents from Polyakov loop susceptibility scaling
+2. Run longer production scans with better statistics
+3. Update T31 task page and manuscript with Polyakov loop results
+
+**Files updated:**
+- `rust-lattice/src/lib.rs` — Fixed Polyakov loop measurement (signed average)
+- `memory-bank/tasks/T31.md` — Recorded pivot decision and Polyakov loop results
+- `memory-bank/implementation-details/signed-volume-observable.md` — Documented Elitzur theorem obstruction
+- `memory-bank/activeContext.md` — Updated T31 status
+- `numerics/data/t31-polyakov-proof-of-principle-20260714.json` — New data file
 
 ### T20d: FSS Analysis Published — COMPLETE ✅
 - **T20 Task Page**: Added comprehensive FSS Analysis section

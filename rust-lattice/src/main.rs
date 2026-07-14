@@ -108,6 +108,7 @@ fn main() {
     let mut use_polyakov = false;
     let mut use_signed_volume = false;
     let mut raw_output = false;
+    let mut use_gauge_invariant_signed_volume = false;
     let mut checkpoint_path: Option<String> = None;
     let mut i = 1;
     while i < args.len() {
@@ -124,6 +125,9 @@ fn main() {
         } else if args[i] == "--raw-output" {
             raw_output = true;
             args.remove(i);
+        } else if args[i] == "--gauge-invariant-signed-volume" {
+            use_gauge_invariant_signed_volume = true;
+            args.remove(i);
         } else if args[i] == "--checkpoint" && i + 1 < args.len() {
             checkpoint_path = Some(args[i + 1].clone());
             args.remove(i);     // remove --checkpoint
@@ -138,7 +142,7 @@ fn main() {
         eprintln!("  --polyakov: measure Polyakov loop (3D only)");
         eprintln!("  --signed-volume: measure signed volume/area (3D/2D)");
         eprintln!("  --raw-output: output raw time series (plaquette values) for autocorrelation analysis");
-        eprintln!("  --checkpoint <path>: write incremental checkpoint after each beta completes");
+        eprintln!("  --gauge-invariant-signed-volume: measure gauge-invariant signed volume (3D only, replaces --signed-volume)");
         eprintln!("  L: lattice size (e.g., 16)");
         eprintln!("  dimension: lattice dimension 2 or 3 (e.g., 3)");
         eprintln!("  measure_sweeps: number of measurement sweeps (e.g., 100000)");
@@ -176,6 +180,10 @@ fn main() {
         .collect();
 
     // Validate flags
+    if use_gauge_invariant_signed_volume && dimension != 3 {
+        eprintln!("Warning: --gauge-invariant-signed-volume is only supported for 3D lattices. Ignoring flag.");
+        use_gauge_invariant_signed_volume = false;
+    }
     if use_polyakov && dimension != 3 {
         eprintln!("Warning: --polyakov is only supported for 3D lattices. Ignoring flag.");
         use_polyakov = false;
@@ -195,7 +203,7 @@ fn main() {
         "binSize": 10,
         "workers": workers,
         "polyakov": use_polyakov,
-        "signedVolume": use_signed_volume,
+        "gaugeInvariantSignedVolume": use_gauge_invariant_signed_volume,
         "loopSizes": loop_sizes.iter().map(|(r, c)| json!({"r": r, "c": c})).collect::<Vec<_>>(),
     });
 
@@ -320,6 +328,31 @@ fn main() {
                     mean_signed_volume_sq: None,
                     normalized_signed_volume: None,
                     signed_volume_binder: None,
+                }
+            } else if use_gauge_invariant_signed_volume {
+                let (mean_p, error, chi, cv, binder, wall_time, wilson_data, sv_data) =
+                    simulate_beta_with_wilson_and_gauge_invariant_signed_volume(
+                        l, dimension, *beta, thermal_sweeps, measure_sweeps, 10, seed, &loop_sizes
+                    );
+                BetaResult {
+                    beta: *beta,
+                    mean_plaquette: mean_p,
+                    error_plaquette: error,
+                    susceptibility: chi,
+                    specific_heat: cv,
+                    binder_cumulant: binder,
+                    num_measurements: measure_sweeps / 10,
+                    wall_time_ms: wall_time,
+                    wilson_loops: wilson_data,
+                    mean_polyakov: None,
+                    error_polyakov: None,
+                    polyakov_susceptibility: None,
+                    polyakov_binder: None,
+                    mean_signed_volume: Some(sv_data.0),
+                    error_signed_volume: Some(sv_data.1),
+                    mean_signed_volume_sq: Some(sv_data.2),
+                    normalized_signed_volume: Some(sv_data.3),
+                    signed_volume_binder: Some(sv_data.4),
                 }
             } else if use_signed_volume {
                 let (mean_p, error, chi, cv, binder, wall_time, wilson_data, sv_data) =
