@@ -2,7 +2,7 @@
 title: "T25 — Volume Operator Extension"
 subtitle: "Higher-valence intertwiner spectrum and algebraic spectral symmetry"
 date: "2026-06-25"
-date-modified: "2026-06-29T10:45:00+05:30"
+date-modified: "2026-07-14T07:15:00+05:30"
 execute:
   echo: false
   warning: false

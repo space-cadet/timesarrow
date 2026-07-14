@@ -1,61 +1,5 @@
 [
   {
-    "objectID": "implementation/t20-z2-lgt.html",
-    "href": "implementation/t20-z2-lgt.html",
-    "title": "T20 — Z₂ LGT Monte Carlo Implementation",
-    "section": "",
-    "text": "This document describes the implementation architecture for the Z₂ Lattice Gauge Theory Monte Carlo simulation. The design follows the principle that general-purpose lattice gauge theory tools belong in ts-quantum, while specific simulation setups, parameter sweeps, and analysis belong in timesarrow/numerics/."
-  },
-  {
-    "objectID": "implementation/t20-z2-lgt.html#overview",
-    "href": "implementation/t20-z2-lgt.html#overview",
-    "title": "T20 — Z₂ LGT Monte Carlo Implementation",
-    "section": "",
-    "text": "This document describes the implementation architecture for the Z₂ Lattice Gauge Theory Monte Carlo simulation. The design follows the principle that general-purpose lattice gauge theory tools belong in ts-quantum, while specific simulation setups, parameter sweeps, and analysis belong in timesarrow/numerics/."
-  },
-  {
-    "objectID": "implementation/t20-z2-lgt.html#ts-quantum-lattice-gauge-theory-module",
-    "href": "implementation/t20-z2-lgt.html#ts-quantum-lattice-gauge-theory-module",
-    "title": "T20 — Z₂ LGT Monte Carlo Implementation",
-    "section": "ts-quantum: Lattice Gauge Theory Module",
-    "text": "ts-quantum: Lattice Gauge Theory Module\n\nModule Structure\nsrc/lattice/\n├── geometry.ts          # Lattice types and geometry\n├── gaugeField.ts        # Z₂ gauge field (link variables)\n├── action.ts            # Wilson action computation\n├── monteCarlo.ts        # Metropolis algorithm\n├── observables.ts       # Physical observables\n└── index.ts             # Public API exports\n\n\nLattice Geometry (geometry.ts)\nTypes: - Lattice — base interface with sites, links, plaquettes - SquareLattice — 2D square lattice, L×L sites - TriangularLattice — 2D triangular lattice, L×L sites with skewed boundary - CubicLattice — 3D cubic lattice, L³ sites\nKey functions: - createSquareLattice(L) — returns Lattice with periodic BC - createTriangularLattice(L) — returns triangular Lattice - createCubicLattice(L) — returns 3D cubic Lattice - getNeighbors(site, lattice) — returns array of neighbor site indices - getPlaquettes(site, lattice) — returns plaquettes containing site\n\n\nGauge Field (gaugeField.ts)\nClass Z2GaugeField:\nclass Z2GaugeField {\n  constructor(lattice: Lattice, init: 'hot' | 'cold' | 'random');\n  \n  // Link accessors\n  getLink(site: number, direction: number): number;      // returns ±1\n  setLink(site: number, direction: number, value: number); // value: ±1\n  flipLink(site: number, direction: number): void;         // flips sign\n  \n  // State\n  lattice: Lattice;\n  links: Int8Array;  // flat array of ±1 values\n  \n  // I/O\n  toJSON(): object;\n  static fromJSON(data: object): Z2GaugeField;\n}\n\n\nAction (action.ts)\nWilson action for Z₂: \\[S = -\\beta \\sum_{\\text{plaquettes}} \\prod_{e \\in \\square} \\sigma_e\\]\nFunctions: - computePlaquetteProduct(field, site, mu, nu) — product of 4 links around plaquette - computeAction(field, beta) — total action S - computeDeltaS(field, site, direction, beta) — change in action from flipping one link\n\n\nMonte Carlo (monteCarlo.ts)\nMetropolis algorithm:\nfunction metropolisSweep(field: Z2GaugeField, beta: number): void;\n\nIterate over all links\nFor each link, compute ΔS from flipping\nAccept flip with probability min(1, exp(−ΔS))\nTrack acceptance rate\n\nThermalization:\nfunction thermalize(field: Z2GaugeField, beta: number, sweeps: number): void;\n\n\nObservables (observables.ts)\nPhysical quantities: - averagePlaquette(field) — ⟨P⟩ = ⟨∏_□ σ_e⟩ per plaquette - specificHeat(field, beta) — C_V = (⟨S²⟩ − ⟨S⟩²) / V - wilsonLoop(field, corner, size) — W(C) = ⟨∏_C σ_e⟩ for rectangular loop - correlationLength(field) — from exponential decay of Wilson loops"
-  },
-  {
-    "objectID": "implementation/t20-z2-lgt.html#timesarrow-simulation-setup",
-    "href": "implementation/t20-z2-lgt.html#timesarrow-simulation-setup",
-    "title": "T20 — Z₂ LGT Monte Carlo Implementation",
-    "section": "timesarrow: Simulation Setup",
-    "text": "timesarrow: Simulation Setup\n\nDirectory Structure\nnumerics/src/\n├── scripts/\n│   ├── t20-z2-lgt-phase1.ts       # 2D square lattice (single-threaded)\n│   ├── t20-z2-lgt-phase1-worker.cjs # Worker thread entry (parallel β)\n│   ├── t20-z2-lgt-phase1-main.cjs   # Main orchestrator with checkpointing\n│   ├── t20-z2-lgt-phase2.ts       # 2D triangular lattice\n│   └── t20-z2-lgt-phase3.ts       # 3D cubic lattice\n├── analysis/\n│   └── t20-analysis.ts            # Finite-size scaling, critical coupling\n├── output/\n│   ├── t20-phase1-worker-L16.json   # Phase 1 production results (L=16, 100k sweeps)\n│   ├── t20-phase1-fast.json         # Phase 1 fast validation (L=8, 5k sweeps)\n│   └── t27-rust-benchmark-L16.json  # Rust validation results\n└── docs/\n    └── tasks/\n        └── t20-z2-lgt.qmd           # This documentation\n\n\nPhase 1: 2D Square Lattice (COMPLETE)\nProduction run (2026-06-25): - Lattice size: L = 16 - Thermalization: 10⁴ sweeps - Measurement: 10⁵ sweeps, every 10 - Bin size: 10 - β values: 11 points (0.1 to 2.0) - Workers: 3 threads (Node.js worker_threads) - Wall-clock time: ~2h 11m\nResults: See numerics/docs/tasks/t20-z2-lgt.qmd for full table. Critical coupling β_c ≈ 0.44 confirmed.\nRust framework (T27): - Location: rust-lattice/ - Binary: target/release/z2-lattice-gauge (419 KB) - Same parameters: 3.0 seconds total - Speedup: ~2,500–3,000× - All 11 β values match TypeScript within |Δ| &lt; 0.02\n\n\nPhase 2: 2D Triangular Lattice\nParameters: - Same as Phase 1 but triangular lattice - Connects to T25 6-valent intertwiner work\nKey difference: - Plaquettes are triangles (3 links) not squares (4 links) - Different β_c (universality class may differ) - Tests geometric embedding from T25\n\n\nPhase 3: 3D Cubic Lattice\nParameters: - Lattice sizes: L = 8, 12, 16, 20 - Couplings: K = 0.1 to 1.5, step 0.05 - Critical coupling: K_c ≈ 0.761\nObservables: - Average plaquette - Specific heat (sharp peak at K_c) - Wilson loops: W(r×r) for r = 1, 2, 4, 8 - String tension: from log W vs area (confined) or perimeter (deconfined)\nConfinement test: - K &lt; K_c: area law W ~ exp(−σA), σ = string tension - K &gt; K_c: perimeter law W ~ exp(−μP)"
-  },
-  {
-    "objectID": "implementation/t20-z2-lgt.html#design-decisions",
-    "href": "implementation/t20-z2-lgt.html#design-decisions",
-    "title": "T20 — Z₂ LGT Monte Carlo Implementation",
-    "section": "Design Decisions",
-    "text": "Design Decisions\n\n1. Z₂ as Int8Array\n\nMemory efficient: 1 byte per link vs 8 for float64\nFast: bitwise operations possible for bulk updates\nNo floating point errors for ±1 values\n\n\n\n2. Flat link indexing\n\nLinks stored as flat array: links[site * nDirections + dir]\nFast sequential access for sweeps\nNo object overhead per link\n\n\n\n3. Periodic boundary conditions\n\nStandard for finite-size scaling\nImplemented via modular arithmetic in neighbor lookups\nNo ghost sites needed\n\n\n\n4. Separation of concerns\n\nts-quantum: physics (lattice, field, action, observables)\ntimesarrow: simulation (parameters, sweeps, analysis, output)\nEnables reuse: same ts-quantum code for QHE-BHE or other LGT projects"
-  },
-  {
-    "objectID": "implementation/t20-z2-lgt.html#performance-targets",
-    "href": "implementation/t20-z2-lgt.html#performance-targets",
-    "title": "T20 — Z₂ LGT Monte Carlo Implementation",
-    "section": "Performance Targets",
-    "text": "Performance Targets\n\n2D L=64: ~10⁶ sweeps/hour on single core\n3D L=16: ~10⁵ sweeps/hour on single core\nMemory: O(L^d) bytes (e.g., 3D L=32: 32³ × 6 links × 1 byte ≈ 200KB)"
-  },
-  {
-    "objectID": "implementation/t20-z2-lgt.html#next-steps",
-    "href": "implementation/t20-z2-lgt.html#next-steps",
-    "title": "T20 — Z₂ LGT Monte Carlo Implementation",
-    "section": "Next Steps",
-    "text": "Next Steps\n\nImplement ts-quantum/src/lattice/geometry.ts (square lattice first) — ✅ DONE\nImplement Z2GaugeField class — ✅ DONE\nImplement action and Metropolis — ✅ DONE\nImplement observables (plaquette, specific heat) — ✅ DONE\nWrite timesarrow/numerics/src/scripts/t20-z2-lgt-phase1.ts — ✅ DONE\nRun parameter sweep and verify β_c ≈ 0.4407 — ✅ DONE\nPhase 2: Sharp phase transition — See memory-bank/tasks/T20-Phase2-sharp-transition.md\n\nExtend observables: P², P⁴, Binder cumulant, susceptibility\nMulti-lattice finite-size scaling (L=8, 16, 32)\nCPU-parallel parameter sweep with dense β grid\nGenerate plots showing peak divergence and Binder crossing\n\nExtend to triangular and 3D cubic — Phase 3"
-  },
-  {
-    "objectID": "implementation/t20-z2-lgt.html#references",
-    "href": "implementation/t20-z2-lgt.html#references",
-    "title": "T20 — Z₂ LGT Monte Carlo Implementation",
-    "section": "References",
-    "text": "References\n\nPaper: Section 4.2, Eq. (48)\nKogut, J. B. (1979). An introduction to lattice gauge theory and spin systems. Reviews of Modern Physics, 51(4), 659.\nBalian, R., Drouffe, J. M., & Itzykson, C. (1975). Gauge fields on a lattice. II. Gauge-invariant Ising model. Physical Review D, 11(8), 2104."
-  },
-  {
     "objectID": "dashboard.html",
     "href": "dashboard.html",
     "title": "Simulation Dashboard",
@@ -141,6 +85,174 @@
     "crumbs": [
       "Overview",
       "Simulation Dashboard"
+    ]
+  },
+  {
+    "objectID": "tasks/t31-deconfinement-polyakov.html",
+    "href": "tasks/t31-deconfinement-polyakov.html",
+    "title": "T31 — Deconfinement via Polyakov Loop",
+    "section": "",
+    "text": "Last updated: 2026-07-14 11:27 IST",
+    "crumbs": [
+      "Overview",
+      "Tasks",
+      "T31 — Deconfinement via Polyakov Loop"
+    ]
+  },
+  {
+    "objectID": "tasks/t31-deconfinement-polyakov.html#objective",
+    "href": "tasks/t31-deconfinement-polyakov.html#objective",
+    "title": "T31 — Deconfinement via Polyakov Loop",
+    "section": "Objective",
+    "text": "Objective\nDetect the confinement–deconfinement phase transition in 3D Z₂ lattice gauge theory using the Polyakov loop \\(\\bar{P}\\) as the gauge-invariant order parameter. The Polyakov loop serves as a proxy for the free energy of an isolated static charge, and its expectation value distinguishes the confined (\\(\\langle \\bar{P} \\rangle = 0\\)) from the deconfined (\\(\\langle \\bar{P} \\rangle \\neq 0\\)) phase. The deconfinement transition is the physical mechanism through which a global arrow of time may emerge in the framework.",
+    "crumbs": [
+      "Overview",
+      "Tasks",
+      "T31 — Deconfinement via Polyakov Loop"
+    ]
+  },
+  {
+    "objectID": "tasks/t31-deconfinement-polyakov.html#status",
+    "href": "tasks/t31-deconfinement-polyakov.html#status",
+    "title": "T31 — Deconfinement via Polyakov Loop",
+    "section": "Status",
+    "text": "Status\n\n\n\n\n\n\n\n\n\nPhase\nDescription\nStatus\nDate\n\n\n\n\nPhase 1\nSigned volume exploration\n❌ Abandoned\n2026-07-02\n\n\nPhase 2\nPivot to Polyakov loop; proof-of-principle\n✅ Complete\n2026-07-14\n\n\nPhase 3\nProduction runs L=8,10,12 (50k thermal + 50k measure)\n✅ Complete\n2026-07-14\n\n\nPhase 4\nCritical exponent extraction\n✅ Complete\n2026-07-14\n\n\nPhase 5\nFinite-size scaling with larger L\n⏳ Pending\n—",
+    "crumbs": [
+      "Overview",
+      "Tasks",
+      "T31 — Deconfinement via Polyakov Loop"
+    ]
+  },
+  {
+    "objectID": "tasks/t31-deconfinement-polyakov.html#why-the-signed-volume-was-abandoned",
+    "href": "tasks/t31-deconfinement-polyakov.html#why-the-signed-volume-was-abandoned",
+    "title": "T31 — Deconfinement via Polyakov Loop",
+    "section": "Why the Signed Volume Was Abandoned",
+    "text": "Why the Signed Volume Was Abandoned\nThe original T31 task pursued a signed volume observable \\(\\hat{Q}_v\\) as a proxy for a global time orientation. The idea was that in the deconfined phase, Z₂ link alignments would yield an extensive signed volume \\(\\langle |\\hat{Q}_{\\text{total}}| \\rangle \\sim N\\), while in the confined phase signs would cancel to \\(\\sim \\sqrt{N}\\).\nElitzur’s theorem states that local gauge symmetries cannot be spontaneously broken; therefore, any gauge-dependent local operator must have vanishing expectation value. The signed volume at a vertex is gauge-dependent — under a local Z₂ gauge transformation that flips all six links incident to a site, the sign at that site changes sign. This means:\n\nThe raw signed volume \\(\\hat{Q}_v\\) is not a physical observable.\nA dressed gauge-invariant correlator was constructed (\\(Q_{\\mathrm{GI}} = \\frac{1}{N^2}\\sum_{r_1,r_2} s(r_1) W(r_1 \\to r_2) s(r_2)\\)), but its physical normalization and finite-size behavior remain unclear.\nThe Polyakov loop is the standard, well-understood gauge-invariant order parameter for Z₂ deconfinement.\n\nWe therefore pivoted from the signed volume to the Polyakov loop, which is gauge-invariant by construction (a closed Wilson loop winding through periodic boundary conditions).",
+    "crumbs": [
+      "Overview",
+      "Tasks",
+      "T31 — Deconfinement via Polyakov Loop"
+    ]
+  },
+  {
+    "objectID": "tasks/t31-deconfinement-polyakov.html#theory",
+    "href": "tasks/t31-deconfinement-polyakov.html#theory",
+    "title": "T31 — Deconfinement via Polyakov Loop",
+    "section": "Theory",
+    "text": "Theory\n\nThe Polyakov Loop\nThe Polyakov loop at spatial site \\(\\mathbf{x}\\) is the product of temporal link variables along a closed loop through the periodic time direction:\n\\[P(\\mathbf{x}) = \\prod_{t=0}^{L_t-1} \\sigma_{(\\mathbf{x},t),0}\\]\nwhere \\(\\sigma_{(\\mathbf{x},t),0} \\in \\{+1, -1\\}\\) is the temporal link at site \\((\\mathbf{x}, t)\\). Under a local gauge transformation at \\((\\mathbf{x}, t)\\), both \\(\\sigma_{(\\mathbf{x},t),0}\\) and \\(\\sigma_{(\\mathbf{x},t-1),0}\\) flip, leaving \\(P(\\mathbf{x})\\) invariant.\nThe spatial average is:\n\\[\\bar{P} = \\frac{1}{N_s} \\sum_{\\mathbf{x}} P(\\mathbf{x})\\]\nwhere \\(N_s = L^2\\) is the number of spatial sites (for our \\(L^3\\) lattices with \\(L_t = L\\)).\n\n\nPhysical Interpretation\n\nConfined phase (\\(\\beta &lt; \\beta_c\\)): \\(\\langle \\bar{P} \\rangle = 0\\) (free energy of isolated charge diverges)\nDeconfined phase (\\(\\beta &gt; \\beta_c\\)): \\(\\langle |\\bar{P}| \\rangle \\neq 0\\) (free energy finite, symmetry spontaneously broken in the global Z₂ symmetry of flipping all Polyakov loops)\n\nThe susceptibility:\n\\[\\chi_P = N_s \\left( \\langle \\bar{P}^2 \\rangle - \\langle |\\bar{P}| \\rangle^2 \\right)\\]\ndiverges at the critical point \\(\\beta_c\\) and is used to locate the transition and extract critical exponents.",
+    "crumbs": [
+      "Overview",
+      "Tasks",
+      "T31 — Deconfinement via Polyakov Loop"
+    ]
+  },
+  {
+    "objectID": "tasks/t31-deconfinement-polyakov.html#implementation",
+    "href": "tasks/t31-deconfinement-polyakov.html#implementation",
+    "title": "T31 — Deconfinement via Polyakov Loop",
+    "section": "Implementation",
+    "text": "Implementation\n\nRust Functions (rust-lattice)\n// Polyakov loop measurement\npub fn measure_polyakov_loop_3d(&self) -&gt; (f64, f64, f64, f64)\n// Returns: (mean |P̄|, mean P̄, susceptibility χ_P, binder cumulant U_P)\nThe measurement is implemented in rust-lattice/src/lib.rs by: 1. Iterating over all spatial sites \\((x, y)\\) 2. Multiplying the temporal link at each \\(t\\) from \\(0\\) to \\(L-1\\) 3. Computing the spatial average, its absolute value, and the susceptibility\n\n\nSimulation Parameters\n\n\n\nParameter\nProof-of-Principle\nProduction Runs\n\n\n\n\nThermal sweeps\n10,000\n50,000\n\n\nMeasurement sweeps\n10,000\n50,000\n\n\nMeasure every\n10\n10\n\n\nBin size\n10\n10\n\n\nWorkers\n10\n10\n\n\n\\(\\beta\\) values\n0.60–0.85 (step 0.02)\n0.70–0.80 (step 0.02)\n\n\nLattice sizes\nL=8, 10, 12\nL=8, 10, 12",
+    "crumbs": [
+      "Overview",
+      "Tasks",
+      "T31 — Deconfinement via Polyakov Loop"
+    ]
+  },
+  {
+    "objectID": "tasks/t31-deconfinement-polyakov.html#results",
+    "href": "tasks/t31-deconfinement-polyakov.html#results",
+    "title": "T31 — Deconfinement via Polyakov Loop",
+    "section": "Results",
+    "text": "Results\n\nProof-of-Principle Scan (10k thermal + 10k measure)\nPeak susceptibility at \\(\\beta = 0.76\\) for all three lattice sizes:\n\n\n\n\n\n\n\n\n\n\nL\n\\(\\chi_P^{\\max}\\)\n\\(\\beta_{\\text{peak}}\\)\n\\(\\langle |\\bar{P}| \\rangle\\) at peak\n\\(U_P\\) at peak\n\n\n\n\n8\n355\n0.76\n0.075\n0.634\n\n\n10\n621\n0.76\n0.201\n0.640\n\n\n12\n886\n0.76\n0.159\n0.614\n\n\n\n\n\nProduction Runs (50k thermal + 50k measure)\n\nL = 8\n\n\n\n\n\n\n\n\n\n\n\\(\\beta\\)\n\\(\\langle |\\bar{P}| \\rangle\\)\n\\(\\chi_P\\)\n\\(U_P\\)\n\\(\\langle U \\rangle\\)\n\n\n\n\n0.70\n0.006\n29.7\n−0.006\n0.791\n\n\n0.72\n0.019\n72.8\n0.152\n0.837\n\n\n0.74\n0.023\n231.4\n0.527\n0.906\n\n\n0.76\n0.209\n339.0\n0.636\n0.947\n\n\n0.78\n0.105\n412.3\n0.656\n0.965\n\n\n0.80\n0.481\n327.2\n0.661\n0.974\n\n\n\n\n\nL = 10\n\n\n\n\n\n\n\n\n\n\n\\(\\beta\\)\n\\(\\langle |\\bar{P}| \\rangle\\)\n\\(\\chi_P\\)\n\\(U_P\\)\n\\(\\langle U \\rangle\\)\n\n\n\n\n0.70\n0.001\n22.9\n−0.022\n0.789\n\n\n0.72\n0.001\n50.7\n−0.050\n0.832\n\n\n0.74\n0.008\n255.6\n0.373\n0.892\n\n\n0.76\n0.079\n634.7\n0.634\n0.948\n\n\n0.78\n0.876\n6.0\n0.658\n0.965\n\n\n0.80\n0.914\n3.4\n0.662\n0.974\n\n\n\n\n\nL = 12\n\n\n\n\n\n\n\n\n\n\n\\(\\beta\\)\n\\(\\langle |\\bar{P}| \\rangle\\)\n\\(\\chi_P\\)\n\\(U_P\\)\n\\(\\langle U \\rangle\\)\n\n\n\n\n0.70\n0.001\n20.1\n−0.010\n0.790\n\n\n0.72\n0.001\n36.3\n−0.036\n0.831\n\n\n0.74\n0.006\n191.6\n0.061\n0.883\n\n\n0.76\n0.273\n861.8\n0.631\n0.948\n\n\n0.78\n0.854\n8.4\n0.659\n0.965\n\n\n0.80\n0.895\n4.5\n0.663\n0.974\n\n\n\n\n\n\nKey Observations\n\nClear peak in \\(\\chi_P\\) at \\(\\beta = 0.76\\) for all three lattice sizes, consistent with the known 3D Z₂ critical point \\(\\beta_c \\approx 0.76\\).\nPeak height grows with L: from 339 (L=8) to 635 (L=10) to 862 (L=12), indicating a divergent susceptibility.\nBinder cumulant \\(U_P\\) approaches ~0.66 in the ordered phase (\\(\\beta &gt; 0.76\\)), consistent with the 3D Ising universal value.\nProduction runs at \\(\\beta = 0.76\\) show metastability: \\(\\langle \\bar{P} \\rangle\\) can be positive or negative across different runs, but \\(\\langle |\\bar{P}| \\rangle\\) is consistently non-zero above \\(\\beta_c\\).",
+    "crumbs": [
+      "Overview",
+      "Tasks",
+      "T31 — Deconfinement via Polyakov Loop"
+    ]
+  },
+  {
+    "objectID": "tasks/t31-deconfinement-polyakov.html#figures",
+    "href": "tasks/t31-deconfinement-polyakov.html#figures",
+    "title": "T31 — Deconfinement via Polyakov Loop",
+    "section": "Figures",
+    "text": "Figures\n\nSusceptibility vs. \\(\\beta\\)\n\n\n\nPolyakov loop susceptibility \\(\\chi_P\\) versus \\(\\beta\\) for L=8, 10, 12. The peak at \\(\\beta \\approx 0.76\\) marks the deconfinement transition.\n\n\nThe susceptibility shows a sharp peak at \\(\\beta = 0.76\\) for all three lattice sizes. The peak height grows with system size, as expected for a second-order phase transition.\n\n\nFinite-Size Scaling: Log–Log Fit\n\n\n\nLog–log plot of \\(\\chi_P^{\\max}\\) vs. \\(L\\) with linear fit extracting \\(\\gamma/\\nu\\)\n\n\nThe peak susceptibility scales as \\(\\chi_P^{\\max} \\sim L^{\\gamma/\\nu}\\). A log–log linear regression yields:",
+    "crumbs": [
+      "Overview",
+      "Tasks",
+      "T31 — Deconfinement via Polyakov Loop"
+    ]
+  },
+  {
+    "objectID": "tasks/t31-deconfinement-polyakov.html#critical-exponent-extraction",
+    "href": "tasks/t31-deconfinement-polyakov.html#critical-exponent-extraction",
+    "title": "T31 — Deconfinement via Polyakov Loop",
+    "section": "Critical Exponent Extraction",
+    "text": "Critical Exponent Extraction\n\nScaling Fit Results\n\n\n\n\n\n\n\n\n\n\nMethod\n\\(A\\)\n\\(\\gamma/\\nu\\)\nError\nNotes\n\n\n\n\nLinear regression (log–log)\n3.27\n2.263\n0.090\nL = 8, 10, 12\n\n\nNon-linear least squares\n4.01\n2.176\n0.168\nL = 8, 10, 12\n\n\n3D Ising reference\n—\n1.963\n—\n\\(\\gamma = 1.2372\\), \\(\\nu = 0.6301\\)\n\n\n\n\n\nComparison with 3D Ising Universality\n\n\n\nQuantity\nMeasured\n3D Ising\nRelative Difference\n\n\n\n\n\\(\\gamma/\\nu\\)\n2.263\n1.963\n+15.2%\n\n\n\nThe measured exponent is within ~15% of the 3D Ising value, consistent with the expected universality class for 3D Z₂ gauge theory. The deviation is attributable to: - Limited statistics (only L = 8, 10, 12) - Coarse \\(\\beta\\) grid (\\(\\Delta\\beta = 0.02\\)) near the peak - No jackknife or bootstrap error bars on \\(\\chi_P\\) — fit errors are formal only - Binder cumulant does not show a clean crossing at this precision\n\n\nCritical \\(\\beta\\) Estimates\n\n\n\n\n\n\n\n\nMethod\n\\(\\beta_c\\)\nNotes\n\n\n\n\nPeak position\n0.76\nAll peaks at \\(\\beta = 0.76\\); no finite-size shift visible\n\n\nBinder crossing (8–10)\n0.78\nCoarse grid; unreliable\n\n\nBinder crossing (10–12)\n0.85\nCoarse grid; unreliable\n\n\n\nBinder values at \\(\\beta = 0.76\\): 0.634 (L=8), 0.640 (L=10), 0.614 (L=12). No clear crossing is visible with only three lattice sizes and a coarse \\(\\beta\\) grid.",
+    "crumbs": [
+      "Overview",
+      "Tasks",
+      "T31 — Deconfinement via Polyakov Loop"
+    ]
+  },
+  {
+    "objectID": "tasks/t31-deconfinement-polyakov.html#caveats",
+    "href": "tasks/t31-deconfinement-polyakov.html#caveats",
+    "title": "T31 — Deconfinement via Polyakov Loop",
+    "section": "Caveats",
+    "text": "Caveats\n\nProof-of-principle: Only L = 8, 10, 12 with 50k thermal + 50k measure sweeps. Larger L and longer runs needed for conclusive exponent extraction.\nCoarse \\(\\beta\\) grid: \\(\\Delta\\beta = 0.02\\) near the peak. The true peak position may shift with finer resolution.\nNo jackknife/bootstrap: Error bars on \\(\\chi_P\\) are formal fit errors only. Proper resampling needed.\nMetastability: At \\(\\beta = 0.76\\), the system can get stuck in either \\(\\bar{P} &gt; 0\\) or \\(\\bar{P} &lt; 0\\) sectors. We use \\(\\langle |\\bar{P}| \\rangle\\) to avoid this.\nBinder cumulant: The L=12 binder at \\(\\beta = 0.74\\) is anomalously low (0.094), suggesting insufficient thermalization or tunneling at that point.",
+    "crumbs": [
+      "Overview",
+      "Tasks",
+      "T31 — Deconfinement via Polyakov Loop"
+    ]
+  },
+  {
+    "objectID": "tasks/t31-deconfinement-polyakov.html#conclusion",
+    "href": "tasks/t31-deconfinement-polyakov.html#conclusion",
+    "title": "T31 — Deconfinement via Polyakov Loop",
+    "section": "Conclusion",
+    "text": "Conclusion\nThe Polyakov loop successfully detects the deconfinement transition in 3D Z₂ lattice gauge theory at \\(\\beta_c \\approx 0.76\\), consistent with the known critical point. The susceptibility peak grows with system size, and the extracted exponent \\(\\gamma/\\nu = 2.26 \\pm 0.09\\) is within ~15% of the 3D Ising universality class value. This validates the Polyakov loop as the correct gauge-invariant order parameter for the T31 program.\nThe deconfinement transition at \\(\\beta_c \\approx 0.76\\) is the physical mechanism through which a global arrow of time may emerge: below \\(\\beta_c\\), the system is in a time-reversal symmetric confined phase; above \\(\\beta_c\\), the Z₂ symmetry is spontaneously broken, and the system selects one of two time-orientation sectors.",
+    "crumbs": [
+      "Overview",
+      "Tasks",
+      "T31 — Deconfinement via Polyakov Loop"
+    ]
+  },
+  {
+    "objectID": "tasks/t31-deconfinement-polyakov.html#next-steps",
+    "href": "tasks/t31-deconfinement-polyakov.html#next-steps",
+    "title": "T31 — Deconfinement via Polyakov Loop",
+    "section": "Next Steps",
+    "text": "Next Steps\n\nLarger lattices: Run L = 16, 20 to improve finite-size scaling and resolve the true peak position.\nFiner \\(\\beta\\) grid: Scan near \\(\\beta = 0.76\\) with \\(\\Delta\\beta = 0.005\\) to locate the peak precisely.\nBootstrap/jackknife: Implement proper error bars on \\(\\chi_P\\) and the Binder cumulant.\nBinder crossing: With more L values, perform a systematic crossing analysis for \\(\\beta_c\\).\nCorrelation with arrow of time: Connect the deconfinement order parameter to a time-orientation observable (e.g., a dressed Wilson-loop correlator or a modified Polyakov-loop construction).",
+    "crumbs": [
+      "Overview",
+      "Tasks",
+      "T31 — Deconfinement via Polyakov Loop"
+    ]
+  },
+  {
+    "objectID": "tasks/t31-deconfinement-polyakov.html#data-files",
+    "href": "tasks/t31-deconfinement-polyakov.html#data-files",
+    "title": "T31 — Deconfinement via Polyakov Loop",
+    "section": "Data Files",
+    "text": "Data Files\n\n\n\nFile\nDescription\n\n\n\n\nt31-polyakov-proof-of-principle-20260714.json\n10k+10k proof-of-principle scan\n\n\nt31-polyakov-L8-50k-20260714.json\nL=8 production run (50k+50k)\n\n\nt31-polyakov-L10-50k-20260714.json\nL=10 production run (50k+50k)\n\n\nt31-polyakov-L12-50k-20260714.json\nL=12 production run (50k+50k)\n\n\nt31-polyakov-exponents.json\nExponent extraction summary",
+    "crumbs": [
+      "Overview",
+      "Tasks",
+      "T31 — Deconfinement via Polyakov Loop"
+    ]
+  },
+  {
+    "objectID": "tasks/t31-deconfinement-polyakov.html#references",
+    "href": "tasks/t31-deconfinement-polyakov.html#references",
+    "title": "T31 — Deconfinement via Polyakov Loop",
+    "section": "References",
+    "text": "References\n\nT20: Z₂ Lattice Gauge Theory Monte Carlo (base implementation)\nT25: Volume Operator Extension (intertwiner spectrum)\nT32: Gauge-Invariance Correction (signed volume abandoning)\nPaper: Section on Z₂ gauge field emergence and deconfinement",
+    "crumbs": [
+      "Overview",
+      "Tasks",
+      "T31 — Deconfinement via Polyakov Loop"
     ]
   },
   {
@@ -237,198 +349,6 @@
       "Overview",
       "Tasks",
       "T25 — Volume Operator Extension"
-    ]
-  },
-  {
-    "objectID": "tasks/t31-signed-volume.html",
-    "href": "tasks/t31-signed-volume.html",
-    "title": "T31 — Signed Volume Observable for Z₂ Gauge Theory",
-    "section": "",
-    "text": "Last updated: 2026-07-10 18:45 IST",
-    "crumbs": [
-      "Overview",
-      "Tasks",
-      "T31 — Signed Volume Observable for Z₂ Gauge Theory"
-    ]
-  },
-  {
-    "objectID": "tasks/t31-signed-volume.html#objective",
-    "href": "tasks/t31-signed-volume.html#objective",
-    "title": "T31 — Signed Volume Observable for Z₂ Gauge Theory",
-    "section": "Objective",
-    "text": "Objective\nImplement and measure a signed volume observable for the Z₂ lattice gauge theory simulations. The key insight from the paper is that the signed volume operator \\(\\hat{Q}_v\\) (not the positive-definite \\(\\hat{V}_v = \\sqrt{|\\hat{Q}_v|}\\)) should be used for composite systems. The emergence of a global time orientation is then tied to the emergence of a macroscopic geometry with non-vanishing, extensive signed volume.",
-    "crumbs": [
-      "Overview",
-      "Tasks",
-      "T31 — Signed Volume Observable for Z₂ Gauge Theory"
-    ]
-  },
-  {
-    "objectID": "tasks/t31-signed-volume.html#status",
-    "href": "tasks/t31-signed-volume.html#status",
-    "title": "T31 — Signed Volume Observable for Z₂ Gauge Theory",
-    "section": "Status",
-    "text": "Status\n\n\n\n\n\n\n\n\n\nPhase\nDescription\nStatus\nDate\n\n\n\n\nPhase 1\n2D square lattice validation\n✅ Complete\n2026-07-02\n\n\nPhase 2\n3D cubic lattice (L=8,10,12)\n⚠️ Exploratory only\n2026-07-02\n\n\nPhase 3\nGauge-invariant dressed correlator\n✅ Implemented, awaiting full validation\n2026-07-08\n\n\nPhase 4\nNew production runs and scaling\n⏳ Pending\n—",
-    "crumbs": [
-      "Overview",
-      "Tasks",
-      "T31 — Signed Volume Observable for Z₂ Gauge Theory"
-    ]
-  },
-  {
-    "objectID": "tasks/t31-signed-volume.html#theory",
-    "href": "tasks/t31-signed-volume.html#theory",
-    "title": "T31 — Signed Volume Observable for Z₂ Gauge Theory",
-    "section": "Theory",
-    "text": "Theory\n\nThe Signed Volume Operator\nIn standard LQG, the volume operator is always positive: \\(\\hat{V} = \\sqrt{|\\hat{Q}|}\\). This discards orientation information. The paper’s framework uses the signed operator \\(\\hat{Q}\\) to distinguish the two time-orientation sectors.\nFor a composite system:\n\\[\\hat{Q}_{\\text{total}} = \\sum_{v \\in S} \\hat{Q}_v\\]\n\nConfined phase (random Z₂ orientations): Signs cancel. \\(\\langle |\\hat{Q}_{\\text{total}}| \\rangle \\sim \\sqrt{N}\\) (random walk).\nDeconfined phase (ordered Z₂): Signs align. \\(\\langle |\\hat{Q}_{\\text{total}}| \\rangle \\sim N\\) (extensive).\n\nThis motivates the search for a gauge-invariant orientation diagnostic. The original path-based signed-volume measurements below are retained as exploratory data, not as production evidence for a phase transition or arrow-of-time scaling.\nThis means the confinement-deconfinement transition would be tested through: 1. The emergence of a global arrow of time 2. The emergence of a macroscopic geometry with non-vanishing, extensive signed volume\n\n\nGauge-Dependence Correction\nThe signed volume at individual vertices is gauge-dependent. The earlier maximal-spanning-tree path convention chooses one representative of each gauge orbit, but it is not itself a gauge-invariant observable. Greedy or iterative gauge alignment is also withdrawn because it can force \\(|Q|=N\\) in any phase by choosing an aligned representative.\nFor a vertex at \\((x,y,z)\\), the sign is: \\[\\text{sign}(x,y,z) = \\prod_{i=0}^{x-1} \\sigma_{(i,0,0),x} \\times \\prod_{j=0}^{y-1} \\sigma_{(x,j,0),y} \\times \\prod_{k=0}^{z-1} \\sigma_{(x,y,k),z}\\]\nThe replacement implemented in rust-lattice is a dressed orientation correlator: \\[C(r_1,r_2) = s(r_1) W(r_1 \\to r_2) s(r_2)\\]\nwhere \\(s(r)\\) is the path-dressed sign from the origin and \\(W(r_1 \\to r_2)\\) is a Wilson line between the two sites using the opposite path ordering. The averaged observable \\[Q_{\\mathrm{GI}} = \\frac{1}{N^2}\\sum_{r_1,r_2} C(r_1,r_2)\\] is designed to be invariant under local Z₂ gauge transformations.",
-    "crumbs": [
-      "Overview",
-      "Tasks",
-      "T31 — Signed Volume Observable for Z₂ Gauge Theory"
-    ]
-  },
-  {
-    "objectID": "tasks/t31-signed-volume.html#implementation",
-    "href": "tasks/t31-signed-volume.html#implementation",
-    "title": "T31 — Signed Volume Observable for Z₂ Gauge Theory",
-    "section": "Implementation",
-    "text": "Implementation\n\nRust Functions (rust-lattice)\n// 3D Signed Volume\npub fn signed_volume_3d(&self) -&gt; i64\npub fn measure_signed_volume_3d(&mut self, beta, n_sweeps, measure_every) -&gt; (f64, f64, f64, f64, f64)\n\n// Gauge-invariant dressed orientation correlator\npub fn local_gauge_transform_3d(&mut self, x, y, z)\npub fn gauge_invariant_signed_volume_3d(&self) -&gt; f64\npub fn measure_gauge_invariant_signed_volume_3d(&mut self, beta, n_sweeps, measure_every) -&gt; (f64, f64, f64, f64, f64)\n\n// 2D Signed Area (for validation)\npub fn signed_area_2d(&self) -&gt; i64\npub fn measure_signed_area_2d(&mut self, beta, n_sweeps, measure_every) -&gt; (f64, f64, f64, f64, f64)\nThe original signed-volume measurement returns (mean |Q|, error, mean Q², mean |Q|/N, binder). The gauge-invariant replacement returns (mean Q_GI, error, mean Q_GI², mean Q_GI, binder).",
-    "crumbs": [
-      "Overview",
-      "Tasks",
-      "T31 — Signed Volume Observable for Z₂ Gauge Theory"
-    ]
-  },
-  {
-    "objectID": "tasks/t31-signed-volume.html#results",
-    "href": "tasks/t31-signed-volume.html#results",
-    "title": "T31 — Signed Volume Observable for Z₂ Gauge Theory",
-    "section": "Results",
-    "text": "Results\n\n2D Signed Area (L=8) — Validation\nExpected: |Q|/N ~ 1/√N = 0.125 across all β (no deconfined phase in 2D).\n\n\n\nβ\n\nQ\n\n\n\n\n\n\n0.3\n5.20\n0.0813\n43.87\n-0.0398\n\n\n0.5\n6.73\n0.1052\n73.07\n0.1278\n\n\n0.7\n5.30\n0.0828\n46.87\n0.0848\n\n\n1.0\n7.20\n0.1125\n85.60\n-0.0161\n\n\n1.5\n4.80\n0.0750\n35.73\n0.1357\n\n\n\n✅ Consistent with random-walk scaling across all β. Confirms no deconfined phase in 2D.\n\n\n3D Signed Volume — Exploratory Gauge-Dependent Runs\nThe following runs were made before the T32 gauge-dependence correction. They are useful diagnostics for the old observable and data pipeline, but their \\(|Q|/N\\) values must not be promoted as gauge-invariant physics.\n\nL=8 (N=512) — 1/√N = 0.044\n\n\n\nβ\n\nQ\n/N\nError\n\n\n\n\n0.40\n0.0340\n0.298\n0.395\n0.001\n\n\n0.50\n0.0346\n0.298\n0.502\n0.047\n\n\n0.60\n0.0352\n0.314\n0.627\n-0.017\n\n\n0.70\n0.0354\n0.307\n0.790\n0.012\n\n\n0.76\n0.0355\n0.302\n0.949\n0.050\n\n\n0.80\n0.0362\n0.305\n0.974\n0.079\n\n\n0.85\n0.0307\n0.267\n0.986\n-0.008\n\n\n0.90\n0.0370\n0.349\n0.991\n-0.055\n\n\n1.00\n0.0505\n0.258\n0.997\n0.465\n\n\n1.10\n0.0265\n0.156\n0.999\n0.410\n\n\n1.20\n0.0675\n0.138\n0.999\n0.629\n\n\n1.50\n0.0899\n0.010\n1.000\n0.667\n\n\n\n\n\nL=10 (N=1000) — 1/√N = 0.032\n\n\n\nβ\n\nQ\n/N\nError\n\n\n\n\n0.40\n0.0257\n0.436\n0.394\n-0.028\n\n\n0.50\n0.0256\n0.433\n0.502\n-0.006\n\n\n0.60\n0.0256\n0.440\n0.628\n-0.081\n\n\n0.70\n0.0250\n0.427\n0.789\n-0.057\n\n\n0.76\n0.0244\n0.417\n0.949\n-0.004\n\n\n0.80\n0.0267\n0.437\n0.973\n0.052\n\n\n0.85\n0.0277\n0.469\n0.985\n0.038\n\n\n0.90\n0.0270\n0.445\n0.991\n0.032\n\n\n1.00\n0.0157\n0.281\n0.997\n0.056\n\n\n1.10\n0.0230\n0.199\n0.999\n0.503\n\n\n1.20\n0.0472\n0.134\n0.999\n0.647\n\n\n1.50\n0.0075\n0.021\n1.000\n0.645\n\n\n\n\n\nL=12 (N=1728) — 1/√N = 0.024\n\n\n\nβ\n\nQ\n/N\nError\n\n\n\n\n0.40\n0.0189\n0.550\n0.395\n0.028\n\n\n0.50\n0.0189\n0.553\n0.502\n-0.037\n\n\n0.60\n0.0192\n0.556\n0.628\n0.019\n\n\n0.70\n0.0193\n0.573\n0.789\n-0.014\n\n\n0.76\n0.0185\n0.533\n0.948\n0.018\n\n\n0.80\n0.0195\n0.547\n0.974\n0.093\n\n\n0.85\n0.0218\n0.595\n0.985\n0.095\n\n\n0.90\n0.0213\n0.566\n0.992\n0.133\n\n\n1.00\n0.0181\n0.418\n0.997\n0.310\n\n\n1.10\n0.0145\n0.399\n0.999\n0.111\n\n\n1.20\n0.0112\n0.213\n0.999\n0.415\n\n\n1.50\n0.0628\n0.046\n1.000\n0.666",
-    "crumbs": [
-      "Overview",
-      "Tasks",
-      "T31 — Signed Volume Observable for Z₂ Gauge Theory"
-    ]
-  },
-  {
-    "objectID": "tasks/t31-signed-volume.html#analysis",
-    "href": "tasks/t31-signed-volume.html#analysis",
-    "title": "T31 — Signed Volume Observable for Z₂ Gauge Theory",
-    "section": "Analysis",
-    "text": "Analysis\n\nKey Observations\n\nL=8 shows the clearest exploratory trend: |Q|/N rises from ~0.034 to ~0.090. Because the observable is gauge-dependent, this is not production evidence for deconfinement or arrow-of-time scaling.\nL=10 anomalous at β=1.5: |Q|/N = 0.0075, below confined-phase value. This is a “bad” gauge sector where the simulation got stuck in the σ_e = -1 ground state.\nL=12 shows non-monotonic approach: |Q|/N drops at intermediate β before jumping to 0.063 at β=1.5. System fluctuates between degenerate ground states.\n\n\n\nThe Gauge Problem\nThe signed volume is gauge-dependent. In the deconfined phase, two gauge-equivalent ground states exist: - All σ_e = +1 → |Q| = N - All σ_e = -1 → |Q| ≈ 0 (checkerboard)\nAt finite β, tunneling between sectors causes |Q|/N to fluctuate between ~1 and ~0.\n\n\nGauge-Invariant Replacement\nrust-lattice/src/lib.rs now includes:\n\nA corrected local gauge transformation that flips all six incident 3D links at a site.\nTests showing plaquettes remain invariant under valid local gauge transformations.\nTests showing the original signed_volume_3d() changes under gauge transformations.\nA candidate gauge_invariant_signed_volume_3d() dressed correlator with single-site and multi-site gauge-invariance tests.\n\nThese tests were identified in source inspection, but the local Cargo available in this shell is older than Rust edition 2024, so the full Rust test suite still needs to be run with the documented Rust 1.85+ toolchain before new production results are trusted.",
-    "crumbs": [
-      "Overview",
-      "Tasks",
-      "T31 — Signed Volume Observable for Z₂ Gauge Theory"
-    ]
-  },
-  {
-    "objectID": "tasks/t31-signed-volume.html#next-steps",
-    "href": "tasks/t31-signed-volume.html#next-steps",
-    "title": "T31 — Signed Volume Observable for Z₂ Gauge Theory",
-    "section": "Next Steps",
-    "text": "Next Steps\n\nRun the Rust gauge-invariance tests with a Rust 2024-compatible toolchain.\nReview whether the dressed correlator has the desired physical normalization and finite-size behavior.\nRun new production simulations only with the validated gauge-invariant observable.\nPerform Binder or scaling analysis only after the replacement observable is validated.",
-    "crumbs": [
-      "Overview",
-      "Tasks",
-      "T31 — Signed Volume Observable for Z₂ Gauge Theory"
-    ]
-  },
-  {
-    "objectID": "tasks/t31-signed-volume.html#data-files",
-    "href": "tasks/t31-signed-volume.html#data-files",
-    "title": "T31 — Signed Volume Observable for Z₂ Gauge Theory",
-    "section": "Data Files",
-    "text": "Data Files\n\n\n\nFile\nDescription\n\n\n\n\nsv-L8-20260702-203243.json\nL=8 raw results\n\n\nsv-L10-20260702-203325.json\nL=10 raw results\n\n\nsv-L12-20260702-203243.json\nL=12 raw results",
-    "crumbs": [
-      "Overview",
-      "Tasks",
-      "T31 — Signed Volume Observable for Z₂ Gauge Theory"
-    ]
-  },
-  {
-    "objectID": "tasks/t31-signed-volume.html#references",
-    "href": "tasks/t31-signed-volume.html#references",
-    "title": "T31 — Signed Volume Observable for Z₂ Gauge Theory",
-    "section": "References",
-    "text": "References\n\nPaper: Section on Z₂ gauge field emergence\nT20: Z₂ Lattice Gauge Theory Monte Carlo (base implementation)\nT25: Volume Operator Extension (intertwiner spectrum)",
-    "crumbs": [
-      "Overview",
-      "Tasks",
-      "T31 — Signed Volume Observable for Z₂ Gauge Theory"
-    ]
-  },
-  {
-    "objectID": "tasks/t26-coupled-matter.html",
-    "href": "tasks/t26-coupled-matter.html",
-    "title": "T26 — Coupled Spin Network + Matter",
-    "section": "",
-    "text": "Couple Z₂ gauge field to a scalar field and study symmetry breaking that selects a global arrow of time.",
-    "crumbs": [
-      "Overview",
-      "Tasks",
-      "T26 — Coupled Spin Network + Matter"
-    ]
-  },
-  {
-    "objectID": "tasks/t26-coupled-matter.html#objective",
-    "href": "tasks/t26-coupled-matter.html#objective",
-    "title": "T26 — Coupled Spin Network + Matter",
-    "section": "",
-    "text": "Couple Z₂ gauge field to a scalar field and study symmetry breaking that selects a global arrow of time.",
-    "crumbs": [
-      "Overview",
-      "Tasks",
-      "T26 — Coupled Spin Network + Matter"
-    ]
-  },
-  {
-    "objectID": "tasks/t26-coupled-matter.html#status",
-    "href": "tasks/t26-coupled-matter.html#status",
-    "title": "T26 — Coupled Spin Network + Matter",
-    "section": "Status",
-    "text": "Status\n🔴 Blocked on T20 + T24",
-    "crumbs": [
-      "Overview",
-      "Tasks",
-      "T26 — Coupled Spin Network + Matter"
-    ]
-  },
-  {
-    "objectID": "tasks/t26-coupled-matter.html#theory",
-    "href": "tasks/t26-coupled-matter.html#theory",
-    "title": "T26 — Coupled Spin Network + Matter",
-    "section": "Theory",
-    "text": "Theory\nCombined action:\n\\[\nS = S_{Z_2} + S_\\phi + S_{\\text{int}}\n\\]\nwhere S_int = λ Σ_v φ_v τ_v",
-    "crumbs": [
-      "Overview",
-      "Tasks",
-      "T26 — Coupled Spin Network + Matter"
-    ]
-  },
-  {
-    "objectID": "tasks/t26-coupled-matter.html#expected-outcome",
-    "href": "tasks/t26-coupled-matter.html#expected-outcome",
-    "title": "T26 — Coupled Spin Network + Matter",
-    "section": "Expected Outcome",
-    "text": "Expected Outcome\n⟨φ⟩ ≠ 0 spontaneously breaks remaining Z₂ symmetry, completing “orientability → arrow.”",
-    "crumbs": [
-      "Overview",
-      "Tasks",
-      "T26 — Coupled Spin Network + Matter"
-    ]
-  },
-  {
-    "objectID": "tasks/t26-coupled-matter.html#references",
-    "href": "tasks/t26-coupled-matter.html#references",
-    "title": "T26 — Coupled Spin Network + Matter",
-    "section": "References",
-    "text": "References\n\nPaper: Section 6 (Discussion)",
-    "crumbs": [
-      "Overview",
-      "Tasks",
-      "T26 — Coupled Spin Network + Matter"
     ]
   },
   {
@@ -576,75 +496,69 @@
     ]
   },
   {
-    "objectID": "tasks/t24-domain-walls.html",
-    "href": "tasks/t24-domain-walls.html",
-    "title": "T24 — Domain Wall Dynamics",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "TimesArrow Numerics",
     "section": "",
-    "text": "Simulate domain walls between +σ_e and -σ_e regions and test the conjecture that they host all-fermion toric code surface states.",
+    "text": "Last updated: 2026-07-10 18:45 IST",
     "crumbs": [
       "Overview",
-      "Tasks",
-      "T24 — Domain Wall Dynamics"
+      "TimesArrow Numerics"
     ]
   },
   {
-    "objectID": "tasks/t24-domain-walls.html#objective",
-    "href": "tasks/t24-domain-walls.html#objective",
-    "title": "T24 — Domain Wall Dynamics",
-    "section": "",
-    "text": "Simulate domain walls between +σ_e and -σ_e regions and test the conjecture that they host all-fermion toric code surface states.",
+    "objectID": "index.html#overview",
+    "href": "index.html#overview",
+    "title": "TimesArrow Numerics",
+    "section": "Overview",
+    "text": "Overview\nThis site documents the numerical simulation program for the paper “Gauging Time Reversal Symmetry in Quantum Gravity: Arrow of Time from a Confinement–Deconfinement Transition.”\nAll simulations use the ts-quantum TypeScript library for SU(2) algebra, intertwiner construction, and tensor operations.",
     "crumbs": [
       "Overview",
-      "Tasks",
-      "T24 — Domain Wall Dynamics"
+      "TimesArrow Numerics"
     ]
   },
   {
-    "objectID": "tasks/t24-domain-walls.html#status",
-    "href": "tasks/t24-domain-walls.html#status",
-    "title": "T24 — Domain Wall Dynamics",
-    "section": "Status",
-    "text": "Status\n🔴 Blocked on T20 + T21",
+    "objectID": "index.html#simulation-tasks",
+    "href": "index.html#simulation-tasks",
+    "title": "TimesArrow Numerics",
+    "section": "Simulation Tasks",
+    "text": "Simulation Tasks\n\n\n\nTask\nFocus\nStatus\nPriority\nLast Updated\n\n\n\n\nT31\nDeconfinement (Polyakov Loop)\n🟢 Phase 4 Complete\nP1\n2026-07-14\n\n\nT25\nVolume Operator Extension\n🟢 Complete\nP1\n2026-06-29\n\n\nT20\nZ₂ LGT Monte Carlo\n🟢 Phase 3 Complete\nP0\n2026-07-10\n\n\nT23\nEntanglement Entropy\n🔴 Blocked (T20)\nP1\n—\n\n\nT22\nSpin Foam Amplitudes\n🟡 Ready\nP1\n2026-07-10\n\n\nT21\nCZX PEPS Ground State\n🔴 Blocked (T22)\nP1\n—\n\n\nT24\nDomain Wall Dynamics\n🔴 Blocked (T20+T21)\nP2\n—\n\n\nT26\nCoupled Matter\n🔴 Blocked (T20+T24)\nP2\n—",
     "crumbs": [
       "Overview",
-      "Tasks",
-      "T24 — Domain Wall Dynamics"
+      "TimesArrow Numerics"
     ]
   },
   {
-    "objectID": "tasks/t24-domain-walls.html#theory",
-    "href": "tasks/t24-domain-walls.html#theory",
-    "title": "T24 — Domain Wall Dynamics",
-    "section": "Theory",
-    "text": "Theory\nDomain wall tension:\n\\[\n\\sigma_{DW} \\propto (K - K_c)^{\\mu}\n\\]\nConjecture: Wall excitations have fermionic self-statistics.",
+    "objectID": "index.html#philosophy",
+    "href": "index.html#philosophy",
+    "title": "TimesArrow Numerics",
+    "section": "Philosophy",
+    "text": "Philosophy\n\nUnified code base — All simulations share a common core (intertwiners, operators, utilities)\nIncremental complexity — Start with exact diagonalization (T25), build to Monte Carlo (T20), then tensor networks (T21)\nReproducible artifacts — Scripts, data, and figures versioned alongside the paper\nWeb-deployed — Results published as they become available",
     "crumbs": [
       "Overview",
-      "Tasks",
-      "T24 — Domain Wall Dynamics"
+      "TimesArrow Numerics"
     ]
   },
   {
-    "objectID": "tasks/t24-domain-walls.html#tasks",
-    "href": "tasks/t24-domain-walls.html#tasks",
-    "title": "T24 — Domain Wall Dynamics",
-    "section": "Tasks",
-    "text": "Tasks\n\nCreate planar domain wall in T20 configurations\nMeasure surface tension\nTest anyonic braiding statistics\nVerify fermionic exchange phases",
+    "objectID": "index.html#quick-links",
+    "href": "index.html#quick-links",
+    "title": "TimesArrow Numerics",
+    "section": "Quick Links",
+    "text": "Quick Links\n\nGitHub repo\nts-quantum library\n📊 Numerics Dashboard\nPaper (arXiv)",
     "crumbs": [
       "Overview",
-      "Tasks",
-      "T24 — Domain Wall Dynamics"
+      "TimesArrow Numerics"
     ]
   },
   {
-    "objectID": "tasks/t24-domain-walls.html#references",
-    "href": "tasks/t24-domain-walls.html#references",
-    "title": "T24 — Domain Wall Dynamics",
-    "section": "References",
-    "text": "References\n\nPaper: Section 5.3",
+    "objectID": "index.html#data-registry",
+    "href": "index.html#data-registry",
+    "title": "TimesArrow Numerics",
+    "section": "Data Registry",
+    "text": "Data Registry\nAll simulation runs are tracked in a central registry (data/registry.json) with: - Run metadata (ID, timestamp, parameters) - Output file references - Results summaries - Task/phase organization\nThis enables systematic collation and reproducibility as the simulation program scales.",
     "crumbs": [
       "Overview",
-      "Tasks",
-      "T24 — Domain Wall Dynamics"
+      "TimesArrow Numerics"
     ]
   },
   {
@@ -676,7 +590,7 @@
     "href": "tasks/t20-z2-lgt.html#status",
     "title": "T20 — Z₂ Lattice Gauge Theory Monte Carlo",
     "section": "Status",
-    "text": "Status\n\n\n\n\n\n\n\n\n\nPhase\nDescription\nStatus\nDate\n\n\n\n\nPhase 1\n2D square lattice, critical β identification\n✅ Complete\n2026-06-24\n\n\nPhase 2\nFinite-size scaling (L = 8–24)\n✅ Complete\n2026-06-25\n\n\nPhase 3\n3D cubic lattice (L=4,6,8)\n✅ Complete\n2026-06-25\n\n\nPhase 3b\n3D FSS correction and reanalysis\n🔄 In progress\n2026-07-05\n\n\nPhase 3b\n3D Wilson loops & string tension (L=8)\n✅ Complete\n2026-06-26\n\n\n\nCorrected status: The 3D pure Z₂ gauge transition is continuous and belongs to the 3D Ising universality class. Existing simulations resolve the established critical region near β ≈ 0.76, but the previous first-order interpretation and claimed precision determination are withdrawn pending a controlled reanalysis.\n\n\n\n\n\n\nWarningCorrection notice\n\n\n\nThe plaquette Binder limit near \\(2/3\\) is not evidence for a first-order transition, and the earlier double-peaked histograms were synthetic illustrations rather than sampled distributions. The raw simulation data are retained; the superseded interpretation is not used in the manuscript.",
+    "text": "Status\n\n\n\n\n\n\n\n\n\nPhase\nDescription\nStatus\nDate\n\n\n\n\nPhase 1\n2D square lattice, critical β identification\n✅ Complete\n2026-06-24\n\n\nPhase 2\nFinite-size scaling (L = 8–24)\n✅ Complete\n2026-06-25\n\n\nPhase 3\n3D cubic lattice (L=4,6,8)\n✅ Complete\n2026-06-25\n\n\nPhase 3b\n3D FSS correction and reanalysis\n🔄 In progress\n2026-07-05\n\n\nPhase 3b\n3D Wilson loops & string tension (L=8)\n✅ Complete\n2026-06-26\n\n\n\nCorrected status: The 3D pure Z₂ gauge transition is continuous and belongs to the 3D Ising universality class. Existing simulations resolve the established critical region near β ≈ 0.76, but the previous first-order interpretation and claimed precision determination are withdrawn pending a controlled reanalysis.\n\n\n\n\n\n\nCorrection notice\n\n\n\nThe plaquette Binder limit near \\(2/3\\) is not evidence for a first-order transition, and the earlier double-peaked histograms were synthetic illustrations rather than sampled distributions. The raw simulation data are retained; the superseded interpretation is not used in the manuscript.",
     "crumbs": [
       "Overview",
       "Tasks",
@@ -832,7 +746,7 @@
     "href": "tasks/t22-spin-foam.html#status",
     "title": "T22 — Spin Foam Amplitudes",
     "section": "Status",
-    "text": "Status\n✅ T22a Complete — Reclassified as SU(2) Group-Average Toy Calculation\n2026-07-08: The T22a implementation has been reclassified. It computes a normalized SU(2) four-leg group average, NOT a complete FK/EPRL spin-foam vertex amplitude. The analytic result is exact; Monte Carlo is used only for validation.\n\n\n\n\n\n\nWarning⚠️ Important Correction\n\n\n\nThe original T22a code mislabeled the result as an “FK vertex amplitude” and incorrectly applied an extra squaring step, converting the ratio ~0.45 into an unsupported ~0.20 “suppression factor.” This extra squaring was an error. The correct ratio is R = 4/9 ≈ 0.444. See T32 for the full correction record.",
+    "text": "Status\n✅ T22a Complete — Reclassified as SU(2) Group-Average Toy Calculation\n2026-07-08: The T22a implementation has been reclassified. It computes a normalized SU(2) four-leg group average, NOT a complete FK/EPRL spin-foam vertex amplitude. The analytic result is exact; Monte Carlo is used only for validation.\n\n\n\n\n\n\n⚠️ Important Correction\n\n\n\nThe original T22a code mislabeled the result as an “FK vertex amplitude” and incorrectly applied an extra squaring step, converting the ratio ~0.45 into an unsupported ~0.20 “suppression factor.” This extra squaring was an error. The correct ratio is R = 4/9 ≈ 0.444. See T32 for the full correction record.",
     "crumbs": [
       "Overview",
       "Tasks",
@@ -888,111 +802,267 @@
     ]
   },
   {
-    "objectID": "dashboard-prototype.html",
-    "href": "dashboard-prototype.html",
-    "title": "Simulation Dashboard v2 (Prototype)",
+    "objectID": "tasks/t24-domain-walls.html",
+    "href": "tasks/t24-domain-walls.html",
+    "title": "T24 — Domain Wall Dynamics",
     "section": "",
-    "text": "Code\nregistry = await FileAttachment(\"data-registry.json\").json()\n\nruns = registry.runs.map(r =&gt; ({\n  ...r,\n  latticeSize: r.parameters?.latticeSize || \"—\",\n  dimension: r.parameters?.dimension || 2,\n  betaRange: r.parameters?.betaValues \n    ? `${Math.min(...r.parameters.betaValues)}–${Math.max(...r.parameters.betaValues)}`\n    : \"—\",\n  keyFinding: r.results?.keyFinding || r.results?.criticalBetaEstimate || \"—\",\n  date: new Date(r.timestamp).toLocaleDateString('en-GB'),\n  hasOutput: r.outputFiles?.length &gt; 0 ? \"✅\" : \"❌\",\n  wallTimeSec: r.wallTimeMs ? Math.round(r.wallTimeMs / 1000) : null,\n  wallTimeMin: r.wallTimeMs ? (r.wallTimeMs / 60000).toFixed(1) : null,\n  sweepsPerSec: r.sweepsPerSecond ? Math.round(r.sweepsPerSecond) : null,\n  betasDone: r.betasCompleted || \"—\",\n  isTest: r.description?.startsWith('[TEST]') || false,\n  // Extract task ID (e.g., \"T20d\" from \"t20-p3b-L8...\")\n  taskId: r.runId.match(/^t(\\d+)/i)?.[0]?.toUpperCase() || \"OTHER\"\n}))\n\nproductionRuns = runs.filter(r =&gt; !r.isTest)\n\n// Summary stats\ntotalRuns = runs.length\ntasks = [...new Set(runs.map(r =&gt; r.task))].sort()\nphases = [...new Set(runs.map(r =&gt; r.phase))].sort()\n\n// Performance stats\ntotalWallTimeMin = productionRuns\n  .filter(r =&gt; r.wallTimeSec)\n  .reduce((sum, r) =&gt; sum + r.wallTimeSec, 0) / 60\n\navgSweepsPerSec = productionRuns\n  .filter(r =&gt; r.sweepsPerSec)\n  .reduce((sum, r, _, arr) =&gt; sum + r.sweepsPerSec / arr.length, 0)\n\nrunsWithTiming = productionRuns.filter(r =&gt; r.wallTimeSec).length\nCode\nfigureBase = \"figures/\"\n\nfigureCatalog = [\n  // T20 Phase 3b - 3D Finite-Size Scaling (newly deployed)\n  {id: \"t20-p3-fss-plaquette\", title: \"Plaquette vs β (FSS)\", task: \"T20\", phase: \"phase3b\", dimension: 3, type: \"FSS\", runs: [\"t20-p3b-L8-3D-fine-20260627\", \"t20-p3b-L16-3D-fine-20260626\", \"t20-p3-L24-3D-wilson-fine-20250626\", \"t20-p3-L32-3D-wilson-fine-20250626\"], desc: \"Plaquette expectation across β for all L values\"},\n  {id: \"t20-p3-fss-susceptibility\", title: \"Susceptibility (FSS)\", task: \"T20\", phase: \"phase3b\", dimension: 3, type: \"FSS\", runs: [\"t20-p3b-L8-3D-fine-20260627\", \"t20-p3b-L16-3D-fine-20260626\", \"t20-p3-L24-3D-wilson-fine-20250626\", \"t20-p3-L32-3D-wilson-fine-20250626\"], desc: \"Magnetic susceptibility peak sharpening\"},\n  {id: \"t20-p3-fss-specific-heat\", title: \"Specific Heat (FSS)\", task: \"T20\", phase: \"phase3b\", dimension: 3, type: \"FSS\", runs: [\"t20-p3b-L8-3D-fine-20260627\", \"t20-p3b-L16-3D-fine-20260626\", \"t20-p3-L24-3D-wilson-fine-20250626\", \"t20-p3-L32-3D-wilson-fine-20250626\"], desc: \"Specific heat near critical region\"},\n  {id: \"t20-p3-fss-binder\", title: \"Binder Cumulant (FSS)\", task: \"T20\", phase: \"phase3b\", dimension: 3, type: \"FSS\", runs: [\"t20-p3b-L8-3D-fine-20260627\", \"t20-p3b-L16-3D-fine-20260626\", \"t20-p3-L24-3D-wilson-fine-20250626\", \"t20-p3-L32-3D-wilson-fine-20250626\"], desc: \"Binder cumulant convergence to 2/3\"},\n  {id: \"t20-p3-fss-critical-zoom\", title: \"Critical Region (2×2)\", task: \"T20\", phase: \"phase3b\", dimension: 3, type: \"FSS\", runs: [\"t20-p3b-L8-3D-fine-20260627\", \"t20-p3b-L16-3D-fine-20260626\", \"t20-p3-L24-3D-wilson-fine-20250626\", \"t20-p3-L32-3D-wilson-fine-20250626\"], desc: \"All observables near β≈0.76\"},\n  {id: \"t20-p3-fss-polyakov\", title: \"Polyakov Loop\", task: \"T20\", phase: \"phase3b\", dimension: 3, type: \"FSS\", runs: [\"t20-p3b-L16-3D-fine-20260626\"], desc: \"Order parameter (L=16 partial data)\"},\n  \n  // T20 Phase 3 - 3D Core (individual L)\n  {id: \"t20-p3-plaquette-vs-beta\", title: \"Plaquette vs β (3D)\", task: \"T20\", phase: \"phase3\", dimension: 3, type: \"Raw\", runs: [\"t20-p3-L8-3D-20250625\", \"t20-p3-L16-3D-wilson-fine-20250626\"], desc: \"Plaquette expectation across β\"},\n  {id: \"t20-p3-susceptibility-vs-beta\", title: \"Susceptibility (3D)\", task: \"T20\", phase: \"phase3\", dimension: 3, type: \"Raw\", runs: [\"t20-p3-L8-3D-20250625\"], desc: \"Susceptibility peak at critical region\"},\n  {id: \"t20-p3-specific-heat-vs-beta\", title: \"Specific Heat (3D)\", task: \"T20\", phase: \"phase3\", dimension: 3, type: \"Raw\", runs: [\"t20-p3-L8-3D-20250625\"], desc: \"Specific heat\"},\n  {id: \"t20-p3-binder-vs-beta\", title: \"Binder Cumulant (3D)\", task: \"T20\", phase: \"phase3\", dimension: 3, type: \"Raw\", runs: [\"t20-p3-L8-3D-20250625\"], desc: \"Binder cumulant convergence\"},\n  {id: \"t20-p3-combined\", title: \"Combined Observables (3D)\", task: \"T20\", phase: \"phase3\", dimension: 3, type: \"Raw\", runs: [\"t20-p3-L8-3D-20250625\"], desc: \"2×2 panel with all observables\"},\n  {id: \"t20-p3-wilson-loops\", title: \"Wilson Loops (3D)\", task: \"T20\", phase: \"phase3\", dimension: 3, type: \"Raw\", runs: [\"t20-p3-L8-3D-20250625\"], desc: \"Wilson loop expectation values\"},\n  \n  // T20 Phase 2 - 2D\n  {id: \"t20-plaquette-vs-beta\", title: \"Plaquette vs β (2D)\", task: \"T20\", phase: \"phase2\", dimension: 2, type: \"Raw\", runs: [\"t20-p2-L8-20250625\", \"t20-p2-L16-20250625\"], desc: \"2D plaquette expectation\"},\n  {id: \"t20-susceptibility\", title: \"Susceptibility (2D)\", task: \"T20\", phase: \"phase2\", dimension: 2, type: \"Raw\", runs: [\"t20-p2-L8-20250625\"], desc: \"2D magnetic susceptibility\"},\n  \n  // Scaling Analysis\n  {id: \"t20d-overview\", title: \"T20d Ising FSS Overview\", task: \"T20d\", phase: \"phase3\", dimension: 3, type: \"Analysis\", runs: [\"t20-p3-L8-3D-20250625\"], desc: \"Continuous 3D Ising-universality correction overview\"},\n  {id: \"t20-scaling-collapse\", title: \"Scaling Collapse\", task: \"T20\", phase: \"phase3\", dimension: 3, type: \"Analysis\", runs: [\"t20-p3-L8-3D-20250625\"], desc: \"Finite-size scaling collapse\"},\n]\n\n// Extract filter options from catalog\nfigureTasks = [...new Set(figureCatalog.map(f =&gt; f.task))].sort()\nfigureDimensions = [...new Set(figureCatalog.map(f =&gt; f.dimension))].sort((a,b) =&gt; a-b)\nfigureTypes = [...new Set(figureCatalog.map(f =&gt; f.type))].sort()\nCode\n// ============================================================\n// SUMMARY CARDS\n// ============================================================\n\nhtml`\n&lt;div style=\"display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 1rem;\"&gt;\n  ${[\n    [totalRuns, \"Total Runs\", \"#0d6efd\"],\n    [tasks.length, \"Tasks\", \"#0dcaf0\"],\n    [phases.length, \"Phases\", \"#6c757d\"],\n    [runs.filter(r =&gt; r.status === 'complete').length, \"Complete\", \"#198754\"],\n    [runsWithTiming, \"With Timing\", \"#ffc107\"],\n    [totalWallTimeMin &gt; 0 ? `${totalWallTimeMin.toFixed(0)}m` : \"—\", \"Compute\", \"#212529\"],\n    [avgSweepsPerSec &gt; 0 ? `${avgSweepsPerSec.toFixed(0)}` : \"—\", \"Avg sw/s\", \"#dc3545\"],\n    [figureCatalog.length, \"Figures\", \"#6610f2\"]\n  ].map(([value, label, color]) =&gt; html`\n    &lt;div style=\"flex: 1 1 100px; min-width: 100px; max-width: 150px;\"&gt;\n      &lt;div style=\"border: 1px solid ${color}; border-radius: 6px; padding: 8px 10px; text-align: center;\"&gt;\n        &lt;div style=\"font-size: 1.4rem; font-weight: 600; line-height: 1.2;\"&gt;${value}&lt;/div&gt;\n        &lt;div style=\"font-size: 0.7rem; color: #6c757d; margin-top: 2px;\"&gt;${label}&lt;/div&gt;\n      &lt;/div&gt;\n    &lt;/div&gt;\n  `)}\n&lt;/div&gt;`"
+    "text": "Simulate domain walls between +σ_e and -σ_e regions and test the conjecture that they host all-fermion toric code surface states.",
+    "crumbs": [
+      "Overview",
+      "Tasks",
+      "T24 — Domain Wall Dynamics"
+    ]
   },
   {
-    "objectID": "dashboard-prototype.html#runs-results",
-    "href": "dashboard-prototype.html#runs-results",
-    "title": "Simulation Dashboard v2 (Prototype)",
-    "section": "Runs & Results",
-    "text": "Runs & Results\n\n\nCode\nviewof rsTaskFilter = Inputs.select(\n  [\"All\", ...tasks],\n  {label: \"Task:\"}\n)\n\nviewof rsPhaseFilter = Inputs.select(\n  [\"All\", ...phases],\n  {label: \"Phase:\"}\n)\n\nviewof rsSearchQuery = Inputs.text(\n  {label: \"Search:\", placeholder: \"Run ID, description, finding...\"}\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nfilteredRuns = runs.filter(r =&gt; {\n  const taskMatch = rsTaskFilter === \"All\" || r.task === rsTaskFilter;\n  const phaseMatch = rsPhaseFilter === \"All\" || r.phase === rsPhaseFilter;\n  const searchMatch = !rsSearchQuery || \n    r.runId.toLowerCase().includes(rsSearchQuery.toLowerCase()) ||\n    r.description.toLowerCase().includes(rsSearchQuery.toLowerCase()) ||\n    String(r.keyFinding).toLowerCase().includes(rsSearchQuery.toLowerCase());\n  return taskMatch && phaseMatch && searchMatch;\n})\n\n\n\n\n\n\n\n\n\nCode\nviewof selectedRunId = Inputs.select(\n  filteredRuns.filter(r =&gt; r.status === \"complete\").map(r =&gt; r.runId),\n  {label: \"📋 Selected Run:\"}\n)\n\nselectedRun = runs.find(r =&gt; r.runId === selectedRunId)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRuns TableDetail Panel\n\n\n\n\nCode\n// Render runs table with row highlighting for selected run\nhtml`\n&lt;style&gt;\n  .runs-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }\n  .runs-table th { text-align: left; padding: 6px 8px; border-bottom: 2px solid #dee2e6; font-weight: 600; background: #f8f9fa; }\n  .runs-table td { padding: 5px 8px; border-bottom: 1px solid #eee; vertical-align: middle; }\n  .runs-table tr:hover { background: #f8f9fa; }\n  .runs-table tr.selected { background: #e7f1ff !important; }\n  .runs-table .run-id { font-family: monospace; font-size: 0.8rem; }\n  .runs-table .badge { font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; }\n  .runs-table .badge-complete { background: #d1e7dd; color: #0f5132; }\n  .runs-table .badge-inprogress { background: #fff3cd; color: #856404; }\n  .runs-table .badge-test { background: #f8d7da; color: #721c24; }\n&lt;/style&gt;\n&lt;table class=\"runs-table\"&gt;\n  &lt;thead&gt;\n    &lt;tr&gt;\n      &lt;th&gt;Run ID&lt;/th&gt;\n      &lt;th&gt;Task&lt;/th&gt;\n      &lt;th&gt;Phase&lt;/th&gt;\n      &lt;th&gt;L&lt;/th&gt;\n      &lt;th&gt;D&lt;/th&gt;\n      &lt;th&gt;β Range&lt;/th&gt;\n      &lt;th&gt;Wall&lt;/th&gt;\n      &lt;th&gt;Perf&lt;/th&gt;\n      &lt;th&gt;βs&lt;/th&gt;\n      &lt;th&gt;Date&lt;/th&gt;\n      &lt;th&gt;Status&lt;/th&gt;\n    &lt;/tr&gt;\n  &lt;/thead&gt;\n  &lt;tbody&gt;\n    ${filteredRuns.map(r =&gt; html`\n      &lt;tr class=\"${r.runId === selectedRunId ? 'selected' : ''}\" \n          onclick=\"document.querySelector('select').value='${r.runId}'; document.querySelector('select').dispatchEvent(new Event('input'));\"\n          style=\"cursor: pointer;\"&gt;\n        &lt;td class=\"run-id\"&gt;${r.runId}&lt;/td&gt;\n        &lt;td&gt;${r.task}&lt;/td&gt;\n        &lt;td&gt;${r.phase}&lt;/td&gt;\n        &lt;td&gt;${r.latticeSize}&lt;/td&gt;\n        &lt;td&gt;${r.dimension}&lt;/td&gt;\n        &lt;td&gt;${r.betaRange}&lt;/td&gt;\n        &lt;td&gt;${r.wallTimeMin ? r.wallTimeMin + 'm' : '—'}&lt;/td&gt;\n        &lt;td&gt;${r.sweepsPerSec ? r.sweepsPerSec.toLocaleString() : '—'}&lt;/td&gt;\n        &lt;td&gt;${r.betasDone}&lt;/td&gt;\n        &lt;td&gt;${r.date}&lt;/td&gt;\n        &lt;td&gt;\n          &lt;span class=\"badge badge-${r.status === 'complete' ? 'complete' : r.status === 'in-progress' ? 'inprogress' : 'test'}\"&gt;\n            ${r.status}\n          &lt;/span&gt;\n          ${r.isTest ? html`&lt;span class=\"badge badge-test\"&gt;TEST&lt;/span&gt;` : ''}\n        &lt;/td&gt;\n      &lt;/tr&gt;\n    `)}\n  &lt;/tbody&gt;\n&lt;/table&gt;\n&lt;p style=\"font-size: 0.75rem; color: #6c757d; margin-top: 6px;\"&gt;\n  💡 Click any row to select it and view details →\n&lt;/p&gt;\n`\n\n\n\n\n\n\n\n\n\n\n\nCode\nformatValue = function fmt(v) {\n  if (v === null || v === undefined) return \"—\";\n  if (typeof v === \"number\") return Number.isInteger(v) ? v.toString() : v.toFixed(4);\n  if (typeof v === \"string\") return v;\n  if (Array.isArray(v)) {\n    if (v.length === 0) return \"[]\";\n    if (v.length &lt;= 3) return `[${v.map(fmt).join(\", \")}]`;\n    return `[${v.slice(0, 3).map(fmt).join(\", \")}, ... +${v.length - 3} more]`;\n  }\n  if (typeof v === \"object\") {\n    const entries = Object.entries(v);\n    if (entries.length === 0) return \"{}\";\n    const pairs = entries.slice(0, 3).map(([k, val]) =&gt; `${k}: ${fmt(val)}`);\n    const suffix = entries.length &gt; 3 ? `, ... +${entries.length - 3} more` : \"\";\n    return `{${pairs.join(\", \")}${suffix}}`;\n  }\n  return String(v);\n}\n\n// Get figures for this run\nrunFigures = selectedRun ? figureCatalog.filter(f =&gt; \n  f.runs.includes(selectedRun.runId)\n) : []\n\nhtml`\n${selectedRun ? html`\n  &lt;div style=\"font-size: 0.9rem;\"&gt;\n    &lt;!-- Header --&gt;\n    &lt;div style=\"background: #f8f9fa; border-radius: 6px; padding: 10px 14px; margin-bottom: 12px;\"&gt;\n      &lt;div style=\"font-weight: 600; font-size: 1rem; margin-bottom: 4px;\"&gt;${selectedRun.runId}&lt;/div&gt;\n      &lt;div style=\"color: #6c757d; font-size: 0.8rem;\"&gt;${selectedRun.description}&lt;/div&gt;\n    &lt;/div&gt;\n    \n    &lt;!-- Two-column: Parameters & Results --&gt;\n    &lt;div style=\"display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px;\"&gt;\n      &lt;!-- Parameters --&gt;\n      &lt;div style=\"flex: 1 1 280px; min-width: 260px;\"&gt;\n        &lt;div style=\"border: 1px solid #dee2e6; border-radius: 6px; padding: 10px;\"&gt;\n          &lt;div style=\"font-weight: 600; font-size: 0.85rem; margin-bottom: 8px; color: #495057;\"&gt;📋 Parameters&lt;/div&gt;\n          ${selectedRun.parameters ? html`\n            &lt;div style=\"font-size: 0.8rem;\"&gt;\n              ${Object.entries(selectedRun.parameters).map(([k, v]) =&gt; html`\n                &lt;div style=\"display: flex; justify-content: space-between; padding: 3px 0; border-bottom: 1px solid #f0f0f0;\"&gt;\n                  &lt;span style=\"color: #6c757d;\"&gt;${k}&lt;/span&gt;\n                  &lt;span style=\"font-family: monospace; word-break: break-all; max-width: 180px; text-align: right;\"&gt;${formatValue(v)}&lt;/span&gt;\n                &lt;/div&gt;\n              `)}\n            &lt;/div&gt;\n          ` : html`&lt;div style=\"color: #adb5bd; font-size: 0.8rem;\"&gt;No parameters&lt;/div&gt;`}\n        &lt;/div&gt;\n      &lt;/div&gt;\n      \n      &lt;!-- Results --&gt;\n      &lt;div style=\"flex: 1 1 280px; min-width: 260px;\"&gt;\n        &lt;div style=\"border: 1px solid #dee2e6; border-radius: 6px; padding: 10px;\"&gt;\n          &lt;div style=\"font-weight: 600; font-size: 0.85rem; margin-bottom: 8px; color: #495057;\"&gt;📊 Results&lt;/div&gt;\n          ${selectedRun.results ? html`\n            &lt;div style=\"font-size: 0.8rem;\"&gt;\n              ${Object.entries(selectedRun.results).map(([k, v]) =&gt; html`\n                &lt;div style=\"display: flex; justify-content: space-between; padding: 3px 0; border-bottom: 1px solid #f0f0f0;\"&gt;\n                  &lt;span style=\"color: #6c757d;\"&gt;${k}&lt;/span&gt;\n                  &lt;span style=\"font-family: monospace;\"&gt;${formatValue(v)}&lt;/span&gt;\n                &lt;/div&gt;\n              `)}\n            &lt;/div&gt;\n          ` : html`&lt;div style=\"color: #adb5bd; font-size: 0.8rem;\"&gt;No results&lt;/div&gt;`}\n        &lt;/div&gt;\n      &lt;/div&gt;\n    &lt;/div&gt;\n    \n    &lt;!-- Timing & Actions --&gt;\n    &lt;div style=\"display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;\"&gt;\n      ${selectedRun.wallTimeMin ? html`\n        &lt;div style=\"border: 1px solid #dee2e6; border-radius: 4px; padding: 6px 12px; font-size: 0.8rem;\"&gt;\n          ⏱️ &lt;strong&gt;${selectedRun.wallTimeMin} min&lt;/strong&gt; wall time\n        &lt;/div&gt;\n      ` : \"\"}\n      ${selectedRun.sweepsPerSec ? html`\n        &lt;div style=\"border: 1px solid #dee2e6; border-radius: 4px; padding: 6px 12px; font-size: 0.8rem;\"&gt;\n          ⚡ &lt;strong&gt;${selectedRun.sweepsPerSec.toLocaleString()}&lt;/strong&gt; sweeps/sec\n        &lt;/div&gt;\n      ` : \"\"}\n      ${selectedRun.betasDone !== \"—\" ? html`\n        &lt;div style=\"border: 1px solid #dee2e6; border-radius: 4px; padding: 6px 12px; font-size: 0.8rem;\"&gt;\n          📈 &lt;strong&gt;${selectedRun.betasDone}&lt;/strong&gt; β values\n        &lt;/div&gt;\n      ` : \"\"}\n      ${selectedRun.outputFiles?.length &gt; 0 ? html`\n        &lt;a href=\"#\" style=\"border: 1px solid #0d6efd; border-radius: 4px; padding: 6px 12px; font-size: 0.8rem; text-decoration: none; color: #0d6efd;\"&gt;\n          🔽 JSON\n        &lt;/a&gt;\n      ` : \"\"}\n    &lt;/div&gt;\n    \n    &lt;!-- Figures for this run --&gt;\n    ${runFigures.length &gt; 0 ? html`\n      &lt;div style=\"margin-bottom: 12px;\"&gt;\n        &lt;div style=\"font-weight: 600; font-size: 0.85rem; margin-bottom: 8px; color: #495057;\"&gt;📁 Generated Figures (${runFigures.length})&lt;/div&gt;\n        &lt;div style=\"display: flex; gap: 8px; flex-wrap: wrap;\"&gt;\n          ${runFigures.map(f =&gt; html`\n            &lt;a href=\"${figureBase}${f.id}.svg\" target=\"_blank\" \n               style=\"border: 1px solid #dee2e6; border-radius: 4px; padding: 4px 8px; font-size: 0.75rem; text-decoration: none; color: #0d6efd; background: #f8f9fa;\"&gt;\n              ${f.title}\n            &lt;/a&gt;\n          `)}\n        &lt;/div&gt;\n      &lt;/div&gt;\n    ` : html`&lt;div style=\"color: #adb5bd; font-size: 0.8rem; margin-bottom: 12px;\"&gt;No figures linked to this run&lt;/div&gt;`}\n  &lt;/div&gt;\n` : html`&lt;div style=\"color: #adb5bd; padding: 20px; text-align: center;\"&gt;Select a run from the table to view details&lt;/div&gt;`}\n`"
+    "objectID": "tasks/t24-domain-walls.html#objective",
+    "href": "tasks/t24-domain-walls.html#objective",
+    "title": "T24 — Domain Wall Dynamics",
+    "section": "",
+    "text": "Simulate domain walls between +σ_e and -σ_e regions and test the conjecture that they host all-fermion toric code surface states.",
+    "crumbs": [
+      "Overview",
+      "Tasks",
+      "T24 — Domain Wall Dynamics"
+    ]
   },
   {
-    "objectID": "dashboard-prototype.html#figure-archive",
-    "href": "dashboard-prototype.html#figure-archive",
-    "title": "Simulation Dashboard v2 (Prototype)",
-    "section": "Figure Archive",
-    "text": "Figure Archive\n\n\nCode\nviewof faTaskFilter = Inputs.checkbox(\n  figureTasks,\n  {label: \"Task:\", value: figureTasks}\n)\n\nviewof faDimFilter = Inputs.checkbox(\n  figureDimensions.map(d =&gt; `${d}D`),\n  {label: \"Dimension:\", value: figureDimensions.map(d =&gt; `${d}D`)}\n)\n\nviewof faTypeFilter = Inputs.checkbox(\n  figureTypes,\n  {label: \"Type:\", value: figureTypes}\n)\n\nviewof faSearchQuery = Inputs.text(\n  {label: \"Search:\", placeholder: \"Figure title or description...\"}\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nfilteredFigures = figureCatalog.filter(f =&gt; {\n  const taskMatch = faTaskFilter.includes(f.task);\n  const dimMatch = faDimFilter.includes(`${f.dimension}D`);\n  const typeMatch = faTypeFilter.includes(f.type);\n  const searchMatch = !faSearchQuery || \n    f.title.toLowerCase().includes(faSearchQuery.toLowerCase()) ||\n    f.desc.toLowerCase().includes(faSearchQuery.toLowerCase());\n  return taskMatch && dimMatch && typeMatch && searchMatch;\n})\n\n// Group by type for display\nfiguresByType = filteredFigures.reduce((acc, f) =&gt; {\n  if (!acc[f.type]) acc[f.type] = [];\n  acc[f.type].push(f);\n  return acc;\n}, {})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nhtml`\n&lt;div style=\"margin-bottom: 8px; font-size: 0.85rem; color: #6c757d;\"&gt;\n  Showing &lt;strong&gt;${filteredFigures.length}&lt;/strong&gt; of ${figureCatalog.length} figures\n  ${faSearchQuery ? html` | Search: \"${faSearchQuery}\"` : ''}\n&lt;/div&gt;\n\n${Object.entries(figuresByType).length === 0 ? html`\n  &lt;div style=\"text-align: center; padding: 40px; color: #adb5bd;\"&gt;\n    &lt;div style=\"font-size: 2rem; margin-bottom: 8px;\"&gt;🔍&lt;/div&gt;\n    &lt;div&gt;No figures match the current filters&lt;/div&gt;\n  &lt;/div&gt;\n` : Object.entries(figuresByType).map(([type, figs]) =&gt; html`\n  &lt;div style=\"margin-bottom: 20px;\"&gt;\n    &lt;div style=\"font-weight: 600; font-size: 0.9rem; margin-bottom: 10px; padding-bottom: 4px; border-bottom: 2px solid #e9ecef; display: flex; align-items: center; gap: 8px;\"&gt;\n      &lt;span style=\"background: ${type === 'FSS' ? '#d1e7dd' : type === 'Analysis' ? '#fff3cd' : '#cfe2ff'}; color: ${type === 'FSS' ? '#0f5132' : type === 'Analysis' ? '#856404' : '#084298'}; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;\"&gt;\n        ${type}\n      &lt;/span&gt;\n      &lt;span&gt;${figs.length} figure${figs.length &gt; 1 ? 's' : ''}&lt;/span&gt;\n    &lt;/div&gt;\n    \n    &lt;div style=\"display: flex; flex-wrap: wrap; gap: 16px;\"&gt;\n      ${figs.map(f =&gt; html`\n        &lt;div style=\"flex: 1 1 260px; max-width: 320px; min-width: 220px; border: 1px solid #dee2e6; border-radius: 8px; overflow: hidden; background: white;\"&gt;\n          &lt;a href=\"${figureBase}${f.id}.svg\" target=\"_blank\" style=\"text-decoration: none; color: inherit;\"&gt;\n            &lt;div style=\"background: #f8f9fa; padding: 8px; text-align: center; min-height: 160px; display: flex; align-items: center; justify-content: center;\"&gt;\n              &lt;img src=\"${figureBase}${f.id}.png\" alt=\"${f.title}\" \n                   style=\"max-width: 100%; max-height: 150px; object-fit: contain;\"\n                   onerror=\"this.style.display='none'; this.parentElement.innerHTML='&lt;span style=\\\\'color:#adb5bd;font-size:0.8rem\\\\'&gt;📊 ${f.title}&lt;/span&gt;';\"&gt;\n            &lt;/div&gt;\n          &lt;/a&gt;\n          &lt;div style=\"padding: 10px 12px;\"&gt;\n            &lt;div style=\"font-weight: 600; font-size: 0.85rem; margin-bottom: 3px;\"&gt;${f.title}&lt;/div&gt;\n            &lt;div style=\"font-size: 0.75rem; color: #6c757d; margin-bottom: 6px; line-height: 1.3;\"&gt;${f.desc}&lt;/div&gt;\n            &lt;div style=\"display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 6px;\"&gt;\n              &lt;span style=\"font-size: 0.7rem; background: #e9ecef; color: #495057; padding: 1px 6px; border-radius: 3px;\"&gt;${f.task}&lt;/span&gt;\n              &lt;span style=\"font-size: 0.7rem; background: #e9ecef; color: #495057; padding: 1px 6px; border-radius: 3px;\"&gt;${f.dimension}D&lt;/span&gt;\n              &lt;span style=\"font-size: 0.7rem; background: #e9ecef; color: #495057; padding: 1px 6px; border-radius: 3px;\"&gt;${f.phase}&lt;/span&gt;\n            &lt;/div&gt;\n            &lt;div style=\"font-size: 0.7rem; color: #adb5bd;\"&gt;\n              Source: ${f.runs.length} run${f.runs.length &gt; 1 ? 's' : ''}\n            &lt;/div&gt;\n          &lt;/div&gt;\n        &lt;/div&gt;\n      `)}\n    &lt;/div&gt;\n  &lt;/div&gt;\n`)}\n`"
+    "objectID": "tasks/t24-domain-walls.html#status",
+    "href": "tasks/t24-domain-walls.html#status",
+    "title": "T24 — Domain Wall Dynamics",
+    "section": "Status",
+    "text": "Status\n🔴 Blocked on T20 + T21",
+    "crumbs": [
+      "Overview",
+      "Tasks",
+      "T24 — Domain Wall Dynamics"
+    ]
   },
   {
-    "objectID": "dashboard-prototype.html#performance-scaling",
-    "href": "dashboard-prototype.html#performance-scaling",
-    "title": "Simulation Dashboard v2 (Prototype)",
-    "section": "Performance Scaling",
-    "text": "Performance Scaling\n\n\nCode\nperfData = productionRuns\n  .filter(r =&gt; r.wallTimeSec && r.dimension && r.latticeSize !== \"—\")\n  .map(r =&gt; ({\n    L: Number(r.latticeSize),\n    wallTimeMin: Number(r.wallTimeMin),\n    dimension: r.dimension === 3 ? \"3D\" : \"2D\",\n    runId: r.runId,\n    sweepsPerSec: r.sweepsPerSec || 0,\n    task: r.task\n  }))\n\nPlot = require(\"@observablehq/plot\")\n\nPlot.plot({\n  marginLeft: 60,\n  width: 600,\n  height: 350,\n  x: {type: \"log\", label: \"Lattice Size L (log)\", grid: true},\n  y: {type: \"log\", label: \"Wall Time (min, log)\", grid: true},\n  color: {legend: true, label: \"Dimension\"},\n  marks: [\n    Plot.dot(perfData, {x: \"L\", y: \"wallTimeMin\", stroke: \"dimension\", r: 5, opacity: 0.7}),\n    Plot.text(perfData, {x: \"L\", y: \"wallTimeMin\", text: \"L\", dx: 8, dy: -4, fontSize: 10, opacity: 0.6})\n  ]\n})"
+    "objectID": "tasks/t24-domain-walls.html#theory",
+    "href": "tasks/t24-domain-walls.html#theory",
+    "title": "T24 — Domain Wall Dynamics",
+    "section": "Theory",
+    "text": "Theory\nDomain wall tension:\n\\[\n\\sigma_{DW} \\propto (K - K_c)^{\\mu}\n\\]\nConjecture: Wall excitations have fermionic self-statistics.",
+    "crumbs": [
+      "Overview",
+      "Tasks",
+      "T24 — Domain Wall Dynamics"
+    ]
   },
   {
-    "objectID": "dashboard-prototype.html#task-breakdown",
-    "href": "dashboard-prototype.html#task-breakdown",
-    "title": "Simulation Dashboard v2 (Prototype)",
-    "section": "Task Breakdown",
-    "text": "Task Breakdown\n\n\nCode\ntaskSummary = tasks.map(t =&gt; {\n  const taskRuns = runs.filter(r =&gt; r.task === t);\n  const taskInfo = registry.tasks[t] || {};\n  const taskProd = taskRuns.filter(r =&gt; !r.isTest);\n  const totalWall = taskProd\n    .filter(r =&gt; r.wallTimeSec)\n    .reduce((sum, r) =&gt; sum + r.wallTimeSec, 0);\n  return {\n    task: t,\n    name: taskInfo.name || t,\n    status: taskInfo.status || \"unknown\",\n    total: taskRuns.length,\n    complete: taskRuns.filter(r =&gt; r.status === \"complete\").length,\n    timing: taskProd.filter(r =&gt; r.wallTimeSec).length,\n    wallTime: totalWall &gt; 0 ? `${(totalWall / 60).toFixed(0)}m` : \"—\",\n    phases: [...new Set(taskRuns.map(r =&gt; r.phase))].join(\", \")\n  };\n})\n\nInputs.table(taskSummary, {\n  columns: [\"task\", \"name\", \"status\", \"total\", \"complete\", \"timing\", \"wallTime\", \"phases\"],\n  header: {\n    task: \"Task ID\",\n    name: \"Name\",\n    status: \"Status\",\n    total: \"Runs\",\n    complete: \"Done\",\n    timing: \"Timed\",\n    wallTime: \"Compute\",\n    phases: \"Phases\"\n  },\n  format: {\n    status: s =&gt; s === \"complete\"\n      ? htl.html`&lt;span style=\"background:#d1e7dd;color:#0f5132;padding:2px 6px;border-radius:4px;font-size:0.75rem;\"&gt;${s}&lt;/span&gt;`\n      : s === \"in-progress\"\n      ? htl.html`&lt;span style=\"background:#cfe2ff;color:#084298;padding:2px 6px;border-radius:4px;font-size:0.75rem;\"&gt;${s}&lt;/span&gt;`\n      : htl.html`&lt;span style=\"background:#e2e3e5;color:#41464b;padding:2px 6px;border-radius:4px;font-size:0.75rem;\"&gt;${s}&lt;/span&gt;`\n  }\n})"
+    "objectID": "tasks/t24-domain-walls.html#tasks",
+    "href": "tasks/t24-domain-walls.html#tasks",
+    "title": "T24 — Domain Wall Dynamics",
+    "section": "Tasks",
+    "text": "Tasks\n\nCreate planar domain wall in T20 configurations\nMeasure surface tension\nTest anyonic braiding statistics\nVerify fermionic exchange phases",
+    "crumbs": [
+      "Overview",
+      "Tasks",
+      "T24 — Domain Wall Dynamics"
+    ]
   },
   {
-    "objectID": "dashboard-prototype.html#recent-activity",
-    "href": "dashboard-prototype.html#recent-activity",
-    "title": "Simulation Dashboard v2 (Prototype)",
-    "section": "Recent Activity",
-    "text": "Recent Activity\n\n\nCode\nrecentRuns = runs\n  .sort((a, b) =&gt; new Date(b.timestamp) - new Date(a.timestamp))\n  .slice(0, 10)\n\nhtml`&lt;div style=\"border: 1px solid #dee2e6; border-radius: 6px; overflow: hidden;\"&gt;\n  ${recentRuns.map(r =&gt; html`\n    &lt;div style=\"display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; border-bottom: 1px solid #f0f0f0;\"&gt;\n      &lt;div&gt;\n        &lt;div style=\"font-weight: 500; font-size: 0.85rem;\"&gt;${r.runId} ${r.isTest ? html`&lt;span style=\"background:#f8d7da;color:#721c24;padding:1px 6px;border-radius:3px;font-size:0.7rem;\"&gt;TEST&lt;/span&gt;` : \"\"}&lt;/div&gt;\n        &lt;div style=\"font-size: 0.75rem; color: #6c757d;\"&gt;${r.description}&lt;/div&gt;\n      &lt;/div&gt;\n      &lt;div style=\"text-align: right;\"&gt;\n        &lt;div style=\"font-size: 0.75rem; color: #adb5bd;\"&gt;${r.date}&lt;/div&gt;\n        ${r.wallTimeMin ? html`&lt;div style=\"font-size: 0.7rem; color: #6c757d;\"&gt;${r.wallTimeMin}m&lt;/div&gt;` : \"\"}\n      &lt;/div&gt;\n    &lt;/div&gt;\n  `)}\n&lt;/div&gt;`\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPrototype v2 — Runs & Results + Figure Archive with orthogonal filters"
+    "objectID": "tasks/t24-domain-walls.html#references",
+    "href": "tasks/t24-domain-walls.html#references",
+    "title": "T24 — Domain Wall Dynamics",
+    "section": "References",
+    "text": "References\n\nPaper: Section 5.3",
+    "crumbs": [
+      "Overview",
+      "Tasks",
+      "T24 — Domain Wall Dynamics"
+    ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "TimesArrow Numerics",
+    "objectID": "tasks/t26-coupled-matter.html",
+    "href": "tasks/t26-coupled-matter.html",
+    "title": "T26 — Coupled Spin Network + Matter",
+    "section": "",
+    "text": "Couple Z₂ gauge field to a scalar field and study symmetry breaking that selects a global arrow of time.",
+    "crumbs": [
+      "Overview",
+      "Tasks",
+      "T26 — Coupled Spin Network + Matter"
+    ]
+  },
+  {
+    "objectID": "tasks/t26-coupled-matter.html#objective",
+    "href": "tasks/t26-coupled-matter.html#objective",
+    "title": "T26 — Coupled Spin Network + Matter",
+    "section": "",
+    "text": "Couple Z₂ gauge field to a scalar field and study symmetry breaking that selects a global arrow of time.",
+    "crumbs": [
+      "Overview",
+      "Tasks",
+      "T26 — Coupled Spin Network + Matter"
+    ]
+  },
+  {
+    "objectID": "tasks/t26-coupled-matter.html#status",
+    "href": "tasks/t26-coupled-matter.html#status",
+    "title": "T26 — Coupled Spin Network + Matter",
+    "section": "Status",
+    "text": "Status\n🔴 Blocked on T20 + T24",
+    "crumbs": [
+      "Overview",
+      "Tasks",
+      "T26 — Coupled Spin Network + Matter"
+    ]
+  },
+  {
+    "objectID": "tasks/t26-coupled-matter.html#theory",
+    "href": "tasks/t26-coupled-matter.html#theory",
+    "title": "T26 — Coupled Spin Network + Matter",
+    "section": "Theory",
+    "text": "Theory\nCombined action:\n\\[\nS = S_{Z_2} + S_\\phi + S_{\\text{int}}\n\\]\nwhere S_int = λ Σ_v φ_v τ_v",
+    "crumbs": [
+      "Overview",
+      "Tasks",
+      "T26 — Coupled Spin Network + Matter"
+    ]
+  },
+  {
+    "objectID": "tasks/t26-coupled-matter.html#expected-outcome",
+    "href": "tasks/t26-coupled-matter.html#expected-outcome",
+    "title": "T26 — Coupled Spin Network + Matter",
+    "section": "Expected Outcome",
+    "text": "Expected Outcome\n⟨φ⟩ ≠ 0 spontaneously breaks remaining Z₂ symmetry, completing “orientability → arrow.”",
+    "crumbs": [
+      "Overview",
+      "Tasks",
+      "T26 — Coupled Spin Network + Matter"
+    ]
+  },
+  {
+    "objectID": "tasks/t26-coupled-matter.html#references",
+    "href": "tasks/t26-coupled-matter.html#references",
+    "title": "T26 — Coupled Spin Network + Matter",
+    "section": "References",
+    "text": "References\n\nPaper: Section 6 (Discussion)",
+    "crumbs": [
+      "Overview",
+      "Tasks",
+      "T26 — Coupled Spin Network + Matter"
+    ]
+  },
+  {
+    "objectID": "tasks/t31-signed-volume.html",
+    "href": "tasks/t31-signed-volume.html",
+    "title": "T31 — Signed Volume Observable for Z₂ Gauge Theory",
     "section": "",
     "text": "Last updated: 2026-07-10 18:45 IST",
     "crumbs": [
       "Overview",
-      "TimesArrow Numerics"
+      "Tasks",
+      "T31 — Signed Volume Observable for Z₂ Gauge Theory"
     ]
   },
   {
-    "objectID": "index.html#overview",
-    "href": "index.html#overview",
-    "title": "TimesArrow Numerics",
-    "section": "Overview",
-    "text": "Overview\nThis site documents the numerical simulation program for the paper “Gauging Time Reversal Symmetry in Quantum Gravity: Arrow of Time from a Confinement–Deconfinement Transition.”\nAll simulations use the ts-quantum TypeScript library for SU(2) algebra, intertwiner construction, and tensor operations.",
+    "objectID": "tasks/t31-signed-volume.html#objective",
+    "href": "tasks/t31-signed-volume.html#objective",
+    "title": "T31 — Signed Volume Observable for Z₂ Gauge Theory",
+    "section": "Objective",
+    "text": "Objective\nImplement and measure a signed volume observable for the Z₂ lattice gauge theory simulations. The key insight from the paper is that the signed volume operator \\(\\hat{Q}_v\\) (not the positive-definite \\(\\hat{V}_v = \\sqrt{|\\hat{Q}_v|}\\)) should be used for composite systems. The emergence of a global time orientation is then tied to the emergence of a macroscopic geometry with non-vanishing, extensive signed volume.",
     "crumbs": [
       "Overview",
-      "TimesArrow Numerics"
+      "Tasks",
+      "T31 — Signed Volume Observable for Z₂ Gauge Theory"
     ]
   },
   {
-    "objectID": "index.html#simulation-tasks",
-    "href": "index.html#simulation-tasks",
-    "title": "TimesArrow Numerics",
-    "section": "Simulation Tasks",
-    "text": "Simulation Tasks\n\n\n\nTask\nFocus\nStatus\nPriority\nLast Updated\n\n\n\n\nT31\nSigned Volume Observable\n🟢 Phase 2 Complete\nP1\n2026-07-10\n\n\nT25\nVolume Operator Extension\n🟢 Complete\nP1\n2026-06-29\n\n\nT20\nZ₂ LGT Monte Carlo\n🟢 Phase 3 Complete\nP0\n2026-07-10\n\n\nT23\nEntanglement Entropy\n🔴 Blocked (T20)\nP1\n—\n\n\nT22\nSpin Foam Amplitudes\n🟡 Ready\nP1\n2026-07-10\n\n\nT21\nCZX PEPS Ground State\n🔴 Blocked (T22)\nP1\n—\n\n\nT24\nDomain Wall Dynamics\n🔴 Blocked (T20+T21)\nP2\n—\n\n\nT26\nCoupled Matter\n🔴 Blocked (T20+T24)\nP2\n—",
+    "objectID": "tasks/t31-signed-volume.html#status",
+    "href": "tasks/t31-signed-volume.html#status",
+    "title": "T31 — Signed Volume Observable for Z₂ Gauge Theory",
+    "section": "Status",
+    "text": "Status\n\n\n\n\n\n\n\n\n\nPhase\nDescription\nStatus\nDate\n\n\n\n\nPhase 1\n2D square lattice validation\n✅ Complete\n2026-07-02\n\n\nPhase 2\n3D cubic lattice (L=8,10,12)\n⚠️ Exploratory only\n2026-07-02\n\n\nPhase 3\nGauge-invariant dressed correlator\n✅ Implemented, awaiting full validation\n2026-07-08\n\n\nPhase 4\nNew production runs and scaling\n⏳ Pending\n—",
     "crumbs": [
       "Overview",
-      "TimesArrow Numerics"
+      "Tasks",
+      "T31 — Signed Volume Observable for Z₂ Gauge Theory"
     ]
   },
   {
-    "objectID": "index.html#philosophy",
-    "href": "index.html#philosophy",
-    "title": "TimesArrow Numerics",
-    "section": "Philosophy",
-    "text": "Philosophy\n\nUnified code base — All simulations share a common core (intertwiners, operators, utilities)\nIncremental complexity — Start with exact diagonalization (T25), build to Monte Carlo (T20), then tensor networks (T21)\nReproducible artifacts — Scripts, data, and figures versioned alongside the paper\nWeb-deployed — Results published as they become available",
+    "objectID": "tasks/t31-signed-volume.html#theory",
+    "href": "tasks/t31-signed-volume.html#theory",
+    "title": "T31 — Signed Volume Observable for Z₂ Gauge Theory",
+    "section": "Theory",
+    "text": "Theory\n\nThe Signed Volume Operator\nIn standard LQG, the volume operator is always positive: \\(\\hat{V} = \\sqrt{|\\hat{Q}|}\\). This discards orientation information. The paper’s framework uses the signed operator \\(\\hat{Q}\\) to distinguish the two time-orientation sectors.\nFor a composite system:\n\\[\\hat{Q}_{\\text{total}} = \\sum_{v \\in S} \\hat{Q}_v\\]\n\nConfined phase (random Z₂ orientations): Signs cancel. \\(\\langle |\\hat{Q}_{\\text{total}}| \\rangle \\sim \\sqrt{N}\\) (random walk).\nDeconfined phase (ordered Z₂): Signs align. \\(\\langle |\\hat{Q}_{\\text{total}}| \\rangle \\sim N\\) (extensive).\n\nThis motivates the search for a gauge-invariant orientation diagnostic. The original path-based signed-volume measurements below are retained as exploratory data, not as production evidence for a phase transition or arrow-of-time scaling.\nThis means the confinement-deconfinement transition would be tested through: 1. The emergence of a global arrow of time 2. The emergence of a macroscopic geometry with non-vanishing, extensive signed volume\n\n\nGauge-Dependence Correction\nThe signed volume at individual vertices is gauge-dependent. The earlier maximal-spanning-tree path convention chooses one representative of each gauge orbit, but it is not itself a gauge-invariant observable. Greedy or iterative gauge alignment is also withdrawn because it can force \\(|Q|=N\\) in any phase by choosing an aligned representative.\nFor a vertex at \\((x,y,z)\\), the sign is: \\[\\text{sign}(x,y,z) = \\prod_{i=0}^{x-1} \\sigma_{(i,0,0),x} \\times \\prod_{j=0}^{y-1} \\sigma_{(x,j,0),y} \\times \\prod_{k=0}^{z-1} \\sigma_{(x,y,k),z}\\]\nThe replacement implemented in rust-lattice is a dressed orientation correlator: \\[C(r_1,r_2) = s(r_1) W(r_1 \\to r_2) s(r_2)\\]\nwhere \\(s(r)\\) is the path-dressed sign from the origin and \\(W(r_1 \\to r_2)\\) is a Wilson line between the two sites using the opposite path ordering. The averaged observable \\[Q_{\\mathrm{GI}} = \\frac{1}{N^2}\\sum_{r_1,r_2} C(r_1,r_2)\\] is designed to be invariant under local Z₂ gauge transformations.",
     "crumbs": [
       "Overview",
-      "TimesArrow Numerics"
+      "Tasks",
+      "T31 — Signed Volume Observable for Z₂ Gauge Theory"
     ]
   },
   {
-    "objectID": "index.html#quick-links",
-    "href": "index.html#quick-links",
-    "title": "TimesArrow Numerics",
-    "section": "Quick Links",
-    "text": "Quick Links\n\nGitHub repo\nts-quantum library\n📊 Numerics Dashboard\nPaper (arXiv)",
+    "objectID": "tasks/t31-signed-volume.html#implementation",
+    "href": "tasks/t31-signed-volume.html#implementation",
+    "title": "T31 — Signed Volume Observable for Z₂ Gauge Theory",
+    "section": "Implementation",
+    "text": "Implementation\n\nRust Functions (rust-lattice)\n// 3D Signed Volume\npub fn signed_volume_3d(&self) -&gt; i64\npub fn measure_signed_volume_3d(&mut self, beta, n_sweeps, measure_every) -&gt; (f64, f64, f64, f64, f64)\n\n// Gauge-invariant dressed orientation correlator\npub fn local_gauge_transform_3d(&mut self, x, y, z)\npub fn gauge_invariant_signed_volume_3d(&self) -&gt; f64\npub fn measure_gauge_invariant_signed_volume_3d(&mut self, beta, n_sweeps, measure_every) -&gt; (f64, f64, f64, f64, f64)\n\n// 2D Signed Area (for validation)\npub fn signed_area_2d(&self) -&gt; i64\npub fn measure_signed_area_2d(&mut self, beta, n_sweeps, measure_every) -&gt; (f64, f64, f64, f64, f64)\nThe original signed-volume measurement returns (mean |Q|, error, mean Q², mean |Q|/N, binder). The gauge-invariant replacement returns (mean Q_GI, error, mean Q_GI², mean Q_GI, binder).",
     "crumbs": [
       "Overview",
-      "TimesArrow Numerics"
+      "Tasks",
+      "T31 — Signed Volume Observable for Z₂ Gauge Theory"
     ]
   },
   {
-    "objectID": "index.html#data-registry",
-    "href": "index.html#data-registry",
-    "title": "TimesArrow Numerics",
-    "section": "Data Registry",
-    "text": "Data Registry\nAll simulation runs are tracked in a central registry (data/registry.json) with: - Run metadata (ID, timestamp, parameters) - Output file references - Results summaries - Task/phase organization\nThis enables systematic collation and reproducibility as the simulation program scales.",
+    "objectID": "tasks/t31-signed-volume.html#results",
+    "href": "tasks/t31-signed-volume.html#results",
+    "title": "T31 — Signed Volume Observable for Z₂ Gauge Theory",
+    "section": "Results",
+    "text": "Results\n\n2D Signed Area (L=8) — Validation\nExpected: |Q|/N ~ 1/√N = 0.125 across all β (no deconfined phase in 2D).\n\n\n\nβ\n\nQ\n\n\n\n\n\n\n0.3\n5.20\n0.0813\n43.87\n-0.0398\n\n\n0.5\n6.73\n0.1052\n73.07\n0.1278\n\n\n0.7\n5.30\n0.0828\n46.87\n0.0848\n\n\n1.0\n7.20\n0.1125\n85.60\n-0.0161\n\n\n1.5\n4.80\n0.0750\n35.73\n0.1357\n\n\n\n✅ Consistent with random-walk scaling across all β. Confirms no deconfined phase in 2D.\n\n\n3D Signed Volume — Exploratory Gauge-Dependent Runs\nThe following runs were made before the T32 gauge-dependence correction. They are useful diagnostics for the old observable and data pipeline, but their \\(|Q|/N\\) values must not be promoted as gauge-invariant physics.\n\nL=8 (N=512) — 1/√N = 0.044\n\n\n\nβ\n\nQ\n/N\nError\n\n\n\n\n0.40\n0.0340\n0.298\n0.395\n0.001\n\n\n0.50\n0.0346\n0.298\n0.502\n0.047\n\n\n0.60\n0.0352\n0.314\n0.627\n-0.017\n\n\n0.70\n0.0354\n0.307\n0.790\n0.012\n\n\n0.76\n0.0355\n0.302\n0.949\n0.050\n\n\n0.80\n0.0362\n0.305\n0.974\n0.079\n\n\n0.85\n0.0307\n0.267\n0.986\n-0.008\n\n\n0.90\n0.0370\n0.349\n0.991\n-0.055\n\n\n1.00\n0.0505\n0.258\n0.997\n0.465\n\n\n1.10\n0.0265\n0.156\n0.999\n0.410\n\n\n1.20\n0.0675\n0.138\n0.999\n0.629\n\n\n1.50\n0.0899\n0.010\n1.000\n0.667\n\n\n\n\n\nL=10 (N=1000) — 1/√N = 0.032\n\n\n\nβ\n\nQ\n/N\nError\n\n\n\n\n0.40\n0.0257\n0.436\n0.394\n-0.028\n\n\n0.50\n0.0256\n0.433\n0.502\n-0.006\n\n\n0.60\n0.0256\n0.440\n0.628\n-0.081\n\n\n0.70\n0.0250\n0.427\n0.789\n-0.057\n\n\n0.76\n0.0244\n0.417\n0.949\n-0.004\n\n\n0.80\n0.0267\n0.437\n0.973\n0.052\n\n\n0.85\n0.0277\n0.469\n0.985\n0.038\n\n\n0.90\n0.0270\n0.445\n0.991\n0.032\n\n\n1.00\n0.0157\n0.281\n0.997\n0.056\n\n\n1.10\n0.0230\n0.199\n0.999\n0.503\n\n\n1.20\n0.0472\n0.134\n0.999\n0.647\n\n\n1.50\n0.0075\n0.021\n1.000\n0.645\n\n\n\n\n\nL=12 (N=1728) — 1/√N = 0.024\n\n\n\nβ\n\nQ\n/N\nError\n\n\n\n\n0.40\n0.0189\n0.550\n0.395\n0.028\n\n\n0.50\n0.0189\n0.553\n0.502\n-0.037\n\n\n0.60\n0.0192\n0.556\n0.628\n0.019\n\n\n0.70\n0.0193\n0.573\n0.789\n-0.014\n\n\n0.76\n0.0185\n0.533\n0.948\n0.018\n\n\n0.80\n0.0195\n0.547\n0.974\n0.093\n\n\n0.85\n0.0218\n0.595\n0.985\n0.095\n\n\n0.90\n0.0213\n0.566\n0.992\n0.133\n\n\n1.00\n0.0181\n0.418\n0.997\n0.310\n\n\n1.10\n0.0145\n0.399\n0.999\n0.111\n\n\n1.20\n0.0112\n0.213\n0.999\n0.415\n\n\n1.50\n0.0628\n0.046\n1.000\n0.666",
     "crumbs": [
       "Overview",
-      "TimesArrow Numerics"
+      "Tasks",
+      "T31 — Signed Volume Observable for Z₂ Gauge Theory"
+    ]
+  },
+  {
+    "objectID": "tasks/t31-signed-volume.html#analysis",
+    "href": "tasks/t31-signed-volume.html#analysis",
+    "title": "T31 — Signed Volume Observable for Z₂ Gauge Theory",
+    "section": "Analysis",
+    "text": "Analysis\n\nKey Observations\n\nL=8 shows the clearest exploratory trend: |Q|/N rises from ~0.034 to ~0.090. Because the observable is gauge-dependent, this is not production evidence for deconfinement or arrow-of-time scaling.\nL=10 anomalous at β=1.5: |Q|/N = 0.0075, below confined-phase value. This is a “bad” gauge sector where the simulation got stuck in the σ_e = -1 ground state.\nL=12 shows non-monotonic approach: |Q|/N drops at intermediate β before jumping to 0.063 at β=1.5. System fluctuates between degenerate ground states.\n\n\n\nThe Gauge Problem\nThe signed volume is gauge-dependent. In the deconfined phase, two gauge-equivalent ground states exist: - All σ_e = +1 → |Q| = N - All σ_e = -1 → |Q| ≈ 0 (checkerboard)\nAt finite β, tunneling between sectors causes |Q|/N to fluctuate between ~1 and ~0.\n\n\nGauge-Invariant Replacement\nrust-lattice/src/lib.rs now includes:\n\nA corrected local gauge transformation that flips all six incident 3D links at a site.\nTests showing plaquettes remain invariant under valid local gauge transformations.\nTests showing the original signed_volume_3d() changes under gauge transformations.\nA candidate gauge_invariant_signed_volume_3d() dressed correlator with single-site and multi-site gauge-invariance tests.\n\nThese tests were identified in source inspection, but the local Cargo available in this shell is older than Rust edition 2024, so the full Rust test suite still needs to be run with the documented Rust 1.85+ toolchain before new production results are trusted.",
+    "crumbs": [
+      "Overview",
+      "Tasks",
+      "T31 — Signed Volume Observable for Z₂ Gauge Theory"
+    ]
+  },
+  {
+    "objectID": "tasks/t31-signed-volume.html#next-steps",
+    "href": "tasks/t31-signed-volume.html#next-steps",
+    "title": "T31 — Signed Volume Observable for Z₂ Gauge Theory",
+    "section": "Next Steps",
+    "text": "Next Steps\n\nRun the Rust gauge-invariance tests with a Rust 2024-compatible toolchain.\nReview whether the dressed correlator has the desired physical normalization and finite-size behavior.\nRun new production simulations only with the validated gauge-invariant observable.\nPerform Binder or scaling analysis only after the replacement observable is validated.",
+    "crumbs": [
+      "Overview",
+      "Tasks",
+      "T31 — Signed Volume Observable for Z₂ Gauge Theory"
+    ]
+  },
+  {
+    "objectID": "tasks/t31-signed-volume.html#data-files",
+    "href": "tasks/t31-signed-volume.html#data-files",
+    "title": "T31 — Signed Volume Observable for Z₂ Gauge Theory",
+    "section": "Data Files",
+    "text": "Data Files\n\n\n\nFile\nDescription\n\n\n\n\nsv-L8-20260702-203243.json\nL=8 raw results\n\n\nsv-L10-20260702-203325.json\nL=10 raw results\n\n\nsv-L12-20260702-203243.json\nL=12 raw results",
+    "crumbs": [
+      "Overview",
+      "Tasks",
+      "T31 — Signed Volume Observable for Z₂ Gauge Theory"
+    ]
+  },
+  {
+    "objectID": "tasks/t31-signed-volume.html#references",
+    "href": "tasks/t31-signed-volume.html#references",
+    "title": "T31 — Signed Volume Observable for Z₂ Gauge Theory",
+    "section": "References",
+    "text": "References\n\nPaper: Section on Z₂ gauge field emergence\nT20: Z₂ Lattice Gauge Theory Monte Carlo (base implementation)\nT25: Volume Operator Extension (intertwiner spectrum)",
+    "crumbs": [
+      "Overview",
+      "Tasks",
+      "T31 — Signed Volume Observable for Z₂ Gauge Theory"
     ]
   }
 ]

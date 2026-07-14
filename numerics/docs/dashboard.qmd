@@ -2,7 +2,7 @@
 title: "Simulation Dashboard"
 description: "Unified view of all TimesArrow numerical simulation runs"
 date: 2026-06-27
-date-modified: "2026-07-10T18:45:00+05:30"
+date-modified: "2026-07-14T07:15:00+05:30"
 format:
   html:
     toc: true

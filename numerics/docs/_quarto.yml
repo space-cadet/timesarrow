@@ -2,6 +2,10 @@ project:
   type: website
   title: "TimesArrow Numerics"
   output-dir: _site
+  render:
+    - index.qmd
+    - dashboard.qmd
+    - tasks/*.qmd
   resources:
     - assets/**
 

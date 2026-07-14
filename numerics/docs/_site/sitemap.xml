@@ -1,51 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://quantumofgravity.com/timesarrow/implementation/t20-z2-lgt.html</loc>
-    <lastmod>2026-07-05T16:39:26.997Z</lastmod>
+    <loc>https://quantumofgravity.com/timesarrow/dashboard.html</loc>
+    <lastmod>2026-07-14T07:19:49.717Z</lastmod>
   </url>
   <url>
-    <loc>https://quantumofgravity.com/timesarrow/dashboard.html</loc>
-    <lastmod>2026-07-10T13:20:54.401Z</lastmod>
+    <loc>https://quantumofgravity.com/timesarrow/tasks/t31-deconfinement-polyakov.html</loc>
+    <lastmod>2026-07-14T08:14:48.580Z</lastmod>
   </url>
   <url>
     <loc>https://quantumofgravity.com/timesarrow/tasks/t25-volume-operator.html</loc>
-    <lastmod>2026-07-10T13:20:55.661Z</lastmod>
-  </url>
-  <url>
-    <loc>https://quantumofgravity.com/timesarrow/tasks/t31-signed-volume.html</loc>
-    <lastmod>2026-07-10T13:20:55.196Z</lastmod>
-  </url>
-  <url>
-    <loc>https://quantumofgravity.com/timesarrow/tasks/t26-coupled-matter.html</loc>
-    <lastmod>2026-07-05T16:39:27.007Z</lastmod>
+    <lastmod>2026-07-14T07:19:49.700Z</lastmod>
   </url>
   <url>
     <loc>https://quantumofgravity.com/timesarrow/tasks/t23-entanglement.html</loc>
-    <lastmod>2026-07-05T16:39:27.002Z</lastmod>
+    <lastmod>2026-06-25T17:33:21.388Z</lastmod>
   </url>
   <url>
     <loc>https://quantumofgravity.com/timesarrow/tasks/t21-czx-peps.html</loc>
-    <lastmod>2026-07-05T16:39:27.002Z</lastmod>
-  </url>
-  <url>
-    <loc>https://quantumofgravity.com/timesarrow/tasks/t24-domain-walls.html</loc>
-    <lastmod>2026-07-05T16:39:27.002Z</lastmod>
-  </url>
-  <url>
-    <loc>https://quantumofgravity.com/timesarrow/tasks/t20-z2-lgt.html</loc>
-    <lastmod>2026-07-10T13:29:05.054Z</lastmod>
-  </url>
-  <url>
-    <loc>https://quantumofgravity.com/timesarrow/tasks/t22-spin-foam.html</loc>
-    <lastmod>2026-07-10T13:20:55.434Z</lastmod>
-  </url>
-  <url>
-    <loc>https://quantumofgravity.com/timesarrow/dashboard-prototype.html</loc>
-    <lastmod>2026-07-08T12:14:33.732Z</lastmod>
+    <lastmod>2026-06-25T17:33:21.388Z</lastmod>
   </url>
   <url>
     <loc>https://quantumofgravity.com/timesarrow/index.html</loc>
-    <lastmod>2026-07-10T13:29:05.284Z</lastmod>
+    <lastmod>2026-07-14T07:19:49.711Z</lastmod>
+  </url>
+  <url>
+    <loc>https://quantumofgravity.com/timesarrow/tasks/t20-z2-lgt.html</loc>
+    <lastmod>2026-07-14T07:19:49.693Z</lastmod>
+  </url>
+  <url>
+    <loc>https://quantumofgravity.com/timesarrow/tasks/t22-spin-foam.html</loc>
+    <lastmod>2026-07-14T07:19:49.696Z</lastmod>
+  </url>
+  <url>
+    <loc>https://quantumofgravity.com/timesarrow/tasks/t24-domain-walls.html</loc>
+    <lastmod>2026-06-25T17:33:21.388Z</lastmod>
+  </url>
+  <url>
+    <loc>https://quantumofgravity.com/timesarrow/tasks/t26-coupled-matter.html</loc>
+    <lastmod>2026-06-25T17:33:21.393Z</lastmod>
+  </url>
+  <url>
+    <loc>https://quantumofgravity.com/timesarrow/tasks/t31-signed-volume.html</loc>
+    <lastmod>2026-07-14T07:19:49.708Z</lastmod>
   </url>
 </urlset>

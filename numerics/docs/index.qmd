@@ -2,7 +2,7 @@
 title: "TimesArrow Numerics"
 subtitle: "Numerical simulations for time reversal symmetry in quantum gravity"
 date: "2026-07-02"
-date-modified: "2026-07-10T18:45:00+05:30"
+date-modified: "2026-07-14T07:15:00+05:30"
 ---
 
 *Last updated: 2026-07-10 18:45 IST*

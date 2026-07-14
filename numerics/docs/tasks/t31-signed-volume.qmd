@@ -2,7 +2,7 @@
 title: "T31 — Signed Volume Observable for Z₂ Gauge Theory"
 subtitle: "Arrow of time from oriented geometry"
 date: "2026-07-02"
-date-modified: "2026-07-10T18:45:00+05:30"
+date-modified: "2026-07-14T07:15:00+05:30"
 toc: true
 toc-title: "Contents"
 ---

@@ -2,7 +2,7 @@
 title: "T22 — Spin Foam Amplitudes"
 subtitle: "SU(2) four-leg group-average toy calculation"
 date: "2026-06-29"
-date-modified: "2026-07-10T18:45:00+05:30"
+date-modified: "2026-07-14T07:15:00+05:30"
 ---
 
 *Last updated: 2026-07-10 18:45 IST*

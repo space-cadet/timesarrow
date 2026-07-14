@@ -2,7 +2,7 @@
 title: "T31 — Deconfinement via Polyakov Loop"
 subtitle: "Gauge-invariant order parameter for the Z₂ confinement–deconfinement transition"
 date: "2026-07-14"
-date-modified: "2026-07-14T11:27:00+05:30"
+date-modified: "2026-07-14T07:15:00+05:30"
 toc: true
 toc-title: "Contents"
 ---
@@ -232,3 +232,4 @@ The deconfinement transition at $\beta_c \approx 0.76$ is the physical mechanism
 - T25: Volume Operator Extension (intertwiner spectrum)
 - T32: Gauge-Invariance Correction (signed volume abandoning)
 - Paper: Section on Z₂ gauge field emergence and deconfinement
+
