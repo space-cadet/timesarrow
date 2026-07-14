@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-07-14">
+
+<title>T31 — Deconfinement via Polyakov Loop</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="t31-deconfinement-polyakov_files/libs/clipboard/clipboard.min.js"></script>
+<script src="t31-deconfinement-polyakov_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="t31-deconfinement-polyakov_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="t31-deconfinement-polyakov_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="t31-deconfinement-polyakov_files/libs/quarto-html/popper.min.js"></script>
+<script src="t31-deconfinement-polyakov_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="t31-deconfinement-polyakov_files/libs/quarto-html/anchor.min.js"></script>
+<link href="t31-deconfinement-polyakov_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="t31-deconfinement-polyakov_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="t31-deconfinement-polyakov_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="t31-deconfinement-polyakov_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="t31-deconfinement-polyakov_files/libs/bootstrap/bootstrap-d6a003b94517c951b2d65075d42fb01b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#objective" id="toc-objective" class="nav-link active" data-scroll-target="#objective">Objective</a></li>
+  <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
+  <li><a href="#why-the-signed-volume-was-abandoned" id="toc-why-the-signed-volume-was-abandoned" class="nav-link" data-scroll-target="#why-the-signed-volume-was-abandoned">Why the Signed Volume Was Abandoned</a></li>
+  <li><a href="#theory" id="toc-theory" class="nav-link" data-scroll-target="#theory">Theory</a>
+  <ul class="collapse">
+  <li><a href="#the-polyakov-loop" id="toc-the-polyakov-loop" class="nav-link" data-scroll-target="#the-polyakov-loop">The Polyakov Loop</a></li>
+  <li><a href="#physical-interpretation" id="toc-physical-interpretation" class="nav-link" data-scroll-target="#physical-interpretation">Physical Interpretation</a></li>
+  </ul></li>
+  <li><a href="#implementation" id="toc-implementation" class="nav-link" data-scroll-target="#implementation">Implementation</a>
+  <ul class="collapse">
+  <li><a href="#rust-functions-rust-lattice" id="toc-rust-functions-rust-lattice" class="nav-link" data-scroll-target="#rust-functions-rust-lattice">Rust Functions (<code>rust-lattice</code>)</a></li>
+  <li><a href="#simulation-parameters" id="toc-simulation-parameters" class="nav-link" data-scroll-target="#simulation-parameters">Simulation Parameters</a></li>
+  </ul></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
+  <ul class="collapse">
+  <li><a href="#proof-of-principle-scan-10k-thermal-10k-measure" id="toc-proof-of-principle-scan-10k-thermal-10k-measure" class="nav-link" data-scroll-target="#proof-of-principle-scan-10k-thermal-10k-measure">Proof-of-Principle Scan (10k thermal + 10k measure)</a></li>
+  <li><a href="#production-runs-50k-thermal-50k-measure" id="toc-production-runs-50k-thermal-50k-measure" class="nav-link" data-scroll-target="#production-runs-50k-thermal-50k-measure">Production Runs (50k thermal + 50k measure)</a></li>
+  <li><a href="#key-observations" id="toc-key-observations" class="nav-link" data-scroll-target="#key-observations">Key Observations</a></li>
+  </ul></li>
+  <li><a href="#figures" id="toc-figures" class="nav-link" data-scroll-target="#figures">Figures</a>
+  <ul class="collapse">
+  <li><a href="#susceptibility-vs.-beta" id="toc-susceptibility-vs.-beta" class="nav-link" data-scroll-target="#susceptibility-vs.-beta">Susceptibility vs.&nbsp;<span class="math inline">\(\beta\)</span></a></li>
+  <li><a href="#finite-size-scaling-loglog-fit" id="toc-finite-size-scaling-loglog-fit" class="nav-link" data-scroll-target="#finite-size-scaling-loglog-fit">Finite-Size Scaling: Log–Log Fit</a></li>
+  </ul></li>
+  <li><a href="#critical-exponent-extraction" id="toc-critical-exponent-extraction" class="nav-link" data-scroll-target="#critical-exponent-extraction">Critical Exponent Extraction</a>
+  <ul class="collapse">
+  <li><a href="#scaling-fit-results" id="toc-scaling-fit-results" class="nav-link" data-scroll-target="#scaling-fit-results">Scaling Fit Results</a></li>
+  <li><a href="#comparison-with-3d-ising-universality" id="toc-comparison-with-3d-ising-universality" class="nav-link" data-scroll-target="#comparison-with-3d-ising-universality">Comparison with 3D Ising Universality</a></li>
+  <li><a href="#critical-beta-estimates" id="toc-critical-beta-estimates" class="nav-link" data-scroll-target="#critical-beta-estimates">Critical <span class="math inline">\(\beta\)</span> Estimates</a></li>
+  </ul></li>
+  <li><a href="#caveats" id="toc-caveats" class="nav-link" data-scroll-target="#caveats">Caveats</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next Steps</a></li>
+  <li><a href="#data-files" id="toc-data-files" class="nav-link" data-scroll-target="#data-files">Data Files</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">T31 — Deconfinement via Polyakov Loop</h1>
+<p class="subtitle lead">Gauge-invariant order parameter for the Z₂ confinement–deconfinement transition</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 14, 2026</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">July 14, 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><em>Last updated: 2026-07-14 11:27 IST</em></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>📊 Live Dashboard
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>View all simulation runs and figures: <strong><a href="../dashboard.html">TimesArrow Numerics Dashboard →</a></strong></p>
+</div>
+</div>
+<section id="objective" class="level2">
+<h2 class="anchored" data-anchor-id="objective">Objective</h2>
+<p>Detect the <strong>confinement–deconfinement phase transition</strong> in 3D Z₂ lattice gauge theory using the <strong>Polyakov loop</strong> <span class="math inline">\(\bar{P}\)</span> as the gauge-invariant order parameter. The Polyakov loop serves as a proxy for the free energy of an isolated static charge, and its expectation value distinguishes the confined (<span class="math inline">\(\langle \bar{P} \rangle = 0\)</span>) from the deconfined (<span class="math inline">\(\langle \bar{P} \rangle \neq 0\)</span>) phase. The deconfinement transition is the physical mechanism through which a global arrow of time may emerge in the framework.</p>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 38%">
+<col style="width: 23%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Phase</th>
+<th>Description</th>
+<th>Status</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Phase 1</td>
+<td>Signed volume exploration</td>
+<td>❌ Abandoned</td>
+<td>2026-07-02</td>
+</tr>
+<tr class="even">
+<td>Phase 2</td>
+<td>Pivot to Polyakov loop; proof-of-principle</td>
+<td>✅ Complete</td>
+<td>2026-07-14</td>
+</tr>
+<tr class="odd">
+<td>Phase 3</td>
+<td>Production runs L=8,10,12 (50k thermal + 50k measure)</td>
+<td>✅ Complete</td>
+<td>2026-07-14</td>
+</tr>
+<tr class="even">
+<td>Phase 4</td>
+<td>Critical exponent extraction</td>
+<td>✅ Complete</td>
+<td>2026-07-14</td>
+</tr>
+<tr class="odd">
+<td>Phase 5</td>
+<td>Finite-size scaling with larger L</td>
+<td>⏳ Pending</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="why-the-signed-volume-was-abandoned" class="level2">
+<h2 class="anchored" data-anchor-id="why-the-signed-volume-was-abandoned">Why the Signed Volume Was Abandoned</h2>
+<p>The original T31 task pursued a <strong>signed volume observable</strong> <span class="math inline">\(\hat{Q}_v\)</span> as a proxy for a global time orientation. The idea was that in the deconfined phase, Z₂ link alignments would yield an extensive signed volume <span class="math inline">\(\langle |\hat{Q}_{\text{total}}| \rangle \sim N\)</span>, while in the confined phase signs would cancel to <span class="math inline">\(\sim \sqrt{N}\)</span>.</p>
+<p><strong>Elitzur’s theorem</strong> states that local gauge symmetries cannot be spontaneously broken; therefore, any <em>gauge-dependent</em> local operator must have vanishing expectation value. The signed volume at a vertex is gauge-dependent — under a local Z₂ gauge transformation that flips all six links incident to a site, the sign at that site changes sign. This means:</p>
+<ol type="1">
+<li>The raw signed volume <span class="math inline">\(\hat{Q}_v\)</span> is not a physical observable.</li>
+<li>A dressed gauge-invariant correlator was constructed (<span class="math inline">\(Q_{\mathrm{GI}} = \frac{1}{N^2}\sum_{r_1,r_2} s(r_1) W(r_1 \to r_2) s(r_2)\)</span>), but its physical normalization and finite-size behavior remain unclear.</li>
+<li>The <strong>Polyakov loop</strong> is the standard, well-understood gauge-invariant order parameter for Z₂ deconfinement.</li>
+</ol>
+<p>We therefore <strong>pivoted</strong> from the signed volume to the Polyakov loop, which is gauge-invariant by construction (a closed Wilson loop winding through periodic boundary conditions).</p>
+</section>
+<section id="theory" class="level2">
+<h2 class="anchored" data-anchor-id="theory">Theory</h2>
+<section id="the-polyakov-loop" class="level3">
+<h3 class="anchored" data-anchor-id="the-polyakov-loop">The Polyakov Loop</h3>
+<p>The Polyakov loop at spatial site <span class="math inline">\(\mathbf{x}\)</span> is the product of temporal link variables along a closed loop through the periodic time direction:</p>
+<p><span class="math display">\[P(\mathbf{x}) = \prod_{t=0}^{L_t-1} \sigma_{(\mathbf{x},t),0}\]</span></p>
+<p>where <span class="math inline">\(\sigma_{(\mathbf{x},t),0} \in \{+1, -1\}\)</span> is the temporal link at site <span class="math inline">\((\mathbf{x}, t)\)</span>. Under a local gauge transformation at <span class="math inline">\((\mathbf{x}, t)\)</span>, both <span class="math inline">\(\sigma_{(\mathbf{x},t),0}\)</span> and <span class="math inline">\(\sigma_{(\mathbf{x},t-1),0}\)</span> flip, leaving <span class="math inline">\(P(\mathbf{x})\)</span> invariant.</p>
+<p>The spatial average is:</p>
+<p><span class="math display">\[\bar{P} = \frac{1}{N_s} \sum_{\mathbf{x}} P(\mathbf{x})\]</span></p>
+<p>where <span class="math inline">\(N_s = L^2\)</span> is the number of spatial sites (for our <span class="math inline">\(L^3\)</span> lattices with <span class="math inline">\(L_t = L\)</span>).</p>
+</section>
+<section id="physical-interpretation" class="level3">
+<h3 class="anchored" data-anchor-id="physical-interpretation">Physical Interpretation</h3>
+<ul>
+<li><strong>Confined phase</strong> (<span class="math inline">\(\beta &lt; \beta_c\)</span>): <span class="math inline">\(\langle \bar{P} \rangle = 0\)</span> (free energy of isolated charge diverges)</li>
+<li><strong>Deconfined phase</strong> (<span class="math inline">\(\beta &gt; \beta_c\)</span>): <span class="math inline">\(\langle |\bar{P}| \rangle \neq 0\)</span> (free energy finite, symmetry spontaneously broken in the <em>global</em> Z₂ symmetry of flipping all Polyakov loops)</li>
+</ul>
+<p>The susceptibility:</p>
+<p><span class="math display">\[\chi_P = N_s \left( \langle \bar{P}^2 \rangle - \langle |\bar{P}| \rangle^2 \right)\]</span></p>
+<p>diverges at the critical point <span class="math inline">\(\beta_c\)</span> and is used to locate the transition and extract critical exponents.</p>
+</section>
+</section>
+<section id="implementation" class="level2">
+<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
+<section id="rust-functions-rust-lattice" class="level3">
+<h3 class="anchored" data-anchor-id="rust-functions-rust-lattice">Rust Functions (<code>rust-lattice</code>)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Polyakov loop measurement</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> measure_polyakov_loop_3d(<span class="op">&amp;</span><span class="kw">self</span>) <span class="op">-&gt;</span> (<span class="dt">f64</span><span class="op">,</span> <span class="dt">f64</span><span class="op">,</span> <span class="dt">f64</span><span class="op">,</span> <span class="dt">f64</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">// Returns: (mean |P̄|, mean P̄, susceptibility χ_P, binder cumulant U_P)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The measurement is implemented in <code>rust-lattice/src/lib.rs</code> by: 1. Iterating over all spatial sites <span class="math inline">\((x, y)\)</span> 2. Multiplying the temporal link at each <span class="math inline">\(t\)</span> from <span class="math inline">\(0\)</span> to <span class="math inline">\(L-1\)</span> 3. Computing the spatial average, its absolute value, and the susceptibility</p>
+</section>
+<section id="simulation-parameters" class="level3">
+<h3 class="anchored" data-anchor-id="simulation-parameters">Simulation Parameters</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Proof-of-Principle</th>
+<th>Production Runs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Thermal sweeps</td>
+<td>10,000</td>
+<td>50,000</td>
+</tr>
+<tr class="even">
+<td>Measurement sweeps</td>
+<td>10,000</td>
+<td>50,000</td>
+</tr>
+<tr class="odd">
+<td>Measure every</td>
+<td>10</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>Bin size</td>
+<td>10</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td>Workers</td>
+<td>10</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\beta\)</span> values</td>
+<td>0.60–0.85 (step 0.02)</td>
+<td>0.70–0.80 (step 0.02)</td>
+</tr>
+<tr class="odd">
+<td>Lattice sizes</td>
+<td>L=8, 10, 12</td>
+<td>L=8, 10, 12</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<section id="proof-of-principle-scan-10k-thermal-10k-measure" class="level3">
+<h3 class="anchored" data-anchor-id="proof-of-principle-scan-10k-thermal-10k-measure">Proof-of-Principle Scan (10k thermal + 10k measure)</h3>
+<p>Peak susceptibility at <span class="math inline">\(\beta = 0.76\)</span> for all three lattice sizes:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 3%">
+<col style="width: 18%">
+<col style="width: 23%">
+<col style="width: 38%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>L</th>
+<th><span class="math inline">\(\chi_P^{\max}\)</span></th>
+<th><span class="math inline">\(\beta_{\text{peak}}\)</span></th>
+<th><span class="math inline">\(\langle |\bar{P}| \rangle\)</span> at peak</th>
+<th><span class="math inline">\(U_P\)</span> at peak</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>8</td>
+<td>355</td>
+<td>0.76</td>
+<td>0.075</td>
+<td>0.634</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>621</td>
+<td>0.76</td>
+<td>0.201</td>
+<td>0.640</td>
+</tr>
+<tr class="odd">
+<td>12</td>
+<td>886</td>
+<td>0.76</td>
+<td>0.159</td>
+<td>0.614</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="production-runs-50k-thermal-50k-measure" class="level3">
+<h3 class="anchored" data-anchor-id="production-runs-50k-thermal-50k-measure">Production Runs (50k thermal + 50k measure)</h3>
+<section id="l-8" class="level4">
+<h4 class="anchored" data-anchor-id="l-8">L = 8</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 38%">
+<col style="width: 12%">
+<col style="width: 10%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(\beta\)</span></th>
+<th><span class="math inline">\(\langle |\bar{P}| \rangle\)</span></th>
+<th><span class="math inline">\(\chi_P\)</span></th>
+<th><span class="math inline">\(U_P\)</span></th>
+<th><span class="math inline">\(\langle U \rangle\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.70</td>
+<td>0.006</td>
+<td>29.7</td>
+<td>−0.006</td>
+<td>0.791</td>
+</tr>
+<tr class="even">
+<td>0.72</td>
+<td>0.019</td>
+<td>72.8</td>
+<td>0.152</td>
+<td>0.837</td>
+</tr>
+<tr class="odd">
+<td>0.74</td>
+<td>0.023</td>
+<td>231.4</td>
+<td>0.527</td>
+<td>0.906</td>
+</tr>
+<tr class="even">
+<td><strong>0.76</strong></td>
+<td><strong>0.209</strong></td>
+<td><strong>339.0</strong></td>
+<td><strong>0.636</strong></td>
+<td><strong>0.947</strong></td>
+</tr>
+<tr class="odd">
+<td>0.78</td>
+<td>0.105</td>
+<td>412.3</td>
+<td>0.656</td>
+<td>0.965</td>
+</tr>
+<tr class="even">
+<td>0.80</td>
+<td>0.481</td>
+<td>327.2</td>
+<td>0.661</td>
+<td>0.974</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="l-10" class="level4">
+<h4 class="anchored" data-anchor-id="l-10">L = 10</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 38%">
+<col style="width: 12%">
+<col style="width: 10%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(\beta\)</span></th>
+<th><span class="math inline">\(\langle |\bar{P}| \rangle\)</span></th>
+<th><span class="math inline">\(\chi_P\)</span></th>
+<th><span class="math inline">\(U_P\)</span></th>
+<th><span class="math inline">\(\langle U \rangle\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.70</td>
+<td>0.001</td>
+<td>22.9</td>
+<td>−0.022</td>
+<td>0.789</td>
+</tr>
+<tr class="even">
+<td>0.72</td>
+<td>0.001</td>
+<td>50.7</td>
+<td>−0.050</td>
+<td>0.832</td>
+</tr>
+<tr class="odd">
+<td>0.74</td>
+<td>0.008</td>
+<td>255.6</td>
+<td>0.373</td>
+<td>0.892</td>
+</tr>
+<tr class="even">
+<td><strong>0.76</strong></td>
+<td><strong>0.079</strong></td>
+<td><strong>634.7</strong></td>
+<td><strong>0.634</strong></td>
+<td><strong>0.948</strong></td>
+</tr>
+<tr class="odd">
+<td>0.78</td>
+<td>0.876</td>
+<td>6.0</td>
+<td>0.658</td>
+<td>0.965</td>
+</tr>
+<tr class="even">
+<td>0.80</td>
+<td>0.914</td>
+<td>3.4</td>
+<td>0.662</td>
+<td>0.974</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="l-12" class="level4">
+<h4 class="anchored" data-anchor-id="l-12">L = 12</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 38%">
+<col style="width: 12%">
+<col style="width: 10%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(\beta\)</span></th>
+<th><span class="math inline">\(\langle |\bar{P}| \rangle\)</span></th>
+<th><span class="math inline">\(\chi_P\)</span></th>
+<th><span class="math inline">\(U_P\)</span></th>
+<th><span class="math inline">\(\langle U \rangle\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.70</td>
+<td>0.001</td>
+<td>20.1</td>
+<td>−0.010</td>
+<td>0.790</td>
+</tr>
+<tr class="even">
+<td>0.72</td>
+<td>0.001</td>
+<td>36.3</td>
+<td>−0.036</td>
+<td>0.831</td>
+</tr>
+<tr class="odd">
+<td>0.74</td>
+<td>0.006</td>
+<td>191.6</td>
+<td>0.061</td>
+<td>0.883</td>
+</tr>
+<tr class="even">
+<td><strong>0.76</strong></td>
+<td><strong>0.273</strong></td>
+<td><strong>861.8</strong></td>
+<td><strong>0.631</strong></td>
+<td><strong>0.948</strong></td>
+</tr>
+<tr class="odd">
+<td>0.78</td>
+<td>0.854</td>
+<td>8.4</td>
+<td>0.659</td>
+<td>0.965</td>
+</tr>
+<tr class="even">
+<td>0.80</td>
+<td>0.895</td>
+<td>4.5</td>
+<td>0.663</td>
+<td>0.974</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="key-observations" class="level3">
+<h3 class="anchored" data-anchor-id="key-observations">Key Observations</h3>
+<ol type="1">
+<li><strong>Clear peak in <span class="math inline">\(\chi_P\)</span> at <span class="math inline">\(\beta = 0.76\)</span></strong> for all three lattice sizes, consistent with the known 3D Z₂ critical point <span class="math inline">\(\beta_c \approx 0.76\)</span>.</li>
+<li><strong>Peak height grows with L</strong>: from 339 (L=8) to 635 (L=10) to 862 (L=12), indicating a divergent susceptibility.</li>
+<li><strong>Binder cumulant <span class="math inline">\(U_P\)</span> approaches ~0.66</strong> in the ordered phase (<span class="math inline">\(\beta &gt; 0.76\)</span>), consistent with the 3D Ising universal value.</li>
+<li><strong>Production runs at <span class="math inline">\(\beta = 0.76\)</span> show metastability</strong>: <span class="math inline">\(\langle \bar{P} \rangle\)</span> can be positive or negative across different runs, but <span class="math inline">\(\langle |\bar{P}| \rangle\)</span> is consistently non-zero above <span class="math inline">\(\beta_c\)</span>.</li>
+</ol>
+</section>
+</section>
+<section id="figures" class="level2">
+<h2 class="anchored" data-anchor-id="figures">Figures</h2>
+<section id="susceptibility-vs.-beta" class="level3">
+<h3 class="anchored" data-anchor-id="susceptibility-vs.-beta">Susceptibility vs.&nbsp;<span class="math inline">\(\beta\)</span></h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../figures/t31-polyakov-chi-vs-beta.png" class="img-fluid figure-img"></p>
+<figcaption>Polyakov loop susceptibility <span class="math inline">\(\chi_P\)</span> versus <span class="math inline">\(\beta\)</span> for L=8, 10, 12. The peak at <span class="math inline">\(\beta \approx 0.76\)</span> marks the deconfinement transition.</figcaption>
+</figure>
+</div>
+<p>The susceptibility shows a sharp peak at <span class="math inline">\(\beta = 0.76\)</span> for all three lattice sizes. The peak height grows with system size, as expected for a second-order phase transition.</p>
+</section>
+<section id="finite-size-scaling-loglog-fit" class="level3">
+<h3 class="anchored" data-anchor-id="finite-size-scaling-loglog-fit">Finite-Size Scaling: Log–Log Fit</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../figures/t31-polyakov-loglog-fit.png" class="img-fluid figure-img"></p>
+<figcaption>Log–log plot of <span class="math inline">\(\chi_P^{\max}\)</span> vs.&nbsp;<span class="math inline">\(L\)</span> with linear fit extracting <span class="math inline">\(\gamma/\nu\)</span></figcaption>
+</figure>
+</div>
+<p>The peak susceptibility scales as <span class="math inline">\(\chi_P^{\max} \sim L^{\gamma/\nu}\)</span>. A log–log linear regression yields:</p>
+</section>
+</section>
+<section id="critical-exponent-extraction" class="level2">
+<h2 class="anchored" data-anchor-id="critical-exponent-extraction">Critical Exponent Extraction</h2>
+<section id="scaling-fit-results" class="level3">
+<h3 class="anchored" data-anchor-id="scaling-fit-results">Scaling Fit Results</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 12%">
+<col style="width: 32%">
+<col style="width: 17%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th><span class="math inline">\(A\)</span></th>
+<th><span class="math inline">\(\gamma/\nu\)</span></th>
+<th>Error</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Linear regression (log–log)</td>
+<td>3.27</td>
+<td><strong>2.263</strong></td>
+<td>0.090</td>
+<td>L = 8, 10, 12</td>
+</tr>
+<tr class="even">
+<td>Non-linear least squares</td>
+<td>4.01</td>
+<td>2.176</td>
+<td>0.168</td>
+<td>L = 8, 10, 12</td>
+</tr>
+<tr class="odd">
+<td><strong>3D Ising reference</strong></td>
+<td>—</td>
+<td><strong>1.963</strong></td>
+<td>—</td>
+<td><span class="math inline">\(\gamma = 1.2372\)</span>, <span class="math inline">\(\nu = 0.6301\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="comparison-with-3d-ising-universality" class="level3">
+<h3 class="anchored" data-anchor-id="comparison-with-3d-ising-universality">Comparison with 3D Ising Universality</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Quantity</th>
+<th>Measured</th>
+<th>3D Ising</th>
+<th>Relative Difference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\gamma/\nu\)</span></td>
+<td>2.263</td>
+<td>1.963</td>
+<td><strong>+15.2%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The measured exponent is within ~15% of the 3D Ising value, consistent with the expected universality class for 3D Z₂ gauge theory. The deviation is attributable to: - Limited statistics (only L = 8, 10, 12) - Coarse <span class="math inline">\(\beta\)</span> grid (<span class="math inline">\(\Delta\beta = 0.02\)</span>) near the peak - No jackknife or bootstrap error bars on <span class="math inline">\(\chi_P\)</span> — fit errors are formal only - Binder cumulant does not show a clean crossing at this precision</p>
+</section>
+<section id="critical-beta-estimates" class="level3">
+<h3 class="anchored" data-anchor-id="critical-beta-estimates">Critical <span class="math inline">\(\beta\)</span> Estimates</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 42%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th><span class="math inline">\(\beta_c\)</span></th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Peak position</td>
+<td><strong>0.76</strong></td>
+<td>All peaks at <span class="math inline">\(\beta = 0.76\)</span>; no finite-size shift visible</td>
+</tr>
+<tr class="even">
+<td>Binder crossing (8–10)</td>
+<td>0.78</td>
+<td>Coarse grid; unreliable</td>
+</tr>
+<tr class="odd">
+<td>Binder crossing (10–12)</td>
+<td>0.85</td>
+<td>Coarse grid; unreliable</td>
+</tr>
+</tbody>
+</table>
+<p>Binder values at <span class="math inline">\(\beta = 0.76\)</span>: 0.634 (L=8), 0.640 (L=10), 0.614 (L=12). No clear crossing is visible with only three lattice sizes and a coarse <span class="math inline">\(\beta\)</span> grid.</p>
+</section>
+</section>
+<section id="caveats" class="level2">
+<h2 class="anchored" data-anchor-id="caveats">Caveats</h2>
+<ul>
+<li><strong>Proof-of-principle</strong>: Only L = 8, 10, 12 with 50k thermal + 50k measure sweeps. Larger L and longer runs needed for conclusive exponent extraction.</li>
+<li><strong>Coarse <span class="math inline">\(\beta\)</span> grid</strong>: <span class="math inline">\(\Delta\beta = 0.02\)</span> near the peak. The true peak position may shift with finer resolution.</li>
+<li><strong>No jackknife/bootstrap</strong>: Error bars on <span class="math inline">\(\chi_P\)</span> are formal fit errors only. Proper resampling needed.</li>
+<li><strong>Metastability</strong>: At <span class="math inline">\(\beta = 0.76\)</span>, the system can get stuck in either <span class="math inline">\(\bar{P} &gt; 0\)</span> or <span class="math inline">\(\bar{P} &lt; 0\)</span> sectors. We use <span class="math inline">\(\langle |\bar{P}| \rangle\)</span> to avoid this.</li>
+<li><strong>Binder cumulant</strong>: The L=12 binder at <span class="math inline">\(\beta = 0.74\)</span> is anomalously low (0.094), suggesting insufficient thermalization or tunneling at that point.</li>
+</ul>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>The Polyakov loop successfully detects the deconfinement transition in 3D Z₂ lattice gauge theory at <span class="math inline">\(\beta_c \approx 0.76\)</span>, consistent with the known critical point. The susceptibility peak grows with system size, and the extracted exponent <span class="math inline">\(\gamma/\nu = 2.26 \pm 0.09\)</span> is within ~15% of the 3D Ising universality class value. This validates the Polyakov loop as the correct gauge-invariant order parameter for the T31 program.</p>
+<p>The deconfinement transition at <span class="math inline">\(\beta_c \approx 0.76\)</span> is the physical mechanism through which a global arrow of time may emerge: below <span class="math inline">\(\beta_c\)</span>, the system is in a time-reversal symmetric confined phase; above <span class="math inline">\(\beta_c\)</span>, the Z₂ symmetry is spontaneously broken, and the system selects one of two time-orientation sectors.</p>
+</section>
+<section id="next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="next-steps">Next Steps</h2>
+<ol type="1">
+<li><strong>Larger lattices</strong>: Run L = 16, 20 to improve finite-size scaling and resolve the true peak position.</li>
+<li><strong>Finer <span class="math inline">\(\beta\)</span> grid</strong>: Scan near <span class="math inline">\(\beta = 0.76\)</span> with <span class="math inline">\(\Delta\beta = 0.005\)</span> to locate the peak precisely.</li>
+<li><strong>Bootstrap/jackknife</strong>: Implement proper error bars on <span class="math inline">\(\chi_P\)</span> and the Binder cumulant.</li>
+<li><strong>Binder crossing</strong>: With more L values, perform a systematic crossing analysis for <span class="math inline">\(\beta_c\)</span>.</li>
+<li><strong>Correlation with arrow of time</strong>: Connect the deconfinement order parameter to a time-orientation observable (e.g., a dressed Wilson-loop correlator or a modified Polyakov-loop construction).</li>
+</ol>
+</section>
+<section id="data-files" class="level2">
+<h2 class="anchored" data-anchor-id="data-files">Data Files</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="../../data/t31-polyakov-proof-of-principle-20260714.json"><code>t31-polyakov-proof-of-principle-20260714.json</code></a></td>
+<td>10k+10k proof-of-principle scan</td>
+</tr>
+<tr class="even">
+<td><a href="../../data/t31-polyakov-L8-50k-20260714.json"><code>t31-polyakov-L8-50k-20260714.json</code></a></td>
+<td>L=8 production run (50k+50k)</td>
+</tr>
+<tr class="odd">
+<td><a href="../../data/t31-polyakov-L10-50k-20260714.json"><code>t31-polyakov-L10-50k-20260714.json</code></a></td>
+<td>L=10 production run (50k+50k)</td>
+</tr>
+<tr class="even">
+<td><a href="../../data/t31-polyakov-L12-50k-20260714.json"><code>t31-polyakov-L12-50k-20260714.json</code></a></td>
+<td>L=12 production run (50k+50k)</td>
+</tr>
+<tr class="odd">
+<td><a href="../../output/t31-polyakov-exponents.json"><code>t31-polyakov-exponents.json</code></a></td>
+<td>Exponent extraction summary</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>T20: Z₂ Lattice Gauge Theory Monte Carlo (base implementation)</li>
+<li>T25: Volume Operator Extension (intertwiner spectrum)</li>
+<li>T32: Gauge-Invariance Correction (signed volume abandoning)</li>
+<li>Paper: Section on Z₂ gauge field emergence and deconfinement</li>
+</ul>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

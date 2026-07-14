@@ -18,8 +18,10 @@ website:
         text: Dashboard
       - text: Simulations
         menu:
+          - href: tasks/t31-deconfinement-polyakov.qmd
+            text: T31 — Deconfinement (Polyakov)
           - href: tasks/t31-signed-volume.qmd
-            text: T31 — Signed Volume
+            text: T31 — Signed Volume (Archived)
           - href: tasks/t25-volume-operator.qmd
             text: T25 — Volume Operator
           - href: tasks/t20-z2-lgt.qmd
@@ -42,6 +44,7 @@ website:
         - dashboard.qmd
         - section: "Tasks"
           contents:
+            - tasks/t31-deconfinement-polyakov.qmd
             - tasks/t31-signed-volume.qmd
             - tasks/t25-volume-operator.qmd
             - tasks/t20-z2-lgt.qmd
@@ -60,4 +63,4 @@ format:
     math: mathjax
 
 execute:
-  freeze: auto
+  freeze: false
