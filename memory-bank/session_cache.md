@@ -1,141 +1,164 @@
 # Session Cache
 
-*Created: 2026-07-08 10:21:16 IST*
-*Last Updated: 2026-07-14 04:55:00 IST*
+*Created: 2026-07-14 20:45:56 IST*
+*Last Updated: 2026-07-14 20:45:56 IST*
 
-**Started**: 2026-07-14 04:55:00 IST
-**Focus Task**: T32: Post-May Numerics Correction and Reproducibility Pass
-**Session File**: `sessions/2026-07-14-night.md`
-**Status**: 🔄 Active: 5, Paused: 0, Completed: 15
+**Started**: 2026-07-14 20:45:56 IST
+**Focus Task**: T28: Deploy Quarto docs to quantumofgravity.com/projects/timesarrow/ as primary hosting
+**Session File**: `sessions/2026-07-14-evening.md`
+**Status**: 🔄 Active: 8, Paused: 9, Completed: 16
 
 ## Overview
 
-- Active: 5 | Paused: 0 | Completed: 15
+- Active: 8 | Paused: 9 | Completed: 16
 - Last Session: 2026-07-14
-- Current Period: night
+- Current Period: evening
 
 ## Active Tasks
 
-### T20d: Critical Exponent Extraction from 3D Z₂ LGT
+### T13: T13: Gemini 3 Flash - Create Accessible Web Presentation (Time's Arrow)
 **Status:** 🔄 **IN PROGRESS**
-**Started:** 2026-06-26
-**Context**: [Details](tasks/T20d.md)
+**Started:** 2026-04-18
+**Context**: [Details](tasks/T13.md)
 **Progress**:
-[Details](tasks/T20d.md)
+[Details](tasks/T13.md)
 
-### T23: Entanglement Structure
+### T18: T18
+**Status:** 🔄 **IN PROGRESS**
+**Started:** 2026-05-06
+**Context**: [Details](tasks/T18.md)
+**Progress**:
+[Details](tasks/T18.md)
+
+### T2: T2
+**Status:** 🔄 **IN PROGRESS**
+**Started:** 2026-04-16
+**Context**: [Details](tasks/T2.md)
+**Progress**:
+[Details](tasks/T2.md)
+
+### T21: T21
+**Status:** 🔄 **IN PROGRESS**
+**Started:** 2026-06-24
+**Context**: [Details](tasks/T21.md)
+**Progress**:
+[Details](tasks/T21.md)
+
+### T22: T22
+**Status:** 🔄 **IN PROGRESS**
+**Started:** 2026-06-24
+**Context**: [Details](tasks/T22.md)
+**Progress**:
+[Details](tasks/T22.md)
+
+### T23: T23
 **Status:** 🔄 **IN PROGRESS**
 **Started:** 2026-06-24
 **Context**: [Details](tasks/T23.md)
 **Progress**:
 [Details](tasks/T23.md)
 
-### T24: Domain Wall Dynamics
+### T24: T24
 **Status:** 🔄 **IN PROGRESS**
 **Started:** 2026-06-24
 **Context**: [Details](tasks/T24.md)
 **Progress**:
 [Details](tasks/T24.md)
 
-### T31: Signed Volume Observable
+### T26: T26
 **Status:** 🔄 **IN PROGRESS**
-**Started:** 2026-07-02
-**Context**: [Details](tasks/T31.md)
+**Started:** 2026-06-24
+**Context**: [Details](tasks/T26.md)
 **Progress**:
-[Details](tasks/T31.md)
-
-### T32: Post-May Numerics Correction and Reproducibility Pass
-**Status:** 🔄 **IN PROGRESS**
-**Started:** 2026-07-05
-**Context**: [Details](tasks/T32.md)
-**Progress**:
-[Details](tasks/T32.md)
-Audited the published numerics deployment against the corrected local Quarto render. Synced the corrected `_site` output to `space-cadet.github.io` and pushed deploy commit `92d05cc`. Repaired missing dashboard asset publishing, fixed T20 Phase 3b figure paths, normalized page timestamps, added a `Last Updated` column on the numerics index, redeployed the refreshed site via `21a496e` and `efe6780`, then validated the T31 Rust tests under a Rust 2024-compatible toolchain, measured T20d rerun timing calibrations, completed a fresh local `L=8` fine-scan rerun, and handed the long remaining reruns to Kimi.
-
-Follow-up: repaired the local validation workflow so `scripts/validate.sh` now passes in this checkout, completed fresh `T20d` production reruns for `L=16` and `L=32`, and updated the `T20d` reanalysis to treat the result as proof-of-principle support for the corrected continuous-transition interpretation rather than a precision critical-exponent measurement. The new comparison set now shows the susceptibility/specific-heat peak drifting from `β≈0.752` at `L=16` to `β≈0.758` at `L=32`, with a simple peak-drift guide near the literature value `β_c≈0.761`.
+[Details](tasks/T26.md)
 
 ## Completed Tasks
 
-### T14: SU(2) Haar + Representation (ts-quantum core)
+### T1: T1
 **Status:** ✅ **COMPLETED**
-**Started:** 2026-06-28
-**Completed:** 2026-06-28
+**Started:** 2026-04-16
+**Completed:** 2026-04-16
 
-### T15: Spin Foam Package (ts-quantum-spin-foam)
+### T14: T14: Kimi K2.5 - Minimal Web Presentation
 **Status:** ✅ **COMPLETED**
-**Started:** 2026-06-28
-**Completed:** 2026-06-28
+**Started:** 2026-04-18
+**Completed:** 2026-04-18
 
-### T20: Z₂ Lattice Gauge Theory Monte Carlo
+### T15: T15
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-04-20
+**Completed:** 2026-04-20
+
+### T16: T16
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-04-29
+**Completed:** 2026-04-29
+
+### T17: T17
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-05-05
+**Completed:** 2026-05-05
+
+### T19: T19
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-05-09
+**Completed:** 2026-05-09
+
+### T20: T20
 **Status:** ✅ **COMPLETED**
 **Started:** 2026-06-24
-**Completed:** 2026-06-24
-
-### T20a: Phase 1 — 2D Square Lattice
-**Status:** ✅ **COMPLETED**
-**Started:** 2026-06-24
-**Completed:** 2026-06-24
-
-### T20b: Phase 2 — Multi-Lattice FSS
-**Status:** ✅ **COMPLETED**
-**Started:** 2026-06-25
-**Completed:** 2026-06-25
-
-### T20c: Phase 3 — 3D Cubic Lattice
-**Status:** ✅ **COMPLETED**
-**Started:** 2026-06-25
-**Completed:** 2026-06-25
-
-### T21: Worker Threads + Checkpointing
-**Status:** ✅ **COMPLETED**
-**Started:** 2026-06-25
-**Completed:** 2026-06-25
-
-### T21a: Fast Monte Carlo Kernel
-**Status:** ✅ **COMPLETED**
-**Started:** 2026-06-25
-**Completed:** 2026-06-25
-
-### T22: Spin Foam Amplitudes
-**Status:** ✅ **COMPLETED**
-**Started:** 2026-06-25
-**Completed:** 2026-06-25
-
-### T22a: Path 1 — SU(2) Four-Leg Group-Average Estimate
-**Status:** ✅ **COMPLETED**
-**Started:** 2026-06-28
-**Completed:** 2026-06-28
-
-### T25: Volume Operator Eigenvalues
-**Status:** ✅ **COMPLETED**
-**Started:** 2026-06-24
-**Completed:** 2026-06-24
-
-### T27: Rust Z₂ LGT Framework
-**Status:** ✅ **COMPLETED**
-**Started:** 2026-06-25
-**Completed:** 2026-06-25
-
-### T28: Simulation Dashboard (v1)
-**Status:** ✅ **COMPLETED**
-**Started:** 2026-06-26
 **Completed:** 2026-06-26
 
-### T28a: Dashboard v2 — Functional JS
+### T27: T27
 **Status:** ✅ **COMPLETED**
-**Started:** 2026-06-27
-**Completed:** 2026-06-27
+**Started:** 2026-06-25
+**Completed:** 2026-06-25
 
-### T30: Unified Plotting Module
+### T28: Deploy Quarto docs to quantumofgravity.com/projects/timesarrow/ as primary hosting
 **Status:** ✅ **COMPLETED**
-**Started:** 2026-06-27
-**Completed:** 2026-06-27
+**Started:** 2026-07-14
+**Completed:** 2026-07-14
+
+### T3: T3
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-04-16
+**Completed:** 2026-04-16
+
+### T4: T4
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-04-16
+**Completed:** 2026-04-16
+
+### T5: T5
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-04-16
+**Completed:** 2026-04-16
+
+### T6: T6
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-04-16
+**Completed:** 2026-04-16
+
+### T7: T7
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-04-16
+**Completed:** 2026-04-16
+
+### T8: T8
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-04-16
+**Completed:** 2026-04-16
+
+### T9: T9
+**Status:** ✅ **COMPLETED**
+**Started:** 2026-04-17
+**Completed:** 2026-04-17
 
 ## Next Session Focus
 
-1. T20d: Critical Exponent Extraction from 3D Z₂ LGT
-1. T23: Entanglement Structure
-1. T24: Domain Wall Dynamics
+1. T13: T13: Gemini 3 Flash - Create Accessible Web Presentation (Time's Arrow)
+1. T18: T18
+1. T2: T2
 
 ## System Status
 

@@ -1,84 +1,326 @@
 # Edit History
 
-*Last Updated: 2026-07-14 04:55 IST*
+*Last Updated: 2026-07-14 20:45:56 IST*
 
 ---
 
-## 2026-07-10
 ## 2026-07-14
 
-#### 04:55:00 IST - T32: Recorded completed L16/L32 reruns and reframed T20d as proof-of-principle support rather than precision exponent extraction.
-- Modified `memory-bank/tasks/T20d.md` - Added the completed `L=16` and `L=32` reruns, updated the key numerical takeaways, and reframed the task status around proof of principle.
-- Modified `memory-bank/tasks/T32.md` - Marked the local reproducibility workflow complete and clarified that only proof-of-principle `T20d` support is now required under the correction gate.
-- Modified `memory-bank/tasks.md` - Refreshed the master task registry timestamp for the July 14 update.
-- Modified `memory-bank/activeContext.md` - Added the July 14 rerun/reanalysis update and new prioritization away from exponent-chasing.
-- Modified `memory-bank/progress.md` - Recorded the completed `L=16`/`L=32` reruns and the updated proof-of-principle interpretation.
-- Modified `memory-bank/session_cache.md` - Pointed the active cache at the July 14 night session and summarized the rerun/reanalysis outcome.
-- Created `memory-bank/sessions/2026-07-14-night.md` - Recorded the July 14 night T32 validation and rerun/reanalysis session.
-- Created `memory-bank/edits/2026-07-14/045500-t32-proof-principle-reanalysis.md` - Added the edit chunk for this memory-bank synchronization pass.
-
----
-
-## 2026-07-10
-
-#### 19:31:24 IST - T32: Recorded Rust 2024 validation, T20d timing calibrations, completed L8 rerun, and Kimi handoff for larger reruns.
-- Modified `memory-bank/tasks/T31.md` - Marked Rust 2024-compatible test execution complete and recorded the passing toolchain details.
-- Modified `memory-bank/tasks/T32.md` - Marked the T31 Rust validation gate complete under T32.
-- Modified `memory-bank/tasks/T20d.md` - Added rerun timing calibration results, completed L8 rerun status, and estimated production runtimes.
-- Modified `memory-bank/progress.md` - Recorded successful T31 validation and T20d calibration/handoff status.
-- Modified `memory-bank/activeContext.md` - Added the Rust validation result, rerun timing estimates, and Kimi handoff note.
-- Modified `memory-bank/session_cache.md` - Updated the active-session summary with validation and calibration work.
-- Modified `memory-bank/sessions/2026-07-10-evening.md` - Appended the validation and rerun-calibration follow-up to the session record.
-- Modified `memory-bank/tasks.md` - Refreshed the task registry timestamp after the July 10 validation/calibration update.
-
-#### 19:05:00 IST - T32: Repaired summary-layer memory-bank bookkeeping for the July 10 numerics deployment follow-up.
-- Created `memory-bank/sessions/2026-07-10-evening.md` - Recorded the July 10 evening T32 deployment and dashboard repair session.
-- Modified `memory-bank/session_cache.md` - Updated focus task, session file, timestamps, and T32 progress summary.
-- Modified `memory-bank/tasks.md` - Refreshed the master task registry timestamp after the July 10 memory-bank repair.
-- Modified `memory-bank/activeContext.md` - Corrected the current session label to July 10 evening.
-
-#### 18:40:44 IST - T32: Clarified remaining correction tasks and recorded stale GitHub Pages numerics deployment.
-- Modified `memory-bank/tasks/T31.md` - Updated T31 correction checklist to match resolved source-level work and remaining validation blockers.
-- Modified `memory-bank/tasks/T32.md` - Expanded T32 acceptance criteria, including deployment synchronization.
-- Modified `memory-bank/activeContext.md` - Added deployment audit finding and next-session priority.
-- Modified `memory-bank/progress.md` - Recorded that local `_site` is corrected but `space-cadet.github.io` deployment is stale.
-- Created `memory-bank/edits/2026-07-10/184044-t32-deployment-audit.md` - Added edit chunk for this bookkeeping pass.
-
-#### 18:45:55 IST - T32: Deployed corrected numerics pages to `space-cadet.github.io`.
-- Modified `memory-bank/tasks/T32.md` - Marked deployment synchronization complete and recorded deploy commit `92d05cc`.
-- Modified `memory-bank/activeContext.md` - Added deployment sync record and updated next-session priorities.
-- Modified `memory-bank/progress.md` - Recorded the successful deploy push.
-- Modified `memory-bank/edits/2026-07-10/184044-t32-deployment-audit.md` - Added deployment resolution note.
-
-#### 19:05:00 IST - T32: Fixed dashboard asset publishing, T20 Phase 3b figure paths, and main-page task timestamps.
-- Modified `numerics/docs/_quarto.yml` - Added `assets/**` so Quarto copies dashboard gallery figures into `_site/assets/`.
-- Modified `numerics/docs/dashboard.qmd` - Updated dashboard timestamps.
-- Modified `numerics/docs/index.qmd` - Updated timestamps and added `Last Updated` column to the `Simulation Tasks` table.
-- Modified `numerics/docs/tasks/t20-z2-lgt.qmd` - Switched Phase 3b Ising FSS figures to published `../assets/` paths and updated timestamps.
-- Modified `numerics/docs/tasks/t22-spin-foam.qmd` - Updated timestamps.
-- Modified `numerics/docs/tasks/t25-volume-operator.qmd` - Corrected `date-modified` to match the visible update date.
-- Modified `numerics/docs/tasks/t31-signed-volume.qmd` - Updated timestamps.
-- Re-rendered `numerics/docs/_site/` - Refreshed published HTML, search metadata, and copied figure assets.
-- Deployed `space-cadet.github.io` commit `21a496e` - Restored dashboard assets and refreshed timestamps.
-- Deployed `space-cadet.github.io` commit `efe6780` - Fixed T20 Phase 3b figure references and main numerics task table.
-- Created `memory-bank/edits/2026-07-10/190500-t32-dashboard-asset-fix.md` - Added edit chunk for the dashboard/timestamp repair.
-
-## 2026-07-08
-
-#### 15:49:26 IST - T32: Deployed updated task pages and figures to GitHub Pages. Deleted stale gh-pages branch. Updated space-cadet.github.io repo from origin (5 commits). Copied v2 dashboard source to timesarrow repo. Synced 54 files (task pages + figures) from timesarrow main to .github.io repo. Fixed timestamps on index, T20, T31 pages. All changes pushed to origin/main.
-- Deleted `gh-pages branch` - Deleted gh-pages branch
-- Modified `space-cadet.github.io/projects/timesarrow/numerics/index.html` - Modified space-cadet.github.io/projects/timesarrow/numerics/index.html
-- Modified `space-cadet.github.io/projects/timesarrow/numerics/tasks/t20-z2-lgt.html` - Modified space-cadet.github.io/projects/timesarrow/numerics/tasks/t20-z2-lgt.html
-- Modified `space-cadet.github.io/projects/timesarrow/numerics/tasks/t31-signed-volume.html` - Modified space-cadet.github.io/projects/timesarrow/numerics/tasks/t31-signed-volume.html
-- Created `numerics/pages/dashboard-v2.html` - Created numerics/pages/dashboard-v2.html
+#### 20:45:56 IST - T28: Deploy Quarto docs to quantumofgravity.com/projects/timesarrow/ as primary hosting
+- Modified `_quarto.yml` - Modified _quarto.yml
 
 
-## 2026-07-02
+## 2026-06-26
 
-#### 21:29:17 IST - T31: Completed 3D signed volume simulations for L=8,10,12. Added --signed-volume CLI flag. Created task page and deployed to numerics website. Identified gauge-dependence issue requiring iterative gauge-fixing.
-- Modified `rust-lattice/src/lib.rs` - Modified rust-lattice/src/lib.rs
-- Modified `rust-lattice/src/main.rs` - Modified rust-lattice/src/main.rs
-- Created `rust-lattice/scripts/run-signed-volume.sh` - Created rust-lattice/scripts/run-signed-volume.sh
-- Created `docs/tasks/t31-signed-volume.qmd` - Created docs/tasks/t31-signed-volume.qmd
-- Modified `data/registry.json` - Modified data/registry.json
-- Modified `docs/_quarto.yml` - Modified docs/_quarto.yml
+#### 02:28:00 IST - T20: Final commit — timesarrow repo updated with all Wilson loop work
+- Created `memory-bank/edits/2026-06-26/022800-T20-final-commit.md` - Canonical edit chunk
+
+#### 02:15:00 IST - T20: Re-ran Phase 3 with fine-grained beta spacing for smoother plots
+- Created `numerics/output/t20-p3-L8-3D-wilson-fine-20250626.json` - 21 beta values with fine spacing around critical region
+- Created `memory-bank/edits/2026-06-26/021500-T20-wilson-loop-fine.md` - Canonical edit chunk
+
+#### 02:00:00 IST - T20: Created Wilson loop plots and updated numerics webpage
+- Created `numerics/src/scripts/t20-analyze-wilson-loops.cjs` - Analysis script for string tension fits
+- Created `memory-bank/edits/2026-06-26/020000-T20-wilson-loop-plots.md` - Canonical edit chunk
+
+#### 01:34:00 IST - T20: Re-ran Phase 1 & 3 with Wilson loop measurements
+- Modified `rust-lattice/src/lib.rs` - Added Wilson loop functions (2D and 3D), measure_with_wilson_loops(), simulate_beta_with_wilson_loops()
+- Modified `rust-lattice/src/main.rs` - Updated CLI to accept loop sizes parameter
+- Created `memory-bank/edits/2026-06-26/013400-T20-wilson-loop-re-runs.md` - Canonical edit chunk
+- Modified `memory-bank/implementation-details/t20-missing-observables.md` - Corrected: raw configurations NOT saved, must re-run simulations; added Rust implementation requirements and time estimates
+- Modified `memory-bank/tasks/T20.md` - Added critical finding: Rust code missing Wilson loop, no saved configs, must re-run with new measurements
+- Modified `memory-bank/activeContext.md` - Added corrected understanding of missing observables path with dependency table
+- Modified `memory-bank/session_cache.md` - Updated session focus and findings
+- Modified `memory-bank/sessions/2026-06-26-night.md` - Appended gap analysis follow-up work with corrections
+- Created `memory-bank/edits/2026-06-26/012100-T20-wilson-loop-gap-correction.md` - Canonical edit chunk for correction
+
+#### 01:28:23 IST - T20: Migrated memory bank to canonical mb-hygiene DB-native workflow - 32 tasks, 17 sessions, 30 edits parsed
+- Modified `memory-bank/database/schema.sql` - Modified memory-bank/database/schema.sql
+- Modified `memory-bank/database/lib/inserts.js` - Modified memory-bank/database/lib/inserts.js
+- Modified `memory-bank/database/lib/regenerate.js` - Modified memory-bank/database/lib/regenerate.js
+- Modified `memory-bank/database/parse-tasks.js` - Modified memory-bank/database/parse-tasks.js
+- Created `memory-bank/sessions/` - Created memory-bank/sessions/
+
+#### 00:30:00 IST - T20: Gap analysis — identified missing Wilson loops, critical exponents, and Phase 2 plots
+- Modified `memory-bank/tasks/T20.md` - Updated status from COMPLETE to IN PROGRESS, added Gap Analysis section with missing observables by phase
+- Modified `memory-bank/tasks.md` - Updated T20-Phase1/2/3 status from Complete to In Progress, added missing observables checklist, created In Progress section with gap analysis summary
+- Created `memory-bank/implementation-details/t20-missing-observables.md` - Full gap analysis documentation with missing observables by phase, implementation notes, and next steps
+- Created `memory-bank/sessions/2026-06-26-night.md` - Session log for gap analysis work
+- Created `memory-bank/edits/2026-06-26/003000-T20-gap-analysis.md` - Canonical edit chunk
+
+
+## 2026-06-24
+
+#### 09:30:00 IST - T20–T26: Numerical simulation tasks created
+
+
+## 2026-05-20
+
+#### 09:30:55 IST - T18: Reviewer-safety calibration recorded
+- Modified `timesarrow.tex` - Clarified that the paper targets coherent cosmological time orientation rather than a complete thermodynamic-arrow derivation
+- Modified `timesarrow.tex` - Added a gauge-invariant dressed relative-orientation correlator to complement the Wilson loop
+- Modified `timesarrow.tex` - Calibrated the CZX/SPT framing toward a concrete tensor-network/bond-index correspondence with the Appendix F caveat preserved
+- Modified `timesarrow.tex` - Softened the fermionic-matter discussion toward boundary/defect-surface conjecture language and added a co-emergence caveat for semiclassical geometry
+- Modified `ai-assistance-statement.md` - Expanded the disclosure to cover the April-May 2026 reviewer-safety and claim-hardening pass
+- Modified `timesarrow.pdf` - Rebuilt the 44-page manuscript PDF after the May 2026 claim-hardening updates
+- Created `memory-bank/implementation-details/ai-reviews/gpt55-peer-review-2026-05-19.md` - Archived the full GPT 5.5 manuscript review and phase-interpretation discussion
+- Created `memory-bank/implementation-details/ai-reviews/gpt55-response-to-kimi-comparison-2026-05-19.md` - Archived GPT 5.5 follow-up guidance on the Kimi comparison and dressed-correlator recommendation
+- Created `memory-bank/implementation-details/ai-reviews/kimi-gpt55-synthesis-2026-05-19.md` - Archived the synthesized reviewer-facing revision targets from Kimi and GPT 5.5
+- Created `memory-bank/sessions/2026-05-19-afternoon.md` - Logged the terminology clarification, Mikhail Q&A, and AI review archive session
+- Updated `memory-bank/tasks/T18.md` - Recorded the May 2026 manuscript hardening pass, disclosure update, and new related review artifacts
+- Updated `memory-bank/tasks.md` - Refreshed T18 last-active timestamp and related files
+- Updated `memory-bank/activeContext.md` - Recorded the current reviewer-safe manuscript framing and new implementation docs
+- Updated `memory-bank/session_cache.md` - Set the current session to the 2026-05-20 T18 calibration update and refreshed session history
+- Created `memory-bank/sessions/2026-05-20-morning.md` - Logged the memory-bank update session for the May 2026 manuscript calibration
+- Created `memory-bank/edits/2026-05-20/093055-T18.md` - Added the canonical edit chunk for the May 2026 manuscript and memory-bank updates
+- Updated `memory-bank/edit_history.md` - Prepended the generated-view entry for the T18 calibration update
+
+
+## 2026-05-12
+
+#### 13:36:57 IST - T18: Z2 link-field origin integrated
+- Modified `timesarrow.tex` - Identified `sigma_e` as the shared binary bond index on a `j=1/2` spin-network edge
+- Modified `timesarrow.tex` - Distinguished effective `Z_2` bond/even-parity structure from the full `SU(2)` singlet projection
+- Modified `timesarrow.tex` - Added local `Z_2` transformation law and referenced it in the plaquette-action discussion
+- Modified `timesarrow.tex` - Reframed the Wilson plaquette action and coupling `K` as effective dynamics pending spin-foam derivation
+- Modified `timesarrow.tex` - Tightened abstract and introduction wording from "introduce" to "identify" the `Z_2` link field
+- Modified `timesarrow.pdf` - Rebuilt 44-page manuscript PDF after the `sigma_e` integration
+- Updated `memory-bank/tasks/T18.md` - Recorded progress on the manuscript hardening task and remaining review state
+- Updated `memory-bank/tasks.md` - Refreshed T18 last-active timestamp
+- Updated `memory-bank/activeContext.md` - Recorded current T18 manuscript state and next review step
+- Updated `memory-bank/session_cache.md` - Set current session to the 2026-05-12 T18 manuscript integration
+- Created `memory-bank/sessions/2026-05-12-afternoon.md` - Logged the manuscript integration session
+- Created `memory-bank/edits/2026-05-12/133025-T18.md` - Added canonical edit chunk for the manuscript and memory-bank updates
+- Updated `memory-bank/edit_history.md` - Prepended the generated-view entry for the T18 integration
+
+
+## 2026-05-09
+
+#### 12:03:05 IST - T19: Markdown-first Z2 pilot recorded
+- Modified `.gitignore` - Ignored `markdown-pilot/build/` artifacts for the standalone pilot workflow
+- Created `markdown-pilot/README.md` - Documented the pilot structure, usage, and hybrid Markdown/LaTeX rationale
+- Created `markdown-pilot/z2-action.md` - Added Markdown-first source for the manuscript's `Z_2` section
+- Created `markdown-pilot/z2-pilot.tex` - Added standalone LaTeX wrapper for pilot compilation
+- Created `markdown-pilot/scripts/render-z2-pilot.sh` - Added Pandoc render script for Markdown-to-LaTeX generation
+- Created `markdown-pilot/scripts/build-z2-pilot.sh` - Added end-to-end standalone build script
+- Created `markdown-pilot/scripts/normalize_inline_math.py` - Added preprocessor for the manuscript's spaced inline math style
+- Updated `markdown-pilot/generated/z2-action.tex` - Generated final LaTeX output from the normalized Markdown source
+- Created `markdown-pilot/build/z2-pilot.pdf` - Verified standalone PDF artifact for the Z2 pilot
+- Deleted `markdown-pilot/pdflatex.out` - Removed temporary debug output from sandboxed LaTeX troubleshooting
+- Created `memory-bank/tasks/T19.md` - Recorded the pilot as a completed manuscript-workflow task
+- Created `memory-bank/implementation-details/markdown-first-z2-pilot-2026-05-09.md` - Documented artifacts, workflow decisions, verification, and next integration step
+- Created `memory-bank/sessions/2026-05-09-afternoon.md` - Logged the Markdown pilot session and deferred integration decision
+- Created `memory-bank/edits/2026-05-09/120305-T19.md` - Added canonical edit chunk covering source and memory-bank updates
+- Updated `memory-bank/tasks.md` - Added T19 to the completed-task registry and refreshed timestamps
+- Updated `memory-bank/activeContext.md` - Recorded the completed Markdown pilot and the next optional full-manuscript integration step
+- Updated `memory-bank/session_cache.md` - Switched current session state to the 2026-05-09 afternoon Markdown pilot
+- Updated `memory-bank/edit_history.md` - Prepended the generated-view entry for the T19 update
+
+
+## 2026-05-06
+
+#### 18:34:13 IST - T18: Second-opinion feasibility discussion recorded
+- Updated `memory-bank/tasks/T18.md` - Added Sonnet 4.6 and GPT 5.5 model provenance, refined `Z_2` bond-index claim, and progress update
+- Updated `memory-bank/implementation-details/manuscript-claim-hardening-proposal-2026-05-06.md` - Appended full second-opinion discussion and GPT 5.5 follow-up assessment
+- Updated `memory-bank/sessions/2026-05-06-evening.md` - Added second-opinion discussion summary and key decisions
+- Updated `memory-bank/tasks.md` - Refreshed T18 last-active timestamp
+- Updated `memory-bank/activeContext.md` - Recorded refined T18 hardening path and subsection wording decision
+- Updated `memory-bank/session_cache.md` - Recorded second-opinion status and next memo step
+- Updated `memory-bank/edit_history.md` - Added generated-view entry for the second-opinion memory update
+
+#### 17:26:52 IST - T18: Claim-hardening roadmap recorded
+- Created `memory-bank/tasks/T18.md` - New task for manuscript claim-hardening and reviewer-response roadmap
+- Created `memory-bank/implementation-details/manuscript-claim-hardening-proposal-2026-05-06.md` - Proposal capturing defensible claims map approach and technical gaps
+- Created `memory-bank/sessions/2026-05-06-evening.md` - Session log for PDF review follow-up and memory-bank update
+- Updated `memory-bank/tasks.md` - Added T18 active task and updated strict task registry table
+- Updated `memory-bank/activeContext.md` - Set T18 as current manuscript follow-up focus and refreshed timestamp
+- Updated `memory-bank/session_cache.md` - Recorded T18 in current session state and active task list
+- Updated `memory-bank/edit_history.md` - Regenerated generated-view entry for the T18 update
+
+
+## 2026-05-05
+
+#### 02:42:04 IST - T17: arXiv Submission Uploaded
+- Modified `arxiv_submission_v1/timesarrow.tex` - Restored full AI addendum (84 lines) accidentally stripped during peer-review fixes
+- Modified `timesarrow.tex` - Restored full AI addendum at end of document
+- Modified `arxiv-submission-v1.tar.gz` - Rebuilt with root-level files (no top-level directory)
+- Updated `memory-bank/tasks/T17.md` - Added submission reference submit/7550944
+- Updated `memory-bank/tasks.md` - Updated last-updated timestamp
+- Updated `memory-bank/activeContext.md` - Marked T17 as submitted to arXiv
+- Updated `memory-bank/session_cache.md` - Recorded submission status and reference
+- Updated `memory-bank/sessions/2026-05-05-peer-review.md` - Added arXiv upload section
+
+#### 02:13:32 IST - T17-ext: AI Peer Review — 9 Fixes Applied
+- Modified `timesarrow.tex` - Fixed eqn:area-minimum: added missing pi factor (4√3 π γ lp²)
+- Modified `timesarrow.tex` - Fixed eqn:vol-states basis consistency in Appendix F (manuscript basis, not supplementary basis)
+- Modified `timesarrow.tex` - Clarified line 1437: SU(2) Gauss constraint reduces to effective Z₂ on j=1/2 intertwiner qubit
+- Modified `timesarrow.tex` - Reframed Intro claim (iv): structural correspondence of Z₂-invariant effective qubits (not literal U_CZX action)
+- Modified `timesarrow.tex` - Added regular-lattice dominance paragraph in Sec 6.3 justifying 2D CZX ↔ 3D spin-network mapping
+- Modified `timesarrow.tex` - Added universality footnote at line 1084 distinguishing 3+1D quantum Ising from classical 3D→2D duality
+- Modified `timesarrow.tex` - Made thermal argument dimensionally consistent: explicit Planck units with restoration at end
+- Modified `timesarrow.tex` - Added MPS caveat: generic states require exponential bond dimension
+- Modified `timesarrow.tex` - En-dash typography consistency in title and abstract
+- Modified `arxiv_submission_v1/timesarrow.tex` - Synced from root manuscript after all fixes
+- Modified `arxiv-submission-v1.tar.gz` - Rebuilt bundle (~1.5 MB)
+- Created `memory-bank/implementation-details/ai-peer-review-2026-05-05.md` - Full 3-round peer review dialog with resolutions table
+- Created `memory-bank/sessions/2026-05-05-peer-review.md` - Session record for peer review work
+
+#### 01:23:22 IST - T17: arXiv Submission Preparation
+- Created `arxiv_submission_v1/` - Clean submission folder with figures subdirectory
+- Created `arxiv_submission_v1/timesarrow.tex` - Edited for arXiv (disabled todonotes, added `\pdfoutput=1`, cleaned template comments)
+- Created `arxiv_submission_v1/SciPost.cls` - Document class file
+- Created `arxiv_submission_v1/timesarrow.bbl` - Bibliography (biblatex format 3.3)
+- Created `arxiv_submission_v1/timesarrow.bib` - BibTeX source
+- Created `arxiv_submission_v1/figures/` - 34 referenced figure files
+- Modified `arxiv_submission_v1/timesarrow.tex` - Added AI assistance statement addendum at end of document
+- Modified `arxiv_submission_v1/timesarrow.tex` - Hyperlinked all commit IDs in addendum to GitHub repo
+- Modified `arxiv_submission_v1/timesarrow.tex` - Updated "What the AI Did Not Do" to note Appendix F was AI-drafted
+- Modified `arxiv_submission_v1/timesarrow.tex` - Changed "editor" analogy to "research assistant"
+- Modified `arxiv_submission_v1/timesarrow.tex` - Added `\thanks` footnote with repo link on author line
+- Created `arxiv-submission-v1.tar.gz` - Final submission bundle (1.4 MB)
+- Created `memory-bank/tasks/T17.md` - Task documentation
+- Created `memory-bank/sessions/2026-05-05-early.md` - Session log
+
+
+## 2026-04-29
+
+#### 22:27:33 IST - T16: Submission Documentation
+- Created `cover-letter.md` - SciPost Physics submission cover letter with manuscript summary, original contributions, relation to literature, suitability justification, AI assistance note, and suggested referees from LQG, topological phases, and quantum information communities
+- Created `ai-assistance-statement.md` - Detailed AI assistance disclosure documenting author's original work (2016-2018) vs AI-assisted revision (April 2026), with git commit references for auditability
+- Created `memory-bank/project_contributions.md` - Contribution record delineating author vs AI contributions with boundary principles for intellectual ownership
+- Modified `timesarrow.tex` - Added AI assistance acknowledgment in acknowledgements section referencing separate AI assistance statement document
+- Modified `timesarrow.pdf` - Regenerated PDF with AI assistance acknowledgment update
+- Modified `memory-bank/activeContext.md` - Updated Last Updated timestamp to 2026-04-29 22:27:33 IST, updated current status to reflect T16 completion, added T16 to completed tasks, added project_contributions.md to implementation docs
+- Created `memory-bank/tasks/T16.md` - Task file documenting submission documentation work
+- Modified `memory-bank/tasks.md` - Updated Last Updated timestamp to 2026-04-29 22:27:33 IST, added T16 to Completed Tasks table
+- Created `memory-bank/sessions/2026-04-29-evening.md` - New session file documenting T16 submission documentation work
+- Modified `memory-bank/session_cache.md` - Updated Last Updated timestamp to 2026-04-29 22:27:33 IST, updated current session to evening with T16 focus, updated session history to include new evening session
+
+#### 22:14:09 IST - T14: Static web presentation implementation complete
+- Created `web-static/index.html` - 34 KB single-page HTML, 6 sections, 4 inline SVG illustrations, 5 KaTeX equations
+- Created `web-static/css/style.css` - dark quantum theme with CSS variables and mobile breakpoints at 700px
+- Created `web-static/js/katex-loader.js` - KaTeX CDN auto-render with diagnostic console logging
+- Created `web-static/figures/spin-net-vertex.svg` - copied from figures/
+- Created `web-static/figures/czx-vertex.svg` - copied from figures/czx_vertex.svg
+- Created `web-static/figures/local-symmetry-flux.png` - copied from figures/
+- Created `web-static/figures/czx-lattice.png` - copied from figures/
+- Updated `memory-bank/tasks/T14.md` - status completed, acceptance criteria updated, progress log added
+- Updated `memory-bank/tasks.md` - T14 status to completed, row added to completed table
+- Created `memory-bank/sessions/2026-04-29-evening.md` - session file
+- Updated `memory-bank/session_cache.md` - current session and T14 status
+- Updated `memory-bank/activeContext.md` - current status and next steps
+- Created `memory-bank/edits/2026-04-29/221409-T14.md` - edit chunk
+
+
+## 2026-04-20
+
+#### 12:36:54 IST - T15: 3D SPT Survey Completion and Manuscript Finalization
+- Modified `timesarrow.tex` - M9 refinement: replaced "exponentially more states" with defensible arguments (thermal Boltzmann suppression β > 2/κ, Bekenstein-Hawking black hole entropy); SciPost template cleanup: updated affiliation to "Independent Researcher", removed TODO comments; acknowledgements rewrite to reflect 2018 Visiting Associateship; gapless/gapped terminology resolution throughout (abstract, introduction, contributions, Sec 7.3, future directions); Sec 7.3 dimensional paragraph: added explicit 3D SPT classification H⁴(Z₂ᵀ, U(1)_𝒯) ≅ ℤ₂
+- Modified `timesarrow.bib` - Added Meissner2004Black-hole and Domagala2004Black-hole citations for M9 refinement
+- Modified `memory-bank/tasks/T15.md` - Marked status as COMPLETED, updated completion timestamp to 2026-04-20 12:36:54 IST, marked final acceptance criterion as complete
+- Modified `memory-bank/tasks.md` - Moved T15 from Active Tasks to Completed Tasks table, updated Last Updated timestamp to 2026-04-20 12:36:54 IST
+- Modified `memory-bank/tasks/T12.md` - Updated Last Updated timestamp to 2026-04-20 12:36:54 IST, added M9 refinement note with defensible arguments (Boltzmann suppression, Bekenstein-Hawking entropy) and new citations (Meissner2004Black-hole, Domagala2004Black-hole)
+- Created `memory-bank/implementation-details/biber-infrastructure-fix.md` - Documented Apple Silicon biber infrastructure fix (removed MiKTeX x86_64 symlink, allowing homebrew arm64 biber to take precedence)
+- Created `memory-bank/sessions/2026-04-20-afternoon.md` - New session file documenting T15 completion, M9 refinement, template cleanup, acknowledgements update, gapless/gapped terminology resolution, Sec 7.3 classification result, and biber infrastructure fix
+- Modified `memory-bank/activeContext.md` - Updated Last Updated timestamp to 2026-04-20 12:36:54 IST, updated current status to reflect T15 completion and manuscript ready for submission, removed T15 from active tasks, added T15 and T12 to completed tasks, updated implementation docs list, updated recommended next session order, updated document statistics
+- Modified `memory-bank/session_cache.md` - Updated Last Updated timestamp to 2026-04-20 12:36:54 IST, updated current session to afternoon with T15 completion focus, updated active task count to 2 (T13, T14), removed T15 and T15.1 from active tasks, updated session history to include new afternoon session
+
+#### 11:09:51 IST - T15: Memory bank update for survey completion and integration phase
+- Updated `memory-bank/tasks/T15.md` - Marked survey criteria complete, updated progress tracking, added subtask T15.1 delegation
+- Created `memory-bank/implementation-details/fermionic-matter-emergence.md` - Documented all-fermion toric code surface order decision
+- Updated `memory-bank/tasks.md` - Updated Last Updated timestamp
+- Updated `memory-bank/session_cache.md` - Updated current session info, task registry, and active tasks section
+- Created `memory-bank/sessions/2026-04-20-morning.md` - Created new session file for morning work
+- Created `memory-bank/edits/2026-04-20/110951-t15-integration.md` - Edit chunk file documenting this memory bank update
+
+#### 04:07:00 IST - T11, T7, T12: Verification and Completion
+
+#### 02:50:00 IST - T12: Major Issues M7/M9/M10/M13/M14 Fixed; T15 Created
+- Modified `spt-lqg-mapping.tex` - M14: Added cohomological rationale for fermionic edge modes (H²(Z₂ᵀ,U(1)ₜ)); cite Kapustin2014Symmetry
+- Modified `timesarrow.tex` - M7: Added Jahn2021Holographic, Steinberg2023Holographic citations to QECC section; M10: Added Dittrich2016Coarse to Future Work; M13: Added Cao2018Bulk, Hohn2021The-Trinity to Future Work
+- Modified `z2-action-derivation.tex` - M13: Specified 3D toric code (not 2D) in topological protection discussion
+- Modified `timesarrow.bib` - Added Dittrich2016Coarse, Cao2018Bulk, Hohn2021The-Trinity, Jahn2021Holographic, Steinberg2023Holographic, Baytas2018Gluing, Bianchi2018Intertwiner entries
+- Created `memory-bank/tasks/T15.md` - New task for 3D SPT classification survey to resolve 2D/3D mismatch
+- Created `memory-bank/implementation-details/3d-spt-survey-needed.md` - Survey requirements doc linked to T15
+- Modified `memory-bank/tasks/T12.md` - Updated progress: M7, M9, M10, M13, M14 completed
+- Modified `memory-bank/tasks.md` - Added T15 to active tasks, updated T12 status, moved T10 to completed
+- Modified `memory-bank/activeContext.md` - Updated audit summary and recommended next session order
+- Modified `memory-bank/session_cache.md` - Updated current session and task registry
+- Created `memory-bank/sessions/2026-04-20-dawn.md` - Session record for this work
+- Created `memory-bank/edits/2026-04-20/025000-T15-T12-sync.md` - Edit chunk for T12 completion and T15 creation
+
+
+## 2026-04-18
+
+#### 04:30:37 IST - T10: BibTeX Mismatches Fixed; T12: Reference Cleanup Partial
+- Modified `timesarrow.tex` - Fixed 11 BibTeX key mismatches (Zeh, Goold, Barbour, Vaid, Christodoulou, Perez, Kogut, Mildenberger, Ashtekar), fixed index notation (We->I, we->I), added new citations
+- Modified `spt-lqg-mapping.tex` - Fixed Perez2013Spin -> Perez2013The-Spin-Foam
+- Modified `z2-action-derivation.tex` - Fixed Kogut1979Introduction -> Kogut1979An-introduction, Perez2013Spin -> Perez2013The-Spin-Foam, added Dona2020Numerical, Dona2022Asymptotics, fixed M12 universality class statement
+- Modified `supplementary-calculations.tex` - Fixed Perez2013Spin -> Perez2013The-Spin-Foam
+- Modified `timesarrow.bib` - Changed Kogut1979Introduction -> Kogut1979An-introduction, Perez2013Spin -> Perez2013The-Spin-Foam, added 7 new entries (Colafranceschi2021Holographic, Chirco2022Quantum, Colafranceschi2022Holographic, Dona2020Numerical, Dona2022Asymptotics, Mildenberger2024Probing, Homeier2023Quantum)
+- Modified `memory-bank/tasks/T10.md` - Updated status to completed, marked all criteria as done
+- Modified `memory-bank/tasks/T12.md` - Updated status to in progress, updated progress section
+- Modified `memory-bank/tasks.md` - Moved T10 to completed tasks, updated T12 to in progress, updated timestamps
+- Modified `memory-bank/session_cache.md` - Updated task registry, marked T10 completed, T12 in progress
+- Modified `memory-bank/sessions/2026-04-18-night.md` - Added T10 completion and T12 partial progress
+- Created `memory-bank/edits/2026-04-18/043037-T10-T12.md` - Edit chunk for T10 and T12 work
+
+#### 03:00:00 IST - T14: Kimi K2.5 Minimal Web Presentation
+- Created `memory-bank/tasks/T14.md` - Task definition for static HTML web presentation
+- Created `memory-bank/implementation-details/kimi-k25-web-minimal-plan.md` - Detailed plan with ASCII layout diagrams
+- Created `memory-bank/sessions/2026-04-18-kimi-web.md` - Session tracking file
+- Modified `memory-bank/tasks.md` - Added T14 to active tasks table
+- Modified `memory-bank/session_cache.md` - Updated current session and task registry
+- Created `memory-bank/edits/2026-04-18/030000-T14.md` - Edit chunk for T14 work
+
+#### 02:32:38 IST - T11/T12: Implementation Docs Created
+- Created `memory-bank/implementation-details/holography-lqg-survey.md` - LQG holography survey (9 groups, 2015–2026)
+- Created `memory-bank/implementation-details/arrow-of-time-survey.md` - Arrow of time approaches survey (16 approaches)
+- Created `supplementary-calculations.tex` - Full calculations for T11/C3, T12/M6, T12/M9; compiles to 14pp PDF
+- Updated `memory-bank/sessions/2026-04-18-night.md` - Added implementation doc records
+- Updated `memory-bank/activeContext.md` - Added impl docs section and revised next session order
+- Created `memory-bank/edits/2026-04-18/023238-impl-docs.md` - Edit chunk for implementation docs
+
+#### 02:12:39 IST - T10/T11/T12: Subagent Audit Tasks Created
+- Created `memory-bank/tasks/T10.md` - New task: fix 17 bibliography metadata errors
+- Created `memory-bank/tasks/T11.md` - New task: fix 5 critical manuscript errors
+- Created `memory-bank/tasks/T12.md` - New task: address 9 major issues + add recent citations
+- Updated `memory-bank/tasks.md` - Added T10, T11, T12 to active tasks registry
+- Updated `memory-bank/activeContext.md` - Recorded audit findings; recommended next session order
+- Updated `memory-bank/session_cache.md` - New session; T10/T11/T12 registered as active
+- Created `memory-bank/sessions/2026-04-18-night.md` - Session record for audit work
+- Updated `memory-bank/progress.md` - Work in progress and remaining tasks updated
+- Created `memory-bank/edits/2026-04-18/021239-T10T11T12.md` - Edit chunk for audit tasks
+
+
+## 2026-04-17
+
+#### 02:29:00 IST - T8: Fix typos and structural errors
+- Modified `timesarrow.tex` - Moved \label{fig:czx-entangled} inside figure float; changed \captionof to \caption
+- Modified `timesarrow.tex` - Removed duplicate \usepackage{todonotes}; converted p.1 \todo to LaTeX comment
+- Modified `timesarrow.tex` - Fixed "two region", "a a single", "Legende", "othogonal", "Succintly", "difference representations", "Schrodinger" (×3)
+- Modified `timesarrow.bib` - Fixed doubled arXiv: prefix in Van Raamsdonk entry
+- Created `memory-bank/sessions/2026-04-17-night.md` - Session file for 2026-04-17 night
+- Created `memory-bank/tasks/T9.md` - Task file for missing figure creation
+- Modified `memory-bank/tasks/T8.md` - Updated to completed status with full fix log
+- Modified `memory-bank/tasks.md` - Added T9, moved T8 to completed, updated timestamps
+- Modified `memory-bank/activeContext.md` - Updated current status and next steps
+- Modified `memory-bank/session_cache.md` - Populated with current session and history
+- Created `memory-bank/edits/2026-04-17/022900-T8-T9.md` - Edit chunk for T8 and T9
+
+#### 02:29:00 IST - T9: Create missing figure for Sec 3.5
+- Created `figures/tns-matrix-insertion-2d.tex` - TikZ 4×4 TNS grid showing M/M⁻¹ insertion on subregion bonds with interior cancellation and boundary survival labels
+- Created `figures/tns-matrix-insertion-2d.pdf` - Compiled standalone figure
+- Modified `timesarrow.tex` - Replaced \todo{Insert figure...} with figure environment, \autoref, and caption in Sec 3.5
+
+
+## 2026-04-16
+
+#### 23:25:00 IST - T3, T4, T5, T6: Major Manuscript Rewrite and Expansion
+
+#### 20:27:00 IST - T1, T2: Memory Bank Documentation
+
+#### 20:25:00 IST - T1: Initial Memory Bank Population
+
+#### 20:22:00 IST - T2: Analyze Manuscript Gaps
+

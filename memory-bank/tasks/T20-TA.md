@@ -1,4 +1,4 @@
-# T25: T25: Volume Operator Extension
+# T20-TA: T20-TA: Z₂ Lattice Gauge Theory Monte Carlo
 
 *Created: 2026-06-24*
 *Last Updated: 2026-06-24*
@@ -8,5 +8,5 @@
 
 ## Details
 
-[Details](tasks/T25.md)
+[Details](tasks/T20-TA.md)
 

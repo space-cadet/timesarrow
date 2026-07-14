@@ -1,7 +1,7 @@
 # Memory Bank - Sage Workspace
 
-*Created: 2026-07-08 10:19:36 IST*
-*Last Updated: 2026-07-14 04:55:00 IST*
+*Created: 2026-07-14 20:45:56 IST*
+*Last Updated: 2026-07-14 20:45:56 IST*
 
 ## Overview
 
@@ -11,96 +11,100 @@ This is the Memory Bank for the Sage (灵剑) OpenClaw workspace.
 
 | ID | Title | Status | Priority | Started | Dependencies | Details |
 |----|-------|--------|----------|---------|--------------|---------|
-| T20d | Critical Exponent Extraction from 3D Z₂ LGT | 🔄 | MEDIUM | 2026-06-26 | T32 | [Details](tasks/T20d.md) |
-| T23 | Entanglement Structure | 🔄 | HIGH | 2026-06-24 | T20 | [Details](tasks/T23.md) |
-| T24 | Domain Wall Dynamics | 🔄 | HIGH | 2026-06-24 | T20, T21 | [Details](tasks/T24.md) |
-| T31 | Signed Volume Observable | 🔄 | MEDIUM | 2026-07-02 | — | [Details](tasks/T31.md) |
-| T32 | Post-May Numerics Correction and Reproducibility Pass | 🔄 | HIGH | 2026-07-05 | T20d, T22a, T25, T27, T31 | [Details](tasks/T32.md) |
+| T10 | T10: Fix 17 Bibliography Metadata Errors | ⏸️ | MEDIUM | 2026-04-18 | - | [Details](tasks/T10.md) |
+| T11 | T11: Fix Critical Manuscript Errors | ⏸️ | MEDIUM | 2026-04-18 | - | [Details](tasks/T11.md) |
+| T12 | T12: Address Major Issues and Add Recent Citations | ⏸️ | MEDIUM | 2026-04-18 | - | [Details](tasks/T12.md) |
+| T13 | T13: Gemini 3 Flash - Create Accessible Web Presentation (Time's Arrow) | 🔄 | MEDIUM | 2026-04-18 | - | [Details](tasks/T13.md) |
+| T18 | T18 | 🔄 | HIGH | 2026-05-06 | - | [Details](tasks/T18.md) |
+| T2 | T2 | 🔄 | MEDIUM | 2026-04-16 | - | [Details](tasks/T2.md) |
+| T20-Phase2-sharp-transition | T20-Phase2-sharp-transition | ⏸️ | MEDIUM | 2026-04-16 | - | [Details](tasks/T20-Phase2-sharp-transition.md) |
+| T20-TA | T20-TA: Z₂ Lattice Gauge Theory Monte Carlo | ⏸️ | MEDIUM | 2026-06-24 | - | [Details](tasks/T20-TA.md) |
+| T20-validation-plan | T20 Validation Plan — 2026-06-26 Session (COMPLETE) | ⏸️ | MEDIUM | 2026-04-16 | - | [Details](tasks/T20-validation-plan.md) |
+| T21 | T21 | 🔄 | HIGH | 2026-06-24 | - | [Details](tasks/T21.md) |
+| T21-performance-optimization | T21 — Performance Optimization: Fast Monte Carlo Kernel | ⏸️ | MEDIUM | 2026-06-25 | - | [Details](tasks/T21-performance-optimization.md) |
+| T21-worker-threads-checkpointing | T21 — Worker Threads + Checkpointing | ⏸️ | MEDIUM | 2026-04-16 | - | [Details](tasks/T21-worker-threads-checkpointing.md) |
+| T22 | T22 | 🔄 | HIGH | 2026-06-24 | - | [Details](tasks/T22.md) |
+| T23 | T23 | 🔄 | MEDIUM | 2026-06-24 | - | [Details](tasks/T23.md) |
+| T24 | T24 | 🔄 | MEDIUM | 2026-06-24 | - | [Details](tasks/T24.md) |
+| T25 | T25: Volume Operator Extension | ⏸️ | MEDIUM | 2026-06-24 | - | [Details](tasks/T25.md) |
+| T26 | T26 | 🔄 | LOW | 2026-06-24 | - | [Details](tasks/T26.md) |
 
 ## Completed Tasks
 
 | ID | Title | Status | Priority | Started | Completed | Dependencies | Details |
 |----|-------|--------|----------|---------|-----------|--------------|---------|
-| T14 | SU(2) Haar + Representation (ts-quantum core) | ✅ | HIGH | 2026-06-28 | 2026-06-28 | 2026-06-28 | [Details](tasks/T14.md) |
-| T15 | Spin Foam Package (ts-quantum-spin-foam) | ✅ | HIGH | 2026-06-28 | 2026-06-28 | 2026-06-28 | [Details](tasks/T15.md) |
-| T20 | Z₂ Lattice Gauge Theory Monte Carlo | ✅ | HIGH | 2026-06-24 | 2026-06-24 | 2026-06-24 | [Details](tasks/T20.md) |
-| T20a | Phase 1 — 2D Square Lattice | ✅ | HIGH | 2026-06-24 | 2026-06-24 | 2026-06-24 | [Details](tasks/T20a.md) |
-| T20b | Phase 2 — Multi-Lattice FSS | ✅ | HIGH | 2026-06-25 | 2026-06-25 | 2026-06-25 | [Details](tasks/T20b.md) |
-| T20c | Phase 3 — 3D Cubic Lattice | ✅ | HIGH | 2026-06-25 | 2026-06-25 | 2026-06-25 | [Details](tasks/T20c.md) |
-| T21 | Worker Threads + Checkpointing | ✅ | HIGH | 2026-06-25 | 2026-06-25 | 2026-06-25 | [Details](tasks/T21.md) |
-| T21a | Fast Monte Carlo Kernel | ✅ | HIGH | 2026-06-25 | 2026-06-25 | 2026-06-25 | [Details](tasks/T21a.md) |
-| T22 | Spin Foam Amplitudes | ✅ | HIGH | 2026-06-25 | 2026-06-25 | 2026-06-25 | [Details](tasks/T22.md) |
-| T22a | Path 1 — SU(2) Four-Leg Group-Average Estimate | ✅ | HIGH | 2026-06-28 | 2026-06-28 | 2026-06-28 | [Details](tasks/T22a.md) |
-| T25 | Volume Operator Eigenvalues | ✅ | HIGH | 2026-06-24 | 2026-06-24 | 2026-06-24 | [Details](tasks/T25.md) |
-| T27 | Rust Z₂ LGT Framework | ✅ | HIGH | 2026-06-25 | 2026-06-25 | 2026-06-25 | [Details](tasks/T27.md) |
-| T28 | Simulation Dashboard (v1) | ✅ | MEDIUM | 2026-06-26 | 2026-06-26 | 2026-06-26 | [Details](tasks/T28.md) |
-| T28a | Dashboard v2 — Functional JS | ✅ | HIGH | 2026-06-27 | 2026-06-27 | 2026-06-27 | [Details](tasks/T28a.md) |
-| T30 | Unified Plotting Module | ✅ | MEDIUM | 2026-06-27 | 2026-06-27 | 2026-06-27 | [Details](tasks/T30.md) |
-
-## Pending Tasks
-
-| ID | Title | Status | Priority | Started | Dependencies | Details |
-|----|-------|--------|----------|---------|--------------|---------|
-| T22b | Path 2 — Full Systematic Study | ⬜ | MEDIUM | 2026-06-28 | T22a | [Details](tasks/T22b.md) |
-| T29 | Extensible Numerics Schema Design | ⬜ | MEDIUM | 2026-06-27 | T28a | [Details](tasks/T29.md) |
+| T1 | T1 | ✅ | HIGH | 2026-04-16 | 2026-04-16 | 2026-04-16 | [Details](tasks/T1.md) |
+| T14 | T14: Kimi K2.5 - Minimal Web Presentation | ✅ | MEDIUM | 2026-04-18 | 2026-04-18 | 2026-04-18 | [Details](tasks/T14.md) |
+| T15 | T15 | ✅ | HIGH | 2026-04-20 | 2026-04-20 | 2026-04-20 | [Details](tasks/T15.md) |
+| T16 | T16 | ✅ | HIGH | 2026-04-29 | 2026-04-29 | 2026-04-29 | [Details](tasks/T16.md) |
+| T17 | T17 | ✅ | HIGH | 2026-05-05 | 2026-05-05 | 2026-05-05 | [Details](tasks/T17.md) |
+| T19 | T19 | ✅ | MEDIUM | 2026-05-09 | 2026-05-09 | 2026-05-09 | [Details](tasks/T19.md) |
+| T20 | T20 | ✅ | MEDIUM | 2026-06-24 | 2026-06-26 | - | [Details](tasks/T20.md) |
+| T27 | T27 | ✅ | HIGH | 2026-06-25 | 2026-06-25 | 2026-06-25 | [Details](tasks/T27.md) |
+| T28 | Deploy Quarto docs to quantumofgravity.com/projects/timesarrow/ as primary hosting | ✅ | MEDIUM | 2026-07-14 | 2026-07-14 | - | [Details](tasks/T28.md) |
+| T3 | T3 | ✅ | HIGH | 2026-04-16 | 2026-04-16 | 2026-04-16 | [Details](tasks/T3.md) |
+| T4 | T4 | ✅ | HIGH | 2026-04-16 | 2026-04-16 | 2026-04-16 | [Details](tasks/T4.md) |
+| T5 | T5 | ✅ | HIGH | 2026-04-16 | 2026-04-16 | 2026-04-16 | [Details](tasks/T5.md) |
+| T6 | T6 | ✅ | MEDIUM | 2026-04-16 | 2026-04-16 | 2026-04-16 | [Details](tasks/T6.md) |
+| T7 | T7 | ✅ | MEDIUM | 2026-04-16 | 2026-04-16 | 2026-04-16 | [Details](tasks/T7.md) |
+| T8 | T8 | ✅ | LOW | 2026-04-16 | 2026-04-16 | 2026-04-16 | [Details](tasks/T8.md) |
+| T9 | T9 | ✅ | MEDIUM | 2026-04-17 | 2026-04-17 | 2026-04-17 | [Details](tasks/T9.md) |
 
 ## Task Relationships
 
 ```
-T14: SU(2) Haar + Representation (ts-quantum core)
-  └── 2026-06-28
-T15: Spin Foam Package (ts-quantum-spin-foam)
-  └── 2026-06-28
-T20: Z₂ Lattice Gauge Theory Monte Carlo
-  └── 2026-06-24
-T20a: Phase 1 — 2D Square Lattice
-  └── 2026-06-24
-T20b: Phase 2 — Multi-Lattice FSS
+T1: T1
+  └── 2026-04-16
+T10: T10: Fix 17 Bibliography Metadata Errors
+T11: T11: Fix Critical Manuscript Errors
+T12: T12: Address Major Issues and Add Recent Citations
+T13: T13: Gemini 3 Flash - Create Accessible Web Presentation (Time's Arrow)
+T14: T14: Kimi K2.5 - Minimal Web Presentation
+  └── 2026-04-18
+T15: T15
+  └── 2026-04-20
+T16: T16
+  └── 2026-04-29
+T17: T17
+  └── 2026-05-05
+T18: T18
+T19: T19
+  └── 2026-05-09
+T2: T2
+T20: T20
+T20-Phase2-sharp-transition: T20-Phase2-sharp-transition
+T20-TA: T20-TA: Z₂ Lattice Gauge Theory Monte Carlo
+T20-validation-plan: T20 Validation Plan — 2026-06-26 Session (COMPLETE)
+T21: T21
+T21-performance-optimization: T21 — Performance Optimization: Fast Monte Carlo Kernel
+T21-worker-threads-checkpointing: T21 — Worker Threads + Checkpointing
+T22: T22
+T23: T23
+T24: T24
+T25: T25: Volume Operator Extension
+T26: T26
+T27: T27
   └── 2026-06-25
-T20c: Phase 3 — 3D Cubic Lattice
-  └── 2026-06-25
-T20d: Critical Exponent Extraction from 3D Z₂ LGT
-  └── T32
-T21: Worker Threads + Checkpointing
-  └── 2026-06-25
-T21a: Fast Monte Carlo Kernel
-  └── 2026-06-25
-T22: Spin Foam Amplitudes
-  └── 2026-06-25
-T22a: Path 1 — SU(2) Four-Leg Group-Average Estimate
-  └── 2026-06-28
-T22b: Path 2 — Full Systematic Study
-  └── T22a
-T23: Entanglement Structure
-  └── T20
-T24: Domain Wall Dynamics
-  └── T20
-  └── T21
-T25: Volume Operator Eigenvalues
-  └── 2026-06-24
-T27: Rust Z₂ LGT Framework
-  └── 2026-06-25
-T28: Simulation Dashboard (v1)
-  └── 2026-06-26
-T28a: Dashboard v2 — Functional JS
-  └── 2026-06-27
-T29: Extensible Numerics Schema Design
-  └── T28a
-T30: Unified Plotting Module
-  └── 2026-06-27
-T31: Signed Volume Observable
-  └── —
-T32: Post-May Numerics Correction and Reproducibility Pass
-  └── T20d
-  └── T22a
-  └── T25
-  └── T27
-  └── T31
+T28: Deploy Quarto docs to quantumofgravity.com/projects/timesarrow/ as primary hosting
+T3: T3
+  └── 2026-04-16
+T4: T4
+  └── 2026-04-16
+T5: T5
+  └── 2026-04-16
+T6: T6
+  └── 2026-04-16
+T7: T7
+  └── 2026-04-16
+T8: T8
+  └── 2026-04-16
+T9: T9
+  └── 2026-04-17
 ```
 
 ## Status Summary
 
-- **Active**: 5
-- **Completed**: 15
-- **Paused**: 0
-- **Total**: 22
+- **Active**: 17
+- **Completed**: 16
+- **Paused**: 9
+- **Total**: 33
