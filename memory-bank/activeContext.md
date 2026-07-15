@@ -1,13 +1,13 @@
 # timesarrow — Active Context
 
-*Updated: 2026-07-15 18:35 IST*
+*Updated: 2026-07-16 03:30 IST*
 
-**T31 clarification (2026-07-16 01:23 IST):**
+**T33–T35 quantum-geometric plan created (2026-07-16 03:30 IST):**
 
-- The classical 3D $Z_2$ confinement-deconfinement transition is established background physics; T31 numerics only need to validate the implementation and show the expected transition region.
-- Matched Polyakov scans now cover L=8,10,12,16 with 50k thermal and 50k measurement sweeps on the fine beta grid. They are sufficient control evidence, not a precision exponent study.
-- The paper's novel burden is the quantum-geometric interpretation through the spin-network, intertwiner/$\hat Q$, and CZX construction. The dressed gauge-invariant orientation correlator failed as a phase discriminator and remains negative-result provenance.
-- Remaining work: remove stale claims that the dressed correlator is a successful diagnostic, then focus on manuscript clarity or a materially new gauge-invariant quantum-geometric observable.
+- New task files: T33a (cell-complex API), T33b (diamond Polyakov), T34a (snapshot output), T34b (flux loop analysis), T35a (microscopic construction audit)
+- Implementation plan: `memory-bank/implementation-details/t33-t35-quantum-geometric-plan.md` with full back-and-forth between Sage, GPT 5.6 Luna, and Deepak Vaid
+- Key principle: gauge-transition numerics are control physics; the explicit microscopic CZX realization is the actual unresolved claim
+- T31 clarification preserved: classical 3D Z₂ transition is control physics, not the paper's novelty
 
 ## Current Session — 2026-07-14 Night
 
@@ -209,16 +209,17 @@
 
 ---
 
-## What's Next (Updated 2026-07-05)
+## What's Next (Updated 2026-07-16)
 
 | Priority | Task | Description | Depends On |
 |----------|------|-------------|------------|
-| 1 | **T32/T20d** | **Correct transition-order interpretation and published text** | T20d |
-| 2 | **T32/T31** | **Run and validate the gauge-invariant replacement observable** | T31 |
-| 3 | **T32/T20d** | **Finish controlled reanalysis and artifact cleanup** | T20d |
-| 4 | **T32** | **Verify reproducible builds/tests with Rust 2024 toolchain** | T25, T27 |
-| 5 | **T32** | **Verify reproducible builds/tests with Rust 2024 toolchain and finish artifact policy** | T25, T27 |
-| 6 | T29 | Extensible schema design | T32 |
-| 7 | T23/T24 | Resume exploratory numerics after correction gate | T32 |
+| 1 | **T33a** | **General 4-valent 3D cell-complex API** | — |
+| 2 | **T34a** | **Configuration snapshot output mode** | — |
+| 3 | **T33b** | **Diamond lattice Polyakov scan** | T33a |
+| 4 | **T34b** | **Flux loop analysis** | T34a |
+| 5 | **T35a** | **Microscopic construction audit** | T33a |
+| 6 | T32 | Verify reproducible builds/tests with Rust 2024 toolchain | T25, T27 |
+| 7 | T29 | Extensible schema design | T32 |
+| 8 | T23/T24 | Resume exploratory numerics after correction gate | T32 |
 
-**Key decision:** Correct and verify the post-May numerical claims before further production runs or manuscript integration. T22b and new T31 runs are blocked by T32.
+**Key decision:** Gauge-transition numerics are control physics; the explicit microscopic CZX realization is the actual unresolved claim.

@@ -5,9 +5,11 @@
 
 **T31 update (2026-07-16):** The known classical 3D $Z_2$ transition is now treated as control physics, not the paper's novelty. Matched L=8,10,12,16 Polyakov scans are sufficient validation. The quantum-geometric interpretation remains the main contribution; the dressed correlator is a documented negative result.
 
-**Started**: 2026-07-14 20:45:56 IST
-**Focus Task**: T28: Deploy Quarto docs to quantumofgravity.com/projects/timesarrow/ as primary hosting
-**Session File**: `sessions/2026-07-14-evening.md`
+**T33–T35 plan created (2026-07-16 03:30 IST):** Quantum-geometric numerics plan with 5 new tasks after multi-agent review (Sage + GPT 5.6 Luna + Deepak Vaid). Key principle: gauge-transition numerics are control physics; the explicit microscopic CZX realization is the actual unresolved claim.
+
+**Started**: 2026-07-16 03:00:00 IST
+**Focus Task**: T33a: General 4-Valent 3D Cell-Complex API
+**Session File**: `sessions/2026-07-16-early.md`
 **Status**: 🔄 Active: 8, Paused: 9, Completed: 16
 
 ## Overview
