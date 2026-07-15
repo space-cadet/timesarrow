@@ -27,6 +27,7 @@ struct BetaResult {
     mean_signed_volume_sq: Option<f64>,
     normalized_signed_volume: Option<f64>,
     signed_volume_binder: Option<f64>,
+    signed_volume_kind: Option<String>,
 }
 
 /// Read existing checkpoint and return completed beta values + saved results.
@@ -85,6 +86,11 @@ fn result_to_json(res: &BetaResult) -> Value {
     }
 
     if let Some(msv) = res.mean_signed_volume {
+        obj["signedVolumeKind"] = json!(
+            res.signed_volume_kind
+                .as_deref()
+                .unwrap_or("gauge-dependent")
+        );
         obj["meanSignedVolume"] = json!(msv);
         obj["errorSignedVolume"] = json!(res.error_signed_volume.unwrap());
         obj["meanSignedVolumeSq"] = json!(res.mean_signed_volume_sq.unwrap());
@@ -109,6 +115,7 @@ fn main() {
     let mut use_signed_volume = false;
     let mut raw_output = false;
     let mut use_gauge_invariant_signed_volume = false;
+    let mut cold_start = false;
     let mut checkpoint_path: Option<String> = None;
     let mut i = 1;
     while i < args.len() {
@@ -128,6 +135,9 @@ fn main() {
         } else if args[i] == "--gauge-invariant-signed-volume" {
             use_gauge_invariant_signed_volume = true;
             args.remove(i);
+        } else if args[i] == "--cold-start" {
+            cold_start = true;
+            args.remove(i);
         } else if args[i] == "--checkpoint" && i + 1 < args.len() {
             checkpoint_path = Some(args[i + 1].clone());
             args.remove(i);     // remove --checkpoint
@@ -138,11 +148,12 @@ fn main() {
     }
 
     if args.len() < 8 {
-        eprintln!("Usage: {} [--polyakov] [--signed-volume] [--raw-output] [--checkpoint <path>] <L> <dimension> <measure_sweeps> <thermal_sweeps> <workers> <loop_sizes> <beta_values...> [--seed <value>]", args[0]);
+        eprintln!("Usage: {} [--polyakov] [--signed-volume] [--gauge-invariant-signed-volume] [--cold-start] [--raw-output] [--checkpoint <path>] <L> <dimension> <measure_sweeps> <thermal_sweeps> <workers> <loop_sizes> <beta_values...> [--seed <value>]", args[0]);
         eprintln!("  --polyakov: measure Polyakov loop (3D only)");
         eprintln!("  --signed-volume: measure signed volume/area (3D/2D)");
-        eprintln!("  --raw-output: output raw time series (plaquette values) for autocorrelation analysis");
         eprintln!("  --gauge-invariant-signed-volume: measure gauge-invariant signed volume (3D only, replaces --signed-volume)");
+        eprintln!("  --cold-start: initialize all links to +1 for gauge-invariant signed-volume calibration runs");
+        eprintln!("  --raw-output: output raw time series (plaquette values) for autocorrelation analysis");
         eprintln!("  L: lattice size (e.g., 16)");
         eprintln!("  dimension: lattice dimension 2 or 3 (e.g., 3)");
         eprintln!("  measure_sweeps: number of measurement sweeps (e.g., 100000)");
@@ -192,6 +203,14 @@ fn main() {
         eprintln!("Warning: --signed-volume is only supported for 2D and 3D lattices. Ignoring flag.");
         use_signed_volume = false;
     }
+    if use_signed_volume && use_gauge_invariant_signed_volume {
+        eprintln!("Error: --signed-volume and --gauge-invariant-signed-volume are mutually exclusive.");
+        std::process::exit(1);
+    }
+    if cold_start && !use_gauge_invariant_signed_volume {
+        eprintln!("Warning: --cold-start is currently only wired for --gauge-invariant-signed-volume. Ignoring flag.");
+        cold_start = false;
+    }
 
     // Build parameters JSON for checkpoint
     let params_json = json!({
@@ -203,7 +222,9 @@ fn main() {
         "binSize": 10,
         "workers": workers,
         "polyakov": use_polyakov,
+        "signedVolume": use_signed_volume,
         "gaugeInvariantSignedVolume": use_gauge_invariant_signed_volume,
+        "initialState": if cold_start { "cold" } else { "hot" },
         "loopSizes": loop_sizes.iter().map(|(r, c)| json!({"r": r, "c": c})).collect::<Vec<_>>(),
     });
 
@@ -243,6 +264,8 @@ fn main() {
     println!("    \"workers\": {},", workers);
     println!("    \"polyakov\": {},", use_polyakov);
     println!("    \"signedVolume\": {},", use_signed_volume);
+    println!("    \"gaugeInvariantSignedVolume\": {},", use_gauge_invariant_signed_volume);
+    println!("    \"initialState\": \"{}\",", if cold_start { "cold" } else { "hot" });
     println!("    \"loopSizes\": [",);
     for (i, (r, c)) in loop_sizes.iter().enumerate() {
         let comma = if i < loop_sizes.len() - 1 { "," } else { "" };
@@ -328,11 +351,12 @@ fn main() {
                     mean_signed_volume_sq: None,
                     normalized_signed_volume: None,
                     signed_volume_binder: None,
+                    signed_volume_kind: None,
                 }
             } else if use_gauge_invariant_signed_volume {
                 let (mean_p, error, chi, cv, binder, wall_time, wilson_data, sv_data) =
                     simulate_beta_with_wilson_and_gauge_invariant_signed_volume(
-                        l, dimension, *beta, thermal_sweeps, measure_sweeps, 10, seed, &loop_sizes
+                        l, dimension, *beta, thermal_sweeps, measure_sweeps, 10, seed, &loop_sizes, cold_start
                     );
                 BetaResult {
                     beta: *beta,
@@ -353,6 +377,7 @@ fn main() {
                     mean_signed_volume_sq: Some(sv_data.2),
                     normalized_signed_volume: Some(sv_data.3),
                     signed_volume_binder: Some(sv_data.4),
+                    signed_volume_kind: Some("gauge-invariant-dressed-correlator".to_string()),
                 }
             } else if use_signed_volume {
                 let (mean_p, error, chi, cv, binder, wall_time, wilson_data, sv_data) =
@@ -378,6 +403,7 @@ fn main() {
                     mean_signed_volume_sq: Some(sv_data.2),
                     normalized_signed_volume: Some(sv_data.3),
                     signed_volume_binder: Some(sv_data.4),
+                    signed_volume_kind: Some("gauge-dependent-path-sum".to_string()),
                 }
             } else {
                 let (mean_p, error, chi, cv, binder, wall_time, wilson_data) = simulate_beta_with_wilson_loops(
@@ -402,6 +428,7 @@ fn main() {
                     mean_signed_volume_sq: None,
                     normalized_signed_volume: None,
                     signed_volume_binder: None,
+                    signed_volume_kind: None,
                 }
             };
             tx.send(res).unwrap();

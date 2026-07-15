@@ -1,6 +1,6 @@
 # timesarrow — Progress Tracker
 
-*Updated: 2026-07-14 04:55 IST*
+*Updated: 2026-07-15 18:35 IST*
 
 ## T32 Correction Gate
 
@@ -10,7 +10,7 @@ The post-May simulation infrastructure and raw datasets are preserved, but the f
 
 - T20d: first-order classification, plaquette-Binder argument, and schematic histogram evidence.
 - T22a: FK-vertex labeling and the extra squaring from approximately $0.45$ to $0.20$. **Resolved in canonical source and regenerated `_site` output (2026-07-08): now a normalized SU(2) four-leg group average with analytic result primary.**
-- T31: iterative gauge alignment and phase-scaling claims based on the gauge-dependent path sum. **Further resolved (2026-07-10): Rust 2024-compatible unit tests were run successfully with `rustup` toolchain `1.92.0-aarch64-apple-darwin`; physical review and replacement-observable production runs still remain.**
+- T31: iterative gauge alignment and phase-scaling claims based on the gauge-dependent path sum. **Further resolved (2026-07-15): the project has pivoted to the Polyakov loop, and additional archived hot/cold calibration artifacts now strengthen the negative result for the dressed signed-volume correlator rather than reopening it as an active production observable.**
 - T25: spectral $± q$ pairing overinterpreted as a physical time-orientation symmetry without an explicit transformation operator. **Calibrated under T32 (2026-07-08): now described as algebraic spectral reflection symmetry with physical-transformation test deferred.**
 
 TypeScript and Rust build/test reproducibility and repository artifact policy are also part of T32. The local validation workflow now passes in this checkout. Post-May numerical claims are blocked from the main manuscript until T32 is complete.
