@@ -805,7 +805,7 @@ impl Z2GaugeField {
                         for y1 in 0..l {
                             for x1 in 0..l {
                                 let idx1 = z1 * l * l + y1 * l + x1;
-                                let w = self.path_product_xyz_3d(x1, y1, z1, x2, y2, z2);
+                                let w = self.path_product_zyx_3d(x1, y1, z1, x2, y2, z2);
                                 total += (s[idx1] * w * s[idx2]) as i64;
                             }
                         }
@@ -1585,11 +1585,16 @@ pub fn simulate_beta_with_wilson_and_gauge_invariant_signed_volume(
     measure_every: usize,
     seed: u64,
     loop_sizes: &[(usize, usize)],
+    cold_start: bool,
 ) -> (f64, f64, f64, f64, f64, u64, Vec<(usize, usize, f64, f64)>, (f64, f64, f64, f64, f64)) {
     assert!(dimension == 3,
         "simulate_beta_with_wilson_and_gauge_invariant_signed_volume only supports 3D");
 
-    let mut field = Z2GaugeField::new_dim(l, dimension, seed);
+    let mut field = if cold_start {
+        Z2GaugeField::cold_dim(l, dimension, seed)
+    } else {
+        Z2GaugeField::new_dim(l, dimension, seed)
+    };
 
     let thermal_start = std::time::Instant::now();
     field.thermalize(beta, thermal_sweeps);
@@ -1607,8 +1612,6 @@ pub fn simulate_beta_with_wilson_and_gauge_invariant_signed_volume(
     let mut wilson_sums = vec![0.0f64; n_loop_sizes];
     let mut wilson_sums_sq = vec![0.0f64; n_loop_sizes];
     let mut n_measurements = 0usize;
-
-    let vol = (l * l * l) as f64;
 
     for sweep in 0..measure_sweeps {
         field.sweep(beta);
@@ -1634,6 +1637,7 @@ pub fn simulate_beta_with_wilson_and_gauge_invariant_signed_volume(
     }
 
     let n = n_measurements as f64;
+    let vol = (l * l * l) as f64;
 
     let mean_p = measurements.iter().sum::<f64>() / n;
     let mean_p2 = measurements_sq.iter().sum::<f64>() / n;
@@ -1656,7 +1660,6 @@ pub fn simulate_beta_with_wilson_and_gauge_invariant_signed_volume(
     let mean_q_quad = q_quad.iter().sum::<f64>() / n;
     let var_q = q_values.iter().map(|x| (x - mean_q).powi(2)).sum::<f64>() / n;
     let error_q = (var_q / n).sqrt();
-    let normalized = mean_q.abs() / vol;  // |⟨Q⟩|/N — small in confined, should grow in deconfined
     let binder_q = if mean_q_sq > 0.0 {
         1.0 - mean_q_quad / (3.0 * mean_q_sq * mean_q_sq)
     } else {
@@ -1666,7 +1669,7 @@ pub fn simulate_beta_with_wilson_and_gauge_invariant_signed_volume(
     let measure_time = measure_start.elapsed().as_millis() as u64;
 
     (mean_p, error, chi, cv, binder, thermal_time + measure_time, wilson_data,
-     (mean_q.abs(), error_q, mean_q_sq, normalized, binder_q))
+     (mean_q, error_q, mean_q_sq, mean_q, binder_q))
 }
 
 #[cfg(test)]
@@ -1870,6 +1873,62 @@ mod tests {
         let q = field.gauge_invariant_signed_volume_3d();
         assert!((q - 1.0).abs() < 1e-10,
             "Cold start: all links +1, gauge-invariant signed volume should be 1.0, got {}", q);
+    }
+
+    /// Test that a pure-gauge all-negative even lattice has the same normalized value.
+    #[test]
+    fn test_gauge_invariant_signed_volume_all_negative_even_lattice() {
+        let mut field = Z2GaugeField::cold_dim(4, 3, 42);
+        for z in 0..4 {
+            for y in 0..4 {
+                for x in 0..4 {
+                    for dir in 0..3 {
+                        field.flip_link_3d(x, y, z, dir);
+                    }
+                }
+            }
+        }
+
+        let q = field.gauge_invariant_signed_volume_3d();
+        assert!(
+            (q - 1.0).abs() < 1e-10,
+            "All-negative even lattice is a pure-gauge sector and should give Q_GI = 1.0, got {}",
+            q
+        );
+    }
+
+    /// Test the all-negative pure-gauge sector on a larger even lattice.
+    #[test]
+    fn test_gauge_invariant_signed_volume_all_negative_l6() {
+        let mut field = Z2GaugeField::cold_dim(6, 3, 42);
+        for z in 0..6 {
+            for y in 0..6 {
+                for x in 0..6 {
+                    for dir in 0..3 {
+                        field.flip_link_3d(x, y, z, dir);
+                    }
+                }
+            }
+        }
+
+        let q = field.gauge_invariant_signed_volume_3d();
+        assert!(
+            (q - 1.0).abs() < 1e-10,
+            "All-negative L=6 lattice is a pure-gauge sector and should give Q_GI = 1.0, got {}",
+            q
+        );
+    }
+
+    /// Test that the gauge-invariant observable stays in its normalized range.
+    #[test]
+    fn test_gauge_invariant_signed_volume_range_random() {
+        let field = Z2GaugeField::new_dim(4, 3, 42);
+        let q = field.gauge_invariant_signed_volume_3d();
+        assert!(
+            (-1.0..=1.0).contains(&q),
+            "Gauge-invariant signed volume should be normalized to [-1, 1], got {}",
+            q
+        );
     }
 
     /// Test path_product_xyz_3d on cold start.

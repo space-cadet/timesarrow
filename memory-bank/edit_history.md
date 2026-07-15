@@ -1,10 +1,19 @@
 # Edit History
 
-*Last Updated: 2026-07-14 20:45:56 IST*
+*Last Updated: 2026-07-15 18:35:42 IST*
 
 ---
 
 ## 2026-07-14
+
+## 2026-07-15
+
+#### 18:35:42 IST - T31: Salvaged pre-pivot signed-volume calibration provenance without undoing the Polyakov pivot.
+- Modified `rust-lattice/src/main.rs` - Added `--cold-start` for the archived gauge-invariant signed-volume path and labeled signed-volume JSON output with `signedVolumeKind` and `initialState`.
+- Modified `rust-lattice/src/lib.rs` - Preserved the reverse-path dressed-correlator evaluation, added cold-start simulation support, and expanded pure-sector/range tests for archived T31 signed-volume calibration runs.
+- Created `numerics/data/signed-volume/t31-gi-L4-calibration-20260714.json`, `t31-gi-L4-cold-calibration-20260714.json`, `t31-gi-L6-calibration-20260714.json`, `t31-gi-L6-cold-calibration-20260714.json`, `t31-gi-L6-beta1-seed42-20260714.json`, `t31-gi-L6-beta1-seed43-20260714.json`, and `t31-gi-L6-beta1-seed44-20260714.json` - Archived the recovered negative-result calibration artifacts as provenance only.
+- Modified `memory-bank/tasks/T31.md`, `memory-bank/activeContext.md`, `memory-bank/progress.md`, and `memory-bank/tasks.md` - Recorded that the salvaged calibration branch strengthens the signed-volume obstruction while leaving the Polyakov-loop pivot as the active T31 direction.
+- Created `memory-bank/edits/2026-07-15/183542-t31-provenance-salvage.md` - Added the canonical edit chunk for the salvage and provenance-only archive.
 
 #### 20:45:56 IST - T28: Deploy Quarto docs to quantumofgravity.com/projects/timesarrow/ as primary hosting
 - Modified `_quarto.yml` - Modified _quarto.yml
@@ -323,4 +332,3 @@
 #### 20:25:00 IST - T1: Initial Memory Bank Population
 
 #### 20:22:00 IST - T2: Analyze Manuscript Gaps
-

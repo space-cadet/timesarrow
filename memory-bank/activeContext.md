@@ -1,6 +1,6 @@
 # timesarrow — Active Context
 
-*Updated: 2026-07-14 04:55 IST*
+*Updated: 2026-07-15 18:35 IST*
 
 ## Current Session — 2026-07-14 Night
 
@@ -72,6 +72,13 @@
 - Updated `numerics/src/scripts/t20d-ising-reanalysis.py` now consumes the current fine-scan artifacts and treats the result as proof-of-principle support for the corrected continuous-transition interpretation rather than a precision critical-exponent measurement.
 - A simple peak-drift guide now gives `β_c(∞)≈0.7618±0.0005`, close to the literature value `0.761`, but this is recorded as consistency support only.
 - Given the current project priorities, `T20d` is now good enough as supporting numerics; the more central volume-operator and related calculations should take precedence over further exponent-chasing.
+
+**T31 provenance salvage (2026-07-15 18:35 IST):**
+
+- Recovered the unpushed 2026-07-14 signed-volume calibration branch onto a clean branch from `origin/main` and kept only the pieces that still fit the current T31 story.
+- Preserved additional `L=4`/`L=6` hot-start, cold-start, and multi-seed signed-volume calibration artifacts under `numerics/data/signed-volume/` as negative-result provenance.
+- Added `--cold-start` support plus explicit signed-volume kind metadata in the Rust CLI so archived gauge-invariant calibration runs remain self-describing.
+- These salvaged artifacts reinforce, rather than weaken, the existing T31 pivot: the dressed signed-volume correlator remains sector-sensitive and should stay provenance-only while Polyakov-loop work remains the active deconfinement path.
 
 ## Previous Session — 2026-07-02 Evening
 

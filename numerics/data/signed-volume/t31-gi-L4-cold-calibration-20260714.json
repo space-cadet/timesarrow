@@ -1,0 +1,27 @@
+{
+  "parameters": {
+    "L": 4,
+    "dimension": 3,
+    "thermalSweeps": 5000,
+    "measureSweeps": 20000,
+    "measureEvery": 10,
+    "binSize": 10,
+    "workers": 2,
+    "polyakov": false,
+    "signedVolume": false,
+    "gaugeInvariantSignedVolume": true,
+    "initialState": "cold",
+    "loopSizes": [
+      {"r": 1, "c": 1},
+      {"r": 2, "c": 2}
+    ]
+  },
+  "results": [
+    {"beta":0.85,"binderCumulant":0.6655082389556339,"errorPlaquette":0.0006766402396317225,"errorSignedVolume":0.0025759517647716986,"meanPlaquette":0.9852499999999955,"meanSignedVolume":0.101892578125,"meanSignedVolumeSq":0.023653152465820313,"normalizedSignedVolume":0.101892578125,"numMeasurements":2000,"signedVolumeBinder":0.1573357256322676,"signedVolumeKind":"gauge-invariant-dressed-correlator","specificHeat":0.04234122944511064,"susceptibility":0.04981321111189487,"wallTimeMs":255,"wilsonLoops":[{"c":1,"meanW":-0.98575,"r":1,"varW":0.0010625624999999195},{"c":2,"meanW":0.96684375,"r":2,"varW":0.006519803710937522}]},
+    {"beta":0.7,"binderCumulant":0.6474191720779563,"errorPlaquette":0.0024527268342828313,"errorSignedVolume":0.0014875836266723976,"meanPlaquette":0.8672083333333316,"meanSignedVolume":0.04973388671875,"meanSignedVolumeSq":0.006899269580841064,"normalizedSignedVolume":0.04973388671875,"numMeasurements":2000,"signedVolumeBinder":-0.892989648493475,"signedVolumeKind":"gauge-invariant-dressed-correlator","specificHeat":0.37731529888910126,"susceptibility":0.539021855555859,"wallTimeMs":256,"wilsonLoops":[{"c":1,"meanW":-0.86546875,"r":1,"varW":0.014395483398437547},{"c":2,"meanW":0.66678125,"r":2,"varW":0.08975628027343752}]},
+    {"beta":0.5,"binderCumulant":0.6352569902653838,"errorPlaquette":0.001750171603069533,"errorSignedVolume":0.0006656771170222138,"meanPlaquette":0.5044062499999996,"meanSignedVolume":0.04415673828125,"meanSignedVolumeSq":0.002836069583892822,"normalizedSignedVolume":0.04415673828125,"numMeasurements":2000,"signedVolumeBinder":0.23138081788127018,"signedVolumeKind":"gauge-invariant-dressed-correlator","specificHeat":0.09801922048610034,"susceptibility":0.1960384409722007,"wallTimeMs":264,"wilsonLoops":[{"c":1,"meanW":-0.501625,"r":1,"varW":0.013973921875000017},{"c":2,"meanW":0.06425,"r":2,"varW":0.0222469375}]},
+    {"beta":0.76,"binderCumulant":0.6611916504941553,"errorPlaquette":0.0014536409627590682,"errorSignedVolume":0.0018589437016900915,"meanPlaquette":0.9512083333333292,"meanSignedVolume":0.06374169921875,"meanSignedVolumeSq":0.010974347591400146,"normalizedSignedVolume":0.06374169921875,"numMeasurements":2000,"signedVolumeBinder":-0.4892563997074708,"signedVolumeKind":"gauge-invariant-dressed-correlator","specificHeat":0.15622533315612996,"susceptibility":0.20555964888964467,"wallTimeMs":282,"wilsonLoops":[{"c":1,"meanW":-0.95059375,"r":1,"varW":0.005236756835937495},{"c":2,"meanW":0.8788125,"r":2,"varW":0.03557140234375}]},
+    {"beta":1.0,"binderCumulant":0.6664668677838208,"errorPlaquette":0.00028027415583774126,"errorSignedVolume":0.00003569171614719611,"meanPlaquette":0.9967708333333317,"meanSignedVolume":0.0156455078125,"meanSignedVolumeSq":0.0002473297119140625,"normalizedSignedVolume":0.0156455078125,"numMeasurements":2000,"signedVolumeBinder":0.6416265662019647,"signedVolumeKind":"gauge-invariant-dressed-correlator","specificHeat":0.010054861111463254,"susceptibility":0.010054861111463254,"wallTimeMs":284,"wilsonLoops":[{"c":1,"meanW":-0.9966875,"r":1,"varW":0.00023512109375001256},{"c":2,"meanW":0.993,"r":2,"varW":0.0010877187500000218}]}
+  ],
+  "totalWallTimeMs": 285
+}

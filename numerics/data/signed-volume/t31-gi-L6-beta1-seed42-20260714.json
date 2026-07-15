@@ -1,0 +1,22 @@
+{
+  "parameters": {
+    "L": 6,
+    "dimension": 3,
+    "thermalSweeps": 5000,
+    "measureSweeps": 10000,
+    "measureEvery": 10,
+    "binSize": 10,
+    "workers": 1,
+    "polyakov": false,
+    "signedVolume": false,
+    "gaugeInvariantSignedVolume": true,
+    "loopSizes": [
+      {"r": 1, "c": 1},
+      {"r": 2, "c": 2}
+    ]
+  },
+  "results": [
+    {"beta":1.0,"binderCumulant":0.6666015509143319,"errorPlaquette":0.0002221110833194375,"errorSignedVolume":0.00008672012824683493,"meanPlaquette":0.9966913580246906,"meanSignedVolume":0.027670953360768608,"meanSignedVolumeSq":0.0007732020405369412,"normalizedSignedVolume":0.027670953360768608,"numMeasurements":1000,"signedVolumeBinder":0.6535519099961627,"signedVolumeKind":"gauge-invariant-dressed-correlator","specificHeat":0.010655999999523047,"susceptibility":0.010655999999523047,"wallTimeMs":770,"wilsonLoops":[{"c":1,"meanW":-0.9967962962962988,"r":1,"varW":0.00006415329217346333},{"c":2,"meanW":0.9929814814814812,"r":2,"varW":0.0003283124142653415}]}
+  ],
+  "totalWallTimeMs": 771
+}
