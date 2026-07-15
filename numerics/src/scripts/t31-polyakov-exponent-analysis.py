@@ -3,7 +3,8 @@
 t31-polyakov-exponent-analysis.py
 =================================
 Extract critical exponents from Polyakov loop susceptibility data.
-Proof-of-principle scan: L=8,10,12 at β = 0.60–0.85.
+Updated finite-size check using the L=8,10,12 proof-of-principle data and
+the corrected L=16 fine scan.
 
 Outputs:
   - figures/t31-polyakov-chi-vs-beta.pdf
@@ -18,8 +19,14 @@ import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 
 # ─── Paths ───────────────────────────────────────────────────────────────────
-ROOT = Path("~/.openclaw/workspace/code/timesarrow/numerics").expanduser()
+ROOT = Path(__file__).resolve().parents[2]
 DATA_FILE = ROOT / "data/t31-polyakov-proof-of-principle-20260714.json"
+FINE_FILES = {
+    8: ROOT / "data/t31-polyakov-L8-fine-20260715.json",
+    10: ROOT / "data/t31-polyakov-L10-fine-20260715.json",
+    12: ROOT / "data/t31-polyakov-L12-fine-20260715.json",
+    16: ROOT / "data/t31-polyakov-L16-fine-20260715.json",
+}
 OUT_DIR = ROOT / "output"
 FIG_DIR = OUT_DIR / "figures"
 OUT_JSON = OUT_DIR / "t31-polyakov-exponents.json"
@@ -29,9 +36,21 @@ FIG_DIR.mkdir(parents=True, exist_ok=True)
 # ─── Load data ───────────────────────────────────────────────────────────────
 with open(DATA_FILE) as f:
     data = json.load(f)
-
-L_vals = [8, 10, 12]
-L_keys = ["L8", "L10", "L12"]
+L_vals = [8, 10, 12, 16]
+L_keys = ["L8", "L10", "L12", "L16"]
+for lattice_size, fine_file in FINE_FILES.items():
+    with open(fine_file) as f:
+        fine_data = json.load(f)
+    data["results"][f"L{lattice_size}"] = {
+        key: [row[field] for row in fine_data["results"]]
+        for key, field in {
+            "beta": "beta",
+            "meanPlaquette": "meanPlaquette",
+            "meanPolyakov": "meanPolyakov",
+            "polyakovSusceptibility": "polyakovSusceptibility",
+            "polyakovBinder": "polyakovBinder",
+        }.items()
+    }
 
 # ─── 1. Peak susceptibility for each L ───────────────────────────────────────
 peaks = {}
@@ -126,8 +145,8 @@ beta_c_from_peak = np.mean(beta_peaks)
 
 # Plot 1: χ_P vs β for all L
 fig, ax = plt.subplots(figsize=(7, 5))
-colors = {8: "C0", 10: "C1", 12: "C2"}
-markers = {8: "o", 10: "s", 12: "^"}
+colors = {8: "C0", 10: "C1", 12: "C2", 16: "C3"}
+markers = {8: "o", 10: "s", 12: "^", 16: "D"}
 for L in L_vals:
     ax.plot(
         peaks[L]["beta_all"],
@@ -218,7 +237,7 @@ result = {
         "measured_gamma_over_nu": float(gamma_over_nu_fit),
         "ising_gamma_over_nu": ising_gamma_over_nu,
         "relative_difference": float((gamma_over_nu_fit - ising_gamma_over_nu) / ising_gamma_over_nu),
-        "agreement": "Within ~20% of 3D Ising (limited statistics, Lmax=12)",
+        "agreement": "Provisional comparison only; the L=16 point is from a finer beta grid and has no matched-grid Binder crossing.",
     },
     "critical_beta": {
         "from_peak_position": {
@@ -227,15 +246,15 @@ result = {
         },
         "from_binder_crossing": {
             "estimates": crossing_estimates,
-            "note": "Coarse β grid and only 3 L values; crossing estimate is unreliable. Binder values at β=0.76: 0.634 (L=8), 0.640 (L=10), 0.614 (L=12). No clear crossing.",
+            "note": "Crossing estimate uses the matched coarse grid for L=8,10,12. L=16 uses a finer grid and is excluded from this simple crossing calculation.",
         },
     },
     "caveats": [
-        "Proof-of-principle with only L=8,10,12 and 10k thermal + 10k measure sweeps.",
+        "L=8,10,12 use 10k thermal + 10k measure sweeps; L=16 uses 50k + 50k sweeps.",
         "β grid is coarse (Δβ=0.02 near peak); peak position may shift with finer grid.",
         "No jackknife or bootstrap error bars on χ_P — fit errors are formal only.",
         "Binder cumulant does not show clean crossing; L=12 binder at β=0.74 is anomalously low (0.094).",
-        "3D Ising universality is expected for 3D Z₂ gauge theory; this scan is consistent but not conclusive.",
+        "3D Ising universality is expected for 3D Z₂ gauge theory; this enlarged scan remains provisional and is not a precision exponent extraction.",
     ],
     "plots": {
         "chi_vs_beta": str(FIG_DIR / "t31-polyakov-chi-vs-beta.pdf"),

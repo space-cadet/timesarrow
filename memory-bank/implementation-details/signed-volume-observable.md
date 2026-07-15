@@ -1,14 +1,14 @@
 # Signed Volume Observable — Implementation Details
 
 *Created: 2026-07-02*
-*Last Updated: 2026-07-05 22:24:10 IST*
+*Last Updated: 2026-07-15 19:35 IST*
 *Task: T31*
 
 ## Correction Notice
 
-The path-based signed-volume results below are gauge-dependent exploratory data. The proposed iterative gauge fixing that maximizes $|Q|$ is withdrawn: spanning-tree alignment can force $|Q|=N$ in any phase and would destroy the observable's diagnostic value. T31 must use a gauge-invariant replacement specified under T32 before new production runs.
+The path-based signed-volume results below are gauge-dependent exploratory data. The proposed iterative gauge fixing that maximizes $|Q|$ is withdrawn: spanning-tree alignment can force $|Q|=N$ in any phase and would destroy the observable's diagnostic value. The later gauge-invariant dressed-correlator attempt also failed as a practical order parameter. T31 has therefore pivoted to the Polyakov loop as the active gauge-invariant deconfinement diagnostic; the signed-volume material is kept here as provenance and negative-result context.
 
-## Problem Statement
+## Historical Motivation
 
 Standard LQG uses the positive-definite volume operator $\hat{V} = \sqrt{|\hat{Q}|}$. This discards the sign information that distinguishes the two time-orientation sectors. The paper's framework requires using the **signed** volume operator $\hat{Q}$ for composite systems, so that:
 

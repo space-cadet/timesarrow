@@ -1987,6 +1987,19 @@ mod tests {
     }
 
     #[test]
+    fn test_hot_3d_sweep_does_not_lock_all_polyakov_loops() {
+        let mut field = Z2GaugeField::new_dim(4, 3, 42);
+        let before = field.average_polyakov_signed_3d();
+        field.sweep(0.7);
+        let after = field.average_polyakov_signed_3d();
+
+        assert!(before.abs() < 1.0,
+            "hot start unexpectedly has a fully aligned Polyakov average: {}", before);
+        assert!(after.abs() < 1.0,
+            "one low-beta sweep locked every Polyakov loop into the same sector: {}", after);
+    }
+
+    #[test]
     fn test_cold_polyakov_loop_4d() {
         let field = Z2GaugeField::cold_dim(4, 4, 42);
         // On cold start, all temporal links are +1, so Polyakov loop = +1 everywhere

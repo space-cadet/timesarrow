@@ -2,12 +2,12 @@
 title: "T31 — Signed Volume Observable for Z₂ Gauge Theory"
 subtitle: "Arrow of time from oriented geometry"
 date: "2026-07-02"
-date-modified: "2026-07-14T07:15:00+05:30"
+date-modified: "2026-07-15T19:50:00+05:30"
 toc: true
 toc-title: "Contents"
 ---
 
-*Last updated: 2026-07-10 18:45 IST*
+*Last updated: 2026-07-15 19:50 IST*
 
 ::: {.callout-tip}
 ## 📊 Live Dashboard
@@ -18,14 +18,19 @@ View all simulation runs and figures: **[TimesArrow Numerics Dashboard →](../d
 
 Implement and measure a **signed volume observable** for the Z₂ lattice gauge theory simulations. The key insight from the paper is that the signed volume operator $\hat{Q}_v$ (not the positive-definite $\hat{V}_v = \sqrt{|\hat{Q}_v|}$) should be used for composite systems. The emergence of a global time orientation is then tied to the emergence of a macroscopic geometry with non-vanishing, extensive signed volume.
 
+::: {.callout-warning}
+## Historical Page
+This page is now primarily a provenance record. The signed-volume path was not retained as the active deconfinement diagnostic. The current T31 path uses the Polyakov loop instead: **[T31 — Deconfinement via Polyakov Loop](t31-deconfinement-polyakov.html)**.
+:::
+
 ## Status
 
 | Phase | Description | Status | Date |
 |-------|-------------|--------|------|
 | Phase 1 | 2D square lattice validation | ✅ Complete | 2026-07-02 |
 | Phase 2 | 3D cubic lattice (L=8,10,12) | ⚠️ Exploratory only | 2026-07-02 |
-| Phase 3 | Gauge-invariant dressed correlator | ✅ Implemented, awaiting full validation | 2026-07-08 |
-| Phase 4 | New production runs and scaling | ⏳ Pending | — |
+| Phase 3 | Gauge-invariant dressed correlator | ❌ Failed as practical order parameter | 2026-07-14 |
+| Phase 4 | Pivot to Polyakov loop | ✅ Complete | 2026-07-14 |
 
 ## Theory
 
@@ -42,7 +47,7 @@ $$\hat{Q}_{\text{total}} = \sum_{v \in S} \hat{Q}_v$$
 
 This motivates the search for a gauge-invariant orientation diagnostic. The original path-based signed-volume measurements below are retained as exploratory data, not as production evidence for a phase transition or arrow-of-time scaling.
 
-This means the confinement-deconfinement transition would be tested through:
+Historically this suggested that the confinement-deconfinement transition might be tested through:
 1. The emergence of a global arrow of time
 2. The emergence of a macroscopic geometry with non-vanishing, extensive signed volume
 
@@ -53,12 +58,12 @@ The signed volume at individual vertices is gauge-dependent. The earlier maximal
 For a vertex at $(x,y,z)$, the sign is:
 $$\text{sign}(x,y,z) = \prod_{i=0}^{x-1} \sigma_{(i,0,0),x} \times \prod_{j=0}^{y-1} \sigma_{(x,j,0),y} \times \prod_{k=0}^{z-1} \sigma_{(x,y,k),z}$$
 
-The replacement implemented in `rust-lattice` is a dressed orientation correlator:
+The replacement implemented in `rust-lattice` was a dressed orientation correlator:
 $$C(r_1,r_2) = s(r_1) W(r_1 \to r_2) s(r_2)$$
 
 where $s(r)$ is the path-dressed sign from the origin and $W(r_1 \to r_2)$ is a Wilson line between the two sites using the opposite path ordering. The averaged observable
 $$Q_{\mathrm{GI}} = \frac{1}{N^2}\sum_{r_1,r_2} C(r_1,r_2)$$
-is designed to be invariant under local Z₂ gauge transformations.
+is designed to be invariant under local Z₂ gauge transformations. In source-level tests it is gauge-invariant, but in thermalized runs it failed to cleanly separate phases and was therefore not retained as the active T31 observable.
 
 ## Implementation
 
@@ -179,14 +184,13 @@ At finite β, tunneling between sectors causes |Q|/N to fluctuate between ~1 and
 3. Tests showing the original `signed_volume_3d()` changes under gauge transformations.
 4. A candidate `gauge_invariant_signed_volume_3d()` dressed correlator with single-site and multi-site gauge-invariance tests.
 
-These tests were identified in source inspection, but the local Cargo available in this shell is older than Rust edition 2024, so the full Rust test suite still needs to be run with the documented Rust 1.85+ toolchain before new production results are trusted.
+These source-level tests now pass under the Rust 2024-compatible validation path. The reason this page is superseded is not a missing code fix, but the physical negative result: the dressed correlator remains suppressed in thermalized states and does not provide a reliable deconfinement signal.
 
 ## Next Steps
 
-1. Run the Rust gauge-invariance tests with a Rust 2024-compatible toolchain.
-2. Review whether the dressed correlator has the desired physical normalization and finite-size behavior.
-3. Run new production simulations only with the validated gauge-invariant observable.
-4. Perform Binder or scaling analysis only after the replacement observable is validated.
+1. Keep the signed-volume data and dressed-correlator implementation as provenance and negative-result context.
+2. Use the Polyakov loop page for the active T31 deconfinement program.
+3. Only revisit signed-volume-style observables if a materially different gauge-invariant construction is proposed.
 
 ## Data Files
 

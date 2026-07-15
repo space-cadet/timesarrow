@@ -28,6 +28,7 @@ This is the Memory Bank for the Sage (灵剑) OpenClaw workspace.
 | T24 | T24 | 🔄 | MEDIUM | 2026-06-24 | - | [Details](tasks/T24.md) |
 | T25 | T25: Volume Operator Extension | ⏸️ | MEDIUM | 2026-06-24 | - | [Details](tasks/T25.md) |
 | T26 | T26 | 🔄 | LOW | 2026-06-24 | - | [Details](tasks/T26.md) |
+| T31 | T31: Signed Volume Observable and Polyakov Control | 🔄 | MEDIUM | 2026-07-02 | T32 | [Details](tasks/T31.md) |
 
 ## Completed Tasks
 

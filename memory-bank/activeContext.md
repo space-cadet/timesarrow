@@ -2,6 +2,13 @@
 
 *Updated: 2026-07-15 18:35 IST*
 
+**T31 clarification (2026-07-16 01:23 IST):**
+
+- The classical 3D $Z_2$ confinement-deconfinement transition is established background physics; T31 numerics only need to validate the implementation and show the expected transition region.
+- Matched Polyakov scans now cover L=8,10,12,16 with 50k thermal and 50k measurement sweeps on the fine beta grid. They are sufficient control evidence, not a precision exponent study.
+- The paper's novel burden is the quantum-geometric interpretation through the spin-network, intertwiner/$\hat Q$, and CZX construction. The dressed gauge-invariant orientation correlator failed as a phase discriminator and remains negative-result provenance.
+- Remaining work: remove stale claims that the dressed correlator is a successful diagnostic, then focus on manuscript clarity or a materially new gauge-invariant quantum-geometric observable.
+
 ## Current Session — 2026-07-14 Night
 
 ### T32: Post-May Numerics Correction and Reproducibility Pass — IN PROGRESS 🔄

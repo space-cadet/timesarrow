@@ -1,7 +1,9 @@
 # Session Cache
 
 *Created: 2026-07-14 20:45:56 IST*
-*Last Updated: 2026-07-14 20:45:56 IST*
+*Last Updated: 2026-07-16 01:23:09 IST*
+
+**T31 update (2026-07-16):** The known classical 3D $Z_2$ transition is now treated as control physics, not the paper's novelty. Matched L=8,10,12,16 Polyakov scans are sufficient validation. The quantum-geometric interpretation remains the main contribution; the dressed correlator is a documented negative result.
 
 **Started**: 2026-07-14 20:45:56 IST
 **Focus Task**: T28: Deploy Quarto docs to quantumofgravity.com/projects/timesarrow/ as primary hosting

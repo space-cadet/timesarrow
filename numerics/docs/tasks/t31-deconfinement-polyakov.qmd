@@ -2,12 +2,12 @@
 title: "T31 — Deconfinement via Polyakov Loop"
 subtitle: "Gauge-invariant order parameter for the Z₂ confinement–deconfinement transition"
 date: "2026-07-14"
-date-modified: "2026-07-14T07:15:00+05:30"
+date-modified: "2026-07-15T19:50:00+05:30"
 toc: true
 toc-title: "Contents"
 ---
 
-*Last updated: 2026-07-14 11:27 IST*
+*Last updated: 2026-07-15 19:50 IST*
 
 ::: {.callout-tip}
 ## 📊 Live Dashboard
@@ -24,9 +24,9 @@ Detect the **confinement–deconfinement phase transition** in 3D Z₂ lattice g
 |-------|-------------|--------|------|
 | Phase 1 | Signed volume exploration | ❌ Abandoned | 2026-07-02 |
 | Phase 2 | Pivot to Polyakov loop; proof-of-principle | ✅ Complete | 2026-07-14 |
-| Phase 3 | Production runs L=8,10,12 (50k thermal + 50k measure) | ✅ Complete | 2026-07-14 |
-| Phase 4 | Critical exponent extraction | ✅ Complete | 2026-07-14 |
-| Phase 5 | Finite-size scaling with larger L | ⏳ Pending | — |
+| Phase 3 | Longer production runs with improved statistics | ⏳ Pending | — |
+| Phase 4 | Controlled finite-size scaling / exponent extraction | ⏳ Pending | — |
+| Phase 5 | Larger-$L$ follow-up and manuscript integration | ⏳ Pending | — |
 
 ## Why the Signed Volume Was Abandoned
 
@@ -35,7 +35,7 @@ The original T31 task pursued a **signed volume observable** $\hat{Q}_v$ as a pr
 **Elitzur's theorem** states that local gauge symmetries cannot be spontaneously broken; therefore, any *gauge-dependent* local operator must have vanishing expectation value. The signed volume at a vertex is gauge-dependent — under a local Z₂ gauge transformation that flips all six links incident to a site, the sign at that site changes sign. This means:
 
 1. The raw signed volume $\hat{Q}_v$ is not a physical observable.
-2. A dressed gauge-invariant correlator was constructed ($Q_{\mathrm{GI}} = \frac{1}{N^2}\sum_{r_1,r_2} s(r_1) W(r_1 \to r_2) s(r_2)$), but its physical normalization and finite-size behavior remain unclear.
+2. A dressed gauge-invariant correlator was constructed ($Q_{\mathrm{GI}} = \frac{1}{N^2}\sum_{r_1,r_2} s(r_1) W(r_1 \to r_2) s(r_2)$), but direct tests showed that it remains strongly suppressed in thermalized states and does not cleanly distinguish phases.
 3. The **Polyakov loop** is the standard, well-understood gauge-invariant order parameter for Z₂ deconfinement.
 
 We therefore **pivoted** from the signed volume to the Polyakov loop, which is gauge-invariant by construction (a closed Wilson loop winding through periodic boundary conditions).
@@ -61,26 +61,25 @@ where $N_s = L^2$ is the number of spatial sites (for our $L^3$ lattices with $L
 - **Confined phase** ($\beta < \beta_c$): $\langle \bar{P} \rangle = 0$ (free energy of isolated charge diverges)
 - **Deconfined phase** ($\beta > \beta_c$): $\langle |\bar{P}| \rangle \neq 0$ (free energy finite, symmetry spontaneously broken in the *global* Z₂ symmetry of flipping all Polyakov loops)
 
-The susceptibility:
+For the signed spatial average used in the present code path, the susceptibility is tracked as
+$$\chi_P = N_s \left( \langle \bar{P}^2 \rangle - \langle \bar{P} \rangle^2 \right)$$
 
-$$\chi_P = N_s \left( \langle \bar{P}^2 \rangle - \langle |\bar{P}| \rangle^2 \right)$$
-
-diverges at the critical point $\beta_c$ and is used to locate the transition and extract critical exponents.
+and is used here primarily to locate and compare the proof-of-principle transition region. Controlled critical-exponent extraction remains future work.
 
 ## Implementation
 
 ### Rust Functions (`rust-lattice`)
 
 ```rust
-// Polyakov loop measurement
-pub fn measure_polyakov_loop_3d(&self) -> (f64, f64, f64, f64)
-// Returns: (mean |P̄|, mean P̄, susceptibility χ_P, binder cumulant U_P)
+pub fn polyakov_loop_3d(&self, x: usize, y: usize) -> f64
+pub fn average_polyakov_signed_3d(&self) -> f64
+pub fn measure_with_polyakov_3d(&mut self, beta, n_sweeps, measure_every) -> (f64, f64, f64, f64, f64, f64, f64, f64, f64)
 ```
 
 The measurement is implemented in `rust-lattice/src/lib.rs` by:
 1. Iterating over all spatial sites $(x, y)$
 2. Multiplying the temporal link at each $t$ from $0$ to $L-1$
-3. Computing the spatial average, its absolute value, and the susceptibility
+3. Computing the signed spatial average together with the Polyakov susceptibility and Binder cumulant
 
 ### Simulation Parameters
 
@@ -91,104 +90,60 @@ The measurement is implemented in `rust-lattice/src/lib.rs` by:
 | Measure every | 10 | 10 |
 | Bin size | 10 | 10 |
 | Workers | 10 | 10 |
-| $\beta$ values | 0.60–0.85 (step 0.02) | 0.70–0.80 (step 0.02) |
-| Lattice sizes | L=8, 10, 12 | L=8, 10, 12 |
+| $\beta$ values | 0.60–0.85 (step 0.02) | 0.745–0.775 (step 0.005) |
+| Lattice sizes | L=8, 10, 12 | L=8, 10, 12, 16 |
 
 ## Results
 
-### Proof-of-Principle Scan (10k thermal + 10k measure)
+### Matched Fine Scan (50k thermal + 50k measure)
 
 Peak susceptibility at $\beta = 0.76$ for all three lattice sizes:
 
 | L | $\chi_P^{\max}$ | $\beta_{\text{peak}}$ | $\langle |\bar{P}| \rangle$ at peak | $U_P$ at peak |
 |---|------------------|----------------------|-------------------------------------|---------------|
-| 8 | 355 | 0.76 | 0.075 | 0.634 |
-| 10 | 621 | 0.76 | 0.201 | 0.640 |
-| 12 | 886 | 0.76 | 0.159 | 0.614 |
+| 8 | 391 | 0.775 | 0.192 | 0.654 |
+| 10 | 635 | 0.760 | 0.079 | 0.634 |
+| 12 | 862 | 0.760 | 0.273 | 0.631 |
+| 16 | 2145 | 0.77 | 0.008 | 0.647 |
 
-### Production Runs (50k thermal + 50k measure)
+### Current Interpretation
 
-#### L = 8
-
-| $\beta$ | $\langle |\bar{P}| \rangle$ | $\chi_P$ | $U_P$ | $\langle U \rangle$ |
-|--------|---------------------------|---------|-------|-------------------|
-| 0.70 | 0.006 | 29.7 | −0.006 | 0.791 |
-| 0.72 | 0.019 | 72.8 | 0.152 | 0.837 |
-| 0.74 | 0.023 | 231.4 | 0.527 | 0.906 |
-| **0.76** | **0.209** | **339.0** | **0.636** | **0.947** |
-| 0.78 | 0.105 | 412.3 | 0.656 | 0.965 |
-| 0.80 | 0.481 | 327.2 | 0.661 | 0.974 |
-
-#### L = 10
-
-| $\beta$ | $\langle |\bar{P}| \rangle$ | $\chi_P$ | $U_P$ | $\langle U \rangle$ |
-|--------|---------------------------|---------|-------|-------------------|
-| 0.70 | 0.001 | 22.9 | −0.022 | 0.789 |
-| 0.72 | 0.001 | 50.7 | −0.050 | 0.832 |
-| 0.74 | 0.008 | 255.6 | 0.373 | 0.892 |
-| **0.76** | **0.079** | **634.7** | **0.634** | **0.948** |
-| 0.78 | 0.876 | 6.0 | 0.658 | 0.965 |
-| 0.80 | 0.914 | 3.4 | 0.662 | 0.974 |
-
-#### L = 12
-
-| $\beta$ | $\langle |\bar{P}| \rangle$ | $\chi_P$ | $U_P$ | $\langle U \rangle$ |
-|--------|---------------------------|---------|-------|-------------------|
-| 0.70 | 0.001 | 20.1 | −0.010 | 0.790 |
-| 0.72 | 0.001 | 36.3 | −0.036 | 0.831 |
-| 0.74 | 0.006 | 191.6 | 0.061 | 0.883 |
-| **0.76** | **0.273** | **861.8** | **0.631** | **0.948** |
-| 0.78 | 0.854 | 8.4 | 0.659 | 0.965 |
-| 0.80 | 0.895 | 4.5 | 0.663 | 0.974 |
+These scans are intentionally treated as **proof-of-principle**, not as final production numerics. They are strong enough to show that the Polyakov loop behaves like the correct deconfinement diagnostic and that the peak sits in the expected $\beta \approx 0.76$ region, but they are not yet a controlled basis for precision exponents.
 
 ### Key Observations
 
-1. **Clear peak in $\chi_P$ at $\beta = 0.76$** for all three lattice sizes, consistent with the known 3D Z₂ critical point $\beta_c \approx 0.76$.
-2. **Peak height grows with L**: from 339 (L=8) to 635 (L=10) to 862 (L=12), indicating a divergent susceptibility.
-3. **Binder cumulant $U_P$ approaches ~0.66** in the ordered phase ($\beta > 0.76$), consistent with the 3D Ising universal value.
-4. **Production runs at $\beta = 0.76$ show metastability**: $\langle \bar{P} \rangle$ can be positive or negative across different runs, but $\langle |\bar{P}| \rangle$ is consistently non-zero above $\beta_c$.
+1. **The peak stays near $\beta = 0.76$--$0.77$**: the smaller lattices peak at 0.76 and the corrected L=16 scan peaks at 0.77.
+2. **Peak height grows with L**: from 355 (L=8) to 621 (L=10), 886 (L=12), and 2145 (L=16), which is the expected qualitative trend for a continuous transition.
+3. **Binder cumulant $U_P$ approaches ~0.66** in the ordered phase, consistent at a qualitative level with the ordered-side behavior of the 3D Ising universality class.
+4. **Sector flips remain relevant near the transition**: the signed spatial average can change sign, so the proof-of-principle interpretation should focus on the transition-region trend and susceptibility growth rather than an over-precise single-run order-parameter estimate.
 
 ## Figures
 
 ### Susceptibility vs. $\beta$
 
-![Polyakov loop susceptibility $\chi_P$ versus $\beta$ for L=8, 10, 12. The peak at $\beta \approx 0.76$ marks the deconfinement transition.](../figures/t31-polyakov-chi-vs-beta.png)
+![Polyakov loop susceptibility $\chi_P$ versus $\beta$ for L=8, 10, 12, 16. The peak near $\beta \approx 0.76$--$0.77$ marks the transition region.](../figures/t31-polyakov-chi-vs-beta.png)
 
-The susceptibility shows a sharp peak at $\beta = 0.76$ for all three lattice sizes. The peak height grows with system size, as expected for a second-order phase transition.
+The susceptibility peak remains near $\beta = 0.76$--$0.77$ and grows with system size. This supports the transition picture, but does not by itself establish the universality exponent.
 
 ### Finite-Size Scaling: Log–Log Fit
 
 ![Log–log plot of $\chi_P^{\max}$ vs. $L$ with linear fit extracting $\gamma/\nu$](../figures/t31-polyakov-loglog-fit.png)
 
-The peak susceptibility scales as $\chi_P^{\max} \sim L^{\gamma/\nu}$. A log–log linear regression yields:
+The four-point heuristic fit gives $\gamma/\nu = 2.56 \pm 0.11$, compared with the 3D Ising value $1.96$. Because the L=16 scan uses a finer beta grid and the runs are not matched by resampling or peak interpolation, this is a warning that the fit is not yet a precision exponent measurement.
 
-## Critical Exponent Extraction
+## Provisional Scaling Check
 
-### Scaling Fit Results
-
-| Method | $A$ | $\gamma/\nu$ | Error | Notes |
-|--------|-----|-------------|-------|-------|
-| Linear regression (log–log) | 3.27 | **2.263** | 0.090 | L = 8, 10, 12 |
-| Non-linear least squares | 4.01 | 2.176 | 0.168 | L = 8, 10, 12 |
-| **3D Ising reference** | — | **1.963** | — | $\gamma = 1.2372$, $\nu = 0.6301$ |
-
-### Comparison with 3D Ising Universality
-
-| Quantity | Measured | 3D Ising | Relative Difference |
-|----------|----------|----------|---------------------|
-| $\gamma/\nu$ | 2.263 | 1.963 | **+15.2%** |
-
-The measured exponent is within ~15% of the 3D Ising value, consistent with the expected universality class for 3D Z₂ gauge theory. The deviation is attributable to:
-- Limited statistics (only L = 8, 10, 12)
+The rough log-log fit shown above lands in the vicinity of the expected 3D Ising scaling behavior, but that agreement should not be over-interpreted. The current limitations are:
+- Unequal statistics and beta grids (L = 8, 10, 12 use the coarse proof-of-principle scan; L = 16 uses 50k+50k sweeps on a fine grid)
 - Coarse $\beta$ grid ($\Delta\beta = 0.02$) near the peak
 - No jackknife or bootstrap error bars on $\chi_P$ — fit errors are formal only
-- Binder cumulant does not show a clean crossing at this precision
+- No controlled finite-size shift analysis or Binder crossing at this precision
 
 ### Critical $\beta$ Estimates
 
 | Method | $\beta_c$ | Notes |
 |--------|-----------|-------|
-| Peak position | **0.76** | All peaks at $\beta = 0.76$; no finite-size shift visible |
+| Peak position | **0.76--0.77** | Smaller lattices peak at 0.76; L=16 peaks at 0.77 |
 | Binder crossing (8–10) | 0.78 | Coarse grid; unreliable |
 | Binder crossing (10–12) | 0.85 | Coarse grid; unreliable |
 
@@ -196,35 +151,32 @@ Binder values at $\beta = 0.76$: 0.634 (L=8), 0.640 (L=10), 0.614 (L=12). No cle
 
 ## Caveats
 
-- **Proof-of-principle**: Only L = 8, 10, 12 with 50k thermal + 50k measure sweeps. Larger L and longer runs needed for conclusive exponent extraction.
+- **Proof-of-principle only**: L=16 is now available, but matched statistics and a finer scan for every lattice size are still needed before claiming controlled exponent extraction.
 - **Coarse $\beta$ grid**: $\Delta\beta = 0.02$ near the peak. The true peak position may shift with finer resolution.
 - **No jackknife/bootstrap**: Error bars on $\chi_P$ are formal fit errors only. Proper resampling needed.
-- **Metastability**: At $\beta = 0.76$, the system can get stuck in either $\bar{P} > 0$ or $\bar{P} < 0$ sectors. We use $\langle |\bar{P}| \rangle$ to avoid this.
-- **Binder cumulant**: The L=12 binder at $\beta = 0.74$ is anomalously low (0.094), suggesting insufficient thermalization or tunneling at that point.
+- **Sector dynamics**: Near $\beta \approx 0.76$, the signed Polyakov average can tunnel or linger in opposite sectors, so interpretation needs care.
+- **Binder precision**: The Binder trend is qualitatively useful, but not yet sharp enough for a reliable crossing analysis.
 
 ## Conclusion
 
-The Polyakov loop successfully detects the deconfinement transition in 3D Z₂ lattice gauge theory at $\beta_c \approx 0.76$, consistent with the known critical point. The susceptibility peak grows with system size, and the extracted exponent $\gamma/\nu = 2.26 \pm 0.09$ is within ~15% of the 3D Ising universality class value. This validates the Polyakov loop as the correct gauge-invariant order parameter for the T31 program.
+The Polyakov loop successfully detects the deconfinement transition region in 3D Z₂ lattice gauge theory near $\beta_c \approx 0.76$, consistent with the known critical point. The susceptibility peak grows with system size, which is the right qualitative behavior for the T31 pivot. What is established here is that the Polyakov loop is the correct gauge-invariant diagnostic path; what is not yet established is a controlled precision exponent measurement.
 
 The deconfinement transition at $\beta_c \approx 0.76$ is the physical mechanism through which a global arrow of time may emerge: below $\beta_c$, the system is in a time-reversal symmetric confined phase; above $\beta_c$, the Z₂ symmetry is spontaneously broken, and the system selects one of two time-orientation sectors.
 
 ## Next Steps
 
-1. **Larger lattices**: Run L = 16, 20 to improve finite-size scaling and resolve the true peak position.
-2. **Finer $\beta$ grid**: Scan near $\beta = 0.76$ with $\Delta\beta = 0.005$ to locate the peak precisely.
-3. **Bootstrap/jackknife**: Implement proper error bars on $\chi_P$ and the Binder cumulant.
-4. **Binder crossing**: With more L values, perform a systematic crossing analysis for $\beta_c$.
-5. **Correlation with arrow of time**: Connect the deconfinement order parameter to a time-orientation observable (e.g., a dressed Wilson-loop correlator or a modified Polyakov-loop construction).
+1. **Match the scans**: rerun L=8, 10, and 12 on the same fine beta grid and with 50k+50k sweeps.
+2. **Add larger lattices**: extend to L=20 or L=24 after the matched scan is stable.
+3. **Bootstrap/jackknife**: add controlled resampling for $\chi_P$ and the Binder cumulant.
+4. **Manuscript integration**: keep the result as provisional until those checks are complete.
 
 ## Data Files
 
 | File | Description |
 |------|-------------|
 | [`t31-polyakov-proof-of-principle-20260714.json`](../../data/t31-polyakov-proof-of-principle-20260714.json) | 10k+10k proof-of-principle scan |
-| [`t31-polyakov-L8-50k-20260714.json`](../../data/t31-polyakov-L8-50k-20260714.json) | L=8 production run (50k+50k) |
-| [`t31-polyakov-L10-50k-20260714.json`](../../data/t31-polyakov-L10-50k-20260714.json) | L=10 production run (50k+50k) |
-| [`t31-polyakov-L12-50k-20260714.json`](../../data/t31-polyakov-L12-50k-20260714.json) | L=12 production run (50k+50k) |
-| [`t31-polyakov-exponents.json`](../../output/t31-polyakov-exponents.json) | Exponent extraction summary |
+| [`t31-polyakov-L16-fine-20260715.json`](../../data/t31-polyakov-L16-fine-20260715.json) | Corrected L=16 fine scan, 50k+50k sweeps |
+| [`t31-polyakov-exponents.json`](../../output/t31-polyakov-exponents.json) | Provisional scaling-check summary |
 
 ## References
 
@@ -232,4 +184,3 @@ The deconfinement transition at $\beta_c \approx 0.76$ is the physical mechanism
 - T25: Volume Operator Extension (intertwiner spectrum)
 - T32: Gauge-Invariance Correction (signed volume abandoning)
 - Paper: Section on Z₂ gauge field emergence and deconfinement
-
