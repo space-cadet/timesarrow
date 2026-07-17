@@ -1,12 +1,20 @@
 # Edit History
 
-*Last Updated: 2026-07-15 18:35:42 IST*
+*Last Updated: 2026-07-18 00:35:09 IST*
 
 ---
 
 ## 2026-07-14
 
 ## 2026-07-15
+
+## 2026-07-18
+
+#### 00:35:09 IST - T33a/T35a: Recorded validated cell-complex foundation and local CZX obstruction.
+- Modified `rust-lattice/src/cell_complex.rs` - Corrected the diamond-lattice 2-skeleton construction and validation path used by T33a.
+- Modified `memory-bank/tasks/T33a.md`, `memory-bank/implementation/T33a-cell-complex-api.md`, `memory-bank/activeContext.md`, `memory-bank/tasks.md`, `memory-bank/progress.md`, and `memory-bank/session_cache.md` - Recorded the validated 2-skeleton scope and current task state.
+- Created `memory-bank/implementation-details/t35a-czx-microscopic-construction.md` - Documented the on-site CZX formula, the SU(2) intertwiner leakage result, and the many-vertex next gate.
+- Created `memory-bank/sessions/2026-07-18-early-morning.md` - Added the durable session record and verification summary.
 
 #### 18:35:42 IST - T31: Salvaged pre-pivot signed-volume calibration provenance without undoing the Polyakov pivot.
 - Modified `rust-lattice/src/main.rs` - Added `--cold-start` for the archived gauge-invariant signed-volume path and labeled signed-volume JSON output with `signedVolumeKind` and `initialState`.

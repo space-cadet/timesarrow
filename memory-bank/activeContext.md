@@ -1,10 +1,14 @@
 # timesarrow — Active Context
 
-*Updated: 2026-07-17*
+*Updated: 2026-07-18*
 
-## T33a Complete ✅
+## T33a Foundation Validated 🔄
 
-General 4-valent 3D cell-complex API built. See `implementation/T33a-cell-complex-api.md` for details.
+The reusable Z₂ boundary-operator API and connected diamond 2-skeleton are built and tested. Diamond 3-cells and general-complex Monte Carlo integration remain open; see `implementation/T33a-cell-complex-api.md` for the exact boundary.
+
+## T35a Local CZX Audit Started 🔄
+
+`ts-quantum` now contains a controlled-Z primitive and a local four-qubit CZX audit. The literal CZX on-site operator squares to identity but leaks out of the $SU(2)$ intertwiner subspace, confirming that the LQG-CZX relation remains structural rather than a literal operator action. The next T35a gate is a minimal many-vertex candidate state, not a toric-code projector.
 
 ## What's Next
 

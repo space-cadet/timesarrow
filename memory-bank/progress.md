@@ -1,6 +1,6 @@
 # timesarrow — Progress Tracker
 
-*Updated: 2026-07-16 03:30 IST*
+*Updated: 2026-07-18 00:35 IST*
 
 ## T33–T35: Quantum-Geometric Numerics — NEW 🔄
 
@@ -11,13 +11,15 @@
 - T33b: Diamond lattice Polyakov scan (⏳ PENDING, depends on T33a)
 - T34a: Configuration snapshot output mode (⏳ PENDING)
 - T34b: Flux loop analysis (⏳ PENDING, depends on T34a)
-- T35a: Microscopic construction audit (⏳ CRITICAL, depends on T33a)
+- T35a: Microscopic construction audit (🔄 IN PROGRESS; local audit complete)
 
 **Plan:** `memory-bank/implementation-details/t33-t35-quantum-geometric-plan.md`
 
 **Key principle:** Gauge-transition numerics are control physics; the explicit microscopic CZX realization is the actual unresolved claim.
 
-**Blockers:** T33a must be complete before T33b and T35a can start. T34a is independent and can run in parallel.
+**2026-07-18 checkpoint:** T33a's validated 2-skeleton foundation is in place. The local CZX audit can proceed independently of a final 3-cell choice: the literal four-qubit CZX operator is involutory but leaks from the four-spin-half SU(2) singlet subspace. The next T35a gate is a minimal many-vertex candidate state, not a claim of an on-site microscopic realization.
+
+**Blockers:** T33b still requires general-complex gauge integration after T33a. T35a requires a candidate many-vertex state and its symmetry action; T34a remains independent.
 
 ---
 
