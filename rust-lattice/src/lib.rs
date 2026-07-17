@@ -2,6 +2,8 @@ use rand::prelude::*;
 use rand_xoshiro::Xoshiro256PlusPlus;
 use serde::{Deserialize, Serialize};
 
+pub mod cell_complex;
+
 fn default_dimension() -> usize {
     2
 }

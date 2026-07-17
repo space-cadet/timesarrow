@@ -18,21 +18,21 @@ This is the Memory Bank for the Sage (灵剑) OpenClaw workspace.
 | T18 | T18 | 🔄 | HIGH | 2026-05-06 | - | [Details](tasks/T18.md) |
 | T2 | T2 | 🔄 | MEDIUM | 2026-04-16 | - | [Details](tasks/T2.md) |
 | T20-Phase2-sharp-transition | T20-Phase2-sharp-transition | ⏸️ | MEDIUM | 2026-04-16 | - | [Details](tasks/T20-Phase2-sharp-transition.md) |
-| T20-TA | T20-TA: Z₂ Lattice Gauge Theory Monte Carlo | ⏸️ | MEDIUM | 2026-06-24 | - | [Details](tasks/T20-TA.md) |
-| T20-validation-plan | T20 Validation Plan — 2026-06-26 Session (COMPLETE) | ⏸️ | MEDIUM | 2026-04-16 | - | [Details](tasks/T20-validation-plan.md) |
+| T20-TA | T20-TA: Z2 Lattice Gauge Theory Monte Carlo | ⏸️ | MEDIUM | 2026-06-24 | - | [Details](tasks/T20-TA.md) |
+| T20-validation-plan | T20 Validation Plan - 2026-06-26 Session (COMPLETE) | ⏸️ | MEDIUM | 2026-04-16 | - | [Details](tasks/T20-validation-plan.md) |
 | T21 | T21 | 🔄 | HIGH | 2026-06-24 | - | [Details](tasks/T21.md) |
-| T21-performance-optimization | T21 — Performance Optimization: Fast Monte Carlo Kernel | ⏸️ | MEDIUM | 2026-06-25 | - | [Details](tasks/T21-performance-optimization.md) |
-| T21-worker-threads-checkpointing | T21 — Worker Threads + Checkpointing | ⏸️ | MEDIUM | 2026-04-16 | - | [Details](tasks/T21-worker-threads-checkpointing.md) |
+| T21-performance-optimization | T21 - Performance Optimization: Fast Monte Carlo Kernel | ⏸️ | MEDIUM | 2026-06-25 | - | [Details](tasks/T21-performance-optimization.md) |
+| T21-worker-threads-checkpointing | T21 - Worker Threads + Checkpointing | ⏸️ | MEDIUM | 2026-04-16 | - | [Details](tasks/T21-worker-threads-checkpointing.md) |
 | T22 | T22 | 🔄 | HIGH | 2026-06-24 | - | [Details](tasks/T22.md) |
 | T23 | T23 | 🔄 | MEDIUM | 2026-06-24 | - | [Details](tasks/T23.md) |
 | T24 | T24 | 🔄 | MEDIUM | 2026-06-24 | - | [Details](tasks/T24.md) |
 | T25 | T25: Volume Operator Extension | ⏸️ | MEDIUM | 2026-06-24 | - | [Details](tasks/T25.md) |
 | T26 | T26 | 🔄 | LOW | 2026-06-24 | - | [Details](tasks/T26.md) |
-| T33a | T33a: General 4-Valent 3D Cell-Complex API | 🔄 | HIGH | 2026-07-16 | - | [Details](tasks/T33a.md) |
-| T33b | T33b: Diamond Lattice Polyakov Scan | ⏳ | HIGH | — | T33a | [Details](tasks/T33b.md) |
-| T34a | T34a: Configuration Snapshot Output Mode | ⏳ | HIGH | — | - | [Details](tasks/T34a.md) |
-| T34b | T34b: Flux Loop Analysis | ⏳ | HIGH | — | T34a | [Details](tasks/T34b.md) |
-| T35a | T35a: Microscopic Construction Audit | ⏳ | CRITICAL | — | T33a | [Details](tasks/T35a.md) |
+| T33a | T33a: General 4-Valent 3D Cell-Complex API | ✅ | HIGH | 2026-07-17 | — | [Details](tasks/T33a.md) |
+| T33b | T33b: Diamond Lattice Polyakov Scan | ⏳ | HIGH | - | T33a | [Details](tasks/T33b.md) |
+| T34a | T34a: Configuration Snapshot Output Mode | ⏳ | HIGH | - | - | [Details](tasks/T34a.md) |
+| T34b | T34b: Flux Loop Analysis | ⏳ | HIGH | - | T34a | [Details](tasks/T34b.md) |
+| T35a | T35a: Microscopic Construction Audit | ⏳ | CRITICAL | - | T33a | [Details](tasks/T35a.md) |
 
 ## Completed Tasks
 
@@ -78,11 +78,11 @@ T19: T19
 T2: T2
 T20: T20
 T20-Phase2-sharp-transition: T20-Phase2-sharp-transition
-T20-TA: T20-TA: Z₂ Lattice Gauge Theory Monte Carlo
-T20-validation-plan: T20 Validation Plan — 2026-06-26 Session (COMPLETE)
+T20-TA: T20-TA: Z2 Lattice Gauge Theory Monte Carlo
+T20-validation-plan: T20 Validation Plan - 2026-06-26 Session (COMPLETE)
 T21: T21
-T21-performance-optimization: T21 — Performance Optimization: Fast Monte Carlo Kernel
-T21-worker-threads-checkpointing: T21 — Worker Threads + Checkpointing
+T21-performance-optimization: T21 - Performance Optimization: Fast Monte Carlo Kernel
+T21-worker-threads-checkpointing: T21 - Worker Threads + Checkpointing
 T22: T22
 T23: T23
 T24: T24
