@@ -17,7 +17,7 @@
 
 **Key principle:** Gauge-transition numerics are control physics; the explicit microscopic CZX realization is the actual unresolved claim.
 
-**2026-07-18 checkpoint:** T33a's validated 2-skeleton foundation is in place. The local CZX audit can proceed independently of a final 3-cell choice: the literal four-qubit CZX operator is involutory but leaks from the four-spin-half SU(2) singlet subspace. The next T35a gate is a minimal many-vertex candidate state, not a claim of an on-site microscopic realization.
+**2026-07-18 documentation restoration:** T33a's module docs restored with physics rationale, CSR field comments, boundary-operator notation, and orientation note. Benchmarked BTreeSet matmul: 2.8× faster than dense-buffer at 512×1024 (L≥3 diamond). Terra's valid improvements (try_new, Eq derives, idiomatic style) preserved. 45 tests pass.
 
 **Blockers:** T33b still requires general-complex gauge integration after T33a. T35a requires a candidate many-vertex state and its symmetry action; T34a remains independent.
 

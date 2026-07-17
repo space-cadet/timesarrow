@@ -9,10 +9,12 @@
 
 **T35a local audit (2026-07-18):** `ts-quantum` now implements the on-site four-qubit CZX candidate and an SU(2) intertwiner-subspace audit. The operator satisfies $U_{\mathrm{CZX}}^2=I$ on the full 16-dimensional Hilbert space, but it does not preserve the four-spin-half singlet subspace. This is a useful obstruction, not a microscopic realization claim.
 
-**Started**: 2026-07-18 00:35:09 IST
-**Focus Task**: T35a: Microscopic CZX construction audit
+**T33a doc restoration (2026-07-18 00:52 IST):** Restored physics rationale, CSR field comments, boundary-operator notation, and orientation note to `rust-lattice/src/cell_complex.rs` after Terra review stripped them. Benchmarked BTreeSet matmul: 2.8× faster than dense-buffer at 512×1024. Terra's valid improvements preserved. Committed as `a59d692`.
+
+**Started**: 2026-07-18 00:52 IST
+**Focus Task**: T33a: Documentation restoration and benchmark validation
 **Session File**: `sessions/2026-07-18-early-morning.md`
-**Status**: 🔄 T33a foundation and T35a local audit in progress
+**Status**: ✅ T33a documentation restoration complete; T35a local audit in progress
 
 ## Overview
 

@@ -1,7 +1,7 @@
 # T33a Implementation: General 4-Valent 3D Cell-Complex API
 
 *Created: 2026-07-17*
-*Last Updated: 2026-07-18*
+*Last Updated: 2026-07-18 00:53 IST*
 *Status: 🔄 Foundation complete; diamond 3-cells and simulation integration remain open*
 
 ## What Was Built
@@ -42,7 +42,7 @@ Generates the periodic diamond **2-skeleton** with L×L×L conventional cells:
 
 ### Design Decisions
 
-1. **Sparse construction and products**: Incidence operators and chain checks avoid dense V×E or E×P buffers. Rank computation still uses a dense work buffer and is for topology checks, not the Monte Carlo hot path.
+1. **Sparse construction and products**: Incidence operators and chain checks avoid dense V×E or E×P buffers. Rank computation still uses a dense work buffer and is for topology checks, not the Monte Carlo hot path. The `matmul` implementation uses a `BTreeSet` per row for XOR toggle accumulation; benchmarked against a dense-buffer alternative, it is 2.8× faster at 512×1024 (typical L≥3 diamond lattice) and 1.8× faster at 216×432, only losing at 64×128 where the dense buffer fits in cache.
 2. **Validated construction**: `try_new()` returns a precise error for dimensional or chain-complex failures; `new()` is the convenience panic-on-invalid wrapper.
 3. **Modular lattice generation**: Coordinate selection, bond generation, adjacency creation, and face enumeration are separate helpers, so a different cellulation can reuse the core algebra.
 4. **Explicit 3-cell boundary**: The diamond generator creates an empty ∂₃. It must not be described as a closed 3-manifold until a specific 3-cell decomposition is supplied.
@@ -88,8 +88,18 @@ Users can:
 
 ## Files Modified
 
-- `rust-lattice/src/cell_complex.rs` — Modular boundary-operator and diamond-generation module
+- `rust-lattice/src/cell_complex.rs` — Modular boundary-operator and diamond-generation module, with restored physics rationale and API documentation
 - `rust-lattice/src/lib.rs` — Added `pub mod cell_complex`
+
+## Documentation Quality
+
+The module documentation was restored after a Terra (GPT) review that stripped physics rationale. The restored docs include:
+- Module-level design rationale explaining why non-Cartesian lattices need explicit cell-complex specification (valence does not determine plaquettes or 3-cells)
+- CSR field comments (`indptr`, `indices`) for readers unfamiliar with sparse matrix formats
+- Method docs with boundary-operator notation (∂₁, ∂₂, ∂₃) and physics context
+- Note on orientation: over ℤ₂ signs collapse to incidence, but the structure is still oriented; extension to ℤ or ℤₙ would require signed entries
+
+**Reference:** `memory-bank/edits/2026-07-18/005300-t33a-doc-restoration.md`
 
 ## References
 
