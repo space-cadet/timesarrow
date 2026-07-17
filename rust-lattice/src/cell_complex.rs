@@ -1,23 +1,53 @@
-//! Boundary-operator representation for Z2 lattice gauge complexes.
+//! General oriented cell-complex representation for lattice gauge theory.
 //!
-//! The module stores cell incidences over Z2.  Orientations are irrelevant over
-//! Z2, so each non-zero boundary entry is represented by its incidence alone.
-//! A `CellComplex` is accepted only when its supplied boundary maps form a
-//! chain complex: d1*d2 = 0 and d2*d3 = 0.
+//! This module provides a physics-agnostic, ground-truth-oriented API for
+//! 3D cell complexes. The caller supplies boundary operators over ℤ₂, and
+//! the module verifies that they satisfy the required algebraic identities
+//! (plaquette closure, Bianchi identity) and computes homology ranks.
+//!
+//! ## Design Rationale
+//!
+//! The existing `Z2GaugeField` hardcodes Cartesian lattices (square, cubic,
+//! hypercubic). Non-Cartesian lattices like the diamond lattice have
+//! non-planar plaquettes and require explicit cell-complex specification.
+//!
+//! This module does NOT derive the cell complex from a graph alone.
+//! Valence alone does not determine plaquettes or 3-cells. Instead, the
+//! boundary operators are accepted as ground truth and validated.
+//!
+//! ## Key Types
+//!
+//! - `SparseBoolMatrix` — CSR sparse matrix over ℤ₂ (entries are 0/1)
+//! - `CellComplex` — oriented 3D cell complex with boundary operators ∂₁, ∂₂, ∂₃
+//! - `Homology` — computed homology ranks H₀, H₁, H₂, H₃
+//!
+//! Over ℤ₂, orientations collapse to incidence (signs are irrelevant), but the
+//! structure is still that of an oriented chain complex. Extension to ℤ or ℤₙ
+//! would require signed entries.
 
 use std::collections::{BTreeSet, HashMap, HashSet};
 
-/// Compressed sparse row matrix over Z2.  Every stored entry has value one.
+// =============================================================================
+// SPARSE BOOLEAN MATRIX (CSR format over ℤ₂)
+// =============================================================================
+
+/// Compressed Sparse Row (CSR) matrix over ℤ₂.
+///
+/// All non-zero entries are implicitly 1. Only the sparsity pattern is stored.
+/// Matrix dimensions: `n_rows × n_cols`.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct SparseBoolMatrix {
     n_rows: usize,
     n_cols: usize,
+    /// Row pointers: `indptr[i]` is the start index of row `i` in `indices`.
+    /// Length = n_rows + 1, with `indptr[n_rows] = nnz`.
     indptr: Vec<usize>,
+    /// Column indices of non-zero entries. Length = nnz.
     indices: Vec<usize>,
 }
 
 impl SparseBoolMatrix {
-    /// Create an empty matrix with the given dimensions.
+    /// Create an empty sparse matrix with given dimensions.
     pub fn empty(n_rows: usize, n_cols: usize) -> Self {
         Self {
             n_rows,
@@ -27,7 +57,10 @@ impl SparseBoolMatrix {
         }
     }
 
-    /// Create a sparse matrix from row-major dense data.
+    /// Create from dense boolean matrix (row-major).
+    ///
+    /// # Panics
+    /// Panics if `dense.len() != n_rows * n_cols`.
     pub fn from_dense(n_rows: usize, n_cols: usize, dense: &[bool]) -> Self {
         assert_eq!(dense.len(), n_rows * n_cols);
         let rows = (0..n_rows)
@@ -41,6 +74,9 @@ impl SparseBoolMatrix {
     }
 
     /// Create a sparse matrix from its non-zero column indices, row by row.
+    ///
+    /// Rows are sorted and deduplicated; panics on out-of-range or duplicate
+    /// column indices within a single row.
     pub fn from_row_indices(n_rows: usize, n_cols: usize, mut rows: Vec<Vec<usize>>) -> Self {
         assert_eq!(
             rows.len(),
@@ -91,18 +127,16 @@ impl SparseBoolMatrix {
         Self::from_row_indices(n_rows, n_cols, rows)
     }
 
-    pub fn n_rows(&self) -> usize {
-        self.n_rows
-    }
+    /// Number of rows.
+    pub fn n_rows(&self) -> usize { self.n_rows }
 
-    pub fn n_cols(&self) -> usize {
-        self.n_cols
-    }
+    /// Number of columns.
+    pub fn n_cols(&self) -> usize { self.n_cols }
 
-    pub fn nnz(&self) -> usize {
-        self.indices.len()
-    }
+    /// Number of non-zero entries.
+    pub fn nnz(&self) -> usize { self.indices.len() }
 
+    /// Iterator over non-zero column indices in a given row.
     pub fn row_iter(&self, row: usize) -> impl Iterator<Item = usize> + '_ {
         assert!(row < self.n_rows, "row index out of range");
         self.indices[self.indptr[row]..self.indptr[row + 1]]
@@ -110,10 +144,12 @@ impl SparseBoolMatrix {
             .copied()
     }
 
+    /// Iterator over (row, col) pairs of all non-zero entries.
     pub fn entries(&self) -> impl Iterator<Item = (usize, usize)> + '_ {
         (0..self.n_rows).flat_map(move |row| self.row_iter(row).map(move |col| (row, col)))
     }
 
+    /// Compute the transpose.
     pub fn transpose(&self) -> Self {
         let mut rows = vec![Vec::new(); self.n_cols];
         for (row, col) in self.entries() {
@@ -122,7 +158,9 @@ impl SparseBoolMatrix {
         Self::from_row_indices(self.n_cols, self.n_rows, rows)
     }
 
-    /// Matrix-vector product over Z2.
+    /// Matrix-vector product over ℤ₂: y = A · x (mod 2).
+    ///
+    /// `x` must have length `n_cols`, result has length `n_rows`.
     pub fn matvec(&self, x: &[bool]) -> Vec<bool> {
         assert_eq!(x.len(), self.n_cols);
         (0..self.n_rows)
@@ -130,7 +168,14 @@ impl SparseBoolMatrix {
             .collect()
     }
 
-    /// Sparse matrix-matrix product over Z2.
+    /// Sparse matrix-matrix product over ℤ₂: C = A · B (mod 2).
+    ///
+    /// Uses a BTreeSet per row to accumulate XOR toggles. This is efficient
+    /// for very sparse boundary operators (the typical case in cell complexes),
+    /// where the dense-buffer alternative would waste time scanning zeroes.
+    ///
+    /// # Panics
+    /// Panics if `self.n_cols != other.n_rows`.
     pub fn matmul(&self, other: &Self) -> Self {
         assert_eq!(self.n_cols, other.n_rows, "incompatible matrix dimensions");
         let mut rows = Vec::with_capacity(self.n_rows);
@@ -149,7 +194,9 @@ impl SparseBoolMatrix {
         Self::from_row_indices(self.n_rows, other.n_cols, rows)
     }
 
-    /// Rank over Z2.  This materializes a dense work buffer and is intended for
+    /// Compute the rank over ℤ₂ using Gaussian elimination.
+    ///
+    /// This materializes a dense work buffer and is intended for
     /// topology checks, not for the Monte Carlo hot path.
     pub fn rank_z2(&self) -> usize {
         let mut rows = vec![vec![false; self.n_cols]; self.n_rows];
@@ -187,7 +234,19 @@ pub enum CellComplexError {
     CellBoundaryIsNotClosed,
 }
 
-/// A three-dimensional cell complex represented by its Z2 boundary maps.
+// =============================================================================
+// CELL COMPLEX
+// =============================================================================
+
+/// An oriented 3D cell complex with boundary operators over ℤ₂.
+///
+/// The complex is specified by three boundary operators:
+/// - `d1`: ∂₁ — edges → vertices (n_v × n_e)
+/// - `d2`: ∂₂ — plaquettes → edges (n_e × n_p)
+/// - `d3`: ∂₃ — 3-cells → plaquettes (n_p × n_c)
+///
+/// These must satisfy ∂₁∂₂ = 0 (plaquettes are closed) and ∂₂∂₃ = 0 (Bianchi).
+/// The constructor verifies these identities.
 #[derive(Clone, Debug)]
 pub struct CellComplex {
     d1: SparseBoolMatrix,
@@ -232,42 +291,45 @@ impl CellComplex {
 
     /// Construct a validated chain complex, panicking with a clear error if the
     /// supplied incidence data are invalid.  Prefer `try_new` for external data.
+    ///
+    /// # Arguments
+    /// - `d1`: n_v × n_e matrix, column j is the boundary of edge j (two vertices)
+    /// - `d2`: n_e × n_p matrix, column j is the boundary of plaquette j (edges around it)
+    /// - `d3`: n_p × n_c matrix, column j is the boundary of 3-cell j (plaquettes around it)
+    ///
+    /// # Panics
+    /// Panics if dimensions are inconsistent (e.g., d1.n_cols != d2.n_rows).
     pub fn new(d1: SparseBoolMatrix, d2: SparseBoolMatrix, d3: SparseBoolMatrix) -> Self {
         Self::try_new(d1, d2, d3).expect("invalid cell-complex boundary operators")
     }
 
-    pub fn n_vertices(&self) -> usize {
-        self.d1.n_rows()
-    }
+    /// Number of vertices (0-cells).
+    pub fn n_vertices(&self) -> usize { self.d1.n_rows() }
 
-    pub fn n_edges(&self) -> usize {
-        self.d1.n_cols()
-    }
+    /// Number of edges (1-cells).
+    pub fn n_edges(&self) -> usize { self.d1.n_cols() }
 
-    pub fn n_plaquettes(&self) -> usize {
-        self.d2.n_cols()
-    }
+    /// Number of plaquettes (2-cells).
+    pub fn n_plaquettes(&self) -> usize { self.d2.n_cols() }
 
-    pub fn n_cells(&self) -> usize {
-        self.d3.n_cols()
-    }
+    /// Number of 3-cells.
+    pub fn n_cells(&self) -> usize { self.d3.n_cols() }
 
-    pub fn d1(&self) -> &SparseBoolMatrix {
-        &self.d1
-    }
+    /// Boundary operator ∂₁: edges → vertices.
+    pub fn d1(&self) -> &SparseBoolMatrix { &self.d1 }
 
-    pub fn d2(&self) -> &SparseBoolMatrix {
-        &self.d2
-    }
+    /// Boundary operator ∂₂: plaquettes → edges.
+    pub fn d2(&self) -> &SparseBoolMatrix { &self.d2 }
 
-    pub fn d3(&self) -> &SparseBoolMatrix {
-        &self.d3
-    }
+    /// Boundary operator ∂₃: 3-cells → plaquettes.
+    pub fn d3(&self) -> &SparseBoolMatrix { &self.d3 }
 
+    /// Verify that ∂₁∂₂ = 0 (every plaquette is a closed edge cycle).
     pub fn check_plaquette_closure(&self) -> bool {
         self.d1.matmul(&self.d2).nnz() == 0
     }
 
+    /// Verify that ∂₂∂₃ = 0 (Bianchi identity: boundary of 3-cell has zero boundary).
     pub fn check_bianchi_identity(&self) -> bool {
         self.d2.matmul(&self.d3).nnz() == 0
     }
