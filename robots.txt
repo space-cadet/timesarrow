@@ -1,1 +1,0 @@
-Sitemap: https://quantumofgravity.com/projects/timesarrow/numerics/sitemap.xml
