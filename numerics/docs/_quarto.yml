@@ -12,7 +12,7 @@ project:
 website:
   title: "TimesArrow"
   description: "Numerical simulations for time reversal symmetry in quantum gravity"
-  site-url: https://quantumofgravity.com/timesarrow
+  site-url: https://quantumofgravity.com/projects/timesarrow/numerics
   repo-url: https://github.com/space-cadet/timesarrow
   navbar:
     left:

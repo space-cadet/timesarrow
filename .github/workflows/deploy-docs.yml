@@ -1,0 +1,52 @@
+name: Deploy TimesArrow Docs
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'numerics/docs/**'
+      - 'theory/pages/**'
+      - '.github/workflows/deploy-docs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render Quarto Numerics Docs
+        run: |
+          cd numerics/docs
+          quarto render
+
+      - name: Copy Theory Dashboard into Output
+        run: |
+          mkdir -p numerics/docs/_site/theory
+          cp theory/pages/dashboard.html numerics/docs/_site/theory/index.html
+          # Also copy any theory docs
+          mkdir -p numerics/docs/_site/theory/docs
+          cp -r theory/docs/* numerics/docs/_site/theory/docs/ || true
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./numerics/docs/_site
+          publish_branch: gh-pages
+          cname: ""  # Custom domain is handled separately
