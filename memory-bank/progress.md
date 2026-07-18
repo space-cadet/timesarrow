@@ -2,6 +2,22 @@
 
 *Updated: 2026-07-18 00:35 IST*
 
+## T35a: CZX Microscopic Construction — Milestone Reached (2026-07-19)
+
+**Status:** Many-body construction complete — single plaquette, open plaquette boundary, 2×2 torus (16 qubits).
+
+**Verified:**
+- Single plaquette: $|\Psi\rangle = (|0000\rangle + |1111\rangle)/\sqrt2$ is exact +1 eigenvector of $U_{CZX} = X^{\otimes 4} \prod CZ$
+- Open plaquette: boundary signature with relative sign ($\langle\Psi|U|\Psi\rangle = 0$)
+- 2×2 torus: global $\prod_s U_{CZX,s}$ preserves state; single-site $U_{CZX,s}$ maps to orthogonal state
+- CZ cancellation on shared links is the mechanism
+
+**Code:** `numerics/scripts/t35a-czx-construction-verify.py` (numpy exact state-vector).
+
+**Open threads:** boundary MPUO / 3-cocycle computation, parent Hamiltonian, ts-quantum cross-check, 3D generalization to diamond lattice.
+
+---
+
 ## T33–T35: Quantum-Geometric Numerics — NEW 🔄
 
 **Status:** Created 2026-07-16

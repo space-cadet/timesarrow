@@ -102,11 +102,67 @@ This is computationally tractable but requires the correct 2D analysis first.
 3. **The mapping between vertex-qubit and edge-qubit pictures is non-trivial** — this is the core of the problem
 4. **In 2D, the gauge-invariant state is a CZX eigenstate** — but only in the toy model; the full 4-valent case is pending
 
-## Next Steps
 
-1. **Redo 2D with proper 4-valent vertices** — construct the full intertwiner space (2D per vertex) and test overlap with CZX +1 eigenspace
-2. **Clarify the mapping** — how does the vertex-qubit CZX relate to the edge-qubit gauge constraints?
-3. **3D hexagonal plaquette** — once 2D is understood, generalize to 3D diamond lattice
+## Explicit Construction Results (2026-07-18 Session)
+
+### Single Plaquette
+
+The state $|\Psi\rangle_{\rm plaq} = \tfrac{1}{\sqrt2}(|0000\rangle + |1111\rangle)$ is an exact +1 eigenvector of $U_{CZX} = X^{\otimes 4} \prod CZ$:
+
+| Check | Result |
+|---|---|
+| $\langle\Psi|U_{CZX}|\Psi\rangle$ | $= 1$ |
+| $\|U_{CZX}|\Psi\rangle - |\Psi\rangle\|$ | $= 0$ |
+| $U_{CZX}^2 = \mathbb{1}$, Hermitian | True |
+
+**Mechanism:**
+1. $U_{CZ}$ is diagonal — contributes $(-1)$ only when both neighbors are $|1\rangle$.
+   - $|0000\rangle$: phase $(-1)^0 = +1$
+   - $|1111\rangle$: all 4 edges active → phase $(-1)^4 = +1$ (even count essential)
+2. $U_X = X^{\otimes 4}$ swaps the two GHZ components.
+3. Net: $U_{CZX}|\Psi\rangle = |\Psi\rangle$.
+
+### Open Plaquette (Boundary Signature)
+
+With 3 edges (dangling ends), the symmetry is **broken**:
+$$U_{CZX}^{\rm open}|\Psi\rangle = \tfrac{1}{\sqrt2}(-|0000\rangle + |1111\rangle) \perp |\Psi\rangle, \qquad \langle\Psi|U|\Psi\rangle = 0$$
+
+The $|1111\rangle$ component gets $(-1)^3 = -1$ vs $+1$ for $|0000\rangle$ — a **relative sign**. This is the single-cell shadow of the non-on-site edge MPUO and the nontrivial 3-cocycle.
+
+### 2×2 Torus (16 Qubits)
+
+**Setup:** qubit $(p,s)$ = spin of site $s$ in plaquette $p$. On the 2×2 torus every plaquette touches all four sites.
+$$|\Psi\rangle = \bigotimes_{p=0}^{3}\tfrac{1}{\sqrt2}\big(|0000\rangle_p + |1111\rangle_p\big)$$
+
+**Critical finding:** the symmetry is the **global** operator $U_{CZX} = \prod_s U_{CZX,s}$. A single-site $U_{CZX,s}$ alone does **not** preserve the state.
+
+| Operation | Result |
+|---|---|
+| Single-site $U_{CZX,s}$ | maps $|\Psi\rangle$ to an **orthogonal** state ($\|U_s|\Psi\rangle - |\Psi\rangle\| = \sqrt2$) |
+| Global $\prod_s U_{CZX,s}$ | **invariant** ($\langle\Psi|U|\Psi\rangle = 1$, difference norm $= 0$) |
+| Global $U_X$ alone | invariant (flips all 4 corners of each plaquette) |
+| Global $U_{CZ}$ alone | invariant (each shared link gets CZ twice — cancels) |
+
+**CZ cancellation mechanism:** Between every two neighboring plaquettes, CZ is applied twice (once at each end of the shared link). Since spins within a plaquette are perfectly correlated, the two CZ's cancel. Only the **dressed global product** is the symmetry — which is exactly what makes the SPT nontrivial: the state looks like a trivial product of plaquettes, but the symmetry cannot be disentangled on-site, and the CZ-pair cancellation fails at boundaries.
+
+### Code
+
+The exact numerical verification is in `numerics/scripts/t35a-czx-construction-verify.py` (numpy, exact state-vector arithmetic).
+
+## Updated Status
+
+- ✅ Single plaquette: explicit construction and verification
+- ✅ 2×2 torus: global symmetry verified, single-site obstruction confirmed
+- ✅ Boundary signature: open plaquette shows relative sign
+- ⬜ Boundary MPUO: cut torus open, extract $\tilde U_{CZX}$, show non-on-site, compute 3-cocycle
+- ⬜ Parent Hamiltonian: build commuting terms, verify unique gapped ground state
+- ⬜ ts-quantum cross-check: compare gate-by-gate with `src/models/czx.ts`
+
+## Next Steps (Revised)
+
+1. **Boundary MPUO** — cut the torus open, extract effective edge symmetry, show it cannot be factored on-site; compute the 3-cocycle of $H^3(\mathbb{Z}_2, U(1)) = \mathbb{Z}_2$ explicitly.
+2. **Parent Hamiltonian** — build local commuting projector terms that stabilize the CZX state; verify unique gapped ground state by exact diagonalization on small lattices.
+3. **3D generalization** — once the 2D boundary physics is understood, extend to the diamond lattice (hexagonal plaquettes, 6 vertices).
 
 ## Open Questions
 

@@ -1,17 +1,17 @@
 # Session Cache
 
 *Created: 2026-07-18 17:06:47 IST*
-*Last Updated: 2026-07-18 17:06:47 IST*
+*Last Updated: 2026-07-19 01:05 IST*
 
-**Started**: 2026-06-26 01:28:23 IST
-**Focus Task**: T20: T20
-**Session File**: `sessions/2026-06-26-night.md`
+**Started**: 2026-07-19 00:57 IST
+**Focus Task**: T35a: CZX Microscopic Construction Audit
+**Session File**: `sessions/2026-07-19-night.md`
 **Status**: 🔄 Active: 9, Paused: 9, Completed: 16
 
 ## Overview
 
 - Active: 9 | Paused: 9 | Completed: 16
-- Last Session: 2026-06-26
+- Last Session: 2026-07-19-night
 - Current Period: night
 
 ## Active Tasks
@@ -72,12 +72,20 @@
 **Progress**:
 [Details](tasks/T26.md)
 
-### T35a: Deployed theory folder to quantumofgravity.com VPS and linked from main project page
+### T35a: CZX Microscopic Construction Audit
 **Status:** 🔄 **IN PROGRESS**
 **Started:** 2026-07-18
-**Context**: Deployed theory folder to quantumofgravity.com VPS and linked from main project page
+**Context**: Many-body construction complete — single plaquette, open boundary, 2×2 torus verified numerically. Boundary MPUO and parent Hamiltonian remain open.
+**Files**: `numerics/scripts/t35a-czx-construction-verify.py`, `theory/docs/czx-intertwiner-analysis.md`
 **Progress**:
-Deployed theory folder to quantumofgravity.com VPS and linked from main project page
+1. ✅ Local operator audit (ts-quantum)
+2. ✅ Single plaquette construction and verification
+3. ✅ Open plaquette boundary signature
+4. ✅ 2×2 torus global symmetry verification
+5. ⬜ Boundary MPUO / 3-cocycle
+6. ⬜ Parent Hamiltonian
+7. ⬜ ts-quantum cross-check
+8. ⬜ 3D generalization
 
 ## Completed Tasks
 
@@ -163,9 +171,9 @@ Deployed theory folder to quantumofgravity.com VPS and linked from main project 
 
 ## Next Session Focus
 
-1. T13: T13: Gemini 3 Flash - Create Accessible Web Presentation (Time's Arrow)
-1. T18: T18
-1. T2: T2
+1. T35a: Boundary MPUO / 3-cocycle computation
+2. T35a: Parent Hamiltonian construction
+3. T33b: Diamond lattice Polyakov scan
 
 ## System Status
 

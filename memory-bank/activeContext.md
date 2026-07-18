@@ -6,22 +6,24 @@
 
 The reusable Z₂ boundary-operator API and connected diamond 2-skeleton are built and tested. Diamond 3-cells and general-complex Monte Carlo integration remain open; see `implementation/T33a-cell-complex-api.md` for the exact boundary.
 
-## T35a Local CZX Audit — Partial Results ⚠️
+## T35a CZX Construction — Many-Body Results ✅
 
-`ts-quantum` contains a controlled-Z primitive and a local four-qubit CZX audit. The literal CZX on-site operator squares to identity but leaks out of the SU(2) intertwiner subspace, confirming the operator-level obstruction.
+Explicit construction of the CZX SPT state completed on single plaquette and 2×2 torus (16 qubits). Key results:
+- Single plaquette: $|\Psi\rangle = (|0000\rangle + |1111\rangle)/\sqrt2$ is exact +1 eigenvector of $U_{CZX}$
+- Open plaquette: boundary signature shows relative sign ($\langle\Psi|U|\Psi\rangle = 0$)
+- 2×2 torus: **global** $\prod_s U_{CZX,s}$ preserves state; single-site does NOT
+- CZ cancellation on shared links is the mechanism (each link gets CZ twice)
 
-**New finding (2D toy model):** A 2-valent toy model (not the correct 4-valent geometry) shows that the gauge-invariant state IS a CZX +1 eigenvector. However, this result is not physically applicable because the proper 2D square lattice requires 4-valent vertices with 2D intertwiner spaces. The correct 4-valent analysis is pending.
+Code: `numerics/scripts/t35a-czx-construction-verify.py` (numpy, exact state-vector).
+Theory doc updated: `theory/docs/czx-intertwiner-analysis.md`.
 
-**Theory docs created:**
-- `theory/docs/czx-intertwiner-analysis.md` — Detailed analysis
-- `theory/docs/index.md` — Theory index
-- `theory/pages/dashboard.html` — Theory dashboard
+**Open threads:** boundary MPUO / 3-cocycle, parent Hamiltonian, ts-quantum cross-check, 3D generalization.
 
 ## What's Next
 
 | Priority | Task | Status | Depends On |
 |----------|------|--------|------------|
-| 1 | **T35a** | Correct 4-valent 2D analysis | 🔄 | — |
+| 1 | **T35a** | Boundary MPUO + parent Hamiltonian | 🔄 | — |
 | 2 | **T33b** | Diamond lattice Polyakov scan | ⏳ | T33a |
 | 3 | **T34a** | Configuration snapshot output mode | ⏳ | — |
 | 4 | T32 | Rust 2024 reproducibility | 🔄 | — |
