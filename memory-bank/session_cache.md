@@ -1,28 +1,18 @@
 # Session Cache
 
-*Created: 2026-07-14 20:45:56 IST*
-*Last Updated: 2026-07-18 13:05:00 IST*
-*Session Ended: 2026-07-18 13:05:00 IST*
+*Created: 2026-07-18 17:06:47 IST*
+*Last Updated: 2026-07-18 17:06:47 IST*
 
-**T31 update (2026-07-16):** The known classical 3D $Z_2$ transition is now treated as control physics, not the paper's novelty. Matched L=8,10,12,16 Polyakov scans are sufficient validation. The quantum-geometric interpretation remains the main contribution; the dressed correlator is a documented negative result.
-
-**T33–T35 plan created (2026-07-16 03:30 IST):** Quantum-geometric numerics plan with 5 new tasks after multi-agent review (Sage + GPT 5.6 Luna + Deepak Vaid). Key principle: gauge-transition numerics are control physics; the explicit microscopic CZX realization is the actual unresolved claim.
-
-**T35a local audit (2026-07-18):** `ts-quantum` now implements the on-site four-qubit CZX candidate and an SU(2) intertwiner-subspace audit. The operator satisfies $U_{\mathrm{CZX}}^2=I$ on the full 16-dimensional Hilbert space, but it does not preserve the four-spin-half singlet subspace. This is a useful obstruction, not a microscopic realization claim.
-
-**T33a doc restoration (2026-07-18 00:52 IST):** Restored physics rationale, CSR field comments, boundary-operator notation, and orientation note to `rust-lattice/src/cell_complex.rs` after Terra review stripped them. Benchmarked BTreeSet matmul: 2.8× faster than dense-buffer at 512×1024. Terra's valid improvements preserved. Committed as `a59d692`.
-
-**Started**: 2026-07-18 00:52 IST
-**Ended**: 2026-07-18 13:05 IST
-**Focus Task**: T33a (completed), T35a (in progress), Deployment setup (completed)
-**Session File**: `sessions/2026-07-18-early-morning.md`
-**Status**: ✅ Session ended — all work committed and pushed to main
+**Started**: 2026-06-26 01:28:23 IST
+**Focus Task**: T20: T20
+**Session File**: `sessions/2026-06-26-night.md`
+**Status**: 🔄 Active: 9, Paused: 9, Completed: 16
 
 ## Overview
 
-- Active: 8 | Paused: 9 | Completed: 16
-- Last Session: 2026-07-14
-- Current Period: evening
+- Active: 9 | Paused: 9 | Completed: 16
+- Last Session: 2026-06-26
+- Current Period: night
 
 ## Active Tasks
 
@@ -81,6 +71,13 @@
 **Context**: [Details](tasks/T26.md)
 **Progress**:
 [Details](tasks/T26.md)
+
+### T35a: Deployed theory folder to quantumofgravity.com VPS and linked from main project page
+**Status:** 🔄 **IN PROGRESS**
+**Started:** 2026-07-18
+**Context**: Deployed theory folder to quantumofgravity.com VPS and linked from main project page
+**Progress**:
+Deployed theory folder to quantumofgravity.com VPS and linked from main project page
 
 ## Completed Tasks
 

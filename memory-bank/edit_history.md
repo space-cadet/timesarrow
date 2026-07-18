@@ -1,27 +1,23 @@
 # Edit History
 
-*Last Updated: 2026-07-18 00:35:09 IST*
+*Last Updated: 2026-07-18 17:06:36 IST*
 
 ---
 
-## 2026-07-14
-
-## 2026-07-15
-
 ## 2026-07-18
 
-#### 00:35:09 IST - T33a/T35a: Recorded validated cell-complex foundation and local CZX obstruction.
-- Modified `rust-lattice/src/cell_complex.rs` - Corrected the diamond-lattice 2-skeleton construction and validation path used by T33a.
-- Modified `memory-bank/tasks/T33a.md`, `memory-bank/implementation/T33a-cell-complex-api.md`, `memory-bank/activeContext.md`, `memory-bank/tasks.md`, `memory-bank/progress.md`, and `memory-bank/session_cache.md` - Recorded the validated 2-skeleton scope and current task state.
-- Created `memory-bank/implementation-details/t35a-czx-microscopic-construction.md` - Documented the on-site CZX formula, the SU(2) intertwiner leakage result, and the many-vertex next gate.
-- Created `memory-bank/sessions/2026-07-18-early-morning.md` - Added the durable session record and verification summary.
+#### 22:36:06 IST - T35a: Updated theory dashboard renderCard function to make doc titles clickable links to their markdown files
+- Modified `theory/pages/dashboard.html` - Modified theory/pages/dashboard.html
 
-#### 18:35:42 IST - T31: Salvaged pre-pivot signed-volume calibration provenance without undoing the Polyakov pivot.
-- Modified `rust-lattice/src/main.rs` - Added `--cold-start` for the archived gauge-invariant signed-volume path and labeled signed-volume JSON output with `signedVolumeKind` and `initialState`.
-- Modified `rust-lattice/src/lib.rs` - Preserved the reverse-path dressed-correlator evaluation, added cold-start simulation support, and expanded pure-sector/range tests for archived T31 signed-volume calibration runs.
-- Created `numerics/data/signed-volume/t31-gi-L4-calibration-20260714.json`, `t31-gi-L4-cold-calibration-20260714.json`, `t31-gi-L6-calibration-20260714.json`, `t31-gi-L6-cold-calibration-20260714.json`, `t31-gi-L6-beta1-seed42-20260714.json`, `t31-gi-L6-beta1-seed43-20260714.json`, and `t31-gi-L6-beta1-seed44-20260714.json` - Archived the recovered negative-result calibration artifacts as provenance only.
-- Modified `memory-bank/tasks/T31.md`, `memory-bank/activeContext.md`, `memory-bank/progress.md`, and `memory-bank/tasks.md` - Recorded that the salvaged calibration branch strengthens the signed-volume obstruction while leaving the Polyakov-loop pivot as the active T31 direction.
-- Created `memory-bank/edits/2026-07-15/183542-t31-provenance-salvage.md` - Added the canonical edit chunk for the salvage and provenance-only archive.
+#### 22:35:58 IST - T35a: Fixed permissions on deployed theory folder: chown to quantumofgravity, chmod 644 for files, 755 for directories
+- Modified `theory/index.html` - Modified theory/index.html
+
+#### 22:35:48 IST - T35a: Deployed theory folder to quantumofgravity.com VPS and linked from main project page
+- Modified `theory/pages/dashboard.html` - Modified theory/pages/dashboard.html
+- Modified `theory/index.html` - Modified theory/index.html
+
+
+## 2026-07-14
 
 #### 20:45:56 IST - T28: Deploy Quarto docs to quantumofgravity.com/projects/timesarrow/ as primary hosting
 - Modified `_quarto.yml` - Modified _quarto.yml
@@ -340,3 +336,4 @@
 #### 20:25:00 IST - T1: Initial Memory Bank Population
 
 #### 20:22:00 IST - T2: Analyze Manuscript Gaps
+
