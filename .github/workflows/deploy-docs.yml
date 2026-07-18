@@ -7,8 +7,18 @@ on:
     paths:
       - 'numerics/docs/**'
       - 'theory/pages/**'
+      - 'theory/docs/**'
       - '.github/workflows/deploy-docs.yml'
   workflow_dispatch:
+    inputs:
+      target:
+        description: 'Deployment target (currently only GitHub Pages is automated. Custom domain requires manual setup — see comments in workflow file.)'
+        required: true
+        default: 'github_pages'
+        type: choice
+        options:
+          - github_pages
+          - custom_domain
 
 permissions:
   contents: write
@@ -34,19 +44,76 @@ jobs:
           cd numerics/docs
           quarto render
 
-      - name: Copy Theory Dashboard into Output
+      - name: Assemble Site Structure
         run: |
-          mkdir -p numerics/docs/_site/theory
-          cp theory/pages/dashboard.html numerics/docs/_site/theory/index.html
-          # Also copy any theory docs
-          mkdir -p numerics/docs/_site/theory/docs
-          cp -r theory/docs/* numerics/docs/_site/theory/docs/ || true
+          # Create the deployment structure
+          mkdir -p _deploy
+          
+          # Copy numerics docs into numerics/ subfolder
+          cp -r numerics/docs/_site/* _deploy/numerics/ || true
+          
+          # Copy theory dashboard into theory/ subfolder
+          mkdir -p _deploy/theory
+          cp theory/pages/dashboard.html _deploy/theory/index.html
+          cp -r theory/docs/* _deploy/theory/docs/ || true
+          
+          # Create root index page
+          cat > _deploy/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <title>TimesArrow Project</title>
+            <meta charset="utf-8">
+            <style>
+              body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 800px; margin: 0 auto; padding: 2rem; line-height: 1.6; }
+              h1 { border-bottom: 2px solid #0d6efd; padding-bottom: 0.5rem; }
+              .card { border: 1px solid #dee2e6; border-radius: 0.5rem; padding: 1.5rem; margin: 1rem 0; }
+              .card h2 { margin-top: 0; }
+              a { color: #0d6efd; text-decoration: none; }
+              a:hover { text-decoration: underline; }
+              .tag { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.85rem; background: #e7f1ff; margin-right: 0.5rem; }
+            </style>
+          </head>
+          <body>
+            <h1>⚛️ TimesArrow Project</h1>
+            <p>Gauging Time Reversal Symmetry in Quantum Gravity: Arrow of Time from a Confinement–Deconfinement Transition</p>
+            
+            <div class="card">
+              <h2>📊 Numerics Portal</h2>
+              <p>Simulation dashboards, data registry, and analysis for Monte Carlo, tensor network, and exact diagonalization runs.</p>
+              <p><a href="numerics/">→ Enter Numerics Portal</a></p>
+              <span class="tag">Dashboard</span>
+              <span class="tag">Data Registry</span>
+              <span class="tag">Quarto Docs</span>
+            </div>
+            
+            <div class="card">
+              <h2>🧮 Theory Portal</h2>
+              <p>Analytical constructions, symmetry analysis, and theoretical frameworks for CZX, intertwiners, and quantum geometry.</p>
+              <p><a href="theory/">→ Enter Theory Portal</a></p>
+              <span class="tag">Symmetry Analysis</span>
+              <span class="tag">CZX SPT</span>
+              <span class="tag">Intertwiners</span>
+            </div>
+            
+            <p style="margin-top: 2rem; color: #6c757d; font-size: 0.9rem;">
+              <a href="https://github.com/space-cadet/timesarrow">GitHub Repo</a> | 
+              <a href="https://github.com/space-cadet/ts-quantum">ts-quantum Library</a> | 
+              <a href="https://arxiv.org/abs/XXXX.XXXXX">Paper (arXiv)</a>
+            </p>
+          </body>
+          </html>
+          EOF
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./numerics/docs/_site
+          publish_dir: ./_deploy
           publish_branch: gh-pages
-          cname: ""  # Custom domain is handled separately
+          # To use custom domain quantumofgravity.com:
+          # 1. Uncomment the next line
+          # 2. Set DNS CNAME record pointing to space-cadet.github.io
+          # 3. For subpath /projects/timesarrow/, configure reverse proxy on your server
+          # cname: quantumofgravity.com
