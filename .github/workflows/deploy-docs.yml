@@ -8,17 +8,18 @@ on:
       - 'numerics/docs/**'
       - 'theory/pages/**'
       - 'theory/docs/**'
+      - 'space-cadet.github.io/**'
       - '.github/workflows/deploy-docs.yml'
   workflow_dispatch:
     inputs:
       target:
-        description: 'Deployment target (currently only GitHub Pages is automated. Custom domain requires manual setup — see comments in workflow file.)'
+        description: 'Deployment target'
         required: true
         default: 'github_pages'
         type: choice
         options:
           - github_pages
-          - custom_domain
+          - custom_domain_ssh
 
 permissions:
   contents: write
@@ -50,6 +51,7 @@ jobs:
           mkdir -p _deploy
           
           # Copy numerics docs into numerics/ subfolder
+          mkdir -p _deploy/numerics
           cp -r numerics/docs/_site/* _deploy/numerics/ || true
           
           # Copy theory dashboard into theory/ subfolder
@@ -105,15 +107,37 @@ jobs:
           </html>
           EOF
 
+      # Deploy to GitHub Pages (default)
       - name: Deploy to GitHub Pages
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' && (github.event.inputs.target == 'github_pages' || github.event.inputs.target == '')
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_deploy
           publish_branch: gh-pages
-          # To use custom domain quantumofgravity.com:
-          # 1. Uncomment the next line
-          # 2. Set DNS CNAME record pointing to space-cadet.github.io
-          # 3. For subpath /projects/timesarrow/, configure reverse proxy on your server
+          # Custom domain setup: uncomment and set your domain
           # cname: quantumofgravity.com
+
+      # Deploy to custom domain via SSH (requires SSH_KEY secret)
+      - name: Deploy to Custom Domain via SSH
+        if: github.event.inputs.target == 'custom_domain_ssh'
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          REMOTE_PATH: ${{ secrets.REMOTE_PATH }}
+        run: |
+          # Setup SSH
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          
+          # Add host to known hosts (or use StrictHostKeyChecking=no for first run)
+          ssh-keyscan -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null || true
+          
+          # Deploy via rsync
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=accept-new" \
+            ./_deploy/ "$SSH_USER@$SSH_HOST:$REMOTE_PATH"
+          
+          echo "Deployed to $SSH_HOST:$REMOTE_PATH"
