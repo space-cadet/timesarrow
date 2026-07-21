@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "mathjs": "^14.0.0",
-    "ts-quantum": "file:/Users/deepak/code/ts-quantum",
+    "ts-quantum": "file:/Users/sage/.openclaw/workspace/code/ts-quantum",
     "tsx": "^4.23.1"
   },
   "devDependencies": {

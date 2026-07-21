@@ -17,19 +17,37 @@ Explicit construction of the CZX SPT state completed on single plaquette and 2×
 Code: `numerics/scripts/t35a-czx-construction-verify.py` (numpy, exact state-vector).
 Theory doc updated: `theory/docs/czx-intertwiner-analysis.md`.
 
-## T35a Thread 2: Parent Hamiltonian 🔄
+## T35a Thread 2: Parent Hamiltonian ✅ COMPLETE
 
-**Started: 2026-07-21**
+**Completed: 2026-07-21**
 
-Building the parent Hamiltonian H = Σ_p h_p for the 2×2 torus CZX state:
-- h_p = (1/2)[(I - XXXX) + (I - ZZII) + (I - IZZI) + (I - IIZZ)] for each plaquette
-- System: 16 qubits, Hilbert space dimension = 65,536
-- Approach: ts-quantum sparse Lanczos eigensolver (newly added 2026-07-21)
-- Scripts: `t35a-thread2-parent-hamiltonian.py` (numpy stabilizer), `t35a-thread2-verify.ts` (ts-quantum sparse)
+Verified the parent Hamiltonian for the 2×2 torus CZX state using Rust matrix-free Lanczos eigensolver.
 
-**Blocked by**: Context compaction during session — verification script needs completion and testing.
+### Results
 
-**Open threads:** boundary MPUO / 3-cocycle, parent Hamiltonian verification, ts-quantum cross-check, 3D generalization.
+**Hamiltonian**: H = Σ_p h_p where h_p = (1/2)[(I-XXXX) + (I-ZZII) + (I-IZZI) + (I-IIZZ)]
+
+| Check | Result | Value |
+|-------|--------|-------|
+| H\|Ψ₀⟩ = 0 | ✅ PASS | \|\|H\|Ψ₀⟩\| = 0 |
+| Unique ground state | ✅ PASS | 1 zero eigenvalue |
+| Gapped | ✅ PASS | Gap = **1.0** |
+| Positive semidefinite | ✅ PASS | E_min = 0 |
+| Local terms commute | ✅ PASS | All [hᵢ, hⱼ] ≈ 0 |
+
+**Spectrum**: E₀=0, E₁=1, E₂=2, E₃=3, E₄=4, ... (equally spaced!)
+
+This confirms the CZX state is the **unique gapped ground state** of a **commuting projector Hamiltonian** — the hallmark of a topologically trivial SPT phase.
+
+### Implementation
+- **Rust**: `rust-lattice/src/t35a_thread2.rs` — matrix-free Lanczos, 17 iterations to convergence
+- **Python**: `numerics/scripts/t35a-thread2-parent-hamiltonian.py` — matrix-free stabilizer version
+- **TypeScript**: `numerics/scripts/t35a-thread2-verify.ts` — ts-quantum sparse eigensolver (pending build fix)
+
+### Key Finding
+The equal spacing (gap = 1.0) indicates independent plaquette contributions. Each plaquette's ground state is a 4-qubit GHZ state, and the full ground state is their tensor product. The Hamiltonian is frustration-free.
+
+**Open threads:** boundary MPUO / 3-cocycle, ts-quantum cross-check, 3D generalization.
 
 ## T35b Diamond-Lattice Existence Test 🔄
 
@@ -58,7 +76,7 @@ T35b now makes the 3D construction question explicit. It first requires a correc
 
 | Priority | Task | Status | Depends On |
 |----------|------|--------|------------|
-| 1 | **T35a Thread 2** | Parent Hamiltonian verification | 🔄 | ts-quantum sparse eigensolver |
+| 1 | **T35a Thread 3** | ts-quantum cross-check + boundary MPUO | 🔄 | — |
 | 2 | **T35b** | Diamond CZX existence test | 🔄 | T33a, T35a |
 | 3 | **T33b** | Diamond lattice Polyakov scan | ⏳ | T33a |
 | 4 | **T34a** | Configuration snapshot output mode | ⏳ | — |
