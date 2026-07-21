@@ -1,19 +1,20 @@
 # Encoded Tetrahedral CZX Specification
 
-*Created: 2026-07-22 03:15 IST*  
-*Status: Specification — not yet tested*  
-*Replaces: T35b Gate 1 (edge-qubit model)*  
+*Created: 2026-07-22 03:15 IST*
+*Last Updated: 2026-07-22 03:27:10 IST*
+*Status: Specification — not yet tested*
+*Replaces: T35b Gate 1 (edge-qubit model)*
 *Related: T35a (CZX microscopic construction), T33a (diamond cell-complex API)*
 
 ---
 
 ## 1. Scope and Non-Claims
 
-This document specifies a **spin-network-compatible CZX construction** where the physical degrees of freedom are intertwiner qubits living at the vertices of a lattice, and the symmetry acts on encoded logical operators. It replaces the failed T35b edge-qubit model.
+This document specifies the kinematics required for a **candidate encoded CZX construction** with spin-network intertwiners. It replaces the failed shared-edge-qubit model, but does not yet define a CZX phase on the diamond lattice.
 
-**What this is:** A testable candidate for an SPT state on a tensor network with SU(2) gauge invariance built in at the virtual level.
+**What this is:** A testable tensor-network candidate with $SU(2)$ gauge invariance built into its local intertwiner tensors.
 
-**What this is not:** A proof that the CZX SPT order survives in a spin-network setting. That requires passing all hard gates below.
+**What this is not:** A proof that CZX SPT order survives in a spin-network setting. In particular, one intertwiner qubit per lattice vertex is insufficient to reproduce the four distinct partons at a CZX site; the coarse CZX site and its incidence map must be defined below before any symmetry claim.
 
 ---
 
@@ -21,7 +22,7 @@ This document specifies a **spin-network-compatible CZX construction** where the
 
 ### 2.1 Single Vertex (Tetrahedron)
 
-Each vertex $v$ of the lattice is a 4-valent node. Associate a **tetrahedron** to $v$ with four faces labeled by a cyclic order $(1,2,3,4)$ around $v$.
+Each vertex $v$ of the lattice is a 4-valent node. Associate a **tetrahedron** to $v$ with four faces labelled $(1,2,3,4)$. A cyclic order is additional framing data, not intrinsic tetrahedral data, and must be fixed consistently before defining any CZX ring.
 
 - **Virtual space**: $\mathcal{H}_v^{\text{virt}} = (\mathbb{C}^2)^{\otimes 4}$ — four spin-$\tfrac12$ indices.
 - **Physical space**: The $SU(2)$-invariant (intertwiner) subspace:
@@ -60,15 +61,17 @@ $$
 
 **Orientation convention**: Fix an orientation for each edge (e.g., $v \to w$). If the edge is traversed in the opposite direction, use $-\epsilon_{mn}$ (since $\epsilon^T = -\epsilon$). Record all edge orientations explicitly.
 
-The gluing projects the virtual tensor product onto a gauge-invariant subspace. The **full physical Hilbert space** on a lattice with $N_v$ vertices is the subspace of $\bigotimes_v \mathcal{H}_v^{\text{virt}}$ where all edge singlet constraints are satisfied:
+The pairing is a **tensor contraction**, not a projector or an additional Hilbert-space constraint. In the fixed-spin-$\tfrac12$ truncation, the physical multiplicity space is
 
 $$
-\mathcal{H}^{\text{phys}}_{\text{total}} = \Big( \bigotimes_v \mathcal{H}_v^{\text{virt}} \Big) \Big/ \sim_{\text{edges}}
+\mathcal{H}_{\mathrm{int}}=\bigotimes_v
+\operatorname{Inv}_{SU(2)}[(\mathbb{C}^2)^{\otimes4}]
+\cong(\mathbb{C}^2)^{\otimes N_v}.
 $$
 
-where $\sim_{\text{edges}}$ denotes contraction with $\epsilon$ on every edge.
+The $\epsilon$ tensors supply spin-network amplitudes between these local intertwiner labels. If link holonomies or unfixed representation labels are intended as physical degrees of freedom, they must be added explicitly; this specification does not include them.
 
-**Critical distinction**: The edge carries **no independent physical qubit**. The only physical degrees of freedom are the intertwiner qubits at vertices. The virtual legs are contracted away.
+**Critical distinction**: the virtual half-edge indices are contracted in a tensor network. They are not identified as one shared edge qubit and they do not reduce $\mathcal{H}_{\mathrm{int}}$ by a further singlet constraint.
 
 ---
 
@@ -101,19 +104,31 @@ $$
 
 where $\mathrm{CZ} = \operatorname{diag}(1,1,1,-1)$ in the computational basis.
 
-### 3.3 CZX Cell Operator
+### 3.3 Coarse CZX Site
 
-A **CZX cell** is a set $\mathcal{C} = \{v_1, v_2, v_3, v_4\}$ of four intertwiner qubits arranged in a plaquette (2D) or equivalent local cluster (3D).
-
-The encoded CZX operator on the cell is:
+A literal CZX site has **four distinct qubits that it owns**. Therefore a coarse site $s$ in this candidate must contain four independent intertwiner modules, labelled $r\in\{1,2,3,4\}$:
 
 $$
-\bar{U}_{\mathcal{C}} = \Big( \prod_{v \in \mathcal{C}} \bar{X}_v \Big) \Big( \prod_{(v,w) \in \partial \mathcal{C}} \overline{\mathrm{CZ}}_{vw} \Big)
+\mathcal H_s=\bigotimes_{r=1}^{4}\mathcal I_{s,r},\qquad
+\mathcal I_{s,r}\cong\operatorname{Inv}_{SU(2)}[(\mathbb C^2)^{\otimes4}].
 $$
 
-where $\partial \mathcal{C}$ denotes the edges of the cell.
+Each module has its own encoding $W_{s,r}$. A single tetrahedron provides one such module, not the complete four-qubit CZX site. The construction must therefore specify a local four-tetrahedron block or another local four-mode realization before it is implemented.
 
-**Note**: Code-space preservation at each vertex is automatic by construction. The non-trivial test is whether $\bar{U}_{\mathcal{C}}$ commutes with the **edge singlet constraints** (see Gate B below).
+### 3.4 Encoded On-Site CZX Operator
+
+With a fixed cyclic order of the four **internal** labels $r$, define
+
+$$
+\bar U_s=
+\left(\prod_{r=1}^{4}\bar X_{s,r}\right)
+\overline{\mathrm{CZ}}_{(s,1)(s,2)}
+\overline{\mathrm{CZ}}_{(s,2)(s,3)}
+\overline{\mathrm{CZ}}_{(s,3)(s,4)}
+\overline{\mathrm{CZ}}_{(s,4)(s,1)}.
+$$
+
+Different sites have disjoint logical support, so $\bar U_{\mathrm{global}}=\prod_s\bar U_s$ is an unambiguous on-site $\mathbb Z_2$ candidate. Four neighbouring lattice vertices must **not** be substituted for these four internal qubits: overlapping plaquette operators would not reproduce the CZX symmetry.
 
 ---
 
@@ -135,48 +150,54 @@ $$
 |\Psi_{\text{prod}}\rangle = \bigotimes_v W_v |\psi_v\rangle = \bigotimes_v |\Psi_v\rangle
 $$
 
-### 4.3 Gauge-Invariant Tensor Network State
+### 4.3 Spin-Network Amplitude
 
-The **physical state** is obtained by contracting all virtual legs with $\epsilon$:
-
-$$
-|\Psi_{\text{phys}}\rangle = \Big( \prod_{e=(v,w)} \epsilon_{m_e n_e} \Big) \bigotimes_v |\Psi_v\rangle
-$$
-
-This is a **projected entangled pair state (PEPS)** with bond dimension 2. The state lives in the gauge-invariant subspace by construction.
-
-For a plaquette product state where each $|\psi_v\rangle = |+\rangle = \frac{1}{\sqrt{2}}(|0\rangle + |1\rangle)$, the physical state is:
+Contraction must retain the logical basis kets. For a graph with one virtual leg $m_{ve}$ at each end of edge $e=(v,w)$, the tensor network defines
 
 $$
-|\Psi_{\text{GHZ}}\rangle \propto \text{(contraction of four } W_v |+\rangle \text{ with edge } \epsilon \text{'s)}
+|\Phi\rangle=\sum_{\{\alpha_v\}}
+\left[\sum_{\{m_{ve}\}}
+\prod_v W^{\alpha_v}_{\{m_{ve}\}}
+\prod_{e=(v,w)}\epsilon_{m_{ve}m_{we}}
+\right]|\{\alpha_v\}\rangle .
 $$
 
-This should reduce to the plaquette GHZ state in an appropriate basis.
+The bracket is an amplitude in $\mathcal H_{\mathrm{int}}$, not a state obtained by quotienting the virtual space. It must be evaluated explicitly on the finite test cluster.
+
+### 4.4 Encoded CZX State
+
+The CZX fixed-point candidate is defined independently on the logical partons. For every coarse plaquette $p$ with corner sites $s_1,\ldots,s_4$, choose one distinct internal label $r_i(p)$ at each corner and set
+
+$$
+|\Psi_{\mathrm{CZX}}\rangle=
+\bigotimes_p\frac{|0000\rangle_{p}+|1111\rangle_{p}}{\sqrt2}.
+$$
+
+The site--plaquette incidence map $r_i(p)$ must use each internal parton once. The spin-network amplitude may decorate this state, but it does not automatically turn a logical $|+\rangle$ product into a GHZ product.
 
 ---
 
 ## 5. CZX Cell Geometry
 
-### 5.1 2D Square Lattice (Gate 1 Test)
+### 5.1 2D Square Lattice (Reference Test)
 
 On a square lattice with vertices at integer coordinates $(i,j)$:
 
-- Each vertex is 4-valent (N, E, S, W faces).
-- A **plaquette** at $(i+\tfrac12, j+\tfrac12)$ has four corner vertices: $(i,j), (i+1,j), (i+1,j+1), (i,j+1)$.
-- The **CZX cell** $\mathcal{C}$ is exactly these four vertices.
-- CZ edges: the four edges of the plaquette.
+- Each coarse site has four internal intertwiner qubits, one for each adjacent plaquette.
+- A plaquette at $(i+\tfrac12,j+\tfrac12)$ selects one different internal qubit from each of its four corner sites for its GHZ factor.
+- $\bar U_s$ acts only on the four internal qubits owned by site $s$, with its CZ ring internal to the site.
 
-This is the 2D test case that must pass before any 3D construction.
+This matches the CZX ownership structure. It is not equivalent to applying a four-qubit operator to the four shared corner qubits of every plaquette.
 
 ### 5.2 3D Diamond Lattice (Gate 2 Test)
 
 On the diamond lattice (bipartite, 4-valent):
 
-- Each vertex is a tetrahedron with 4 triangular faces.
-- The "plaquettes" are hexagons in the dual lattice.
-- A CZX cell must be a set of 4 tetrahedra that are mutually adjacent in a geometrically local pattern.
+- Each four-valent vertex supplies one tetrahedral intertwiner module.
+- T33a supplies hexagonal 2-cells, not a preferred four-parton CZX site or a square CZX cell.
+- A diamond construction must first define a bounded coarse site containing four modules and a local incidence map between those partons and the chosen GHZ cells.
 
-**Open question**: What is the natural CZX cell on the diamond lattice? Four tetrahedra sharing a common edge? Four tetrahedra around a vertex? The geometry must be specified explicitly before testing.
+**Open question**: Which coarse block and which cellulation preserve locality while supplying four owned partons per CZX site? Four tetrahedra sharing an edge or an arbitrary four-vertex cluster is not a CZX site until this ownership and incidence data are given.
 
 **T33a provides**: The connected diamond 2-skeleton with validated hexagonal plaquettes. This is sufficient for defining the incidence structure, but the CZX cell geometry requires additional specification.
 
@@ -200,32 +221,27 @@ These are orthonormal and span the intertwiner space.
 
 ---
 
-### Gate B: Locality and Gluing Compatibility
+### Gate B: Coarse-Site Incidence and Local Symmetry
 
-**Requirement**: Verify that $\bar{U}_{\mathcal{C}}$ commutes with the edge singlet constraints.
+**Requirement**: Define the four owned partons at every coarse CZX site, the site--plaquette incidence map, and a bounded geometric realization of the four intertwiner modules.
 
-**Test**: For each edge $e = (v,w)$ shared by two CZX cells (or within one cell), compute:
+**Tests**:
+1. Every internal parton belongs to exactly one GHZ cell.
+2. Different $\bar U_s$ have disjoint logical support, commute, and satisfy $\bar U_s^2=I$.
+3. The lifted one-site operators act within the local intertwiner multiplicity space; this follows from $W_{s,r}$ being an intertwiner and is a convention check, not a separate $[\bar U,\epsilon]$ constraint.
 
-$$
-\big[ \bar{U}_{\mathcal{C}}, \, \epsilon_{m_e n_e} \big] \stackrel{?}{=} 0
-$$
+**Pass condition**: The CZX state and its on-site symmetry are fully specified on a finite square-lattice reference cluster.
 
-on the virtual space. More precisely: after contracting the virtual legs of $v$ and $w$ with $\epsilon$, does the action of $\bar{U}_{\mathcal{C}}$ factor through the contraction?
-
-**Pass condition**: The operator $\bar{U}_{\mathcal{C}}$ descends to a well-defined operator on the gauge-invariant subspace (the physical Hilbert space).
-
-**Fail condition**: $\bar{U}_{\mathcal{C}}$ mixes gauge-invariant states with non-gauge-invariant states. This would mean the CZX symmetry is not compatible with the SU(2) gauge structure.
-
-**Why this matters**: Code-space preservation at each vertex (automatic) is not enough. The gauge-invariant subspace is a proper subspace of the tensor product of individual code spaces. The symmetry must respect the gluing constraints.
+**Fail condition**: The proposed coarse block is nonlocal, overlaps logical partons between sites, or leaves any parton without a unique GHZ-cell assignment.
 
 ---
 
 ### Gate C: Global Symmetry on a Small Closed Patch
 
-**Requirement**: On a finite periodic cluster (e.g., $2 \times 2$ torus in 2D, or minimal periodic diamond cluster in 3D), define the global symmetry:
+**Requirement**: On a finite periodic cluster, use the disjoint-site symmetry
 
 $$
-\bar{U}_{\text{global}} = \prod_{\mathcal{C}} \bar{U}_{\mathcal{C}}
+\bar{U}_{\text{global}} = \prod_s \bar{U}_s
 $$
 
 and test whether a candidate state $|\Psi\rangle$ is invariant:
@@ -234,7 +250,7 @@ $$
 \bar{U}_{\text{global}} |\Psi\rangle \stackrel{?}{=} |\Psi\rangle
 $$
 
-**State candidate**: The tensor network state where each vertex is in $|+\rangle = (|0\rangle + |1\rangle)/\sqrt{2}$ in the intertwiner basis, with all virtual legs contracted via $\epsilon$.
+**State candidate**: The encoded plaquette-GHZ state of Section 4.4, optionally decorated by the explicitly evaluated spin-network amplitude of Section 4.3.
 
 **Test**: Compute $\langle \Psi | \bar{U}_{\text{global}} | \Psi \rangle$. Pass if $= 1$ (or $|\langle \Psi | \bar{U}_{\text{global}} | \Psi \rangle| = 1$ up to numerical precision).
 
@@ -244,16 +260,18 @@ $$
 
 **Requirement**: Construct local parent terms $\bar{h}_p$ such that $|\Psi\rangle$ is the unique ground state of $\bar{H} = \sum_p \bar{h}_p$ with a nonzero gap.
 
-**Approach**: If $|\Psi\rangle$ is a product of plaquette GHZ states in the intertwiner basis, the parent Hamiltonian from T35a should lift naturally:
+**Approach**: Only after Gates A--C establish the four-parton ownership and the encoded GHZ state, lift the T35a stabilizers onto the corresponding distinct logical partons:
 
 $$
-\bar{h}_p = \frac{1}{2}\Big[ (I - \bar{X}_1 \bar{X}_2 \bar{X}_3 \bar{X}_4) + \sum_{\text{edges}} (I - \bar{Z}_i \bar{Z}_j) \Big]
+\bar{h}_p = \frac{1}{2}\Big[ (I - \bar{X}_{p,1}\bar{X}_{p,2}\bar{X}_{p,3}\bar{X}_{p,4}) + \sum_{\langle i,j\rangle\subset p}(I-\bar{Z}_{p,i}\bar{Z}_{p,j})\Big].
 $$
 
 **Tests**:
 1. $\bar{H} |\Psi\rangle = 0$
 2. Gap $\Delta E > 0$
 3. Local terms commute $[\bar{h}_p, \bar{h}_{p'}] = 0$ (frustration-free)
+
+No parent-Hamiltonian conclusion is permitted for the one-intertwiner-per-vertex model.
 
 ---
 
@@ -274,9 +292,9 @@ $$
 
 | Outcome | Minimum Evidence | Permitted Conclusion |
 |---------|------------------|----------------------|
-| **Compatible candidate** | Gates A–D pass with explicit basis, explicit cell geometry, and reproducible numerics | A microscopic encoded CZX candidate exists on the tested lattice. |
-| **Partial construction** | Gates A–B pass, C or D fails with documented leakage | The construction preserves gauge invariance but may not realize the CZX phase. |
-| **Obstruction** | Gate B fails (gluing incompatibility) | The encoded CZX is incompatible with SU(2) singlet gluing on this lattice. |
+| **Compatible candidate** | Gates A–D pass with a local four-parton site, explicit incidence, and reproducible numerics | A microscopic encoded CZX candidate exists on the tested lattice. |
+| **Partial construction** | Gates A–B pass, C or D fails with documented cause | The kinematics are defined but the candidate does not yet realize the CZX phase. |
+| **Obstruction** | No bounded, disjoint four-parton coarse-site realization exists on the chosen lattice | This encoded CZX realization fails on that lattice; the virtual-leg kinematics remain valid. |
 | **Not yet decided** | Any gate answered with "not computed" | No conclusion permitted. The claim stays tentative. |
 
 ---
@@ -285,11 +303,11 @@ $$
 
 ### 8.1 Numerical Strategy
 
-For Gate A (2D square lattice, $2 \times 2$ torus):
-- 4 vertices → 4 intertwiner qubits → physical Hilbert space dimension = $2^4 = 16$ (before gluing)
-- After gluing (4 plaquette edges + 2 periodic wrap edges), the gauge-invariant subspace dimension is smaller.
-- The virtual space is $16^4 = 65536$-dimensional, but we work in the encoded (physical) space.
-- Exact diagonalization is feasible.
+For the 2D square reference cluster:
+- Four coarse sites contain sixteen logical intertwiner qubits, so the CZX logical Hilbert space has dimension $2^{16}$.
+- The fixed-spin intertwiner space is not reduced after $\epsilon$ contraction; the contraction supplies tensor amplitudes.
+- Gate A can be tested on one module (a $16\times2$ isometry); Gates B--D require the full sixteen-parton reference cluster.
+- Exact state-vector checks are feasible at this reference size.
 
 For Gate A (3D diamond lattice, minimal cluster):
 - Need to determine the minimal periodic cluster from T33a.
@@ -311,10 +329,10 @@ rust-lattice/src/
 
 ### 8.3 Relation to Prior Work
 
-- **T35a**: The original CZX on raw qubits. This spec encodes that construction into intertwiner qubits.
+- **T35a**: The raw-qubit CZX reference. This spec seeks an encoded analogue only after reproducing its four-parton site ownership.
 - **T35b (old)**: Edge-qubit model with shared physical qubits — failed at $L=3$ due to over-constraint.
 - **T35b (new)**: This spec. The failure of the old model motivated the virtual-leg / encoded-operator approach.
-- **T33a**: Provides the diamond lattice 2-skeleton for Gate C (3D).
+- **T33a**: Provides the diamond 2-skeleton for testing a separately specified coarse-site incidence map; it does not yet supply that map.
 
 ---
 
@@ -322,9 +340,9 @@ rust-lattice/src/
 
 1. **Intertwiner basis choice**: The recoupling basis $|j_{12}=0, j_{34}=0; J=0\rangle$ vs. $|j_{12}=1, j_{34}=1; J=0\rangle$ is natural for a square, but is it the right basis for the tetrahedral geometry? A tetrahedron has no preferred pairing of faces.
 
-2. **3D CZX cell geometry**: On the diamond lattice, what is the analog of a plaquette? Hexagons have 6 vertices, not 4. A CZX cell needs 4 qubits. Is the cell 4 tetrahedra sharing an edge? Or something else?
+2. **3D coarse-site geometry**: Can a bounded diamond-lattice block supply four owned intertwiner modules and a non-overlapping GHZ-cell incidence map? Hexagons alone do not answer this.
 
-3. **Encoded CZ on non-nearest-neighbors**: In the diamond lattice, the natural 4-qubit cell may not have the same edge structure as the square plaquette. The CZ pattern may need to be rederived.
+3. **Encoded CZ locality**: Once a coarse site is selected, can its internal CZ ring be realized by bounded gauge-invariant operators without arbitrary long-range couplings?
 
 4. **Relation to LQG volume operator**: The intertwiner qubit is formally similar to the LQG shape qubit. Can the volume operator sign be expressed in this basis? This connects to the original Time's Arrow conjecture.
 
@@ -332,9 +350,9 @@ rust-lattice/src/
 
 ## 10. Next Immediate Step
 
-**Write down $W_v$ explicitly** in the recoupling basis and verify numerically that:
+**Gate 0: define the coarse CZX site and incidence map** for the square reference lattice, then state the required analogue on diamond. After that, write down $W_v$ explicitly in the recoupling basis and verify that:
 1. $W_v^\dagger W_v = I_2$
 2. The two basis states are SU(2) invariant
 3. They are orthonormal
 
-This is Gate A. Until this is done, no other gate can proceed.
+Gate A is a safe independent convention check, but Gates B--E must not start until Gate 0 fixes the four-parton ownership structure.

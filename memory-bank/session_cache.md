@@ -1,7 +1,7 @@
 # Session Cache
 
 *Created: 2026-07-18 17:06:47 IST*
-*Last Updated: 2026-07-21 14:56:49 IST*
+*Last Updated: 2026-07-22 03:27:10 IST*
 
 **Started**: 2026-07-19 00:57 IST
 **Focus Task**: T35b: Diamond-Lattice CZX Existence Test
@@ -196,3 +196,9 @@
 
 - **Memory Bank**: 🔄 Active
 - **OpenClaw**: ✅ Operational
+
+## 2026-07-22 Correction Update
+
+- T35a parent-Hamiltonian verification is complete; the older T35a checklist above is preserved historical text and must not be read as current status.
+- T35b retains virtual-leg/intertwiner kinematics but rejects its one-intertwiner-per-vertex encoded specification: it cannot realize a four-parton CZX site.
+- Current T35b next step is Gate 0: specify a bounded four-module coarse site, internal framing, and a non-overlapping GHZ-cell incidence map before implementing $W_v$ or any gluing test.

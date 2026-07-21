@@ -1,27 +1,19 @@
 # timesarrow — Progress Tracker
 
-*Updated: 2026-07-21 14:56:49 IST*
+*Updated: 2026-07-22 03:27:10 IST*
 
-## T35b: Diamond-Lattice CZX Existence Test (2026-07-22) — ENCODED TETRAHEDRAL SPEC WRITTEN
+## T35b: Diamond-Lattice CZX Existence Test (2026-07-22) — ENCODED SPEC CORRECTED
 
-**Status**: Specification complete. Implementation of Gate A (explicit W_v) is next.
+**Status**: No construction has been implemented. The virtual-leg/intertwiner kinematics are retained, but the first encoded CZX specification was rejected before Gate A.
 
-**Key change**: After Terra's analysis, the failure of the edge-qubit model was traced to the **gluing rule**, not qubit placement. The correct construction uses:
-- Virtual spin-1/2 legs on tetrahedron faces (4 per vertex)
-- Physical intertwiner qubit at each vertex (2D invariant subspace)
-- ε_mn singlet contraction on shared faces (no shared physical qubit)
-- Encoded CZX symmetry on logical intertwiner qubits
+**Correction**:
+- $epsilon_{mn}$ is a tensor contraction that produces spin-network amplitudes, not an edge constraint that further reduces the fixed-spin intertwiner Hilbert space.
+- One tetrahedral intertwiner module supplies one logical qubit; it cannot stand in for a four-parton CZX site.
+- Overlapping plaquette operators do not provide the disjoint on-site CZX symmetry. A local coarse site with four owned modules is required.
 
-**New spec**: `memory-bank/implementation/t35b-encoded-tetrahedral-czx-spec.md`
+**Next gate**: Gate 0 — define the square-reference coarse-site ownership, framing, and GHZ-cell incidence map. The diamond analogue remains open.
 
-**Hard Gates**:
-- Gate A: Explicit intertwiner basis and W_v (next immediate step)
-- Gate B: Gluing compatibility [U_CZX, ε] = 0
-- Gate C: Global symmetry on closed patch
-- Gate D: Parent Hamiltonian
-- Gate E: Boundary anomaly / MPUO
-
-**Old result preserved**: Edge-qubit model fails at L=3 (documented in `implementation/t35b-gate1-results.md`).
+**Old result preserved**: the shared-edge-qubit model fails at L=3 (documented in `implementation/t35b-gate1-results.md`).
 
 ---
 

@@ -1,6 +1,6 @@
 # timesarrow — Active Context
 
-*Updated: 2026-07-21 19:05 IST*
+*Updated: 2026-07-22 03:27:10 IST*
 
 ## T33a Foundation Validated 🔄
 
@@ -49,29 +49,17 @@ The equal spacing (gap = 1.0) indicates independent plaquette contributions. Eac
 
 **Open threads:** boundary MPUO / 3-cocycle, ts-quantum cross-check, 3D generalization.
 
-## T35b Diamond-Lattice CZX Existence Test 🔄 **PIVOT — Encoded Tetrahedral Specification Written**
+## T35b Diamond-Lattice CZX Existence Test 🔄 **SPECIFICATION CORRECTED**
 
-T35b makes the 3D construction question explicit. After the edge-qubit model failed at L=3, Terra's analysis clarified that the issue was the **gluing rule**, not the qubit placement. The correct approach uses **virtual legs + singlet contraction**, not shared physical edge qubits.
+Virtual half-edge legs plus invariant $epsilon$ contraction remain the correct spin-network kinematics; the shared-edge-qubit obstruction does not apply to them. The initial encoded specification nevertheless failed to reproduce CZX because it gave each lattice vertex only one logical intertwiner qubit and then used overlapping plaquette operators.
 
-**New spec written**: `memory-bank/implementation/t35b-encoded-tetrahedral-czx-spec.md`
-
-### What Changed
-- Physical DOF: one **intertwiner qubit** per tetrahedron (2D invariant subspace of 4 virtual spin-1/2 legs)
-- Gluing: ε_mn contraction on shared faces (no shared physical qubit)
-- Symmetry: **encoded CZX** on logical intertwiner qubits, lifted via W_v
-- Key insight: code-space preservation is automatic, but **gluing compatibility** is the non-trivial test
-
-### Hard Gates (from spec)
-- Gate A: Explicit intertwiner basis and encoding map W_v
-- Gate B: Locality and gluing compatibility (commutation with edge singlet constraints)
-- Gate C: Global symmetry on small closed patch
-- Gate D: Parent Hamiltonian
-- Gate E: Boundary anomaly / MPUO
+**Correct requirement:** a bounded coarse CZX site must own four distinct intertwiner modules, each assigned exactly once to a GHZ cell. Contraction supplies spin-network amplitudes; it is not an extra edge-singlet Hilbert-space constraint.
 
 ### Next Steps
-- [ ] Implement Gate A: Write W_v explicitly in recoupling basis, verify numerically
-- [ ] Implement Gate B: Test [U_CZX, ε_gluing] = 0 on 2×2 torus
-- [ ] If Gates A-B pass, proceed to Gate C (global symmetry) and Gate D (parent Hamiltonian)
+- [ ] Gate 0: define the coarse four-module site, framing, and non-overlapping GHZ-cell incidence map on the square reference lattice
+- [ ] Specify a local diamond analogue; T33a hexagons alone do not determine one
+- [ ] Gate A: write and verify the explicit $W_v$ recoupling isometry
+- [ ] Only then test global symmetry, parent Hamiltonian, and boundary MPUO
 
 **Code**: New Rust module `rust-lattice/src/t35b_encoded/` (to be created)
 **Old code preserved**: `rust-lattice/src/t35b_gate1.rs`, `t35b_power.rs`, `t35b_verify.rs` (documented negative result)
@@ -80,8 +68,8 @@ T35b makes the 3D construction question explicit. After the edge-qubit model fai
 
 | Priority | Task | Status | Depends On |
 |----------|------|--------|------------|
-| 1 | **T35b Gate A** | Implement explicit W_v encoding map | 🔄 | — |
-| 2 | **T35b Gate B** | Test gluing compatibility on 2×2 torus | ⏳ | Gate A |
+| 1 | **T35b Gate 0** | Define local four-module CZX site and incidence map | 🔄 | — |
+| 2 | **T35b Gate A** | Implement explicit W_v encoding map | ⏳ | Gate 0 |
 | 3 | **T35a Thread 3** | ts-quantum cross-check + boundary MPUO | 🔄 | — |
 | 4 | **T33b** | Diamond lattice Polyakov scan | ⏳ | T33a |
 | 5 | **T34a** | Configuration snapshot output mode | ⏳ | — |
