@@ -2,6 +2,29 @@
 
 *Updated: 2026-07-21 14:56:49 IST*
 
+## T35b: Diamond-Lattice CZX Existence Test (2026-07-22) — ENCODED TETRAHEDRAL SPEC WRITTEN
+
+**Status**: Specification complete. Implementation of Gate A (explicit W_v) is next.
+
+**Key change**: After Terra's analysis, the failure of the edge-qubit model was traced to the **gluing rule**, not qubit placement. The correct construction uses:
+- Virtual spin-1/2 legs on tetrahedron faces (4 per vertex)
+- Physical intertwiner qubit at each vertex (2D invariant subspace)
+- ε_mn singlet contraction on shared faces (no shared physical qubit)
+- Encoded CZX symmetry on logical intertwiner qubits
+
+**New spec**: `memory-bank/implementation/t35b-encoded-tetrahedral-czx-spec.md`
+
+**Hard Gates**:
+- Gate A: Explicit intertwiner basis and W_v (next immediate step)
+- Gate B: Gluing compatibility [U_CZX, ε] = 0
+- Gate C: Global symmetry on closed patch
+- Gate D: Parent Hamiltonian
+- Gate E: Boundary anomaly / MPUO
+
+**Old result preserved**: Edge-qubit model fails at L=3 (documented in `implementation/t35b-gate1-results.md`).
+
+---
+
 ## T35b: Diamond-Lattice CZX Existence Test (2026-07-21) — EDGE-QUBIT MODEL BLOCKED
 
 **Status:** Gate 1 complete. **Edge-qubit model fails for L≥3.** Need to reconsider qubit placement (vertex-qubits instead of edge-qubits).

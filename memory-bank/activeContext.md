@@ -49,51 +49,43 @@ The equal spacing (gap = 1.0) indicates independent plaquette contributions. Eac
 
 **Open threads:** boundary MPUO / 3-cocycle, ts-quantum cross-check, 3D generalization.
 
-## T35b Diamond-Lattice Existence Test 🔄 **BLOCKED — Edge-Qubit Model Fails**
+## T35b Diamond-Lattice CZX Existence Test 🔄 **PIVOT — Encoded Tetrahedral Specification Written**
 
-T35b makes the 3D construction question explicit. It first requires a correct four-valent square-lattice vertex/edge mapping and intertwiner-preservation test, then a minimal periodic diamond-cluster test.
+T35b makes the 3D construction question explicit. After the edge-qubit model failed at L=3, Terra's analysis clarified that the issue was the **gluing rule**, not the qubit placement. The correct approach uses **virtual legs + singlet contraction**, not shared physical edge qubits.
 
-### Gate 1 Results (2026-07-21): Four-Valent Square-Lattice Test
+**New spec written**: `memory-bank/implementation/t35b-encoded-tetrahedral-czx-spec.md`
 
-**L=2 (Dense exact diagonalization):**
-- Hilbert space: 8 edge-qubits, dim = 256
-- Ground state energy: E₀ ≈ 1.2×10⁻¹² ≈ 0 ✅
-- Intertwiner subspace dimension: 1
-- <ψ|U_X|ψ> = +1.000000 ✅
-- <ψ|U_CZ|ψ> = +1.000000 ✅
-- First excited state: E₁ ≈ 2.20, gap ΔE ≈ 2.20
+### What Changed
+- Physical DOF: one **intertwiner qubit** per tetrahedron (2D invariant subspace of 4 virtual spin-1/2 legs)
+- Gluing: ε_mn contraction on shared faces (no shared physical qubit)
+- Symmetry: **encoded CZX** on logical intertwiner qubits, lifted via W_v
+- Key insight: code-space preservation is automatic, but **gluing compatibility** is the non-trivial test
 
-**L=3 (Power iteration, converged):**
-- Hilbert space: 18 edge-qubits, dim = 262,144
-- Ground state energy: E₀ ≈ 3.684 (converged, stable)
-- **No exact intertwiner subspace exists** ❌
-
-**Critical Finding:** The edge-qubit model is incompatible with simultaneous singlet constraints at all vertices for L≥3. The intersection of all vertex singlet projectors is EMPTY for L=3.
-
-**Hamiltonian Bug Fixed:** Initial implementations computed `H = I - ΣPᵥ` instead of `H = Nᵥ·I - ΣPᵥ`.
-
-**Realization:** The qubit placement needs reconsideration. T35a uses **vertex-qubits** (qubits at plaquette corners), not edge-qubits. The diamond-lattice CZX construction likely requires vertex-qubits or vertex-hexagon incidence, not the edge-qubit Levin-Wen type model that was tested.
-
-**Code:**
-- `rust-lattice/src/t35b_gate1.rs` — dense (L=2) + Lanczos (L=3)
-- `rust-lattice/src/t35b_power.rs` — power iteration for L=3
-- `rust-lattice/src/t35b_verify.rs` — L=2 dense verification
-- Results: `memory-bank/implementation/t35b-gate1-results.md`
+### Hard Gates (from spec)
+- Gate A: Explicit intertwiner basis and encoding map W_v
+- Gate B: Locality and gluing compatibility (commutation with edge singlet constraints)
+- Gate C: Global symmetry on small closed patch
+- Gate D: Parent Hamiltonian
+- Gate E: Boundary anomaly / MPUO
 
 ### Next Steps
-- [ ] Reconsider qubit placement: vertex-qubits (T35a-style) vs edge-qubits vs vertex-hexagon incidence
-- [ ] Design new Gate 1 test with vertex-qubit placement
-- [ ] Document this negative result and pivot direction
+- [ ] Implement Gate A: Write W_v explicitly in recoupling basis, verify numerically
+- [ ] Implement Gate B: Test [U_CZX, ε_gluing] = 0 on 2×2 torus
+- [ ] If Gates A-B pass, proceed to Gate C (global symmetry) and Gate D (parent Hamiltonian)
+
+**Code**: New Rust module `rust-lattice/src/t35b_encoded/` (to be created)
+**Old code preserved**: `rust-lattice/src/t35b_gate1.rs`, `t35b_power.rs`, `t35b_verify.rs` (documented negative result)
 
 ## What's Next
 
 | Priority | Task | Status | Depends On |
 |----------|------|--------|------------|
-| 1 | **T35b Pivot** | Reconsider qubit placement for CZX construction | 🔄 | T35a |
-| 2 | **T35a Thread 3** | ts-quantum cross-check + boundary MPUO | 🔄 | — |
-| 3 | **T33b** | Diamond lattice Polyakov scan | ⏳ | T33a |
-| 4 | **T34a** | Configuration snapshot output mode | ⏳ | — |
-| 5 | T32 | Rust 2024 reproducibility | 🔄 | — |
+| 1 | **T35b Gate A** | Implement explicit W_v encoding map | 🔄 | — |
+| 2 | **T35b Gate B** | Test gluing compatibility on 2×2 torus | ⏳ | Gate A |
+| 3 | **T35a Thread 3** | ts-quantum cross-check + boundary MPUO | 🔄 | — |
+| 4 | **T33b** | Diamond lattice Polyakov scan | ⏳ | T33a |
+| 5 | **T34a** | Configuration snapshot output mode | ⏳ | — |
+| 6 | T32 | Rust 2024 reproducibility | 🔄 | — |
 
 **Key principle:** Gauge-transition numerics are control physics; the explicit microscopic CZX realization is the actual unresolved claim.
 

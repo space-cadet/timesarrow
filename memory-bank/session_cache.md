@@ -90,13 +90,19 @@
 ### T35b: Diamond-Lattice CZX Existence Test
 **Status:** 🔄 **IN PROGRESS**
 **Started:** 2026-07-21
-**Context**: Formalize and test a CZX-inspired diamond construction without conflating full-space symmetry with intertwiner preservation.
-**Files**: `tasks/T35b.md`, `implementation-details/t35b-diamond-czx-existence-test.md`
+**Context**: After edge-qubit model failed at L=3, pivoted to encoded tetrahedral CZX specification per Terra's analysis. New spec written. Next: implement Gate A (explicit W_v encoding map).
+**Files**: `tasks/T35b.md`, `implementation/t35b-encoded-tetrahedral-czx-spec.md`
 **Progress**:
-1. ✅ Defined decision gates and allowed outcomes
-2. 🔄 Specify the four-valent vertex/edge Hilbert-space mapping
-3. ⬜ Complete the correct square-lattice compatibility test
-4. ⬜ Test a minimal periodic diamond cluster
+1. ✅ Defined the decision gates and evidence standard.
+2. ✅ Implemented four-valent square-lattice edge-qubit model test in Rust.
+3. ✅ L=2 test passes (1-dim intertwiner subspace confirmed).
+4. ❌ L=3 test fails: no intertwiner subspace exists for edge-qubit model.
+5. 🔄 Pivoted to encoded tetrahedral CZX spec (virtual legs + singlet contraction)
+6. ⬜ Implement Gate A: Explicit W_v in recoupling basis
+7. ⬜ Implement Gate B: Test gluing compatibility
+8. ⬜ Implement Gate C: Global symmetry on 2×2 torus
+9. ⬜ Implement Gate D: Parent Hamiltonian
+10. ⬜ Implement Gate E: Boundary anomaly
 
 ## Completed Tasks
 
