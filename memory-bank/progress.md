@@ -1,6 +1,16 @@
 # timesarrow — Progress Tracker
 
-*Updated: 2026-07-18 00:35 IST*
+*Updated: 2026-07-21 14:56:49 IST*
+
+## T35b: Diamond-Lattice CZX Existence Test (2026-07-21)
+
+**Status:** Active specification task. The program now requires an explicit Hilbert-space/incidence definition, a correct four-valent square-lattice intertwiner test, and a minimal periodic diamond-cluster test before any construction claim.
+
+**Decision boundary:** The existing diamond 2-skeleton is sufficient for the first construction gates; missing 3-cells block closed-3-manifold and bulk-topology claims. Full-space symmetry or ordinary gauge numerics are not substitute evidence.
+
+**Plan:** `memory-bank/implementation-details/t35b-diamond-czx-existence-test.md`
+
+---
 
 ## T35a: CZX Microscopic Construction — Milestone Reached (2026-07-19)
 

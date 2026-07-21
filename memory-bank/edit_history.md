@@ -1,6 +1,21 @@
 # Edit History
 *Created: 2026-07-19 01:05 IST*
-*Last Updated: 2026-07-19 01:05 IST*
+*Last Updated: 2026-07-21 15:02:28 IST*
+
+### 2026-07-21
+
+#### 15:02:28 IST - T35b: Record first implementation deliverable
+- Modified `memory-bank/tasks/T35b.md` - Stated that the first step is a machine-readable finite-cluster Hilbert-space and incidence specification.
+- Modified `memory-bank/implementation-details/t35b-diamond-czx-existence-test.md` - Prohibited numerical construction code before that specification is fixed and reviewable.
+
+#### 14:56:49 IST - T35b: Diamond-lattice CZX existence-test specification
+- Created `memory-bank/tasks/T35b.md` - Defined the scoped construction-or-obstruction task, dependencies, completion criteria, and evidence standard.
+- Created `memory-bank/implementation-details/t35b-diamond-czx-existence-test.md` - Recorded the required Hilbert-space, four-valent compatibility, diamond-cluster, and interpretation gates.
+- Modified `memory-bank/tasks.md` - Registered T35b and its dependency relationship to T33a and T35a.
+- Modified `memory-bank/activeContext.md` - Made T35b the current microscopic-construction priority.
+- Modified `memory-bank/progress.md` - Added the T35b decision boundary and implementation-plan reference.
+- Modified `memory-bank/session_cache.md` - Added T35b working state and updated the focus.
+- Modified `memory-bank/sessions/2026-07-19-night.md` - Appended the approved T35b specification record.
 
 ### 2026-07-19
 
@@ -1568,4 +1583,3 @@ T20 is the foundational simulation validating the core confinement-deconfinement
 - Created `memory-bank/tasks/T2.md` - Task file documenting manuscript gap analysis work
 - Updated `memory-bank/tasks.md` - Updated timestamp to 2026-04-16 20:22:00 IST
 - Created `memory-bank/sessions/2026-04-16-evening.md` - Session file documenting current work session
-

@@ -1,7 +1,7 @@
 # Memory Bank - Sage Workspace
 
 *Created: 2026-07-18 17:06:36 IST*
-*Last Updated: 2026-07-18 17:06:36 IST*
+*Last Updated: 2026-07-21 14:56:49 IST*
 
 ## Overview
 
@@ -29,6 +29,7 @@ This is the Memory Bank for the Sage (灵剑) OpenClaw workspace.
 | T25 | T25: Volume Operator Extension | ⏸️ | MEDIUM | 2026-06-24 | - | [Details](tasks/T25.md) |
 | T26 | T26 | 🔄 | LOW | 2026-06-24 | - | [Details](tasks/T26.md) |
 | T35a | Deployed theory folder to quantumofgravity.com VPS and linked from main project page | 🔄 | MEDIUM | 2026-07-18 | - | [Details](tasks/T35a.md) |
+| T35b | Diamond-Lattice CZX Existence Test | 🔄 | HIGH | 2026-07-21 | T33a, T35a | [Details](tasks/T35b.md) |
 
 ## Completed Tasks
 
@@ -90,6 +91,9 @@ T28: Deploy Quarto docs to quantumofgravity.com/projects/timesarrow/ as primary 
 T3: T3
   └── 2026-04-16
 T35a: Deployed theory folder to quantumofgravity.com VPS and linked from main project page
+T35b: Diamond-Lattice CZX Existence Test
+  ├── T33a: diamond 2-skeleton and hexagon incidence
+  └── T35a: local CZX and many-body audit
 T4: T4
   └── 2026-04-16
 T5: T5

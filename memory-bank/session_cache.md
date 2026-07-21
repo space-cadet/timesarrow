@@ -1,16 +1,16 @@
 # Session Cache
 
 *Created: 2026-07-18 17:06:47 IST*
-*Last Updated: 2026-07-19 01:05 IST*
+*Last Updated: 2026-07-21 14:56:49 IST*
 
 **Started**: 2026-07-19 00:57 IST
-**Focus Task**: T35a: CZX Microscopic Construction Audit
+**Focus Task**: T35b: Diamond-Lattice CZX Existence Test
 **Session File**: `sessions/2026-07-19-night.md`
-**Status**: 🔄 Active: 9, Paused: 9, Completed: 16
+**Status**: 🔄 Active: 10, Paused: 9, Completed: 16
 
 ## Overview
 
-- Active: 9 | Paused: 9 | Completed: 16
+- Active: 10 | Paused: 9 | Completed: 16
 - Last Session: 2026-07-19-night
 - Current Period: night
 
@@ -86,6 +86,17 @@
 6. ⬜ Parent Hamiltonian
 7. ⬜ ts-quantum cross-check
 8. ⬜ 3D generalization
+
+### T35b: Diamond-Lattice CZX Existence Test
+**Status:** 🔄 **IN PROGRESS**
+**Started:** 2026-07-21
+**Context**: Formalize and test a CZX-inspired diamond construction without conflating full-space symmetry with intertwiner preservation.
+**Files**: `tasks/T35b.md`, `implementation-details/t35b-diamond-czx-existence-test.md`
+**Progress**:
+1. ✅ Defined decision gates and allowed outcomes
+2. 🔄 Specify the four-valent vertex/edge Hilbert-space mapping
+3. ⬜ Complete the correct square-lattice compatibility test
+4. ⬜ Test a minimal periodic diamond cluster
 
 ## Completed Tasks
 
@@ -171,9 +182,9 @@
 
 ## Next Session Focus
 
-1. T35a: Boundary MPUO / 3-cocycle computation
-2. T35a: Parent Hamiltonian construction
-3. T33b: Diamond lattice Polyakov scan
+1. T35b: Four-valent square-lattice compatibility specification
+2. T35b: Minimal periodic diamond-cluster test
+3. T35a: Boundary MPUO / 3-cocycle computation
 
 ## System Status
 
