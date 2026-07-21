@@ -1,6 +1,6 @@
 # timesarrow — Active Context
 
-*Updated: 2026-07-21 16:45 IST*
+*Updated: 2026-07-21 19:05 IST*
 
 ## T33a Foundation Validated 🔄
 
@@ -49,35 +49,48 @@ The equal spacing (gap = 1.0) indicates independent plaquette contributions. Eac
 
 **Open threads:** boundary MPUO / 3-cocycle, ts-quantum cross-check, 3D generalization.
 
-## T35b Diamond-Lattice Existence Test 🔄
+## T35b Diamond-Lattice Existence Test 🔄 **BLOCKED — Edge-Qubit Model Fails**
 
-T35b now makes the 3D construction question explicit. It first requires a correct four-valent square-lattice vertex/edge mapping and intertwiner-preservation test, then a minimal periodic diamond-cluster test. The diamond 2-skeleton is sufficient for these first gates; missing 3-cells block bulk-topology claims.
+T35b makes the 3D construction question explicit. It first requires a correct four-valent square-lattice vertex/edge mapping and intertwiner-preservation test, then a minimal periodic diamond-cluster test.
 
-### Gate 1 Results (2026-07-21): Four-Valent Square-Lattice Test ✅
+### Gate 1 Results (2026-07-21): Four-Valent Square-Lattice Test
 
-**Specification drafted:** `memory-bank/implementation/t35b-gate1-specification.md`
+**L=2 (Dense exact diagonalization):**
+- Hilbert space: 8 edge-qubits, dim = 256
+- Ground state energy: E₀ ≈ 1.2×10⁻¹² ≈ 0 ✅
+- Intertwiner subspace dimension: 1
+- <ψ|U_X|ψ> = +1.000000 ✅
+- <ψ|U_CZ|ψ> = +1.000000 ✅
+- First excited state: E₁ ≈ 2.20, gap ΔE ≈ 2.20
 
-**Test cluster:** $L=2$ periodic square lattice (4 vertices, 8 edge-qubits, Hilbert space dim 256)
+**L=3 (Power iteration, converged):**
+- Hilbert space: 18 edge-qubits, dim = 262,144
+- Ground state energy: E₀ ≈ 3.684 (converged, stable)
+- **No exact intertwiner subspace exists** ❌
 
-**Key findings:**
-- Gate 1 **passes**: $U = X^{\otimes 8} \cdot U_{CZ}$ preserves the intertwiner subspace exactly ($[U, P_{\text{int}}] = 0$, no leakage)
-- **Surprise:** The intertwiner subspace is **1-dimensional** for $L=2$ — unexpectedly small
-- Vertex projectors **do not commute** (norm ~1.54 for adjacent vertices); global projector is intersection, not product
-- Both $U$ (with CZ) and $U_X = X^{\otimes 8}$ (without CZ) preserve the intertwiner subspace — the CZ is not probed on $L=2$
-- Larger clusters needed to distinguish operators
+**Critical Finding:** The edge-qubit model is incompatible with simultaneous singlet constraints at all vertices for L≥3. The intersection of all vertex singlet projectors is EMPTY for L=3.
 
-**Open question:** Does the intertwiner subspace grow for $L=3, 4$? Is the edge-qubit model the right placement?
+**Hamiltonian Bug Fixed:** Initial implementations computed `H = I - ΣPᵥ` instead of `H = Nᵥ·I - ΣPᵥ`.
 
-**Files:**
-- Script: `numerics/scripts/t35b-gate1-square-lattice.py`
+**Realization:** The qubit placement needs reconsideration. T35a uses **vertex-qubits** (qubits at plaquette corners), not edge-qubits. The diamond-lattice CZX construction likely requires vertex-qubits or vertex-hexagon incidence, not the edge-qubit Levin-Wen type model that was tested.
+
+**Code:**
+- `rust-lattice/src/t35b_gate1.rs` — dense (L=2) + Lanczos (L=3)
+- `rust-lattice/src/t35b_power.rs` — power iteration for L=3
+- `rust-lattice/src/t35b_verify.rs` — L=2 dense verification
 - Results: `memory-bank/implementation/t35b-gate1-results.md`
+
+### Next Steps
+- [ ] Reconsider qubit placement: vertex-qubits (T35a-style) vs edge-qubits vs vertex-hexagon incidence
+- [ ] Design new Gate 1 test with vertex-qubit placement
+- [ ] Document this negative result and pivot direction
 
 ## What's Next
 
 | Priority | Task | Status | Depends On |
 |----------|------|--------|------------|
-| 1 | **T35a Thread 3** | ts-quantum cross-check + boundary MPUO | 🔄 | — |
-| 2 | **T35b** | Diamond CZX existence test | 🔄 | T33a, T35a |
+| 1 | **T35b Pivot** | Reconsider qubit placement for CZX construction | 🔄 | T35a |
+| 2 | **T35a Thread 3** | ts-quantum cross-check + boundary MPUO | 🔄 | — |
 | 3 | **T33b** | Diamond lattice Polyakov scan | ⏳ | T33a |
 | 4 | **T34a** | Configuration snapshot output mode | ⏳ | — |
 | 5 | T32 | Rust 2024 reproducibility | 🔄 | — |

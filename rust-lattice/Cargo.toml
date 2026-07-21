@@ -27,3 +27,19 @@ path = "src/main.rs"
 [[bin]]
 name = "t35a-thread2"
 path = "src/t35a_thread2.rs"
+
+[[bin]]
+name = "t35b-gate1"
+path = "src/t35b_gate1.rs"
+
+[[bin]]
+name = "t35b-verify"
+path = "src/t35b_verify.rs"
+
+[[bin]]
+name = "t35b-power"
+path = "src/t35b_power.rs"
+
+[[bin]]
+name = "t35b-quick"
+path = "src/t35b_quick.rs"

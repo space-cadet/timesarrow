@@ -158,11 +158,61 @@ The exact numerical verification is in `numerics/scripts/t35a-czx-construction-v
 - ⬜ Parent Hamiltonian: build commuting terms, verify unique gapped ground state
 - ⬜ ts-quantum cross-check: compare gate-by-gate with `src/models/czx.ts`
 
-## Next Steps (Revised)
+## T35b Gate 1: Four-Valent Square-Lattice Intertwiner Test (2026-07-21)
 
-1. **Boundary MPUO** — cut the torus open, extract effective edge symmetry, show it cannot be factored on-site; compute the 3-cocycle of $H^3(\mathbb{Z}_2, U(1)) = \mathbb{Z}_2$ explicitly.
-2. **Parent Hamiltonian** — build local commuting projector terms that stabilize the CZX state; verify unique gapped ground state by exact diagonalization on small lattices.
-3. **3D generalization** — once the 2D boundary physics is understood, extend to the diamond lattice (hexagonal plaquettes, 6 vertices).
+### Edge-Qubit Model Implementation
+
+Implemented a matrix-free exact diagonalization in Rust to test whether the CZX symmetry preserves the intertwiner subspace on a **periodic square lattice with edge-qubits** (Levin-Wen/string-net type model):
+
+- **Qubits placed on edges** (not vertices)
+- **Vertices:** 4-valent, each with 4 incident edge-qubits
+- **Intertwiner projector:** P_v projects 4 edge-qubits onto the 2-dimensional spin-1/2 singlet subspace
+- **Hamiltonian:** H = Σ_v (I - P_v) — ground state is the intertwiner subspace
+- **Symmetry:** U = X^{⊗N} · U_CZ (global X plus CZ on plaquettes)
+
+### L=2 Results (4 vertices, 8 edge-qubits, dim=256)
+
+- **Ground state energy:** E₀ ≈ 1.2×10⁻¹² ≈ 0 ✅
+- **Intertwiner subspace dimension:** 1
+- **<ψ|U_X|ψ>:** +1.000000
+- **<ψ|U_CZ|ψ>:** +1.000000
+- **Conclusion:** Intertwiner subspace exists and is preserved by both U_X and U_CZ
+
+### L=3 Results (9 vertices, 18 edge-qubits, dim=262,144)
+
+- **Ground state energy:** E₀ ≈ 3.684 (converged, stable)
+- **Conclusion:** **NO exact intertwiner subspace exists** ❌
+
+### Critical Finding: Edge-Qubit Model is Incompatible
+
+For L=2: 4 vertices, each with a 2-dimensional singlet subspace → intersection is 1-dimensional.
+For L=3: 9 vertices → **intersection is EMPTY**. The best approximation has ~3.68 unsatisfied vertices on average.
+
+This means the **edge-qubit Levin-Wen type model cannot support a non-trivial intertwiner subspace** for system sizes L≥3. The simultaneous singlet constraints at all vertices are over-constrained.
+
+### Implications
+
+1. **The edge-qubit model is blocked** for the CZX + intertwiner construction
+2. **Qubit placement must be reconsidered:** T35a uses **vertex-qubits** (qubits at plaquette corners), not edge-qubits
+3. The diamond-lattice CZX construction likely requires:
+   - **Vertex-qubits:** qubits at diamond-lattice vertices / hexagon corners
+   - **Vertex-hexagon incidence:** qubits associated with vertex-hexagon pairs
+   - Some other placement not yet considered
+
+### Code
+
+- `rust-lattice/src/t35b_gate1.rs` — dense (L=2) + Lanczos (L=3)
+- `rust-lattice/src/t35b_power.rs` — power iteration for L=3
+- `rust-lattice/src/t35b_verify.rs` — L=2 dense verification
+- `memory-bank/implementation/t35b-gate1-results.md` — detailed results
+
+## Next Steps (Revised 2026-07-21)
+
+1. **Pivot to vertex-qubit model:** Design Gate 1 test with qubits on vertices (T35a-style)
+2. **Test L=2, L=3 with vertex-qubits:** Check if intertwiner subspace exists and grows
+3. **Boundary MPUO** — cut the torus open, extract effective edge symmetry, show it cannot be factored on-site
+4. **Parent Hamiltonian** — build local commuting projector terms (T35a Thread 2 is complete)
+5. **3D generalization** — once vertex-qubit model is validated, extend to diamond lattice
 
 ## Open Questions
 
@@ -170,3 +220,4 @@ The exact numerical verification is in `numerics/scripts/t35a-czx-construction-v
 - Do the CZX constraints and gauge constraints commute?
 - What is the physical interpretation of a state that is both CZX-symmetric and gauge-invariant?
 - Can this construction be extended to higher spins or different gauge groups?
+- **NEW:** What is the correct qubit placement for the diamond-lattice CZX construction?

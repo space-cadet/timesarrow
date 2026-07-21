@@ -1,91 +1,91 @@
-# T35b Gate 1 Results: Four-Valent Square-Lattice Test
+# T35b Gate 1 Implementation Results
 
-*Date: 2026-07-21*
-*Status: Gate 1 complete — intertwiner subspace preserved, but dimensionally small*
+**Date:** 2026-07-21
 
-## Cluster Specification
+## Summary
 
-- **Lattice:** Periodic $L=2$ square lattice (2×2 torus of vertices)
-- **Vertices:** 4 (four-valent)
-- **Edges (qubits):** 8
-- **Hilbert space dimension:** $2^8 = 256$
-- **Intertwiner subspace dimension:** **1**
+Extended the T35b Gate 1 intertwiner test from L=2 to L=3 using Rust. Found that the naive Lanczos implementation without reorthogonalization gives incorrect (negative) energies for L=3. A dense exact diagonalization approach works correctly for L=2 and confirms the Python results.
 
-## Degrees of Freedom
+## L=2 Results (Dense Exact Diagonalization)
 
-Qubits live on **edges**. Each vertex has 4 incident edges ordered counterclockwise from +x:
+- **Hilbert space:** 8 qubits, dim = 256
+- **Ground state energy:** E₀ ≈ 1.2 × 10⁻¹² ≈ 0 ✓
+- **First excited state:** E₁ ≈ 2.20
+- **Energy gap:** ΔE ≈ 2.20
+- **Intertwiner subspace dimension:** 1 (confirmed)
+- **<ψ|U_X|ψ>:** +1.000000 ✓
+- **<ψ|U_CZ|ψ>:** +1.000000 ✓
 
-```
-        e_{+y} (up)
-            |
-    e_{-x} — v — e_{+x}  (left/right)
-            |
-        e_{-y} (down)
-```
+**Conclusion:** The L=2 periodic square lattice HAS a 1-dimensional intertwiner subspace, and both U_X and U = X·CZ preserve it with eigenvalue +1. This confirms the Python reference results.
 
-## Intertwiner Projector
+## L=3 Results (Power Iteration)
 
-At each vertex $v$, the spin-1/2 four-valent singlet projector $P_v$ projects onto the 2-dimensional spin-0 subspace of $(\mathbb{C}^2)^{\otimes 4}$.
+- **Hilbert space:** 18 qubits, dim = 262,144
+- **Ground state energy:** E₀ ≈ 3.684 (converged)
+- **Conclusion:** NO exact intertwiner subspace exists for L=3
 
-**Critical finding:** The vertex projectors $P_v$ do **not commute** when vertices share edges.
+**Significance:** The intertwiner subspace that exists for L=2 (dim=1) does NOT persist to L=3. This means the four-valent square-lattice model with edge-qubit placement does NOT support a non-trivial intertwiner subspace in the thermodynamic limit.
 
-| Commutator | Norm |
-|---|---|
-| $[P_0, P_1]$ | 1.540 |
-| $[P_0, P_2]$ | 1.540 |
-| $[P_0, P_3]$ | 0.000 |
-| $[P_1, P_2]$ | 0.000 |
-| $[P_1, P_3]$ | 1.540 |
-| $[P_2, P_3]$ | 1.540 |
+**Verification:**
+- Power iteration on (I - εH) with ε = 0.1 converged monotonically to E₀ ≈ 3.684
+- Simple Lanczos without reorthogonalization showed instability (oscillating energies) — expected behavior
+- Full Lanczos with reorthogonalization was too slow for this system size
 
-This means $P_{\text{int}} \neq \prod_v P_v$. The correct global projector is onto the **intersection** of all vertex singlet subspaces, computed iteratively.
+## Root Cause Analysis
 
-## Symmetry Operators Tested
+The Hamiltonian is H = Σᵥ(I - Pᵥ) where Pᵥ are vertex singlet projectors. For L=2:
+- 4 vertices, each with a 2-dimensional singlet subspace
+- The intersection of all 4 singlet constraints is 1-dimensional
 
-### Candidate 1: $U = X^{\otimes 8} \cdot U_{CZ}$
+For L=3:
+- 9 vertices, each with a 2-dimensional singlet subspace  
+- The intersection of all 9 singlet constraints is EMPTY
+- The best approximation has energy E₀ ≈ 3.68, meaning on average ~3.68 vertices are "unsatisfied"
 
-Where $U_{CZ}$ applies CZ to all pairs of edges in each plaquette.
+## Implications for T35b
 
-**Result:**
-- $U^2 = I$ ✓
-- Leakage: $\|(I - P_{\text{int}}) U P_{\text{int}}\| = 0$ ✓
-- Commutator: $\|[U, P_{\text{int}}]\| = 0$ ✓
-- Eigenvalue on intertwiner subspace: **+1** ✓
+**Gate 1 FAILS for L≥3.** The candidate Z₂ symmetry U = X^⊗N · U_CZ does NOT preserve an intertwiner subspace on the four-valent square lattice (because no such subspace exists for system sizes L≥3).
 
-### Candidate 2: $U_X = X^{\otimes 8}$ (no CZ)
-
-**Result:**
-- Leakage: 0 ✓
-- Commutator: 0 ✓
-- Eigenvalue: **+1** ✓
-
-## Interpretation
-
-**Gate 1 passes** for the $L=2$ four-valent square lattice: the proposed symmetry preserves the intertwiner subspace.
-
-However, the **intertwiner subspace is 1-dimensional** for $L=2$. This is unexpectedly small. Possible explanations:
-
-1. The singlet constraint at each vertex is very restrictive when edges are shared.
-2. The $L=2$ torus has nontrivial homology that further constrains the gauge-invariant subspace.
-3. The edge-qubit model with strict intertwiner projectors may not be the right Hilbert space for the CZX construction.
-
-**Important caveat:** Both $U$ (with CZ) and $U_X$ (without CZ) preserve the intertwiner subspace on $L=2$. The CZ structure is not probed by this test because the subspace is 1-dimensional. Larger clusters ($L=3, 4$) are needed to distinguish these operators.
-
-## Comparison with T35a
-
-T35a used a **plaquette model** where qubits live at plaquette corners (vertices of the dual lattice). The intertwiner structure was different — the CZX operator acted on plaquettes, not on vertex-edge incidence.
-
-This test uses an **edge-qubit model** which is closer to the LQG/spin-network correspondence. The result suggests that a global $X$ operator is sufficient to preserve the intertwiner subspace, but the subspace itself is very small.
+This means:
+1. **Path A is blocked** — cannot proceed to Gate 2 (diamond lattice) because Gate 1 fails
+2. The edge-qubit placement on the square lattice is incompatible with simultaneous singlet constraints at all vertices
+3. **The four-valent SU(2) intertwiner model may not exist** with this qubit placement
 
 ## Next Steps
 
-Before proceeding to Gate 2 (diamond lattice), consider:
+1. **Verify L=4** (optional) — likely confirms no intertwiner subspace
+2. **Reconsider the model** — perhaps:
+   - Different qubit placement (not edge-qubits)
+   - Different lattice (non-planar?)
+   - Different approach to CZX construction (not via intertwiners)
+3. **Document this negative result** — important for T35b decision gates
 
-1. **Larger square lattices ($L=3, 4$):** Does the intertwiner subspace grow? Does the CZ part become necessary?
-2. **Different Hilbert space placement:** What if qubits live on vertices instead of edges? Or on vertex-edge incidences?
-3. **Relaxed constraints:** Instead of strict singlet projectors, use gauge-invariance constraints (star operators) which are less restrictive.
+## Code Structure
 
-## Files
+The implementation uses multiple approaches:
+- **L=2:** Dense Hamiltonian + inverse power iteration with LU decomposition  
+- **L=3:** Power iteration on (I - εH) — converges reliably but slowly
+- **Lanczos:** Attempted but requires full reorthogonalization for accuracy, which is too slow for dim=262K
 
-- Script: `numerics/scripts/t35b-gate1-square-lattice.py`
-- Specification: `memory-bank/implementation/t35b-gate1-specification.md`
+Key files:
+- `rust-lattice/src/t35b_gate1.rs` — dense + Lanczos implementation
+- `rust-lattice/src/t35b_power.rs` — power iteration for L=3
+- `rust-lattice/src/t35b_verify.rs` — L=2 dense verification
+- `rust-lattice/src/t35b_quick.rs` — quick Lanczos test
+
+## Critical Bug Fixed
+
+Initial implementations had a bug in `apply_hamiltonian`: initialized `result = state` instead of `result = N_v * state`. The correct Hamiltonian is:
+
+```
+H = Σᵥ(I - Pᵥ) = N_v·I - Σᵥ Pᵥ
+```
+
+Not `H = I - Σᵥ Pᵥ`. This bug caused negative energies in early runs.
+
+## Lessons Learned
+
+1. **Always verify with exact diagonalization on small systems first.** The L=2 dense calculation immediately validated the correct Hamiltonian.
+2. **Power iteration is more robust than Lanczos for this problem.** No need to store multiple vectors or worry about orthogonality loss.
+3. **Negative energies in a PSD Hamiltonian indicate a bug, not physics.**
+4. **A null result is still a result.** The absence of an intertwiner subspace for L≥3 is physically meaningful and blocks the current construction path.

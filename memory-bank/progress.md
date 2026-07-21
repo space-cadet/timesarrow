@@ -2,13 +2,39 @@
 
 *Updated: 2026-07-21 14:56:49 IST*
 
-## T35b: Diamond-Lattice CZX Existence Test (2026-07-21)
+## T35b: Diamond-Lattice CZX Existence Test (2026-07-21) — EDGE-QUBIT MODEL BLOCKED
 
-**Status:** Active specification task. The program now requires an explicit Hilbert-space/incidence definition, a correct four-valent square-lattice intertwiner test, and a minimal periodic diamond-cluster test before any construction claim.
+**Status:** Gate 1 complete. **Edge-qubit model fails for L≥3.** Need to reconsider qubit placement (vertex-qubits instead of edge-qubits).
 
-**Decision boundary:** The existing diamond 2-skeleton is sufficient for the first construction gates; missing 3-cells block closed-3-manifold and bulk-topology claims. Full-space symmetry or ordinary gauge numerics are not substitute evidence.
+### Gate 1 Results: Four-Valent Square-Lattice Test
 
-**Plan:** `memory-bank/implementation-details/t35b-diamond-czx-existence-test.md`
+**L=2 (Dense exact diagonalization):**
+- Hilbert space: 8 edge-qubits, dim = 256
+- Ground state energy: E₀ ≈ 1.2×10⁻¹² ≈ 0 ✅
+- Intertwiner subspace dimension: 1
+- <ψ|U_X|ψ> = +1.000000 ✅
+- <ψ|U_CZ|ψ> = +1.000000 ✅
+- First excited state: E₁ ≈ 2.20, gap ΔE ≈ 2.20
+
+**L=3 (Power iteration, converged):**
+- Hilbert space: 18 edge-qubits, dim = 262,144
+- Ground state energy: E₀ ≈ 3.684 (converged, stable)
+- **No exact intertwiner subspace exists** ❌
+
+**Critical Finding:** The edge-qubit model is incompatible with simultaneous singlet constraints at all vertices for L≥3. For L=2: 4 vertices → intersection is 1-dim. For L=3: 9 vertices → intersection is EMPTY (best approximation has ~3.68 unsatisfied vertices).
+
+### Hamiltonian Bug Fixed
+Initial implementations computed `H = I - ΣPᵥ` instead of `H = Nᵥ·I - ΣPᵥ`. Correct: `H = Σᵥ(I - Pᵥ) = Nᵥ·I - Σᵥ Pᵥ`.
+
+### Code
+- `rust-lattice/src/t35b_gate1.rs` — dense (L=2) + Lanczos (L=3)
+- `rust-lattice/src/t35b_power.rs` — power iteration for L=3
+- `rust-lattice/src/t35b_verify.rs` — L=2 dense verification
+
+### Next Steps
+- [ ] Reconsider qubit placement: vertex-qubits (T35a-style) vs edge-qubits vs vertex-hexagon incidence
+- [ ] Design new Gate 1 test with vertex-qubit placement
+- [ ] Document this negative result and pivot direction
 
 ---
 
