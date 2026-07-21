@@ -1,6 +1,6 @@
 # timesarrow — Active Context
 
-*Updated: 2026-07-21 14:56:49 IST*
+*Updated: 2026-07-21 16:45 IST*
 
 ## T33a Foundation Validated 🔄
 
@@ -17,7 +17,19 @@ Explicit construction of the CZX SPT state completed on single plaquette and 2×
 Code: `numerics/scripts/t35a-czx-construction-verify.py` (numpy, exact state-vector).
 Theory doc updated: `theory/docs/czx-intertwiner-analysis.md`.
 
-**Open threads:** boundary MPUO / 3-cocycle, parent Hamiltonian, ts-quantum cross-check, 3D generalization.
+## T35a Thread 2: Parent Hamiltonian 🔄
+
+**Started: 2026-07-21**
+
+Building the parent Hamiltonian H = Σ_p h_p for the 2×2 torus CZX state:
+- h_p = (1/2)[(I - XXXX) + (I - ZZII) + (I - IZZI) + (I - IIZZ)] for each plaquette
+- System: 16 qubits, Hilbert space dimension = 65,536
+- Approach: ts-quantum sparse Lanczos eigensolver (newly added 2026-07-21)
+- Scripts: `t35a-thread2-parent-hamiltonian.py` (numpy stabilizer), `t35a-thread2-verify.ts` (ts-quantum sparse)
+
+**Blocked by**: Context compaction during session — verification script needs completion and testing.
+
+**Open threads:** boundary MPUO / 3-cocycle, parent Hamiltonian verification, ts-quantum cross-check, 3D generalization.
 
 ## T35b Diamond-Lattice Existence Test 🔄
 
@@ -46,8 +58,8 @@ T35b now makes the 3D construction question explicit. It first requires a correc
 
 | Priority | Task | Status | Depends On |
 |----------|------|--------|------------|
-| 1 | **T35b** | Diamond CZX existence test | 🔄 | T33a, T35a |
-| 2 | **T35a** | Boundary MPUO + parent Hamiltonian | 🔄 | — |
+| 1 | **T35a Thread 2** | Parent Hamiltonian verification | 🔄 | ts-quantum sparse eigensolver |
+| 2 | **T35b** | Diamond CZX existence test | 🔄 | T33a, T35a |
 | 3 | **T33b** | Diamond lattice Polyakov scan | ⏳ | T33a |
 | 4 | **T34a** | Configuration snapshot output mode | ⏳ | — |
 | 5 | T32 | Rust 2024 reproducibility | 🔄 | — |
