@@ -23,6 +23,25 @@ Theory doc updated: `theory/docs/czx-intertwiner-analysis.md`.
 
 T35b now makes the 3D construction question explicit. It first requires a correct four-valent square-lattice vertex/edge mapping and intertwiner-preservation test, then a minimal periodic diamond-cluster test. The diamond 2-skeleton is sufficient for these first gates; missing 3-cells block bulk-topology claims.
 
+### Gate 1 Results (2026-07-21): Four-Valent Square-Lattice Test ✅
+
+**Specification drafted:** `memory-bank/implementation/t35b-gate1-specification.md`
+
+**Test cluster:** $L=2$ periodic square lattice (4 vertices, 8 edge-qubits, Hilbert space dim 256)
+
+**Key findings:**
+- Gate 1 **passes**: $U = X^{\otimes 8} \cdot U_{CZ}$ preserves the intertwiner subspace exactly ($[U, P_{\text{int}}] = 0$, no leakage)
+- **Surprise:** The intertwiner subspace is **1-dimensional** for $L=2$ — unexpectedly small
+- Vertex projectors **do not commute** (norm ~1.54 for adjacent vertices); global projector is intersection, not product
+- Both $U$ (with CZ) and $U_X = X^{\otimes 8}$ (without CZ) preserve the intertwiner subspace — the CZ is not probed on $L=2$
+- Larger clusters needed to distinguish operators
+
+**Open question:** Does the intertwiner subspace grow for $L=3, 4$? Is the edge-qubit model the right placement?
+
+**Files:**
+- Script: `numerics/scripts/t35b-gate1-square-lattice.py`
+- Results: `memory-bank/implementation/t35b-gate1-results.md`
+
 ## What's Next
 
 | Priority | Task | Status | Depends On |
