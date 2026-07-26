@@ -64,13 +64,37 @@ Virtual half-edge legs plus invariant $epsilon$ contraction remain the correct s
 **Code**: New Rust module `rust-lattice/src/t35b_encoded/` (to be created)
 **Old code preserved**: `rust-lattice/src/t35b_gate1.rs`, `t35b_power.rs`, `t35b_verify.rs` (documented negative result)
 
+## T35c: K₄ Face-Qubit Investigation 🔄 NEW
+
+**Created: 2026-07-26**
+
+Parallel track to T35b. Investigates whether the K₄ (all-to-all) connectivity of a tetrahedron-face model can realize a valid SPT phase on the diamond lattice.
+
+**Key finding from initial analysis:** Geometric frustration is real — 6 hexagons share 4 face-qubits at each vertex, making a commuting projector Hamiltonian appear obstructed.
+
+**Three tracks:**
+1. **Numerical** (Option 1): Implement frustrated Hamiltonian on small clusters, check gap/uniqueness
+2. **Literature** (Option 2): Search for diamond-lattice SPTs, K₄ in quantum information, bipartite obstructions
+3. **Alternative geometries** (rolled into Option 2): Test K₄ on square/cubic lattices where frustration is absent
+
+**Status:** Investigation defined. Awaiting numerical implementation and literature search.
+
+**Docs:**
+- `memory-bank/implementation-details/t35b-k4-face-qubit-analysis.md` — Detailed comparison
+- `memory-bank/implementation-details/t35c-k4-investigation-plan.md` — Investigation plan
+- `memory-bank/tasks/T35c.md` — Task definition
+
+---
+
 ## What's Next
 
 | Priority | Task | Status | Depends On |
 |----------|------|--------|------------|
 | 1 | **T35b Gate 0** | Define local four-module CZX site and incidence map | 🔄 | — |
-| 2 | **T35b Gate A** | Implement explicit W_v encoding map | ⏳ | Gate 0 |
-| 3 | **T35a Thread 3** | ts-quantum cross-check + boundary MPUO | 🔄 | — |
+| 2 | **T35c Track 1** | K₄ numerical test: single site → small clusters | 🔄 | — |
+| 3 | **T35c Track 2** | Literature search: diamond SPTs, K₄ connectivity | 🔄 | — |
+| 4 | **T35b Gate A** | Implement explicit W_v encoding map | ⏳ | Gate 0 |
+| 5 | **T35a Thread 3** | ts-quantum cross-check + boundary MPUO | 🔄 | — |
 | 4 | **T33b** | Diamond lattice Polyakov scan | ⏳ | T33a |
 | 5 | **T34a** | Configuration snapshot output mode | ⏳ | — |
 | 6 | T32 | Rust 2024 reproducibility | 🔄 | — |

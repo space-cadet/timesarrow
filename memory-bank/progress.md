@@ -2,6 +2,46 @@
 
 *Updated: 2026-07-22 03:27:10 IST*
 
+## T35c: K₄ Face-Qubit CZX Investigation (2026-07-26) — NEW 🔄
+
+**Status**: Investigation defined. Three parallel tracks planned: numerical test, literature search, and alternative geometry exploration.
+
+**Context**: Following July 21–22 discussions with Terra and the rejection of the edge-qubit model, three candidate models were identified:
+1. Edge-qubit: ❌ Obstructed at L=3 (documented)
+2. Terra's coarse-site (C₄): 🔄 Spec written, Gate 0 open
+3. **K₄ face-qubit (this task)**: ❓ Under investigation
+
+**Key Analysis (2026-07-26)**:
+- K₄ operator: $U_{K_4} = X^{\otimes 4} \cdot \prod_{i<j} \text{CZ}_{ij}$ (6 CZ factors)
+- C₄ operator: $U_{C_4} = X^{\otimes 4} \cdot \text{CZ}_{12}\text{CZ}_{23}\text{CZ}_{34}\text{CZ}_{41}$ (4 CZ factors)
+- Both square to identity ✅
+- Both stabilize GHZ ✅
+- Differ on non-GHZ states (e.g., $|1110\rangle$: C₄ → +1, K₄ → −1)
+
+**Geometric Frustration**:
+- Diamond lattice: 6 hexagons meet at each vertex
+- Face-qubit model: only 4 qubits per vertex
+- → Hexagons necessarily share qubits
+- → Commuting projector Hamiltonian appears obstructed
+
+**Investigation Plan**:
+- **Track 1 (Numerical)**: Implement K₄ Hamiltonian on single site (4 qubits), two sites (8 qubits), small square lattice (no frustration), small diamond cluster (with frustration)
+- **Track 2 (Literature)**: Search for diamond-lattice SPTs, K₄ in quantum information, bipartite lattice obstructions
+- **Track 3 (Alternative Geometries)**: Test K₄ on square/cubic lattices where plaquettes don't overlap
+
+**Docs**:
+- `memory-bank/implementation-details/t35b-k4-face-qubit-analysis.md` — Detailed comparison
+- `memory-bank/implementation-details/t35c-k4-investigation-plan.md` — Full plan
+- `memory-bank/tasks/T35c.md` — Task definition
+
+**Code Planned**:
+- `rust-lattice/src/t35c_k4_single_site.rs`
+- `rust-lattice/src/t35c_k4_two_sites.rs`
+- `rust-lattice/src/t35c_k4_square_lattice.rs`
+- `rust-lattice/src/t35c_k4_diamond.rs`
+
+---
+
 ## T35b: Diamond-Lattice CZX Existence Test (2026-07-22) — ENCODED SPEC CORRECTED
 
 **Status**: No construction has been implemented. The virtual-leg/intertwiner kinematics are retained, but the first encoded CZX specification was rejected before Gate A.
