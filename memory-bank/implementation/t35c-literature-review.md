@@ -18,26 +18,50 @@
 
 ## Relevant Papers Found
 
-### 1. Diamond Lattice Topological Phases
+## 1. Diamond Lattice Topological Phases
 
-**arXiv:0811.2036** — Shinsei Ryu, *"Three-dimensional topological phase on the diamond lattice"* (2008)
-- **Journal**: Phys. Rev. B 79, 075124 (2009)
-- **Relevance**: ⭐⭐⭐⭐⭐ Directly addresses topological phases on the diamond lattice
-- **Model**: Kitaev-type interacting bosonic model
-- **Key finding**: Two phases ("weak" and "strong" pairing) on the diamond lattice. The weak pairing phase is a topological superconducting phase characterized by non-zero winding number, protected by discrete symmetry.
-- **Connection to T35c**: Shows that non-trivial topological phases CAN exist on the diamond lattice, but this is a Majorana/superconducting model, not an SPT.
-- **Gap**: Does not address SPT phases or cluster-state constructions.
+### arXiv:0811.2036 — Shinsei Ryu, *"Three-dimensional topological phase on the diamond lattice"* (2008)
+**Journal**: Phys. Rev. B 79, 075124 (2009) | **Relevance**: ⭐⭐⭐⭐⭐
 
-**arXiv:2212.06190** — Shang et al., *"IrF4: From Tetrahedral Compass Model to Topological Semimetal"* (2022)
-- **Journal**: Phys. Rev. B 107, 125111 (2023)
-- **Relevance**: ⭐⭐⭐ Uses tetrahedral geometry
-- **Model**: Tetrahedral compass model → topological semimetal
-- **Connection to T35c**: Tetrahedral symmetry appears in material contexts, but this is about semimetals, not SPTs.
+**Deep Read Summary (Sage, 2026-07-26)**:
 
-**arXiv:1612.02614** — Takahashi et al., *"Edge states of mechanical diamond and its topological origin"* (2016)
-- **Journal**: New J. Phys. 19, 035003 (2017)
-- **Relevance**: ⭐⭐⭐ Mechanical (classical) topological model on diamond lattice
-- **Connection to T35c**: Shows topological edge states can exist on diamond lattice, but in a classical spring-mass model.
+**Model**: Kitaev-type interacting bosonic model on the 3D diamond lattice. Each site has a **4D Hilbert space** (spin-3/2, or equivalently two spin-1/2 degrees of freedom σ ⊗ τ). The Hamiltonian is:
+
+```
+H = Σ_µ Σ_<jk>_µ  Jµ (αⱼ^µ αₖ^µ + ζⱼ^µ ζₖ^µ)
+```
+
+where α^µ and ζ^µ are two sets of Dirac gamma matrices acting on the local 4D Hilbert space. Four bond types µ=0,1,2,3 correspond to the four edge orientations of the diamond lattice.
+
+**Symmetry**: The model has:
+- Time-reversal T (T² = +1) and T′ (T′⁴ = 1, exchanges α ↔ ζ)
+- A discrete rotation R (π/2 around τᵧ)
+- A continuous U(1) symmetry for rotation around τᵧ axis
+- **The topological phase is protected by a combination of time-reversal and four-fold discrete rotation**
+
+**Solution method**: Exact solution via Majorana fermion representation. Six Majorana fermions λ₀...₅ per site. The Hamiltonian reduces to a Majorana hopping problem with a Z₂ gauge field uⱼₖ = ±1 on each link. By Lieb's theorem, the ground state is in the vortex-free sector (uⱼₖ = +1 for all links).
+
+**Two phases**:
+1. **Weak pairing phase**: Non-zero winding number ν ≠ 0. Topological superconductor in class DIII (3D analogue of Moore-Read Pfaffian). Has gapless surface Majorana fermion modes.
+2. **Strong pairing phase**: ν = 0. Trivial phase. No surface states.
+
+**Key distinction**: This is NOT an SPT phase — it's a **topological superconductor** (class DIII) with emergent Majorana fermions. The ground state is obtained by projection from a fermionic state, not by applying CZ gates to a product state.
+
+**Critical insight for T35c**: The diamond lattice **CAN support topological phases**. The 4D Hilbert space per site is essential. However, this model's topological character is protected by **time-reversal + discrete rotation**, not by a simple Z₂ on-site symmetry like the CZX construction.
+
+**Relevance to K₄ vs C₄ question**: This paper shows that:
+- The diamond lattice geometry is NOT an obstruction
+- A 4D Hilbert space per site is natural on the diamond lattice
+- Different symmetries (T′ + rotation vs Z₂) protect different topological phases
+- The Majorana construction is fundamentally different from the cluster-state SPT construction
+
+**Gap for T35c**: Does NOT address:
+- Cluster states or CZ-based constructions
+- SPT phases with Z₂ symmetry
+- Whether K₄ connectivity preserves the same symmetry as C₄
+- Whether a commuting projector Hamiltonian exists for face-qubits
+
+---
 
 ### 2. Cluster States and SPT Phases
 
@@ -93,34 +117,37 @@
 
 ---
 
-## Key Insights from Literature
+## Key Insights from Literature (Updated after Deep Read of Ryu 2008)
 
-### 1. Diamond Lattice CAN Support Topological Phases
+### 1. Diamond Lattice CAN Support Topological Phases ✅
 
-Ryu (2008) proved that the diamond lattice supports a 3D topological superconducting phase. This is not an SPT, but it shows the lattice itself is not an obstruction.
+Ryu (2008) proved that the diamond lattice supports a 3D **topological superconducting phase** (class DIII, weak pairing phase with ν ≠ 0). This is NOT an SPT, but it shows the lattice itself is not an obstruction.
 
-**Implication for T35c**: The diamond lattice geometry alone does not prevent topological order. The question is whether an SPT (specifically a cluster-state SPT) can exist.
+**Critical detail**: The model uses a **4D Hilbert space per site** — naturally described as two spin-1/2 degrees of freedom (σ ⊗ τ) or a spin-3/2. This is the same dimensionality as Deepak's face-qubit model (4 qubits = 2⁴ = 16D Hilbert space... wait, that's different. Let me check: 4 qubits per vertex = 2⁴ = 16D Hilbert space. Ryu's model has 4D per site = spin-3/2. These are different.)
 
-### 2. Commuting Projector Models Are Well-Studied
+**Correction**: Deepak's face-qubit model has **4 qubits per vertex** (16D Hilbert space), while Ryu's model has a **4D Hilbert space per site** (spin-3/2 or two spin-1/2s). These are different scales. However, both use the diamond lattice's 4-valent structure.
 
-Multiple papers (Inamura 2021, Kobayashi 2020, Horinouchi 2020) construct commuting projector Hamiltonians for SPTs in various dimensions and symmetries. The key requirement is that the projectors commute.
+### 2. Symmetry Protection is Different
 
-**Implication for T35c**: If K₄ on diamond lattice with face-qubits cannot be written as commuting projectors, it may still be a valid SPT but with a non-commuting Hamiltonian. This would be a different class of model.
+Ryu's topological phase is protected by **time-reversal + four-fold discrete rotation** (T′ symmetry, where T′⁴ = 1). This is fundamentally different from the **Z₂ on-site symmetry** of the CZX construction.
 
-### 3. Generalized Cluster States and Equivalence
+**Implication**: Even if the diamond lattice supports topological phases, the specific symmetry that protects them matters. The CZX SPT requires a specific Z₂ symmetry; Ryu's model uses a different symmetry.
 
-Jia (2024) and Inamura & Ohyama (2026) show that different cluster-state constructions can be related through:
-- Gauging subgroups
-- Hopf algebra structures
-- Non-invertible symmetries
+### 3. Exact Solvability via Majorana Fermions
 
-**Implication for T35c**: There may be a formal way to determine if K₄ and C₄ are in the same SPT phase, even if they look different locally.
+Ryu's model is solvable by mapping to Majorana fermions. The CZX cluster-state SPT is constructed by applying CZ gates to a product state. These are **different construction methods**:
+- Majorana: Interacting bosonic model → fermionization → projection
+- CZX: Product state → CZ gates → cluster state
 
-### 4. Complete Graph States Exist
+**Question**: Can the CZX construction be fermionized? Or is it inherently bosonic?
 
-Li et al. (2024) generate complete graph states (K₄) experimentally. The K₄ state is a valid quantum state.
+### 4. Commuting Projectors vs Majorana Hopping
 
-**Implication for T35c**: The K₄ operator is not algebraically invalid. The question is only whether it can be assembled into a lattice SPT.
+Ryu's Hamiltonian is NOT a commuting projector model. It's an interacting bosonic model that maps to a free Majorana hopping problem. The CZX parent Hamiltonian IS a commuting projector model.
+
+**Implication**: If K₄ on diamond lattice with face-qubits cannot be written as commuting projectors, it may still be a valid topological phase (like Ryu's model), but in a different universality class.
+
+---
 
 ---
 
