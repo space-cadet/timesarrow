@@ -2,6 +2,32 @@
 
 *Updated: 2026-07-22 03:27:10 IST*
 
+### Literature Deep Read — Ryu 2008 (PRB 79, 075124) ✅ COMPLETE
+
+**Date**: 2026-07-26
+
+**What the paper says**: Kitaev-type interacting bosonic model on the diamond lattice with 4D Hilbert space per site (spin-3/2, or two spin-1/2s σ ⊗ τ). Hamiltonian:
+
+$$H = \sum_{\mu=0}^3 \sum_{\langle jk \rangle_\mu} J_\mu (\alpha_j^\mu \alpha_k^\mu + \zeta_j^\mu \zeta_k^\mu)$$
+
+**Two phases**:
+- **Weak pairing**: ν ≠ 0, topological superconductor (class DIII), gapless surface Majorana modes
+- **Strong pairing**: ν = 0, trivial
+
+**Protected by**: Time-reversal T′ (where T′⁴ = 1) + four-fold discrete rotation — **NOT a Z₂ on-site symmetry like our CZX construction.**
+
+**Key clarification**: ν (winding number) is a **topological invariant of the ground state**, computed from the Berry connection. It is NOT a parameter in the Hamiltonian. The actual Hamiltonian parameters are J_μ, K_x, K_z, δJ_1.
+
+**Relevance to T35c**:
+- ✅ Diamond lattice supports topological phases
+- ❌ But NOT via the CZX/cluster-state construction
+- ❌ Different symmetry (T′ + rotation vs Z₂ on-site)
+- ❌ Different Hilbert space (4D vs 16D for 4 face-qubits)
+
+**Conclusion**: Ryu's model is a **different phase** from what we're investigating. The question "Can K₄ connectivity support the same on-site Z₂ SPT as C₄?" remains open.
+
+---
+
 ## T35c: K₄ Face-Qubit CZX Investigation (2026-07-26) — NEW 🔄
 
 **Status**: Investigation defined. Three parallel tracks planned: numerical test, literature search, and alternative geometry exploration.

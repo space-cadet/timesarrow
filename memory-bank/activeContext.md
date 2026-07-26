@@ -2,6 +2,30 @@
 
 *Updated: 2026-07-22 03:27:10 IST*
 
+## Current Focus (2026-07-26)
+
+**T35c: K₄ Face-Qubit CZX Investigation**
+
+Phase: **Literature Survey (Track 2)** — Deep reading priority papers before numerical work.
+
+### Completed Today
+1. ✅ Ryu 2008 (PRB 79, 075124) — Deep read complete
+   - Diamond lattice Kitaev-type model with 4D Hilbert space per site
+   - Protected by T′ (T′⁴=1) + discrete rotation — NOT Z₂ on-site
+   - Key finding: **ν is a topological invariant of the ground state**, not a Hamiltonian parameter
+   - Implication: Ryu's construction is a different phase; does not answer our K₄ vs C₄ question
+
+2. ✅ Three beads tasks queued for executor:
+   - workspace-3y0: Jia 2024 (JHEP) — Generalized cluster states from Hopf algebras
+   - workspace-hg6: Inamura & Ohyama 2026 — 2+1D generalized cluster models
+   - workspace-vm0: Inamura 2021 (JHEP) — Commuting projector models
+
+### Pending
+- Beads executor will process all three papers (~2.5h)
+- Decision needed: proceed to numerics (Track 1) or wait for literature results
+
+---
+
 ## T33a Foundation Validated 🔄
 
 The reusable Z₂ boundary-operator API and connected diamond 2-skeleton are built and tested. Diamond 3-cells and general-complex Monte Carlo integration remain open; see `implementation/T33a-cell-complex-api.md` for the exact boundary.
