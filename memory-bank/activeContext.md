@@ -20,9 +20,45 @@ Phase: **Literature Survey (Track 2)** — Deep reading priority papers before n
    - workspace-hg6: Inamura & Ohyama 2026 — 2+1D generalized cluster models
    - workspace-vm0: Inamura 2021 (JHEP) — Commuting projector models
 
-### Pending
-- Beads executor will process all three papers (~2.5h)
-- Decision needed: proceed to numerics (Track 1) or wait for literature results
+### T35c Track 2: Literature Search — **COMPLETE ✅ (2026-07-28)**
+
+**CRITICAL FINDING: K₄ is NOT compatible with cluster state framework**
+
+#### Jia 2024 (JHEP09(2024)147) — **FUNDAMENTAL OBSTRUCTION FOUND**
+- Cluster graphs **MUST be bipartite** (Definition 2, p. 17)
+- Even vertices with >2 bonds break commutativity (Proposition 6, p. 21)
+- **K₄ contains triangles → NOT bipartite → INVALID cluster graph**
+- **C₄ (cycle/ring) IS bipartite → VALID cluster graph**
+- **Verdict**: K₄ cannot support CSS-type cluster state construction
+
+#### Inamura 2021 (JHEP03(2022)036) — No obstruction, no support
+- Commuting projector framework is algebraic/geometry-agnostic
+- Does not address K₄ vs C₄ specifically
+- **Verdict**: No obstruction, but also no support for K₄
+
+#### Inamura & Ohyama 2026 (arXiv:2601.08615) — No direct relevance
+- Uses gauging construction, not graph-state approach
+- Does not address lattice connectivity constraints
+- **Verdict**: Not applicable
+
+**Summary:**
+| Paper | K₄ Compatible? | Reason |
+|-------|---------------|--------|
+| Jia 2024 | **NO** ❌ | K₄ not bipartite; cluster graphs MUST be bipartite |
+| Inamura 2021 | Not addressed | Framework is geometry-agnostic |
+| Inamura & Ohyama 2026 | Not addressed | Uses gauging, not graph states |
+
+**Implication**: T35b edge-qubit failure for L≥3 was NOT numerical — it was this **fundamental algebraic obstruction**. K₄ and C₄ are NOT equivalent.
+
+### T35c Status Update — PIVOT REQUIRED
+- ❌ **K₄ approach**: ABANDONED (non-bipartite, violates cluster state requirements)
+- ✅ **C₄ approach**: VALID (bipartite, compatible with cluster state framework)
+- **Next**: Design vertex-qubit C₄ model for diamond lattice (Gate 1 replacement)
+
+**Beads tasks closed:**
+- workspace-3y0 (Jia 2024) — closed with critical finding
+- workspace-hg6 (Inamura & Ohyama 2026) — closed, no direct relevance
+- workspace-vm0 (Inamura 2021) — closed, no obstruction
 
 ---
 
