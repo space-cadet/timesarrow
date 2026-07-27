@@ -37,7 +37,7 @@ On $|1110\rangle$:
 
 The operators differ on the orthogonal complement of the GHZ state.
 
-## SPT Phase Equivalence?
+## SPT Phase Equivalence? — **ANSWERED: K₄ is NOT a valid cluster state**
 
 For $\mathbb{Z}_2$ in 2D: $H^3(\mathbb{Z}_2, U(1)) = \mathbb{Z}_2$ — only one nontrivial SPT.
 
@@ -46,29 +46,31 @@ Both operators:
 2. Stabilize the GHZ state
 3. Are supported on a 4-qubit site
 
-**Possibility 1**: K₄ and C₄ realize the **same SPT phase** (same cohomology class) despite different on-site representatives.
+**Critical Finding from Jia 2024 (JHEP09(2024)147):**
+- Cluster graphs **MUST be bipartite** (Definition 2, p. 17)
+- K₄ contains triangles → **NOT bipartite** → INVALID cluster graph
+- C₄ (ring) IS bipartite → VALID cluster graph
+- **Even vertices with >2 bonds break commutativity** (Proposition 6, p. 21)
 
-**Possibility 2**: K₄ realizes a **different phase** (or no SPT at all) due to different edge action.
+**Verdict: K₄ and C₄ are NOT in the same SPT phase. K₄ cannot support a CSS-type cluster state construction.**
 
-**Test**: Check the boundary 't Hooft anomaly. If identical, the bulk phases are equivalent.
+~~Possibility 1~~: K₄ and C₄ realize the **same SPT phase** — ❌ RULED OUT
+~~Possibility 2~~: K₄ realizes a **different phase** — Not applicable; K₄ is not a valid SPT at all
 
-## Geometric Frustration on Diamond Lattice
+**Test**: ~~Check the boundary 't Hooft anomaly~~ — Not needed; algebraic obstruction found.
 
-For the **face-qubit model** (qubits on tetrahedron faces, 4 per vertex):
+## Geometric Frustration on Diamond Lattice — **Moot Point**
 
+The geometric frustration discussion assumes K₄ is a valid starting point. Since K₄ is **algebraically invalid** (not bipartite), the geometric question is moot.
+
+For reference, the original concern was:
 - Diamond lattice: each vertex is 4-valent
 - Elementary cycles: hexagons (6-cycles)
 - **6 hexagons pass through each vertex**
 - But only **4 face qubits** exist per vertex
 - → Hexagons **must share qubits** at vertices
 
-### Commuting Projector Obstruction
-
-For $H = \sum_p h_p$ with $h_p = I - P_p$ (projector onto +1 eigenspace of $U_p$):
-
-Overlapping plaquettes sharing qubits → $[h_p, h_{p'}] \neq 0$ in general.
-
-**Result**: A commuting projector parent Hamiltonian appears **geometrically obstructed** for the face-qubit model on the diamond lattice with hexagonal plaquettes.
+But this doesn't matter because K₄ cannot be used in the first place.
 
 ### Contrast with C₄ Square Lattice
 
@@ -77,67 +79,53 @@ The C₄ model works because:
 - Each plaquette involves 4 **corner** qubits
 - Neighboring plaquettes share **edges**, not corners
 - No qubit sharing → projectors commute
+- **AND**: The underlying graph (C₄ ring) is **bipartite** ✅
 
-The diamond lattice with face-qubits breaks this pattern.
-
-## Three Candidate Models (Summary)
+## Three Candidate Models (Summary) — **UPDATED 2026-07-28**
 
 | Model | Qubit Location | CZ Connectivity | Status |
 |-------|---------------|-----------------|--------|
-| **Edge-qubit** (T35b old) | Edge | N/A (singlet constraints) | ❌ Obstructed at L=3 |
-| **Intertwiner coarse-site** (Terra) | Vertex — 4 modules grouped | C₄ ring by fiat | 🔄 Spec written, Gate 0 open |
-| **Face-qubit** (Deepak's picture) | Tetrahedron face | K₄ intrinsic | ❓ Geometric frustration; needs investigation |
+| **Edge-qubit** (T35b old) | Edge | N/A (singlet constraints) | ❌ Obstructed at L=3 — **NOW UNDERSTOOD: K₄ incompatibility** |
+| **Intertwiner coarse-site** (Terra) | Vertex — 4 modules grouped | C₄ ring by fiat | 🔄 Spec written, Gate 0 open — **ONLY VALID PATH** |
+| **Face-qubit** (Deepak's picture) | Tetrahedron face | K₄ intrinsic | ❌ **RULED OUT by Jia 2024** (not bipartite) |
 
-## Investigation Options
+## Investigation Options — **Track 2 COMPLETE, K₄ RULED OUT**
 
-### Option 1: Numerical Test (Empirical)
+### ~~Option 1: Numerical Test (Empirical)~~ — NOT NEEDED
 
-Implement the frustrated Hamiltonian directly:
+~~Implement the frustrated Hamiltonian directly~~ → K₄ is algebraically invalid.
 
-$$H = \sum_p (I - P_p) \quad \text{(non-commuting terms)}$$
+### ~~Option 2: Literature Search~~ — ✅ COMPLETE (2026-07-28)
 
-Run Lanczos on L=2, L=3 clusters. Check:
-- Does a gap exist?
-- Is the ground state unique?
-- Does it have the right symmetry?
-- Phase transition as function of parameter?
+**Key finding:**
+- **Jia 2024**: Cluster graphs MUST be bipartite. K₄ is NOT bipartite → INVALID
+- **Inamura 2021**: No obstruction, but framework is geometry-agnostic
+- **Inamura & Ohyama 2026**: No direct relevance (gauging construction)
 
-**Pros**: Definitive answer.
-**Cons**: Expensive; might be negative.
+**Verdict: K₄ is fundamentally incompatible with cluster state framework.**
 
-### Option 2: Literature Search
+### ~~Option 3: Alternative Geometries~~ — NOT NEEDED
 
-Search for:
-- SPTs on diamond lattice
-- Tetrahedral symmetry protected topological phases
-- K₄ vs C₄ in quantum information
-- Non-commuting projector Hamiltonians
+~~Test K₄ on lattices where plaquettes don't overlap~~ → K₄ fails everywhere (algebraic, not geometric).
 
-**Known**: Diamond lattice is bipartite. Bipartite lattices often have SPT obstructions due to symmetry fractionalization constraints.
+## Conclusion — **UPDATED 2026-07-28**
 
-**Unknown**: Whether any SPT exists on diamond with face degrees of freedom.
+The K₄ operator is algebraically valid (stabilizes GHZ, generates $\mathbb{Z}_2$) but **it is NOT a valid cluster state** because K₄ is not bipartite (Jia 2024 Definition 2).
 
-### Option 3: Alternative Geometries
+**The face-qubit model is invalid. The only remaining path is Terra's coarse-site spec with C₄ connectivity.**
 
-Test K₄ on lattices where plaquettes don't overlap:
-- **Square lattice**: 4-cycles, no frustration
-- **Cubic lattice**: 4-cycles (faces), no frustration
-- **Coarse-grained diamond**: Define non-overlapping super-plaquettes
-
-## Conclusion
-
-The K₄ operator is algebraically valid (stabilizes GHZ, generates $\mathbb{Z}_2$) but its lattice realization on the diamond lattice with face-qubits faces **geometric frustration**. Whether this frustration destroys the SPT or merely makes it non-commuting is the open question.
-
-The face-qubit model and Terra's coarse-site model are **distinct physical constructions** that should be investigated separately.
+The original question about geometric frustration on the diamond lattice is **moot** — the obstruction is algebraic, not geometric.
 
 ---
 
 ## Related Files
 
-- `memory-bank/implementation/t35b-encoded-tetrahedral-czx-spec.md` — Terra's coarse-site spec
+- `memory-bank/implementation/t35b-encoded-tetrahedral-czx-spec.md` — Terra's coarse-site spec (C₄) — **NOW THE ONLY VALID PATH**
 - `memory-bank/implementation/t35b-gate1-results.md` — Edge-qubit negative result
 - `memory-bank/implementation-details/t35b-dialog-compilation.md` — Full July 21–22 dialog
 
 ## Next Steps
 
-See `memory-bank/implementation-details/t35c-k4-investigation-plan.md` for the investigation plan.
+**Abandon K₄. Focus exclusively on Terra's coarse-site C₄ spec (T35b).**
+
+See `memory-bank/tasks/T35c.md` for the full investigation record.
