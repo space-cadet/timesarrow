@@ -55,3 +55,4 @@ numerics/scripts/t20d-ising-fss-reanalysis.py
 
 # Local editor / diagram backups
 *.drawio.bkp
+target/
