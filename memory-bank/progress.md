@@ -1,12 +1,12 @@
 # timesarrow — Progress Tracker
 
-*Updated: 2026-08-25 14:16:39 IST*
+*Updated: 2026-08-25 15:55:13 IST*
 
 ## T36 Path A Publication Program (2026-08-25) — ACTIVE
 
-The project will pursue a bounded effective-proposal manuscript. T18 supplies the claims map; T32 supplies the numerical and reproducibility gate. T20d and T31 may enter only as control evidence. T35a is a completed reference audit, T35b is paused future microscopic work, T35c is complete, and T33b is optional.
+The project will pursue a bounded but assertive effective-proposal manuscript. T18 is complete: its approved claims contract uses “bold proposal, exact boundaries” to preserve the paper's spine without promoting assumptions into derivations. T32 is also complete: the pinned validation workflow passes, and the publication-canonical numerical evidence is fixed by policy and checksum manifest. T20d and T31 may enter only as control evidence. T35a is a completed reference audit, T35b is paused future microscopic work, T35c is complete, and T33b is optional.
 
-Required outputs are an accepted claims map, a reframed manuscript, canonical numerical evidence, refreshed submission documents, and a verified SciPost bundle.
+The claims map and canonical numerical evidence are complete. Exact proposed revisions are preserved in three author-review Markdown documents covering the manuscript, cover letter, and AI-use statement. After a scope misunderstanding, all direct edits to `timesarrow.tex`, `timesarrow.bbl`, `timesarrow.pdf`, `cover-letter.md`, and `ai-assistance-statement.md` were restored to their checked-in state. No proposal is implemented. The next gate is author review and explicit approval before any source change.
 
 > Earlier progress snapshots remain historical and must not override T36 or the T32 evidence gate.
 

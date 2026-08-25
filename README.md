@@ -10,12 +10,12 @@ This repository contains the manuscript, figures, and supplementary materials fo
 
 ## Abstract
 
-The question of the origin of time's arrow is a major outstanding problem in physics. Here we present a mechanism for the emergence of a cosmological arrow of time from a confinement–deconfinement transition in a $Z_2$ lattice gauge theory living on the spin-network states of Loop Quantum Gravity (LQG). Following Chen and Vishwanath, who showed that time-reversal symmetry can be gauged on tensor network states, and using the spin-network/tensor-network correspondence, we introduce a $Z_2$ gauge field on spin networks encoding a local time-reversal symmetry. The effective theory of this gauge field contains:
+This paper proposes that coherent cosmological time orientation can emerge as a gauge phenomenon. Binary tensor-network structure and paired signs of the LQG signed-volume operator motivate an effective $Z_2$ orientation field in a restricted four-valent $j=1/2$ spin-network sector. Adopting the minimal Wilson action gives a concrete mechanism:
 
-- **Confined phase** — a pre-geometric "quantum gravitational foam" with no coherent arrow of time.
-- **Deconfined phase** — semiclassical spacetime with a uniform cosmological arrow, detected by the Wilson loop order parameter.
+- **Confined phase** — relative orientation cannot be transported coherently over macroscopic distances.
+- **Deconfined phase** — long-distance orientation transport is coherent, as diagnosed by non-local gauge observables.
 
-The deconfined phase is further shown to correspond to a symmetry-protected topological (SPT) phase of the CZX type, whose topological order provides additional stability of the coherent time orientation against local perturbations. We conjecture that the topologically protected surface excitations of this SPT phase give rise to fermionic matter degrees of freedom.
+This is an effective proposal, not a completed derivation of the link field, Wilson coupling, semiclassical geometry, or cosmological trajectory from spin-foam dynamics. CZX is used as a controlled tensor-network reference construction, not identified with the projected LQG state. The numerical results are bounded controls of the adopted gauge theory and include a negative result for a tested signed-volume diagnostic.
 
 ---
 
@@ -70,7 +70,7 @@ This repository includes two numerical components for reproducing the paper's la
 
 ### Rust (`rust-lattice/`)
 - **Purpose:** High-performance Monte Carlo simulations of Z₂ lattice gauge theory (2D–4D)
-- **Requirements:** Rust stable 1.85+ (tested on Rust 1.96.0, edition 2024)
+- **Requirements:** Rust 1.92.0, pinned by `rust-toolchain.toml` (edition 2024)
 - **Build & test:**
   ```bash
   cd rust-lattice
@@ -79,17 +79,17 @@ This repository includes two numerical components for reproducing the paper's la
   ```
 
 ### Full validation
-Run `./scripts/validate.sh` from the repository root to check both TypeScript and Rust builds, plus all Rust unit tests. The script exits with a non-zero status if any step fails.
+Run `./scripts/validate.sh` from the repository root to check the TypeScript build, Rust build, ordinary Rust tests, and Rust doctests. When local `cargo`/`rustc` proxy links are unavailable, the script resolves the pinned compiler tools directly through `rustup`. It exits with a non-zero status if any step fails.
 
 ---
 
 ## Key Results
 
-1. **Local $Z_2$ gauge field on spin networks** as the microscopic representation of time-reversal symmetry in LQG, with a derived $Z_2$ lattice gauge theory effective action.
-2. **Cosmological arrow of time** identified with the confinement–deconfinement transition, with the Wilson loop as the order parameter (consistent with Elitzur's theorem).
-3. **Structural correspondence** between 4-valent $j=1/2$ LQG intertwiners and the CZX model, verified by an explicit operator computation.
-4. **SPT phase identification** of the deconfined phase, linked to the 3D bosonic SPT classification $H^4(Z_2^T, U(1)_\mathcal{T}) \cong \mathbb{Z}_2$.
-5. **Conjecture** that surface excitations yield fermionic matter, supported by group cohomology, black-hole entropy arguments, and the all-fermion toric code.
+1. **Effective orientation proposal:** a $Z_2$ link field motivated by binary bond data and paired signed-volume sectors in the restricted $j=1/2$ setting.
+2. **Concrete mechanism:** confinement obstructs long-distance orientation comparison; deconfinement permits it, with Wilson and Polyakov observables providing gauge-invariant controls.
+3. **Microscopic boundary:** an explicit operator calculation shows that the literal CZX unitary does not preserve the full $SU(2)$ singlet intertwiner subspace, so a new encoding map is required.
+4. **Reproducible numerical controls:** canonical raw datasets and scripts locate the expected transition region; the tested signed-volume dressing is retained as a negative result.
+5. **Falsifiable next step:** derive, modify, or rule out the effective field, action, and cosmological trajectory using microscopic spin-foam dynamics.
 
 ---
 

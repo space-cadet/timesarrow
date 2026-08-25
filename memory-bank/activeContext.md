@@ -1,6 +1,6 @@
 # timesarrow — Active Context
 
-*Updated: 2026-08-25 14:16:39 IST*
+*Updated: 2026-08-25 15:55:13 IST*
 
 ## Current Focus (2026-08-25)
 
@@ -8,7 +8,11 @@
 
 **Decision:** Proceed with Path A. The paper will present a conditional effective $Z_2$ gauge mechanism and bounded numerical controls. It will not claim a completed microscopic CZX/LQG realization, a derivation of the Wilson coupling from spin foams, emergence of semiclassical spacetime, or fermionic matter.
 
-**Immediate dependencies:** T18 claims map and T32 numerical/reproducibility gate.
+**Immediate dependencies:** T18 and T32 are complete. T36 is ready for author review of the proposal documents.
+
+**Current step:** Review the separate manuscript, cover-letter, and AI-use revision proposals. The authoritative manuscript and submission documents remain restored to their checked-in state; no proposal has been applied.
+
+**Writing principle:** Preserve the paper's spine. State the effective proposal confidently and keep its scientific boundaries exact; do not turn the claims map into timid sentence-by-sentence hedging.
 
 **Non-blocking research:** T35b and T33b are paused. T35a closes as a reference-model audit; T35c is complete with a bounded K₄ obstruction.
 

@@ -4,7 +4,11 @@
 
 **Focus Task:** T36 — Effective-Proposal Manuscript Revision and Publication Gate
 
-**Current step:** Complete T18 claims map, then close T32 numerical/reproducibility requirements.
+**Current step:** T18 and T32 are complete. T36 now has three proposal-only Markdown review documents. The manuscript, generated PDF/bibliography, cover letter, and AI-use statement are restored and unchanged from the checked-in versions. Await author decisions before applying revisions.
+
+**Claims Map:** `memory-bank/implementation-details/path-a-claims-map-2026-08-25.md` — approved in principle 2026-08-25 15:05:57 IST under the “bold proposal, exact boundaries” writing principle.
+
+**T32 Closure:** Validation passes with the pinned Rust 1.92.0 toolchain, including 45 ordinary tests and doctests. `numerics/ARTIFACT_POLICY.md` and `numerics/publication-artifacts.sha256` define the canonical evidence set.
 
 **Decision:** T35b and T33b are paused non-blocking research; T35a is a completed reference audit; T35c is complete.
 

@@ -1,6 +1,6 @@
 # Product Context
 
-*Last Updated: 2026-08-25 14:16:39 IST*
+*Last Updated: 2026-08-25 15:05:57 IST*
 
 ## Overview
 
@@ -15,6 +15,8 @@ TimesArrow is a theoretical-physics manuscript proposing an effective $Z_2$ gaug
 ## Current Product Decision
 
 Path A is the publication strategy. The paper will study consequences of an assumed effective $Z_2$ sector and will not present the microscopic CZX/LQG embedding as complete. Gauge-transition numerics are implementation controls, not evidence that quantum geometry produces an arrow of time.
+
+The writing rule is “bold proposal, exact boundaries.” The paper should state its central mechanism confidently, then isolate assumptions and missing derivations clearly rather than weakening every paragraph with repetitive hedging.
 
 ## Publication Workflow
 

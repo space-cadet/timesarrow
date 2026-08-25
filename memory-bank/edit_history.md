@@ -1,8 +1,32 @@
 # Edit History
 *Created: 2026-07-19 01:05 IST*
-*Last Updated: 2026-08-25 14:16:39 IST*
+*Last Updated: 2026-08-25 15:55:13 IST*
 
 ### 2026-08-25
+
+#### 15:55:13 IST - T36: Preserve revision proposals and restore author-owned sources
+- Created `proposed-manuscript-revisions-2026-08-25.md` - Recorded fifteen manuscript proposals with original text or position, proposed wording, and rationale.
+- Created `proposed-cover-letter-revisions-2026-08-25.md` - Recorded nine cover-letter proposals for separate author review.
+- Created `proposed-ai-use-statement-revisions-2026-08-25.md` - Recorded five AI-disclosure proposals for separate author review.
+- Updated `timesarrow.tex` - Restored the checked-in manuscript after the author clarified the proposal-only boundary.
+- Updated `timesarrow.bbl` - Restored the checked-in generated bibliography.
+- Updated `timesarrow.pdf` - Restored the checked-in generated manuscript PDF.
+- Updated `cover-letter.md` - Restored the checked-in cover letter.
+- Updated `ai-assistance-statement.md` - Restored the checked-in AI-use statement.
+- Updated `memory-bank/tasks/T36.md` - Reopened manuscript and submission integration criteria pending author approval.
+- Updated `memory-bank/activeContext.md` - Made proposal review the next step and recorded the restoration boundary.
+- Updated `memory-bank/progress.md` - Corrected the publication-program status to proposal-only.
+- Updated `memory-bank/session_cache.md` - Recorded the final restored source state.
+- Updated `memory-bank/sessions/2026-08-25-afternoon.md` - Closed the full session arc, including the misunderstanding and restoration.
+
+#### 14:50:52 IST - T18/T36: Draft Path A manuscript claims map
+- Created `memory-bank/implementation-details/path-a-claims-map-2026-08-25.md` - Classified the central manuscript claims, recorded support and missing derivations, supplied permitted/prohibited wording, and defined the author-approval gate.
+- Modified `memory-bank/tasks/T18.md` - Marked the claims-map analysis complete while keeping T18 open for author approval.
+- Modified `memory-bank/tasks/T36.md` - Recorded the completed draft and added it to the publication task's related files.
+- Modified `memory-bank/activeContext.md` - Made claims-map review the immediate step and preserved the manuscript-editing gate.
+- Modified `memory-bank/session_cache.md` - Recorded the draft artifact and approval requirement.
+- Modified `memory-bank/sessions/2026-08-25-afternoon.md` - Added the T18 work and confirmed that no manuscript source was edited.
+- Created `memory-bank/edits/2026-08-25/145052-t18-claims-map.md` - Stored the canonical edit chunk.
 
 #### 14:16:39 IST - T36: Record Path A publication strategy
 - Created `memory-bank/tasks/T36.md` - Defined the effective-proposal manuscript and publication gate.

@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # TimesArrow Reproducible Build Validation Script
-# Runs: TypeScript build check → Rust build check → Rust unit tests
+# Runs: TypeScript build check → Rust build check → Rust ordinary tests → Rust doctests
 # Exits with non-zero status if any step fails.
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -13,7 +13,7 @@ echo "Project root: $PROJECT_ROOT"
 echo ""
 
 # --- TypeScript build check ---
-echo "[1/3] TypeScript build check (numerics/)"
+echo "[1/4] TypeScript build check (numerics/)"
 cd "$PROJECT_ROOT/numerics"
 
 NODE_BIN="$(command -v node || true)"
@@ -73,7 +73,7 @@ echo "  ✓ TypeScript build passed"
 echo ""
 
 # --- Rust build check ---
-echo "[2/3] Rust build check (rust-lattice/)"
+echo "[2/4] Rust build check (rust-lattice/)"
 cd "$PROJECT_ROOT/rust-lattice"
 
 if ! command -v cargo >/dev/null 2>&1 && ! command -v rustup >/dev/null 2>&1; then
@@ -81,9 +81,13 @@ if ! command -v cargo >/dev/null 2>&1 && ! command -v rustup >/dev/null 2>&1; th
     exit 1
 fi
 
-RUST_TOOLCHAIN="1.92.0-aarch64-apple-darwin"
+RUST_TOOLCHAIN="1.92.0"
 if command -v rustup >/dev/null 2>&1 && rustup toolchain list | grep -q "^$RUST_TOOLCHAIN"; then
-    CARGO_CMD=(rustup run "$RUST_TOOLCHAIN" cargo)
+    CARGO_BIN="$(rustup which --toolchain "$RUST_TOOLCHAIN" cargo)"
+    RUSTC="$(rustup which --toolchain "$RUST_TOOLCHAIN" rustc)"
+    RUSTDOC="$(rustup which --toolchain "$RUST_TOOLCHAIN" rustdoc)"
+    export RUSTC RUSTDOC
+    CARGO_CMD=("$CARGO_BIN")
     echo "  Using rustup toolchain: $RUST_TOOLCHAIN"
 else
     CARGO_CMD=(cargo)
@@ -100,16 +104,29 @@ echo "  ✓ Rust build check passed"
 echo ""
 
 # --- Rust unit tests ---
-echo "[3/3] Rust unit tests (rust-lattice/)"
+echo "[3/4] Rust ordinary tests (rust-lattice/)"
 cd "$PROJECT_ROOT/rust-lattice"
 
-echo "  Running cargo test..."
-"${CARGO_CMD[@]}" test
+echo "  Running cargo test --lib --bins --tests..."
+"${CARGO_CMD[@]}" test --lib --bins --tests
 if [ $? -ne 0 ]; then
-    echo "ERROR: Rust tests failed"
+    echo "ERROR: Rust ordinary tests failed"
     exit 1
 fi
-echo "  ✓ Rust tests passed"
+echo "  ✓ Rust ordinary tests passed"
+echo ""
+
+# --- Rust doctests ---
+echo "[4/4] Rust doctests (rust-lattice/)"
+cd "$PROJECT_ROOT/rust-lattice"
+
+echo "  Running cargo test --doc..."
+"${CARGO_CMD[@]}" test --doc
+if [ $? -ne 0 ]; then
+    echo "ERROR: Rust doctests failed"
+    exit 1
+fi
+echo "  ✓ Rust doctests passed"
 echo ""
 
 echo "=== All validation checks passed ==="

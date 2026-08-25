@@ -41,7 +41,7 @@
   },
   {
     "title": "Binder Cumulant (FSS)",
-    "description": "Binder cumulant convergence to 2/3 universal value",
+    "description": "Plaquette Binder ratio approaching the generic ordered-side limit near 2/3; not transition-order evidence",
     "path": "figures/t20-p3-fss-binder.png",
     "task": "T20",
     "dimension": "3D",
@@ -139,7 +139,7 @@
   },
   {
     "title": "Signed Volume vs \u03b2 (T31)",
-    "description": "Signed volume |Q|/N across \u03b2 for L=8,10,12 showing deconfinement transition",
+    "description": "Gauge-dependent exploratory signed-volume data retained as negative-result provenance; not a deconfinement diagnostic",
     "path": "figures/t31-signed-volume-vs-beta.png",
     "task": "T31",
     "dimension": "3D",
@@ -148,7 +148,7 @@
       "T31",
       "3D",
       "signed-volume",
-      "deconfinement"
+      "provenance-only"
     ],
     "runIds": [
       "t31-p2-L8-3D-20250702",
@@ -159,7 +159,7 @@
   },
   {
     "title": "Binder Cumulant \u2014 Signed Volume",
-    "description": "Signed volume Binder cumulant converging toward U* = 2/3",
+    "description": "Binder analysis of a gauge-dependent signed-volume observable; excluded from the evidence chain",
     "path": "figures/t31-binder-cumulant.png",
     "task": "T31",
     "dimension": "3D",
@@ -179,7 +179,7 @@
   },
   {
     "title": "Plaquette vs \u03b2 (T31)",
-    "description": "Standard plaquette order parameter for comparison with signed volume",
+    "description": "Local energy-like plaquette observable shown for comparison; not an order parameter",
     "path": "figures/t31-plaquette-vs-beta.png",
     "task": "T31",
     "dimension": "3D",
@@ -188,7 +188,7 @@
       "T31",
       "3D",
       "plaquette",
-      "order-parameter"
+      "energy-like"
     ],
     "runIds": [
       "t31-p2-L8-3D-20250702",

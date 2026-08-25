@@ -41,8 +41,9 @@ L_keys = ["L8", "L10", "L12", "L16"]
 for lattice_size, fine_file in FINE_FILES.items():
     with open(fine_file) as f:
         fine_data = json.load(f)
+    ordered_results = sorted(fine_data["results"], key=lambda row: row["beta"])
     data["results"][f"L{lattice_size}"] = {
-        key: [row[field] for row in fine_data["results"]]
+        key: [row[field] for row in ordered_results]
         for key, field in {
             "beta": "beta",
             "meanPlaquette": "meanPlaquette",

@@ -1,14 +1,14 @@
 # Memory Bank - Sage Workspace
 
 *Created: 2026-07-18 17:06:36 IST*
-*Last Updated: 2026-08-25 14:16:39 IST*
+*Last Updated: 2026-08-25 15:55:13 IST*
 
 ## Current Publication Tasks (Authoritative 2026-08-25)
 
 | ID | Title | Status | Priority | Started | Dependencies | Details |
 |----|-------|--------|----------|---------|--------------|---------|
-| T18 | Manuscript Claims Map and Reviewer-Safety Calibration | 🔄 | HIGH | 2026-05-06 | - | [Details](tasks/T18.md) |
-| T32 | Post-May Numerics Correction and Reproducibility Pass | 🔄 | HIGH | 2026-07-05 | T20d, T22a, T25, T31 | [Details](tasks/T32.md) |
+| T18 | Manuscript Claims Map and Reviewer-Safety Calibration | ✅ | HIGH | 2026-05-06 | - | [Details](tasks/T18.md) |
+| T32 | Post-May Numerics Correction and Reproducibility Pass | ✅ | HIGH | 2026-07-05 | T20d, T22a, T25, T31 | [Details](tasks/T32.md) |
 | T36 | Effective-Proposal Manuscript Revision and Publication Gate | 🔄 | HIGH | 2026-08-25 | T18, T32 | [Details](tasks/T36.md) |
 | T33b | Diamond Lattice Polyakov Scan | ⏸️ | MEDIUM | - | T33a | [Details](tasks/T33b.md) |
 | T35b | Diamond-Lattice CZX Existence Test | ⏸️ | HIGH | 2026-07-21 | T33a, T35a | [Details](tasks/T35b.md) |

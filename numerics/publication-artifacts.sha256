@@ -1,0 +1,15 @@
+70dce422f4ea861bd8534feb34fe5bfb961c5cc266b5be51e68a6c54766d2157  numerics/data/fss/t20-p3b-L8-3D-fine-20260710.json
+9926f7717a633017f53882498ded5e1c4e092ccaa4c3efa8929d98e48ab28e0b  numerics/data/fss/t20-p3b-L16-3D-fine-20260714.json
+e1bda0f76b834a62cafde64dd92b68373aeb09e89116d74beb044793576b388a  numerics/data/fss/t20d-L24-fine-20260629.json
+c53d414cf15b25d19df66897b88297206e74cffe939272be57f95c0d09c56b1a  numerics/data/fss/t20-p3b-L32-3D-fine-20260714.json
+cd464bb9b2653c98c4cb8dd4cc298fb96f863af8f4a379b2ac15a70cfa05f8ae  numerics/src/scripts/t20d-ising-reanalysis.py
+bac1f3d25ce74d03c9de5c0d111e8737c98f5edabff0eccc859b7f53dc9d4944  numerics/data/t31-polyakov-L8-fine-20260715.json
+21de91e0ce11020ceaecba43306f28a77c6b3d23904db11ce2ec5d5cc1e3ec57  numerics/data/t31-polyakov-L10-fine-20260715.json
+71436e6b623658daa2d403bffcccf4d247a559b79ee980a0f51440416ab2d811  numerics/data/t31-polyakov-L12-fine-20260715.json
+6abf91e1b34bcd740926a2741f17d5e5bb481d8018f069aa6f456256414bfefc  numerics/data/t31-polyakov-L16-fine-20260715.json
+53beedcfb06fde638999ceef1b9ed609234ba5225087673b2df082bc05c16af8  numerics/src/scripts/t31-polyakov-exponent-analysis.py
+cfa5af4f1e9e9c74b711e446872fe96cd3182d48f542b68924cfd5117557e6d2  numerics/data/signed-volume/t31-gi-L4-cold-calibration-20260714.json
+f2d14855fd40332dc00041acfc9494732e76e1fd08899ac565489ffcca45b419  numerics/data/signed-volume/t31-gi-L6-cold-calibration-20260714.json
+5563fcc2e45ac00c25ef90421900130317c3bc13c3673e2b03c2a6e1d89b11a0  numerics/data/signed-volume/t31-gi-L6-beta1-seed42-20260714.json
+d2c60e3061e3195b4269564dc966c22da1474bec1f2034202be3bef5a5229ef7  numerics/data/signed-volume/t31-gi-L6-beta1-seed43-20260714.json
+6380328888a8e1e235bbff87b66d40c4cc3b0d5955c64b1bd3aa303c0506a4bb  numerics/data/signed-volume/t31-gi-L6-beta1-seed44-20260714.json

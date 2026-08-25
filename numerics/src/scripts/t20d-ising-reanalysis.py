@@ -43,39 +43,29 @@ ISING_3D = {
 }
 
 def load_data():
-    preferred_files = {
-        8: [
-            FSS_DIR / 't20-p3b-L8-3D-fine-20260710.json',
-            FSS_DIR / 't20-p3b-L8-3D-fine-20260627.json',
-            FSS_DIR / 't20-p3b-L8-3D-fine-20260626.json',
-        ],
-        16: [
-            FSS_DIR / 't20-p3b-L16-3D-fine-20260714.json',
-            FSS_DIR / 't20d-L16-fine-20260629.json',
-            FSS_DIR / 't20-p3b-L16-3D-fine-20260627.json',
-            FSS_DIR / 't20-p3b-L16-3D-fine-20260626.json',
-        ],
-        24: [
-            FSS_DIR / 't20d-L24-fine-20260629.json',
-            FSS_DIR / 't20-p3b-L24-3D-fine-20260627.json',
-        ],
-        32: [
-            FSS_DIR / 't20-p3b-L32-3D-fine-20260714.json',
-            FSS_DIR / 't20-p3b-L32-lean-20260627.json',
-        ],
+    # T32 publication-canonical inputs. Do not silently fall back to older runs:
+    # doing so can change the evidence behind a regenerated figure.
+    canonical_files = {
+        8: FSS_DIR / 't20-p3b-L8-3D-fine-20260710.json',
+        16: FSS_DIR / 't20-p3b-L16-3D-fine-20260714.json',
+        24: FSS_DIR / 't20d-L24-fine-20260629.json',
+        32: FSS_DIR / 't20-p3b-L32-3D-fine-20260714.json',
     }
+    missing = [str(path) for path in canonical_files.values() if not path.exists()]
+    if missing:
+        raise FileNotFoundError(
+            'Missing T32 publication-canonical input(s):\n' + '\n'.join(missing)
+        )
+
     data = {}
-    for L, candidates in preferred_files.items():
-        for fpath in candidates:
-            if fpath.exists():
-                with open(fpath) as f:
-                    data[L] = json.load(f)
-                break
+    for lattice_size, path in canonical_files.items():
+        with open(path) as handle:
+            data[lattice_size] = json.load(handle)
     return data
 
 def fit_string_tension(results):
     betas, sigmas, sigma_errs, rhos, rho_errs = [], [], [], [], []
-    for r in results:
+    for r in sorted(results, key=lambda row: row['beta']):
         beta = r['beta']
         loops = r['wilsonLoops']
         if not loops:
@@ -130,7 +120,7 @@ def main():
     
     all_data = {}
     for L in Ls:
-        results = data[L]['results']
+        results = sorted(data[L]['results'], key=lambda row: row['beta'])
         betas = np.array([r['beta'] for r in results])
         plaquettes = np.array([r['meanPlaquette'] for r in results])
         chi = np.array([r['susceptibility'] for r in results])
