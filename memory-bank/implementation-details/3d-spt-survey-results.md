@@ -1,5 +1,7 @@
 # 3D SPT Survey Results: Closing the T15 Dimensional Mismatch Gap
 
+> **Current-status notice (2026-08-25):** This is historical research input. Later T35 audits supersede any positive identification of the spin-network state with a nontrivial 3D CZX/SPT realization. Under T36, CZX is an open microscopic target and fermionic boundary matter remains conjectural.
+
 *Completed: 2026-04-20*  
 *Status: 🔄 READY FOR APPENDIX DRAFTING*  
 *Related Task: [T15: 3D SPT Survey and Mapping](../tasks/T15.md)*

@@ -1,4 +1,6 @@
 # Fermionic Matter Emergence from 3D Z₂ᵀ SPT Surface Order
+
+> **Path A classification (2026-08-25):** Speculative outlook only. Protected defect degrees of freedom, their statistics, a semiclassical continuum limit, and Dirac dynamics have not been derived. This mechanism is not a principal T36 result.
 *Created: 2026-04-20 11:09:51 IST*
 *Last Updated: 2026-04-20 11:09:51 IST*
 

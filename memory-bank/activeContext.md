@@ -1,6 +1,18 @@
 # timesarrow — Active Context
 
-*Updated: 2026-07-22 03:27:10 IST*
+*Updated: 2026-08-25 14:16:39 IST*
+
+## Current Focus (2026-08-25)
+
+**Primary task:** T36 — Effective-Proposal Manuscript Revision and Publication Gate.
+
+**Decision:** Proceed with Path A. The paper will present a conditional effective $Z_2$ gauge mechanism and bounded numerical controls. It will not claim a completed microscopic CZX/LQG realization, a derivation of the Wilson coupling from spin foams, emergence of semiclassical spacetime, or fermionic matter.
+
+**Immediate dependencies:** T18 claims map and T32 numerical/reproducibility gate.
+
+**Non-blocking research:** T35b and T33b are paused. T35a closes as a reference-model audit; T35c is complete with a bounded K₄ obstruction.
+
+> The July T35 sections below are historical and are superseded where they conflict with this Path A decision.
 
 ## Current Focus (2026-07-26)
 

@@ -1,5 +1,7 @@
 # Project Brief
-*Last Updated: 2026-04-16 20:15:00 IST*
+*Last Updated: 2026-08-25 14:16:39 IST*
+
+> **2026-08-25 scope correction:** Path A supersedes the original strong objectives below. The publication target is now a bounded effective $Z_2$ proposal. Microscopic CZX/LQG realization, dynamical derivation of the Wilson coupling, semiclassical geometry, and fermionic matter remain open or conjectural rather than project deliverables for T36.
 
 ## Project Overview
 **Project Name**: Gauging Time Reversal Symmetry in Quantum Gravity: Arrow of Time from Spontaneous Symmetry Breaking

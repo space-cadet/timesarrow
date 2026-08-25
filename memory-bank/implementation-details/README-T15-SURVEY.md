@@ -1,5 +1,7 @@
 # T15 3D SPT Survey: Complete Literature Review & Implementation Guide
 
+> **Current-status notice (2026-08-25):** T35a--T35c and T36 supersede statements that infer a completed CZX/LQG phase identification or fermionic matter mechanism from local Hilbert-space similarity.
+
 **Status**: ✅ COMPLETE  
 **Date**: 2026-04-20  
 **Task**: T15 (3D SPT Survey and Mapping)  

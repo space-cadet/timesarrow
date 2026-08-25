@@ -1,6 +1,14 @@
 # timesarrow — Progress Tracker
 
-*Updated: 2026-07-22 03:27:10 IST*
+*Updated: 2026-08-25 14:16:39 IST*
+
+## T36 Path A Publication Program (2026-08-25) — ACTIVE
+
+The project will pursue a bounded effective-proposal manuscript. T18 supplies the claims map; T32 supplies the numerical and reproducibility gate. T20d and T31 may enter only as control evidence. T35a is a completed reference audit, T35b is paused future microscopic work, T35c is complete, and T33b is optional.
+
+Required outputs are an accepted claims map, a reframed manuscript, canonical numerical evidence, refreshed submission documents, and a verified SciPost bundle.
+
+> Earlier progress snapshots remain historical and must not override T36 or the T32 evidence gate.
 
 ### Literature Deep Read — Ryu 2008 (PRB 79, 075124) ✅ COMPLETE
 

@@ -1,7 +1,29 @@
 # Memory Bank - Sage Workspace
 
 *Created: 2026-07-18 17:06:36 IST*
-*Last Updated: 2026-07-22 03:27:10 IST*
+*Last Updated: 2026-08-25 14:16:39 IST*
+
+## Current Publication Tasks (Authoritative 2026-08-25)
+
+| ID | Title | Status | Priority | Started | Dependencies | Details |
+|----|-------|--------|----------|---------|--------------|---------|
+| T18 | Manuscript Claims Map and Reviewer-Safety Calibration | 🔄 | HIGH | 2026-05-06 | - | [Details](tasks/T18.md) |
+| T32 | Post-May Numerics Correction and Reproducibility Pass | 🔄 | HIGH | 2026-07-05 | T20d, T22a, T25, T31 | [Details](tasks/T32.md) |
+| T36 | Effective-Proposal Manuscript Revision and Publication Gate | 🔄 | HIGH | 2026-08-25 | T18, T32 | [Details](tasks/T36.md) |
+| T33b | Diamond Lattice Polyakov Scan | ⏸️ | MEDIUM | - | T33a | [Details](tasks/T33b.md) |
+| T35b | Diamond-Lattice CZX Existence Test | ⏸️ | HIGH | 2026-07-21 | T33a, T35a | [Details](tasks/T35b.md) |
+
+## Current Reclassified Tasks
+
+| ID | Title | Status | Priority | Started | Dependencies | Details |
+|----|-------|--------|----------|---------|--------------|---------|
+| T20d | Critical Exponent Extraction from 3D Z₂ LGT | ✅ | MEDIUM | 2026-06-26 | T32 | [Details](tasks/T20d.md) |
+| T22a | SU(2) Four-Leg Group-Average Estimate | ✅ | HIGH | 2026-06-28 | T32 | [Details](tasks/T22a.md) |
+| T31 | Gauge-Invariant Deconfinement Diagnostics | ✅ | MEDIUM | 2026-07-02 | T32 | [Details](tasks/T31.md) |
+| T35a | CZX Microscopic Construction Audit | ✅ | MEDIUM | 2026-07-18 | - | [Details](tasks/T35a.md) |
+| T35c | K₄ Face-Qubit CZX Investigation | ✅ | HIGH | 2026-07-26 | T35a, T35b | [Details](tasks/T35c.md) |
+
+> The generated legacy registry below is retained pending a full database regeneration. Where it conflicts with the tables above, the 2026-08-25 tables and individual task files are authoritative.
 
 ## Overview
 
@@ -15,7 +37,7 @@ This is the Memory Bank for the Sage (灵剑) OpenClaw workspace.
 | T11 | T11: Fix Critical Manuscript Errors | ⏸️ | MEDIUM | 2026-04-18 | - | [Details](tasks/T11.md) |
 | T12 | T12: Address Major Issues and Add Recent Citations | ⏸️ | MEDIUM | 2026-04-18 | - | [Details](tasks/T12.md) |
 | T13 | T13: Gemini 3 Flash - Create Accessible Web Presentation (Time's Arrow) | 🔄 | MEDIUM | 2026-04-18 | - | [Details](tasks/T13.md) |
-| T18 | T18 | 🔄 | HIGH | 2026-05-06 | - | [Details](tasks/T18.md) |
+| T18 | Manuscript Claims Map and Reviewer-Safety Calibration | 🔄 | HIGH | 2026-05-06 | - | [Details](tasks/T18.md) |
 | T2 | T2 | 🔄 | MEDIUM | 2026-04-16 | - | [Details](tasks/T2.md) |
 | T20-Phase2-sharp-transition | T20-Phase2-sharp-transition | ⏸️ | MEDIUM | 2026-04-16 | - | [Details](tasks/T20-Phase2-sharp-transition.md) |
 | T20-TA | T20-TA: Z₂ Lattice Gauge Theory Monte Carlo | ⏸️ | MEDIUM | 2026-06-24 | - | [Details](tasks/T20-TA.md) |
@@ -28,8 +50,8 @@ This is the Memory Bank for the Sage (灵剑) OpenClaw workspace.
 | T24 | T24 | 🔄 | MEDIUM | 2026-06-24 | - | [Details](tasks/T24.md) |
 | T25 | T25: Volume Operator Extension | ⏸️ | MEDIUM | 2026-06-24 | - | [Details](tasks/T25.md) |
 | T26 | T26 | 🔄 | LOW | 2026-06-24 | - | [Details](tasks/T26.md) |
-| T35a | Deployed theory folder to quantumofgravity.com VPS and linked from main project page | 🔄 | MEDIUM | 2026-07-18 | - | [Details](tasks/T35a.md) |
-| T35b | Diamond-Lattice CZX Existence Test | 🔄 | HIGH | 2026-07-21 | T33a, T35a | [Details](tasks/T35b.md) |
+| T35a | CZX Microscopic Construction Audit | ✅ | MEDIUM | 2026-07-18 | - | [Details](tasks/T35a.md) |
+| T35b | Diamond-Lattice CZX Existence Test | ⏸️ | HIGH | 2026-07-21 | T33a, T35a | [Details](tasks/T35b.md) |
 
 ## Completed Tasks
 

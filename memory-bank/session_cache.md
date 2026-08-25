@@ -1,5 +1,17 @@
 # Session Cache
 
+## 2026-08-25 Path A Supersession
+
+**Focus Task:** T36 — Effective-Proposal Manuscript Revision and Publication Gate
+
+**Current step:** Complete T18 claims map, then close T32 numerical/reproducibility requirements.
+
+**Decision:** T35b and T33b are paused non-blocking research; T35a is a completed reference audit; T35c is complete.
+
+**Session File:** `memory-bank/sessions/2026-08-25-afternoon.md`
+
+> The July cache below is historical and superseded by this block.
+
 *Created: 2026-07-18 17:06:47 IST*
 *Last Updated: 2026-07-26 16:07 IST*
 

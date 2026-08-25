@@ -3,6 +3,10 @@
 *Last Updated: 2026-05-06 18:34:13 IST*
 *Related Task: T18*
 
+## Accepted Path A Decision (2026-08-25)
+
+This proposal is now the basis of T18 and T36. The $Z_2$ field and Wilson dynamics are an effective model, coherent time orientation is a physical interpretation, CZX is a reference construction and open target, and fermionic matter is speculative outlook. Later T35 results supersede stronger feasibility language preserved below.
+
 ## Purpose
 Record the proposed follow-up after a fresh read of `timesarrow.pdf`: build a reviewer-facing technical memo before editing the manuscript. The memo should distinguish derivable claims from conjectures and make the central argument more defensible.
 

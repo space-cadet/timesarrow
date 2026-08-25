@@ -1,6 +1,32 @@
 # Edit History
 *Created: 2026-07-19 01:05 IST*
-*Last Updated: 2026-07-22 03:27:10 IST*
+*Last Updated: 2026-08-25 14:16:39 IST*
+
+### 2026-08-25
+
+#### 14:16:39 IST - T36: Record Path A publication strategy
+- Created `memory-bank/tasks/T36.md` - Defined the effective-proposal manuscript and publication gate.
+- Created `memory-bank/implementation-details/path-a-effective-proposal-revision-plan-2026-08-25.md` - Recorded the revision scope and acceptance gate.
+- Created `memory-bank/implementation-details/path-a-numerical-evidence-matrix-2026-08-25.md` - Classified numerical evidence and exclusions.
+- Modified `memory-bank/tasks.md` - Added authoritative publication-task and reclassification tables.
+- Modified `memory-bank/activeContext.md` - Made T36 the primary focus and recorded Path A boundaries.
+- Modified `memory-bank/progress.md` - Added the T36 publication program.
+- Modified `memory-bank/session_cache.md` - Recorded the current T36 working state.
+- Modified `memory-bank/productContext.md` - Documented the publication audience, decision, and workflow.
+- Modified `memory-bank/projectbrief.md` - Added the Path A correction to the original objectives.
+- Modified `memory-bank/tasks/T18.md` - Scoped the claims-map task.
+- Modified `memory-bank/tasks/T32.md` - Updated the numerical and reproducibility gate.
+- Modified `memory-bank/tasks/T20d.md` - Recorded bounded publication eligibility.
+- Modified `memory-bank/tasks/T31.md` - Closed the diagnostic task as control work.
+- Modified `memory-bank/tasks/T35a.md` - Closed the bounded reference-model audit.
+- Modified `memory-bank/tasks/T35b.md` - Paused microscopic CZX research.
+- Modified `memory-bank/tasks/T35c.md` - Closed the bounded K4 investigation.
+- Modified `memory-bank/tasks/T33b.md` - Classified the diamond scan as optional.
+- Modified `memory-bank/tasks/T22a.md` - Limited the group average to supplement use.
+- Modified `memory-bank/tasks/T25.md` - Limited spectral pairing to algebraic background.
+- Updated `memory-bank/implementation-details` - Added Path A status notices to affected reusable documents.
+- Created `memory-bank/sessions/2026-08-25-afternoon.md` - Recorded the approved decision and current state.
+- Created `memory-bank/edits/2026-08-25/141639-t36-path-a-memory-bank.md` - Stored the canonical edit chunk.
 
 ### 2026-07-22
 

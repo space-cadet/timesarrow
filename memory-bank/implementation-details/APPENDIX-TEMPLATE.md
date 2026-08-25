@@ -1,5 +1,7 @@
 # Appendix Template: Closing the 3D SPT Matching Gap
 
+> **Do not reuse without correction (2026-08-25):** Statements below that equate one two-dimensional intertwiner qubit with a four-parton CZX site, or identify the physical $Z_2$ action directly with Pauli-$X$, are superseded by T35a/T35b. T36 requires an open-construction framing.
+
 *For use in revising timesarrow.tex to add a detailed appendix addressing T15*
 
 ---

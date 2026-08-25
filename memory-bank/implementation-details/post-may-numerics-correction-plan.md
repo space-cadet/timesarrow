@@ -4,6 +4,10 @@
 *Last Updated: 2026-07-08 17:42 IST*
 *Task: T32*
 
+## Path A Status (2026-08-25)
+
+T20d and T31 are eligible only as bounded control evidence under T36. T22a is supplement-only and T25 is algebraic background. The gate remains open for proxy-independent Rust validation, doctests, canonical artifact selection, and quarantine of superseded first-order outputs.
+
 ## Purpose
 
 Preserve the useful simulation infrastructure and raw results produced after T18 while correcting claims that are unsupported, internally inconsistent, or gauge-dependent. No post-May numerical conclusion should enter the main manuscript until its workstream below is complete.

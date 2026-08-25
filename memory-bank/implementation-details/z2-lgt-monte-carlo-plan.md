@@ -1,5 +1,7 @@
 # Simulation Plan: 3D Z₂ Lattice Gauge Theory Monte Carlo
 
+> **Path A role (2026-08-25):** These simulations test the assumed effective $Z_2$ implementation. They do not derive it from LQG, demonstrate physical time orientation, or validate a microscopic CZX embedding.
+
 *Created: 2026-06-24*
 *Task: T20*
 

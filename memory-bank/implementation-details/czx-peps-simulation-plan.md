@@ -1,5 +1,7 @@
 # Simulation Plan: CZX-Spin Network PEPS Ground State
 
+> **Deferred microscopic plan (2026-08-25):** This is not part of the Path A gate. Future work must first satisfy T35b Gate 0 ownership, framing, and non-overlapping four-parton incidence requirements; the assumed code/intertwiner mapping below is not established.
+
 *Created: 2026-06-24*
 *Task: T21*
 
