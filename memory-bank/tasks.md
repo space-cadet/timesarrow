@@ -1,7 +1,7 @@
 # Memory Bank - Sage Workspace
 
 *Created: 2026-07-18 17:06:36 IST*
-*Last Updated: 2026-08-25 15:55:13 IST*
+*Last Updated: 2026-09-11 16:44:01 IST*
 
 ## Current Publication Tasks (Authoritative 2026-08-25)
 
@@ -22,6 +22,12 @@
 | T31 | Gauge-Invariant Deconfinement Diagnostics | ✅ | MEDIUM | 2026-07-02 | T32 | [Details](tasks/T31.md) |
 | T35a | CZX Microscopic Construction Audit | ✅ | MEDIUM | 2026-07-18 | - | [Details](tasks/T35a.md) |
 | T35c | K₄ Face-Qubit CZX Investigation | ✅ | HIGH | 2026-07-26 | T35a, T35b | [Details](tasks/T35c.md) |
+
+## Current Media and Outreach Tasks
+
+| ID | Title | Status | Priority | Started | Dependencies | Details |
+|----|-------|--------|----------|---------|--------------|---------|
+| T37 | YouTube Visual Explanation: Quantum Geometry and Z2 Edge Flips | 🔄 | MEDIUM | 2026-09-11 | - | [Details](tasks/T37.md) |
 
 > The generated legacy registry below is retained pending a full database regeneration. Where it conflicts with the tables above, the 2026-08-25 tables and individual task files are authoritative.
 
@@ -132,7 +138,7 @@ T9: T9
 
 ## Status Summary
 
-- **Active**: 18
+- **Active**: 19
 - **Completed**: 16
 - **Paused**: 9
-- **Total**: 34
+- **Total**: 35

@@ -1,6 +1,6 @@
 # timesarrow — Progress Tracker
 
-*Updated: 2026-08-25 15:55:13 IST*
+*Updated: 2026-09-11 16:44:01 IST*
 
 ## T36 Path A Publication Program (2026-08-25) — ACTIVE
 
@@ -9,6 +9,12 @@ The project will pursue a bounded but assertive effective-proposal manuscript. T
 The claims map and canonical numerical evidence are complete. Exact proposed revisions are preserved in three author-review Markdown documents covering the manuscript, cover letter, and AI-use statement. After a scope misunderstanding, all direct edits to `timesarrow.tex`, `timesarrow.bbl`, `timesarrow.pdf`, `cover-letter.md`, and `ai-assistance-statement.md` were restored to their checked-in state. No proposal is implemented. The next gate is author review and explicit approval before any source change.
 
 > Earlier progress snapshots remain historical and must not override T36 or the T32 evidence gate.
+
+## T37 YouTube Visual Explanation (2026-09-11) — ACTIVE
+
+Blender v1-v3 assets were created, organized under `blender/`, rendered, and visually reviewed. The v3 prototype was corrected for disappearing links, overlapping arrow geometry, framing, plaquette reveal, and final labeling. The remaining design issue is conceptual: the shot should show independent binary edge flips rather than a vertex-centered operation.
+
+The next milestone is a Manim v4 prototype with neutral links, distinct nodes, vertical up/down state arrows, high-contrast colors, staggered individual flips, and separate plaquette explanation. The 3D geometry sequence remains a Blender deliverable.
 
 ### Literature Deep Read — Ryu 2008 (PRB 79, 075124) ✅ COMPLETE
 

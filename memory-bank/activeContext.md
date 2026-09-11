@@ -1,6 +1,6 @@
 # timesarrow — Active Context
 
-*Updated: 2026-08-25 15:55:13 IST*
+*Updated: 2026-09-11 16:44:01 IST*
 
 ## Current Focus (2026-08-25)
 
@@ -17,6 +17,14 @@
 **Non-blocking research:** T35b and T33b are paused. T35a closes as a reference-model audit; T35c is complete with a bounded K₄ obstruction.
 
 > The July T35 sections below are historical and are superseded where they conflict with this Path A decision.
+
+## Non-blocking Media Work (2026-09-11)
+
+**Task:** T37 — YouTube Visual Explanation: Quantum Geometry and Z2 Edge Flips.
+
+Blender v1-v3 assets were created and reviewed under `blender/`. The corrected v3 is a usable 3D prototype, but its edge-flip shot still reads as a vertex-centered operation. The next shot should be rebuilt in Manim with vertically oriented, high-contrast binary arrows and independently staggered edge flips.
+
+Use Blender for 3D spacetime, tetrahedra, and spin networks. Use Manim for the 2D/2.5D edge-state explanation. Keep narration and labels within the proposal-only scientific boundaries recorded for T36.
 
 ## Current Focus (2026-07-26)
 
