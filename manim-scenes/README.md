@@ -1,13 +1,14 @@
-# Manim edge-state prototype
+# Manim edge-state animation
 
-`edge_state_flip_v4.py` is the first Manim shot for T37. It explains binary
-states on links with vertically oriented arrows, staggered independent flips,
-and a separate plaquette loop-product check.
+`edge_state_flip_v5.py` is the current production candidate for T37. It explains
+binary link states with compact `+1`/`-1` badges, irregular independent flips,
+link-local highlights, and a separate plaquette loop-product check. The v4
+source and renders are retained as rough-draft history.
 
 From the repository root, render a review-quality MP4 with:
 
 ```bash
-manim -pqh manim-scenes/edge_state_flip_v4.py EdgeStateFlipV4
+manim -pqh manim-scenes/edge_state_flip_v5.py EdgeStateFlipV5
 ```
 
 The scene is deterministic so milestone screenshots can be compared across

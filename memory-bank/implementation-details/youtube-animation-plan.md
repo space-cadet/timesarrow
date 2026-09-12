@@ -15,7 +15,7 @@ Translate the paper's proposed mechanism into a clear visual story for a broad a
 ## Visual Diagnosis
 The current v3 is technically cleaner but still suggests a simultaneous operation around one central node. The intended picture is a network whose individual edges carry binary orientation states that can fluctuate independently.
 
-The current Manim and Blender-to-Manim outputs are rough drafts. They demonstrate the intended direction, but they are not yet visually approved for production.
+The earlier Manim v4 and Blender-to-Manim v4 outputs are rough drafts. The revised v5 combined candidate is a review-ready production candidate, but it is not yet author-approved for production.
 
 ## Tool Division
 - Blender: smooth spacetime, tetrahedra, 3D spin networks, and camera moves.
@@ -38,3 +38,11 @@ The video should describe the construction as a proposed mechanism. It should no
 3. Review the complete candidate for conceptual clarity, especially independent edge behavior versus vertex-centered operations.
 4. Reassess the Blender-to-Manim transition and approve or revise the exploratory combined render.
 5. Add narration and audio only as a separate production pass within the proposal-only scientific boundaries.
+
+## 2026-09-12 Revision Handoff
+
+- Manim v5 is the current candidate: continuous links, compact `+1`/`-1` badges, irregular and overlapping independent flips, link-local highlights, and a non-trivial plaquette example.
+- Blender v4 is the current 3D candidate: local tetrahedral hierarchy, corrected scale origins, Principled materials with restrained emission, depth lighting, smoother camera motion, and 1920×1080/30 fps output.
+- The combined candidate is `manim-scenes/renders/t37_quantum_geometry_v4_plus_edge_state_v5.mp4`. It has been checked for dimensions, frame rate, representative frames, motion, and the transition.
+- Next-session illustrations to consider are a loop defect, gauge-redundancy comparison, and an explicit Blender-to-Manim bridge. These remain proposals until selected and implemented.
+- Production approval, narration, audio, and final edit remain open.

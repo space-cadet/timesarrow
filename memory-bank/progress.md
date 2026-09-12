@@ -1,6 +1,6 @@
 # timesarrow — Progress Tracker
 
-*Updated: 2026-09-12 12:22:58 IST*
+*Updated: 2026-09-12 15:33:43 IST*
 
 ## T36 Path A Publication Program (2026-08-25) — ACTIVE
 
@@ -10,15 +10,15 @@ The claims map and canonical numerical evidence are complete. Exact proposed rev
 
 > Earlier progress snapshots remain historical and must not override T36 or the T32 evidence gate.
 
-## T37 YouTube Visual Explanation (2026-09-11) — ACTIVE / ROUGH DRAFT
+## T37 YouTube Visual Explanation (2026-09-11) — ACTIVE / REVISED CANDIDATE
 
 Blender v1-v3 assets were created, organized under `blender/`, rendered, and visually reviewed. The v3 prototype was corrected for disappearing links, overlapping arrow geometry, framing, plaquette reveal, and final labeling. The remaining design issue is conceptual: the shot should show independent binary edge flips rather than a vertex-centered operation.
 
-The next milestone is a Manim v4 prototype with neutral links, distinct nodes, vertical up/down state arrows, high-contrast colors, staggered individual flips, and separate plaquette explanation. The 3D geometry sequence remains a Blender deliverable.
+The Manim v5 prototype and Blender v4 3D sequence are now rendered candidates. The next milestone is author review plus the optional loop-defect, gauge-redundancy, and Blender-to-Manim bridge illustrations. The 3D geometry sequence remains a Blender deliverable.
 
-The first prototype is implemented in `manim-scenes/edge_state_flip_v4.py`, with render instructions in `manim-scenes/README.md`. A dedicated Conda `manim` environment now provides Manim 0.20.1. The current 1920×1080, 30 fps, 13.5-second MP4 and four milestone captures are rough-draft outputs that were rendered and visually reviewed. The Blender v3 and Manim v4 shots were combined into `manim-scenes/renders/t37_quantum_geometry_v3_plus_edge_state_v4.mp4` as an exploratory crossfade test, not a production-approved edit.
+The original v4 prototype remains as history. The current standalone and combined candidates are 1920×1080, 30 fps outputs rendered and visually reviewed. A dedicated Conda `manim` environment provides Manim 0.20.1.
 
-The next work is visual refinement: composition, arrow/link styling, spacing, contrast, pacing, labels, and repeated visual review before production approval. Narration, audio, and the broader YouTube edit remain separate.
+The v5 Manim shot now uses continuous links, compact `+1`/`-1` badges, irregular and overlapping flips, link-local highlights, and a non-trivial plaquette product. The Blender v4 sequence now uses proper local tetrahedral hierarchy, restrained Principled materials, depth lighting, corrected scale origins, and 1920×1080/30 fps output. Six Blender milestone frames, both standalone videos, and the combined v5 candidate were rendered and visually reviewed. Narration, audio, additional explanatory illustrations, and author production approval remain open.
 
 ### Literature Deep Read — Ryu 2008 (PRB 79, 075124) ✅ COMPLETE
 

@@ -55,3 +55,14 @@ Create and review visual assets for a broad-audience explanation of the TimesArr
 - Corrected the prior completion statement: the Manim shot and Blender-to-Manim combination are rough-draft artifacts, not final visual implementation.
 - Reopened T37 for visual refinement, production review, and approval.
 - Kept the rendered MP4s and milestone captures as draft evidence; narration and audio remain open.
+
+## 2026-09-12 14:15 IST Visual refinement handoff
+
+- Rebuilt the Manim shot as `manim-scenes/edge_state_flip_v5.py`: continuous links, compact `+1`/`-1` state badges, irregular and overlapping independent flips, link-local highlights, and a non-trivial two-negative plaquette product.
+- Rendered and checked the standalone v5 candidate at 1920×1080, 30 fps: `manim-scenes/media/videos/edge_state_flip_v5/1080p30/edge_state_flip_v5_final.mp4`.
+- Rebuilt the Blender sequence as `blender/quantum_geometry_sequence_v4.py`: proper local tetrahedral object hierarchy, restrained Principled materials with emission, depth lighting, smoother camera motion, 1920×1080 output, and corrected animation scale origins.
+- Rendered six Blender v4 milestone frames and the 10-second 1920×1080, 30 fps candidate under `blender/renders/quantum_geometry_v4/` and visually reviewed them.
+- Combined Blender v4 and Manim v5 into `manim-scenes/renders/t37_quantum_geometry_v4_plus_edge_state_v5.mp4` with a 0.65-second fade-through-black transition; verified H.264, yuv420p, 1920×1080, 30 fps, 21.77 seconds.
+- Updated `manim-scenes/README.md`, `memory-bank/tasks/T37.md`, and `memory-bank/session_cache.md` with the revised candidate paths and status.
+- Validation passed: Python syntax checks, `git diff --check`, ffprobe media checks, representative frame review, motion sampling, and transition review.
+- T37 remains active pending author production approval; narration, audio, additional explanatory illustrations, and final edit remain next-session work.

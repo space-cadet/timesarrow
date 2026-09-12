@@ -1,5 +1,14 @@
 # Session Cache
 
+## 2026-09-12 T37 Visual Refinement
+
+**Focus Task:** T37 — YouTube Visual Explanation: Quantum Geometry and Z2 Edge Flips
+**Status:** 🔄 ACTIVE — revised production candidate awaiting author review.
+
+The Blender sequence was rebuilt as v4 at 1920×1080, 30 fps with proper 3D tetrahedral geometry, local object scaling, restrained materials, depth lighting, and a smoother camera move. Six milestone frames and the complete 10-second animation were rendered and visually reviewed under `blender/renders/quantum_geometry_v4/`.
+
+The Manim explanation was rebuilt as v5 with continuous links, `+1`/`-1` badges, irregular independent timing, link-local highlights, and a non-trivial plaquette example containing two negative links. The revised combined candidate is `manim-scenes/renders/t37_quantum_geometry_v4_plus_edge_state_v5.mp4` at 1920×1080, 30 fps. Production approval, narration, and audio remain open.
+
 ## 2026-09-12 Manim Render Closeout
 
 **Focus Task:** T37 — YouTube Visual Explanation: Quantum Geometry and Z2 Edge Flips

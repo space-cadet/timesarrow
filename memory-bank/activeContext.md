@@ -1,6 +1,6 @@
 # timesarrow — Active Context
 
-*Updated: 2026-09-12 12:22:58 IST*
+*Updated: 2026-09-12 15:33:43 IST*
 
 ## Current Focus (2026-08-25)
 
@@ -22,9 +22,9 @@
 
 **Task:** T37 — YouTube Visual Explanation: Quantum Geometry and Z2 Edge Flips.
 
-Blender v1-v3 assets were created and reviewed under `blender/`. The corrected v3 is a usable 3D prototype, but its edge-flip shot still reads as a vertex-centered operation. The Manim replacement is a rendered rough draft with vertically oriented, high-contrast binary arrows and independently staggered edge flips. The normalized Blender-to-Manim combination is exploratory, not final; T37 remains active for visual refinement.
+Blender v1-v3 assets were created and reviewed under `blender/`. The revised Blender v4 and Manim v5 candidates are rendered and reviewed, with a combined 1920×1080/30 fps candidate available. T37 remains active for author production approval and the next illustration/narration pass.
 
-Use Blender for 3D spacetime, tetrahedra, and spin networks. Use Manim for the 2D/2.5D edge-state explanation. The current standalone Manim shot and Blender-to-Manim combination are rough-draft artifacts; refine and approve the visual implementation before treating them as production material. Keep narration and labels within the proposal-only scientific boundaries recorded for T36.
+Use Blender for 3D spacetime, tetrahedra, and spin networks. Use Manim for the 2D/2.5D edge-state explanation. The current candidates remain subject to author approval; narration, audio, and additional explanatory illustrations are separate next-session work. Keep narration and labels within the proposal-only scientific boundaries recorded for T36.
 
 ## Current Focus (2026-07-26)
 
