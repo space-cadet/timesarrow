@@ -32,3 +32,26 @@ Create and review visual assets for a broad-audience explanation of the TimesArr
 - `blender/renders/quantum_geometry_v3/z2_link_flip_v3.mp4`
 - `memory-bank/tasks/T37.md`
 - `memory-bank/implementation-details/youtube-animation-plan.md`
+
+## 17:05 IST Continuation
+
+- Created `manim-scenes/edge_state_flip_v4.py` as the first Manim prototype.
+- Added deterministic independent link flips, vertical high-contrast state arrows, neutral links, distinct nodes, and a separate plaquette loop-product explanation.
+- Added `manim-scenes/README.md` with render instructions.
+- Python syntax and `git diff --check` pass.
+- Checked the host's Conda environments: none currently contains a usable Manim import. The existing standalone Manim 0.19 tool has a Python 3.11 package tree but points to Conda Python 3.13, so final rendering is still blocked by the runtime rather than the scene source.
+
+## 2026-09-12 02:43 IST Continuation
+
+- Created a dedicated Conda `manim` environment with Manim 0.20.1 after the previous standalone launcher was found broken.
+- Rendered `manim-scenes/media/videos/edge_state_flip_v4/1080p30/edge_state_flip_v4_final.mp4` at 1920×1080 and 30 fps.
+- Captured four milestone PNGs under `manim-scenes/renders/edge_state_flip_v4/` and visually reviewed the independent-flip and plaquette-check frames.
+- Adjusted the explanatory formula and note to fit within the final frame.
+- Standalone Manim acceptance is complete; Blender v3 and Manim v4 were combined into `manim-scenes/renders/t37_quantum_geometry_v3_plus_edge_state_v4.mp4` with a 0.5-second crossfade and visually checked at 1920×1080, 30 fps.
+- T37 visual implementation is complete. Narration and audio remain separate production work.
+
+## 2026-09-12 12:22 IST Correction
+
+- Corrected the prior completion statement: the Manim shot and Blender-to-Manim combination are rough-draft artifacts, not final visual implementation.
+- Reopened T37 for visual refinement, production review, and approval.
+- Kept the rendered MP4s and milestone captures as draft evidence; narration and audio remain open.

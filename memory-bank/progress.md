@@ -1,6 +1,6 @@
 # timesarrow — Progress Tracker
 
-*Updated: 2026-09-11 16:44:01 IST*
+*Updated: 2026-09-12 12:22:58 IST*
 
 ## T36 Path A Publication Program (2026-08-25) — ACTIVE
 
@@ -10,11 +10,15 @@ The claims map and canonical numerical evidence are complete. Exact proposed rev
 
 > Earlier progress snapshots remain historical and must not override T36 or the T32 evidence gate.
 
-## T37 YouTube Visual Explanation (2026-09-11) — ACTIVE
+## T37 YouTube Visual Explanation (2026-09-11) — ACTIVE / ROUGH DRAFT
 
 Blender v1-v3 assets were created, organized under `blender/`, rendered, and visually reviewed. The v3 prototype was corrected for disappearing links, overlapping arrow geometry, framing, plaquette reveal, and final labeling. The remaining design issue is conceptual: the shot should show independent binary edge flips rather than a vertex-centered operation.
 
 The next milestone is a Manim v4 prototype with neutral links, distinct nodes, vertical up/down state arrows, high-contrast colors, staggered individual flips, and separate plaquette explanation. The 3D geometry sequence remains a Blender deliverable.
+
+The first prototype is implemented in `manim-scenes/edge_state_flip_v4.py`, with render instructions in `manim-scenes/README.md`. A dedicated Conda `manim` environment now provides Manim 0.20.1. The current 1920×1080, 30 fps, 13.5-second MP4 and four milestone captures are rough-draft outputs that were rendered and visually reviewed. The Blender v3 and Manim v4 shots were combined into `manim-scenes/renders/t37_quantum_geometry_v3_plus_edge_state_v4.mp4` as an exploratory crossfade test, not a production-approved edit.
+
+The next work is visual refinement: composition, arrow/link styling, spacing, contrast, pacing, labels, and repeated visual review before production approval. Narration, audio, and the broader YouTube edit remain separate.
 
 ### Literature Deep Read — Ryu 2008 (PRB 79, 075124) ✅ COMPLETE
 

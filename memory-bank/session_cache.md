@@ -1,5 +1,14 @@
 # Session Cache
 
+## 2026-09-12 Manim Render Closeout
+
+**Focus Task:** T37 — YouTube Visual Explanation: Quantum Geometry and Z2 Edge Flips
+**Status:** 🔄 ACTIVE — rough-draft Manim shot and exploratory Blender combination.
+
+Created and rendered `manim-scenes/edge_state_flip_v4.py` with Conda Manim 0.20.1. The current draft is a 1920×1080, 30 fps, 13.5-second MP4 at `manim-scenes/media/videos/edge_state_flip_v4/1080p30/edge_state_flip_v4_final.mp4`, with four visually reviewed milestone captures under `manim-scenes/renders/edge_state_flip_v4/`. The shot uses proposal-only wording and keeps the plaquette loop check separate from the independent edge flips.
+
+The exploratory combined render is `manim-scenes/renders/t37_quantum_geometry_v3_plus_edge_state_v4.mp4`, normalized to 1920×1080 at 30 fps with a 0.5-second crossfade after Blender v3. It is not production-approved. Visual refinement, narration, and audio remain open.
+
 ## 2026-09-11 YouTube Animation Handoff
 
 **Focus Task:** T37 — YouTube Visual Explanation: Quantum Geometry and Z2 Edge Flips

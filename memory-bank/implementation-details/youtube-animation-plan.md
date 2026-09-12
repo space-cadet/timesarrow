@@ -1,6 +1,6 @@
 # Implementation Detail: YouTube Animation Plan
 *Created: 2026-09-11 16:44:01 IST*
-*Last Updated: 2026-09-11 16:44:01 IST*
+*Last Updated: 2026-09-12 12:22:58 IST*
 
 ## Purpose
 Translate the paper's proposed mechanism into a clear visual story for a broad audience without presenting speculative links as completed derivations.
@@ -14,6 +14,8 @@ Translate the paper's proposed mechanism into a clear visual story for a broad a
 
 ## Visual Diagnosis
 The current v3 is technically cleaner but still suggests a simultaneous operation around one central node. The intended picture is a network whose individual edges carry binary orientation states that can fluctuate independently.
+
+The current Manim and Blender-to-Manim outputs are rough drafts. They demonstrate the intended direction, but they are not yet visually approved for production.
 
 ## Tool Division
 - Blender: smooth spacetime, tetrahedra, 3D spin networks, and camera moves.
@@ -31,7 +33,8 @@ The current v3 is technically cleaner but still suggests a simultaneous operatio
 The video should describe the construction as a proposed mechanism. It should not state that the work has already derived ordinary thermodynamic time's arrow, semiclassical spacetime, or fermionic matter.
 
 ## Remaining Work
-1. Create the Manim v4 prototype under the project folder.
-2. Render milestone frame captures and the complete animation.
-3. Review the rendered output visually and adjust spacing, contrast, timing, and labels.
-4. Decide whether the Manim shot should be integrated with the Blender sequence.
+1. Refine the Manim composition, arrow/link styling, spacing, contrast, timing, and labels.
+2. Re-render milestone captures and a production candidate after each meaningful visual revision.
+3. Review the complete candidate for conceptual clarity, especially independent edge behavior versus vertex-centered operations.
+4. Reassess the Blender-to-Manim transition and approve or revise the exploratory combined render.
+5. Add narration and audio only as a separate production pass within the proposal-only scientific boundaries.
