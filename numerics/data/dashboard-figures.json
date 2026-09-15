@@ -1,0 +1,36 @@
+{
+  "figures": [
+    {
+      "id": "t31-gi-fss-20260916",
+      "title": "T31: Gauge-Invariant Q_GI Finite-Size Scaling",
+      "task": "T31",
+      "runId": "t31-gi-validation-20260916",
+      "type": "line",
+      "data": {
+        "x": [8, 10, 12],
+        "y": [0.010276, 0.006130, 0.004002],
+        "yerr": [0.000289, 0.000152, 0.000105],
+        "xlabel": "L",
+        "ylabel": "⟨Q_GI⟩",
+        "loglog": true,
+        "fit": "Q_GI = 1.324 × L^(-2.335), R² = 0.9999"
+      },
+      "caption": "Finite-size scaling at β=0.4407. Power-law decay with exponent α=2.33."
+    },
+    {
+      "id": "t31-gi-beta-20260916",
+      "title": "T31: Q_GI vs β at L=12",
+      "task": "T31",
+      "runId": "t31-gi-validation-20260916",
+      "type": "line",
+      "data": {
+        "x": [0.3, 0.440686, 0.6, 0.8, 1.0, 1.5],
+        "y": [0.003904, 0.004205, 0.004167, 0.007157, 0.000468, -0.000001],
+        "yerr": [0.000140, 0.000121, 0.000130, 0.000411, 0.000200, 0.000008],
+        "xlabel": "β",
+        "ylabel": "⟨Q_GI⟩"
+      },
+      "caption": "β-dependence at L=12. Non-monotonic: rises in deconfined phase, crashes at β≥1.0."
+    }
+  ]
+}

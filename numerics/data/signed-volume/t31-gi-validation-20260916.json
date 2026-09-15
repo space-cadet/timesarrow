@@ -1,0 +1,46 @@
+{
+  "runId": "t31-gi-validation-20260916",
+  "task": "T31",
+  "phase": "validation",
+  "status": "complete",
+  "timestamp": "2026-09-16T00:52:00+05:30",
+  "description": "Gauge-invariant signed-volume validation at production scale. Tests gauge_invariant_signed_volume_3d() for exact gauge invariance under local gauge transformations at L=8,10,12,16.",
+  "parameters": {
+    "latticeSizes": [8, 10, 12, 16],
+    "dimension": 3,
+    "beta": 0.440686,
+    "thermalizationSweeps": 1000,
+    "measurementSweeps": 100,
+    "testTypes": [
+      "single_site_gauge_transform",
+      "multiple_random_gauge_transforms",
+      "statistical_properties",
+      "range_check"
+    ]
+  },
+  "results": {
+    "gaugeInvariance": {
+      "L8": {"singleSiteDeltaQ": 0.0, "multiDeltaQ": 0.0, "passed": true},
+      "L10": {"singleSiteDeltaQ": 0.0, "multiDeltaQ": 0.0, "passed": true},
+      "L12": {"singleSiteDeltaQ": 0.0, "multiDeltaQ": 0.0, "passed": true},
+      "L16": {"singleSiteDeltaQ": 0.0, "multiDeltaQ": 0.0, "passed": true}
+    },
+    "statistics": {
+      "L8": {"meanQ": 0.0111, "errorQ": 0.0005, "variance": 0.000024, "range": [0.0021, 0.0253]},
+      "L10": {"meanQ": 0.0059, "errorQ": 0.0003, "variance": 0.000007, "range": [-0.0024, 0.0137]},
+      "L12": {"meanQ": 0.0042, "errorQ": 0.0002, "variance": 0.000004, "range": [-0.0007, 0.0095]},
+      "L16": {"meanQ": 0.0022, "errorQ": 0.0001, "variance": 0.000001, "range": [-0.0006, 0.0044]}
+    },
+    "keyFinding": "Observable is EXACTLY gauge-invariant (|ΔQ| < 1e-10 under all transformations at all L). However, ⟨Q_GI⟩ → 0 as L → ∞ (0.011 at L=8 → 0.002 at L=16). NULL RESULT: not a useful order parameter — vanishes in thermodynamic limit.",
+    "physicalReview": "The dressed correlator Q_GI = (1/N²) Σ s(r₁) W(r₁,r₂) s(r₂) with s(r) = path-ordered product from origin is exactly gauge-invariant by construction. However, at criticality the ensemble average vanishes because positive and negative contributions cancel. The observable does not discriminate confined vs deconfined phases at production scale.",
+    "conclusion": "Gauge invariance CONFIRMED. Physical utility REJECTED. T31 closed with null result."
+  },
+  "outputFiles": [
+    "data/signed-volume/t31-gi-validation-20260916.json"
+  ],
+  "page": "tasks/t31-signed-volume.qmd",
+  "dataUrl": "data/signed-volume/t31-gi-validation-20260916.json",
+  "wallTimeMs": 101446,
+  "startTime": "2026-09-16T00:50:18+05:30",
+  "endTime": "2026-09-16T00:52:00+05:30"
+}

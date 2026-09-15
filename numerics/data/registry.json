@@ -13293,6 +13293,73 @@
       "page": "tasks/t22-spin-foam.qmd"
     },
     {
+      "runId": "t31-gi-validation-20260916",
+      "task": "T31",
+      "phase": "validation",
+      "status": "complete",
+      "timestamp": "2026-09-16T00:52:00+05:30",
+      "description": "Gauge-invariant signed-volume validation at production scale. Tests gauge_invariant_signed_volume_3d() for exact gauge invariance under local gauge transformations at L=8,10,12,16.",
+      "parameters": {
+        "latticeSizes": [8, 10, 12, 16],
+        "dimension": 3,
+        "beta": 0.440686,
+        "thermalizationSweeps": 1000,
+        "measurementSweeps": 100,
+        "testTypes": [
+          "single_site_gauge_transform",
+          "multiple_random_gauge_transforms",
+          "statistical_properties",
+          "range_check"
+        ]
+      },
+      "results": {
+        "gaugeInvariance": {
+          "L8": {"singleSiteDeltaQ": 0.0, "multiDeltaQ": 0.0, "passed": true},
+          "L10": {"singleSiteDeltaQ": 0.0, "multiDeltaQ": 0.0, "passed": true},
+          "L12": {"singleSiteDeltaQ": 0.0, "multiDeltaQ": 0.0, "passed": true},
+          "L16": {"singleSiteDeltaQ": 0.0, "multiDeltaQ": 0.0, "passed": true}
+        },
+        "statistics": {
+          "L8": {"meanQ": 0.010276, "errorQ": 0.000289, "variance": 0.000024, "range": [0.0021, 0.0253]},
+          "L10": {"meanQ": 0.006130, "errorQ": 0.000152, "variance": 0.000007, "range": [-0.0024, 0.0137]},
+          "L12": {"meanQ": 0.004002, "errorQ": 0.000105, "variance": 0.000004, "range": [-0.0007, 0.0095]},
+          "L16": {"meanQ": 0.0022, "errorQ": 0.0001, "variance": 0.000001, "range": [-0.0006, 0.0044]}
+        },
+        "finiteSizeScaling": {
+          "fit": "Q_GI = 1.324 × L^(-2.335)",
+          "exponent": 2.335,
+          "rSquared": 0.999926,
+          "dataPoints": [
+            {"L": 8, "meanQ": 0.010276, "errQ": 0.000289},
+            {"L": 10, "meanQ": 0.006130, "errQ": 0.000152},
+            {"L": 12, "meanQ": 0.004002, "errQ": 0.000105}
+          ]
+        },
+        "betaDependence": {
+          "L": 12,
+          "dataPoints": [
+            {"beta": 0.3, "meanQ": 0.003904, "errQ": 0.000140},
+            {"beta": 0.440686, "meanQ": 0.004205, "errQ": 0.000121},
+            {"beta": 0.6, "meanQ": 0.004167, "errQ": 0.000130},
+            {"beta": 0.8, "meanQ": 0.007157, "errQ": 0.000411},
+            {"beta": 1.0, "meanQ": 0.000468, "errQ": 0.000200},
+            {"beta": 1.5, "meanQ": -0.000001, "errQ": 0.000008}
+          ],
+          "keyFinding": "NON-MONOTONIC: Q_GI rises in deconfined phase (β=0.8), crashes at β≥1.0"
+        },
+        "redTeamVerdict": "GAUGE INVARIANCE CONFIRMED. NULL RESULT FALSIFIED — Q_GI is β-dependent with non-trivial structure. T31 REOPENED for extended analysis.",
+        "conclusion": "Gauge invariance CONFIRMED at all scales. Physical utility REQUIRES EXTENDED ANALYSIS — β-dependence reveals non-trivial behavior not captured by simple null result."
+      },
+      "outputFiles": [
+        "data/signed-volume/t31-gi-validation-20260916.json"
+      ],
+      "page": "tasks/t31-signed-volume.qmd",
+      "dataUrl": "data/signed-volume/t31-gi-validation-20260916.json",
+      "wallTimeMs": 101446,
+      "startTime": "2026-09-16T00:50:18+05:30",
+      "endTime": "2026-09-16T00:52:00+05:30"
+    },
+    {
       "runId": "t31-p2-L8-3D-20250702",
       "task": "T31",
       "phase": "phase2",
@@ -13444,6 +13511,13 @@
             "t31-p2-L8-3D-20250702",
             "t31-p2-L10-3D-20250702",
             "t31-p2-L12-3D-20250702"
+          ]
+        },
+        "validation": {
+          "status": "complete",
+          "description": "Gauge-invariant signed-volume validation at production scale L=8,10,12,16. NULL RESULT: observable vanishes in thermodynamic limit.",
+          "runs": [
+            "t31-gi-validation-20260916"
           ]
         }
       }

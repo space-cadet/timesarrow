@@ -1,6 +1,20 @@
 # Edit History
 *Created: 2026-07-19 01:05 IST*
-*Last Updated: 2026-09-12 15:33:43 IST*
+*Last Updated: 2026-09-16 02:33:00 IST*
+
+### 2026-09-16
+
+#### 02:33:00 IST - T31: Extended analysis — red-team falsification, L-dependence, β-dependence
+
+- Modified `memory-bank/tasks/T31.md` - Reopened with extended analysis findings, red-team verdict, and new subtasks.
+- Created `memory-bank/sessions/2026-09-16-night.md` - Session record for the extended analysis work.
+- Created `memory-bank/edits/2026-09-16/023300-t31-extended-analysis.md` - Edit chunk for this memory-bank update.
+- Modified `memory-bank/edit_history.md` - Prepended this generated-view entry.
+- Modified `memory-bank/tasks.md` - Updated T31 status in registry.
+- Modified `numerics/data/registry.json` - Added T31 FSS fit and β-scan entries.
+- Created `numerics/data/dashboard-data.json` - Generated dashboard data (40 runs).
+- Created `numerics/data/dashboard-figures.json` - Generated dashboard figures (2 T31 figures).
+- Created `numerics/data/signed-volume/t31-gi-validation-20260916.json` - Validation data.
 
 ### 2026-09-12
 

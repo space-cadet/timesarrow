@@ -1,7 +1,7 @@
 # Memory Bank - Sage Workspace
 
 *Created: 2026-07-18 17:06:36 IST*
-*Last Updated: 2026-09-12 15:33:43 IST*
+*Last Updated: 2026-09-16 02:33:00 IST*
 
 ## Current Publication Tasks (Authoritative 2026-08-25)
 
@@ -19,7 +19,7 @@
 |----|-------|--------|----------|---------|--------------|---------|
 | T20d | Critical Exponent Extraction from 3D Z₂ LGT | ✅ | MEDIUM | 2026-06-26 | T32 | [Details](tasks/T20d.md) |
 | T22a | SU(2) Four-Leg Group-Average Estimate | ✅ | HIGH | 2026-06-28 | T32 | [Details](tasks/T22a.md) |
-| T31 | Gauge-Invariant Deconfinement Diagnostics | ✅ | MEDIUM | 2026-07-02 | T32 | [Details](tasks/T31.md) |
+| T31 | Gauge-Invariant Deconfinement Diagnostics | 🔄 | MEDIUM | 2026-07-02 | T32 | [Details](tasks/T31.md) |
 | T35a | CZX Microscopic Construction Audit | ✅ | MEDIUM | 2026-07-18 | - | [Details](tasks/T35a.md) |
 | T35c | K₄ Face-Qubit CZX Investigation | ✅ | HIGH | 2026-07-26 | T35a, T35b | [Details](tasks/T35c.md) |
 
