@@ -1,5 +1,15 @@
 # Session Cache
 
+## 2026-10-16 T13 visual explainers — completed
+
+**Completed:** T13 web illustrations, with T37 media provenance. The author authorized these additions and continuing Memory Bank updates.
+
+**Session File**: `sessions/2026-10-16-night.md`
+
+[Current session](sessions/2026-10-16-night.md). **Plan:** [Website visual explainers](implementation-details/website-visual-explainers.md).
+
+Published `406e6d8` in the website repository; deploy run `38815185321` succeeded. Guided loop story, growth comparison, orientation/mixing illustration, and chaptered/captioned video passed local/live checks at four widths. T13 is complete; T37 retains narration and final production. Public text follows the author’s direction to avoid repeated demoralizing disclaimers.
+
 ## 2026-09-12 T37 Visual Refinement
 
 **Focus Task:** T37 — YouTube Visual Explanation: Quantum Geometry and Z2 Edge Flips

@@ -2,6 +2,10 @@
 
 *Updated: 2026-09-12 15:33:43 IST*
 
+## Current outreach work (2026-10-16)
+
+T13 visual-explainer additions are published and complete. See `implementation-details/website-visual-explainers.md` and `sessions/2026-10-16-night.md`. The live page includes a guided loop story, growing-loop comparison, orientation/mixing illustration, and video chapters/captions. Website commit `406e6d8` passed live browser verification. The manuscript publication work below retains its own status.
+
 ## Current Focus (2026-08-25)
 
 **Primary task:** T36 — Effective-Proposal Manuscript Revision and Publication Gate.

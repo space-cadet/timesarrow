@@ -1,7 +1,7 @@
 # Memory Bank - Sage Workspace
 
 *Created: 2026-07-18 17:06:36 IST*
-*Last Updated: 2026-09-16 02:33:00 IST*
+*Last Updated: 2026-10-16 03:41:55 IST*
 
 ## Current Publication Tasks (Authoritative 2026-08-25)
 
@@ -27,6 +27,7 @@
 
 | ID | Title | Status | Priority | Started | Dependencies | Details |
 |----|-------|--------|----------|---------|--------------|---------|
+| T13 | Accessible Web Presentation — Time’s Arrow | ✅ | MEDIUM | 2026-04-18 | T36 | [Details](tasks/T13.md) |
 | T37 | YouTube Visual Explanation: Quantum Geometry and Z2 Edge Flips | 🔄 | MEDIUM | 2026-09-11 | - | [Details](tasks/T37.md) |
 
 > The generated legacy registry below is retained pending a full database regeneration. Where it conflicts with the tables above, the 2026-08-25 tables and individual task files are authoritative.
@@ -42,7 +43,7 @@ This is the Memory Bank for the Sage (灵剑) OpenClaw workspace.
 | T10 | T10: Fix 17 Bibliography Metadata Errors | ⏸️ | MEDIUM | 2026-04-18 | - | [Details](tasks/T10.md) |
 | T11 | T11: Fix Critical Manuscript Errors | ⏸️ | MEDIUM | 2026-04-18 | - | [Details](tasks/T11.md) |
 | T12 | T12: Address Major Issues and Add Recent Citations | ⏸️ | MEDIUM | 2026-04-18 | - | [Details](tasks/T12.md) |
-| T13 | T13: Gemini 3 Flash - Create Accessible Web Presentation (Time's Arrow) | 🔄 | MEDIUM | 2026-04-18 | - | [Details](tasks/T13.md) |
+| T13 | Accessible Web Presentation — Time’s Arrow | ✅ | MEDIUM | 2026-04-18 | - | [Details](tasks/T13.md) |
 | T18 | Manuscript Claims Map and Reviewer-Safety Calibration | 🔄 | HIGH | 2026-05-06 | - | [Details](tasks/T18.md) |
 | T2 | T2 | 🔄 | MEDIUM | 2026-04-16 | - | [Details](tasks/T2.md) |
 | T20-Phase2-sharp-transition | T20-Phase2-sharp-transition | ⏸️ | MEDIUM | 2026-04-16 | - | [Details](tasks/T20-Phase2-sharp-transition.md) |
