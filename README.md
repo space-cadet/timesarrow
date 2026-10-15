@@ -93,6 +93,14 @@ Run `./scripts/validate.sh` from the repository root to check the TypeScript bui
 
 ---
 
+## Visual Walk-Through
+
+[![Watch the Time’s Arrow visual walk-through](manim-scenes/renders/timesarrow-animation-poster.png)](https://github.com/space-cadet/timesarrow/blob/main/manim-scenes/renders/t37_quantum_geometry_v4_plus_edge_state_v5.mp4)
+
+[Open or download the 22-second animation](manim-scenes/renders/t37_quantum_geometry_v4_plus_edge_state_v5.mp4). It illustrates a quantum-geometry network, then changing binary link signs and a closed-loop comparison. This is a conceptual animation draft, not a simulation of the proposed quantum-gravity dynamics.
+
+---
+
 ## Web Presentation
 
 An accessible overview of the research is published at [quantumofgravity.com/projects/timesarrow](https://quantumofgravity.com/projects/timesarrow/). It includes explanatory illustrations, an animation draft, an interactive gauge example, and expandable mathematics. The [numerical documentation](https://quantumofgravity.com/projects/timesarrow/numerics/) and [simulation dashboard](https://quantumofgravity.com/projects/timesarrow/numerics/dashboard.html) present the computational work.
