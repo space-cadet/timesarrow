@@ -2,7 +2,7 @@
 
 > **Arrow of Time from a Confinement–Deconfinement Transition**
 
-[![Paper](https://img.shields.io/badge/Paper-arXiv-red)](https://arxiv.org) [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Build](https://img.shields.io/badge/Build-Passing-brightgreen)]()
+[![Paper: arXiv:2605.16316](https://img.shields.io/badge/Paper-arXiv%3A2605.16316-red)](https://arxiv.org/abs/2605.16316) [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Build](https://img.shields.io/badge/Build-Passing-brightgreen)]()
 
 This repository contains the manuscript, figures, and supplementary materials for the paper **"Gauging Time Reversal Symmetry in Quantum Gravity: Arrow of Time from a Confinement–Deconfinement Transition"** by Deepak Vaid.
 
@@ -95,10 +95,7 @@ Run `./scripts/validate.sh` from the repository root to check the TypeScript bui
 
 ## Web Presentation
 
-An interactive web presentation translating the paper's concepts for a broader audience is in development:
-
-- **Static version**: [`web-static/`](web-static/) — deployed landing page
-- **Planned**: Next.js interactive scrollytelling app with animated spin networks, vertex explorer, and tiered narrative (see `memory-bank/implementation-details/gemini-web-presentation-plan.md`)
+An accessible overview of the research is published at [quantumofgravity.com/projects/timesarrow](https://quantumofgravity.com/projects/timesarrow/). It includes explanatory illustrations, an animation draft, an interactive gauge example, and expandable mathematics. The [numerical documentation](https://quantumofgravity.com/projects/timesarrow/numerics/) and [simulation dashboard](https://quantumofgravity.com/projects/timesarrow/numerics/dashboard.html) present the computational work.
 
 ---
 
@@ -117,13 +114,14 @@ A complete, commit-level account of AI-assisted contributions is available in:
 If you use this work, please cite:
 
 ```bibtex
-@article{vaid2026gauging,
-  title={Gauging Time Reversal Symmetry in Quantum Gravity: 
-         Arrow of Time from a Confinement--Deconfinement Transition},
+@misc{vaid2026gauging,
+  title={Gauging Time Reversal Symmetry in Quantum Gravity: Arrow of Time from a Confinement--Deconfinement Transition},
   author={Vaid, Deepak},
-  journal={SciPost Physics},
   year={2026},
-  url={https://github.com/space-cadet/timesarrow}
+  eprint={2605.16316},
+  archivePrefix={arXiv},
+  primaryClass={physics.gen-ph},
+  url={https://arxiv.org/abs/2605.16316}
 }
 ```
 
