@@ -9,9 +9,9 @@ The author authorized the proposed additions and discretionary improvements on 2
 
 ## Delivered baseline, 2026-10-15–16
 
-The static landing page is hosted at https://quantumofgravity.com/projects/timesarrow/ from the separate `space-cadet/website` repository. Current worktree: `/private/tmp/website-timesarrow-landing`; original website checkout remains on an unrelated vocabulary branch. Main-site commits through `e7414c0` include a light editorial page, arXiv link near the top, inline mathematical detail, SVG illustrations, an interactive four-link loop, project/AI history, and the existing T37 draft video. Mobile video intrinsic-size overflow was reproduced and fixed with grid-child `min-width: 0`, media width constraints, and stylesheet versioning.
+The static landing page is hosted at https://quantumofgravity.com/projects/timesarrow/ from the separate `space-cadet/website` repository. Current worktree: `/private/tmp/website-timesarrow-landing`; original website checkout remains on an unrelated vocabulary branch. The 15–16 October website commits record the complete first publication: `fa36b62` built the light editorial page; `1a5a962` added the project history and AI-use note; `5483a7c` clarified the overview and embedded the T37 video with its poster; `f5355e7` added the compass analogy; `dca8b4b` fixed mobile video sizing; `e7414c0` refreshed the mobile styles for cached pages; and `406e6d8` added the guided loop, growing-loop and orientation/mixing interactions, video chapters, and captions. The mobile fix addresses intrinsic video width with grid-child `min-width: 0`, media width constraints, and stylesheet versioning.
 
-TimesArrow commits `e75b332` and `6c9429a` correct the README arXiv citation and add a linked animation poster. The MP4 is already tracked at `manim-scenes/renders/t37_quantum_geometry_v4_plus_edge_state_v5.mp4`.
+TimesArrow commits `e75b332` and `6c9429a` corrected the README citation to arXiv and added the linked animation preview and poster. Commit `572065d` recorded the interactive sections and retained caption source in this repository. The source MP4 is tracked at `manim-scenes/renders/t37_quantum_geometry_v4_plus_edge_state_v5.mp4`.
 
 ## Implementation plan
 

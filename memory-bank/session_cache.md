@@ -10,6 +10,8 @@
 
 Published `406e6d8` in the website repository; deploy run `38815185321` succeeded. Guided loop story, growth comparison, orientation/mixing illustration, and chaptered/captioned video passed local/live checks at four widths. T13 is complete; T37 retains narration and final production. Public text follows the author’s direction to avoid repeated demoralizing disclaimers.
 
+The 15 October landing-page and README changes are mapped to their source commits in `implementation-details/website-visual-explainers.md`. T13 is complete without a T36 dependency; T37 remains active for narration and final video approval.
+
 ## 2026-09-12 T37 Visual Refinement
 
 **Focus Task:** T37 — YouTube Visual Explanation: Quantum Geometry and Z2 Edge Flips
