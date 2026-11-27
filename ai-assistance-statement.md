@@ -99,3 +99,12 @@ After the initial arXiv submission, the author used AI systems for a focused rev
 ## Author Responsibility
 
 The author reviewed all AI-generated content, approved all changes, and takes full scientific responsibility for the manuscript. The AI was used as a writing, review, and formalization tool, functioning in a role analogous to a technically knowledgeable research assistant working under the author's direct supervision.
+
+
+## Single-node calculation (November 2026)
+
+<< Sol 6.1 Medium Begin >>
+
+Sol 6.1 Medium assisted in developing the pedagogical presentation of the four-valent intertwiner calculation, combining the established pair-angular-momentum commutator identity with the standard spin-one-half exchange identity. It performed explicit algebraic checks, identified a numerical inconsistency in the earlier supplement, and drafted the spinor-polynomial explanation and related revisions under the author's direction. The author reviewed the proposed passages and authorized their inclusion. The identities are credited to the cited literature; no novelty is claimed for them. Final scientific responsibility rests with the author. New and substantively revised LaTeX passages carry visible model-named `\GPTBegin` and `\GPTEnd` markers, following the format used in lqg-strings-p2.
+
+<< Sol 6.1 Medium End >>

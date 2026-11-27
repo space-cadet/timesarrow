@@ -1,5 +1,15 @@
 # Session Cache
 
+*Last Updated: 2026-11-27 10:09:09 IST*
+
+## 2026-11-27 — T11/T12/T36 single-node closeout
+
+**Session File**: `sessions/2026-11-27-intertwiner-orientation.md`
+
+The author-approved rewrite is collected in one shared calculation, included in manuscript Appendix F and the supplement. Common basis, spinor-polynomial construction, explicit commutator/exchange derivation, corrected coefficient, antiunitary time reversal, and model-named AI markers are complete. PDFs and bibliography outputs were refreshed; final isolated builds resolved citation/reference warnings and revised pages were visually checked. This is not clean-checkout publication acceptance.
+
+[Physical summary](../notes/intertwiner-orientation-physical-summary.md) · [Exact transcript](<../notes/transcripts/Intertwiner orientation — transcript.md>). Resume with two-node gluing, retaining physical intertwiner indices. T36 stays open and the separate August revision package remains unapplied. No task-status changes or commit were made in this closeout.
+
 ## 2026-10-16 T13 visual explainers — completed
 
 **Completed:** T13 web illustrations, with T37 media provenance. The author authorized these additions and continuing Memory Bank updates.

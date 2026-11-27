@@ -1,7 +1,11 @@
 # Memory Bank - Sage Workspace
 
 *Created: 2026-07-18 17:06:36 IST*
-*Last Updated: 2026-10-16 04:54:55 IST*
+*Last Updated: 2026-11-27 10:09:09 IST*
+
+## Latest local manuscript work — 2026-11-27
+
+T11/C3 and T12/M6 have an approved single-node correction, recorded under T36's manuscript work. T25's one-node transformation is now explicit; T35a's negative local embedding result is unchanged. Overall task statuses below are retained. [Session](sessions/2026-11-27-intertwiner-orientation.md).
 
 ## Current Publication Tasks (Authoritative 2026-08-25)
 

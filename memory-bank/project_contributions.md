@@ -96,3 +96,11 @@ The AI assistant's role was **formalization, gap-filling, error-correction, and 
 ## For Future Reference (AI Disclosure)
 
 If journal disclosure of AI assistance is required, the scope is: manuscript editing, bibliography management, LaTeX typesetting, and formalization of author-provided physics arguments. The AI did not originate physical claims or perform novel calculations independently.
+
+## Single-node derivation and presentation — November 2026
+
+Deepak Vaid proposed the connection to a string worldsheet, recalled the spinor-polynomial construction, selected a common basis, reviewed exact replacements one passage at a time, requested the exchange-operator explanation and named AI credit, authorized implementation, and required the complete calculation in the manuscript itself.
+
+Sol 6.1 Medium assembled the pedagogical calculation from established identities, performed explicit algebraic checks, identified the bare coefficient and constraint-count errors, and drafted the approved passages. The pair-Casimir commutator is credited to Brunnemann–Thiemann, and the spin-exchange identity is standard. New or substantively revised manuscript text carries visible model-named markers. The shared Appendix F derivation and `ai-assistance-statement.md` record these contributions. Scientific responsibility remains with the author.
+
+[Session](sessions/2026-11-27-intertwiner-orientation.md).

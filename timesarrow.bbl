@@ -3431,6 +3431,150 @@
       \verb https://www.sciencedirect.com/science/article/pii/0550321388906037?via%7B%5C%%7D3Dihub
       \endverb
     \endentry
+    \entry{Bianchi2013QuantumGeometry}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=2321d3b116612f733350f8c739b709d8}{%
+           family={Bianchi},
+           familyi={B\bibinitperiod},
+           given={Eugenio},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{2321d3b116612f733350f8c739b709d8}
+      \strng{fullhash}{2321d3b116612f733350f8c739b709d8}
+      \strng{fullhashraw}{2321d3b116612f733350f8c739b709d8}
+      \strng{bibnamehash}{2321d3b116612f733350f8c739b709d8}
+      \strng{authorbibnamehash}{2321d3b116612f733350f8c739b709d8}
+      \strng{authornamehash}{2321d3b116612f733350f8c739b709d8}
+      \strng{authorfullhash}{2321d3b116612f733350f8c739b709d8}
+      \strng{authorfullhashraw}{2321d3b116612f733350f8c739b709d8}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Acta Physica Polonica B}
+      \field{title}{Quantum Geometry of Space in Spinfoam Gravity}
+      \field{volume}{44}
+      \field{year}{2013}
+      \field{pages}{2447\bibrangedash 2462}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.5506/APhysPolB.44.2447
+      \endverb
+    \endentry
+    \entry{DittrichHnybida2016Ising}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=4237f0639510152ab2a1102a6a4a6226}{%
+           family={Dittrich},
+           familyi={D\bibinitperiod},
+           given={Bianca},
+           giveni={B\bibinitperiod}}}%
+        {{hash=21faa1fd11fc7a3bd6d051d880c145b9}{%
+           family={Hnybida},
+           familyi={H\bibinitperiod},
+           given={Jeff},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{ac882cc970ff5cd076c0437089738439}
+      \strng{fullhash}{ac882cc970ff5cd076c0437089738439}
+      \strng{fullhashraw}{ac882cc970ff5cd076c0437089738439}
+      \strng{bibnamehash}{ac882cc970ff5cd076c0437089738439}
+      \strng{authorbibnamehash}{ac882cc970ff5cd076c0437089738439}
+      \strng{authornamehash}{ac882cc970ff5cd076c0437089738439}
+      \strng{authorfullhash}{ac882cc970ff5cd076c0437089738439}
+      \strng{authorfullhashraw}{ac882cc970ff5cd076c0437089738439}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{Annales de l'Institut Henri Poincare D}
+      \field{title}{Ising model from intertwiners}
+      \field{volume}{3}
+      \field{year}{2016}
+      \field{pages}{363\bibrangedash 380}
+      \range{pages}{18}
+      \verb{doi}
+      \verb 10.4171/AIHPD/32
+      \endverb
+      \verb{eprint}
+      \verb 1312.5646
+      \endverb
+    \endentry
+    \entry{Brunnemann2006Simplification}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=ca559e7f8109ad675438070b66d9de04}{%
+           family={Brunnemann},
+           familyi={B\bibinitperiod},
+           given={Johannes},
+           giveni={J\bibinitperiod}}}%
+        {{hash=d27f0558efa9df1e18e45cbef6e4b01f}{%
+           family={Thiemann},
+           familyi={T\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{0716f6df1ac40bdb10eb3ef790d4d404}
+      \strng{fullhash}{0716f6df1ac40bdb10eb3ef790d4d404}
+      \strng{fullhashraw}{0716f6df1ac40bdb10eb3ef790d4d404}
+      \strng{bibnamehash}{0716f6df1ac40bdb10eb3ef790d4d404}
+      \strng{authorbibnamehash}{0716f6df1ac40bdb10eb3ef790d4d404}
+      \strng{authornamehash}{0716f6df1ac40bdb10eb3ef790d4d404}
+      \strng{authorfullhash}{0716f6df1ac40bdb10eb3ef790d4d404}
+      \strng{authorfullhashraw}{0716f6df1ac40bdb10eb3ef790d4d404}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{Classical and Quantum Gravity}
+      \field{title}{Simplification of the spectral analysis of the volume operator in loop quantum gravity}
+      \field{volume}{23}
+      \field{year}{2006}
+      \field{pages}{1289\bibrangedash 1346}
+      \range{pages}{58}
+      \verb{doi}
+      \verb 10.1088/0264-9381/23/4/014
+      \endverb
+      \verb{eprint}
+      \verb gr-qc/0405060
+      \endverb
+    \endentry
+    \entry{YuSpinExchange}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=fcf69875b44ffe5e7d86fbb6730e5792}{%
+           family={Yu},
+           familyi={Y\bibinitperiod},
+           given={Clare\bibnamedelima C.},
+           giveni={C\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {University of California, Irvine}%
+      }
+      \strng{namehash}{fcf69875b44ffe5e7d86fbb6730e5792}
+      \strng{fullhash}{fcf69875b44ffe5e7d86fbb6730e5792}
+      \strng{fullhashraw}{fcf69875b44ffe5e7d86fbb6730e5792}
+      \strng{bibnamehash}{fcf69875b44ffe5e7d86fbb6730e5792}
+      \strng{authorbibnamehash}{fcf69875b44ffe5e7d86fbb6730e5792}
+      \strng{authornamehash}{fcf69875b44ffe5e7d86fbb6730e5792}
+      \strng{authorfullhash}{fcf69875b44ffe5e7d86fbb6730e5792}
+      \strng{authorfullhashraw}{fcf69875b44ffe5e7d86fbb6730e5792}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Spin-exchange operator, equations (57)--(64)}
+      \field{title}{Lecture 17: Ferromagnetism}
+      \field{urlday}{27}
+      \field{urlmonth}{11}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://webapps.ps.uci.edu/~cyu/p115A/LectureNotes/Lecture17/html_version/lecture17.html
+      \endverb
+      \verb{url}
+      \verb https://webapps.ps.uci.edu/~cyu/p115A/LectureNotes/Lecture17/html_version/lecture17.html
+      \endverb
+    \endentry
   \enddatalist
 \endrefsection
 \endinput

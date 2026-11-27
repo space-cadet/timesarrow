@@ -1,0 +1,334 @@
+\GPTBegin{}
+
+\section{Oriented geometry at a four-valent node}
+\label{sec:calc1}
+
+\subsection{The triple product and its geometric meaning}
+
+Consider three classical vectors. Their scalar triple product
+\begin{equation}
+ d=\mathbf a\cdot(\mathbf b\times\mathbf c)
+\end{equation}
+measures an oriented volume: $|d|$ is the volume of the parallelepiped,
+while its sign distinguishes its two handed orientations. Reversing all
+three vectors changes that sign.
+
+At a spin-network node, the angular momenta describe oriented face-area
+vectors of a quantum polyhedron. For a tetrahedron these are four vectors
+$\mathbf E_e$ satisfying $\sum_{e=1}^4\mathbf E_e=0$. Their triple product
+has dimensions of volume squared, and the classical tetrahedral volume is
+\begin{equation}
+ V_{\rm tet}^2=\frac{2}{9}
+ \left|\mathbf E_1\cdot(\mathbf E_2\times\mathbf E_3)\right|.
+\end{equation}
+See \cite{Bianchi2013QuantumGeometry} for the face-normal description.
+The face-area vectors are distinct from the edge-vectors used to construct
+a parallelepiped. This explains why a square root enters the volume formula.
+
+We first calculate the dimensionless quantum triple product
+\begin{equation}\label{eqn:q-def}
+ \hat q=\mathbf J_1\cdot(\mathbf J_2\times\mathbf J_3)
+ =\sum_{a,b,c=1}^3\varepsilon_{abc}J_1^aJ_2^bJ_3^c,
+ \qquad J_e^a=\frac12\sigma_e^a.
+\end{equation}
+Here $e$ labels a leg, while $a,b,c$ label Cartesian components. The three
+factors in each term act on different legs and commute, so $\hat q$ is
+Hermitian. The relation to a chosen LQG volume prescription is stated below.
+
+\subsection{The two physical intertwiner states}
+\label{sub:cg}\label{sub:singlet-basis}
+
+Take all four legs to be outgoing and to carry spin $j=\tfrac12$.
+Gauge invariance requires
+\begin{equation}
+ (\mathbf J_1+\mathbf J_2+\mathbf J_3+\mathbf J_4)|\psi\rangle=0.
+\end{equation}
+Pairing legs $(12)$ and $(34)$ gives
+\begin{equation}\label{eqn:cg-decomp}
+ (\tfrac12\otimes\tfrac12)\otimes(\tfrac12\otimes\tfrac12)
+ =(0\oplus1)\otimes(0\oplus1).
+\end{equation}
+A total singlet occurs once from $0\otimes0$ and once from $1\otimes1$.
+The physical intertwiner space is therefore two-dimensional.
+
+
+\subsubsection{Constructing the states from spinor polynomials}
+
+A spinor has two components, written $z_e=(\alpha_e,\beta_e)$ for leg $e$.
+For spin one-half we represent the basis states by the formal variables
+$\alpha_e\leftrightarrow|0\rangle_e$ and
+$\beta_e\leftrightarrow|1\rangle_e$. A polynomial with degree one in each
+leg therefore represents a four-spin state: its monomials specify the
+basis kets and their coefficients specify their amplitudes.
+
+The elementary invariant is
+\begin{equation}
+ F_{ij}=\alpha_i\beta_j-\beta_i\alpha_j.
+\end{equation}
+Under a common $SU(2)$ rotation this antisymmetric product is unchanged,
+because the rotation has determinant one. It represents the unnormalized
+singlet $|01\rangle_{ij}-|10\rangle_{ij}$. This is the spinor-polynomial
+construction used in the intertwiner description of
+\cite{DittrichHnybida2016Ising}.
+
+For four legs of spin one-half every spinor occurs once, giving three
+pairings:
+\begin{equation}
+ A(z)=F_{12}F_{34},\qquad B(z)=F_{13}F_{24},\qquad C(z)=F_{14}F_{23}.
+\end{equation}
+Their expansion directly supplies the states. For instance,
+\begin{align}
+ A(z)&=(\alpha_1\beta_2-\beta_1\alpha_2)
+       (\alpha_3\beta_4-\beta_3\alpha_4)\nonumber\\
+ &\longleftrightarrow |0101\rangle-|0110\rangle-|1001\rangle+|1010\rangle.
+\end{align}
+Let $|A\rangle,|B\rangle,|C\rangle$ denote the normalized states represented
+by $A(z)/2,B(z)/2,C(z)/2$. Expansion also gives
+\begin{equation}
+ A(z)-B(z)+C(z)=0,\qquad
+ \langle A|B\rangle=\frac12.
+\end{equation}
+Thus the three pairings are linearly dependent. Since $A$ and $B$ are
+independent, they span the two-dimensional intertwiner space. Orthogonalizing
+$|B\rangle$ against $|A\rangle$ gives
+\begin{equation}
+ |\Phi_1\rangle=|A\rangle,\qquad
+ |\Phi_2\rangle=\frac{2|B\rangle-|A\rangle}{\sqrt3}.
+\end{equation}
+In particular,
+\begin{equation}
+ |B\rangle=\frac12
+ (|0011\rangle-|0110\rangle-|1001\rangle+|1100\rangle),
+\end{equation}
+so ordinary polynomial multiplication gives all coefficients in the
+basis displayed below.
+
+\subsubsection{The angular-momentum coupling explanation}
+
+The same construction can be understood without spinor variables.
+A pair of spin-one-half representations contains a singlet and a triplet.
+The first four-spin singlet combines two pair-singlets; the second combines
+two pair-triplets to total spin zero.
+
+For a pair of spins, write
+\begin{equation}
+ |s\rangle=\frac{|01\rangle-|10\rangle}{\sqrt2},\qquad
+ |t_+\rangle=|00\rangle,\quad
+ |t_0\rangle=\frac{|01\rangle+|10\rangle}{\sqrt2},\quad
+ |t_-\rangle=|11\rangle.
+\end{equation}
+An orthonormal basis is
+\begin{align}
+ |\Phi_1\rangle&=|s\rangle_{12}|s\rangle_{34}\nonumber\\
+ &=\frac12(|0101\rangle-|0110\rangle-|1001\rangle+|1010\rangle),
+ \label{eqn:Phi1}\\
+ |\Phi_2\rangle&=\frac1{\sqrt3}
+ (|t_+\rangle_{12}|t_-\rangle_{34}
+ -|t_0\rangle_{12}|t_0\rangle_{34}
+ +|t_-\rangle_{12}|t_+\rangle_{34})\nonumber\\
+ &=\frac1{\sqrt{12}}
+ (2|0011\rangle-|0101\rangle-|0110\rangle-|1001\rangle
+ -|1010\rangle+2|1100\rangle).
+ \label{eqn:Phi2}
+\end{align}
+The pair-singlet and pair-triplet sectors are orthogonal, and the displayed
+coefficients give unit norm. This basis is also used in the CZX calculation below.
+
+For a direct check, a general state with total magnetic number zero is
+\begin{equation}
+ |\psi\rangle=\alpha|0011\rangle+\beta|0101\rangle
+ +\gamma|0110\rangle+\delta|1001\rangle
+ +\epsilon|1010\rangle+\zeta|1100\rangle.
+\end{equation}
+The condition $S^+_{\rm tot}|\psi\rangle=0$ gives
+\begin{equation}
+ \alpha+\beta+\delta=0,\quad \alpha+\gamma+\epsilon=0,\quad
+ \beta+\gamma+\zeta=0,\quad \delta+\epsilon+\zeta=0.
+\end{equation}
+These four equations are independent. Subtracting the second from the
+first and the fourth from the third gives
+\begin{equation}
+ \beta+\delta-\gamma-\epsilon=0,\qquad
+ \beta+\gamma-\delta-\epsilon=0.
+\end{equation}
+Adding and subtracting these relations gives $\epsilon=\beta$ and
+$\delta=\gamma$. The first and third original equations then give
+$\alpha=\zeta=-\beta-\gamma$. Only $\beta$ and $\gamma$ remain free.
+This agrees with both the polynomial construction and angular-momentum addition.
+
+Within the total-$M_z=0$ space, annihilation by $S^+_{\rm tot}$ is sufficient
+for a singlet: the identity
+$\mathbf S_{\rm tot}^2=S^-_{\rm tot}S^+_{\rm tot}
+ +(S^z_{\rm tot})^2+S^z_{\rm tot}$ gives
+$\mathbf S_{\rm tot}^2|\psi\rangle=0$.
+
+
+
+\subsection{Choice of intertwiner basis}
+\label{sub:manuscript-states}
+
+We use the same orthonormal basis $\{|\Phi_1\rangle,|\Phi_2\rangle\}$ in
+the main text and supplementary calculations. The first state couples
+pairs $(12)$ and $(34)$ separately to spin zero; the second couples each
+pair to spin one and then combines them to total spin zero.
+The choice depends on the pairing of legs and the phases assigned to
+the states. Another orthonormal basis describes the same intertwiner
+space. Operator matrices and state coefficients change together, leaving
+eigenvalues and physical predictions unchanged. With our leg ordering
+and phase conventions, the orientation eigenstates will be
+$|\pm\rangle=(|\Phi_1\rangle\pm i|\Phi_2\rangle)/\sqrt2$.
+
+\subsection{Volume and signed orientation}
+\label{sub:volume}
+
+The triple product $\hat q$ is the common algebraic object needed here.
+To distinguish it from the signed interior of a particular volume
+prescription, write, on the four-valent singlet space,
+\begin{equation}\label{eqn:Q-singlet}
+ \hat Q_v=c_v\hat q,\qquad
+ \hat V_v=\gamma^{3/2}\ell_P^3\sqrt{|\hat Q_v|}.
+\end{equation}
+The real dimensionless coefficient $c_v$ includes the normalization.
+For the AL operator it also includes the edge-tangent orientation factors.
+We leave it explicit rather than assign a numerical volume before these
+choices are fixed.
+
+For example, write the signed Ashtekar--Lewandowski interior as
+\begin{equation}
+ \hat Q_v=C\sum_{1\leq I<J<K\leq4}\epsilon_v(I,J,K)\hat q_{IJK},
+ \qquad \hat q_{IJK}=\mathbf J_I\cdot(\mathbf J_J\times\mathbf J_K).
+\end{equation}
+Here $C$ is the chosen real normalization and $\epsilon_v(I,J,K)$ is the
+sign of the determinant of the three outgoing edge tangents, or zero if
+those tangents are linearly dependent. On gauge-invariant states, closure
+and the angular-momentum commutators give
+\begin{equation}
+ \hat q_{124}=-\hat q_{123},\qquad
+ \hat q_{134}=\hat q_{123},\qquad
+ \hat q_{234}=-\hat q_{123}.
+\end{equation}
+Consequently
+\begin{equation}
+ c_v=C\,[\epsilon_v(1,2,3)-\epsilon_v(1,2,4)
+          +\epsilon_v(1,3,4)-\epsilon_v(2,3,4)].
+\end{equation}
+This is a fixed-embedding calculation: these tangent signs are held fixed
+when time reversal acts on the spin labels. If $c_v=0$, this volume
+operator vanishes at the vertex. If $c_v\ne0$, its two signed eigenvalues
+have opposite sign and its ordinary volume is degenerate. The
+Rovelli--Smolin prescription places absolute values differently and should
+be treated separately; no equality of the two prescriptions is assumed here.
+
+
+
+\subsubsection{Matrix elements of the triple product}
+
+There is a short way to evaluate $\hat q$ without expanding all sixteen
+spin states. Define
+\begin{equation}
+ A=(\mathbf J_1+\mathbf J_2)^2,\qquad
+ B=(\mathbf J_2+\mathbf J_3)^2.
+\end{equation}
+Since $[J_e^a,J_f^b]=i\delta_{ef}\sum_c\varepsilon_{abc}J_e^c$,
+\begin{align}
+ [A,B]&=4[\mathbf J_1\cdot\mathbf J_2,\mathbf J_2\cdot\mathbf J_3]
+ \nonumber\\
+ &=4i\sum_{a,b,c}\varepsilon_{abc}J_1^aJ_2^cJ_3^b
+ =-4i\hat q.
+\end{align}
+Thus $\hat q=(i/4)[A,B]$, the identity given in
+Eq.~(8) of Brunnemann and Thiemann \cite{Brunnemann2006Simplification}.
+
+In the basis $(\Phi_1,\Phi_2)$ the pair $(12)$ has spin zero or one, so
+\begin{equation}
+ A=\begin{pmatrix}0&0\\0&2\end{pmatrix}.
+\end{equation}
+For spin one-half, the swap operator $P_{23}$ satisfies
+$P_{23}=2\mathbf J_2\cdot\mathbf J_3+\tfrac12 I$, so
+$B=I+P_{23}$. Here $I$ denotes the identity. The exchange operator is defined by
+\begin{equation}
+ P_{23}|m_1,m_2,m_3,m_4\rangle=|m_1,m_3,m_2,m_4\rangle.
+\end{equation}
+To see the identity, note that a swap has eigenvalue $+1$ on the symmetric
+triplet and $-1$ on the antisymmetric singlet. From
+\begin{equation}
+ \mathbf J_2\cdot\mathbf J_3
+ =\frac12\left[(\mathbf J_2+\mathbf J_3)^2-\frac32 I\right],
+\end{equation}
+its eigenvalues are $1/4$ on the triplet and $-3/4$ on the singlet.
+The expression $2\mathbf J_2\cdot\mathbf J_3+\tfrac12 I$ therefore has
+exactly the required swap eigenvalues. This standard spin-exchange identity
+is also derived in \cite{YuSpinExchange}. Because
+$\mathbf J_2^2=\mathbf J_3^2=\tfrac34 I$, it follows that $B=I+P_{23}$.
+Swapping the middle two bits gives
+\begin{equation}
+ P_{23}|\Phi_1\rangle
+ =\frac12(|0011\rangle-|0110\rangle-|1001\rangle+|1100\rangle).
+\end{equation}
+Taking its overlap with $\Phi_2$ gives
+\begin{equation}
+ \langle\Phi_2|P_{23}|\Phi_1\rangle
+ =\frac{2+1+1+2}{2\sqrt{12}}=\frac{\sqrt3}{2}.
+\end{equation}
+The two diagonal overlaps are $1/2$ and $-1/2$, respectively. Hence
+\begin{equation}
+ B=\begin{pmatrix}3/2&\sqrt3/2\\\sqrt3/2&1/2\end{pmatrix},
+ \qquad [A,B]=\begin{pmatrix}0&-\sqrt3\\\sqrt3&0\end{pmatrix},
+\end{equation}
+and therefore
+\begin{equation}\label{eqn:q-matrix-result}
+ \boxed{\hat q\big|_{\rm singlet}
+ =\frac{\sqrt3}{4}\begin{pmatrix}0&-i\\i&0\end{pmatrix}.}
+\end{equation}
+The coefficient follows from $J^a=\sigma^a/2$ and the explicit definition
+of $\hat q$; it contains no volume regularization constant.
+
+\subsubsection{The two orientation states}
+
+\begin{result}\label{res:volume}
+ The states
+ \begin{equation}
+ |+\rangle=\frac{|\Phi_1\rangle+i|\Phi_2\rangle}{\sqrt2},\qquad
+ |-\rangle=\frac{|\Phi_1\rangle-i|\Phi_2\rangle}{\sqrt2}
+ \end{equation}
+ satisfy $\hat q|\pm\rangle=\pm q_0|\pm\rangle$, where
+ \begin{equation}\label{eqn:q0}
+ q_0=\frac{\sqrt3}{4}.
+ \end{equation}
+ For $\hat Q_v=c_v\hat q$, their signed eigenvalues are $\pm c_vq_0$.
+ Both have ordinary volume
+ \begin{equation}\label{eqn:volume-eigenvalue}
+ v_0=\gamma^{3/2}\ell_P^3\sqrt{|c_v|\,q_0}.
+ \end{equation}
+\end{result}
+The labels $+$ and $-$ refer to the sign of the ordered triple product
+$\hat q$. They agree with the signs of $\hat Q_v$ when $c_v>0$ and are
+exchanged when $c_v<0$.
+
+\subsubsection{Time reversal exchanges the orientations}
+
+For one spin choose $\Theta_{1/2}=i\sigma_y\mathcal K$, with $\mathcal K$
+complex conjugation in the computational basis. Then
+$\Theta_{1/2}|0\rangle=-|1\rangle$ and
+$\Theta_{1/2}|1\rangle=|0\rangle$. On four spins,
+\begin{equation}
+ \Theta=(i\sigma_y)^{\otimes4}\mathcal K,\qquad \Theta^2=1.
+\end{equation}
+Each displayed singlet is real and unchanged by this operation:
+$\Theta|\Phi_1\rangle=|\Phi_1\rangle$ and
+$\Theta|\Phi_2\rangle=|\Phi_2\rangle$.
+Anti-linearity then gives
+\begin{equation}
+ \Theta|+\rangle=|-\rangle,\qquad\Theta|-\rangle=|+\rangle.
+\end{equation}
+Equivalently, in the orientation basis $\Theta=X\mathcal K$.
+Since $\Theta\mathbf J_e\Theta^{-1}=-\mathbf J_e$,
+\begin{equation}
+ \Theta\hat q\Theta^{-1}=-\hat q,\qquad
+ \Theta\hat V_v\Theta^{-1}=\hat V_v.
+\end{equation}
+Time reversal changes the sign of the oriented geometry while preserving
+its ordinary volume. The further interpretation of this sign as a
+spacetime time orientation is the physical proposal of the main text.
+
+\GPTEnd{}
