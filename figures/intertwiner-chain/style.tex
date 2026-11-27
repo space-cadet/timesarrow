@@ -1,0 +1,46 @@
+\usepackage{fix-cm}
+\usepackage{amsmath,amssymb}
+\usepackage{newtxmath}
+\usepackage[default]{sourcesanspro}
+\usetikzlibrary{calc,arrows.meta,positioning,backgrounds}
+\definecolor{ink}{HTML}{243746}
+\definecolor{muted}{HTML}{607585}
+\definecolor{wire}{HTML}{587487}
+\definecolor{nodefill}{HTML}{EDF3F7}
+\definecolor{teal}{HTML}{227C88}
+\definecolor{tealfill}{HTML}{E9F5F4}
+\definecolor{amber}{HTML}{B96924}
+\definecolor{amberfill}{HTML}{FFF2DF}
+\definecolor{violet}{HTML}{7A6796}
+\definecolor{linegray}{HTML}{DEE7EC}
+\tikzset{
+ every node/.style={text=ink,font=\sffamily\fontsize{10}{12}\selectfont},
+ magnetic/.style={draw=wire,line width=.85pt,line cap=round},
+ physical/.style={draw=violet,line width=.8pt,densely dashed,line cap=round},
+ tensor/.style={circle,draw=wire,fill=nodefill,line width=1pt,minimum size=10mm,inner sep=0pt},
+ bond/.style={rectangle,rounded corners=2.2pt,draw=teal,fill=tealfill,line width=1pt,minimum width=13mm,minimum height=9mm,inner sep=2pt},
+ triplet/.style={bond,draw=amber,fill=amberfill},
+ heading/.style={font=\sffamily\bfseries\fontsize{17}{20}\selectfont},
+ subheading/.style={text=muted,font=\sffamily\fontsize{10}{12}\selectfont},
+ small/.style={font=\sffamily\fontsize{9}{11}\selectfont},
+ tinylabel/.style={font=\sffamily\fontsize{8.5}{10}\selectfont},
+ formula/.style={font=\fontsize{12}{15}\selectfont},
+ card/.style={rounded corners=4pt,draw=linegray,fill=white,line width=.6pt},
+ endpoint/.style={circle,fill=wire,inner sep=0pt,minimum size=2.4pt}
+}
+% A chain site has four solid magnetic legs and a separate dashed physical index.
+\newcommand{\chainsite}[3]{%
+ \node[tensor,minimum size=8.5mm] (v#1) at (#2,#3) {$I_{#1}$};
+ \draw[magnetic] (v#1.north) -- ++(0,.82) node[above=2pt,tinylabel] {$u_{#1}$};
+ \draw[magnetic] (v#1.south) -- ++(0,-.82) node[below=2pt,tinylabel] {$d_{#1}$};
+ \draw[physical] (v#1.45) -- ++(.48,.48) node[above right=-1pt,tinylabel,text=violet] {$s_{#1}$};
+}
+\newcommand{\minipair}[3]{%
+ \node[tensor,minimum size=7.8mm] (#1L) at ($(#2)+(-1.55,0)$) {$I^s$};
+ \node[tensor,minimum size=7.8mm] (#1R) at ($(#2)+(1.55,0)$) {$I^t$};
+ \node[#3,minimum width=11mm,minimum height=8mm] (#1B) at (#2) {};
+ \draw[magnetic] (#1L.east) -- (#1B.west);
+ \draw[magnetic] (#1B.east) -- (#1R.west);
+ \foreach \ang in {145,180,215}{\draw[magnetic] (#1L.\ang) -- ++(\ang:.5);}
+ \foreach \ang in {35,0,-35}{\draw[magnetic] (#1R.\ang) -- ++(\ang:.5);}
+}

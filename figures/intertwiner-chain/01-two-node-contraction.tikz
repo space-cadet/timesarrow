@@ -1,0 +1,31 @@
+\begin{tikzpicture}
+\path[use as bounding box] (-8.25,-4.85) rectangle (8.25,4.2);
+\node[heading] at (0,3.8) {Joining two quantum tetrahedra};
+\node[subheading] at (0,3.22) {A tensor on the shared edge selects how the magnetic legs are paired};
+\node[tensor,minimum size=12mm] (A) at (-4.55,1.05) {$I_A$};
+\node[tensor,minimum size=12mm] (B) at (4.55,1.05) {$I_B$};
+\node[bond,minimum width=18mm,minimum height=11mm] (E) at (0,1.05) {$E_{mn}$};
+\draw[magnetic] (A.east) -- node[above=4pt] {$m$} (E.west);
+\draw[magnetic] (E.east) -- node[above=4pt] {$n$} (B.west);
+\foreach \ang/\lab in {145/a,180/b,215/c}{
+ \draw[magnetic] (A.\ang) -- ++(\ang:1.35) node[pos=1,left=3pt] {$\lab$};}
+\foreach \ang/\lab in {35/d,0/e,-35/f}{
+ \draw[magnetic] (B.\ang) -- ++(\ang:1.35) node[pos=1,right=3pt] {$\lab$};}
+\draw[physical] (A.north) -- ++(0,.82) node[above=2pt,text=violet] {$s$};
+\draw[physical] (B.north) -- ++(0,.82) node[above=2pt,text=violet] {$t$};
+\node[small,text=muted] at (-4.55,-.02) {node $A$};
+\node[small,text=muted] at (4.55,-.02) {node $B$};
+\node[formula] at (0,-.72) {$\displaystyle G^{st}_{abcdef}=2\!\sum_{m,n=0}^{1} I^{s}_{abcm}\,E_{mn}\,I^{t}_{ndef}$};
+\draw[physical] (-5.8,-1.55) -- (-5.1,-1.55);
+\node[small,anchor=west] at (-4.95,-1.55) {physical intertwiner label: $s,t=\pm1$};
+\draw[magnetic] (1.15,-1.55) -- (1.85,-1.55);
+\node[small,anchor=west] at (2,-1.55) {magnetic leg: $j=\tfrac12$};
+\draw[card,fill=tealfill!55] (-7.8,-4.48) rectangle (-.25,-2.12);
+\draw[card,fill=amberfill!55] (.25,-4.48) rectangle (7.8,-2.12);
+\node[font=\sffamily\bfseries\fontsize{10}{12}\selectfont,text=teal] at (-4.025,-2.48) {SINGLET JOINING};
+\node[formula] at (-4.025,-3.18) {$\epsilon_{mn}=\dfrac1{\sqrt2}\!\begin{pmatrix}0&1\\[-2pt]-1&0\end{pmatrix}_{mn}$};
+\node[small,text=teal] at (-4.025,-4.06) {total spin $J=0$};
+\node[font=\sffamily\bfseries\fontsize{10}{12}\selectfont,text=amber] at (4.025,-2.48) {TRIPLET JOINING: $M=0$};
+\node[formula] at (4.025,-3.18) {$E^{(0)}_{mn}=\dfrac1{\sqrt2}\!\begin{pmatrix}0&1\\[-2pt]1&0\end{pmatrix}_{mn}$};
+\node[small,text=amber] at (4.025,-4.06) {total spin $J=1$};
+\end{tikzpicture}

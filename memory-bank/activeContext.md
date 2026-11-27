@@ -1,12 +1,12 @@
 # timesarrow — Active Context
 
-*Updated: 2026-11-27 10:09:09 IST*
+*Updated: 2026-11-27 13:09:40 IST*
 
 ## Latest research handoff — 2026-11-27
 
 The approved single-node rewrite is complete in manuscript Appendix F, sourced from `four-valent-orientation-calculation.tex`, also included by the supplement. One basis is used throughout. The bare triple-product spectrum and antiunitary orientation exchange were checked; this establishes no many-body phase or continuum worldsheet. See [the session](sessions/2026-11-27-intertwiner-orientation.md) and [physical summary](../notes/intertwiner-orientation-physical-summary.md).
 
-Next discussion: glue two four-valent spin-one-half nodes with an invariant shared-leg pairing while retaining both physical intertwiner labels. Distinguish physical labels, magnetic bond indices and external boundary data. Related Part II owners remain T3b (state/model choices), T3c (transitions/sewing), T3e (interpretation). No chain calculation has been performed.
+The next step is complete: two four-valent spin-one-half intertwiners were joined along one magnetic leg by an invariant singlet pairing, retaining physical labels $s,t$ and all six outer legs. Explicit contractions and time-reversal action were checked. The triplet channel supplies a three-state spin-one representation and a proposed localized edge excitation; no transfer operator, propagation or spectrum has been derived. Part II owners remain T3b (state/model choices) and T3c (transitions/sewing), with T3e reserved for later interpretation. See [the session](sessions/2026-11-27-intertwiner-chain.md), [physical note](../notes/intertwiner-chain-physical-summary.md), and [complete transcript](<../notes/transcripts/Intertwiner chain and triplet joining — transcript.md>).
 
 T36 remains the publication owner; T11/T12 remain paused outside this completed local correction, T25 remains paused for its broader programme, and T35a retains bounded completion. The author requested a fresh chat for the chain discussion.
 

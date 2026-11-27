@@ -1,0 +1,34 @@
+\begin{tikzpicture}
+\path[use as bounding box] (-8.25,-6.35) rectangle (8.25,5.8);
+\node[heading] at (0,5.35) {A spin-one channel on the intertwiner chain};
+\node[subheading] at (0,4.75) {Singlet links define a reference configuration; one triplet link marks a candidate excitation};
+\node[anchor=west,font=\sffamily\bfseries,text=teal] at (-7.85,4.0) {(a)\quad Singlet reference};
+\begin{scope}[yshift=2cm]
+\foreach \i/\x in {1/-6.4,2/-3.2,3/0,4/3.2,5/6.4}{\chainsite{\i}{\x}{0}}
+\foreach \i/\j/\x in {1/2/-4.8,2/3/-1.6,3/4/1.6,4/5/4.8}{
+ \node[bond] (b\i) at (\x,0) {$\epsilon$};
+ \draw[magnetic] (v\i.east) -- (b\i.west);
+ \draw[magnetic] (b\i.east) -- (v\j.west);}
+\draw[magnetic] (v1.west) -- ++(-1.1,0);
+\draw[magnetic] (v5.east) -- ++(1.1,0);
+\end{scope}
+\draw[linegray,line width=.6pt] (-7.85,0) -- (7.85,0);
+\node[anchor=west,font=\sffamily\bfseries,text=amber] at (-7.85,-.6) {(b)\quad Triplet insertion on edge $e$};
+\begin{scope}[yshift=-2.6cm]
+\foreach \i/\x in {1/-6.4,2/-3.2,3/0,4/3.2,5/6.4}{\chainsite{\i}{\x}{0}}
+\foreach \i/\j/\x in {1/2/-4.8,2/3/-1.6,4/5/4.8}{
+ \node[bond] (b\i) at (\x,0) {$\epsilon$};
+ \draw[magnetic] (v\i.east) -- (b\i.west);
+ \draw[magnetic] (b\i.east) -- (v\j.west);}
+\node[triplet,minimum width=15mm] (defect) at (1.6,0) {$E$};
+\draw[magnetic] (v3.east) -- (defect.west);
+\draw[magnetic] (defect.east) -- (v4.west);
+\draw[draw=amber,line width=1pt] (defect.north) -- ++(0,.7) node[above=2pt,text=amber] {$M$};
+\node[small,text=amber] at (1.6,-.65) {edge $e$};
+\draw[magnetic] (v1.west) -- ++(-1.1,0);
+\draw[magnetic] (v5.east) -- ++(1.1,0);
+\end{scope}
+\node[formula] at (0,-4.93) {$E_{mnM}=E^{(M)}_{mn},\quad M=-1,0,+1,\qquad |e,M\rangle:\ \text{triplet on edge }e$};
+\node[small,text=muted] at (0,-5.65) {Solid vertical legs: external magnetic data\quad\textbullet\quad Dashed legs: physical intertwiner indices};
+\node[small,text=amber] at (0,-6.02) {The additional leg retains the spin-one index $M$; propagation has not yet been specified.};
+\end{tikzpicture}

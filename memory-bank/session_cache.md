@@ -1,6 +1,14 @@
 # Session Cache
 
-*Last Updated: 2026-11-27 10:09:09 IST*
+*Last Updated: 2026-11-27 13:09:40 IST*
+
+## 2026-11-27 — Two-node intertwiner chain and triplet joining
+
+**Session File**: `sessions/2026-11-27-intertwiner-chain.md`
+
+Joined two four-valent spin-one-half orientation intertwiners across one shared leg, keeping their physical labels and six open magnetic legs. The normalized singlet contraction and time-reversal action were checked explicitly. A triplet joining has the spin-one representation structure and motivates a candidate edge excitation; its dynamics remain open. Three editable TikZ figures, vector PDFs and 300 dpi previews are in `figures/intertwiner-chain/`. For the next figure session, the author requested paper-ready drawings without mathematical insets and with a more polished chain layout.
+
+[Physical note](../notes/intertwiner-chain-physical-summary.md) · [Complete transcript](<../notes/transcripts/Intertwiner chain and triplet joining — transcript.md>). Continue with the one-chain physical state and derive a transfer operator before discussing propagation. T12 remains paused; no task status changed.
 
 ## 2026-11-27 — T11/T12/T36 single-node closeout
 
@@ -8,7 +16,7 @@
 
 The author-approved rewrite is collected in one shared calculation, included in manuscript Appendix F and the supplement. Common basis, spinor-polynomial construction, explicit commutator/exchange derivation, corrected coefficient, antiunitary time reversal, and model-named AI markers are complete. PDFs and bibliography outputs were refreshed; final isolated builds resolved citation/reference warnings and revised pages were visually checked. This is not clean-checkout publication acceptance.
 
-[Physical summary](../notes/intertwiner-orientation-physical-summary.md) · [Exact transcript](<../notes/transcripts/Intertwiner orientation — transcript.md>). Resume with two-node gluing, retaining physical intertwiner indices. T36 stays open and the separate August revision package remains unapplied. No task-status changes or commit were made in this closeout.
+[Physical summary](../notes/intertwiner-orientation-physical-summary.md) · [Exact transcript](<../notes/transcripts/Intertwiner orientation — transcript.md>). The planned two-node gluing is recorded in the newer chain session. T36 stays open and the separate August revision package remains unapplied. No task-status changes or commit were made in this closeout.
 
 ## 2026-10-16 T13 visual explainers — completed
 

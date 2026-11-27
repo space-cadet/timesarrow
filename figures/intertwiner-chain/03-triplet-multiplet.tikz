@@ -1,0 +1,29 @@
+\begin{tikzpicture}
+\path[use as bounding box] (-8.25,-4.6) rectangle (8.25,3.8);
+\node[heading] at (0,3.38) {The three triplet joining states};
+\node[subheading] at (0,2.8) {$\tfrac12\otimes\tfrac12=0\oplus1$\qquad The triplet tensors span the spin-one sector};
+\foreach \x in {-5.4,0,5.4}{\draw[card,fill=amberfill!25] (\x-2.5,-2.8) rectangle (\x+2.5,2.16);}
+\coordinate (p) at (-5.4,.6);
+\coordinate (z) at (0,.6);
+\coordinate (q) at (5.4,.6);
+\minipair{p}{p}{triplet}
+\minipair{z}{z}{triplet}
+\minipair{q}{q}{triplet}
+\node at (pB) {$E^{(+1)}$};
+\node at (zB) {$E^{(0)}$};
+\node at (qB) {$E^{(-1)}$};
+\node[font=\sffamily\bfseries\fontsize{11}{13}\selectfont,text=amber] at (-5.4,1.72) {$M=+1$};
+\node[font=\sffamily\bfseries\fontsize{11}{13}\selectfont,text=amber] at (0,1.72) {$M=0$};
+\node[font=\sffamily\bfseries\fontsize{11}{13}\selectfont,text=amber] at (5.4,1.72) {$M=-1$};
+\node[formula] at (-5.4,-.35) {$|T_+\rangle=|00\rangle$};
+\node[formula] at (0,-.35) {$|T_0\rangle=\dfrac{|01\rangle+|10\rangle}{\sqrt2}$};
+\node[formula] at (5.4,-.35) {$|T_-\rangle=|11\rangle$};
+\node[formula] at (-5.4,-1.43) {$E^{(+1)}=\begin{pmatrix}1&0\\0&0\end{pmatrix}$};
+\node[formula] at (0,-1.43) {$E^{(0)}=\dfrac1{\sqrt2}\!\begin{pmatrix}0&1\\1&0\end{pmatrix}$};
+\node[formula] at (5.4,-1.43) {$E^{(-1)}=\begin{pmatrix}0&0\\0&1\end{pmatrix}$};
+\node[small,text=muted] at (-5.4,-2.37) {product pairing};
+\node[small,text=muted] at (0,-2.37) {maximally entangled pairing};
+\node[small,text=muted] at (5.4,-2.37) {product pairing};
+\node[formula] at (0,-3.48) {$|\psi\rangle=\psi_+|T_+\rangle+\psi_0|T_0\rangle+\psi_-|T_-\rangle,\qquad \mathbf S^2|\psi\rangle=2|\psi\rangle$};
+\node[small,text=muted] at (0,-4.13) {$0=\uparrow$, $1=\downarrow$\quad\textbullet\quad Each node has four magnetic legs; $s,t$ specify its physical intertwiner state.};
+\end{tikzpicture}
