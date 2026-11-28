@@ -1,7 +1,11 @@
 # Memory Bank - Sage Workspace
 
 *Created: 2026-07-18 17:06:36 IST*
-*Last Updated: 2026-10-16 03:41:55 IST*
+*Last Updated: 2026-11-27 10:09:09 IST*
+
+## Latest local manuscript work — 2026-11-27
+
+T11/C3 and T12/M6 have an approved single-node correction, recorded under T36's manuscript work. T25's one-node transformation is now explicit; T35a's negative local embedding result is unchanged. Overall task statuses below are retained. [Session](sessions/2026-11-27-intertwiner-orientation.md).
 
 ## Current Publication Tasks (Authoritative 2026-08-25)
 
@@ -27,7 +31,7 @@
 
 | ID | Title | Status | Priority | Started | Dependencies | Details |
 |----|-------|--------|----------|---------|--------------|---------|
-| T13 | Accessible Web Presentation — Time’s Arrow | ✅ | MEDIUM | 2026-04-18 | T36 | [Details](tasks/T13.md) |
+| T13 | Accessible Web Presentation — Time’s Arrow | ✅ | MEDIUM | 2026-04-18 | - | [Details](tasks/T13.md) |
 | T37 | YouTube Visual Explanation: Quantum Geometry and Z2 Edge Flips | 🔄 | MEDIUM | 2026-09-11 | - | [Details](tasks/T37.md) |
 
 > The generated legacy registry below is retained pending a full database regeneration. Where it conflicts with the tables above, the 2026-08-25 tables and individual task files are authoritative.

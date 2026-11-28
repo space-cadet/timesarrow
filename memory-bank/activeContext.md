@@ -1,6 +1,14 @@
 # timesarrow — Active Context
 
-*Updated: 2026-09-12 15:33:43 IST*
+*Updated: 2026-11-27 10:09:09 IST*
+
+## Latest research handoff — 2026-11-27
+
+The approved single-node rewrite is complete in manuscript Appendix F, sourced from `four-valent-orientation-calculation.tex`, also included by the supplement. One basis is used throughout. The bare triple-product spectrum and antiunitary orientation exchange were checked; this establishes no many-body phase or continuum worldsheet. See [the session](sessions/2026-11-27-intertwiner-orientation.md) and [physical summary](../notes/intertwiner-orientation-physical-summary.md).
+
+Next discussion: glue two four-valent spin-one-half nodes with an invariant shared-leg pairing while retaining both physical intertwiner labels. Distinguish physical labels, magnetic bond indices and external boundary data. Related Part II owners remain T3b (state/model choices), T3c (transitions/sewing), T3e (interpretation). No chain calculation has been performed.
+
+T36 remains the publication owner; T11/T12 remain paused outside this completed local correction, T25 remains paused for its broader programme, and T35a retains bounded completion. The author requested a fresh chat for the chain discussion.
 
 ## Current outreach work (2026-10-16)
 
@@ -14,7 +22,7 @@ T13 visual-explainer additions are published and complete. See `implementation-d
 
 **Immediate dependencies:** T18 and T32 are complete. T36 is ready for author review of the proposal documents.
 
-**Current step:** Review the separate manuscript, cover-letter, and AI-use revision proposals. The authoritative manuscript and submission documents remain restored to their checked-in state; no proposal has been applied.
+**Current step:** Review the separate manuscript, cover-letter, and AI-use revision proposals. The separate August Path A proposal package remains unapplied. The specifically approved November single-node correction has been applied to the manuscript, bibliography and AI disclosure; it does not complete that package or submission preparation.
 
 **Writing principle:** Preserve the paper's spine. State the effective proposal confidently and keep its scientific boundaries exact; do not turn the claims map into timid sentence-by-sentence hedging.
 

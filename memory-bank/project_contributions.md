@@ -144,3 +144,13 @@ None of these has been applied to the manuscript yet. Each needs the author's de
 - An audit of the arXiv v1 → current manuscript diff against the Path A claims map.
 - Two figures: (a) peak locations from the T20d/T31 data versus $1/L$; (b) a literature schematic of the gauge–Higgs phase diagram, static and interactive. They are not yet committed to the repository.
 - Removal of the OpenClaw template files (commit `72ebbf6`).
+
+---
+
+## Single-node derivation and presentation — November 2026
+
+Deepak Vaid proposed the connection to a string worldsheet, recalled the spinor-polynomial construction, selected a common basis, reviewed exact replacements one passage at a time, requested the exchange-operator explanation and named AI credit, authorized implementation, and required the complete calculation in the manuscript itself.
+
+Sol 6.1 Medium assembled the pedagogical calculation from established identities, performed explicit algebraic checks, identified the bare coefficient and constraint-count errors, and drafted the approved passages. The pair-Casimir commutator is credited to Brunnemann–Thiemann, and the spin-exchange identity is standard. New or substantively revised manuscript text carries visible model-named markers. The shared Appendix F derivation and `ai-assistance-statement.md` record these contributions. Scientific responsibility remains with the author.
+
+[Session](sessions/2026-11-27-intertwiner-orientation.md).

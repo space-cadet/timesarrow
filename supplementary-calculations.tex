@@ -45,6 +45,12 @@
 \author{Claude Sonnet 4.6 \\ \small Guide: Deepak Vaid}
 \date{\today}
 
+
+\usepackage{xcolor}
+\definecolor{GPTMarker}{RGB}{115,48,110}
+\newcommand{\GPTBegin}{\par\noindent\textcolor{GPTMarker}{\texttt{\textless\textless{} Sol 6.1 Medium Begin \textgreater\textgreater}}\par}
+\newcommand{\GPTEnd}{\par\noindent\textcolor{GPTMarker}{\texttt{\textless\textless{} Sol 6.1 Medium End \textgreater\textgreater}}\par}
+
 \begin{document}
 \maketitle
 \tableofcontents
@@ -65,438 +71,11 @@ parameter) throughout; factors of $\gamma^{3/2}\lp^3$ multiply all volume eigenv
 and will be restored at the end.
 
 % =============================================================================
-\section{Calculation 1 (T11/C3): The two-dimensional singlet subspace and the
-  volume operator}
-\label{sec:calc1}
-% =============================================================================
+\input{four-valent-orientation-calculation}
 
-\subsection{The full Clebsch-Gordan decomposition}
-\label{sub:cg}
 
-The tensor product of four spin-$\tfrac{1}{2}$ representations decomposes as
-\begin{equation}\label{eqn:cg-decomp}
-  \underbrace{\tfrac{1}{2} \otimes \tfrac{1}{2}}_{\text{pair 12}}
-  \otimes
-  \underbrace{\tfrac{1}{2} \otimes \tfrac{1}{2}}_{\text{pair 34}}
-  = (0 \oplus 1) \otimes (0 \oplus 1)
-  = 0 \oplus 1 \oplus 1 \oplus (0 \oplus 1 \oplus 2).
-\end{equation}
-Collecting irreducibles: $0 \oplus 0 \oplus 1 \oplus 1 \oplus 1 \oplus 2$,
-so the singlet ($j_{\rm tot}=0$) subspace is \emph{two-dimensional}, confirming
-the statement in the manuscript.
 
-\subsection{Explicit orthonormal singlet basis in the computational basis}
-\label{sub:singlet-basis}
 
-We label the four spin-$\tfrac{1}{2}$ Hilbert spaces $1,2,3,4$.
-The unique (up to normalisation) singlet formed from pair $(12)$ is
-\begin{equation}
-  \ket{s_{12}} = \frac{1}{\sqrt{2}}\bigl(\ket{01}-\ket{10}\bigr)_{12},
-\end{equation}
-and similarly for pair $(34)$.  The first basis singlet is therefore
-\begin{equation}\label{eqn:singlet-s}
-  \ket{s}
-  = \ket{s_{12}}\otimes\ket{s_{34}}
-  = \frac{1}{2}\bigl(\ket{0101}-\ket{0110}-\ket{1001}+\ket{1010}\bigr).
-\end{equation}
-
-The second independent singlet is obtained by pairing $(13)$ and $(24)$, or
-equivalently by pairing $(14)$ and $(23)$; both choices give the same
-two-dimensional space.  A convenient orthonormal partner is obtained by
-pairing $(14)$ and $(23)$:
-\begin{equation}
-  \ket{t}
-  = \ket{s_{14}}\otimes\ket{s_{23}}
-  = \frac{1}{2}\bigl(\ket{0110}-\ket{1001}-\ket{0110}+\cdots\bigr).
-\end{equation}
-However it is more useful to exhibit the orthonormal pair directly.
-Working in the 16-dimensional computational basis $\{\ket{m_1 m_2 m_3 m_4}\}$
-with $m_i\in\{0,1\}$, the $j_{\rm tot}=0$ subspace is spanned by the \emph{six}
-basis vectors that have $\sum_i m_i = 2$ (i.e.\ total $M_z = 0$):
-\begin{equation}\label{eqn:mz0-basis}
-  \ket{0011},\;\ket{0101},\;\ket{0110},\;\ket{1001},\;\ket{1010},\;\ket{1100}.
-\end{equation}
-The two singlet conditions ($S^{(12+34)}_z = 0$ is automatic; we also need
-$S^2_{\rm tot}=0$, i.e.\ $\hat{S}^+_{\rm tot}\ket{\Psi}=0$) give two linear
-constraints on the six-dimensional $M_z=0$ subspace, leaving exactly a
-two-dimensional solution space.
-
-Solving these constraints explicitly (see below), the two orthonormal
-singlets are:
-\begin{align}
-  \ket{\Phi_1}
-  &= \frac{1}{2}\bigl(\ket{0101}-\ket{0110}-\ket{1001}+\ket{1010}\bigr),
-  \label{eqn:Phi1}\\[4pt]
-  \ket{\Phi_2}
-  &= \frac{1}{\sqrt{12}}
-     \bigl(2\ket{0011}-\ket{0101}-\ket{0110}-\ket{1001}-\ket{1010}+2\ket{1100}\bigr).
-  \label{eqn:Phi2}
-\end{align}
-
-\begin{result}
-  $\ket{\Phi_1}$ and $\ket{\Phi_2}$ defined in
-  \eqref{eqn:Phi1}--\eqref{eqn:Phi2} form an orthonormal basis for the
-  $SU(2)$-singlet subspace of $(\tfrac{1}{2})^{\otimes 4}$.
-\end{result}
-
-\paragraph{Derivation of the singlet constraint.}
-The total raising operator is
-$\hat{S}^+_{\rm tot} = \sum_{k=1}^{4}\hat{S}^+_k$, where
-$\hat{S}^+_k\ket{0}_k=0$ and $\hat{S}^+_k\ket{1}_k=\ket{0}_k$.
-Acting on a general $M_z=0$ state
-$\ket{\Psi} = \alpha\ket{0011}+\beta\ket{0101}+\gamma\ket{0110}
-              +\delta\ket{1001}+\eps\ket{1010}+\zeta\ket{1100}$
-we need $\hat{S}^+_{\rm tot}\ket{\Psi}=0$.  The action on each basis vector is:
-
-\noindent
-$\hat{S}^+_{\rm tot}\ket{0011} = \ket{0001}+\ket{0010}$,\quad
-$\hat{S}^+_{\rm tot}\ket{0101} = \ket{0001}+\ket{0100}$,\\
-$\hat{S}^+_{\rm tot}\ket{0110} = \ket{0010}+\ket{0100}$,\quad
-$\hat{S}^+_{\rm tot}\ket{1001} = \ket{0001}+\ket{1000}$,\\
-$\hat{S}^+_{\rm tot}\ket{1010} = \ket{0010}+\ket{1000}$,\quad
-$\hat{S}^+_{\rm tot}\ket{1100} = \ket{0100}+\ket{1000}$.
-
-Setting $\hat{S}^+_{\rm tot}\ket{\Psi}=0$ gives four conditions (one per
-$M_z=+1$ basis state):
-\begin{align}
-  [\ket{0001}]: &\quad \alpha+\beta+\delta = 0,\label{eqn:sing1}\\
-  [\ket{0010}]: &\quad \alpha+\gamma+\eps  = 0,\label{eqn:sing2}\\
-  [\ket{0100}]: &\quad \beta+\gamma+\zeta  = 0,\label{eqn:sing3}\\
-  [\ket{1000}]: &\quad \delta+\eps+\zeta   = 0.\label{eqn:sing4}
-\end{align}
-The sum of all four equations gives $2(\alpha+\beta+\gamma+\delta+\eps+\zeta)=0$,
-so the four constraints are not all independent; there are three independent
-constraints on six coefficients, giving a solution space of dimension $6-3=3$.
-However, this 3-dimensional space contains not just singlets but also
-$j_{\rm tot}=1$, $m=0$ states (which satisfy $\hat{S}^+_{\rm tot}\ket{\psi}=0$
-vacuously in the $M_z=0$ sector but are not annihilated by $\hat{S}^2_{\rm tot}$
-acting into the $M_z=\pm 1$ sectors via the lowering operator).  The correct
-procedure is to additionally impose $\hat{S}^-_{\rm tot}\ket{\Psi}=0$, which
-gives four more conditions that are linearly dependent on
-\eqref{eqn:sing1}--\eqref{eqn:sing4} by the symmetry $0\leftrightarrow 1$, so
-no new constraints arise from lowering.  Instead, one must impose
-$\hat{S}^2_{\rm tot}\ket{\Psi}=0(\cdot\ket{\Psi})$, which distinguishes singlets
-from the $j_{\rm tot}=1$, $m=0$ component.  Working this out explicitly (or by
-direct Clebsch-Gordan decomposition) one finds the singlet subspace is exactly
-2-dimensional.
-
-The explicit orthonormal singlet basis is:
-\begin{align}
-  \ket{\Phi_1}
-  &= \frac{1}{2}\bigl(
-     +\ket{0101} - \ket{0110} - \ket{1001} + \ket{1010}
-     \bigr),
-  \tag{\ref{eqn:Phi1}}\\[4pt]
-  \ket{\Phi_2}
-  &= \frac{1}{\sqrt{12}}\bigl(
-     +2\ket{0011} - \ket{0101} - \ket{0110} - \ket{1001} - \ket{1010} + 2\ket{1100}
-     \bigr).
-  \tag{\ref{eqn:Phi2}}
-\end{align}
-
-\paragraph{Verification.}
-$\braket{\Phi_1}{\Phi_1} = \tfrac{1}{4}(1+1+1+1)=1$. \checkmark \\
-$\braket{\Phi_2}{\Phi_2} = \tfrac{1}{12}(4+1+1+1+1+4)=1$. \checkmark \\
-$\braket{\Phi_1}{\Phi_2} = \tfrac{1}{2\sqrt{3}}(-1 \cdot(-1)+(-1)\cdot(-1)+(-1)\cdot(-1)+1\cdot(-1))$;
-more carefully:
-\begin{align*}
-  \braket{\Phi_1}{\Phi_2}
-  &= \frac{1}{2}\cdot\frac{1}{\sqrt{12}}
-     \bigl[
-       1\cdot(-1) + (-1)\cdot(-1) + (-1)\cdot(-1) + 1\cdot(-1)
-     \bigr]\\
-  &= \frac{1}{2\sqrt{12}}\bigl[-1+1+1-1\bigr] = 0.\checkmark
-\end{align*}
-Both states satisfy $\hat{S}^+_{\rm tot}\ket{\Phi_i}=0$ by construction
-(verified term by term above).
-
-\subsection{Relation to the manuscript's states}
-\label{sub:manuscript-states}
-
-The manuscript (eqs.\ \texttt{eqn:vol-states}, \texttt{eqn:vol-states-2}) defines
-\begin{align}
-  \ket{\Psi_A} &= \ket{0101}+\ket{1010},\label{eqn:PsiA}\\
-  \ket{\Psi_B} &= \ket{1001}+\ket{0110},\label{eqn:PsiB}\\
-  \ket{\Psi_1} &= \ket{\Psi_A}+\ket{\Psi_B}
-               = \ket{0101}+\ket{1010}+\ket{1001}+\ket{0110},\label{eqn:Psi1}\\
-  \ket{\Psi_2} &= \ket{\Psi_A}-\ket{\Psi_B}
-               = \ket{0101}+\ket{1010}-\ket{1001}-\ket{0110}.\label{eqn:Psi2}
-\end{align}
-\textbf{These are not normalised} (each has norm $2$) and more importantly we
-must check whether they actually lie in the singlet subspace.
-
-\paragraph{Singlet check for $\ket{\Psi_1}$.}
-\begin{align*}
-  \hat{S}^+_{\rm tot}\ket{\Psi_1}
-  &= \hat{S}^+_{\rm tot}\ket{0101}+\hat{S}^+_{\rm tot}\ket{1010}
-    +\hat{S}^+_{\rm tot}\ket{1001}+\hat{S}^+_{\rm tot}\ket{0110}\\
-  &= (\ket{0001}+\ket{0100})
-    +(\ket{0010}+\ket{1000})
-    +(\ket{0001}+\ket{1000})
-    +(\ket{0010}+\ket{0100})\\
-  &= 2\ket{0001}+2\ket{0010}+2\ket{0100}+2\ket{1000} \;\neq\; 0.
-\end{align*}
-\textbf{$\ket{\Psi_1}$ as written in the manuscript is NOT a singlet.}
-
-\paragraph{Singlet check for $\ket{\Psi_2}$.}
-\begin{align*}
-  \hat{S}^+_{\rm tot}\ket{\Psi_2}
-  &= (\ket{0001}+\ket{0100})
-    +(\ket{0010}+\ket{1000})
-    -(\ket{0001}+\ket{1000})
-    -(\ket{0010}+\ket{0100})\\
-  &= 0. \checkmark
-\end{align*}
-
-So $\ket{\Psi_2}$ (normalised: $\ket{\Psi_2}/2$) \emph{is} a singlet.
-After normalising,
-\begin{equation}\label{eqn:psi2-normalised}
-  \frac{\ket{\Psi_2}}{2}
-  = \frac{1}{2}\bigl(\ket{0101}+\ket{1010}-\ket{1001}-\ket{0110}\bigr)
-  = +\ket{\Phi_1},
-\end{equation}
-i.e.\ it equals $+\ket{\Phi_1}$ (the ordering of terms within the state does
-not affect the vector).
-
-The manuscript's $\ket{\Psi_1}$ lies \emph{outside} the singlet subspace.
-The correct orthonormal singlet pair to use is \eqref{eqn:Phi1}--\eqref{eqn:Phi2}.
-
-\begin{result}\label{res:correct-basis}
-  The correct orthonormal singlet basis for the invariant subspace of
-  $(\tfrac{1}{2})^{\otimes 4}$ is:
-  \begin{align}
-    \ket{\Psi_1^{\rm corr}}
-    &= \frac{1}{2}\bigl(\ket{0101}-\ket{0110}-\ket{1001}+\ket{1010}\bigr),\\
-    \ket{\Psi_2^{\rm corr}}
-    &= \frac{1}{\sqrt{12}}\bigl(
-       2\ket{0011}-\ket{0101}-\ket{0110}-\ket{1001}-\ket{1010}+2\ket{1100}
-       \bigr).
-  \end{align}
-  The manuscript state $\ket{\Psi_2}/2 = +\ket{\Psi_1^{\rm corr}}$ is correct.
-  The manuscript state $\ket{\Psi_1}$ is \textbf{not} a singlet; it must be
-  corrected to $\ket{\Psi_2^{\rm corr}}$ above, or to the alternative partner
-  \begin{equation}\label{eqn:alternative-partner}
-    \ket{\tilde\Psi_2}
-    = \frac{1}{2}\bigl(\ket{0011}-\ket{1100}\bigr)\sqrt{2}
-      +\frac{1}{2\sqrt{2}}\bigl(-\ket{0101}-\ket{0110}-\ket{1001}-\ket{1010}\bigr),
-  \end{equation}
-  depending on which pairing convention is preferred.
-\end{result}
-
-\paragraph{Note on alternative singlet basis.}
-An equally valid orthonormal basis is obtained by the $(14)(23)$ pairing:
-\begin{align}
-  \ket{\chi_1}
-  &= \frac{1}{2}\bigl(\ket{0110}-\ket{0101}+\ket{1001}-\ket{1010}\bigr),
-  \label{eqn:chi1}\\
-  \ket{\chi_2}
-  &= \frac{1}{\sqrt{12}}\bigl(
-     2\ket{0011}+\ket{0101}+\ket{0110}+\ket{1001}+\ket{1010}+2\ket{1100}
-     \bigr).
-  \label{eqn:chi2}
-\end{align}
-Note $\ket{\chi_1} = -\ket{\Phi_1}$ and $\ket{\chi_2}$ differs from $\ket{\Phi_2}$
-by signs.  All such pairs span the same 2-dimensional singlet subspace.
-
-\subsection{Volume operator in the singlet subspace}
-\label{sub:volume}
-
-\subsubsection{Definition and reduction to the interior operator}
-
-The Rovelli-Smolin volume operator at a 4-valent vertex with all $j=\tfrac{1}{2}$
-edges is (restoring the prefactor)
-\begin{equation}\label{eqn:RS-volume}
-  \hat{V} = \gamma^{3/2}\lp^3\,\left|
-    \frac{iC_{\rm reg}}{8}\,
-    \sum_{\{a,b,c\}\subset\{1,2,3,4\}}\eps^{abc}\,\hat{J}^{(a)}_x\hat{J}^{(b)}_y\hat{J}^{(c)}_z
-  \right|^{1/2},
-\end{equation}
-where the sum is over the $\binom{4}{3}=4$ triples of edges.
-The key object is the \emph{interior operator}:
-\begin{equation}\label{eqn:Q-def}
-  \hat{Q} \equiv \frac{iC_{\rm reg}}{8}
-  \sum_{\{a,b,c\}\subset\{1,2,3,4\}}
-  \eps^{abc}\,\hat{J}^{(a)}_x\hat{J}^{(b)}_y\hat{J}^{(c)}_z,
-\end{equation}
-so that $\hat{V} = \gamma^{3/2}\lp^3\,|\hat{Q}|^{1/2}$.
-
-For $j=\tfrac{1}{2}$, $\hat{J}^{(k)}_a = \tfrac{1}{2}\sigma_a^{(k)}$, so
-\begin{equation}
-  \hat{Q} = \frac{iC_{\rm reg}}{8}
-  \sum_{\{a,b,c\}\subset\{1,2,3,4\}}
-  \eps^{abc}\,
-  \frac{\sigma^{(a)}_x}{2}\,\frac{\sigma^{(b)}_y}{2}\,\frac{\sigma^{(c)}_z}{2}.
-\end{equation}
-The four triples from $\{1,2,3,4\}$ are $(1,2,3),(1,2,4),(1,3,4),(2,3,4)$.
-Using $\eps^{xyz}=+1$ and antisymmetry:
-\begin{equation}\label{eqn:Q-expanded}
-  \hat{Q} = \frac{iC_{\rm reg}}{64}
-  \Bigl[
-    \sx^{(1)}\sy^{(2)}\sz^{(3)}\otimes\mathbbm{1}^{(4)}
-  + \sx^{(1)}\sy^{(2)}\mathbbm{1}^{(3)}\otimes\sz^{(4)}
-  + \sx^{(1)}\mathbbm{1}^{(2)}\sy^{(3)}\sz^{(4)}
-  + \mathbbm{1}^{(1)}\sx^{(2)}\sy^{(3)}\sz^{(4)}
-  + \text{permutations}
-  \Bigr].
-\end{equation}
-In the full form with antisymmetry in $(a,b,c)$ and the three cyclic permutations
-$(xyz),(yzx),(zxy)$ each contributing, the operator simplifies
-(see Brunnemann-Thiemann \cite{Brunnemann2006Simplification}) to:
-\begin{equation}\label{eqn:Q-compact}
-  \hat{Q} = -\frac{C_{\rm reg}}{8}
-  \bigl(
-    \hat{\vec{J}}^{(1)}\cdot(\hat{\vec{J}}^{(2)}\times\hat{\vec{J}}^{(3)})
-  + \text{3 cyclic permutations of } (1,2,3,4)
-  \bigr).
-\end{equation}
-For a 4-valent vertex the Gauss constraint reads
-$\hat{\vec{J}}^{(1)}+\hat{\vec{J}}^{(2)}+\hat{\vec{J}}^{(3)}+\hat{\vec{J}}^{(4)}=0$,
-so we can eliminate $\hat{\vec{J}}^{(4)}$ and the four contributions are not
-independent.  The standard result \cite{Brunnemann2006Simplification,Rovelli1994Discreteness}
-is that on the singlet subspace:
-\begin{equation}\label{eqn:Q-singlet}
-  \hat{Q}\big|_{\rm singlet}
-  = -\frac{C_{\rm reg}}{8}\,
-  \hat{\vec{J}}^{(1)}\cdot(\hat{\vec{J}}^{(2)}\times\hat{\vec{J}}^{(3)}),
-\end{equation}
-up to an overall constant depending on the ordering convention (different authors
-use different values of $C_{\rm reg}\in\{1,2,4\}$).
-
-\subsubsection{Matrix elements of $\hat{Q}$ in the singlet subspace}
-
-We set $C_{\rm reg}=1$ and compute $\hat{q}\equiv \hat{\vec{J}}^{(1)}\cdot(\hat{\vec{J}}^{(2)}\times\hat{\vec{J}}^{(3)})$
-in the singlet subspace spanned by $\{\ket{\Phi_1},\ket{\Phi_2}\}$.
-
-Expanding:
-\begin{align}
-  \hat{q}
-  &= \hat{J}^{(1)}_x(\hat{J}^{(2)}_y\hat{J}^{(3)}_z - \hat{J}^{(2)}_z\hat{J}^{(3)}_y)
-  + \hat{J}^{(1)}_y(\hat{J}^{(2)}_z\hat{J}^{(3)}_x - \hat{J}^{(2)}_x\hat{J}^{(3)}_z)
-  + \hat{J}^{(1)}_z(\hat{J}^{(2)}_x\hat{J}^{(3)}_y - \hat{J}^{(2)}_y\hat{J}^{(3)}_x).
-\end{align}
-With $\hat{J}^{(k)}_a = \tfrac{1}{2}\sigma_a^{(k)}$, each term is a product of three
-$j=\tfrac{1}{2}$ Pauli matrices. The result is an operator on $(\mathbb{C}^2)^{\otimes 4}$
-(identity on factor 4).
-
-The $2\times 2$ matrix representation of $\hat{Q}$ restricted to the
-singlet subspace is:
-\begin{equation}\label{eqn:Q-matrix}
-  Q_{ij} = \bra{\Phi_i}\hat{Q}\ket{\Phi_j},\quad i,j\in\{1,2\}.
-\end{equation}
-
-\paragraph{Computing $\hat{q}\ket{\Phi_1}$.}
-
-The operator $\hat{q}$ contains terms like $\sx^{(1)}\sy^{(2)}\sz^{(3)}$.
-In the computational basis $\ket{m_1 m_2 m_3 m_4}$:
-\begin{align*}
-  \sx^{(1)}\sy^{(2)}\sz^{(3)}\ket{m_1 m_2 m_3 m_4}
-  &= \ket{\bar m_1}(-i)^{m_2}(-1)^{m_3+1/2}\cdots,
-\end{align*}
-where $\sx\ket{0}=\ket{1}$, $\sx\ket{1}=\ket{0}$;
-$\sy\ket{0}=i\ket{1}$, $\sy\ket{1}=-i\ket{0}$;
-$\sz\ket{0}=\ket{0}$, $\sz\ket{1}=-\ket{1}$.
-
-Computing $\hat{q}\ket{\Phi_1}$ in full:
-\begin{equation*}
-  \ket{\Phi_1}=\tfrac{1}{2}(\ket{0101}-\ket{0110}-\ket{1001}+\ket{1010}).
-\end{equation*}
-A direct (lengthy but straightforward) evaluation in the full
-16-dimensional space gives (citing the known result from Brunnemann-Thiemann
-\cite{Brunnemann2006Simplification} and Borissenko \cite{Borissenko2021Volume}):
-
-\begin{equation}\label{eqn:q-matrix-result}
-  \boxed{
-  [Q_{ij}]
-  = \frac{i}{4\sqrt{3}}
-  \begin{pmatrix}
-    0 & -1 \\
-    1 &  0
-  \end{pmatrix},
-  \qquad \text{i.e.}\quad
-  \hat{Q}\big|_{\rm singlet}
-  = \frac{1}{4\sqrt{3}}\begin{pmatrix}0 & -i\\ i & 0\end{pmatrix}.}
-\end{equation}
-
-This matrix is $\frac{1}{4\sqrt{3}}\sigma_y$ (up to an overall sign convention),
-which is Hermitian with eigenvalues $\pm\frac{1}{4\sqrt{3}}$.
-
-\paragraph{Derivation sketch for \eqref{eqn:q-matrix-result}.}
-Using $J_a = \tfrac{1}{2}\sigma_a$ and the product rule for Paulis
-($\sigma_a\sigma_b = \delta_{ab}\mathbbm{1}+i\eps_{abc}\sigma_c$):
-\begin{align}
-  \hat{J}^{(2)}_y\hat{J}^{(3)}_z
-  &= \frac{1}{4}\sy^{(2)}\sz^{(3)},\qquad
-  \hat{J}^{(2)}_z\hat{J}^{(3)}_y
-  = \frac{1}{4}\sz^{(2)}\sy^{(3)}.
-\end{align}
-The matrix element $Q_{12}=\bra{\Phi_1}\hat{q}\ket{\Phi_2}$ picks up a
-non-zero value from the cross-terms because $\ket{\Phi_1}$ involves
-only pairs $\ket{01}$ and $\ket{10}$ (in positions 1,2 and 3,4), while
-$\ket{\Phi_2}$ involves additionally $\ket{00}$ and $\ket{11}$ in positions
-1,4.  The diagonal elements $Q_{11}$ and $Q_{22}$ vanish because
-$\hat{q}$ is odd under the exchange $0\leftrightarrow 1$ (time reversal)
-while $\ket{\Phi_1}$ and $\ket{\Phi_2}$ have definite parities under this
-exchange.
-
-The eigenvalues of $Q_{ij}$ are $\pm q_0$ where
-\begin{equation}\label{eqn:q0}
-  q_0 = \frac{1}{4\sqrt{3}}.
-\end{equation}
-
-\subsubsection{Eigenvalues of the volume operator in the singlet subspace}
-
-The volume operator eigenvalues are $V = \gamma^{3/2}\lp^3|Q|^{1/2}$.
-Since $Q$ has eigenvalues $\pm q_0$, the matrix $|Q|$ has eigenvalues
-$+q_0$ (both eigenvalues of $Q$ have the same absolute value), and:
-\begin{equation}\label{eqn:volume-eigenvalue}
-  v_0 = \gamma^{3/2}\lp^3\,\sqrt{q_0}
-  = \gamma^{3/2}\lp^3\,\frac{1}{\sqrt{4\sqrt{3}}}
-  = \gamma^{3/2}\lp^3\cdot 3^{-1/4}/2.
-\end{equation}
-
-\begin{remark}
-  Both eigenstates of $\hat{Q}$ have the \emph{same} volume eigenvalue $v_0$;
-  they differ in the \emph{sign} of $Q$.  The volume operator
-  $\hat{V}=\gamma^{3/2}\lp^3|Q|^{1/2}$ therefore has a degenerate eigenvalue
-  $v_0$ on the entire singlet subspace.  The sign of $Q$ -- i.e.\ the
-  eigenvalue of $Q$ itself, $\pm q_0$ -- is what distinguishes the two
-  time orientations in the manuscript.  It is important that the manuscript
-  frames this correctly: the two singlet states are eigenstates of the
-  \emph{interior operator $\hat{Q}$} (not of $\hat{V}$) with eigenvalues
-  $\pm q_0$.
-\end{remark}
-
-\begin{result}\label{res:volume}
-  The eigenstates of $\hat{Q}|_{\rm singlet}$ are
-  \begin{align}
-    \ket{+} &= \frac{1}{\sqrt{2}}(\ket{\Phi_1}+i\ket{\Phi_2}),
-    & \hat{Q}\ket{+} &= +q_0\ket{+},\\
-    \ket{-} &= \frac{1}{\sqrt{2}}(\ket{\Phi_1}-i\ket{\Phi_2}),
-    & \hat{Q}\ket{-} &= -q_0\ket{-},
-  \end{align}
-  with $q_0 = 1/(4\sqrt{3})$ (in units where $C_{\rm reg}=1$, $\hbar=1$).
-  These are the states to identify with $\ket{\Psi_1}$ and $\ket{\Psi_2}$
-  in the manuscript.  They represent the two time orientations: forward
-  ($\hat{Q}>0$) and backward ($\hat{Q}<0$).
-\end{result}
-
-\subsection{Recommended corrections to the manuscript}
-\label{sub:corr1}
-
-\begin{enumerate}
-  \item Replace the manuscript states \texttt{eqn:vol-states-2} with the
-    orthonormal pair \eqref{eqn:Phi1}--\eqref{eqn:Phi2}.
-  \item Replace the claim that $\ket{\Psi_1}$ and $\ket{\Psi_2}$ are eigenstates
-    of $\hat{V}$ with the statement that $\ket{+}$ and $\ket{-}$ (Result
-    \ref{res:volume}) are eigenstates of the \emph{interior operator} $\hat{Q}$
-    with eigenvalues $\pm q_0$, and both have the same volume eigenvalue $v_0$.
-    Phrase as: ``the two time orientations are distinguished by the sign of
-    $\hat{Q}$, the signed volume operator, rather than by the modulus $\hat{V}$.''
-  \item Add the reference to Brunnemann-Thiemann \cite{Brunnemann2006Simplification}
-    for the calculation of $\hat{Q}$ in the singlet subspace.
-\end{enumerate}
-
-% =============================================================================
 \section{Calculation 2 (T12/M6): Action of $U_{\mathrm{CZX}}$ on the singlet
   subspace}
 \label{sec:calc2}
@@ -654,113 +233,33 @@ Hence, in the basis $\{\ket{0000},\ket{1111}\}$:
 \end{equation}
 This is the Pauli $X$ (exchange) action the manuscript refers to.
 
-\subsection{Time reversal on the singlet subspace}
-\label{sub:TR-singlets}
+\GPTBegin{}
 
-For completeness, we compute the actual time-reversal operator
-$\mathcal{T} = (i\sigma_y)^{\otimes 4}\circ K$ (where $K$ is complex
-conjugation in the computational basis) acting on the singlet states.
-
-Since $\mathcal{T}\ket{0}=\ket{1}$ and $\mathcal{T}\ket{1}=-\ket{0}$,
-we have $\mathcal{T}\ket{m_1m_2m_3m_4} = (-1)^{\sum_k m_k}\ket{\bar m_1\bar m_2\bar m_3\bar m_4}$.
-
-Applying to $\ket{\Phi_1}$:
-\begin{align*}
-  \mathcal{T}\ket{\Phi_1}
-  &= \frac{1}{2}\bigl(
-     (-1)^2\ket{1010}+(-1)^2\ket{1001}+(-1)^2\ket{0110}+(-1)^2\ket{0101}
-     \bigr)
-   = \frac{1}{2}\bigl(\ket{1010}+\ket{1001}+\ket{0110}+\ket{0101}\bigr).
-\end{align*}
-Wait --- the signs from $(-1)^{m_1+m_2+m_3+m_4}$ on the \emph{original}
-state give: for $\ket{0101}$, factor is $(-1)^{0+1+0+1}=(+1)$; for $\ket{0110}$,
-factor is $(-1)^{0+1+1+0}=(+1)$; for $\ket{1001}$, factor is $(+1)$; for $\ket{1010}$,
-factor is $(+1)$.  So $\mathcal{T}\ket{\Phi_1} = \ket{\Phi_1}$.
-
-Similarly $\mathcal{T}\ket{\Phi_2} = \ket{\Phi_2}$ (all basis states in $\ket{\Phi_2}$
-have even total spin $\sum m_k=2$, so the sign factor is always $(-1)^2=+1$, and all
-coefficients are real).
-
-\begin{result}\label{res:TR}
-  The antiunitary time-reversal operator $\mathcal{T}$ acts as the
-  \emph{identity} on both singlet states $\ket{\Phi_1}$ and $\ket{\Phi_2}$:
-  $\mathcal{T}\ket{\Phi_i} = \ket{\Phi_i}$.  The singlet subspace is
-  invariant under time reversal, and time reversal alone does not
-  distinguish the two time-orientation states.
-\end{result}
-
-This is expected from representation theory: both singlets are $\mathcal{T}$-even
-(time-reversal-invariant), since $\mathcal{T}^2=+1$ on the tensor product of four
-spin-$\tfrac{1}{2}$ particles ($((-1)^{1/2})^4=1$) and the singlet states have
-real coefficients.
-
-\subsection{The correct LQG--CZX correspondence}
-\label{sub:lqg-czx-correct}
-
-The above results clarify the structure of the mapping between the CZX model
-and LQG spin networks.
-
-\begin{enumerate}
-  \item The LQG intertwiner subspace at a 4-valent $j=\tfrac{1}{2}$ vertex is
-    spanned by $\{\ket{\Phi_1},\ket{\Phi_2}\}$ --- the $SU(2)$ singlets.
-    The $\mathbb{Z}_2$ ``time-orientation'' degree of freedom corresponds to
-    the eigenvalue $\pm q_0$ of the signed volume operator $\hat{Q}$
-    (Result \ref{res:volume}).
-
-  \item The CZX code subspace at a single site is spanned by $\{\ket{0000},
-    \ket{1111}\}$.  The $\mathbb{Z}_2$ symmetry $U_{CZX}$ acts as $\sigma_x^{\rm eff}$
-    on this subspace \eqref{eqn:UCZX-code-matrix}, exchanging the two states.
-
-  \item The mapping $\ket{\Phi_1}\leftrightarrow\ket{0000}$ and $\ket{\Phi_2}
-    \leftrightarrow\ket{1111}$ is a \textbf{structural identification} of the
-    two effective qubits.  It is not the statement that $U_{CZX}$ (acting on the
-    full 16-dimensional space) preserves the LQG singlet subspace.
-
-  \item What \emph{is} preserved is the abstract $\mathbb{Z}_2$ symmetry
-    structure: both the CZX code subspace and the LQG singlet subspace carry
-    an effective qubit with a $\mathbb{Z}_2$ automorphism group.  The time-reversal
-    $\mathbb{Z}_2$ of LQG (flipping $\hat{Q}\to-\hat{Q}$) is identified with
-    the on-site $\mathbb{Z}_2$ of the CZX model ($U_{CZX}$), but they act on
-    \emph{different} subspaces of the same 16-dimensional Hilbert space.
-\end{enumerate}
-
-\begin{result}\label{res:correct-correspondence}
-  The LQG--CZX correspondence is a structural identification of two
-  $\mathbb{Z}_2$-invariant effective qubits:
-  \begin{equation}
-    \underbrace{\operatorname{span}\{\ket{\Phi_1},\ket{\Phi_2}\}}_{\text{LQG
-      intertwiner qubit}}
-    \;\xrightarrow{\;\sim\;}\;
-    \underbrace{\operatorname{span}\{\ket{0000},\ket{1111}\}}_{\text{CZX code qubit}},
-  \end{equation}
-  where $U_{CZX}$ acts as $\sigma_x^{\rm eff}$ on the right-hand side, and the
-  $\hat{Q}$-sign flip acts as $\sigma_z^{\rm eff}$ on the left-hand side.  These
-  are related by a basis rotation; both generate the same abstract $\mathbb{Z}_2$.
-\end{result}
-
-\subsection{Recommended corrections to the manuscript}
+\subsection{Time reversal and the effective-qubit comparison}
+\label{sub:TR-singlets}\label{sub:lqg-czx-correct}
 \label{sub:corrections-calc2}
 
-The manuscript statement ``$U_{CZX}:\ket{\Psi_1}\leftrightarrow\ket{\Psi_2}$''
-should be replaced by:
+\begin{result}\label{res:TR}
+As shown in Calculation 1, time reversal fixes each real basis vector
+$|\Phi_i\rangle$ but conjugates the coefficients of a general superposition.
+It therefore exchanges $|+\rangle$ and $|-\rangle$. In the orientation
+basis its action is $X\mathcal K$, rather than the linear identity.
+\end{result}
 
-\begin{quote}
-  \textit{The CZX on-site symmetry $U_{CZX}$ acts as the Pauli $X$ gate on
-  the two-dimensional code subspace $\operatorname{span}\{\ket{0000},\ket{1111}\}$,
-  which is identified with the effective qubit degree of freedom of the
-  CZX SPT phase.  In the LQG setting, the corresponding degree of freedom
-  is the two-dimensional $SU(2)$-singlet subspace $\operatorname{span}
-  \{\ket{\Psi_1},\ket{\Psi_2}\}$ at each 4-valent vertex, and the $\mathbb{Z}_2$
-  time-reversal symmetry acts on this subspace by flipping the sign of the
-  interior volume operator $\hat{Q}$.  The identification of these two
-  $\mathbb{Z}_2$ actions is the content of the LQG--CZX mapping; it is a
-  structural correspondence of effective qubits, not a statement about the
-  literal action of $U_{CZX}$ on the singlet subspace.}
-\end{quote}
+\begin{result}\label{res:correct-correspondence}
+The intertwiner space and CZX code space are both two-dimensional.
+Identifying $|+\rangle\leftrightarrow|0000\rangle$ and
+$|-\rangle\leftrightarrow|1111\rangle$ matches their exchanged sectors.
+However, the CZX symmetry acts unitarily as $X$, whereas spin time reversal
+acts antiunitarily as $X\mathcal K$. No complex-linear change of basis
+removes this distinction. The state-space correspondence alone does not
+establish an equivalence of symmetry representations or many-body phases.
+The literal $U_{CZX}$ does not preserve the full singlet subspace.
+\end{result}
 
-\paragraph{Status.} The correction above has been implemented in the manuscript. The statement $U_{CZX}:\ket{\Psi_1}\leftrightarrow\ket{\Psi_2}$ has been replaced by the precise framing in \autoref{sub:lqg-czx-correct}: $U_{CZX}$ acts as Pauli $X$ on the CZX code subspace $\{\ket{0000},\ket{1111}\}$, which is identified with the LQG intertwiner qubit $\{\ket{\Phi_1},\ket{\Phi_2}\}$ via a $\mathbb{Z}_2$ isomorphism.
+\GPTEnd{}
 
-% =============================================================================
+
 \section{Calculation 3 (T12/M9): $j=\tfrac{1}{2}$ dominance}
 \label{sec:calc3}
 % =============================================================================
@@ -1019,53 +518,35 @@ The manuscript should frame the $j=\tfrac{1}{2}$ restriction as a
 % =============================================================================
 
 \begin{enumerate}
-  \item[\textbf{C3a}] (Critical) The manuscript states $\ket{\Psi_1}$ and
-    $\ket{\Psi_2}$ in \texttt{eqn:vol-states-2} are both $SU(2)$ singlets.
-    Only $\ket{\Psi_2}/2 = +\ket{\Phi_1}$ \eqref{eqn:psi2-normalised} is
-    a singlet.  $\ket{\Psi_1}$ as written is \textbf{not} a singlet
-    ($\hat{S}^+_{\rm tot}\ket{\Psi_1}=2(\ket{0001}+\ket{0010}+\ket{0100}
-    +\ket{1000})\neq 0$).
-    \textbf{Action}: Replace with the correct orthonormal pair
-    \eqref{eqn:Phi1}--\eqref{eqn:Phi2}.
+\item[\textbf{C3a}] \GPTBegin{} The main text's current real singlet basis is valid.
+    Distinguish it from the complex combinations that diagonalize the
+    oriented triple product. The same basis is now used throughout both documents;
+    Calculation 1 constructs it from spinor polynomials.
 
-  \item[\textbf{C3b}] (Critical) The manuscript implies the two singlet
-    states are eigenstates of the volume operator $\hat{V}$ with
-    \emph{opposite eigenvalues} (``positive and negative volume'').
-    This is imprecise: $\hat{V}=\gamma^{3/2}\lp^3|\hat{Q}|^{1/2}$
-    has a \emph{degenerate} eigenvalue $v_0$ on the entire singlet
-    subspace, since $|\hat{Q}|$ has the same magnitude eigenvalue $q_0$
-    for both eigenstates.  The sign of time orientation is encoded in
-    the eigenvalue of the \emph{signed} interior operator $\hat{Q}$
-    (eigenvalues $\pm q_0$), not of $\hat{V}$.
-    \textbf{Action}: Replace ``eigenstates of $\hat{V}$ with opposite
-    eigenvalues'' with ``eigenstates of $\hat{Q}$ with eigenvalues $\pm q_0$,
-    where $\hat{Q}\equiv\hat{\vec{J}}^{(1)}\cdot(\hat{\vec{J}}^{(2)}\times
-    \hat{\vec{J}}^{(3)})$ is the signed volume operator.''.
+  \item[\textbf{C3b}] With $J^a=\sigma^a/2$, the bare triple product has
+    eigenvalues $\pm\sqrt3/4$. A volume convention introduces the factor
+    $c_v$ in $\hat Q_v=c_v\hat q$. The ordinary volume is degenerate on
+    the singlet space, and spin time reversal exchanges the opposite
+    orientation states antiunitarily.
 
-  \item[\textbf{M6a}] (Major) The manuscript claims $U_{CZX}$ acts as
-    $\sigma_x^{\rm eff}$ on the LQG intertwiner subspace, i.e.\ that it
-    preserves the singlet subspace and exchanges $\ket{\Psi_1}\leftrightarrow
-    \ket{\Psi_2}$.  This is \textbf{incorrect}: $U_{CZX}$ does \emph{not}
-    preserve the $SU(2)$-singlet subspace --- both $U_{CZ}\ket{\Phi_1}$ and
-    $U_{CZ}\ket{\Phi_2}$ exit the singlet sector (verified by $\hat{S}^+_{\rm tot}$).
-    $U_{CZX}$ acts as $\sigma_x^{\rm eff}$ on its own code subspace
-    $\operatorname{span}\{\ket{0000},\ket{1111}\}$, not on the LQG singlet subspace.
-    \textbf{Action}: Reframe the LQG--CZX correspondence as a structural
-    identification of two $\mathbb{Z}_2$-invariant effective qubits
-    (Result \ref{res:correct-correspondence}) rather than a literal claim
-    about $U_{CZX}$ preserving the intertwiner space.
 
-  \item[\textbf{M6b}] (Major) The manuscript's statement that time reversal
-    $\mathcal{T}$ acts non-trivially on the singlet states is also incorrect:
-    $\mathcal{T}\ket{\Phi_i}=\ket{\Phi_i}$ (the singlets are $\mathcal{T}$-even,
-    Result \ref{res:TR}).  The $\mathbb{Z}_2$ time-orientation flip is generated
-    by the automorphism $\ket{\Phi_1}\leftrightarrow\ket{\Phi_2}$ of the singlet
-    subspace, which corresponds to flipping the sign of $\hat{Q}$, not by the
-    standard antiunitary time reversal.
-    \textbf{Action}: Clarify that the $\mathbb{Z}_2$ symmetry relevant for
-    the arrow of time is the \emph{sign-flip of $\hat{Q}$}, which is a unitary
-    automorphism of the singlet subspace, distinct from (though related to)
-    the antiunitary time-reversal operator.
+
+  \GPTEnd{}
+
+\item[\textbf{M6a}] \GPTBegin{}
+    The literal $U_{CZX}$ does not preserve the full singlet space:
+    both displayed basis states acquire nonsinglet components.
+    It acts as $X$ on its own code space. The main text now uses the same
+    intertwiner basis as this supplement and distinguishes its antiunitary
+    orientation exchange from the unitary CZX code symmetry.
+    \GPTEnd{}
+
+  \item[\textbf{M6b}] \GPTBegin{}
+    Time reversal fixes the chosen real singlet basis states but exchanges
+    their complex orientation eigenstates. It acts as $X\mathcal K$ in
+    the orientation basis, in contrast to the unitary CZX code action $X$.
+    This antiunitary action must be retained in the effective-qubit comparison.
+    \GPTEnd{}
 
   \item[\textbf{M9}] (Major) The claim that $j=\tfrac{1}{2}$ edges give
     ``exponentially more states'' than higher-$j$ configurations is
@@ -1082,6 +563,23 @@ The manuscript should frame the $j=\tfrac{1}{2}$ restriction as a
 % =============================================================================
 %  Bibliography (BibLaTeX, mirrors main manuscript style)
 % =============================================================================
+\GPTBegin{}
+
+\paragraph{Single-node calculation, November 2026.}
+Sol 6.1 Medium assisted in developing the pedagogical presentation of the
+four-valent intertwiner calculation, combining the established
+pair-angular-momentum commutator identity with the standard spin-one-half
+exchange identity. It assisted with explicit algebraic checks, identified
+a numerical inconsistency in the earlier supplement, and drafted the
+spinor-polynomial explanation and related revisions under the author's
+direction. The commutator identity is due to the cited literature; no
+novelty is claimed for either identity. The author reviewed the proposed
+passages and authorized their inclusion. Final scientific responsibility
+rests with the author. Newly drafted or substantively revised passages
+are marked with the model name.
+
+\GPTEnd{}
+
 \begin{thebibliography}{99}
 \bibitem{Brunnemann2006Simplification}
   J.\ Brunnemann and T.\ Thiemann,
@@ -1122,6 +620,22 @@ The manuscript should frame the $j=\tfrac{1}{2}$ restriction as a
   A.\ Perez,
   \emph{The spin-foam approach to quantum gravity},
   Living Rev.\ Rel.\ \textbf{16} (2013) 3.
+
+\GPTBegin{}
+\bibitem{DittrichHnybida2016Ising}
+ B. Dittrich and J. Hnybida, \emph{Ising model from intertwiners},
+ Ann. Inst. H. Poincare D \textbf{3} (2016), 363--380,
+ \href{https://arxiv.org/abs/1312.5646}{arXiv:1312.5646}.
+\bibitem{Bianchi2013QuantumGeometry}
+ E. Bianchi, \emph{Quantum Geometry of Space in Spinfoam Gravity},
+ Acta Phys. Polon. B \textbf{44} (2013), 2447--2462,
+ \href{https://doi.org/10.5506/APhysPolB.44.2447}{doi:10.5506/APhysPolB.44.2447}.
+\bibitem{YuSpinExchange}
+ C. C. Yu, \emph{Lecture 17: Ferromagnetism}, University of California, Irvine,
+ Eqs.~(57)--(64),
+ \href{https://webapps.ps.uci.edu/~cyu/p115A/LectureNotes/Lecture17/html_version/lecture17.html}{lecture notes}.
+\GPTEnd{}
+
 \end{thebibliography}
 
 \end{document}

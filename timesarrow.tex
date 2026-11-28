@@ -147,6 +147,7 @@
 % Reference: https://tex.stackexchange.com/a/204203/2064
 \newtheorem{thm}{Theorem}[section] % the main one
 \newtheorem{lemma}[thm]{Lemma}
+\newtheorem{result}{Result}
 % other statement types
 
 % for specifying a name
@@ -179,6 +180,12 @@
 % todonotes already loaded above with [draft] option
 
 \graphicspath{{figures/}}
+
+
+\usepackage{xcolor}
+\definecolor{GPTMarker}{RGB}{115,48,110}
+\newcommand{\GPTBegin}{\par\noindent\textcolor{GPTMarker}{\texttt{\textless\textless{} Sol 6.1 Medium Begin \textgreater\textgreater}}\par}
+\newcommand{\GPTEnd}{\par\noindent\textcolor{GPTMarker}{\texttt{\textless\textless{} Sol 6.1 Medium End \textgreater\textgreater}}\par}
 
 \begin{document}
 
@@ -755,12 +762,29 @@ The requirement of gauge invariance restricts the allowed space of states to the
 	1/2 \otimes 1/2 \otimes 1/2 \otimes 1/2 = 0 \oplus 0 \oplus 1 \oplus 1 \oplus 1 \oplus 2
 \end{equation}
 
-The physical states live in the two copies of scalar (``s-wave'') states. As derived in the supplementary calculations, the correct orthonormal basis for the $SU(2)$ singlet subspace of four spin-1/2s consists of the states:
+\GPTBegin{}
+
+The physical states live in the two copies of scalar (``s-wave'') states. As derived in \autoref{sec:calc1}, the orthonormal basis for the $SU(2)$ singlet subspace of four spin-1/2s consists of the states:
 \begin{align}\label{eqn:vol-states}
-	\ket{\Phi_1} & = \frac{1}{\sqrt{3}} \left( \ket{0101} + \ket{1010} - \frac{1}{2}(\ket{1001} + \ket{0110} + \ket{0011} + \ket{1100}) \right) \nonumber \\
-	\ket{\Phi_2} & = \frac{1}{2} \left( \ket{1001} + \ket{0110} - \ket{0011} - \ket{1100} \right)
+ \ket{\Phi_1}&=\frac12(\ket{0101}-\ket{0110}-\ket{1001}+\ket{1010}),\nonumber\\
+ \ket{\Phi_2}&=\frac1{\sqrt{12}}(2\ket{0011}-\ket{0101}-\ket{0110}
+ -\ket{1001}-\ket{1010}+2\ket{1100}).
 \end{align}
-where $ \{\ket{\Phi_1}, \ket{\Phi_2}\} $ form an orthonormal basis for the 2D singlet subspace. These states are eigenvectors of the signed interior operator $\hat{Q}$ with eigenvalues $\pm q$, corresponding to the two possible time orientations. Note that the standard volume operator $\hat{V} \propto \sqrt{|\hat{Q}|}$ is degenerate on this subspace, but the time-orientation is captured by the sign of $\hat{Q}$.
+
+\GPTEnd{}
+
+\GPTBegin{}
+
+where $\{\ket{\Phi_1},\ket{\Phi_2}\}$ form an orthonormal basis for the two-dimensional singlet subspace. These real basis states do not diagonalize the oriented triple product $\hat q=\hat{\mathbf J}_1\cdot(\hat{\mathbf J}_2\times\hat{\mathbf J}_3)$. With $J^a=\sigma^a/2$ and the displayed basis, its eigenstates are
+\begin{equation}
+ \ket{+}=\frac{\ket{\Phi_1}+i\ket{\Phi_2}}{\sqrt2},\qquad
+ \ket{-}=\frac{\ket{\Phi_1}-i\ket{\Phi_2}}{\sqrt2},\qquad
+ \hat q\ket{\pm}=\pm\frac{\sqrt3}{4}\ket{\pm}.
+\end{equation}
+\autoref{sec:calc1} gives the complete calculation in one place: it constructs these states from spinor polynomials, evaluates the triple product using pair angular momenta and spin exchange, and derives the time-reversal action. The same basis, leg ordering, and phases are used throughout; a change of orthonormal basis changes matrices and coefficients together without changing eigenvalues or physical predictions. For a fixed nondegenerate vertex and volume convention, write the signed interior as $\hat Q_v=c_v\hat q$. The ordinary volume $\hat V_v\propto\sqrt{|\hat Q_v|}$ is equal on the two states, while their signed eigenvalues are opposite. Spin time reversal exchanges $\ket{+}$ and $\ket{-}$ antiunitarily. The interpretation of these opposite geometric orientations as opposite time orientations is the physical proposal considered here.
+
+\GPTEnd{}
+
 Before the full $SU(2)$ projection, each leg of the four-valent $j=1/2$ intertwiner carries a binary bond index, exactly as in the tensor-network description of the CZX model. When two vertices are glued along an edge, that edge carries a single shared binary bond variable. This bond-level description is the natural home of the emergent $Z_2$ field used later in \autoref{sec:z2-action}. The effective even-parity constraint on the four bond indices captures the $Z_2$ part of the local structure, but it should not be confused with the full $SU(2)$ Gauss constraint: the physical intertwiner states are the two-dimensional singlet subspace selected by the complete $SU(2)$ projection. The signed volume operator $\hat{Q}$ then separates this physical subspace into the two orientation sectors.
 Here the $ \ket{0}, \ket{1} $ are the two possible states of each edge carrying a spin $ 1/2 $ label. One can then write down the effective degrees of freedom carried by a four-valent intertwiner in terms of a single spin $ 1/2 $ state $ \ket{\tilde\Psi} $ spanned by the invariant basis states $ \{\ket{\Phi_1}, \ket{\Phi_2}\} $:
 \begin{equation}\label{key}
@@ -927,7 +951,12 @@ The full CZX ground state is the product of all plaquette states:
 \end{equation}
 In the spin-network context, this state describes a quantum geometry in which the entanglement between neighboring vertices is of a very specific, short-range form. As argued in \autoref{sec:topo-order}, short-range entanglement is precisely the condition required for the emergence of a smooth, local macroscopic geometry. The CZX ground state therefore supplies the local entanglement pattern needed for a semiclassical spin-network phase: four binary degrees of freedom at each site/vertex, bond entanglement between neighboring sites/vertices, and a shared bond index on each edge.
 
-The on-site $ Z_2 $ symmetry of the CZX model acts as a Pauli-$ X $ gate on the two-dimensional code subspace $ \operatorname{span}\{\ket{0000}, \ket{1111}\} $, exchanging the two basis states \cite{Chen2010Local}. The intertwiner subspace at a 4-valent $ j = 1/2 $ spin-network vertex is likewise two-dimensional, spanned by $ \{\ket{\Phi_1}, \ket{\Phi_2}\} $, with the $ Z_2 $ time-reversal action realized by the sign flip of the signed volume operator: $ \hat{Q} \ket{\Phi_{1,2}} = \pm q_0 \ket{\Phi_{1,2}} $. The only delicate point is the precise basis identification between the LQG volume-qubit basis $ \{\ket{\Phi_1},\ket{\Phi_2}\} $ and the CZX code-space basis $ \{\ket{0000},\ket{1111}\} $. At the level of effective qubits, both subspaces carry a $Z_2$ automorphism exchanging their two orientation/code sectors. At the microscopic operator level, however, $U_{CZX}$ does not act literally on the full $SU(2)$ singlet intertwiner subspace; the explicit computation is given in \autoref{subsec:czx-intertwiner}. Thus the CZX correspondence is not merely an analogy: the four qubits, inter-site bond entanglement, shared edge variables, and local $Z_2$ gauge structure are present in the spin-network construction, while the volume-qubit/code-space basis map remains the point requiring the most care.
+\GPTBegin{}
+
+The on-site $Z_2$ symmetry of the CZX model acts as a Pauli-$X$ gate on the code subspace $\operatorname{span}\{\ket{0000},\ket{1111}\}$, exchanging its basis states \cite{Chen2010Local}. The four-valent $j=1/2$ intertwiner space is also two-dimensional. In its orientation basis $\{\ket{+},\ket{-}\}$, spin time reversal acts as $X\mathcal K$, exchanging the signed-geometric sectors and conjugating their amplitudes. This gives a structural correspondence between the exchanged sectors, while retaining the distinction between unitary CZX symmetry and antiunitary time reversal. At the microscopic operator level, $U_{CZX}$ does not preserve the full $SU(2)$ singlet intertwiner subspace; the explicit calculation is given in \autoref{subsec:czx-intertwiner}. The two-dimensional state spaces alone therefore do not identify their symmetry representations or their many-body phases.
+
+\GPTEnd{}
+
 
 \subsection{The $ j = 1/2 $ Sector}\label{subsec:j-half-dominance}
 
@@ -1183,6 +1212,13 @@ Other directions for future work include:
 The author wishes to acknowledge the Inter-University Centre for Astronomy and Astrophysics (IUCAA), Pune, India, where this work was initiated during a Visiting Associateship in 2018.
 
 The author used Claude (Anthropic) as an AI writing assistant during the 2026 revision of this manuscript. Its use was limited to formalization of theoretical arguments, LaTeX editing, bibliography management, and error correction. All scientific content, physical arguments, and conclusions are the author's own. A detailed account of AI-assisted contributions, with reference to the publicly available git commit history, accompanies the cover letter.
+
+\GPTBegin{}
+
+Sol 6.1 Medium assisted with the November 2026 single-node derivation, algebraic verification, and pedagogical rewrite. The detailed statement below distinguishes this assistance from the established identities used in the calculation.
+
+\GPTEnd{}
+
 
 %\bibliography{timesarrow.bib}
 
@@ -1446,7 +1482,12 @@ We will divide the process into several parts: the first part describes the path
 		\begin{equation}\label{eqn:momentum-operator}
 		n_a(e) \hat{E}^a_i = \mb{J}^e_i,
 		\end{equation}
-		where $ n_a(e) $ is the tangent vector to the edge $ e $. For the special case of $ j = 1/2 $, these are simply the Pauli matrices $ \hat{J}_i = \{ \sigma_x, \sigma_y, \sigma_z \} $.
+		where $ n_a(e) $ is the tangent vector to the edge $ e $. \GPTBegin{}
+
+For $j=1/2$ and $\hbar=1$, the angular momentum operators are $\hat J_i=\sigma_i/2$, where $\sigma_i$ are the Pauli matrices.
+
+\GPTEnd{}
+
 		\item The expression \eqref{eqn:gauss-constraint-v3} can now be expressed in a particularly simple form when we take the surface of integration to enclose precisely one vertex $ v $ of our graph state $ \Gamma $. In this event the operator version of \eqref{eqn:gauss-constraint-v3} can be written as:
 		\begin{equation}\label{eqn:gauss-operator-v1}
 		\sum_{e \in E_v} \mb{J}^e_i = 0
@@ -1515,6 +1556,8 @@ The dimension of the subspace consisting of invariant tensors, \ie elements $ \k
 
 \nolinenumbers
 
+\input{four-valent-orientation-calculation}
+
 \section{Action of $U_{\mathrm{CZX}}$ on the Intertwiner Subspace}\label{subsec:czx-intertwiner}
 
 We work with the orthonormal singlet basis $\{\ket{\Phi_1},\ket{\Phi_2}\}$ for the $SU(2)$-invariant subspace of $(\mc{H}_{1/2})^{\otimes 4}$ defined in \eqref{eqn:vol-states}. The on-site CZX unitary is $U_{CZX} = U_X \cdot U_{CZ}$, where
@@ -1542,11 +1585,25 @@ The phase factor from $U_{CZ}$ on each basis state is $(-1)^f$ where $f = m_1m_2
 \end{tabular}
 \end{center}
 
-Applying these phases to the state $\ket{\Phi_1}$ from \eqref{eqn:vol-states} gives
+\GPTBegin{}
+
+Applying these phases in the basis of \eqref{eqn:vol-states} gives
 \begin{align}
-  U_{CZ}\ket{\Phi_1} &= \frac{1}{\sqrt{3}}\Bigl(\ket{0101}+\ket{1010}+\tfrac12\ket{0110}+\tfrac12\ket{1001}+\tfrac12\ket{0011}+\tfrac12\ket{1100}\Bigr).
+ U_{CZ}\ket{\Phi_1}&=\frac12(\ket{0101}+\ket{0110}+\ket{1001}+\ket{1010}),\\
+ U_{CZ}\ket{\Phi_2}&=\frac1{\sqrt{12}}(-2\ket{0011}-\ket{0101}
+ +\ket{0110}+\ket{1001}-\ket{1010}-2\ket{1100}).
 \end{align}
-One verifies that $\hat{S}^+_{\rm tot}(U_{CZ}\ket{\Phi_1}) = 2/\sqrt{3}\,(\ket{0001}+\ket{0010}+\ket{0100}+\ket{1000}) \neq 0$, so this state lies \emph{outside} the $j_{\rm tot}=0$ subspace. A similar calculation shows $U_{CZ}\ket{\Phi_2} = -\ket{\Phi_2}$ (which \emph{is} a singlet), but $U_{CZ}$ does not preserve the \emph{full} two-dimensional singlet subspace. Since $U_{CZX} = U_X\cdot U_{CZ}$ and $U_X$ preserves the singlet subspace while $U_{CZ}$ does not, $U_{CZX}$ does not preserve the singlet subspace as a whole.
+Writing $\ket{w}=\ket{0001}+\ket{0010}+\ket{0100}+\ket{1000}$,
+\begin{equation}
+ S^+_{\rm tot}U_{CZ}\ket{\Phi_1}=\ket{w},\qquad
+ S^+_{\rm tot}U_{CZ}\ket{\Phi_2}=-\frac1{\sqrt3}\ket{w}.
+\end{equation}
+Thus both displayed basis vectors acquire nonsinglet components. Since
+$U_X$ preserves total spin, $U_{CZX}=U_XU_{CZ}$ does not preserve the full
+singlet intertwiner subspace.
+
+\GPTEnd{}
+
 
 \paragraph{The CZX code subspace and the correct $Z_2$ action.}
 The correct subspace on which $U_{CZX}$ acts as a Pauli-$X$ gate is the \emph{code subspace} $\operatorname{span}\{\ket{0000},\ket{1111}\}$ \cite{Chen2010Local}. Direct computation gives:
@@ -1561,18 +1618,47 @@ The LQG--CZX correspondence is therefore the identification:
   \;\xrightarrow{\;\sim\;}\;
   \underbrace{\operatorname{span}\{\ket{0000},\ket{1111}\}}_{\text{CZX code qubit}},
 \end{equation}
-where $U_{CZX}$ acts as $\sigma_x^{\rm eff}$ on the right-hand side, and the $\hat{Q}$-sign flip acts as $\sigma_z^{\rm eff}$ on the left-hand side. Both generate the same abstract $\mathbb{Z}_2$.
+\GPTBegin{}
+
+where the code symmetry acts as $X$ in the basis
+$\{\ket{0000},\ket{1111}\}$. In the orientation basis
+$\{\ket{+},\ket{-}\}$, spin time reversal acts as $X\mathcal K$.
+Both operations exchange two sectors and square to the identity, but one
+is unitary and the other antiunitary. This state-space correspondence
+therefore does not establish an equivalence of their symmetry representations
+or many-body phases.
+
+\GPTEnd{}
+
 
 \section*{Addendum: Statement of AI Assistance}
 
 \noindent\textbf{Manuscript:} Gauging Time Reversal Symmetry in Quantum Gravity: Arrow of Time from a Confinement--Deconfinement Transition\\
 \textbf{Author:} Deepak Vaid\\
-\textbf{Date:} April--May 2026\\
+\textbf{Date:} April--November 2026\\
 \textbf{Public repository:} \url{https://github.com/space-cadet/timesarrow}
 
 \subsection*{Summary}
 
 The original manuscript was written entirely by the author between 2016 and 2018. In April--May 2026, the author used AI systems as technical writing and review assistants to prepare and refine the manuscript. These included Claude (Anthropic, model claude-sonnet-4-6), GPT-5.5, Kimi, and Codex. The AI's role was limited to formalization, error correction, bibliography management, \LaTeX{} editing, critical review, and reviewer-safety calibration. All physical ideas, arguments, and conclusions originate with the author.
+
+\GPTBegin{}
+
+\paragraph{Single-node calculation, November 2026.}
+Sol 6.1 Medium assisted in developing the pedagogical presentation of the
+four-valent intertwiner calculation, combining the established
+pair-angular-momentum commutator identity with the standard spin-one-half
+exchange identity. It assisted with explicit algebraic checks, identified
+a numerical inconsistency in the earlier supplement, and drafted the
+spinor-polynomial explanation and related revisions under the author's
+direction. The commutator identity is due to the cited literature; no
+novelty is claimed for either identity. The author reviewed the proposed
+passages and authorized their inclusion. Final scientific responsibility
+rests with the author. Newly drafted or substantively revised passages
+are marked with the model name.
+
+\GPTEnd{}
+
 
 The complete revision history is publicly auditable via the git repository linked above.
 

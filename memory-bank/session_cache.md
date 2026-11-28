@@ -1,5 +1,15 @@
 # Session Cache
 
+*Last Updated: 2026-11-27 10:09:09 IST*
+
+## 2026-11-27 — T11/T12/T36 single-node closeout
+
+**Session File**: `sessions/2026-11-27-intertwiner-orientation.md`
+
+The author-approved rewrite is collected in one shared calculation, included in manuscript Appendix F and the supplement. Common basis, spinor-polynomial construction, explicit commutator/exchange derivation, corrected coefficient, antiunitary time reversal, and model-named AI markers are complete. PDFs and bibliography outputs were refreshed; final isolated builds resolved citation/reference warnings and revised pages were visually checked. This is not clean-checkout publication acceptance.
+
+[Physical summary](../notes/intertwiner-orientation-physical-summary.md) · [Exact transcript](<../notes/transcripts/Intertwiner orientation — transcript.md>). Resume with two-node gluing, retaining physical intertwiner indices. T36 stays open and the separate August revision package remains unapplied. No task-status changes or commit were made in this closeout.
+
 ## 2026-10-16 T13 visual explainers — completed
 
 **Completed:** T13 web illustrations, with T37 media provenance. The author authorized these additions and continuing Memory Bank updates.
@@ -9,6 +19,8 @@
 [Current session](sessions/2026-10-16-night.md). **Plan:** [Website visual explainers](implementation-details/website-visual-explainers.md).
 
 Published `406e6d8` in the website repository; deploy run `38815185321` succeeded. Guided loop story, growth comparison, orientation/mixing illustration, and chaptered/captioned video passed local/live checks at four widths. T13 is complete; T37 retains narration and final production. Public text follows the author’s direction to avoid repeated demoralizing disclaimers.
+
+The 15 October landing-page and README changes are mapped to their source commits in `implementation-details/website-visual-explainers.md`. T13 is complete without a T36 dependency; T37 remains active for narration and final video approval.
 
 ## 2026-09-12 T37 Visual Refinement
 
