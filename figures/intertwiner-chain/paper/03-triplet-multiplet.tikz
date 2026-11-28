@@ -1,0 +1,35 @@
+\begin{tikzpicture}
+  % Three compact panels: (a) M = +1, (b) M = 0, (c) M = -1
+  \coordinate (P1) at (-5.15, 0);
+  \coordinate (P2) at ( 0.00, 0);
+  \coordinate (P3) at ( 5.15, 0);
+
+  % Subtle vertical separators between panels
+  \draw[rulegray, line width=0.55pt] (-2.575, -1.25) -- (-2.575, 1.88);
+  \draw[rulegray, line width=0.55pt] ( 2.575, -1.25) -- ( 2.575, 1.88);
+
+  % Panel headers
+  \node[paneltag] at (-5.15, 1.65) {(a)\enspace\normalfont\color{amberText}$M=+1$};
+  \node[paneltag] at ( 0.00, 1.65) {(b)\enspace\normalfont\color{amberText}$M=0$};
+  \node[paneltag] at ( 5.15, 1.65) {(c)\enspace\normalfont\color{amberText}$M=-1$};
+
+  % Diagrams
+  \tripletpair{p}{P1}{E^{(+1)}}
+  \tripletpair{z}{P2}{E^{(0)}}
+  \tripletpair{m}{P3}{E^{(-1)}}
+
+  % Minimal spin-pairing cues on the shared bond
+  % (a) Product pairing |up, up>
+  \node[smallspin, above=3pt] at ($(pL.east)!0.5!(pB.west)$) {$\uparrow$};
+  \node[smallspin, above=3pt] at ($(pB.east)!0.5!(pR.west)$) {$\uparrow$};
+
+  % (b) Symmetric entangled pairing (|up,down> + |down,up>)
+  \draw[draw=amberBorder!80, line width=0.75pt, {Stealth[length=3.2pt]}-{Stealth[length=3.2pt]}]
+    ($(zL.east)!0.5!(zB.west)+(0,-0.16)$) to[out=-62, in=-118, looseness=1.15]
+    ($(zB.east)!0.5!(zR.west)+(0,-0.16)$);
+  \node[smallspin] at (0, -0.98) {$\uparrow\downarrow + \downarrow\uparrow$};
+
+  % (c) Product pairing |down, down>
+  \node[smallspin, above=3pt] at ($(mL.east)!0.5!(mB.west)$) {$\downarrow$};
+  \node[smallspin, above=3pt] at ($(mB.east)!0.5!(mR.west)$) {$\downarrow$};
+\end{tikzpicture}

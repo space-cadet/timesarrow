@@ -1,5 +1,14 @@
 # Technical Context
-*Last Updated: 2026-04-16 20:15:00 IST*
+*Last Updated: 2026-11-28 10:03:15 IST*
+
+## Generated Image Provenance Convention
+
+*Added: 2026-11-28 10:03:15 IST*
+
+All future generated images (raster AI renders, TikZ/Python figure exports, and exploratory visual drafts) must be stamped with date, time (IST), and generating model/tool:
+
+- **Default filename format**: `YYYY-MM-DD-HHMM-<model-slug>-<short-description>.<ext>` (for example `2026-11-28-0925-gpt-sol-6.1-medium-single-tetrahedron.jpg`).
+- **Stable LaTeX figure paths**: When a manuscript requires a fixed filename (such as `01-tetrahedral-gluing.pdf`), record the exact generation date, IST time, and model/tool in a colocated `README.md` or provenance table inside that figure directory.
 
 ## Dashboard Architecture (v2)
 

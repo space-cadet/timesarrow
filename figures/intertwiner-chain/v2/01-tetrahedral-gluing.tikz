@@ -1,0 +1,113 @@
+\begin{tikzpicture}
+  % =========================================================================
+  % Panel (a): Dual 3D geometry — two quantum tetrahedra glued on shared face
+  % =========================================================================
+  \begin{scope}[shift={(-4.15,0)}]
+    \node[paneltag, anchor=west] at (-3.95, 1.86) {(a)};
+
+    % 3D-projected vertices: shared triangle (T, U front, V back), apices L, R
+    \coordinate (T) at ( 0.00,  1.45);
+    \coordinate (U) at (-0.42, -1.08);
+    \coordinate (V) at ( 0.44, -0.46);
+    \coordinate (L) at (-3.25,  0.14);
+    \coordinate (R) at ( 3.25,  0.14);
+
+    % Intertwiner centers & shared-face gluing center
+    \coordinate (IA) at (-1.52, -0.02);
+    \coordinate (IB) at ( 1.52, -0.02);
+    \coordinate (EF) at ( 0.00, -0.02);
+
+    % 1. Back wireframe & translucent faces
+    \fill[tetFace, opacity=0.14] (L) -- (T) -- (V) -- cycle;
+    \fill[tetFace, opacity=0.14] (R) -- (T) -- (V) -- cycle;
+    \fill[tetFace, opacity=0.10] (L) -- (U) -- (V) -- cycle;
+    \fill[tetFace, opacity=0.10] (R) -- (U) -- (V) -- cycle;
+    \draw[tetEdge, densely dashed, line width=0.55pt, opacity=0.50] (L) -- (V) -- (R);
+
+    % 2. Shared triangular face (highlighted gluing interface)
+    \fill[sharedFace, opacity=0.34] (T) -- (U) -- (V) -- cycle;
+    \draw[sharedBorder, densely dashed, line width=0.65pt, opacity=0.65] (T) -- (V) -- (U);
+    \draw[sharedBorder, line width=0.9pt, opacity=0.85] (T) -- (U);
+
+    % 3. Back-piercing outer legs (a, d through top-back faces; c, f through bottom faces)
+    \draw[magnetic] (IA) -- ++(134:1.78) coordinate (La);
+    \node[puncture] at ($(IA)+(134:0.94)$) {};
+    \node[leglabel, above left=1.5pt] at (La) {$a$};
+
+    \draw[magnetic] (IA) -- ++(242:1.62) coordinate (Lc);
+    \node[puncture] at ($(IA)+(242:0.86)$) {};
+    \node[leglabel, below left=1pt] at (Lc) {$c$};
+
+    \draw[magnetic] (IB) -- ++(46:1.78) coordinate (Rd);
+    \node[puncture] at ($(IB)+(46:0.94)$) {};
+    \node[leglabel, above right=1.5pt] at (Rd) {$d$};
+
+    \draw[magnetic] (IB) -- ++(-62:1.62) coordinate (Rf);
+    \node[puncture] at ($(IB)+(-62:0.86)$) {};
+    \node[leglabel, below right=1pt] at (Rf) {$f$};
+
+    % 4. Internal shared magnetic wire (m, n)
+    \draw[magnetic] (IA) -- (IB);
+
+    % 5. Front translucent faces & crisp outer wireframe ridges
+    \fill[tetFace, opacity=0.20] (L) -- (T) -- (U) -- cycle;
+    \fill[tetFace, opacity=0.20] (R) -- (T) -- (U) -- cycle;
+    \draw[tetEdge, line width=0.75pt, opacity=0.80] (L) -- (T) -- (R) -- (U) -- (L);
+
+    % 6. Front-piercing outer legs (b, e) with clean crossing halo
+    \draw[magneticHalo] (IA) -- ++(188:2.10) coordinate (Lb);
+    \node[puncture] at ($(IA)+(188:1.18)$) {};
+    \node[leglabel, left=2pt] at (Lb) {$b$};
+
+    \draw[magneticHalo] (IB) -- ++(-8:2.10) coordinate (Re);
+    \node[puncture] at ($(IB)+(-8:1.18)$) {};
+    \node[leglabel, right=2pt] at (Re) {$e$};
+
+    % 7. Physical orientation stems (s, t) rising cleanly out of each tetrahedron
+    \draw[physicalHalo] (IA) -- ++(0, 1.48) node[physdot] {} node[above=2pt, physlabel] {$s$};
+    \draw[physicalHalo] (IB) -- ++(0, 1.48) node[physdot] {} node[above=2pt, physlabel] {$t$};
+
+    % 8. Intertwiner nodes and gluing block on shared face
+    \node[tensor, minimum size=8.4mm] (gA) at (IA) {$I_A$};
+    \node[tensor, minimum size=8.4mm] (gB) at (IB) {$I_B$};
+    \node[genbond, minimum width=10.0mm, minimum height=7.0mm] (gE) at (EF) {$E_{mn}$};
+
+    \node[leglabel, above=2.5pt, inner sep=1pt, fill=white, fill opacity=0.65, text opacity=1]
+      at ($(gA.east)!0.5!(gE.west)$) {$m$};
+    \node[leglabel, above=2.5pt, inner sep=1pt, fill=white, fill opacity=0.65, text opacity=1]
+      at ($(gE.east)!0.5!(gB.west)$) {$n$};
+  \end{scope}
+
+  % Subtle vertical dual-correspondence separator
+  \draw[rulegray, line width=0.6pt] (0.18, -1.65) -- (0.18, 1.98);
+
+  % =========================================================================
+  % Panel (b): Stripped dual tensor-network contraction
+  % =========================================================================
+  \begin{scope}[shift={(4.35,0)}]
+    \node[paneltag, anchor=west] at (-3.65, 1.86) {(b)};
+
+    \coordinate (tA) at (-2.05, -0.02);
+    \coordinate (tE) at ( 0.00, -0.02);
+    \coordinate (tB) at ( 2.05, -0.02);
+
+    \begin{scope}[on background layer]
+      \draw[magnetic] (tA) -- (tB);
+      \foreach \ang/\lab in {140/a, 180/b, 220/c}{%
+        \draw[magnetic] (tA) -- ++(\ang:1.28) node[pos=1, left=2.5pt, leglabel] {$\lab$};
+      }
+      \foreach \ang/\lab in {40/d, 0/e, -40/f}{%
+        \draw[magnetic] (tB) -- ++(\ang:1.28) node[pos=1, right=2.5pt, leglabel] {$\lab$};
+      }
+      \draw[physical] (tA) -- ++(0, 1.20) node[physdot] {} node[above=2pt, physlabel] {$s$};
+      \draw[physical] (tB) -- ++(0, 1.20) node[physdot] {} node[above=2pt, physlabel] {$t$};
+    \end{scope}
+
+    \node[tensor, minimum size=9.4mm] (nA) at (tA) {$I_A$};
+    \node[tensor, minimum size=9.4mm] (nB) at (tB) {$I_B$};
+    \node[genbond, minimum width=11.4mm, minimum height=7.8mm] (nE) at (tE) {$E_{mn}$};
+
+    \node[leglabel, above=3pt] at ($(nA.east)!0.5!(nE.west)$) {$m$};
+    \node[leglabel, above=3pt] at ($(nE.east)!0.5!(nB.west)$) {$n$};
+  \end{scope}
+\end{tikzpicture}

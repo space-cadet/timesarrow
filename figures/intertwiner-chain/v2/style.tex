@@ -1,0 +1,113 @@
+\usepackage{fix-cm}
+\usepackage{amsmath,amssymb}
+\usepackage{newtxtext,newtxmath}
+\usetikzlibrary{calc,arrows.meta,positioning,backgrounds,shadows,decorations.pathreplacing}
+
+% Editorial physics palette (high contrast in color and grayscale)
+\definecolor{ink}{HTML}{1B2A38}
+\definecolor{muted}{HTML}{5A7082}
+\definecolor{wire}{HTML}{2F485C}
+\definecolor{tetEdge}{HTML}{4A6C87}
+\definecolor{tetFace}{HTML}{CFE3F2}
+\definecolor{sharedFace}{HTML}{E9D7B9}
+\definecolor{sharedBorder}{HTML}{9E6A2C}
+\definecolor{ribbonFill}{HTML}{EDF3F8}
+\definecolor{ribbonBorder}{HTML}{C9D8E4}
+
+\definecolor{nodeTop}{HTML}{FAFDFE}
+\definecolor{nodeBot}{HTML}{D3E5F2}
+\definecolor{nodeBorder}{HTML}{2B4E6B}
+
+\definecolor{genTop}{HTML}{FAFBFD}
+\definecolor{genBot}{HTML}{E3EBF1}
+\definecolor{genBorder}{HTML}{3F586C}
+
+\definecolor{tealTop}{HTML}{ECFAF8}
+\definecolor{tealBot}{HTML}{C2E6E2}
+\definecolor{tealBorder}{HTML}{156B67}
+\definecolor{tealText}{HTML}{0E4F4C}
+
+\definecolor{amberTop}{HTML}{FFF6EA}
+\definecolor{amberBot}{HTML}{FAD8B0}
+\definecolor{amberBorder}{HTML}{BA5614}
+\definecolor{amberText}{HTML}{8E3D08}
+\definecolor{amberGlow}{HTML}{F7C992}
+
+\definecolor{violet}{HTML}{6A498A}
+\definecolor{rulegray}{HTML}{D4DFE7}
+
+\tikzset{
+  every node/.style={text=ink, font=\fontsize{10}{12}\selectfont},
+  % Wires
+  magnetic/.style={draw=wire, line width=0.95pt, line cap=round},
+  magneticHalo/.style={
+    preaction={draw=white, line width=2.4pt, line cap=round},
+    draw=wire, line width=0.95pt, line cap=round
+  },
+  physical/.style={draw=violet, line width=0.9pt, densely dashed, line cap=round},
+  physicalHalo/.style={
+    preaction={draw=white, line width=2.2pt, line cap=round},
+    draw=violet, line width=0.9pt, densely dashed, line cap=round
+  },
+  spinone/.style={draw=amberBorder, line width=1.6pt, line cap=round},
+  % Endpoints & punctures
+  physdot/.style={circle, solid, draw=violet, fill=white, line width=0.85pt, inner sep=0pt, minimum size=3.1pt},
+  spinonedot/.style={circle, solid, fill=amberBorder, inner sep=0pt, minimum size=3.6pt},
+  puncture/.style={circle, solid, draw=wire, fill=white, line width=0.75pt, inner sep=0pt, minimum size=3.0pt},
+  % Tensors
+  tensor/.style={
+    circle,
+    draw=nodeBorder,
+    top color=nodeTop,
+    bottom color=nodeBot,
+    line width=0.95pt,
+    minimum size=9.6mm,
+    inner sep=0pt,
+    drop shadow={opacity=0.14, shadow xshift=0.5pt, shadow yshift=-0.8pt, fill=ink}
+  },
+  genbond/.style={
+    rectangle,
+    rounded corners=2.4pt,
+    draw=genBorder,
+    top color=genTop,
+    bottom color=genBot,
+    line width=0.95pt,
+    minimum width=11.5mm,
+    minimum height=7.8mm,
+    inner sep=2pt,
+    drop shadow={opacity=0.13, shadow xshift=0.5pt, shadow yshift=-0.8pt, fill=ink}
+  },
+  singlet/.style={
+    rectangle,
+    rounded corners=2.4pt,
+    draw=tealBorder,
+    top color=tealTop,
+    bottom color=tealBot,
+    text=tealText,
+    line width=0.95pt,
+    minimum width=8.6mm,
+    minimum height=6.8mm,
+    inner sep=1.5pt,
+    drop shadow={opacity=0.12, shadow xshift=0.5pt, shadow yshift=-0.8pt, fill=ink}
+  },
+  triplet/.style={
+    rectangle,
+    rounded corners=2.4pt,
+    draw=amberBorder,
+    top color=amberTop,
+    bottom color=amberBot,
+    text=amberText,
+    line width=1.05pt,
+    minimum width=9.6mm,
+    minimum height=7.2mm,
+    inner sep=1.5pt,
+    drop shadow={opacity=0.15, shadow xshift=0.5pt, shadow yshift=-0.8pt, fill=ink}
+  },
+  % Labels
+  paneltag/.style={font=\bfseries\fontsize{10.5}{12}\selectfont, text=ink},
+  leglabel/.style={font=\fontsize{9.5}{11}\selectfont, text=ink},
+  physlabel/.style={font=\fontsize{9.5}{11}\selectfont, text=violet},
+  spinlabel/.style={font=\fontsize{9.5}{11}\selectfont, text=amberText},
+  teallabel/.style={font=\fontsize{9.5}{11}\selectfont, text=tealText},
+  smallspin/.style={font=\fontsize{8.8}{10.5}\selectfont, text=amberText}
+}

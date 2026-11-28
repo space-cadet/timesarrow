@@ -1,0 +1,94 @@
+\begin{tikzpicture}
+  % =========================================================================
+  % Left: General two-leg bond tensor E_{mn} between half-edges m, n
+  % =========================================================================
+  \coordinate (L0) at (-5.65, 0.15);
+  \begin{scope}[on background layer]
+    \draw[magnetic] ($(L0)+(-1.42,0)$) -- ($(L0)+(1.42,0)$);
+  \end{scope}
+  \node[genbond, minimum width=12.0mm, minimum height=8.2mm] (Egen) at (L0) {$E_{mn}$};
+  \node[leglabel, above=3pt] at ($(L0)+(-1.02,0)$) {$m$};
+  \node[leglabel, above=3pt] at ($(L0)+( 1.02,0)$) {$n$};
+
+  % Clean branching arrows: general pairing splits into J=0 and J=1
+  \draw[draw=tealBorder!85, line width=0.95pt, -{Stealth[length=4.5pt]}]
+    (-3.98,  0.34) .. controls (-3.15,  0.34) and (-3.15,  1.72) .. (-2.35,  1.72);
+  \draw[draw=amberBorder!90, line width=0.95pt, -{Stealth[length=4.5pt]}]
+    (-3.98, -0.04) .. controls (-3.15, -0.04) and (-3.15, -1.25) .. (-2.35, -1.25);
+
+  \node[teallabel] at (-3.15,  2.04) {$J = 0$};
+  \node[spinlabel] at (-3.15, -1.62) {$J = 1$};
+
+  % =========================================================================
+  % Top branch: Spin-0 invariant singlet link \epsilon (2-leg scalar tensor)
+  % =========================================================================
+  \coordinate (S0) at (-0.65, 1.72);
+  \begin{scope}[on background layer]
+    \draw[magnetic] ($(S0)+(-1.42,0)$) -- ($(S0)+(1.42,0)$);
+  \end{scope}
+  \node[singlet, minimum width=10.5mm, minimum height=7.6mm] (Esing) at (S0) {$\epsilon$};
+  \node[leglabel, above=3pt] at ($(S0)+(-1.00,0)$) {$m$};
+  \node[leglabel, above=3pt] at ($(S0)+( 1.00,0)$) {$n$};
+
+  % Antisymmetric pairing indicator for singlet
+  \draw[draw=tealBorder!75, line width=0.75pt, {Stealth[length=3.2pt]}-{Stealth[length=3.2pt]}]
+    ($(S0)+(-0.92,-0.16)$) to[out=-52, in=-128, looseness=1.1] ($(S0)+(0.92,-0.16)$);
+  \node[teallabel, font=\fontsize{8.8}{10.5}\selectfont] at ($(S0)+(0,-0.80)$)
+    {$\uparrow\downarrow - \downarrow\uparrow$};
+
+  % Subtle horizontal divider between J=0 and J=1 sectors
+  \draw[rulegray, line width=0.5pt, densely dashed] (-2.25, 0.58) -- (6.55, 0.58);
+
+  % =========================================================================
+  % Bottom-left: Spin-1 triplet family E_{mnM} (3-leg tensor with open leg M)
+  % Centered vertically at y = -1.25 to align exactly with the 3-row brace
+  % =========================================================================
+  \coordinate (T0) at (-0.65, -1.25);
+  \begin{scope}[on background layer]
+    \fill[amberGlow, opacity=0.34, rounded corners=5pt]
+      ($(T0)+(-0.68,-0.52)$) rectangle ($(T0)+(0.68,0.52)$);
+    \draw[magnetic] ($(T0)+(-1.42,0)$) -- ($(T0)+(1.42,0)$);
+    \draw[spinone] (T0) -- ++(0, 1.02) node[spinonedot] {} node[right=3.5pt, spinlabel] {$M$};
+  \end{scope}
+  \node[triplet, minimum width=10.5mm, minimum height=7.6mm] (Etri) at (T0) {$E$};
+  \node[leglabel, below=3pt] at ($(T0)+(-1.00,0)$) {$m$};
+  \node[leglabel, below=3pt] at ($(T0)+( 1.00,0)$) {$n$};
+
+  % Elegant left-opening brace centered at exact y = -1.25
+  \draw[decorate, decoration={brace, amplitude=6pt}, draw=amberBorder!80, line width=0.85pt]
+    (1.25, -2.68) -- (1.25, 0.18);
+
+  % =========================================================================
+  % Bottom-right: Fixed two-leg triplet projections E^{(+1)}, E^{(0)}, E^{(-1)}
+  % =========================================================================
+  % Row 1: M = +1
+  \coordinate (R1) at (4.15, -0.10);
+  \node[spinlabel, anchor=east] at (2.78, -0.10) {$M=+1$};
+  \begin{scope}[on background layer]
+    \draw[magnetic] ($(R1)+(-1.15,0)$) -- ($(R1)+(1.15,0)$);
+  \end{scope}
+  \node[triplet, minimum width=11.0mm, minimum height=6.8mm] (Ep) at (R1) {$E^{(+1)}$};
+  \node[smallspin, above=2pt] at ($(R1)+(-0.86,0)$) {$\uparrow$};
+  \node[smallspin, above=2pt] at ($(R1)+( 0.86,0)$) {$\uparrow$};
+
+  % Row 2: M = 0
+  \coordinate (R2) at (4.15, -1.25);
+  \node[spinlabel, anchor=east] at (2.78, -1.25) {$M=0$};
+  \begin{scope}[on background layer]
+    \draw[magnetic] ($(R2)+(-1.15,0)$) -- ($(R2)+(1.15,0)$);
+  \end{scope}
+  \node[triplet, minimum width=11.0mm, minimum height=6.8mm] (Ez) at (R2) {$E^{(0)}$};
+  \draw[draw=amberBorder!80, line width=0.7pt, {Stealth[length=3pt]}-{Stealth[length=3pt]}]
+    ($(R2)+(-0.86,-0.14)$) to[out=-50, in=-130, looseness=1.08] ($(R2)+(0.86,-0.14)$);
+  \node[smallspin, anchor=west] at (5.42, -1.25) {$\uparrow\downarrow + \downarrow\uparrow$};
+
+  % Row 3: M = -1
+  \coordinate (R3) at (4.15, -2.40);
+  \node[spinlabel, anchor=east] at (2.78, -2.40) {$M=-1$};
+  \begin{scope}[on background layer]
+    \draw[magnetic] ($(R3)+(-1.15,0)$) -- ($(R3)+(1.15,0)$);
+  \end{scope}
+  \node[triplet, minimum width=11.0mm, minimum height=6.8mm] (Em) at (R3) {$E^{(-1)}$};
+  \node[smallspin, above=2pt] at ($(R3)+(-0.86,0)$) {$\downarrow$};
+  \node[smallspin, above=2pt] at ($(R3)+( 0.86,0)$) {$\downarrow$};
+\end{tikzpicture}

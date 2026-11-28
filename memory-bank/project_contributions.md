@@ -104,3 +104,12 @@ Deepak Vaid proposed the connection to a string worldsheet, recalled the spinor-
 Sol 6.1 Medium assembled the pedagogical calculation from established identities, performed explicit algebraic checks, identified the bare coefficient and constraint-count errors, and drafted the approved passages. The pair-Casimir commutator is credited to Brunnemann–Thiemann, and the spin-exchange identity is standard. New or substantively revised manuscript text carries visible model-named markers. The shared Appendix F derivation and `ai-assistance-statement.md` record these contributions. Scientific responsibility remains with the author.
 
 [Session](sessions/2026-11-27-intertwiner-orientation.md).
+
+## Intertwiner-chain figures and Penrose 3D drawings — 2026-11-27 to 2026-11-28
+
+Deepak Vaid originated the singlet-glued chain / spin-one triplet excitation proposal, directed the removal of mathematical insets and the shift toward Penrose-style 3D tetrahedral geometry with smaller tensor node shapes, supplied mid-session sketches from Codex, and established the date/time/model-stamping convention for generated images.
+
+- **GPT Sol 6.1 Medium** (Codex): drafted the initial TikZ explanatory set in `figures/intertwiner-chain/` (commit `c590f1c`) and four mid-session pen-and-ink stippled/hatched tetrahedral sketches archived in `figures/intertwiner-chain/codex-sol-6.1-medium/`.
+- **Gemini 4 Neon (High)** (Antigravity): created the separate paper-ready TikZ restyling (`figures/intertwiner-chain/paper/`), the from-scratch 3D dual geometry and Boerdijk-Coxeter chain TikZ set (`figures/intertwiner-chain/v2/`), and the exact 3D procedural Penrose Rapidograph ink-stipple renderer (`figures/intertwiner-chain/v2/render_penrose_chain.py`) producing `penrose-chain-minimal` and `penrose-chain-4valent`.
+
+[Session](sessions/2026-11-28-intertwiner-chain-figures.md).

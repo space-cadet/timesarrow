@@ -1,0 +1,44 @@
+\begin{tikzpicture}
+  % Panel (a): Singlet reference chain
+  \begin{scope}[yshift=1.95cm]
+    \node[paneltag, anchor=west] at (-6.95, 1.38) {(a)};
+    \begin{scope}[on background layer]
+      \draw[magnetic] (-6.35,0) -- (6.35,0);
+    \end{scope}
+    \node[muted] at (-6.68,0) {$\cdots$};
+    \node[muted] at ( 6.68,0) {$\cdots$};
+
+    \foreach \i/\x in {1/-5.2, 2/-2.6, 3/0, 4/2.6, 5/5.2}{%
+      \chainsite{\i}{\x}{0}
+    }
+    \foreach \x in {-3.9, -1.3, 1.3, 3.9}{%
+      \node[singlet] at (\x,0) {$\epsilon$};
+    }
+  \end{scope}
+
+  % Subtle panel divider
+  \draw[rulegray, line width=0.55pt] (-6.95, -0.05) -- (6.95, -0.05);
+
+  % Panel (b): Triplet insertion on edge e
+  \begin{scope}[yshift=-2.05cm]
+    \node[paneltag, anchor=west] at (-6.95, 1.38) {(b)};
+    \begin{scope}[on background layer]
+      \draw[magnetic] (-6.35,0) -- (6.35,0);
+      % Soft warm highlight behind triplet insertion
+      \fill[amberBot, opacity=0.38, rounded corners=5pt] (0.64,-0.54) rectangle (1.96,0.54);
+      % Spin-1 leg M rising from E
+      \draw[spinone] (1.3,0) -- (1.3,1.18) node[spinonedot] {} node[above=2pt, spinlabel] {$M$};
+    \end{scope}
+    \node[muted] at (-6.68,0) {$\cdots$};
+    \node[muted] at ( 6.68,0) {$\cdots$};
+
+    \foreach \i/\x in {1/-5.2, 2/-2.6, 3/0, 4/2.6, 5/5.2}{%
+      \chainsite{\i}{\x}{0}
+    }
+    \foreach \x in {-3.9, -1.3, 3.9}{%
+      \node[singlet] at (\x,0) {$\epsilon$};
+    }
+    \node[triplet] (defect) at (1.3,0) {$E$};
+    \node[spinlabel, below=4pt] at (defect.south) {$e$};
+  \end{scope}
+\end{tikzpicture}

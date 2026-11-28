@@ -1,0 +1,118 @@
+\usepackage{fix-cm}
+\usepackage{amsmath,amssymb}
+\usepackage{newtxtext,newtxmath}
+\usetikzlibrary{calc,arrows.meta,positioning,backgrounds,shadows}
+
+% Publication palette (high contrast in color and grayscale)
+\definecolor{ink}{HTML}{1E2E3B}
+\definecolor{muted}{HTML}{566B7A}
+\definecolor{wire}{HTML}{3B5466}
+\definecolor{nodeTop}{HTML}{F7FAFC}
+\definecolor{nodeBot}{HTML}{DCE9F2}
+\definecolor{nodeBorder}{HTML}{35566E}
+\definecolor{genTop}{HTML}{F6F8FA}
+\definecolor{genBot}{HTML}{E3E9EE}
+\definecolor{genBorder}{HTML}{4A6273}
+\definecolor{tealTop}{HTML}{EDF8F7}
+\definecolor{tealBot}{HTML}{C9E8E5}
+\definecolor{tealBorder}{HTML}{1A6F7B}
+\definecolor{tealText}{HTML}{11525B}
+\definecolor{amberTop}{HTML}{FFF8EC}
+\definecolor{amberBot}{HTML}{FCE0BA}
+\definecolor{amberBorder}{HTML}{B35C18}
+\definecolor{amberText}{HTML}{8A420B}
+\definecolor{violet}{HTML}{6B4E8E}
+\definecolor{rulegray}{HTML}{D4DFE6}
+
+\tikzset{
+  every node/.style={text=ink, font=\fontsize{10}{12}\selectfont},
+  magnetic/.style={draw=wire, line width=0.9pt, line cap=round},
+  physical/.style={draw=violet, line width=0.85pt, densely dashed, line cap=round},
+  spinone/.style={draw=amberBorder, line width=1.45pt, line cap=round},
+  physdot/.style={circle, fill=violet, inner sep=0pt, minimum size=2.4pt},
+  spinonedot/.style={circle, fill=amberBorder, inner sep=0pt, minimum size=3.0pt},
+  tensor/.style={
+    circle,
+    draw=nodeBorder,
+    top color=nodeTop,
+    bottom color=nodeBot,
+    line width=0.95pt,
+    minimum size=10.5mm,
+    inner sep=0pt,
+    drop shadow={opacity=0.14, shadow xshift=0.5pt, shadow yshift=-0.8pt, fill=ink}
+  },
+  genbond/.style={
+    rectangle,
+    rounded corners=2.4pt,
+    draw=genBorder,
+    top color=genTop,
+    bottom color=genBot,
+    line width=0.95pt,
+    minimum width=12.5mm,
+    minimum height=8.2mm,
+    inner sep=2pt,
+    drop shadow={opacity=0.12, shadow xshift=0.5pt, shadow yshift=-0.8pt, fill=ink}
+  },
+  singlet/.style={
+    rectangle,
+    rounded corners=2.4pt,
+    draw=tealBorder,
+    top color=tealTop,
+    bottom color=tealBot,
+    text=tealText,
+    line width=0.95pt,
+    minimum width=9.4mm,
+    minimum height=7.2mm,
+    inner sep=1.5pt,
+    drop shadow={opacity=0.12, shadow xshift=0.5pt, shadow yshift=-0.8pt, fill=ink}
+  },
+  triplet/.style={
+    rectangle,
+    rounded corners=2.4pt,
+    draw=amberBorder,
+    top color=amberTop,
+    bottom color=amberBot,
+    text=amberText,
+    line width=1.05pt,
+    minimum width=10.2mm,
+    minimum height=7.6mm,
+    inner sep=1.5pt,
+    drop shadow={opacity=0.14, shadow xshift=0.5pt, shadow yshift=-0.8pt, fill=ink}
+  },
+  paneltag/.style={font=\bfseries\fontsize{10.5}{12}\selectfont, text=ink},
+  leglabel/.style={font=\fontsize{9.5}{11}\selectfont, text=ink},
+  physlabel/.style={font=\fontsize{9.5}{11}\selectfont, text=violet},
+  spinlabel/.style={font=\fontsize{9.5}{11}\selectfont, text=amberText},
+  smallspin/.style={font=\fontsize{8.5}{10}\selectfont, text=amberText}
+}
+
+% Chain site: 4 solid magnetic legs (left/right + u_i/d_i) and angled dashed physical leg s_i.
+\newcommand{\chainsite}[3]{%
+  \coordinate (c#1) at (#2,#3);
+  \begin{scope}[on background layer]
+    \draw[magnetic] (c#1) -- ++(0, 1.18) node[above=2pt, leglabel] {$u_{#1}$};
+    \draw[magnetic] (c#1) -- ++(0,-1.18) node[below=2pt, leglabel] {$d_{#1}$};
+    \draw[physical] (c#1) -- ++(-46:0.96) node[physdot] {} node[below right=-1pt, physlabel] {$s_{#1}$};
+  \end{scope}
+  \node[tensor, minimum size=8.8mm] (v#1) at (c#1) {$I_{#1}$};
+}
+
+% Compact two-node pair for Figure 03 with consistent physical legs s, t.
+\newcommand{\tripletpair}[3]{%
+  \coordinate (#1Lpos) at ($(#2)+(-1.42,0)$);
+  \coordinate (#1Rpos) at ($(#2)+( 1.42,0)$);
+  \begin{scope}[on background layer]
+    \draw[magnetic] (#1Lpos) -- (#1Rpos);
+    \foreach \ang in {142,180,218}{%
+      \draw[magnetic] (#1Lpos) -- ++(\ang:0.95);
+    }
+    \foreach \ang in {38,0,-38}{%
+      \draw[magnetic] (#1Rpos) -- ++(\ang:0.95);
+    }
+    \draw[physical] (#1Lpos) -- ++(0,0.92) node[physdot] {} node[above=2pt, physlabel] {$s$};
+    \draw[physical] (#1Rpos) -- ++(0,0.92) node[physdot] {} node[above=2pt, physlabel] {$t$};
+  \end{scope}
+  \node[tensor, minimum size=8.2mm] (#1L) at (#1Lpos) {$I_A$};
+  \node[tensor, minimum size=8.2mm] (#1R) at (#1Rpos) {$I_B$};
+  \node[triplet, minimum width=11.4mm, minimum height=7.6mm] (#1B) at (#2) {$#3$};
+}

@@ -1,0 +1,29 @@
+\begin{tikzpicture}
+  \coordinate (Apos) at (-3.15,0);
+  \coordinate (Epos) at (0,0);
+  \coordinate (Bpos) at (3.15,0);
+
+  \begin{scope}[on background layer]
+    % Shared horizontal magnetic wire
+    \draw[magnetic] (Apos) -- (Bpos);
+    % Six external magnetic legs (j = 1/2)
+    \foreach \ang/\lab in {142/a, 180/b, 218/c}{%
+      \draw[magnetic] (Apos) -- ++(\ang:1.68) node[pos=1, left=3pt, leglabel] {$\lab$};
+    }
+    \foreach \ang/\lab in {38/d, 0/e, -38/f}{%
+      \draw[magnetic] (Bpos) -- ++(\ang:1.68) node[pos=1, right=3pt, leglabel] {$\lab$};
+    }
+    % Physical intertwiner legs (s, t)
+    \draw[physical] (Apos) -- ++(0,1.25) node[physdot] {} node[above=3pt, physlabel] {$s$};
+    \draw[physical] (Bpos) -- ++(0,1.25) node[physdot] {} node[above=3pt, physlabel] {$t$};
+  \end{scope}
+
+  % Intertwiner nodes and edge pairing block
+  \node[tensor, minimum size=11mm] (A) at (Apos) {$I_A$};
+  \node[tensor, minimum size=11mm] (B) at (Bpos) {$I_B$};
+  \node[genbond, minimum width=13.5mm, minimum height=8.8mm] (E) at (Epos) {$E_{mn}$};
+
+  % Shared magnetic index labels
+  \node[leglabel, above=4pt] at ($(A.east)!0.5!(E.west)$) {$m$};
+  \node[leglabel, above=4pt] at ($(E.east)!0.5!(B.west)$) {$n$};
+\end{tikzpicture}
