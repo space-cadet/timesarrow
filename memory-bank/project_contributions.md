@@ -128,7 +128,8 @@ None of these has been applied to the manuscript yet. Each needs the author's de
    - **Status:** proposal only; there are no $J>0$ simulations.
 2. **The bond-index flip does not reverse orientation.**
    - **The calculation:** on a 4-valent $j=1/2$ vertex, $\sigma_x^{\otimes4}$ acts as the identity on the two-dimensional singlet space and commutes with $\hat Q$, because $\sigma_x$ is an $SU(2)$ element up to a phase. The antiunitary time reversal $T=\sigma_y^{\otimes4}K$ does satisfy $T\hat Q T^{-1}=-\hat Q$, with eigenvalues $\pm0.433$ in units where $\hat J=\sigma/2$.
-   - **Consequence:** the May 2026 identification of $\sigma_e$ with the shared bond index, with the vertex gauge transformation acting by flipping bond indices (current `timesarrow.tex` line 1028), fails as written. The author's original Chen–Vishwanath construction does not have this problem.
+   - **Consequence:** the May 2026 identification of $\sigma_e$ with the shared bond index, with the vertex gauge transformation acting by flipping bond indices (`timesarrow.tex` line 1028 as of 2026-11-26; line 1057 after the 2026-11-27 merge), fails as written. The author's original Chen–Vishwanath construction does not have this problem.
+   - **Cross-check (2026-11-28):** the eigenvalues $\pm\sqrt3/4$ and the antiunitary exchange $\Theta|\pm\rangle=|\mp\rangle$ agree with the independently derived new Appendix F (Sol 6.1 Medium, 2026-11-27). The bond-flip result itself is not in Appendix F.
 3. **Dimension and universality correction.**
    - A quantum $Z_2$ gauge theory on 3D spatial slices corresponds to a 4D classical lattice. There the pure-gauge transition is first order, at $K_c=\tfrac12\ln(1+\sqrt2)\approx0.4407$ (Creutz, Jacobs & Rebbi 1979), not Ising.
    - The 3D classical theory is dual to the 3D Ising model, not the 2D one.
